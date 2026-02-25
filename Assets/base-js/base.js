@@ -55,12 +55,29 @@ function majLocalStorage(versionStockee) {
         versionStockee = "4.0.1" // maj de la variable pour enchaine avec les futures if de nouvelle version
     }
     
-    // écrire les futures maj dans un if en dessous 
+    // migration de 4.0.1 à 4.0.2
+    if (versionStockee == "4.0.1") {
+        localStorage.removeItem("DisplayBanniere")
+
+        let tableauOutilPin = localStorage.getItem("OutilsPin")
+
+        if (tableauOutilPin != null) { // si il y a rien dans le local storage (=null) on ne fait rien
+            tableauOutilPin = JSON.parse(tableauOutilPin) // transformation en objet js
+                
+            // suppresion de l'outil car pas prouvé scientifiquement
+            tableauOutilPin = tableauOutilPin.filter(elementfilter => elementfilter != "Estimation puissance moy. en ski")
+            // suppresion de l'outil car pas prouvé scientifiquement
+            tableauOutilPin = tableauOutilPin.filter(elementfilter => elementfilter != "Estimation puissance max. en course")
+        }
+
+        localStorage.setItem("VersionLocalStorage", "4.0.2")
+        versionStockee = "4.0.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
+    }
 
     return
 }
 
-const versionActuelle = "4.0.1"
+const versionActuelle = "4.0.2"
 let versionStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
 
 if (versionStockee != versionActuelle) {

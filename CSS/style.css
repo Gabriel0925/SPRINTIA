@@ -132,12 +132,6 @@ i {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.fs-icon_besoin_hydratation:before {
-    content: "\e928";
-}
-.fs-icon_zones_puissance:before {
-    content: "\e929";
-}
 .fs-icon_1RM:before {
     content: "\e900";
 }
@@ -150,106 +144,106 @@ i {
 .fs-icon_add:before {
     content: "\e903";
 }
-.fs-icon_charge_entrainement:before {
+.fs-icon_besoin_hydratation:before {
     content: "\e904";
 }
-.fs-icon_coach:before {
+.fs-icon_charge_entrainement:before {
     content: "\e905";
 }
-.fs-icon_confidentialite:before {
+.fs-icon_coach:before {
     content: "\e906";
 }
-.fs-icon_epingler:before {
+.fs-icon_confidentialite:before {
     content: "\e907";
 }
-.fs-icon_fermer:before {
+.fs-icon_epingler:before {
     content: "\e908";
 }
-.fs-icon_historique:before {
+.fs-icon_fermer:before {
     content: "\e909";
 }
-.fs-icon_ia:before {
+.fs-icon_historique:before {
     content: "\e90a";
+}
+.fs-icon_ia:before {
+    content: "\e90b";
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
 .fs-icon_IMC:before {
-    content: "\e90b";
-}
-.fs-icon_indulgence_course:before {
     content: "\e90c";
 }
-.fs-icon_licence:before {
+.fs-icon_indulgence_course:before {
     content: "\e90d";
-    color: var(--COULEUR_TEXT_PRINCIPAL);
 }
-.fs-icon_mail:before {
+.fs-icon_licence:before {
     content: "\e90e";
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
-.fs-icon_menu:before {
+.fs-icon_mail:before {
     content: "\e90f";
+    color: var(--COULEUR_TEXT_PRINCIPAL);
 }
-.fs-icon_miles_km:before {
+.fs-icon_menu:before {
     content: "\e910";
 }
-.fs-icon_mode_clair_sombre:before {
+.fs-icon_miles_km:before {
     content: "\e911";
 }
-.fs-icon_modifier:before {
+.fs-icon_mode_clair_sombre:before {
     content: "\e912";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_modifier:before {
     content: "\e913";
 }
-.fs-icon_outils:before {
+.fs-icon_niveau_course:before {
     content: "\e914";
 }
-.fs-icon_parametres:before {
+.fs-icon_outils:before {
     content: "\e915";
 }
-.fs-icon_partager:before {
+.fs-icon_parametres:before {
     content: "\e916";
+}
+.fs-icon_partager:before {
+    content: "\e917";
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
 .fs-icon_pause:before {
-    content: "\e917";
+    content: "\e918";
 }
 .fs-icon_play:before {
-    content: "\e918";
+    content: "\e919";
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
 .fs-icon_plus:before {
-    content: "\e919";
-}
-.fs-icon_predicteur_performance:before {
     content: "\e91a";
 }
-.fs-icon_proteines:before {
+.fs-icon_predicteur_performance:before {
     content: "\e91b";
 }
-.fs-icon_puissance_max:before {
+.fs-icon_proteines:before {
     content: "\e91c";
 }
-.fs-icon_puissance_moy_ski:before {
+.fs-icon_sauvegarde:before {
     content: "\e91d";
 }
-.fs-icon_sauvegarde:before {
+.fs-icon_supprimer:before {
     content: "\e91e";
 }
-.fs-icon_supprimer:before {
-    content: "\e91f";
-}
 .fs-icon_telecharger:before {
-    content: "\e920";
+    content: "\e91f";
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
 .fs-icon_temps_recup:before {
-    content: "\e921";
+    content: "\e920";
 }
 .fs-icon_themes:before {
-    content: "\e922";
+    content: "\e921";
 }
 .fs-icon_transpiration:before {
+    content: "\e922";
+}
+.fs-icon_upload:before {
     content: "\e923";
 }
 .fs-icon_VMA:before {
@@ -261,8 +255,11 @@ i {
 .fs-icon_zones_cardiaques:before {
     content: "\e926";
 }
-.fs-icon_zones_vitesse:before {
+.fs-icon_zones_puissance:before {
     content: "\e927";
+}
+.fs-icon_zones_vitesse:before {
+    content: "\e928";
 }
 
 /* ----- On reset le style ----- */

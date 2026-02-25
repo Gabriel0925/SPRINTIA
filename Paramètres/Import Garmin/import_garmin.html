@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Paramètres avancés</title>
+    <title>Sprintia - Licence</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <link rel="icon" type="image/svg+xml" href="../../Assets/icons-sprintia/Logo-Sprintia-Head-Sombre.svg" media="(prefers-color-scheme: dark)">
 
     <link rel="manifest" href="../../manifest.json">
- 
+
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -78,16 +78,18 @@
     </header>
 
     <div class="conteneur-about-marge">
-        <h1>Paramètres avancés</h1>
-        
+        <h1>Import Garmin</h1>
         <p class="text">
-            La fonctionnalité ci-dessous permet de désactiver l'affichage de la bannière "Sprintia est conçue pour vous aider avant...". Bien que
-            cette bannière soit utile pour accueillir les nouveaux utilisateurs, au quotidien elle est inutile.
+            Vous avez une montre Garmin et vous voulez importer vos données d'entraînement sur Sprintia, vous êtes au bon endroit.
+            Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînements disponible sur Garmin Connect Web.
         </p>
-        <div class="conteneur-mode">
-            <p class="mode-choisis" id="sans-icone">Bannière</p>
-            <input class="toggle" type="checkbox" onclick="DesactiverBanniere(event)" id="toggle-banniere"/>
-        </div> 
+        <div class="conteneur-centrage-marge">
+            <!-- On n' affiche pas le input file -->
+            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="Fonction(event)">
+            <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+            <button onclick="document.getElementById('file-input').click()">Importer mes entraînements</button>
+        </div>
+
     </div>
     
     <footer>
@@ -116,34 +118,6 @@
     
     <!-- Pour le burger menu -->
     <script src="../../Assets/base-js/base.js"></script>
-    
-    <script> 
-        function DesactiverBanniere(event) {
-            const ToggleBanniere = event.target
-
-            if (ToggleBanniere.checked) { // quand la banniere est desactiver (donc masquée)
-                localStorage.setItem("DisplayBanniere", "False")
-            } else { // Quand la baniere est activé
-                localStorage.setItem("DisplayBanniere", "True")
-            }
-            return
-        }
-
-        function Initialisation() {
-            let ToggleBanniere = document.getElementById("toggle-banniere")
-            let ValueBanniere = localStorage.getItem("DisplayBanniere")
-
-            if (ValueBanniere == "False") {
-                ToggleBanniere.checked = true
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            Initialisation()
-        })
-    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

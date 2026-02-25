@@ -192,19 +192,15 @@ function MethodeChoisie() {
         ChampFcRepos.classList.remove("invisible")
         LabelFcRepos.classList.remove("invisible")
     }
-
-    ChoixFonction(Methode)
     return
 }
 
-function ChoixFonction(Methode) {
-    if (!document.getElementById("age-user").value) {return}
-
+function ChoixFonction() {
+    const Methode = document.getElementById("methode-user").value
     // Choix de la fonction en fonction de la méthode
     if (Methode === "Max") {
         ZoneFcMAX()
     } else {
-        if (!document.getElementById("fc-repos-user").value) {return}
         ZoneFcReserve()
     }
     return

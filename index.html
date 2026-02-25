@@ -80,12 +80,6 @@
     <div class="conteneur-about-marge"> 
         <h1>Accueil</h1>
 
-        <div class="conteneur-mise-avant" id="banniere-accueil">
-            <p>
-                Sprintia est conçu pour vous aider avant et après un entraînement grâce à des algorithmes 100% gratuits.
-            </p>
-        </div>
-
         <div class="conteneur-mise-avant" id="section-jrm">
             <div class="zone-jrm">
                 <p class="title-jrm" id="nom-coach">
@@ -323,6 +317,7 @@
 
             "Zones cardiaques": "fs-icon_zones_cardiaques",
             "Protéines quotidiennes": "fs-icon_proteines",
+            "Estimation 1RM": "fs-icon_1RM",
             "Calculateur IMC": "fs-icon_IMC",
 
             "Niveau course à pied": "fs-icon_niveau_course",
@@ -331,12 +326,8 @@
             "Estimation VO₂max": "fs-icon_VO2MAX",
             "Zones de vitesse": "fs-icon_zones_vitesse",
             "Zones de puissance": "fs-icon_zones_puissance",
-            "Estimation puissance max. en course": "fs-icon_puissance_max",
-
-            "Estimation 1RM": "fs-icon_1RM",
 
             "Hydratation post-séance": "fs-icon_besoin_hydratation",
-            "Estimation puissance moy. en ski": "fs-icon_puissance_moy_ski",
             "Convertisseur km/miles": "fs-icon_miles_km"
         }
 
@@ -347,6 +338,7 @@
 
             "Zones cardiaques": "Outils/Zones cardiaques/zones_cardiaques.html",
             "Protéines quotidiennes": "Outils/Protéines quotidiennes/proteines_quotidienne.html",
+            "Estimation 1RM": "Outils/Estimation 1RM/estimation_1RM.html",
             "Calculateur IMC": "Outils/Calculateur IMC/calculateur_imc.html",
 
             "Niveau course à pied": "Outils/Niveau de course à pied/niveau_course.html",
@@ -355,12 +347,8 @@
             "Estimation VO₂max": "Outils/Estimation VO2max/estimation_VO2max.html",
             "Zones de vitesse": "Outils/Zones de vitesse/zones_vitesse.html",
             "Zones de puissance": "Outils/Zones de puissance/zones de puissance.html",
-            "Estimation puissance max. en course": "Outils/Estimation puissance max en course/estimation_puissance_max_course.html",
-
-            "Estimation 1RM": "Outils/Estimation 1RM/estimation_1RM.html",
 
             "Hydratation post-séance": "Outils/Hydratation post-seance/hydratation_post-seance.html",
-            "Estimation puissance moy. en ski": "Outils/Estimation puissance moy en ski/estimation_puissance_moy_en_ski.html",
             "Convertisseur km/miles": "Outils/Convertisseur miles-km/convertisseur_miles_km.html"
         }
 
@@ -675,15 +663,6 @@
         window.addEventListener("DOMContentLoaded", () => {
             JRMCoach()
         })
-    </script>
-
-    <script>
-        const DisplayBanniere = localStorage.getItem("DisplayBanniere")
-        let MiseAvant = document.getElementById("banniere-accueil")
-
-        if (DisplayBanniere == "False") {
-            MiseAvant.style.display = "none"
-        }
     </script>
 
     <!-- Pour le graphique -->

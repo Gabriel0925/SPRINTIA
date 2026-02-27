@@ -68,6 +68,8 @@ function majLocalStorage(versionStockee) {
             tableauOutilPin = tableauOutilPin.filter(elementfilter => elementfilter != "Estimation puissance moy. en ski")
             // suppresion de l'outil car pas prouvé scientifiquement
             tableauOutilPin = tableauOutilPin.filter(elementfilter => elementfilter != "Estimation puissance max. en course")
+            
+            localStorage.setItem("OutilsPin", JSON.stringify(tableauOutilPin)) // maj dans le local storage
         }
 
         localStorage.setItem("VersionLocalStorage", "4.0.2")

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Licence</title>
+    <title>Sprintia - Importer mes séances</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,16 +78,99 @@
     </header>
 
     <div class="conteneur-about-marge">
-        <h1>Import Garmin</h1>
+        <h1>Importer mes séances</h1>
+
+        <h2>Garmin</h2>
         <p class="text">
-            Vous avez une montre Garmin et vous voulez importer vos données d'entraînement sur Sprintia, vous êtes au bon endroit.
-            Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînements disponible sur Garmin Connect Web.
+            Vous avez une montre Garmin et vous voulez importer votre historique d'entraînement sur Sprintia, vous êtes au bon endroit.
+            Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînements disponible sur 
+            <a href="https://connect.garmin.com/app/activities" class="lien" target="_blank">Garmin Connect Web</a>.
+            Pour récupérer ce fichier, suivez les instructions :
+        </p>
+        <ul class="liste-fonctionnalites">
+            <li>
+                Cliquez sur le lien ci-contre.
+            </li>
+            <li>
+                Connectez-vous à votre compte Garmin.
+            </li>
+            <li>
+                Cliquez sur "Export CSV" (en haut à droite).
+            </li>
+        </ul>
+        <p class="text">
+            Pour finir, vous n'avez plus qu'à dézipper le dossier sur votre ordinateur et importer le fichier CSV nommé 'workouts.csv' dans Sprintia.
+        </p>
+
+        <div class="conteneur-centrage-marge">
+            <!-- On n' affiche pas le input file -->
+            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="Fonction(event)">
+            <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+            <button onclick="document.getElementById('file-input').click()" id="restoration-button">Importer fichier</button>
+        </div> 
+
+        
+        <h2>TrainingPeaks</h2>
+        <p class="text">
+            Vous avez synchronisé votre montre (Apple Watch, Coros, Polar, Suunto...) avec TrainingPeaks. Vous pouvez grâce à cela importer 
+            votre historique d'entraînement sur Sprintia en important le fichier '.csv' que vous pouvez trouver sur le
+            <a href="https://app.trainingpeaks.com/" class="lien" target="_blank">site web de TrainingPeaks</a>.
+            Pour ce faire, suivez les instructions :
+        </p>
+        <ul class="liste-fonctionnalites">
+            <li>
+                Cliquez sur le lien ci-contre.
+            </li>
+            <li>
+                Connectez-vous à votre compte TrainingPeaks.
+            </li>
+            <li>
+                Allez dans les paramètres (cliquer sur votre photo de profil en haut à droite puis "Settings").
+            </li>
+            <li>
+                Rendez-vous dans "Export data".
+            </li>
+            <li>
+                Remplissez les champs de la catégorie "Workout Summary".
+            </li>
+        </ul>
+        <p class="text">
+            Pour finir, vous n'avez plus qu'à dézipper le dossier sur votre ordinateur et importer le fichier CSV nommé 'Activities.csv' dans Sprintia.
         </p>
         <div class="conteneur-centrage-marge">
             <!-- On n' affiche pas le input file -->
             <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="Fonction(event)">
             <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-            <button onclick="document.getElementById('file-input').click()">Importer mes entraînements</button>
+            <button onclick="document.getElementById('file-input').click()" id="restoration-button">Importer fichier</button>
+        </div>
+
+        
+        <h2>Runkeeper</h2>
+        <p class="text">
+            Vous utilisez Runkeeper quand vous courez ou vous avez connecté votre montre connectée à Runkeeper, dans les 2 cas vous pouvez
+            télécharger un fichier (csv) de votre historique d'entraînement depuis le site web de 
+            <a href="https://runkeeper.com/exportData" class="lien" target="_blank">Runkeeper</a> pour pouvoir l'importer dans Sprintia.
+            Pour ce faire, suivez les instructions :
+        </p>
+        <ul class="liste-fonctionnalites">
+            <li>
+                Cliquez sur le lien ci-contre.
+            </li>
+            <li>
+                Connectez-vous à votre compte Runkeeper.
+            </li>
+            <li>
+                Remplissez les champs de date.
+            </li>
+        </ul>
+        <p class="text">
+            Pour finir, vous n'avez plus qu'à dézipper le dossier sur votre ordinateur et importer le fichier CSV nommé 'cardioActivities.csv' dans Sprintia.
+        </p>
+        <div class="conteneur-centrage-marge">
+            <!-- On n' affiche pas le input file -->
+            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="Fonction(event)">
+            <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+            <button onclick="document.getElementById('file-input').click()" id="restoration-button">Importer fichier</button>
         </div>
 
     </div>

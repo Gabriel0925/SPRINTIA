@@ -453,7 +453,7 @@
             // Initialisation
             let Result = ""
             if (Heure < 1) { // Si l'heure est inférieur à 1 on affiche que les minutes pour ne pas afficher 0h 23min
-                Result = minutes + "min"
+                Result = Math.floor(minutes) + "min"
             } else { // Sinon on affiche tous
                 Result = Heure + "h " + MinutesRestante.toString().padStart(1, "0") + "m"
             }

@@ -83,7 +83,7 @@
         <h2>Garmin</h2>
         <p class="text">
             Vous avez une montre Garmin et vous voulez importer votre historique d'entraînement sur Sprintia, vous êtes au bon endroit.
-            Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînements disponible sur 
+            Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînement disponible sur 
             <a href="https://connect.garmin.com/app/activities" class="lien" target="_blank">Garmin Connect Web</a>.
             Pour récupérer ce fichier, suivez les instructions :
         </p>
@@ -95,16 +95,13 @@
                 Connectez-vous à votre compte Garmin.
             </li>
             <li>
-                Cliquez sur "Export CSV" (en haut à droite).
+                Cliquez sur "Export CSV" (en haut à droite), le fichier CSV a dû se télécharger.
             </li>
         </ul>
-        <p class="text">
-            Pour finir, vous n'avez plus qu'à dézipper le dossier sur votre ordinateur et importer le fichier CSV nommé 'workouts.csv' dans Sprintia.
-        </p>
 
         <div class="conteneur-centrage-marge">
             <!-- On n' affiche pas le input file -->
-            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="Fonction(event)">
+            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="uploadGarmin(event)">
             <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
             <button onclick="document.getElementById('file-input').click()" id="restoration-button">Importer fichier</button>
         </div> 
@@ -133,9 +130,12 @@
             <li>
                 Remplissez les champs de la catégorie "Workout Summary".
             </li>
+            <li>
+                Appuyez sur "Exporter".
+            </li>
         </ul>
         <p class="text">
-            Pour finir, vous n'avez plus qu'à dézipper le dossier sur votre ordinateur et importer le fichier CSV nommé 'Activities.csv' dans Sprintia.
+            Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'workouts.csv' dans Sprintia.
         </p>
         <div class="conteneur-centrage-marge">
             <!-- On n' affiche pas le input file -->
@@ -162,9 +162,12 @@
             <li>
                 Remplissez les champs de date.
             </li>
+            <li>
+                Cliquez sur "Export".
+            </li>
         </ul>
         <p class="text">
-            Pour finir, vous n'avez plus qu'à dézipper le dossier sur votre ordinateur et importer le fichier CSV nommé 'cardioActivities.csv' dans Sprintia.
+            Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'cardioActivities.csv' dans Sprintia.
         </p>
         <div class="conteneur-centrage-marge">
             <!-- On n' affiche pas le input file -->
@@ -201,6 +204,11 @@
     
     <!-- Pour le burger menu -->
     <script src="../../Assets/base-js/base.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+    <script src="script_import_seance.js"></script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

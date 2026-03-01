@@ -26,8 +26,7 @@
     --FONT_WEIGHT_BUTTON: 500;
 
     /* Arrondi des bordures */
-    --BORDER: 1.25rem;
-    --BORDER_SMALL: 0.625rem;
+    --BORDER: 1rem;
 
     /* Marges intérieur/extérieur (Basé sur 0.5rem) */
     --ESPACE_XXS: 0.25rem;   /* 4px */
@@ -279,11 +278,6 @@ i {
 *::-webkit-scrollbar-track {background: transparent;}
 *::-webkit-scrollbar-thumb {background: var(--COULEUR_TEXT_SECONDAIRE);}
 
-/* style du strong dans la politique de confidentialité */
-strong.couleur-accent {
-    color: var(--COULEUR_ACCENT)
-}
-
 /* style button */
 button{
     background-color: var(--COULEUR_ACCENT);
@@ -353,7 +347,6 @@ button.tableau {
 }
 button.tableau:active{
     filter: brightness(var(--HOVER));
-    border-radius: var(--BORDER_SMALL);
 }
 
 /* Pour les boutons afficher plus */
@@ -398,13 +391,8 @@ a.lien {
     }
 }
 /* Balise code avec son conteneur */
-div.conteneur-code { 
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_S);
-    border-radius: var(--BORDER);
-}
 code {
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COULEUR_TEXT_SECONDAIRE);
 }
 
 
@@ -614,7 +602,7 @@ header .burger-menu {
     width: 200px;
     max-height: 0px;    
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    border-radius: var(--BORDER);
+    border-radius: 1.25rem;
     overflow: hidden; 
 
     transform: translateY(-20px) translateX(75px) scale(0.05, 0.4);
@@ -703,54 +691,34 @@ div.conteneur-about-marge p.txt_home{
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
 div.conteneur-mise-avant {
-    padding: var(--ESPACE_XS);
     width: 100%;
     height: 100%;
-    border-radius: var(--BORDER);
-    margin: var(--ESPACE_XS) 0px;
-    margin-top: var(--ESPACE_M);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     position: relative;
-    background-color: var(--COULEUR_ACCENT);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
-}
-div.conteneur-mise-avant#section-jrm {
-    padding: var(--ESPACE_XXS);
-    background-color: var(--COULEUR_ACCENT2);
-    margin-bottom: 0;
 }
 div.conteneur-mise-avant div.zone-jrm {
     width: 100%;
     height: 100%;
 }
 div.conteneur-mise-avant p{
-    font-size: var(--H2);
-    line-height: 1.8;
+    font-size: var(--H3);
     text-align: left;
-    margin: var(--ESPACE_XS);
-    color: var(--COULEUR_BACKGROUND);
-    font-weight: 1000;
+    color: var(--COULEUR_TEXT_SECONDAIRE);
+    line-height: 1.4;
 }
 div.conteneur-mise-avant p.title-jrm{
     font-size: var(--H3);
-    margin: var(--ESPACE_S);
-    margin-bottom: var(--ESPACE_XS);
     line-height: normal;
-    text-align: left;
-    color: var(--COULEUR_BACKGROUND);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    color: var(--COULEUR_TEXT_PRINCIPAL);
+    font-weight: 1000;
+    margin: var(--ESPACE_S) 0px;
 }
-div.conteneur-mise-avant p.interpretation-jrm{
-    font-size: var(--P);
-    margin: var(--ESPACE_S);
-    margin-top: var(--ESPACE_XS);
-    text-align: left;
-    color: var(--COULEUR_BACKGROUND);
-    font-weight: normal;
-    line-height: 1.4;
+div.conteneur-mise-avant p strong{
+    color: var(--COULEUR_TEXT_PRINCIPAL);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
 }
 
 /* Bouton voir plus */
@@ -849,7 +817,7 @@ div.conteneur-content-scrolling div.card-outil {
     background-color: var(--COULEUR_BACKGROUND_CARD);
     margin: var(--ESPACE_XS);
     padding: var(--ESPACE_XS);
-    border-radius: var(--BORDER);
+    border-radius: 1.5rem; /*border de l'image + padding = 1.1rem + 0.5rem = 1.6rem*/
 
     width: 235px;
     height: fit-content;
@@ -1118,7 +1086,7 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire{
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p{
     color: var(--COULEUR_TEXT_PRINCIPALE);
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    border-radius: var(--BORDER_SMALL);
+    border-radius: var(--BORDER);
     padding: var(--ESPACE_XS);
     font-size: var(--P);
     text-align: left;
@@ -1220,7 +1188,7 @@ div.conteneur-de-outil div.conteneur-champs-outil {
     margin: 0 var(--ESPACE_S);
     display: flex;
     flex-direction: column;
-    border-radius: var(--BORDER);
+    border-radius: 1.5rem;
     padding: var(--ESPACE_XXS);
     width: 420px;
     transition: all ease-in-out var(--DUREE_TRANSITION);
@@ -1566,7 +1534,7 @@ div.conteneur-box-deux {
 }
 div.conteneur-ensemble div.box-result-deux,
 div.conteneur-ensemble div.box-result-deux-small {
-    border-radius: var(--BORDER);
+    border-radius: 1.5rem;
     background-color: var(--COULEUR_ACCENT);
     width: 420px;
     min-height: 200px;
@@ -1672,7 +1640,7 @@ div.conteneur-rep-zone div.zone-cardio {
     padding: var(--ESPACE_S);
     width: 200px;
     height: 180px;
-    border-radius: var(--BORDER);
+    border-radius: 1.5rem;
     flex-direction: column;
     display: flex;
     transition: all ease-in-out var(--DUREE_TRANSITION);
@@ -1737,7 +1705,7 @@ div.conteneur-rep-zone div.zone-cardio p.unite-zone{
 
 /* Pour outils calculateur IMC */
 div.conteneur-ensemble div.box-result {
-    border-radius: var(--BORDER);
+    border-radius: 1.5rem;
     background-color: var(--COULEUR_ACCENT);
     width: 420px;
     padding: var(--ESPACE_S);
@@ -1784,14 +1752,9 @@ div.conteneur-scrolling .card-nouveautes {
     width: 230px;
     background-color: var(--COULEUR_BACKGROUND_CARD);
     padding: var(--ESPACE_XS);
-    border-radius: var(--BORDER);
+    border-radius: 1.5rem;
     margin: var(--ESPACE_XS);
     transition: all ease-in-out var(--DUREE_TRANSITION);
-
-    animation: scroll_effect_card var(--DUREE_TRANSITION) ease-out;
-    animation-timeline: view();
-    animation-range-start: cover 0%;
-    animation-range-end: contain -10%;
 }
 div.conteneur-scrolling .card-nouveautes.first {
     margin-left: 0;
@@ -1854,6 +1817,9 @@ div.conteneur-param div.acces-param2 {
 
     transition: all ease-in-out var(--DUREE_TRANSITION);
 }
+div.conteneur-param div.acces-param.arrondi { /* pour la licence dans les paramètres */
+    border-radius: var(--BORDER);
+}
 div.conteneur-param div.acces-param1 {
     border-top-left-radius: var(--BORDER);
     border-top-right-radius: var(--BORDER);
@@ -1898,7 +1864,7 @@ div.conteneur-historique-versions {
 /* Card mise en avant derniere version */
 .conteneur-historique-versions .box-last-maj{
     background: var(--COULEUR_BACKGROUND_CARD);
-    border-radius: var(--BORDER);
+    border-radius: 1.5rem;
     max-width: 1150px;
     margin: var(--ESPACE_S);
     padding: var(--ESPACE_XS);
@@ -2018,20 +1984,10 @@ div.conteneur-historique-versions .card-nouveautes div.date-maj {
     margin-top: var(--ESPACE_S);
 }
 /* Mise en page des patch notes */
-ul.liste-fonctionnalites {
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS);
-    border-radius: var(--BORDER);
-    
-    animation: scroll_effect_card var(--DUREE_TRANSITION) ease-out;
-    animation-timeline: view();
-    animation-range-start: cover 0%;
-    animation-range-end: cover 8%;
-}
 ul.liste-fonctionnalites li {
     list-style: initial;
     font-size: var(--P);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COULEUR_TEXT_SECONDAIRE);
     margin: var(--ESPACE_XS) var(--ESPACE_M);
 }    
 
@@ -2040,7 +1996,7 @@ div.gallery-version {
     display: flex;
     flex-wrap: wrap;
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    border-radius: var(--BORDER);
+    border-radius: 1.9rem;
     padding: var(--ESPACE_S_SMALL);
 }
 div.gallery-version#img-smartphone{
@@ -2093,20 +2049,6 @@ div.conteneur-mode {
     border-radius: var(--BORDER);
     margin: var(--ESPACE_M) 0;
     transition: all ease-in-out var(--DUREE_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.conteneur-mode.animation:hover {
-        transform: scale(1.01);
-    }
-}
-div.conteneur-mode.animation:active {
-    filter: brightness(var(--HOVER));
-}
-div.conteneur-mode.animation i.particulary {
-    transform: rotate(-90deg);
-    font-size: var(--H1);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    margin-left: var(--ESPACE_XS);
 }
 div.conteneur-mode i{
     font-size: var(--H0);

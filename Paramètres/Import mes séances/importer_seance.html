@@ -26,7 +26,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="../../index.html">Sprintia</a>
+                <a href="../../index.html" id="a-logo">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
@@ -77,7 +77,7 @@
         </div>
     </header>
 
-    <div class="conteneur-about-marge">
+    <div class="conteneur-de-outil">
         <h1>Importer mes séances</h1>
 
         <h2>Garmin</h2>
@@ -95,15 +95,18 @@
                 Connectez-vous à votre compte Garmin.
             </li>
             <li>
+                La langue de Garmin Connect Web doit être le <strong>Français</strong> ou l'<strong>Anglais</strong>.
+            </li>
+            <li>
                 Cliquez sur "Export CSV" (en haut à droite), le fichier CSV a dû se télécharger.
             </li>
         </ul>
 
         <div class="conteneur-centrage-marge">
             <!-- On n' affiche pas le input file -->
-            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="uploadGarmin(event)">
+            <input type="file" id="file-input-garmin" accept=".csv" style="display: none;" onchange="uploadGarmin(event)">
             <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-            <button onclick="document.getElementById('file-input').click()" id="restoration-button">Importer fichier</button>
+            <button class="import-garmin" onclick="document.getElementById('file-input-garmin').click()" id="restoration-button">Importer fichier</button>
         </div> 
 
         
@@ -139,9 +142,9 @@
         </p>
         <div class="conteneur-centrage-marge">
             <!-- On n' affiche pas le input file -->
-            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="Fonction(event)">
+            <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadTrainingPeaks(event)">
             <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-            <button onclick="document.getElementById('file-input').click()" id="restoration-button">Importer fichier</button>
+            <button class="import-trainingpeaks" onclick="document.getElementById('file-input-TP').click()" id="restoration-button">Importer fichier</button>
         </div>
 
         
@@ -168,12 +171,21 @@
         </ul>
         <p class="text">
             Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'cardioActivities.csv' dans Sprintia.
+            <strong>Sprintia a besoin de votre âge pour estimer le RPE de chaque séance du fichier CSV Runkeeper.</strong>
         </p>
+        <div class="conteneur-ensemble">
+            <div class="conteneur-champs-outil">
+                <div class="conteneur-input">
+                    <input type="number" id="age-user" placeholder="Âge (obligatoire)" autocomplete="off">
+                    <div class="label-input">Âge (obligatoire)</div>
+                </div>
+            </div>
+        </div>
         <div class="conteneur-centrage-marge">
             <!-- On n' affiche pas le input file -->
-            <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="Fonction(event)">
+            <input type="file" id="file-input-runkeeper" accept=".csv" style="display: none;" onchange="uploadRunkeeper(event)">
             <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-            <button onclick="document.getElementById('file-input').click()" id="restoration-button">Importer fichier</button>
+            <button class="import-runkeeper" onclick="verificationInputAge()" id="restoration-button">Importer fichier</button>
         </div>
 
     </div>
@@ -208,6 +220,8 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script_import_seance.js"></script>
 
     

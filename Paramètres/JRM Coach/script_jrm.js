@@ -48,12 +48,6 @@ async function SauvegardePreference() {
     // Légère pause
     await new Promise(r => setTimeout(r, 650))
 
-    // confirmation sauvegarde
-    BoutonSauvegarde.textContent = "Enregistré"
-
-    // Légère pause
-    await new Promise(r => setTimeout(r, 650))
-
     // Remise à l'état normal
     BoutonSauvegarde.disabled = false
     BoutonSauvegarde.textContent = "Sauvegarder"
@@ -215,7 +209,7 @@ async function Reinitialisation() {
         let Button = document.getElementById("reinitialiser")
         // Desactivation du button
         Button.disabled = true
-        Button.textContent = "Chargement..."
+        Button.textContent = "Réinitialisation..."
 
         // Recup data dans BDD
         db.JRM_Coach.clear()

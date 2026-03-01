@@ -71,7 +71,7 @@ function HTMLCard(CardWorkout, workout, DateEuropeen, DureeFormatee) {
         StructureHTML += `
             <div class="data-workout-paire">
                 <p class="duree-workout">
-                    <strong>${workout.distance.toString().replace(".", ",")} km</strong>
+                    <strong>${workout.distance.toFixed(2).toString().replace(".", ",")} km</strong>
                 </p>
                 <p class="rpe-workout">
                     <strong>${workout.denivele} m</strong>

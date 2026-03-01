@@ -240,6 +240,8 @@ async function Initialisation() {
 
     if (ChargeAigue) {
         document.getElementById("charge-7j").textContent = ChargeAigue
+    }
+    if (ChargeChronique) {
         document.getElementById("charge-28j").textContent = ChargeChronique
     }
 

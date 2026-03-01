@@ -71,7 +71,7 @@ async function VerificationParam() {
 
             // Remplissage des champs de sport particulier
             if (WorkoutDB.distance) {
-                document.getElementById("distance-entrainement-user").value = WorkoutDB.distance
+                document.getElementById("distance-entrainement-user").value = WorkoutDB.distance.toFixed(2)
                 if (WorkoutDB.denivele) {
                     document.getElementById("denivele-entrainement-user").value = WorkoutDB.denivele
                 }

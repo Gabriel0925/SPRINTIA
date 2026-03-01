@@ -140,14 +140,10 @@ async function SauvegardeNiveauCourse() {
         date: DateNiveauUser
     })
 
-    // Légère pause
-    await new Promise(r => setTimeout(r, 650))
-    // confirmation sauvegarde
-    BoutonLimite1Clic.textContent = "Sauvegardé"
     // Pause
     await new Promise(r => setTimeout(r, 650))
     // remise etat normal
-    BoutonLimite1Clic.textContent = "Sauvegarder mon niveau"
+    BoutonLimite1Clic.textContent = "Sauvegarder"
     BoutonLimite1Clic.disabled = false // Réactivation du bouton
 
     GenererGraphique()

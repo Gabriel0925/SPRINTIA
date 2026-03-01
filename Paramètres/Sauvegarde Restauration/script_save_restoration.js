@@ -67,7 +67,7 @@ async function ReadFile(event) {
 
     if (File) {
         let BoutonRestoration = document.getElementById("restoration-button")
-        BoutonRestoration.textContent = "Importation..."
+        BoutonRestoration.textContent = "Restauration..."
         BoutonRestoration.disabled = true // désactivation du bouton
 
         try {
@@ -115,7 +115,7 @@ async function ReadFile(event) {
             // Légère pause
             await new Promise(r => setTimeout(r, 650))
             // confirmation sauvegarde
-            BoutonRestoration.textContent = "Importé"
+            BoutonRestoration.textContent = "Restauré"
             // Pause
             await new Promise(r => setTimeout(r, 650))
             // remise etat normal
@@ -135,7 +135,7 @@ async function SupprimerDatas() {
     // Demande de confirmation avant de continuer
     if (confirm("Êtes-vous sur de vouloir supprimer toutes vos données ?")) {
         let ButtonReinitialiser = document.getElementById("reinitialiser-sprintia")
-        ButtonReinitialiser.textContent = "Chargement..."
+        ButtonReinitialiser.textContent = "Réinitialisation..."
         ButtonReinitialiser.disabled = true // désactivation du bouton
        
         localStorage.clear()

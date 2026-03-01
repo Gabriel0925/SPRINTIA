@@ -80,7 +80,7 @@
     <div class="conteneur-about-marge"> 
         <h1>Accueil</h1>
 
-        <div class="conteneur-mise-avant" id="section-jrm">
+        <div class="conteneur-mise-avant">
             <div class="zone-jrm">
                 <p class="title-jrm" id="nom-coach">
                     JRM Coach :
@@ -470,7 +470,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + NomCoach + " :"
+                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + NomCoach
             }
 
             // Pour les statuts
@@ -582,7 +582,7 @@
                 const DureeTotaleHeure = PassageHeureJRMCoach(DureeTotale) // pour passer de 90 min à 1h 30min
 
                 // Début interpretation
-                let Interpretation = `Au cours des 7 derniers jours, t'as fait :<br><br>
+                let Interpretation = `Au cours des 7 derniers jours, tu as fait :<br><br>
                                 <strong>⏱️ ${DureeTotaleHeure}</strong> d'entraînement<br>`
                 
                 if (NbWorkout == 1 || NbWorkout == 0) {

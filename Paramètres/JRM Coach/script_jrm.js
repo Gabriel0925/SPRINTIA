@@ -122,6 +122,10 @@ function ChangeAvatar(value) {
         ZoneNameJRM.innerHTML = "🤖" + " " + NameJRM + " :"
     } else if (value == "🥷") {
         ZoneNameJRM.innerHTML = "🥷" + " " + NameJRM + " :"
+    } else if (value == "🏃") {
+        ZoneNameJRM.innerHTML = "🏃" + " " + NameJRM + " :"
+    } else if (value == "🚴") {
+        ZoneNameJRM.innerHTML = "🚴" + " " + NameJRM + " :"
     } else if (value == "🏋️") {
         ZoneNameJRM.innerHTML = "🏋️" + " " + NameJRM + " :"
     } else if (value == "👻") {
@@ -138,7 +142,7 @@ function ChangeAvatar(value) {
         ZoneNameJRM.innerHTML = "🐵" + " " + NameJRM + " :"
     } else if (value == "🐻") {
         ZoneNameJRM.innerHTML = "🐻" + " " + NameJRM + " :"
-    } else {
+    }  else {
         ZoneNameJRM.innerHTML = NameJRM + " :"
     }   
 

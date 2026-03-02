@@ -693,32 +693,69 @@ div.conteneur-about-marge p.txt_home{
 div.conteneur-mise-avant {
     width: 100%;
     height: 100%;
+    border-radius: 1.5rem;
+    margin: var(--ESPACE_XS) 0px;
+    margin-top: var(--ESPACE_M);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     position: relative;
+    padding: var(--ESPACE_XXS);
+    background-color: var(--COULEUR_ACCENT2);
+    margin-bottom: 0;
 }
 div.conteneur-mise-avant div.zone-jrm {
     width: 100%;
     height: 100%;
 }
 div.conteneur-mise-avant p{
-    font-size: var(--H3);
+    font-size: var(--H2);
+    line-height: 1.8;
     text-align: left;
-    color: var(--COULEUR_TEXT_SECONDAIRE);
-    line-height: 1.4;
+    margin: var(--ESPACE_XS);
+    color: var(--COULEUR_BACKGROUND);
+    font-weight: 1000;
 }
 div.conteneur-mise-avant p.title-jrm{
     font-size: var(--H3);
+    margin: var(--ESPACE_S);
+    margin-bottom: var(--ESPACE_XS);
     line-height: normal;
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    font-weight: 1000;
-    margin: var(--ESPACE_S) 0px;
-}
-div.conteneur-mise-avant p strong{
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    text-align: left;
+    color: var(--COULEUR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+div.conteneur-mise-avant p.interpretation-jrm{
+    font-size: var(--P);
+    margin: var(--ESPACE_S);
+    margin-top: var(--ESPACE_XS);
+    text-align: left;
+    color: var(--COULEUR_BACKGROUND);
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+/* statut analyse */
+div.statut-analyse {
+    background-color: var(--COULEUR_BACKGROUND_CARD);
+    width: 280px;
+    margin: var(--ESPACE_S) 0;
+    padding: var(--ESPACE_XS);
+    border-radius: var(--BORDER);
+
+    display: flex;
+    align-items: center;
+}
+div.statut-analyse i#statut{
+    background-color: var(--COULEUR_ACCENT);
+    font-size: var(--H2);
+    border-radius: 50px;
+    color: var(--COULEUR_BACKGROUND);
+    padding: var(--ESPACE_XXS);
+    margin-right: var(--ESPACE_XS);
+    text-align: center;
+    width: 50px;
 }
 
 /* Bouton voir plus */
@@ -930,62 +967,6 @@ div.conteneur-content-scrolling div.card-outil p{
 }
 
 
-/* Pour les raccourcies */
-div.shorcut {
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin: var(--ESPACE_XS);
-    width: 145px;
-    height: fit-content;
-    border-radius: var(--BORDER);
-    overflow: hidden;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
-}
-div.shorcut.first {
-    margin-left: 0;
-}
-@media (hover: hover) and (pointer: fine) {
-    div.shorcut:hover{
-        transform: translateY(-5px);
-    }
-}
-div.shorcut:active {
-    filter: brightness(var(--HOVER));
-}
-div.shorcut div.img{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    width: 100%;
-    height: 80px;
-}
-div.shorcut div.img#icone-add{
-    background-color: #28A745;
-}
-div.shorcut div.img#icone-historique{
-    background-color: #577482;
-}
-div.shorcut div.img#icone-pause{
-    background-color: #e07c24;
-}
-div.shorcut div.img i{
-    font-size: 3.5rem;
-    color: #FFFFFF;
-}
-div.shorcut p.text-shorcut{
-    padding: var(--ESPACE_XS);
-    font-size: var(--P);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    display: block;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
-    -webkit-line-clamp: 2;
-    line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
-    overflow: hidden;
-}
-
-
 /* Style des outils */
 div.conteneur-de-outil {
     margin: var(--ESPACE_S) auto;
@@ -1018,7 +999,7 @@ div.conteneur-cards-workout {
 }
 div.conteneur-cards-workout div.cards-history-workout {
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    border-radius: var(--BORDER);
+    border-radius: 1.55rem;
     height: fit-content;
     overflow: hidden;
 
@@ -1146,14 +1127,14 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
     margin-right: var(--ESPACE_XXS);
 }
 /* fin card workout */
-div.conteneur-de-outil div.conteneur-option {
+div.conteneur-option {
     display: flex;
     align-items: center;
 }
-div.conteneur-de-outil div.conteneur-option a {
+div.conteneur-option a {
     margin-left: auto;
 }
-div.conteneur-de-outil div.conteneur-option h1 {
+div.conteneur-option h1 {
     margin: 0;
     display: -webkit-box;
     -webkit-box-orient: vertical; /* On compte les lignes verticalement */
@@ -1161,7 +1142,7 @@ div.conteneur-de-outil div.conteneur-option h1 {
     line-clamp: 1; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden;
 }
-div.conteneur-de-outil div.conteneur-option i {
+div.conteneur-option i {
     display: block;
     background-color: var(--COULEUR_BACKGROUND_CARD);
     color: var(--COULEUR_TEXT_PRINCIPAL);
@@ -1173,11 +1154,11 @@ div.conteneur-de-outil div.conteneur-option i {
     transition: all ease-in-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-de-outil div.conteneur-option i:hover {
+    div.conteneur-option i:hover {
         color: var(--COULEUR_ACCENT2);
     }
 }
-div.conteneur-de-outil div.conteneur-option i:active {
+div.conteneur-option i:active {
     filter: brightness(var(--HOVER));
     transform: scale(0.95);
 }

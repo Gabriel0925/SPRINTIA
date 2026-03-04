@@ -58,6 +58,7 @@ function majLocalStorage(versionStockee) {
     // migration de 4.0.1 à 4.0.2
     if (versionStockee == "4.0.1") {
         localStorage.removeItem("DisplayBanniere")
+        localStorage.removeItem("ToggleThemeComplet")
 
         let tableauOutilPin = localStorage.getItem("OutilsPin")
 

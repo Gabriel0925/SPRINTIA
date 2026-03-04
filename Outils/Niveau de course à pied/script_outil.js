@@ -58,25 +58,13 @@ function StartNiveau() {
         return
     }
     if (DistanceUser <= 0) {
-        // si le user a coché la case theme complet alors on met la couleur accent
-        if (localStorage.getItem("ToggleThemeComplet") == "True") {
-            ChampsErreur.textContent = "La distance doit être supérieure à 0."
-            ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT2") // ajout de la couleur
-        } else {
-            ChampsErreur.textContent = "La distance doit être supérieure à 0."
-            ChampsErreur.style.color = "#ef2e2e"
-        }
+        ChampsErreur.textContent = "La distance doit être supérieure à 0."
+        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT2") // ajout de la couleur
         return
     }
     if (DistanceUser >= 7) {
-        // si le user a coché la case theme complet alors on met la couleur accent
-        if (localStorage.getItem("ToggleThemeComplet") == "True") {
-            ChampsErreur.textContent = "La distance doit être inférieure à 7."
-            ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT2") // ajout de la couleur
-        } else {
-            ChampsErreur.textContent = "La distance doit être inférieure à 7."
-            ChampsErreur.style.color = "#ef2e2e"
-        }
+        ChampsErreur.textContent = "La distance doit être inférieure à 7."
+        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT2") // ajout de la couleur
         return
     }
 

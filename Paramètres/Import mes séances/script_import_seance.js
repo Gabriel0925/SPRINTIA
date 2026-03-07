@@ -134,7 +134,7 @@ async function uploadGarmin(event) {
                 dureeWorkout = conversionMinutes(dureeWorkout)
 
                 // vérification
-                if (trainingEffectWorkout == "--") {
+                if (trainingEffectWorkout == "--" || trainingEffectWorkout == undefined) {
                     trainingEffectWorkout = "0.5" // car quand on va multiplier par 2 ça fera 1
                 }
 
@@ -263,7 +263,7 @@ async function uploadTrainingPeaks(event) {
                 distanceWorkout = distanceWorkout/1000 // on convertit des metres au kilometre
 
                 // vérification
-                if (rpeWorkout == "") {
+                if (rpeWorkout == "" || rpeWorkout == undefined) {
                     rpeWorkout = "1"
                 }
                 if (dureeWorkout == "") {
@@ -389,9 +389,9 @@ async function uploadRunkeeper(event) {
             let fcMoyWorkout = elt[indexFcMoyWorkout]
             // calcul du RPE
             let rpeWorkout = "1"
-            if (fcMoyWorkout != "") { // si il y a de la datas de fc moy alors on calcule le RPE
-                rpeWorkout = (fcMoyWorkout/fcMax)*10
-            }
+            if (fcMoyWorkout == undefined) {rpeWorkout=1}
+            else if (fcMoyWorkout != "") {rpeWorkout = (fcMoyWorkout/fcMax)*10} // si il y a de la datas de fc moy alors on calcule le RPE
+
             let distanceWorkout = elt[indexDistanceWorkout]
             let deniveleWorkout = elt[indexDeniveleWorkout]
 

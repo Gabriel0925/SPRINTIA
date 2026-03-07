@@ -63,7 +63,7 @@ async function SauvegardePreference() {
     // animation du dynamic logo pour message au user
     document.getElementById("a-logo").classList.add("pin-message")
 
-    document.getElementById("a-logo").textContent = `${AvatarCoach} C'est parti 🔥`;
+    document.getElementById("a-logo").textContent = `${AvatarCoach} C'est parti !`;
 
     Timer1 = setTimeout(() => { 
         document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
@@ -157,7 +157,7 @@ function MajName(value) {
         NameJRM.innerHTML = AvatarCoach + " " + "JRM Coach :"
     } else {
         NameJRM.innerHTML = AvatarCoach + " " + value + " :"
-    }
+    } 
 
     return
 }
@@ -179,26 +179,21 @@ async function Initialisation() {
         let TableauName = JRMCoachDB.map(elementDB => elementDB.nom)
         let TableauStyle = JRMCoachDB.map(elementDB => elementDB.style)
         let TableauAvatar = JRMCoachDB.map(elementDB => elementDB.avatar)
-        console.log(TableauName[0])
+ 
+        // Remplissage des inputs
+        if (TableauName[0] == "JRM Coach") {InputName.value = ""} // si c'est la valeur de base alors on met rien dans le input
+        else {InputName.value = TableauName[0]}
+        InputStyle.value = TableauStyle[0]
+        InputAvatar.value = TableauAvatar[0]
         
         // vérification si c'est la valeur de base du coach alors on rajoute les ':' sinon dans la box du jrm ça affiche "JRM Coach" alors quil faudrait que ce soit écrit "JRM Coach :"
         if (TableauName[0] == "JRM Coach") {
-            TableauName[0] = TableauName[0] + " :"
+            TableauName[0] = TableauName[0]
         }
 
         // Remplissage des zones
         ZoneNameBox.textContent = TableauAvatar[0] + " " + TableauName[0] + " :" // Le nom du coach
         ZoneJRMBox.innerHTML = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
-        
-        // vérification si c'est la valeur de base on remplit pas le input donc str vide
-        if (TableauName[0] == "JRM Coach :") { // "JRM Coach :" car on a modifié TableauName[0] dans le if plus haut
-            TableauName[0] = ""
-        }
- 
-        // Remplissage des inputs
-        InputName.value = TableauName[0]
-        InputStyle.value = TableauStyle[0]
-        InputAvatar.value = TableauAvatar[0]
 
     } else {
         ZoneJRMBox.innerHTML = DicoPhraseExemple["Bienveillant"]

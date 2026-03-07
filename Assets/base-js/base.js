@@ -19,6 +19,11 @@ window.onclick = function (event) { // on track les click sur la page complete
         burgerMenuButtonIcon.classList.add("fs-icon_menu")
     }
 }
+window.addEventListener("scroll", () => {
+    // on referme le burgermenu
+    burgerMenu.classList.remove("open")
+    burgerMenuButtonIcon.classList.add("fs-icon_menu")  
+})
 
 // Pr gérer le BFCache
 window.addEventListener("pageshow", (event) => {

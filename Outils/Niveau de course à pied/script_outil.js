@@ -59,12 +59,12 @@ function StartNiveau() {
     }
     if (DistanceUser <= 0) {
         ChampsErreur.textContent = "La distance doit être supérieure à 0."
-        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT2") // ajout de la couleur
+        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT") // ajout de la couleur
         return
     }
     if (DistanceUser >= 7) {
         ChampsErreur.textContent = "La distance doit être inférieure à 7."
-        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT2") // ajout de la couleur
+        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT") // ajout de la couleur
         return
     }
 

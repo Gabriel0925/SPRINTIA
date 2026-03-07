@@ -56,11 +56,10 @@ async function RecupValueGraphique() {
     return {ChargeDatas, ListeDate}
 }
 
-async function InterpretationJRM(ChargeAigue, ChargeChronique, AnalysePossible) {
+async function InterpretationJRM(Ratio, AnalysePossible) {
     // Initialisation 
-    let Interpretation = "Je n'ai pas assez de données pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 3 entraînements sur les 28 derniers jours. J'attends avec impatience tes premiers entraînements."
-    let Ratio = 0
-
+    let Interpretation = "Je n'ai <strong>pas assez de données</strong> pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins <strong>3 entraînements sur les 28 derniers jours</strong>. J'attends avec impatience tes premiers entraînements."
+    
     // Si l'utilisateur a fait moins de 3 entrainements sur les 28 derniers jours on analyse pas
     if (AnalysePossible == false) {
         return Interpretation // on return l'analyse par défaut
@@ -123,10 +122,6 @@ async function InterpretationJRM(ChargeAigue, ChargeChronique, AnalysePossible) 
         Interpretation = PhraseJRMStatut[3]
         
     } else if (LastStatutUser == "Actif·ve") {
-        // Calcul du ratio
-        ChargeChronique = ChargeChronique/4 // on met charge chronique par semaine pr le ratio
-        Ratio = ChargeAigue/ChargeChronique
-
         // Déterminer le coach choisis du user
         let CoachUserDB = await db.JRM_Coach.toArray()
         let StyleCoachUser = PhraseJRMBienveillant // attribution du style de coach a utilisé pour l'interpretation
@@ -177,13 +172,45 @@ async function CalculCharge() {
     let DateMoins28J = new Date() // voir commentaire au dessus pr explication
     DateMoins28J = DateMoins28J.setDate(DateActuelle.getDate() - 28) 
     DateMoins28J = new Date(DateMoins28J).toISOString()
-    DateMoins28J = DateMoins28J.split("T")[0] 
+    DateMoins28J = DateMoins28J.split("T")[0]
 
     // initialisation avt boucle
     let DateBoucle = ""
 
     // Recup data BDD
     let HistoriqueDB = await db.entrainement.toArray() // recup de toutes les datas
+
+    // Trier par date 
+    HistoriqueDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
+        if (element1.date < element2.date) return -1
+        if (element1.date > element2.date) return 1
+    })
+
+    // on regarde c'était quand le premier entrainement du user enregistré sur Sprintia
+    let fistWorkout = HistoriqueDB[0]
+
+    // initialisation avant le if
+    let jourEcouler = 28
+
+    if (fistWorkout) {
+        let dateFirstWorkout = fistWorkout.date // on a la date exemple "2026-02-18"
+        let dateFirstObject = new Date(dateFirstWorkout) // on crée un object date avec la date du premier entrainement pour pouvoir faire la différence ensuite
+    
+        // calcul de la différence en milliseconde
+        const differenceMillisecondes = DateActuelle - dateFirstObject
+        // conversion en jours
+        jourEcouler = Math.floor(differenceMillisecondes/(1000*60*60*24)) // dans 1 secondes il y a 1000 ms, dans 1min il y a 60sec, dans 1heure il y a 60m et dans une journée il y a 24h
+        // ---- algorithme de lissage ----
+        // si le user a moins de 28 jours de datas sur Sprintia alors au lieu de diviser par 4 la charge chronique on divise par le nombre de semaine ou le user a de la datas
+        // exemple : le premier entrainement du user est il y a 21 jours, 21j = 3 semaines donc charge_chronique/3 ou lieu de charge_chronique/4 ce qui permet d'avoir une bonne fiabilité si le user a tres peu de data dans Sprintia
+    }
+    let nbSemaine = Math.ceil(jourEcouler/7)
+    if (nbSemaine<1) { // petite sécurité pour que le nombre de semaine ne soit pas inférieur à 1 semaine
+        nbSemaine = 1
+    }
+    if (nbSemaine>4) { // petite sécurité pour que le nombre de semaine ne soit pas supérieur à 4 semaine (=28j)
+        nbSemaine = 4
+    }
 
     // recup des datas sous forme de liste
     let ChargeAigueLi = HistoriqueDB.map(data => data.charge_entrainement)
@@ -199,12 +226,11 @@ async function CalculCharge() {
 
         compteur += 1 // maj compteur pr l'index
     });
-
+    
     // ajout d'une condition pour éviter que Sprintia analyse la charge alors que l'utilisateur n'a pas assez d'entraînement sur les 28 derniers j
     // donc prepa de variable pour la fonction l'interpretationJRM()
     let AnalysePossible = true // initialisation
-
-    if (Charge.length < 3) { // verif si on peut analyser
+    if (Charge.length<3) { // si il y a moins de 3 entrainements sur les 28 derniers jours, on analyse pas
         AnalysePossible = false
     }
 
@@ -216,17 +242,18 @@ async function CalculCharge() {
 
         } else if (DateEntrainement >= DateMoins28J) {
             ChargeChronique = ChargeChronique + parseFloat(Charge[compteur2])
-
         }
 
         compteur2 += 1
-    });
+    }); 
 
     // Arrondi
     ChargeAigue = Math.floor(ChargeAigue)
     ChargeChronique = Math.floor(ChargeChronique)
 
-    return {ChargeAigue, ChargeChronique, AnalysePossible}
+    // calcul du ratio
+    let Ratio = ChargeAigue/(ChargeChronique/nbSemaine) // on met charge chronique par semaine pr le ratio
+    return {Ratio, ChargeAigue, ChargeChronique, AnalysePossible}
 }
 
 async function Initialisation() {
@@ -236,7 +263,7 @@ async function Initialisation() {
     // recup des charges plus interpretation et affichage
     let {ChargeDatas, ListeDate} = await RecupValueGraphique()
     
-    let {ChargeAigue, ChargeChronique, AnalysePossible} = await CalculCharge()
+    let {Ratio, ChargeAigue, ChargeChronique, AnalysePossible} = await CalculCharge()
 
     if (ChargeAigue) {
         document.getElementById("charge-7j").textContent = ChargeAigue
@@ -245,10 +272,8 @@ async function Initialisation() {
         document.getElementById("charge-28j").textContent = ChargeChronique
     }
 
-    // Recup + affichage de l'interpretation
-    // reconversion en int car c'est devenu un str quand j'ai fais toFixed(1)
-    let Interpretation = await InterpretationJRM(parseInt(ChargeAigue), parseInt(ChargeChronique), AnalysePossible)
-
+    // recup de l'interpretation et affichage
+    let Interpretation = await InterpretationJRM(Ratio, AnalysePossible)
     if (Interpretation && HTMLInterpretationJRM) {
         HTMLInterpretationJRM.innerHTML = Interpretation
     }

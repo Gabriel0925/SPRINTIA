@@ -72,9 +72,7 @@ async function VerificationParam() {
             // Remplissage des champs de sport particulier
             if (WorkoutDB.distance) {
                 document.getElementById("distance-entrainement-user").value = WorkoutDB.distance.toFixed(2)
-                if (WorkoutDB.denivele) {
-                    document.getElementById("denivele-entrainement-user").value = WorkoutDB.denivele
-                }
+                document.getElementById("denivele-entrainement-user").value = WorkoutDB.denivele
             } else if (WorkoutDB.muscles_travailles) {
                 document.getElementById("muscle-entrainement-user").value = WorkoutDB.muscles_travailles
             }
@@ -398,8 +396,8 @@ async function RegistrationWorkout() {
         alert("Valeur non valide, la durée doit être un nombre supérieur à 0.")
         return
     }
-    if (DureeWorkoutUser > 1439) {
-        alert("La durée de votre entraînement doit être inférieur à 23h59m.")
+    if (DureeWorkoutUser >= 1440) {
+        alert("La durée de votre entraînement doit être inférieur à 24h00m.")
         return
     }
 

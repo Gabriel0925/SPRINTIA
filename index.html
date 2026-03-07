@@ -87,12 +87,10 @@
         </a>
     </div>
 
-    <a href="Outils/Actions/statut_analyses.html">
-        <div class="statut-analyse">
-            <i id="statut" class="fs-icon_pause"></i>
-            <p id="statut-actuel">Statut : chargement...</p>
-        </div>
-    </a>
+    <div class="statut-analyse"  onclick="location.href = 'Outils/Actions/statut_analyses.html'">
+        <i id="statut" class="fs-icon_pause"></i>
+        <p id="statut-actuel">Statut : chargement...</p>
+    </div>
 
     <a href="Outils/Actions/historique_entrainement.html">
         <div class="conteneur-mise-avant">
@@ -136,7 +134,7 @@
 
     </div>
 
-    <h2>Activité récente (3 sem.)</h2>
+    <h2>Entraînement récent (3 sem.)</h2>
     <p class="text">
         Ce graphique permet de suivre votre régularité en comparant votre temps total d'entraînement par semaine.
     </p>
@@ -540,7 +538,7 @@
                 const DureeTotaleHeure = PassageHeureJRMCoach(DureeTotale) // pour passer de 90 min à 1h 30min
 
                 // Début interpretation
-                let Interpretation = `Au cours des 7 derniers jours, tu as fait :<br><br>
+                let Interpretation = `Ces 7 derniers jours, tu as fait :<br><br>
                                 <strong>⏱️ ${DureeTotaleHeure}</strong> d'entraînement<br>`
                 
                 if (NbWorkout == 1 || NbWorkout == 0) {
@@ -673,11 +671,11 @@
 
             DateDataSemaine.forEach(element => { // Parcours des dates
                 if (element >= DateMoins7J) {
-                    TableauDureeSemaine.push(DureeDataSemaine[compteur]) // tableau pour la durée des 7 derniers jours
+                    TableauDureeSemaine.push(Math.floor(DureeDataSemaine[compteur])) // tableau pour la durée des 7 derniers jours
                 } else if (element >= DateMoins14J) {
-                    TableauDureeSemaine2.push(DureeDataSemaine[compteur]) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
+                    TableauDureeSemaine2.push(Math.floor(DureeDataSemaine[compteur])) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
                 } else if (element >= DateMoins21J) {
-                    TableauDureeSemaine3.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
+                    TableauDureeSemaine3.push(Math.floor(DureeDataSemaine[compteur])) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
                 }
                 
                 compteur += 1

@@ -179,13 +179,12 @@
                     <input type="number" id="age-user" placeholder="Âge (obligatoire)" autocomplete="off">
                     <div class="label-input">Âge (obligatoire)</div>
                 </div>
+
+                <!-- On n' affiche pas le input file -->
+                <input type="file" id="file-input-runkeeper" accept=".csv" style="display: none;" onchange="uploadRunkeeper(event)">
+                <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+                <button class="import-runkeeper" onclick="verificationInputAge()">Importer fichier</button>
             </div>
-        </div>
-        <div class="conteneur-centrage-marge">
-            <!-- On n' affiche pas le input file -->
-            <input type="file" id="file-input-runkeeper" accept=".csv" style="display: none;" onchange="uploadRunkeeper(event)">
-            <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-            <button class="import-runkeeper" onclick="verificationInputAge()" id="restoration-button">Importer fichier</button>
         </div>
 
     </div>

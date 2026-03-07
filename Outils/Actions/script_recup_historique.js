@@ -11,6 +11,33 @@ async function Init() {
         if (element1.date > element2.date) return -1
     })
 
+    // animation du dynamic logo pour féliciter le user
+    const ParamURL = window.location.search
+    const TableauSeparation = ParamURL.split("?")
+    
+    if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutregister") {
+        // timeout remis a 0 (suppresion plutot)
+        clearTimeout(Timer1)
+        clearTimeout(Timer2)
+        document.getElementById("a-logo").classList.remove("return", "pin-message")
+        
+        // petite récompense pour le user
+        document.getElementById("a-logo").classList.add("pin-message")
+
+        document.getElementById("a-logo").textContent = "Bien joué·e 🔥";
+
+        Timer1 = setTimeout(() => { 
+            document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
+            document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
+        }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
+
+        Timer2 = setTimeout(() => {
+            // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
+            document.getElementById("a-logo").classList.remove("return")
+            document.getElementById("a-logo").classList.remove("pin-message")
+        }, 3100) // durée choisis à la main
+    }
+
     SauvegardeHistorique(HistoriqueDB)
     return
 }
@@ -194,33 +221,6 @@ async function AfficherData() {
         let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, DureeFormatee)
         ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
     });
-
-    // animation du dynamic logo pour féliciter le user
-    const ParamURL = window.location.search
-    const TableauSeparation = ParamURL.split("?")
-    
-    if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutregister") {
-        // timeout remis a 0 (suppresion plutot)
-        clearTimeout(Timer1)
-        clearTimeout(Timer2)
-        document.getElementById("a-logo").classList.remove("return", "pin-message")
-        
-        // petite récompense pour le user
-        document.getElementById("a-logo").classList.add("pin-message")
-
-        document.getElementById("a-logo").textContent = "Bien joué·e 🔥";
-
-        Timer1 = setTimeout(() => { 
-            document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
-            document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
-        }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
-
-        Timer2 = setTimeout(() => {
-            // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
-            document.getElementById("a-logo").classList.remove("return")
-            document.getElementById("a-logo").classList.remove("pin-message")
-        }, 3100) // durée choisis à la main
-    }
 
     return
 }

@@ -292,6 +292,8 @@ body {
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
     padding: var(--ESPACE_S);
+    /* Pour désactiver le truc bleu lors d'un clic sur un element de linterface */
+    -webkit-tap-highlight-color: transparent;
 }
 
 h1{
@@ -368,7 +370,7 @@ button.tableau {
     outline: none;
     -webkit-appearance: none;
 
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     button.tableau:hover{
@@ -405,7 +407,7 @@ a.lien {
     color: var(--COULEUR_ACCENT2);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     text-decoration: underline;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     a.lien:hover{
@@ -433,9 +435,6 @@ footer div.conteneur-lien-footer {
     display: flex;
     flex-direction: column;
     min-width: 325px;
-    border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_XS);
-    background-color: var(--COULEUR_BACKGROUND_CARD);
     margin-top: var(--ESPACE_S);
 }
 footer a.a_title{
@@ -450,16 +449,16 @@ footer a.a_footer{
     padding: var(--ESPACE_XS);
     margin: var(--ESPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     footer a.a_footer:hover{
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COULEUR_BACKGROUND_CARD);
         color: var(--COULEUR_ACCENT2);
     }
 }
 footer a.a_footer:active{
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COULEUR_BACKGROUND_CARD);
     color: var(--COULEUR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
@@ -620,7 +619,7 @@ header .burger-menu.open {
     background-color: var(--COULEUR_BACKGROUND_CARD);
 
     box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
-    transition: all 0.18s ease;
+    transition: all 0.18s ease-out;
 }
 header .burger-menu li {
     color: var(--COULEUR_BACKGROUND);
@@ -635,13 +634,13 @@ header .burger-menu.open li {
 }
 /* pas la meme durée en fonction du li */
 header .burger-menu.open li:nth-child(1) {
-    animation: rebond_icon_burger_open 0.36s ease;
+    animation: rebond_icon_burger_open 0.36s ease-out;
 }
 header .burger-menu.open li:nth-child(2) {
-    animation: rebond_icon_burger_open 0.4s ease;
+    animation: rebond_icon_burger_open 0.4s ease-out;
 }
 header .burger-menu.open li:nth-child(3) {
-    animation: rebond_icon_burger_open 0.50s ease;
+    animation: rebond_icon_burger_open 0.50s ease-out;
 }
 
 header .burger-menu li a {
@@ -733,7 +732,7 @@ div.conteneur-mise-avant p.interpretation-jrm{
     line-height: 1.4;
 }
 
-/* statut analyse */
+/* statut analyse */ 
 div.statut-analyse {
     background-color: var(--COULEUR_BACKGROUND_CARD);
     margin: var(--ESPACE_M) 0;
@@ -920,7 +919,7 @@ div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler{
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all ease-in var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler:hover{
@@ -939,7 +938,7 @@ div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler.act
 div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler i{
     font-size: 1.2rem;
     color: var(--COULEUR_TEXT_PRINCIPAL);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-content-scrolling:nth-of-type(1) div.card-outil div.icone div.button-epingler.actif i{
     color: var(--COULEUR_ACCENT);
@@ -1098,7 +1097,7 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
     margin: 4px;
     padding: var(--ESPACE_XS);
 
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button:hover{
@@ -1157,7 +1156,7 @@ div.conteneur-option div.bouton-tool-bar {
     align-items: center;
     border-radius: var(--BORDER_BIG);
     padding: var(--ESPACE_XXS);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-option div.bouton-tool-bar:hover {
@@ -1192,7 +1191,7 @@ div.conteneur-champs-outil {
     border-radius: var(--BORDER_BIG);
     padding: var(--ESPACE_XXS);
     width: 420px;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Pr le text de derniere sauvegarde */
 div.conteneur-champs-outil p.text-info {
@@ -1238,7 +1237,7 @@ div.conteneur-champs-outil input[type="text"].small {
     font-size: var(--P);
 
     appearance: none; /* désactive les styles systèmes */
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-champs-outil input[type="number"],
 div.conteneur-champs-outil input[type="text"] {
@@ -1261,7 +1260,7 @@ div.conteneur-champs-outil input[type="text"] {
     
     z-index: 1111;
 
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Pour les champs masqué suivant la méthode */
 div.conteneur-champs-outil input[type="number"].invisible,
@@ -1273,13 +1272,13 @@ div.conteneur-champs-outil .label-input.invisible {
 div.conteneur-champs-outil input[type="text"]:hover,
 div.conteneur-champs-outil input[type="date"]:hover  {
         box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
-        transition: all ease-in-out var(--DUREE_TRANSITION);
+        transition: all ease-out var(--DUREE_TRANSITION);
     }
 }
 div.conteneur-champs-outil input[type="number"]:focus,
 div.conteneur-champs-outil input[type="text"]:focus  {
     box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Pr rendre le placeholder invisible lors du label actif */
 div.conteneur-champs-outil input::placeholder {
@@ -1298,7 +1297,7 @@ div.conteneur-champs-outil .label-input {
 
     color: var(--COULEUR_TEXT_PRINCIPAL);
     background-color: transparent;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-champs-outil input:focus,
 div.conteneur-champs-outil input:valid {
@@ -1348,21 +1347,21 @@ div.conteneur-champs-outil .slider input::-webkit-slider-thumb{
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     transform: scale(1.15);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-champs-outil .slider input::-webkit-slider-thumb:hover{
         background-color: var(--COULEUR_ACCENT2);
         transform: scale(1.4);
         border: 2px solid var(--COULEUR_ACCENT2);
-        transition: all ease-in-out var(--DUREE_TRANSITION);
+        transition: all ease-out var(--DUREE_TRANSITION);
     }
 } 
 div.conteneur-champs-outil .slider input::-webkit-slider-thumb:active{
     background-color: var(--COULEUR_ACCENT2);
     transform: scale(1.4);
     border: 2px solid var(--COULEUR_ACCENT2);
-    transition: all ease-in-out 0.05s;
+    transition: all ease-out 0.05s;
 }
 div.conteneur-champs-outil .slider progress {
     width: 100%;
@@ -1393,13 +1392,13 @@ div.conteneur-champs-outil .slider input::-moz-range-thumb{
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     transform: scale(1.15);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-champs-outil .slider input::-moz-range-thumb:hover{
         background-color: var(--COULEUR_ACCENT2);
         transform: scale(1.3);
-        transition: all ease-in-out var(--DUREE_TRANSITION);
+        transition: all ease-out var(--DUREE_TRANSITION);
     }
 }
 div.conteneur-champs-outil .slider progress {
@@ -1444,7 +1443,7 @@ div.conteneur-champs-outil input[type="date"]{
     margin: var(--ESPACE_XS);
     
     width: 190px;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Pour le niveau de course */
 div.conteneur-champs-outil input[type="date"].long{
@@ -1463,7 +1462,7 @@ div.conteneur-champs-outil input[type="date"].long{
     margin: var(--ESPACE_XS);
     
     width: calc(100% - (var(--ESPACE_XS) * 2));
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-champs-outil input[type="date"]:focus{
     box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
@@ -1498,12 +1497,12 @@ div.conteneur-champs-outil select {
     background-position: right var(--ESPACE_XS) center; /* On met à droite l'icone */
     background-size: var(--H3);
 
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-champs-outil select:hover {
         box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
-        transition: all ease-in-out var(--DUREE_TRANSITION);
+        transition: all ease-out var(--DUREE_TRANSITION);
     }
 }
 /* ":focus" c'est quand la boite est selectionné*/
@@ -1543,7 +1542,7 @@ div.conteneur-ensemble div.box-result-deux-small {
     margin: var(--ESPACE_S);
     z-index: 1;
     position: relative;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-ensemble.first div.box-result-deux,
 div.conteneur-ensemble.first div.box-result-deux-small {
@@ -1627,7 +1626,7 @@ div.conteneur-rep-zone div.zone-cardio {
     border-radius: var(--BORDER_BIG);
     flex-direction: column;
     display: flex;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Gestion des colors */
 div.conteneur-rep-zone div.zone-cardio:nth-child(1) {
@@ -1695,7 +1694,7 @@ div.conteneur-ensemble div.box-result {
     padding: var(--ESPACE_S);
     z-index: 1;
     position: relative;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-ensemble div.box-result.jrm-coach {
     background-color: var(--COULEUR_ACCENT2);
@@ -1905,7 +1904,7 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
 
     border-radius: var(--BORDER_NORMAL);
     background-color: var(--COULEUR_ACCENT);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     .conteneur-historique-versions .box-last-maj div.content2 button:hover {
@@ -1930,7 +1929,7 @@ div.conteneur-historique-versions .card-nouveautes.visible {
     border-radius: var(--BORDER_BIG);
 
     margin: var(--ESPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 620px */
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-historique-versions .card-nouveautes.visible:hover {
@@ -2012,7 +2011,7 @@ div.conteneur-mode {
     padding: var(--ESPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     margin: var(--ESPACE_M) 0;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-mode i{
     font-size: var(--H0);
@@ -2039,7 +2038,7 @@ div.conteneur-mode input[type="checkbox"].toggle{
 
     cursor: pointer;
     border-radius: 5rem;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* C pr le rond du toggle */
 div.conteneur-mode input[type="checkbox"].toggle::after{
@@ -2052,12 +2051,12 @@ div.conteneur-mode input[type="checkbox"].toggle::after{
     width: 35px;
     background-color: #f3f3f3;
     border-radius: 5rem;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Style mode off */
 div.conteneur-mode input[type="checkbox"].toggle:checked{
     background-color: #636366;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Pour que le rond glisse */
 div.conteneur-mode input[type="checkbox"].toggle:checked:after{
@@ -2106,23 +2105,23 @@ ol li.option-color::before{
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     z-index: -1;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-out 0.3s;
 }
 @media (hover: hover) and (pointer: fine) {
     ol li.option-color:hover::before{ /* ça affiche la couche du before */
         width: 100%;
-        transition: all ease-in-out var(--DUREE_TRANSITION);
+        transition: all ease-out var(--DUREE_TRANSITION);
     }
 }
 /* celui selectionné */
 ol li.option-color.selected{
     color: var(--COULEUR_BACKGROUND); /* Changement couleur du texte */
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--DUREE_TRANSITION);
 }
 ol li.option-color.selected::before{
     width: 100%; /* le li selectionner direct à 100% pr diférencier */
-    transition: all ease-in-out 0.3s;
+    transition: all ease-out 0.3s;
 }
 /* Couleur individuel en fonction de l'ordre des li */
 ol li.option-color.option-color:nth-child(1)::before{ /* ça prend le premier li ds le code */
@@ -2173,7 +2172,7 @@ div.conteneur-centrage-marge {
 
 /* ----- RESPONSIVE ----- */
 /* Footer */
-@media (max-width: 1150px) {
+@media (max-width: 1025px) {
     footer {
         display: block;
     }

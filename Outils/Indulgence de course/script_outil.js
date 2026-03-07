@@ -1,6 +1,6 @@
 // dico des interpretation
 const InterpretationBienveillant = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton premier entraînement de course dans Sprintia pour qu'on analyse ça ensemble.", 
+    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course dans Sprintia pour qu'on analyse ça ensemble.", 
     "2": "Tu cours <strong>moins depuis 7 jours</strong>, c'est dommage ! Si c'est un choix profite-en pour te reposer ou travailler d'autres aspects de la course comme le <strong>renforcement</strong> ou de la <strong>mobilité</strong>.", 
     "3": "Parfait ! <strong>Tu progresses</strong> grâce à ta <strong>régularité</strong> ainsi qu'à ta discipline, continue comme ça pour booster tes performances. Pour maximiser ta progression, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
     "4": "Attention, tu cours <strong>bien plus que d'habitude</strong> ! Si tu continues sur ce rythme tu risques de te <strong>blesser</strong>. P'tit conseil, <strong>réduis</strong> ton volume d'entraînement.", 
@@ -11,7 +11,7 @@ const InterpretationBienveillant = {
     "8": "Statut : <strong>Suspension</strong><br>Profite-en pour te reposer, j'analyserai tes entraînements seulement quand tu seras prêt·e !"
 }
 const InterpretationStrictMotivant = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu rentres ton premier entraînement de course dans Sprintia pour qu'on analyse ça ensemble.", 
+    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course dans Sprintia pour qu'on analyse ça ensemble.", 
     "2": "Tu cours <strong>moins depuis 7 jours</strong>. Fais attention si tu continues sur cette voie, tu risques de perdre du niveau rapidement ! Petit conseil pour limiter la casse, fais du <strong>renforcement</strong>.", 
     "3": "Parfait ! <strong>Tu progresses</strong> grâce à ta <strong>régularité</strong>. La régularité c'est la clé de la réussite donc, continue comme ça pour progresser. Mais attention, le plus dur n'est pas de progresser mais de continuer à progresser.", 
     "4": "Tu cours <strong>bien plus que d'habitude</strong> ! Si tu veux te <strong>blesser</strong>, tu es sur la bonne voie, ne joue pas avec le feu, arrête de courir pendant quelques jours, pour revenir plus fort.", 
@@ -22,7 +22,7 @@ const InterpretationStrictMotivant = {
     "8": "Statut : <strong>Suspension</strong><br>Profite-en pour te reposer, j'analyserai tes entraînements seulement quand tu seras prêt·e !"
 }
 const InterpretationCopain = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu rentres ton premier entraînement de course dans Sprintia pour qu'on analyse ça ensemble.", 
+    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course dans Sprintia pour qu'on analyse ça ensemble.", 
     "2": "Tu cours <strong>moins depuis 7 jours</strong>. Essaie de courir un peu plus, ne te relâche pas, sinon tu vas finir par perdre tout ton niveau et crois moi, tu vas t'en vouloir une fois qu'il sera trop tard.", 
     "3": "Bravo ! <strong>Tu progresses</strong> grâce à ton sérieux, ta concentration et ta détermination à toujours donner le meilleur de toi-même. Pour continuer à progresser, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
     "4": "Attention, tu cours <strong>bien plus que d'habitude</strong> ! J'ai l'impression que tu aimes un peu trop courir en ce moment, c'est bien, mais attention : moins tu es progressif·ve, plus tu risques de te blesser.", 
@@ -33,7 +33,7 @@ const InterpretationCopain = {
     "8": "Statut : <strong>Suspension</strong><br>Profite-en pour te reposer, j'analyserai tes entraînements seulement quand tu seras prêt·e !"
 }
 const InterpretationGoMuscu = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu rentres ton premier entraînement de course dans Sprintia pour qu'on analyse ça ensemble.", 
+    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course dans Sprintia pour qu'on analyse ça ensemble.", 
     "2": "Tu cours <strong>moins depuis 7 jours</strong>, attention, la course à pied c'est comme la musculation ça demande de la <strong>régularité</strong>. Ton coeur, c'est un muscle, il faut le travailler pour qu'il devienne meilleur.", 
     "3": "<strong>Tu progresses</strong>, parfait ! En plus de travailler tes muscles, tu travailles ton coeur, bien joué ! Pour continuer à progresser, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
     "4": "Tu cours <strong>bien plus que d'habitude</strong> ! Fais attention, si tu continues sur ce rythme tu risques de te <strong>blesser</strong> donc réduis ton volume kilométrique.", 
@@ -47,6 +47,12 @@ const InterpretationGoMuscu = {
 async function RecupData() {
     // recup des datas d'entrainements
     let HistoriqueWorkoutDB = await db.entrainement.toArray()
+
+    // Trier par date 
+    HistoriqueWorkoutDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
+        if (element1.date < element2.date) return -1
+        if (element1.date > element2.date) return 1
+    })
 
     let TableauDate = HistoriqueWorkoutDB.map(elementDB => elementDB.date)
     let TableauSport = HistoriqueWorkoutDB.map(elementDB => elementDB.sport)
@@ -71,21 +77,30 @@ async function RecupData() {
     let DistanceWorkout = 0
     let Tableau7J = []
     let Tableau28J = []
+    let firstWorkoutFind = false
+    let fisrtWorkoutRunning = ""
 
     TableauDate.forEach(elementDate => {
         // recup de la distance du workout
         DistanceWorkout = TableauDistance[compteur]
 
+        // ---- Pour l'algorithme de lissage ----
+        if (TableauSport[compteur] == "Course" && firstWorkoutFind == false) {
+            fisrtWorkoutRunning = elementDate // on sauvegarde la date du premier entraînement de running
+            firstWorkoutFind = true // on met sur true pour eviter qu'au prochain tour de la boucle la variable fisrtWorkout soit écrasée par une autre
+        }
+        // ---- Fin ----
+
         if (elementDate >= DateMoins7J) {
             if (TableauSport[compteur] == "Course") {
-                if (DistanceWorkout != null) {
+                if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     Tableau7J.push(DistanceWorkout)
                     Tableau28J.push(DistanceWorkout)
                 }
             }
         } else if (elementDate >= DateMoins28J) {
             if (TableauSport[compteur] == "Course") {
-                if (DistanceWorkout != null) {
+                if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     Tableau28J.push(DistanceWorkout)
                 }
             }
@@ -93,6 +108,24 @@ async function RecupData() {
 
        compteur += 1 
     });
+
+    // ---- algorithme de lissage ----
+    // si le user a moins de 28 jours de datas sur Sprintia alors au lieu de diviser par 4 la distance28j on divise par le nombre de semaine ou le user a de la datas
+    // pour voir le calul de distance28j/nbSemaine voir la fonction CalculIndulgence()
+    let nbSemaine = 4
+    if (fisrtWorkoutRunning) {
+        let dateFirstRunning = new Date(fisrtWorkoutRunning) // on créer un object date pour avoir les millisecondes
+
+        let differenceMillisecondes = DateActuelle-dateFirstRunning
+        // conversion des millisecondes en jours
+        let differenceJ = Math.floor(differenceMillisecondes/(1000*60*60*24))
+
+        nbSemaine = Math.ceil(differenceJ/7)
+    }
+
+    // 2 sécurités
+    if (nbSemaine > 4) {nbSemaine = 4}
+    else if (nbSemaine < 1) {nbSemaine = 1}
 
     // init pour la somme
     let Distance7J = 0
@@ -109,20 +142,20 @@ async function RecupData() {
     // Affichage dans "Distance réel sur 7J"
     document.getElementById("reponse-algo-allure").textContent = Distance7J.toFixed(1).replace(".", ",") + " km"
 
-    return {Distance7J, Distance28J}
+    return {Distance7J, Distance28J, nbSemaine}
 }
 
 async function CalculIndulgence() {
     // Initialisation coefficient
-    const CoefFourchetteDebut = [1.18, 1.15, 1.12, 1.09, 1.06]
+    const CoefFourchetteDebut = [1.16, 1.13, 1.10, 1.07, 1.04]
     const CoefFourchetteFin = [1.25, 1.2, 1.15, 1.12, 1.1]
 
     let IndulgenceDeCourseDebut = 0
     let IndulgenceDeCourseFin = 0
 
     // Calibration par semaine
-    let {Distance7J, Distance28J} = await RecupData()
-    Distance28J = Distance28J/4
+    let {Distance7J, Distance28J, nbSemaine} = await RecupData()
+    Distance28J = Distance28J/nbSemaine
 
     // Analyse pour avoir la fouchette de distance conseillée (les coef sont diférent en fonction de la distance)
     if (Distance28J <= 10) {

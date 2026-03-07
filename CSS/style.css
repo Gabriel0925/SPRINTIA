@@ -89,11 +89,11 @@
 /* Pour les icônes */
 @font-face {
     font-family: 'Font-Sprintia';
-    src:  url('../Assets/icons/Font-Sprintia.eot?7gygna');
-    src:  url('../Assets/icons/Font-Sprintia.eot?7gygna#iefix') format('embedded-opentype'),
-        url('../Assets/icons/Font-Sprintia.ttf?7gygna') format('truetype'),
-        url('../Assets/icons/Font-Sprintia.woff?7gygna') format('woff'),
-        url('../Assets/icons/Font-Sprintia.svg?7gygna#Font-Sprintia') format('svg');
+    src:  url('../Assets/icons/Font-Sprintia-V4.0.2.eot?7gygna');
+    src:  url('../Assets/icons/Font-Sprintia-V4.0.2.eot?7gygna#iefix') format('embedded-opentype'),
+        url('../Assets/icons/Font-Sprintia-V4.0.2.ttf?7gygna') format('truetype'),
+        url('../Assets/icons/Font-Sprintia-V4.0.2.woff?7gygna') format('woff'),
+        url('../Assets/icons/Font-Sprintia-V4.0.2.svg?7gygna#Font-Sprintia') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;

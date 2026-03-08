@@ -77,67 +77,73 @@
         </div>
     </header>
 
-    <div class="conteneur-about-marge2">
-        <h1>Thèmes</h1>
-        <div class="boite-ensemble-feature">
-            <ol class="conteneur-color-acuentation">
-                <li class="option-color selected" onclick="colorTheme('theme_azur', id)" id="elem1">
-                    Azur
-                </li>
+    <h1>Thèmes</h1>
+    <div class="boite-ensemble-feature">
+        <ol class="conteneur-color-acuentation">
+            <li class="option-color selected" onclick="colorTheme('theme_azur', id)" id="elem1">
+                Azur
+            </li>
                 
-                <li class="option-color" onclick="colorTheme('theme_carmin', id)"  id="elem2">
-                    Carmin
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_carmin', id)"  id="elem2">
+                Carmin
+            </li>
 
-                <li class="option-color" onclick="colorTheme('theme_fuchsia', id)"  id="elem3">
-                    Fuchsia
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_fuchsia', id)"  id="elem3">
+                Fuchsia
+            </li>
 
-                <li class="option-color" onclick="colorTheme('theme_lavande', id)" id="elem4">
-                    Lavande
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_lavande', id)" id="elem4">
+                Lavande
+            </li>
 
-                <li class="option-color" onclick="colorTheme('theme_vegetation', id)" id="elem5">
-                    Végétation
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_vegetation', id)" id="elem5">
+                Végétation
+            </li>
 
-                <li class="option-color" onclick="colorTheme('theme_menthe', id)" id="elem6">
-                    Menthe
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_menthe', id)" id="elem6">
+                Menthe
+            </li>
 
-                <li class="option-color" onclick="colorTheme('theme_pierre_lune', id)" id="elem7">
-                    Lune
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_pierre_lune', id)" id="elem7">
+                Lune
+            </li>
 
-                <li class="option-color" onclick="colorTheme('theme_framboise', id)" id="elem8">
-                    Framboise
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_framboise', id)" id="elem8">
+                Framboise
+            </li>
                 
-                <li class="option-color" onclick="colorTheme('theme_feu', id)"  id="elem9">
-                    Feu
-                </li> 
+            <li class="option-color" onclick="colorTheme('theme_feu', id)"  id="elem9">
+                Feu
+            </li> 
 
-                <li class="option-color" onclick="colorTheme('theme_plage', id)"  id="elem10">
-                    Plage
-                </li>
+            <li class="option-color" onclick="colorTheme('theme_plage', id)"  id="elem10">
+                Plage
+            </li>
 
-                <li class="option-color" onclick="colorTheme('Hortensia', id)"  id="elem11">
-                    Hortensia
-                </li>
+            <li class="option-color" onclick="colorTheme('Hortensia', id)"  id="elem11">
+                Hortensia
+            </li>
 
-                <li class="option-color" onclick="colorTheme('Aurore', id)"  id="elem12">
-                    Aurore
-                </li>
+            <li class="option-color" onclick="colorTheme('Aurore', id)"  id="elem12">
+                Aurore
+            </li>
+
+            <li class="option-color" onclick="colorTheme('Muguet', id)"  id="elem13">
+                Muguet
+            </li>
+
+            <li class="option-color" onclick="colorTheme('Citron', id)"  id="elem14">
+                Citron
+            </li>
                 
-            </ol>
-        </div>
+        </ol>
+    </div>
         
-        <p class="text">
-            En réinitialiser le thème, vous allez restaurer le thème par défaut de Sprintia.
-        </p>
-        <div class="conteneur-centrage-marge">
-            <button id="reinitialiser" onclick="reinitialiserTheme('elem1')">Réinitialiser le thème</button>
-        </div>
+    <p class="text">
+        En réinitialiser le thème, vous allez restaurer le thème par défaut de Sprintia.
+    </p>
+    <div class="conteneur-centrage-marge">
+        <button id="reinitialiser" onclick="reinitialiserTheme('elem1')">Réinitialiser le thème</button>
     </div>
     
     <footer>
@@ -181,7 +187,9 @@
                 "theme_feu": "elem9",
                 "theme_plage": "elem10",
                 "Hortensia": "elem11",
-                "Aurore": "elem12"
+                "Aurore": "elem12",
+                "Muguet": "elem13",
+                "Citron": "elem14"
             }
             let themeUse = localStorage.getItem("ColorActuelleUse")
 

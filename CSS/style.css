@@ -84,7 +84,13 @@
     --COULEUR_PASTILLES_D6: #4ce58c; 
  
     --COULEUR_PASTILLES_D7: #ffb82b;  
-    --COULEUR_PASTILLES_D8: #ff782f;  
+    --COULEUR_PASTILLES_D8: #ff782f; 
+ 
+    --COULEUR_PASTILLES_D9: #2e9c0f;  
+    --COULEUR_PASTILLES_D10: #d2cccc; 
+ 
+    --COULEUR_PASTILLES_D11: #FFF700;  
+    --COULEUR_PASTILLES_D12: #fffb93;  
 }
 /* Pour les icônes */
 @font-face {
@@ -2159,6 +2165,12 @@ ol li.option-color:nth-child(11)::before{
 }
 ol li.option-color:nth-child(12)::before{
     background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D5) 50%, var(--COULEUR_PASTILLES_D6) 50%);
+}
+ol li.option-color:nth-child(13)::before{
+    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D9) 50%, var(--COULEUR_PASTILLES_D10) 50%);
+}
+ol li.option-color:nth-child(14)::before{
+    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D11) 50%, var(--COULEUR_PASTILLES_D12) 50%);
 }
 /* Style du bouton réinitialiser */
 div.conteneur-centrage-marge {

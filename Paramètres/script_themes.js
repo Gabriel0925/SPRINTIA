@@ -11,7 +11,9 @@ const ThemeConfig = {
     "theme_feu": ["#ffb82b", "#ff782f"],
     "theme_plage": ["#1498e4", "#fcaf6b"],
     "Hortensia": ["#3a91ff", "#f782f0"], 
-    "Aurore": ["#a477fe", "#4ce58c"]
+    "Aurore": ["#a477fe", "#4ce58c"],
+    "Muguet": ["#2e9c0f", "#d2cccc"],
+    "Citron": ["#FFF700", "#fffb93"]
 }
 // init variable
 let theme = "theme_azur"
@@ -73,83 +75,12 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
     return
 }
 
-function reappliquerThemesForShortcut() { // pour réappliquer le thème au shorcut quand le navigateur le stocke dans le BFCache (page outils)
-    let PreferenceUser = localStorage.getItem("ToggleThemeComplet") // recup valeur dans le local storage
-            
-    if (PreferenceUser == "True") {
-        // Recup des champs
-        let ShortcutAdd = document.getElementById("icone-add")
-        let ShortcutHistorique = document.getElementById("icone-historique")
-        let ShortcutPause = document.getElementById("icone-pause")
-
-        // Recup des icones
-        let IconeShortcutAdd = document.querySelector(".fs-icon_add")
-        let IconeShortcutHistorique = document.querySelector(".fs-icon_historique")
-        let IconeShortcutPause = document.querySelector(".fs-icon_pause")
-
-        // Recup variable css
-        const Style = getComputedStyle(document.documentElement)
-
-        const CouleurAccentHover = Style.getPropertyValue("--COULEUR_ACCENT_HOVER")
-        const CouleurBackground = Style.getPropertyValue("--COULEUR_BACKGROUND")
-
-        if (ShortcutAdd && ShortcutHistorique && ShortcutPause) {
-                // Mise des couleurs si l'élément est existant
-                ShortcutAdd.style.background = CouleurAccentHover
-                IconeShortcutAdd.style.color = CouleurBackground
-                            
-                ShortcutHistorique.style.background = CouleurAccentHover
-                IconeShortcutHistorique.style.color = CouleurBackground
-
-                ShortcutPause.style.background = CouleurAccentHover
-                IconeShortcutPause.style.color = CouleurBackground
-            }
-                
-        // Recup des champs (!!! pour la page de charge d'entraînement)
-        let ButtonAdd = document.getElementById("add")
-        let IconeAdd = document.querySelector(".fs-icon_add")
-
-        let ButtonHistorique = document.getElementById("historique")
-        let IconeHistorique = document.querySelector(".fs-icon_historique")
-
-        let ButtonPause = document.getElementById("statut")
-        let IconePause = document.querySelector(".fs-icon_pause")
-                                        
-        let TextInterieurButton = document.querySelectorAll(".txt_plus")
-
-        if (ButtonAdd && ButtonHistorique && ButtonPause) {                         
-            // changement couleur text in button
-            TextInterieurButton.forEach(TextButton => {
-                TextButton.style.color = CouleurBackground                    
-            });
-
-            // Mise des couleurs si l'élément est existant
-            ButtonAdd.style.background = CouleurAccentHover
-            ButtonAdd.style.boxShadow = "none"
-            IconeAdd.style.color = CouleurBackground
-                            
-            ButtonHistorique.style.background = CouleurAccentHover
-            ButtonHistorique.style.boxShadow = "none"
-            IconeHistorique.style.color = CouleurBackground
-
-            ButtonPause.style.background = CouleurAccentHover
-            ButtonPause.style.boxShadow = "none"
-            IconePause.style.color = CouleurBackground
-        }
-    }
-
-    return
-}
-
 function Preference() {
     // Chercher les valeur dans la bdd
     const ColorUser = localStorage.getItem("ColorActuelleUse")
     if (ColorUser) {
         colorTheme(ColorUser, null) // on met l'id du li du thème en null pour pas que la fonction SelectedElement mettent à jour le li du thème en buggant
     }
-
-    // Appelle à la fonction pour restaurer le thème des shorcuts quand la page est stokée dans le BFCache
-    reappliquerThemesForShortcut()
 }
 
 // ne pas mettre en addevenlister sinon on perd en perf

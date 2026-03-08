@@ -75,77 +75,74 @@
             </ul>
         </div>
     </header>
-
-    <div class="conteneur-de-outil">
-        <h1>Estimation 1RM</h1>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
-                <select id="methode-user" onchange="MethodeChoisie()" autocomplete="off">
-                    <option value="Epley">Méthode : Epley</option>
-                    <option value="Brzycki">Méthode : Brzycki</option>
-                </select>
+    
+    <h1>Estimation 1RM</h1>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
+            <select id="methode-user" onchange="MethodeChoisie()" autocomplete="off">
+                <option value="Epley">Méthode : Epley</option>
+                <option value="Brzycki">Méthode : Brzycki</option>
+            </select>
                 
-                <div class="conteneur-input">
-                    <input type="number" id="charge-user" placeholder="Charge (kg)" autocomplete="off">
-                    <div class="label-input">Charge (kg)</div>
-                </div>
+            <div class="conteneur-input">
+                <input type="number" id="charge-user" placeholder="Charge (kg)" autocomplete="off">
+                <div class="label-input">Charge (kg)</div>
+            </div>
                     
-                <div class="conteneur-input">
-                    <input type="number" id="rep-user" placeholder="Répétitions" autocomplete="off">
-                    <div class="label-input">Répétitions</div>
-                </div>
-
-                <button onclick="EstimationOneRep()">Estimer</button>
+            <div class="conteneur-input">
+                <input type="number" id="rep-user" placeholder="Répétitions" autocomplete="off">
+                <div class="label-input">Répétitions</div>
             </div>
 
-            <div class="box-result">
-                <p class="score-imc">Votre 1RM</p>
-                <p class="temps-recup">
-                    00 kg
-                </p>
-            </div>
+            <button onclick="EstimationOneRep()">Estimer</button>
         </div>
 
-        <h2>Qu'est-ce que le 1RM ?</h2>
-        <p class="text">
-            Pour commencer, 1RM ça veut dire : "One Repetition Maximum". Globalement, il représente la charge maximale qu’une personne peut 
-            soulever pour une unique répétition sur un exercice donné. Cette valeur est très importante en musculation, elle permet de structurer des
-            programmes d'entraînement adapté à vos capacités.
-        </p>
-        <h2>Comment s'en servir ?</h2>
-        <p class="text">
-            En connaissant votre 1RM, vous pouvez déterminer les poids maximum appropriés pour vos séries lors de vos séances. Vous pouvez en
-            conséquence mesurer l'amélioration de votre force au fil du temps. Pour terminer, vous pouvez vous en servir pour adapter vos charges
-            pour éviter de soulever trop lourd inutilement.
-        </p>
-        <h2>Comment rendre l'outil précis ?</h2>
-        <p class="text">
-            Pour rendre l'outil plus précis, il faut d'abord calculer le nombre maximal de répétitions que vous pouvez effectuer avec une certaine charge (poids). 
-            Par exemple avec la méthode d'Epley, si vous pouvez soulever 50 kilogrammes pour 5 répétitions, votre 1RM est estimé à environ 58 kg.
-        </p>
-
-        <h2>Les méthodes de calcul</h2>
-        <ul class="liste-fonctionnalites">
-            <li>
-                La méthode Epley est la formule la plus répandue son calcul est relativement simple :
-                <br>
-                Poids x (1 + (Répétitions / 30)).
-            </li>
-            <li>
-                La méthode de Matt Brzycki est différente pour calculer le 1RM d'après lui il faut faire :
-                <br>
-                Poids / (1.0278 – (0.0278 x Répétitions))
-            </li>
-        </ul>
-        
-        <h2>Quelle méthode utiliser ?</h2>
-        <p class="text">
-            Tout dépend de votre profil et surtout du nombre de répétitions effectuées. Par exemple, si vous préferez faire des séries courtes
-            utilisez la méthode de Brzycki. Quand je dis des séries courtes c'est entre 1 et 10 maximum. Si vous préferez les séries longues 
-            (donc plus de 10 répétitions) utilisez la méthode d'Epley.
-        </p>
-
+        <div class="box-result">
+            <p class="score-imc">Votre 1RM</p>
+            <p class="temps-recup">
+                00 kg
+            </p>
+        </div>
     </div>
+
+    <h2>Qu'est-ce que le 1RM ?</h2>
+    <p class="text">
+        Pour commencer, 1RM ça veut dire : "One Repetition Maximum". Globalement, il représente la charge maximale qu’une personne peut 
+        soulever pour une unique répétition sur un exercice donné. Cette valeur est très importante en musculation, elle permet de structurer des
+        programmes d'entraînement adapté à vos capacités.
+    </p>
+    <h2>Comment s'en servir ?</h2>
+    <p class="text">
+        En connaissant votre 1RM, vous pouvez déterminer les poids maximum appropriés pour vos séries lors de vos séances. Vous pouvez en
+        conséquence mesurer l'amélioration de votre force au fil du temps. Pour terminer, vous pouvez vous en servir pour adapter vos charges
+        pour éviter de soulever trop lourd inutilement.
+    </p>
+    <h2>Comment rendre l'outil précis ?</h2>
+    <p class="text">
+        Pour rendre l'outil plus précis, il faut d'abord calculer le nombre maximal de répétitions que vous pouvez effectuer avec une certaine charge (poids). 
+        Par exemple avec la méthode d'Epley, si vous pouvez soulever 50 kilogrammes pour 5 répétitions, votre 1RM est estimé à environ 58 kg.
+    </p>
+
+    <h2>Les méthodes de calcul</h2>
+    <ul class="liste-fonctionnalites">
+        <li>
+            La méthode Epley est la formule la plus répandue son calcul est relativement simple :
+            <br>
+            Poids x (1 + (Répétitions / 30)).
+        </li>
+        <li>
+            La méthode de Matt Brzycki est différente pour calculer le 1RM d'après lui il faut faire :
+            <br>
+            Poids / (1.0278 – (0.0278 x Répétitions))
+        </li>
+    </ul>
+        
+    <h2>Quelle méthode utiliser ?</h2>
+    <p class="text">
+        Tout dépend de votre profil et surtout du nombre de répétitions effectuées. Par exemple, si vous préferez faire des séries courtes
+        utilisez la méthode de Brzycki. Quand je dis des séries courtes c'est entre 1 et 10 maximum. Si vous préferez les séries longues 
+        (donc plus de 10 répétitions) utilisez la méthode d'Epley.
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

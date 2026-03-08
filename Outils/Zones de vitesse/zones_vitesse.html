@@ -75,127 +75,122 @@
             </ul>
         </div>
     </header>
-
-    <div class="conteneur-de-outil">
-        <h1>Zones de vitesse</h1>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
+    
+    <h1>Zones de vitesse</h1>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
                 
-                <div class="conteneur-input">
-                    <input type="number" id="vma-user" placeholder="VMA (km/h)" autocomplete="off">
-                    <div class="label-input">VMA (km/h)</div>
-                </div>
+            <div class="conteneur-input">
+                <input type="number" id="vma-user" placeholder="VMA (km/h)" autocomplete="off">
+                <div class="label-input">VMA (km/h)</div>
+            </div>
                     
-                <div class="conteneur-input">
-                    <input type="number" id="vitesse-max-user" placeholder="Vitesse max (optionnelle)" autocomplete="off">
-                    <div class="label-input">Vitesse max (optionnelle)</div>
-                </div>
+            <div class="conteneur-input">
+                <input type="number" id="vitesse-max-user" placeholder="Vitesse max (optionnelle)" autocomplete="off">
+                <div class="label-input">Vitesse max (optionnelle)</div>
+            </div>
 
-                <button onclick="ZoneVitesse()">Calculer</button>
+            <button onclick="ZoneVitesse()">Calculer</button>
+        </div>
+    </div>
+
+    <div class="conteneur-rep-zone">
+
+        <div class="zone-cardio">
+            <div class="ensemble-p">
+                <p class="zone">Zone 1</p>
+                <p class="fonction-zone">Footing</p>
+            </div>
+            <div class="conteneur-tranche-unite">
+                <p class="tranche-zone">0 - 0</p>
+                <p class="unite-zone">km/h</p>
             </div>
         </div>
-
-        <div class="conteneur-rep-zone">
-
-            <div class="zone-cardio">
-                <div class="ensemble-p">
-                    <p class="zone">Zone 1</p>
-                    <p class="fonction-zone">Footing</p>
-                </div>
-                <div class="conteneur-tranche-unite">
-                    <p class="tranche-zone">0 - 0</p>
-                    <p class="unite-zone">km/h</p>
-                </div>
-            </div>
  
-            <div class="zone-cardio">
-                <div class="ensemble-p">
-                    <p class="zone">Zone 2</p>
-                    <p class="fonction-zone">Endurance fondamentale</p>
-                </div>
-                <div class="conteneur-tranche-unite">
-                    <p class="tranche-zone">0 - 0</p>
-                    <p class="unite-zone">km/h</p>
-                </div>
+        <div class="zone-cardio">
+            <div class="ensemble-p">
+                <p class="zone">Zone 2</p>
+                <p class="fonction-zone">Endurance fondamentale</p>
             </div>
+            <div class="conteneur-tranche-unite">
+                <p class="tranche-zone">0 - 0</p>
+                <p class="unite-zone">km/h</p>
+            </div>
+        </div>
 
-            <div class="zone-cardio">
-                <div class="ensemble-p">
-                    <p class="zone">Zone 3</p>
-                    <p class="fonction-zone">Endurance active</p>
-                </div>
-                <div class="conteneur-tranche-unite">
-                    <p class="tranche-zone">0 - 0</p>
-                    <p class="unite-zone">km/h</p>
-                </div>
+        <div class="zone-cardio">
+            <div class="ensemble-p">
+                <p class="zone">Zone 3</p>
+                <p class="fonction-zone">Endurance active</p>
             </div>
+            <div class="conteneur-tranche-unite">
+                <p class="tranche-zone">0 - 0</p>
+                <p class="unite-zone">km/h</p>
+            </div>
+        </div>
             
-            <div class="zone-cardio">
-                <div class="ensemble-p">
-                    <p class="zone">Zone 4</p>
-                    <p class="fonction-zone">Tempo</p>
-                </div>
-                <div class="conteneur-tranche-unite">
-                    <p class="tranche-zone">0 - 0</p>
-                    <p class="unite-zone">km/h</p>
-                </div>
+        <div class="zone-cardio">
+            <div class="ensemble-p">
+                <p class="zone">Zone 4</p>
+                <p class="fonction-zone">Tempo</p>
             </div>
-
-            <div class="zone-cardio">
-                <div class="ensemble-p">
-                    <p class="zone">Zone 5</p>
-                    <p class="fonction-zone">Fractionné court</p>
-                </div>
-                <div class="conteneur-tranche-unite">
-                    <p class="tranche-zone">0 - 0</p>
-                    <p class="unite-zone">km/h</p>
-                </div>
+            <div class="conteneur-tranche-unite">
+                <p class="tranche-zone">0 - 0</p>
+                <p class="unite-zone">km/h</p>
             </div>
-
         </div>
 
-        <div class="conteneur-centrage-marge">
-            <button onclick="ZoneAllure()" id="conversion">Convertir en allure</button>
+        <div class="zone-cardio">
+            <div class="ensemble-p">
+                <p class="zone">Zone 5</p>
+                <p class="fonction-zone">Fractionné court</p>
+            </div>
+            <div class="conteneur-tranche-unite">
+                <p class="tranche-zone">0 - 0</p>
+                <p class="unite-zone">km/h</p>
+            </div>
         </div>
-
-        <div class="explications">
-            <h2>Quand les utiliser ?</h2>
-            <ul class="liste-fonctionnalites">
-                <li>
-                    Zone 1 : Vous pouvez l'utiliser lors d'un effort très léger, d'un échauffement.
-                </li>
-                <li>
-                    Zone 2 : C'est la zone d'endurance, elle est à utiliser lors de vos sorties longues. Si vous êtes dans cette zone vous pouvez tenir une 
-                    conversation sans être essouflé·e.
-                </li>
-                <li>
-                    Zone 3 : Cette zone est utile pour travailler votre endurance active. C'est de l'endurance mais avec plus d'effort.
-                </li>
-                <li>
-                    Zone 4 : Cette zone est utile pour faire progresser votre vitesse, elle améliore votre cardio. Utilisez-là lors de vos séances
-                    de fractionné.
-                </li>
-                <li>
-                    Zone 5 : Cette zone doit être utilisée pour les sprints, le fractionné court ou en compétition. Elle challenge votre
-                    organisme.
-                </li>
-            </ul>
-        </div>
-
-        <h2>Les Zones de vitesse c'est quoi ?</h2>
-        <p class="text">
-            Les zones de vitesse sont essentielles en sport. Elles permettent d'adapter l'intensité de vos entraînements
-            en fonction de vos objectifs. Ces zones sont très utiles lors de fractionnés car la vitesse est quasiment instantanée, quand vous accélérez
-            votre vitesse monte aussi vite que vous alors que votre cardio, lui, va réagir à votre sprint mais au bout de 10 à 15 secondes ce qui n'est pas
-            optimal pour du fractionné. Cet outil est destiné à la course à pied car en vélo vous n'aurez pas la même vitesse,...
-        </p>
-        <h2>Comment avoir la meilleure précision ?</h2>
-        <p class="text">
-            Pour avoir la meilleure précision sur vos zones de vitesse, le mieux serait de saisir votre vitesse maximale. Si vous ne la saisissez pas,
-            l'outil calculera automatiquement votre vitesse maximale à l'aide d'une formule : VMA*1.35, donc, la précision dépend de votre profil.
-        </p>
 
     </div>
+
+    <div class="conteneur-centrage-marge">
+        <button onclick="ZoneAllure()" id="conversion">Convertir en allure</button>
+    </div>
+
+    <h2>Quand les utiliser ?</h2>
+    <ul class="liste-fonctionnalites">
+        <li>
+            Zone 1 : Vous pouvez l'utiliser lors d'un effort très léger, d'un échauffement.
+        </li>
+        <li>
+            Zone 2 : C'est la zone d'endurance, elle est à utiliser lors de vos sorties longues. Si vous êtes dans cette zone vous pouvez tenir une 
+            conversation sans être essouflé·e.
+       </li>
+        <li>
+            Zone 3 : Cette zone est utile pour travailler votre endurance active. C'est de l'endurance mais avec plus d'effort.
+        </li>
+        <li>
+            Zone 4 : Cette zone est utile pour faire progresser votre vitesse, elle améliore votre cardio. Utilisez-là lors de vos séances
+            de fractionné.
+        </li>
+        <li>
+            Zone 5 : Cette zone doit être utilisée pour les sprints, le fractionné court ou en compétition. Elle challenge votre
+            organisme.
+        </li>
+    </ul>
+
+    <h2>Les Zones de vitesse c'est quoi ?</h2>
+    <p class="text">
+        Les zones de vitesse sont essentielles en sport. Elles permettent d'adapter l'intensité de vos entraînements
+        en fonction de vos objectifs. Ces zones sont très utiles lors de fractionnés car la vitesse est quasiment instantanée, quand vous accélérez
+        votre vitesse monte aussi vite que vous alors que votre cardio, lui, va réagir à votre sprint mais au bout de 10 à 15 secondes ce qui n'est pas
+        optimal pour du fractionné. Cet outil est destiné à la course à pied car en vélo vous n'aurez pas la même vitesse,...
+   </p>
+    <h2>Comment avoir la meilleure précision ?</h2>
+    <p class="text">
+        Pour avoir la meilleure précision sur vos zones de vitesse, le mieux serait de saisir votre vitesse maximale. Si vous ne la saisissez pas,
+        l'outil calculera automatiquement votre vitesse maximale à l'aide d'une formule : VMA*1.35, donc, la précision dépend de votre profil.
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

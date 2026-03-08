@@ -76,88 +76,86 @@
         </div>
     </header>
 
-    <div class="conteneur-de-outil">
-        <h1 id="title-page">Ajouter un entraînement</h1> 
+    <h1 id="title-page">Ajouter un entraînement</h1> 
 
-        <div class="conteneur-ensemble first">
-            <div class="box-result-deux" id="coach-ajoute-entrainement">
-                <p class="score-imc" id="nom-coach">JRM Coach :</p>
-                <p class="zone-imc" id="reponse-coach">
-                    Chargement...
-                </p> 
-            </div>
-
-            <div class="conteneur-champs-outil">
- 
-                <select id="profil-sport" onchange="SelectionSport(value)" autocomplete="off">
-                        <option value="Libre">Sport : Libre</option>
-                        <option value="Course">Sport : Course</option>
-                        <option value="Vélo">Sport : Vélo</option>
-                        <option value="Marche">Sport : Marche</option>
-                        <option value="Musculation">Sport : Musculation</option>
-                </select>
-
-                <div class="cote-cote">
-                    <div class="conteneur-input">
-                        <input type="date" id="date-entrainement-user" autocomplete="off">
-                        <div class="label-input">Date</div>
-                    </div>
-                    
-                    <div class="conteneur-input">
-                        <input type="text" id="nom-entrainement-user" class="small" placeholder="Nom de l'entraî." autocomplete="off" maxlength="80">
-                        <div class="label-input">Nom de l'entraî.</div> 
-                    </div>
-                </div>
-                
-                <div class="conteneur-input">
-                    <input type="text" id="duree-entrainement-user" placeholder="Durée (hh:mm:ss)" maxlength="8" autocomplete="off">
-                    <div class="label-input">Durée (hh:mm:ss)</div>
-                </div>
-                
-                <div class="slider-cont">
-                    <div class="slider-name">RPE</div>
-                    <div class="slider">
-                        <input type="range" min="1" max="10" value="1" autocomplete="off">
-                        <progress min="1" max="10" value="1"></progress>
-                    </div>
-                    <div class="slider-value">1</div>
-                </div>
-
-                <div class="cote-cote invisible" id="dynamique-div">
-                    <div class="conteneur-input">
-                        <input type="number" id="distance-entrainement-user" class="small" placeholder="Distance (km)" autocomplete="off">
-                        <div class="label-input">Distance (km)</div>
-                    </div>
-                    
-                    <div class="conteneur-input">
-                        <input type="number" id="denivele-entrainement-user" class="small" placeholder="Dénivelé (m)" autocomplete="off">
-                        <div class="label-input">Dénivelé (m)</div>
-                    </div>
-                </div>
-
-                
-                <div class="conteneur-input">
-                    <input type="text" id="muscle-entrainement-user" placeholder="Muscles travaillés" autocomplete="off" maxlength="150">
-                    <div class="label-input" id="label-invisible">Muscles travaillés</div>
-                </div>
-                
-
-                <button id="button-sauvegarder" onclick="RegistrationWorkout()">Sauvegarder</button>
-            </div>
-
+    <div class="conteneur-ensemble first">
+        <div class="box-result-deux" id="coach-ajoute-entrainement">
+            <p class="score-imc" id="nom-coach">JRM Coach :</p>
+            <p class="zone-imc" id="reponse-coach">
+                Chargement...
+            </p> 
         </div>
 
-        <h2>C'est quoi le RPE ?</h2>
-        <p class="text">
-            Le RPE (Rated Perceived Exertion) c'est une échelle permettant de mesurer l'effort perçu de votre entraînement.
-            <ul class="liste-fonctionnalites">
-                <li>RPE de 1 à 3 : Facile</li>
-                <li>RPE de 4 à 6 : Modéré</li>
-                <li>RPE de 7 à 8 : Difficile</li>
-                <li>RPE de 9 à 10 : Effort maximal</li>
-            </ul>
-        </p>
+        <div class="conteneur-champs-outil">
+ 
+            <select id="profil-sport" onchange="SelectionSport(value)" autocomplete="off">
+                    <option value="Libre">Sport : Libre</option>
+                    <option value="Course">Sport : Course</option>
+                    <option value="Vélo">Sport : Vélo</option>
+                    <option value="Marche">Sport : Marche</option>
+                    <option value="Musculation">Sport : Musculation</option>
+            </select>
+
+            <div class="cote-cote">
+                <div class="conteneur-input">
+                    <input type="date" id="date-entrainement-user" autocomplete="off">
+                    <div class="label-input">Date</div>
+                </div>
+                    
+                <div class="conteneur-input">
+                    <input type="text" id="nom-entrainement-user" class="small" placeholder="Nom de l'entraî." autocomplete="off" maxlength="80">
+                    <div class="label-input">Nom de l'entraî.</div> 
+                </div>
+            </div>
+                
+            <div class="conteneur-input">
+                <input type="text" id="duree-entrainement-user" placeholder="Durée (hh:mm:ss)" maxlength="8" autocomplete="off">
+                <div class="label-input">Durée (hh:mm:ss)</div>
+            </div>
+                
+            <div class="slider-cont">
+                <div class="slider-name">RPE</div>
+                <div class="slider">
+                    <input type="range" min="1" max="10" value="1" autocomplete="off">
+                    <progress min="1" max="10" value="1"></progress>
+                </div>
+                <div class="slider-value">1</div>
+            </div>
+
+            <div class="cote-cote invisible" id="dynamique-div">
+                <div class="conteneur-input">
+                    <input type="number" id="distance-entrainement-user" class="small" placeholder="Distance (km)" autocomplete="off">
+                    <div class="label-input">Distance (km)</div>
+                </div>
+                
+                <div class="conteneur-input">
+                    <input type="number" id="denivele-entrainement-user" class="small" placeholder="Dénivelé (m)" autocomplete="off">
+                    <div class="label-input">Dénivelé (m)</div>
+                </div>
+            </div>
+
+                
+            <div class="conteneur-input">
+                <input type="text" id="muscle-entrainement-user" placeholder="Muscles travaillés" autocomplete="off" maxlength="150">
+                <div class="label-input" id="label-invisible">Muscles travaillés</div>
+            </div>
+                
+
+            <button id="button-sauvegarder" onclick="RegistrationWorkout()">Sauvegarder</button>
+        </div>
+
     </div>
+
+    <h2>C'est quoi le RPE ?</h2>
+    <p class="text">
+        Le RPE (Rated Perceived Exertion) c'est une échelle permettant de mesurer l'effort perçu de votre entraînement.
+    </p>
+    <ul class="liste-fonctionnalites">
+        <li>RPE de 1 à 3 : Facile</li>
+        <li>RPE de 4 à 6 : Modéré</li>
+        <li>RPE de 7 à 8 : Difficile</li>
+        <li>RPE de 9 à 10 : Effort maximal</li>
+    </ul>
     
     <footer>
         <div class="conteneur-lien-footer">

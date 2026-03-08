@@ -76,43 +76,40 @@
         </div>
     </header>
 
-    <div class="conteneur-de-outil">
-        <div class="conteneur-option">
-            <h1>Statut analyse</h1>
-            <a href="historique_statut_analyses.html"><i class="fs-icon_historique"></i></a>
-        </div>
-        <p class="text">
-            Si vous avez besoin de souffler, ou que vous vous êtes blessé·e, définissez votre statut d'analyse sur Vacances,
-            Blessure, Malade ou Suspendre. Sprintia adaptera l'expérience en fonction de votre statut. Les analyses seront en pause.
-        </p>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">         
-                <p class="text-info visible" id="ancien-statut">
-                    Statut en cours : Actif·ve
-                </p>
-                <select id="statut-user" autocomplete="off">
-                        <option value="Actif·ve">Statut : Actif·ve</option>
-                        <option value="Vacances">Statut : Vacances</option>
-                        <option value="Blessure">Statut : Blessure</option>
-                        <option value="Malade">Statut : Malade</option>
-                        <option value="Suspendre">Statut : Suspendre</option> 
-                </select>
-
-                <div class="conteneur-input">
-                    <input type="text" id="raison-user" placeholder="Raison (optionnelle)" autocomplete="off" maxlength="150">
-                    <div class="label-input">Raison (optionnelle)</div>
-                </div>
-
-                <button onclick="Sauvegarde()" id="button-sauvegarde">Sauvegarder</button>
-            </div>
-        </div>
-
-        <h2>Comment reprendre les analyses ?</h2>
-        <p class="text">
-            Pour que Sprintia puisse recommencer à analyser vos entraînements,... Vous devez définir le statut sur : 'Actif·ve'
-        </p>
-
+    <div class="conteneur-option">
+        <h1>Statut analyse</h1>
+        <a href="historique_statut_analyses.html"><i class="fs-icon_historique"></i></a>
     </div>
+    <p class="text">
+        Si vous avez besoin de souffler, ou que vous vous êtes blessé·e, définissez votre statut d'analyse sur Vacances,
+        Blessure, Malade ou Suspendre. Sprintia adaptera l'expérience en fonction de votre statut. Les analyses seront en pause.
+    </p>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">         
+            <p class="text-info visible" id="ancien-statut">
+                Statut en cours : Actif·ve
+            </p>
+            <select id="statut-user" autocomplete="off">
+                    <option value="Actif·ve">Statut : Actif·ve</option>
+                    <option value="Vacances">Statut : Vacances</option>
+                    <option value="Blessure">Statut : Blessure</option>
+                    <option value="Malade">Statut : Malade</option>
+                    <option value="Suspendre">Statut : Suspendre</option> 
+            </select>
+
+            <div class="conteneur-input">
+                <input type="text" id="raison-user" placeholder="Raison (optionnelle)" autocomplete="off" maxlength="150">
+                <div class="label-input">Raison (optionnelle)</div>
+            </div>
+
+            <button onclick="Sauvegarde()" id="button-sauvegarde">Sauvegarder</button>
+        </div>
+    </div>
+
+    <h2>Comment reprendre les analyses ?</h2>
+    <p class="text">
+        Pour que Sprintia puisse recommencer à analyser vos entraînements,... Vous devez définir le statut sur : 'Actif·ve'
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

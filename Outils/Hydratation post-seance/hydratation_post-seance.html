@@ -75,76 +75,73 @@
             </ul>
         </div>
     </header>
-
-    <div class="conteneur-de-outil">
-        <h1>Hydratation post-séance</h1>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
+    
+    <h1>Hydratation post-séance</h1>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
                 
-                <div class="conteneur-input">
-                    <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                    <div class="label-input">Poids (kg)</div>
-                </div>
+            <div class="conteneur-input">
+                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                <div class="label-input">Poids (kg)</div>
+            </div>
                     
-                <div class="conteneur-input">
-                    <input type="number" id="duree-entrainement-user" placeholder="Durée d'entraî. aujourd'hui (min)" autocomplete="off">
-                    <div class="label-input" id="label-fc-user">Durée d'entraî. aujourd'hui (min)</div>
-                </div>
+            <div class="conteneur-input">
+                <input type="number" id="duree-entrainement-user" placeholder="Durée d'entraî. aujourd'hui (min)" autocomplete="off">
+                <div class="label-input" id="label-fc-user">Durée d'entraî. aujourd'hui (min)</div>
+            </div>
                 
-                <div class="slider-cont">
-                    <div class="slider-name">RPE</div>
-                    <div class="slider">
-                        <input type="range" min="1" max="10" value="1" autocomplete="off">
-                        <progress min="1" max="10" value="1"></progress>
-                    </div>
-                    <div class="slider-value">1</div>
+            <div class="slider-cont">
+                <div class="slider-name">RPE</div>
+                <div class="slider">
+                    <input type="range" min="1" max="10" value="1" autocomplete="off">
+                    <progress min="1" max="10" value="1"></progress>
                 </div>
-
-                <button onclick="CalculGeneral()">Estimer</button>
+                <div class="slider-value">1</div>
             </div>
 
-            <div class="box-result">
-                <p class="score-imc">Transpiration : <strong>0 mL</strong></p>
-                <p class="score-imc">Réhydratation : <strong>0 mL</strong></p>
-                <p class="score-imc">Hydratation du jour : <strong>0 mL</strong></p>
-                <p class="zone-imc">
-                    Veuillez rentrer votre poids, la durée de votre entraînement ainsi que le RPE pour avoir une interprétation.
-                </p>
-            </div>
+            <button onclick="CalculGeneral()">Estimer</button>
         </div>
 
-        <h2>C'est quoi le RPE ?</h2>
-        <p class="text">
-            Le RPE (Rated Perceived Exertion) c'est une échelle permettant de mesurer l'effort perçu de votre entraînement.
-            <ul class="liste-fonctionnalites">
-                <li>RPE de 1 à 3 : Facile</li>
-                <li>RPE de 4 à 6 : Modéré</li>
-                <li>RPE de 7 à 8 : Difficile</li>
-                <li>RPE de 9 à 10 : Effort maximal</li>
-            </ul>
-        </p>
-
-        <h2>Utilité de l'outil</h2>
-        <p class="text">
-            Cet outil est conçu pour vous donner une idée de la quantité d'eau à boire par jour mais également de vous montrer votre transpiration après votre séance de sport.
-            En revanche, il faut être régulier au cours de la journée, il faut mieux boire par petites gorgées que de grandes quantités d'un coup.
-        </p>
-        <h2>Pourquoi boire plus que la transpiration estimée ?</h2>
-        <p class="text">
-            Le corps ne retient pas 100% de l'eau bue, une partie est évacuée par les reins,... Il est donc conseillé de boire environ 
-            120% de la quantité de transpiration estimée pour compenser les pertes.
-        </p>
-        <h2>À quoi sert cette estimation ?</h2>
-        <p class="text">
-            Cette estimation permet de vous aider à mieux gérer son hydratation après votre entraînement, afin d'éviter la déshydratation et 
-            d'optimiser vos performances.
-        </p>
-        <h2>Petite information</h2>
-        <p class="text">
-            Sprintia enlève 20% de l'estimation de l'hydratation du jour car environ 20 % de cette eau provient de vos repas (fruits, légumes,...).
-        </p>
-
+        <div class="box-result">
+            <p class="score-imc">Transpiration : <strong>0 mL</strong></p>
+            <p class="score-imc">Réhydratation : <strong>0 mL</strong></p>
+            <p class="score-imc">Hydratation du jour : <strong>0 mL</strong></p>
+            <p class="zone-imc">
+                Veuillez rentrer votre poids, la durée de votre entraînement ainsi que le RPE pour avoir une interprétation.
+            </p>
+        </div>
     </div>
+
+    <h2>C'est quoi le RPE ?</h2>
+    <p class="text">
+        Le RPE (Rated Perceived Exertion) c'est une échelle permettant de mesurer l'effort perçu de votre entraînement.
+        <ul class="liste-fonctionnalites">
+            <li>RPE de 1 à 3 : Facile</li>
+            <li>RPE de 4 à 6 : Modéré</li>
+            <li>RPE de 7 à 8 : Difficile</li>
+            <li>RPE de 9 à 10 : Effort maximal</li>
+        </ul>
+    </p>
+
+    <h2>Utilité de l'outil</h2>
+    <p class="text">
+        Cet outil est conçu pour vous donner une idée de la quantité d'eau à boire par jour mais également de vous montrer votre transpiration après votre séance de sport.
+        En revanche, il faut être régulier au cours de la journée, il faut mieux boire par petites gorgées que de grandes quantités d'un coup.
+    </p>
+    <h2>Pourquoi boire plus que la transpiration estimée ?</h2>
+    <p class="text">
+        Le corps ne retient pas 100% de l'eau bue, une partie est évacuée par les reins,... Il est donc conseillé de boire environ 
+        120% de la quantité de transpiration estimée pour compenser les pertes.
+    </p>
+    <h2>À quoi sert cette estimation ?</h2>
+    <p class="text">
+        Cette estimation permet de vous aider à mieux gérer son hydratation après votre entraînement, afin d'éviter la déshydratation et 
+        d'optimiser vos performances.
+    </p>
+    <h2>Petite information</h2>
+    <p class="text">
+        Sprintia enlève 20% de l'estimation de l'hydratation du jour car environ 20 % de cette eau provient de vos repas (fruits, légumes,...).
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

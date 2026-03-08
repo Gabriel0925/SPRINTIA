@@ -75,57 +75,55 @@
             </ul>
         </div>
     </header>
-
-    <div class="conteneur-de-outil">
-        <div class="conteneur-option">
-            <h1>Niveau course à pied</h1>
-            <a href="historique_niveau_course.html"><i class="fs-icon_historique"></i></a>
-        </div>
- 
-        <h2>Test de course</h2>
-        <p class="text">
-            Déterminez votre niveau de course actuel en<strong> courant la plus longue distance possible en 12 minutes.</strong>
-            Pour des mesures précises, ce test doit être effectué sur un terrain plat sans aucun obstacle (le mieux c'est une piste d'athlétisme).
-            Ne négligez pas l'échauffement : faîtes des gammes pendant 10 à 15 min et ensuite faîtes le test, ça améliorera votre performance.
-        </p>
-
-
-        <div class="conteneur-ensemble">    
-            <div class="conteneur-champs-outil">    
-                <p class="text-info visible" id="p-error"></p>
-                
-                <div class="conteneur-input">
-                    <input type="date" class="long" id="date-niveau-course" autocomplete="off">
-                    <div class="label-input">Date</div>
-                </div>
-                <div class="conteneur-input">
-                    <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="StartNiveau()">
-                    <div class="label-input">Distance (km)</div>
-                </div>
-
-                <button onclick="SauvegardeNiveauCourse()" id="button-sauvegarde-niveau">Sauvegarder</button>
-            </div>
-
-            <div class="box-result" id="niveau-course">
-                <p class="score-imc">Niveau</p>
-                <p class="temps-recup">
-                    0
-                </p>
-            </div>
-        </div>
-
-        <div class="chart-container" id="conteneur-graphique">
-            <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-            <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-        </div>
- 
-        <h2>Comment s'en servir ?</h2>
-        <p class="text">
-            Ce score peut vous permettre de suivre votre progression, le mieux c'est de refaire ce test tous les 2 mois pour constatez si vos entraînements
-            portent leurs fruits ou si vous perdez du niveau. Vous pouvez gamifier un peu l'outil par exemple en 
-            comparant les résultats avec vos potes, votre famille,...
-        </p>
+    
+    <div class="conteneur-option">
+        <h1>Niveau course à pied</h1>
+        <a href="historique_niveau_course.html"><i class="fs-icon_historique"></i></a>
     </div>
+ 
+    <h2>Test de course</h2>
+    <p class="text">
+        Déterminez votre niveau de course actuel en<strong> courant la plus longue distance possible en 12 minutes.</strong>
+        Pour des mesures précises, ce test doit être effectué sur un terrain plat sans aucun obstacle (le mieux c'est une piste d'athlétisme).
+        Ne négligez pas l'échauffement : faîtes des gammes pendant 10 à 15 min et ensuite faîtes le test, ça améliorera votre performance.
+    </p>
+
+
+    <div class="conteneur-ensemble">    
+        <div class="conteneur-champs-outil">    
+            <p class="text-info visible" id="p-error"></p>
+                
+            <div class="conteneur-input">
+                <input type="date" class="long" id="date-niveau-course" autocomplete="off">
+                <div class="label-input">Date</div>
+            </div>
+            <div class="conteneur-input">
+                <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="StartNiveau()">
+                <div class="label-input">Distance (km)</div>
+            </div>
+
+            <button onclick="SauvegardeNiveauCourse()" id="button-sauvegarde-niveau">Sauvegarder</button>
+        </div>
+
+        <div class="box-result" id="niveau-course">
+            <p class="score-imc">Niveau</p>
+            <p class="temps-recup">
+                0
+            </p>
+        </div>
+    </div>
+
+    <div class="chart-container" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
+ 
+    <h2>Comment s'en servir ?</h2>
+    <p class="text">
+        Ce score peut vous permettre de suivre votre progression, le mieux c'est de refaire ce test tous les 2 mois pour constatez si vos entraînements
+        portent leurs fruits ou si vous perdez du niveau. Vous pouvez gamifier un peu l'outil par exemple en 
+        comparant les résultats avec vos potes, votre famille,...
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

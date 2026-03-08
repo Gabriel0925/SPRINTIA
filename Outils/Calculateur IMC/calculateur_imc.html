@@ -76,44 +76,41 @@
         </div>
     </header>
 
-    <div class="conteneur-de-outil">
-        <h1>Calculateur IMC</h1>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
+    <h1>Calculateur IMC</h1>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
                 
-                <div class="conteneur-input">
-                    <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
-                    <div class="label-input">Taille (cm)</div>
-                </div>
+            <div class="conteneur-input">
+                <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
+                <div class="label-input">Taille (cm)</div>
+            </div>
                     
-                <div class="conteneur-input">
-                    <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                    <div class="label-input">Poids (kg)</div>
-                </div>
-
-                <button onclick="CalculIMC()">Calculer</button>
+            <div class="conteneur-input">
+                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                <div class="label-input">Poids (kg)</div>
             </div>
 
-            <div class="box-result">
-                <p class="score-imc">Votre IMC : <strong>00</strong></p>
-                <p class="zone-imc">
-                    Veuillez rentrer votre taille ainsi que votre poids pour avoir une interprétation.
-                </p>
-            </div>
+            <button onclick="CalculIMC()">Calculer</button>
         </div>
 
-        <h2>C'est quoi l'IMC ?</h2>
-        <p class="text">
-            L'IMC (indice de masse corporelle) sert à estimer la corpulence. Ce n'est pas un indicateur sportif, mais plutôt un repère de santé.
-        </p>
-        <h2>Le problème de l'IMC ?</h2>
-        <p class="text">
-            L'IMC estime la corpulence à partir de la taille et du poids, mais il ne connait pas votre masse musculaire ! Par exemple, vous pouvez
-            être en obésité sévère alors qu'en réalité vous allez juste à la salle et que vous êtes musclé. Mais ça, l'IMC ne le saura jamais.
-            C'est pourquoi, il faut savoir prendre du recul sur les résultats de cet indicateur.
-        </p>
-
+        <div class="box-result">
+            <p class="score-imc">Votre IMC : <strong>00</strong></p>
+            <p class="zone-imc">
+                Veuillez rentrer votre taille ainsi que votre poids pour avoir une interprétation.
+            </p>
+        </div>
     </div>
+
+    <h2>C'est quoi l'IMC ?</h2>
+    <p class="text">
+        L'IMC (indice de masse corporelle) sert à estimer la corpulence. Ce n'est pas un indicateur sportif, mais plutôt un repère de santé.
+    </p>
+    <h2>Le problème de l'IMC ?</h2>
+    <p class="text">
+        L'IMC estime la corpulence à partir de la taille et du poids, mais il ne connait pas votre masse musculaire ! Par exemple, vous pouvez
+        être en obésité sévère alors qu'en réalité vous allez juste à la salle et que vous êtes musclé. Mais ça, l'IMC ne le saura jamais.
+        C'est pourquoi, il faut savoir prendre du recul sur les résultats de cet indicateur.
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

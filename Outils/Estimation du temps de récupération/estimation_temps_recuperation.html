@@ -75,63 +75,60 @@
             </ul>
         </div>
     </header>
-
-    <div class="conteneur-de-outil">
-        <h1>Estimation du temps de récupération</h1>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
-                <select id="methode-user" onchange="ComboBox()" autocomplete="off">
-                    <option value="occasionnel">Sportif·ve occasionnel·le</option>
-                    <option value="regulier">Sportif·ve régulier·e</option>
-                    <option value="athlete">Athlète confirmé·e</option>
-                </select>
+    
+    <h1>Estimation du temps de récupération</h1>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
+            <select id="methode-user" onchange="ComboBox()" autocomplete="off">
+                <option value="occasionnel">Sportif·ve occasionnel·le</option>
+                <option value="regulier">Sportif·ve régulier·e</option>
+                <option value="athlete">Athlète confirmé·e</option>
+            </select>
+              
+            <div class="conteneur-input">
+                <input type="number" id="duree-entrainement-user" placeholder="Durée de l'entraî. (min)" autocomplete="off">
+                <div class="label-input">Durée de l'entraî. (min)</div>
+            </div>
                 
-                <div class="conteneur-input">
-                    <input type="number" id="duree-entrainement-user" placeholder="Durée de l'entraî. (min)" autocomplete="off">
-                    <div class="label-input">Durée de l'entraî. (min)</div>
+            <div class="slider-cont">
+                <div class="slider-name">RPE</div>
+                <div class="slider">
+                    <input type="range" min="1" max="10" value="1" autocomplete="off">
+                    <progress min="1" max="10" value="1"></progress>
                 </div>
-                
-                <div class="slider-cont">
-                    <div class="slider-name">RPE</div>
-                    <div class="slider">
-                        <input type="range" min="1" max="10" value="1" autocomplete="off">
-                        <progress min="1" max="10" value="1"></progress>
-                    </div>
-                    <div class="slider-value">1</div>
-                </div>
-
-                <button onclick="EstimationTempsRecuperation()">Estimer</button>
+                <div class="slider-value">1</div>
             </div>
 
-            <div class="box-result">
-                <p class="score-imc">Temps de récup. estimé</p>
-                <p class="temps-recup">
-                    00 h
-                </p>
-            </div>
+            <button onclick="EstimationTempsRecuperation()">Estimer</button>
         </div>
 
-        <h2>C'est quoi le RPE ?</h2>
-        <p class="text">
-            Le RPE (Rated Perceived Exertion) c'est une échelle permettant de mesurer l'effort perçu de votre entraînement.
-            <ul class="liste-fonctionnalites">
-                <li>RPE de 1 à 3 : Facile</li>
-                <li>RPE de 4 à 6 : Modéré</li>
-                <li>RPE de 7 à 8 : Difficile</li>
-                <li>RPE de 9 à 10 : Effort maximal</li>
-            </ul>
-        </p>
-        <h2>Comment se servir de cet algorithme ?</h2>
-        <p class="text">
-            Après un entraînement intense, léger,... Votre corps a besoin de récupérer, cet algorithme estime la durée de récupération nécessaire
-            pour que votre corps se répare complètement. Or, votre corps n'a pas besoin d'être tout le temps à 100%. C'est pour cela que cet algorithme
-            donne un temps de récupération avant votre prochain gros entraînement.
-            <br><br>
-            Par exemple, si l'algorithme vous suggère 54h de récupération, ça veut dire qu'il ne faudrait pas faire de gros entraînements avant 54h.
-            Néanmoins, vous pouvez totalement faire un entraînement léger.
-        </p>
-
+        <div class="box-result">
+            <p class="score-imc">Temps de récup. estimé</p>
+            <p class="temps-recup">
+                00 h
+            </p>
+        </div>
     </div>
+
+    <h2>C'est quoi le RPE ?</h2>
+    <p class="text">
+        Le RPE (Rated Perceived Exertion) c'est une échelle permettant de mesurer l'effort perçu de votre entraînement.
+    </p>
+    <ul class="liste-fonctionnalites">
+        <li>RPE de 1 à 3 : Facile</li>
+        <li>RPE de 4 à 6 : Modéré</li>
+        <li>RPE de 7 à 8 : Difficile</li>
+        <li>RPE de 9 à 10 : Effort maximal</li>
+    </ul>
+    <h2>Comment se servir de cet algorithme ?</h2>
+    <p class="text">
+        Après un entraînement intense, léger,... Votre corps a besoin de récupérer, cet algorithme estime la durée de récupération nécessaire
+        pour que votre corps se répare complètement. Or, votre corps n'a pas besoin d'être tout le temps à 100%. C'est pour cela que cet algorithme
+        donne un temps de récupération avant votre prochain gros entraînement.
+        <br><br>
+        Par exemple, si l'algorithme vous suggère 54h de récupération, ça veut dire qu'il ne faudrait pas faire de gros entraînements avant 54h.
+        Néanmoins, vous pouvez totalement faire un entraînement léger.
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

@@ -75,63 +75,60 @@
             </ul>
         </div>
     </header>
-
-    <div class="conteneur-de-outil">
-        <h1>Estimation VMA</h1>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
-                <select id="test-user" onchange="RemplirChamps()" autocomplete="off">
-                        <option value="demi-cooper">Test : Demi-Cooper</option>
-                        <option value="cooper">Test : Cooper</option>
-                        <option value="luc-leger">Test : Luc léger</option>
-                        <option value="course-reference">Course type (moins précis)</option>
-                </select>
-                <div class="cote-cote">
-                    <div class="conteneur-input">
-                        <input type="number" id="distance-user" class="small" placeholder="Distance (km)" autocomplete="off">
-                        <div class="label-input">Distance (km)</div>
-                    </div>
-                    
-                    <div class="conteneur-input">
-                        <input type="number" id="duree-user" class="small" placeholder="Durée (min)" autocomplete="off">
-                        <div class="label-input">Durée (min)</div>
-                    </div>
+    
+    <h1>Estimation VMA</h1>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
+            <select id="test-user" onchange="RemplirChamps()" autocomplete="off">
+                    <option value="demi-cooper">Test : Demi-Cooper</option>
+                    <option value="cooper">Test : Cooper</option>
+                    <option value="luc-leger">Test : Luc léger</option>
+                    <option value="course-reference">Course type (moins précis)</option>
+            </select>
+            <div class="cote-cote">
+                <div class="conteneur-input">
+                    <input type="number" id="distance-user" class="small" placeholder="Distance (km)" autocomplete="off">
+                    <div class="label-input">Distance (km)</div>
                 </div>
-
-                <button onclick="EstimationVMA()">Estimer</button>
+                    
+                <div class="conteneur-input">
+                    <input type="number" id="duree-user" class="small" placeholder="Durée (min)" autocomplete="off">
+                    <div class="label-input">Durée (min)</div>
+                </div>
             </div>
 
-            <div class="box-result">
-                <p class="score-imc">VMA estimée</p>
-                <p class="temps-recup">
-                    0 km/h
-                </p>
-            </div>
+            <button onclick="EstimationVMA()">Estimer</button>
         </div>
 
-        <h2>C'est quoi la VMA ?</h2>
-        <p class="text">
-            La VMA (vitesse maximale aérobie) est la vitesse de course à laquelle votre corps atteint sa consommation maximale d'oxygène.
-            C'est un indicateur clé pour les coureurs·es, il permet de définir des zones de vitesse/allure pour varier vos entraînements.
-            Réévaluez votre VMA tous les 2-3 mois pour ajuster vos allures d'entraînement et voir si vous avez progressé. Pour calculer vos zones
-            de vitesse je vous renvoie
-            <a class="lien" href="../Zones de vitesse/zones_vitesse.html">ici</a>.
-        </p>
-
-        <h2>Comment se servir de la VMA ?</h2>
-        <p class="text">
-            Premièrement, la VMA sert à définir vos allures d'entraînement parce qu'on ne court pas toujours à 100% de sa VMA mais pour en savoir
-            plus à ce sujet je vous renvoie à
-            <a class="lien" href="../Zones de vitesse/zones_vitesse.html">l'outil dédié</a>.
-        </p>
-        <p class="text">
-            Deuxièmement, votre VMA donne une indication purement théorique de votre potentiel sur une course (à condition d'avoir 
-            l'endurance nécessaire).
-            <br>
-            Pour finir, la VMA permet d'évaluer votre état de forme et votre progression au cours du temps.
-        </p>
-
+        <div class="box-result">
+            <p class="score-imc">VMA estimée</p>
+            <p class="temps-recup">
+                0 km/h
+            </p>
+        </div>
     </div>
+
+    <h2>C'est quoi la VMA ?</h2>
+    <p class="text">
+        La VMA (vitesse maximale aérobie) est la vitesse de course à laquelle votre corps atteint sa consommation maximale d'oxygène.
+        C'est un indicateur clé pour les coureurs·es, il permet de définir des zones de vitesse/allure pour varier vos entraînements.
+        Réévaluez votre VMA tous les 2-3 mois pour ajuster vos allures d'entraînement et voir si vous avez progressé. Pour calculer vos zones
+        de vitesse je vous renvoie
+        <a class="lien" href="../Zones de vitesse/zones_vitesse.html">ici</a>.
+    </p>
+
+    <h2>Comment se servir de la VMA ?</h2>
+    <p class="text">
+        Premièrement, la VMA sert à définir vos allures d'entraînement parce qu'on ne court pas toujours à 100% de sa VMA mais pour en savoir
+        plus à ce sujet je vous renvoie à
+        <a class="lien" href="../Zones de vitesse/zones_vitesse.html">l'outil dédié</a>.
+    </p>
+    <p class="text">
+        Deuxièmement, votre VMA donne une indication purement théorique de votre potentiel sur une course (à condition d'avoir 
+        l'endurance nécessaire).
+        <br>
+        Pour finir, la VMA permet d'évaluer votre état de forme et votre progression au cours du temps.
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

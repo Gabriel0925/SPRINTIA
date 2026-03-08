@@ -75,53 +75,50 @@
             </ul>
         </div>
     </header>
-
-    <div class="conteneur-de-outil">
-        <h1>Estimation VO₂max</h1>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
-                <select id="profil-user" onchange="ComboBoxVO2max()" autocomplete="off">
-                        <option value="homme">Genre : Homme</option>
-                        <option value="femme">Genre : Femme</option>
-                </select>
-                <div class="cote-cote">
-                    <div class="conteneur-input">
-                        <input type="number" id="age-user" class="small" placeholder="Âge" autocomplete="off">
-                        <div class="label-input">Âge</div>
-                    </div>
-                    
-                    <div class="conteneur-input">
-                        <input type="number" id="vma-user" class="small" placeholder="VMA (km/h)" autocomplete="off">
-                        <div class="label-input">VMA (km/h)</div>
-                    </div>
+    
+    <h1>Estimation VO₂max</h1>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
+            <select id="profil-user" onchange="ComboBoxVO2max()" autocomplete="off">
+                    <option value="homme">Genre : Homme</option>
+                    <option value="femme">Genre : Femme</option>
+            </select>
+            <div class="cote-cote">
+                <div class="conteneur-input">
+                    <input type="number" id="age-user" class="small" placeholder="Âge" autocomplete="off">
+                    <div class="label-input">Âge</div>
                 </div>
-
-                <button onclick="CalculVO2max()">Estimer</button>
+                    
+                <div class="conteneur-input">
+                    <input type="number" id="vma-user" class="small" placeholder="VMA (km/h)" autocomplete="off">
+                    <div class="label-input">VMA (km/h)</div>
+                </div>
             </div>
 
-            <div class="box-result">
-                <p class="score-imc">VO₂max estimé : <strong>0,0</strong></p>
-                <p class="zone-imc">
-                    Veuillez rentrer votre genre, âge ainsi que votre VMA pour avoir une interprétation.
-                </p>
-            </div>
+            <button onclick="CalculVO2max()">Estimer</button>
         </div>
 
-        <h2>Le VO₂max c'est quoi ?</h2>
-        <p class="text">
-            Le VO₂max représente le volume maximal d'oxygène que votre corps peut utiliser pendant un effort intense.
-        </p>
-        <h2>Comment s'en servir ?</h2>
-        <p class="text">
-            Le VO₂max sert majoritairement à évaluer votre niveau de forme. Vous pouvez l'utiliser pour voir si vos entraînements portent leurs fruits.
-        </p>
-        <h2>Comment connaître votre VMA ?</h2>
-        <p class="text">
-            Vous ne connaissez pas votre VMA ? Ce n'est pas très compliqué à évaluer, pour cela je vous renvoie vers l'outil dédié : 
-            <a href="../Estimation VMA/estimation_vma.html" class="lien">Estimation VMA</a>
-        </p>
-
+        <div class="box-result">
+            <p class="score-imc">VO₂max estimé : <strong>0,0</strong></p>
+            <p class="zone-imc">
+                Veuillez rentrer votre genre, âge ainsi que votre VMA pour avoir une interprétation.
+            </p>
+        </div>
     </div>
+
+    <h2>Le VO₂max c'est quoi ?</h2>
+    <p class="text">
+        Le VO₂max représente le volume maximal d'oxygène que votre corps peut utiliser pendant un effort intense.
+    </p>
+    <h2>Comment s'en servir ?</h2>
+    <p class="text">
+        Le VO₂max sert majoritairement à évaluer votre niveau de forme. Vous pouvez l'utiliser pour voir si vos entraînements portent leurs fruits.
+    </p>
+    <h2>Comment connaître votre VMA ?</h2>
+    <p class="text">
+        Vous ne connaissez pas votre VMA ? Ce n'est pas très compliqué à évaluer, pour cela je vous renvoie vers l'outil dédié : 
+        <a href="../Estimation VMA/estimation_vma.html" class="lien">Estimation VMA</a>
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">

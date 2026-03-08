@@ -76,69 +76,65 @@
             </ul>
         </div>
     </header>
-
     
-        <h1 id="title-h1">JRM Coach</h1>
-        <p class="text">
-            Créez votre propre coach : choisissez son nom, son style et même son avatar. 
-            Votre coach, à votre image ! Votre coach vous tutoiera pour créer une meilleure proximité entre vous et le coach.
-        </p>
-        <div class="conteneur-ensemble">
-            <div class="conteneur-champs-outil">
-                <div class="conteneur-input">
-                    <input type="text" id="nom-coach" oninput="MajName(value)" placeholder="Nom" autocomplete="off" maxlength="20">
-                    <div class="label-input">Nom</div>
-                </div>
-
-                <select id="style-coach" onchange="ChangeStyle(value)" autocomplete="off">
-                        <option value="Bienveillant">Style : Bienveillant</option>
-                        <option value="Strict-Motivant">Style : Strict & Motivant</option>
-                        <option value="Copain">Style : Copain</option>
-                        <option value="Go-muscu">Style : Go muscu</option>
-                </select>
-                <select id="avatar-coach" onchange="ChangeAvatar(value)" autocomplete="off">
-                        <option value="">Avatar : Rien</option>
-                        <option value="👨">Avatar : 👨</option>
-                        <option value="👩">Avatar : 👩</option> 
-                        <option value="🥸">Avatar : 🥸</option>
-                        <option value="🤠">Avatar : 🤠</option>
-                        <option value="👴">Avatar : 👴</option>
-                        <option value="👵">Avatar : 👵</option>
-                        <option value="🤡">Avatar : 🤡</option>
-                        <option value="🤖">Avatar : 🤖</option>
-                        <option value="🥷">Avatar : 🥷</option>
-                        <option value="🏃">Avatar : 🏃</option>
-                        <option value="🚴">Avatar : 🚴</option>
-                        <option value="🏋️">Avatar : 🏋️</option>
-                        <option value="👻">Avatar : 👻</option>
-                        <option value="🦆">Avatar : 🦆</option>
-                        <option value="🦍">Avatar : 🦍</option>
-                        <option value="🦐">Avatar : 🦐</option>
-                        <option value="😺">Avatar : 😺</option>
-                        <option value="🐵">Avatar : 🐵</option>
-                        <option value="🐻">Avatar : 🐻</option>
-                </select>
-
-                <button onclick="SauvegardePreference()" id="bouton-save">Sauvegarder</button>
+    <h1 id="title-h1">JRM Coach</h1>
+    <p class="text">
+        Créez votre propre coach : choisissez son nom, son style et même son avatar. 
+        Votre coach, à votre image ! Votre coach vous tutoiera pour créer une meilleure proximité entre vous et le coach.
+    </p>
+    <div class="conteneur-ensemble">
+        <div class="conteneur-champs-outil">
+            <div class="conteneur-input">
+                <input type="text" id="nom-coach" oninput="MajName(value)" placeholder="Nom" autocomplete="off" maxlength="20">
+                <div class="label-input">Nom</div>
             </div>
 
-            <div class="box-result jrm-coach">
-                <p class="score-imc" id="NomCoach">JRM Coach :</p>
-                <p class="zone-imc" id="JRM-coach">
-                    Chargement...
-                </p> 
-            </div>
+            <select id="style-coach" onchange="ChangeStyle(value)" autocomplete="off">
+                <option value="Bienveillant">Style : Bienveillant</option>
+                <option value="Strict-Motivant">Style : Strict & Motivant</option>
+                <option value="Copain">Style : Copain</option>
+                <option value="Go-muscu">Style : Go muscu</option>
+            </select>
+            <select id="avatar-coach" onchange="ChangeAvatar(value)" autocomplete="off">
+                <option value="">Avatar : Rien</option>
+                <option value="👨">Avatar : 👨</option>
+                <option value="👩">Avatar : 👩</option> 
+                <option value="🥸">Avatar : 🥸</option>
+                <option value="🤠">Avatar : 🤠</option>
+                <option value="👴">Avatar : 👴</option>
+                <option value="👵">Avatar : 👵</option>
+                <option value="🤡">Avatar : 🤡</option>
+                <option value="🤖">Avatar : 🤖</option>
+                <option value="🥷">Avatar : 🥷</option>
+                <option value="🏃">Avatar : 🏃</option>
+                <option value="🚴">Avatar : 🚴</option>
+                <option value="🏋️">Avatar : 🏋️</option>
+                <option value="👻">Avatar : 👻</option>
+                <option value="🦆">Avatar : 🦆</option>
+                <option value="🦍">Avatar : 🦍</option>
+                <option value="🦐">Avatar : 🦐</option>
+                <option value="😺">Avatar : 😺</option>
+                <option value="🐵">Avatar : 🐵</option>
+                <option value="🐻">Avatar : 🐻</option>
+            </select>
 
+            <button onclick="SauvegardePreference()" id="bouton-save">Sauvegarder</button>
         </div>
 
-        
-        <p class="text">
-             Attention, en réinitialisant votre coach, le coach par défaut sera rétabli.
-        </p>
-        <div class="conteneur-centrage-marge">
-            <button id="reinitialiser" onclick="Reinitialisation()">Réinitialiser votre coach</button>
+        <div class="box-result jrm-coach">
+            <p class="score-imc" id="NomCoach">JRM Coach :</p>
+            <p class="zone-imc" id="JRM-coach">
+                Chargement...
+            </p> 
         </div>
-        
+
+    </div>
+
+    <p class="text">
+        Attention, en réinitialisant votre coach, le coach par défaut sera rétabli.
+    </p>
+    <div class="conteneur-centrage-marge">
+        <button id="reinitialiser" onclick="Reinitialisation()">Réinitialiser votre coach</button>
     </div>
     
     <footer>

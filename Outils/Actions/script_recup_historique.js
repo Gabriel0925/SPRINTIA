@@ -42,37 +42,13 @@ async function Init() {
     return
 }
 
-function ReturnDate(DateWorkout) {
-    let DateEuropeen = ""
-
-    DateWorkout = DateWorkout.split("-")
-    // Inversion de la date de "2026-01-12" à "12-01-2026"
-    DateEuropeen = DateWorkout[2] + "-" + DateWorkout[1] + "-" + DateWorkout[0]
-    return DateEuropeen
-}
-
-function PassageHeure(minutes) {
-    let Heure = Math.floor(minutes/60) // Arrondi à l'entier inférieur
-    let MinutesRestante = Math.floor(minutes-60*Heure)
-    let SecondeRestante = Math.floor((minutes- (Heure*60) -MinutesRestante)*60+0.001) // pr obtenir le reste
-
-    // Initialisation
-    let Result = ""
-    if (Heure < 1) { // Si l'heure est inférieur à 1 on affiche que les minutes pour ne pas afficher 0h 23min
-        Result = MinutesRestante.toString().padStart(2, "0") + "m " + SecondeRestante.toString().padStart(2, "0") + "s"
-    } else { // Sinon on affiche tous
-        Result = Heure.toString().padStart(2, "0") + "h " + MinutesRestante.toString().padStart(2, "0") + "m " + SecondeRestante.toString().padStart(2, "0") + "s"
-    }
-            
-    return Result
-}
-
 // init pour le logo dynamique
 let Timer1 = 0
 let Timer2 = 0
 
-function HTMLCard(CardWorkout, workout, DateEuropeen, DureeFormatee) {
-    let StructureHTML = `          
+function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
+    let StructureHTML = `        
+    <a href="entrainement.html?workout=${workout.id}">  
         <div class="data-workout-column">
             <p class="name-workout">
                 ${workout.nom}
@@ -86,7 +62,7 @@ function HTMLCard(CardWorkout, workout, DateEuropeen, DureeFormatee) {
         </div>
         <div class="data-workout-paire">
             <p class="duree-workout">
-                <strong>${DureeFormatee}</strong>
+                <strong>${dureeWorkout}</strong>
             </p>
             <p class="rpe-workout">
                 RPE : <strong>${workout.rpe}</strong>
@@ -115,65 +91,9 @@ function HTMLCard(CardWorkout, workout, DateEuropeen, DureeFormatee) {
         `
     }
 
-    StructureHTML += `
-        <div class="action-button-card-workout">
-            <button>
-                <i class="fs-icon_modifier"></i>
-                Modifier
-            </button>
-            <button>
-                <i class="fs-icon_supprimer"></i>
-                Supprimer
-            </button>
-        </div>
-    `
+    StructureHTML += `</a>`
 
     CardWorkout.innerHTML = StructureHTML 
-
-    let BoutonSupprimer = CardWorkout.querySelector(".fs-icon_supprimer").parentElement // parent element pour ne pas prendre que l'icone
-    let BoutonModifier = CardWorkout.querySelector(".fs-icon_modifier").parentElement 
-                
-    // Ajout de la logique pour la suppresion
-    BoutonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
-       // Demande de confirmation avant
-        if (confirm(`Supprimer l'entraînement "${workout.nom}" ?`)) {
-            await db.entrainement.delete(workout.id) // supprimer la data de la bdd
-            CardWorkout.remove() // supprimer la ligne
-
-            // timeout remis a 0 (suppresion plutot)
-            clearTimeout(Timer1)
-            clearTimeout(Timer2)
-            document.getElementById("a-logo").classList.remove("return", "pin-message")
-            
-            // petite récompense pour le user
-            document.getElementById("a-logo").classList.add("pin-message")
-
-            document.getElementById("a-logo").textContent = "Supprimé 🗑️";
-
-            Timer1 = setTimeout(() => { 
-                document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
-                document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
-            }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
-
-            Timer2 = setTimeout(() => {
-                // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
-                document.getElementById("a-logo").classList.remove("return")
-                document.getElementById("a-logo").classList.remove("pin-message")
-            }, 3100) // durée choisis à la main
-        }
-        
-        const NbCardStatut = document.querySelectorAll(".cards-history-workout")
-        if (NbCardStatut.length == 0) { // si il n'y a pas de card alors on remet le message comme quoi il faut ajouter des datas et on enleve le bouton afficher plus
-            document.getElementById("text-informatif").textContent = "Chargement..." // on précise que la page va se recharger par la suite
-            document.getElementById("text-informatif").style.display = "block"
-            document.getElementById("button_afficher_plus").style.display = "none"
-            location.reload()
-        }
-    })
-
-    BoutonModifier.addEventListener("click", async () => { // Ajout d'une "action" au bouton edit
-        window.location.href = `ajouter_entraînement.html?edit=${workout.id}` // mettre un parametre dans l'URL
-    })
 
     let CardWorkoutHTML = CardWorkout
 
@@ -215,10 +135,10 @@ async function AfficherData() {
         CardWorkout.classList.add("cards-history-workout")
 
         // Inversion de la date de "2026-01-12" à "12-01-2026"
-        let DateEuropeen = ReturnDate(workout.date)
-        let DureeFormatee = PassageHeure(workout.duree)
+        let DateEuropeen = formatEuropeenDate(workout.date)
+        let dureeWorkout = dureeFormatee(workout.duree, "null") // on exige aucun format
 
-        let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, DureeFormatee)
+        let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
         ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
     });
 

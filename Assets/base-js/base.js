@@ -1,9 +1,10 @@
+// --- Burger menu ---
 // Pour gérer l'ouverture/fermeture du menu hamburger
 const burgerMenuButton = document.querySelector('.burger-menu-button')
 const burgerMenuButtonIcon = document.querySelector('.burger-menu-button i')
 const burgerMenu = document.querySelector('.burger-menu')
 
-burgerMenuButton.onclick = function() {
+burgerMenuButton.onclick = function () {
     burgerMenu.classList.toggle('open')
     const isOpen = burgerMenu.classList.contains('open')
     burgerMenuButtonIcon.classList = isOpen ? 'fs-icon_fermer' : 'fs-icon_menu'
@@ -24,8 +25,31 @@ window.addEventListener("scroll", () => {
     burgerMenu.classList.remove("open")
     burgerMenuButtonIcon.classList.add("fs-icon_menu")  
 })
+// --- Fin burger menu ---
 
-// Pr gérer le BFCache
+
+
+// --- Menu plus ---
+const menuButtonMore = document.querySelector(".menu-button-more")
+window.addEventListener("click", (event) => {
+    if (event.target.id == "button-more") {
+        const menuButtonMore = document.querySelector(".menu-button-more")
+        menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
+
+        const isOpenMenuMore = menuButtonMore.classList.contains('open')
+        event.target.classList = isOpenMenuMore ? 'fs-icon_fermer' : 'fs-icon_plus'
+    }
+})
+window.addEventListener("scroll", () => {
+    const menuButtonMore = document.querySelector(".menu-button-more")
+    // on referme le menu plus
+    menuButtonMore.classList.remove("open")
+})
+// --- Fin menu plus ---
+
+
+
+// --- Pr gérer le BFCache ---
 window.addEventListener("pageshow", (event) => {
     // Pour contrer le BFCache parce qu'il mettait en cache mes anciennes pages pour éviter de les recharger mais ça causait probleme pour les thèmes
     if (event.persisted) { // event.persisted = quand la page est dans le cache
@@ -35,7 +59,8 @@ window.addEventListener("pageshow", (event) => {
 });
 
 
-// Pour la mise à jour du local storage
+
+// --- Mise à jour local storage ---
 function majLocalStorage(versionStockee) {
     // migration de 4.0.0 à 4.0.1
     if (versionStockee == "4.0.0") {
@@ -91,3 +116,38 @@ let versionStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
 if (versionStockee != versionActuelle) {
     majLocalStorage(versionStockee)
 }
+// --- Fin mise à jour local storage ---
+
+
+
+// --- Pour passer le format de la date en Européen ---
+function formatEuropeenDate(dateWorkout) {
+    let dateEuropeen = ""
+
+    dateWorkout = dateWorkout.split("-")
+    // Inversion de la date de "2026-01-12" à "12-01-2026"
+    dateEuropeen = dateWorkout[2] + "-" + dateWorkout[1] + "-" + dateWorkout[0]
+    return dateEuropeen
+}
+// --- Fin du passage au format de la date en Européen ---
+
+
+
+// --- Pour passer la durée (min) au format 00h 00m 00s ou 00m 00s ---
+function dureeFormatee(minutes, format) {
+    let heure = Math.floor(minutes/60) // Arrondi à l'entier inférieur
+    let minutesRestante = Math.floor(minutes-60*heure)
+    let secondeRestante = Math.floor((minutes- (heure*60) -minutesRestante)*60+0.001) // pr obtenir le reste
+
+    // Initialisation
+    let result = ""
+    // Si l'heure est inférieur à 1 on affiche mm:ss pas besoin d'afficher hh:mm:ss
+    if (heure < 1 && format != "hh:mm:ss") {  // si le parametre 'format' indique hh:mm:ss alors on va dans le else (pour la modification d'entraînement)
+        result = minutesRestante.toString().padStart(2, "0") + ":" + secondeRestante.toString().padStart(2, "0")
+    } else { // Sinon on affiche tous (hh:mm:ss)
+        result = heure.toString().padStart(2, "0") + ":" + minutesRestante.toString().padStart(2, "0") + ":" + secondeRestante.toString().padStart(2, "0")
+    }
+            
+    return result
+}
+// --- Fin du passage de la durée (min) au format 00h 00m 00s ou 00m 00s ---

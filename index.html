@@ -192,18 +192,9 @@
 
     <!-- Pour les 3 derniers entrainements -->
     <script>
-        function ReturnDate(DateWorkout) {
-            let DateEuropeen = ""
-
-            DateWorkout = DateWorkout.split("-")
-            // Inversion de la date de "2026-01-12" à "12-01-2026"
-            DateEuropeen = DateWorkout[2] + "-" + DateWorkout[1] + "-" + DateWorkout[0]
-            return DateEuropeen
-        }
-
-        function HTMLCard(CardWorkout, NameWorkout, SportWorkout, DateWorkout, ChargeWorkout) {
+        function HTMLCard(CardWorkout, idWorkout, NameWorkout, SportWorkout, DateWorkout, ChargeWorkout) {
             let StructureHTML = `
-                <a href="Outils/Actions/historique_entrainement.html">
+                <a href="Outils/Actions/entrainement.html?workout=${idWorkout}">
                     <div class="data-workout-column">
                         <p class="name-workout">
                             ${NameWorkout}
@@ -236,6 +227,7 @@
             })
 
             // on recup les datas necessaire
+            let TableauIdWorkout = HistoriqueDB.map(elementDB => elementDB.id).slice(0, 3) 
             let TableauNameWorkout = HistoriqueDB.map(elementDB => elementDB.nom).slice(0, 3) 
             let TableauSport = HistoriqueDB.map(elementDB => elementDB.sport).slice(0, 3)
             let TableauDateWorkout = HistoriqueDB.map(elementDB => elementDB.date).slice(0, 3)
@@ -250,14 +242,16 @@
                 // initialisation pour la boucle
                 let compteur = 0
                 let SportWorkout = 0
+                let idWorkout = 0
                 let DateWorkout = 0
                 let ChargeWorkout = 0
                 const ConteneurCardsWorkout = document.getElementById("liste-workouts") // recupération du conteneur des cards
 
                 TableauNameWorkout.forEach(NameWorkout => {
                     // maj des variables en fonction de l'entrainement
+                    idWorkout = TableauIdWorkout[compteur]
                     SportWorkout = TableauSport[compteur]
-                    DateWorkout = ReturnDate(TableauDateWorkout[compteur])
+                    DateWorkout = formatEuropeenDate(TableauDateWorkout[compteur])
                     ChargeWorkout = TableauChargeWorkout[compteur]
 
                     // on créer la card html
@@ -265,7 +259,7 @@
                     CardWorkout.classList.add("cards-history-workout")
                     CardWorkout.classList.add("home")
 
-                    let CardWorkoutHTML = HTMLCard(CardWorkout, NameWorkout, SportWorkout, DateWorkout, ChargeWorkout) // appelle a la fonction
+                    let CardWorkoutHTML = HTMLCard(CardWorkout, idWorkout, NameWorkout, SportWorkout, DateWorkout, ChargeWorkout) // appelle a la fonction
                     ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
 
                     compteur += 1 // incrementation

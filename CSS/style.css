@@ -552,7 +552,7 @@ header div.navbar ul.links {
     margin-top: var(--ESPACE_XS);
     margin-bottom: var(--ESPACE_M);
     box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
-    border-radius: var(--BORDER_NORMAL);
+    border-radius: 1.25rem;
 }
 header div.navbar div.burger-menu-button {
     font-size: var(--H0);
@@ -601,6 +601,8 @@ header div.navbar ul.links li a:active {
 }
 header div.navbar ul.links li a.actif {
     color: var(--COULEUR_ACCENT2);
+    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    border-radius: var(--BORDER_NORMAL);
 }
 
 
@@ -1001,6 +1003,15 @@ div.conteneur-cards-workout div.cards-history-workout {
 
     transition: all ease-out var(--DUREE_TRANSITION);
 }
+@media (hover: hover) and (pointer: fine) {
+    div.conteneur-cards-workout div.cards-history-workout:hover {
+        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    }
+}
+div.conteneur-cards-workout div.cards-history-workout:active {
+    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    transform: scale(0.95);
+}
 
 /* pour adapter légèrement les cards et les animations des cards de derniers entraînement sur la page d'accueil */
 div.conteneur-cards-workout.home { 
@@ -1121,9 +1132,44 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
     margin-right: var(--ESPACE_XXS);
 }
 /* fin card workout */
+
+/* --- Pour le détail de l'entraînement --- */
+p.data-essentiel {
+    color: var(--COULEUR_TEXT_SECONDAIRE);
+}
+p.data-essentiel strong{
+    color: var(--COULEUR_TEXT_PRINCIPAL);
+}
+div.conteneur-cube{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: var(--ESPACE_M);
+    margin-top: var(--ESPACE_M);
+}
+div.conteneur-cube div.cube-data {
+    border-top: 2px solid var(--COULEUR_BACKGROUND_CARD_HOVER);
+    padding: var(--ESPACE_XXS);
+    min-width: 150px;
+    flex: 1;
+}
+div.conteneur-cube div.cube-data p.entete{    
+    font-size: var(--P_SMALL);
+    color: var(--COULEUR_TEXT_SECONDAIRE);
+}
+div.conteneur-cube div.cube-data p.data{    
+    font-size: var(--H3);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    text-align: left;
+    color: var(--COULEUR_TEXT_PRINCIPAL);
+}
+
+
+
 div.conteneur-option {
     display: flex;
     align-items: center;
+    position: relative;
 }
 div.conteneur-option a {
     margin-left: auto;
@@ -1138,6 +1184,7 @@ div.conteneur-option h1 {
 }
 div.conteneur-option i {
     display: block;
+    margin-left: auto;
     background-color: var(--COULEUR_BACKGROUND_CARD);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     padding: var(--ESPACE_XS);
@@ -1156,6 +1203,46 @@ div.conteneur-option i:active {
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
+
+/* --- Pour le menu plus --- */
+div.menu-button-more {
+    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    width: 200px;
+    position: absolute;
+    right: 0;
+    margin-top: var(--ESPACE_S);
+    margin-right: var(--ESPACE_S);
+    padding: var(--ESPACE_XS);
+    border-radius: var(--BORDER_BIG);
+
+    overflow: hidden;
+    transform: translate(77px, -64px) scale(0);
+    transition: all ease-out 0.15s;
+}
+div.menu-button-more.open {
+    transform: translate(0) scale(1);
+    overflow: visible;
+    background-color: var(--COULEUR_BACKGROUND_CARD);
+    transition: all ease-out 0.15s;
+}
+div.menu-button-more li {
+    border-radius: var(--BORDER_NORMAL);
+    padding: var(--ESPACE_XS);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    transition: all ease-out var(--DUREE_TRANSITION);
+    cursor: pointer;
+}
+@media (hover: hover) and (pointer: fine) {
+    div.menu-button-more li:hover {
+        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    }
+}
+div.menu-button-more li:active{
+    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    transform: scale(0.95);
+}
+
+
 div.conteneur-option div.bouton-tool-bar {
     background-color: var(--COULEUR_ACCENT);
     display: flex;

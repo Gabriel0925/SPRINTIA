@@ -578,6 +578,7 @@ header div.navbar ul.links li a {
     font-size: var(--H3);
     width: 180px;
     margin: var(--ESPACE_XXS);
+    border-radius: var(--BORDER_NORMAL);
     padding: 9px 0px;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     transition: all ease-out var(--DUREE_TRANSITION);
@@ -593,11 +594,13 @@ header div.navbar ul.links li a i {
 @media (hover: hover) and (pointer: fine) {
     header div.navbar ul.links li a:hover {
         color: var(--COULEUR_ACCENT2);
+        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     }
 }
 header div.navbar ul.links li a:active {
     color: var(--COULEUR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
+    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
 }
 header div.navbar ul.links li a.actif {
     color: var(--COULEUR_ACCENT2);
@@ -613,12 +616,13 @@ header .burger-menu {
     position: absolute;
     right: 0;
     width: 200px;
+    margin-right: var(--ESPACE_XS);
     max-height: 0px;    
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     border-radius: 1.25rem;
     overflow: hidden; 
 
-    transform: translateY(-20px) translateX(75px) scale(0.1, 0.4);
+    transform: translateY(-20px) translateX(82px) scale(0.1, 0.4);
     transition: all 0.15s ease-out;
 }
 header .burger-menu.open {
@@ -1010,7 +1014,7 @@ div.conteneur-cards-workout div.cards-history-workout {
 }
 div.conteneur-cards-workout div.cards-history-workout:active {
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    transform: scale(0.95);
+    transform: scale(var(--SCALE_SMALL));
 }
 
 /* pour adapter légèrement les cards et les animations des cards de derniers entraînement sur la page d'accueil */
@@ -1211,13 +1215,13 @@ div.menu-button-more {
     position: absolute;
     right: 0;
     margin-top: var(--ESPACE_S);
-    margin-right: var(--ESPACE_S);
+    margin-right: var(--ESPACE_M);
     padding: var(--ESPACE_XS);
     border-radius: var(--BORDER_BIG);
 
     overflow: hidden;
     opacity: 0;
-    transform: translate(77px, -100px) scale(0);
+    transform: translate(83px, -100px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-button-more.open {
@@ -1237,8 +1241,23 @@ div.menu-button-more li {
     40% { transform: translate(-20px, 10px) scale(0.75)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
-div.menu-button-more.open li {
+div.menu-button-more.open li:nth-child(1) {
     animation: rebond_icon_menu_open 0.4s ease-out;
+}
+div.menu-button-more.open li:nth-child(2) {
+    animation: rebond_icon_menu_open 0.43s ease-out;
+}
+div.menu-button-more.open li:nth-child(3) {
+    animation: rebond_icon_menu_open 0.47s ease-out;
+}
+div.menu-button-more.open li:nth-child(4) {
+    animation: rebond_icon_menu_open 0.51s ease-out;
+}
+div.menu-button-more.open li:nth-child(5) {
+    animation: rebond_icon_menu_open 0.55s ease-out;
+}
+div.menu-button-more.open li:nth-child(6) {
+    animation: rebond_icon_menu_open 0.59s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-button-more li:hover {
@@ -1247,7 +1266,7 @@ div.menu-button-more.open li {
 }
 div.menu-button-more li:active{
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    transform: scale(0.95);
+    transform: scale(var(--SCALE_NORMAL));
 }
 
 
@@ -1410,7 +1429,7 @@ div.conteneur-champs-outil input:not(:placeholder-shown) + .label-input {
     margin-left: 0;
     padding: var(--ESPACE_XXS);
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    border-radius: var(--BORDER_NORMAL);
+    border-radius: var(--BORDER_BIG);
     transform: translateY(-40px) scale(0.8);
     z-index: 1111;
 }

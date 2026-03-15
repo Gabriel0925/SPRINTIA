@@ -90,6 +90,11 @@ async function initialisation() {
             let buttonModifier = document.getElementById("button-modifier")
             let buttonSupprimer = document.getElementById("button-supprimer") 
 
+            let connectCSS = document.documentElement
+            let recupVar = getComputedStyle(connectCSS)
+            // on donne une couleur au bouton supprimer
+            buttonSupprimer.style.color = recupVar.getPropertyValue("--COULEUR_ACCENT")
+
             buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
                 // Demande de confirmation avant
                 if (confirm(`Supprimer l'entraînement "${dataWorkout.nom}" ?`)) {
@@ -104,7 +109,8 @@ async function initialisation() {
             })
             
         }
-    }else { // si il y a pas de parametres dans l'URL on renvoie vers l'historique pour éviter d'afficher une page vide
+    }
+else { // si il y a pas de parametres dans l'URL on renvoie vers l'historique pour éviter d'afficher une page vide
         location.href = "historique_entrainement.html"
     }
     return

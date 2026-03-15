@@ -41,32 +41,43 @@ async function VerificationParam() {
             // on change la variable globale
             IdEditWorkout = ID
             const WorkoutDB = await db.entrainement.get(ID) // la méthode .get permet de recup direct les datas de l'id coresspondant
-            // on commence par changer le H1 de la page
-            document.getElementById("title-page").textContent = "Modification de l'entraînement"
-            document.getElementById("coach-ajoute-entrainement").style.display = "none"
 
-            // remplissage des champs
-            document.getElementById("profil-sport").value = WorkoutDB.sport
-            document.getElementById("date-entrainement-user").value = WorkoutDB.date
-            document.getElementById("nom-entrainement-user").value = WorkoutDB.nom
-            document.getElementById("duree-entrainement-user").value = dureeFormatee(WorkoutDB.duree, "hh:mm:ss") // on exige le format "hh:mm:ss"
+            if (WorkoutDB) { // on vérifie si il y a des données au cas ou le user a supprimer son workout
+                // on commence par changer le H1 de la page
+                document.getElementById("title-page").textContent = "Modification de l'entraînement"
+                document.getElementById("coach-ajoute-entrainement").style.display = "none"
 
-            // remettre le RPE sur bonne position
-            document.querySelector(".slider input").value = WorkoutDB.rpe
-            document.querySelector(".slider progress").value = WorkoutDB.rpe
-            document.querySelector(".slider-value").textContent = WorkoutDB.rpe
+                // remplissage des champs
+                document.getElementById("profil-sport").value = WorkoutDB.sport
+                document.getElementById("date-entrainement-user").value = WorkoutDB.date
+                document.getElementById("nom-entrainement-user").value = WorkoutDB.nom
+                document.getElementById("duree-entrainement-user").value = dureeFormatee(WorkoutDB.duree, "hh:mm:ss") // on exige le format "hh:mm:ss"
 
-            // Remettre les champs adaptée au sport
-            SelectionSport(WorkoutDB.sport)
+                // remettre le RPE sur bonne position
+                document.querySelector(".slider input").value = WorkoutDB.rpe
+                document.querySelector(".slider progress").value = WorkoutDB.rpe
+                document.querySelector(".slider-value").textContent = WorkoutDB.rpe
 
-            // Remplissage des champs de sport particulier
-            if (WorkoutDB.distance) {
-                document.getElementById("distance-entrainement-user").value = WorkoutDB.distance.toFixed(2)
-                document.getElementById("denivele-entrainement-user").value = WorkoutDB.denivele
-            } else if (WorkoutDB.muscles_travailles) {
-                document.getElementById("muscle-entrainement-user").value = WorkoutDB.muscles_travailles
+                // Remettre les champs adaptée au sport
+                SelectionSport(WorkoutDB.sport)
+
+                // Remplissage des champs de sport particulier
+                if (WorkoutDB.distance) {
+                    document.getElementById("distance-entrainement-user").value = WorkoutDB.distance.toFixed(2)
+                    document.getElementById("denivele-entrainement-user").value = WorkoutDB.denivele
+                } else if (WorkoutDB.muscles_travailles) {
+                    document.getElementById("muscle-entrainement-user").value = WorkoutDB.muscles_travailles
+                }
+            } else {  // si il y a rien dans la bdd par rapport à l'id correspond alors on demarre le mode normal 
+                SelectionSport("Libre")
+                await JrmCoach()
+                await MessagePrevention()
             }
 
+        } else {
+            SelectionSport("Libre")
+            await JrmCoach()
+            await MessagePrevention()
         }
     } else {        
         SelectionSport("Libre")
@@ -436,6 +447,9 @@ async function RegistrationWorkout() {
     // Calcul Charge
     ChargeWorkout = Math.floor(DureeWorkoutUser*ValueRpeUser)
 
+    // pour savoir vers qu'elle page renvoyer
+    let editWorkout = false
+
     // Sauvegarde
     if (IdEditWorkout != null) {
         await db.entrainement.put({
@@ -450,6 +464,8 @@ async function RegistrationWorkout() {
             muscles_travailles: MusclesWorkoutUser,
             charge_entrainement: ChargeWorkout
         })
+
+        editWorkout = true
     }
     else {
         await db.entrainement.add({
@@ -470,8 +486,13 @@ async function RegistrationWorkout() {
     // Remise bouton etat normal
     BoutonSauvegarde.textContent = "Sauvegarder"
 
-    // Renvoie vers historique d'entraînement
-    window.location.href = "historique_entrainement.html?workoutregister" // on met un param dans l'URL
+    if (editWorkout == true) {
+        // Renvoie vers historique d'entraînement
+        window.location.href = `entrainement.html?workout=${IdEditWorkout}` // on met un param dans l'URL
+    } else {
+        // Renvoie vers historique d'entraînement
+        window.location.href = "historique_entrainement.html?workoutregister" // on met un param dans l'URL
+    }
 
     return
 }

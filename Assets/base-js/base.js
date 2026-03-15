@@ -13,11 +13,25 @@ burgerMenuButton.onclick = function () {
 window.onclick = function (event) { // on track les click sur la page complete
     let TrackClickBurgerMenuButton = burgerMenuButton.contains(event.target) // pour tracker si il y a un click sur le bouton si oui = true sinon = false
     let TrackClickBurgerMenuOpen = burgerMenu.contains(event.target)
+    let TrackClickButtonMore = document.getElementById("button-more")
     
-    if (TrackClickBurgerMenuButton == false && TrackClickBurgerMenuOpen == false) { // si tu as cliqué autre part que sur le bouton fermer ou sur/dans le burger-menu
+    // si dans la page il y a le bouton plus alors on regarde si cest sur lui qu'on a cliqué
+    if (TrackClickButtonMore) {
+        TrackClickButtonMore = TrackClickButtonMore.contains(event.target)
+    } else { // sinon on met la variable sur false pour pas que ça plante la fermeture du burger menu dans le if suivant
+        TrackClickButtonMore = false
+    }
+    
+    if (TrackClickBurgerMenuButton == false && TrackClickBurgerMenuOpen == false && TrackClickButtonMore == false) { // si tu as cliqué autre part que ses 3 conditions alors on referme le menu burger et le menu plus 
         // on referme le burgermenu
         burgerMenu.classList.remove("open")
         burgerMenuButtonIcon.classList.add("fs-icon_menu")
+        // pour le menu plus
+        const menuButtonMore = document.querySelector(".menu-button-more")
+        // on referme le menu plus
+        menuButtonMore.classList.remove("open")
+        // pout remettre l'icone plus
+        document.getElementById("button-more").classList.add("fs-icon_plus")
     }
 }
 window.addEventListener("scroll", () => {
@@ -44,6 +58,8 @@ window.addEventListener("scroll", () => {
     const menuButtonMore = document.querySelector(".menu-button-more")
     // on referme le menu plus
     menuButtonMore.classList.remove("open")
+        // pout remettre l'icone plus
+        document.getElementById("button-more").classList.add("fs-icon_plus")
 })
 // --- Fin menu plus ---
 

@@ -1206,7 +1206,7 @@ div.conteneur-option i:active {
 
 /* --- Pour le menu plus --- */
 div.menu-button-more {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COULEUR_BACKGROUND_CARD);
     width: 200px;
     position: absolute;
     right: 0;
@@ -1216,21 +1216,29 @@ div.menu-button-more {
     border-radius: var(--BORDER_BIG);
 
     overflow: hidden;
-    transform: translate(77px, -64px) scale(0);
+    opacity: 0;
+    transform: translate(77px, -100px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-button-more.open {
     transform: translate(0) scale(1);
-    overflow: visible;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    opacity:1;
     transition: all ease-out 0.15s;
 }
 div.menu-button-more li {
     border-radius: var(--BORDER_NORMAL);
     padding: var(--ESPACE_XS);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out 0.3s;
     cursor: pointer;
+}
+@keyframes rebond_icon_menu_open {
+    0% { transform: translate(20px, -10px) scale(1)}
+    40% { transform: translate(-20px, 10px) scale(0.75)}
+    100% { transform: translate(0px, 0px) scale(1)}
+}
+div.menu-button-more.open li {
+    animation: rebond_icon_menu_open 0.4s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-button-more li:hover {

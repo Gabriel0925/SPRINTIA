@@ -77,6 +77,11 @@ async function initialisation() {
 
             // recup des datas de l'entraînement
             let dataWorkout = await db.entrainement.get(idWorkout) // ça renvoie un dico avec toutes les datas date, durée,...
+            
+            if (dataWorkout == null) { // si il n'y a pas d'entrainement avec l'id dans l'URL alors on renvoie à la page historique dentrainement pour éviter d'afficher une page vide
+                location.href = "historique_entrainement.html"
+                return
+            }
 
             // ajout de la structure html
             afficherData(dataWorkout)
@@ -99,6 +104,8 @@ async function initialisation() {
             })
             
         }
+    }else { // si il y a pas de parametres dans l'URL on renvoie vers l'historique pour éviter d'afficher une page vide
+        location.href = "historique_entrainement.html"
     }
     return
 }

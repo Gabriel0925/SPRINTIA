@@ -1634,6 +1634,29 @@ div.conteneur-champs-outil select:focus {
     box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
 }
 
+/* Pour le bouton plus de datas dans ajouter un entraî */
+div.conteneur-button-plus-data {
+    margin: var(--ESPACE_XS);
+    border-radius: var(--BORDER_NORMAL);
+    border: 2px solid var(--COULEUR_ACCENT);
+    padding: var(--ESPACE_XS);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all ease-in-out var(--DUREE_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.conteneur-button-plus-data:hover {
+        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    }
+}
+div.conteneur-button-plus-data:active {
+    transform: scale(var(--SCALE_NORMAL));
+}
+div.conteneur-button-plus-data p.plus-data{
+    color: var(--COULEUR_ACCENT);
+}
+
 
 
 /* Pour outils Prédicteur de performance */

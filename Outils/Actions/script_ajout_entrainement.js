@@ -59,7 +59,7 @@ async function VerificationParam() {
                 document.querySelector(".slider-value").textContent = WorkoutDB.rpe
 
                 // Remettre les champs adaptée au sport
-                SelectionSport(WorkoutDB.sport)
+                //SelectionSport(WorkoutDB.sport)
 
                 // Remplissage des champs de sport particulier
                 if (WorkoutDB.distance) {
@@ -69,18 +69,18 @@ async function VerificationParam() {
                     document.getElementById("muscle-entrainement-user").value = WorkoutDB.muscles_travailles
                 }
             } else {  // si il y a rien dans la bdd par rapport à l'id correspond alors on demarre le mode normal 
-                SelectionSport("Libre")
+                //SelectionSport("Libre")
                 await JrmCoach()
                 await MessagePrevention()
             }
 
         } else {
-            SelectionSport("Libre")
+            //SelectionSport("Libre")
             await JrmCoach()
             await MessagePrevention()
         }
     } else {        
-        SelectionSport("Libre")
+        //SelectionSport("Libre")
         await JrmCoach()
         await MessagePrevention()
     }
@@ -88,30 +88,75 @@ async function VerificationParam() {
     return
 }
 
-function SelectionSport(value) { // Pr cacher les champs en fonction du sport choisi
-    // Recup des champs + label des champs
-    let DivCoteCote = document.getElementById("dynamique-div")
-    let ChampsMuscles = document.getElementById("muscle-entrainement-user")
-    let LabelMuscles = document.getElementById("label-invisible")
+const SportIdChamps = { // sport avec les id correspondant aux champs de datas spécifique aux sports
+    "Libre": [], 
+    "Libre avec distance": ["distance-entrainement-user"],
 
-    // Adaptation des champs en fonction du sport
-    if (value == "Libre") {
-        DivCoteCote.classList.add("invisible")
-        ChampsMuscles.style.display = "none"
-        LabelMuscles.style.display = "none"
+    "Course": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user", "nb-pas-entrainement-user"],
+    "Marche": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "nb-pas-entrainement-user"],
+    "Randonnée": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "allure-moy-entrainement-user", "nb-pas-entrainement-user"],
+    "Vélo": ["distance-entrainement-user", "denivele-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user"],
 
-    } else if (value == "Course" || value == "Vélo" || value == "Marche") {
-        DivCoteCote.classList.remove("invisible")
-        ChampsMuscles.style.display = "none"
-        LabelMuscles.style.display = "none"
+    "Badminton": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
+    "Tennis": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
+    "Tennis de table": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
 
-    } else if (value == "Musculation") {
-        DivCoteCote.classList.add("invisible")
-        ChampsMuscles.style.display = "block"
-        LabelMuscles.style.display = "block"
+    "Boxe": ["nb-coups-entrainement-user", "nb-combats-entrainement-user", "nb-victoires-entrainement-user", "nb-defaites-entrainement-user"],
+    "Judo": ["nb-combats-entrainement-user", "nb-victoires-entrainement-user", "nb-chutes-entrainement-user"],
+
+    "Basketball": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Football": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Handball": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Rugby": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Volley": ["nb-services-entrainement-user", "nb-smash-entrainement-user", "nb-sets-entrainement-user", "score-entrainement-user"],
+
+    "CrossFit": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-séries-entrainement-user", "poids-total-entrainement-user"],
+    "HIIT": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-séries-entrainement-user"],
+    "Musculation": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-séries-entrainement-user", "poids-total-entrainement-user"],
+    "Rameur d'intérieur": ["distance-entrainement-user", "coups-de-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
+
+    "Aviron": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
+    "Natation": ["distance-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
+    "Paddle": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
+
+    "Ski": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
+    "Ski de fond": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
+    "Snowboard": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
+
+    "Corde à sauter": ["nb-tours-entrainement-user", "cadence-moy-entrainement-user", "serie-max-entrainement-user"],
+    "Danse": ["style-danse-entrainement-user", "muscle-entrainement-user", "nb-pas-entrainement-user"],
+    "Escalade": ["voies-effectuees-entrainement-user", "difficulte-max-entrainement-user", "nb-chutes-entrainement-user"],
+}
+
+function dataSpecifique(sportChoisi) {
+    // on change le texte
+    let textButtonDataSpe = document.querySelector(".plus-data")
+    let typeDisplay = "block"
+
+    const tableauIdChampsSpecifique = SportIdChamps[sportChoisi]
+    
+    if (tableauIdChampsSpecifique.length > 0) {
+        if (textButtonDataSpe) {
+            if (textButtonDataSpe.textContent == "Plus de données") {
+                textButtonDataSpe.textContent = "Moins de données"
+            } else { // ça veut dire que le user a cliqué sur moins de data
+                textButtonDataSpe.textContent = "Plus de données"
+                typeDisplay = "none" // on cache les champs
+            }
+        }
+
+        tableauIdChampsSpecifique.forEach(element => {
+            let input = document.getElementById(element)
+            if (input) {
+                input.parentElement.style.display = typeDisplay
+                input.style.display = typeDisplay
+            }
+        });
+
+    } else {
+        alert("Ce sport n'a pas de données en plus.")
+        return
     }
-
-    return
 }
 
 function GenererNbAleatoire() {
@@ -497,6 +542,15 @@ async function RegistrationWorkout() {
     return
 }
 
+function initialisation() { // pour cacher tout les champs de datas spécifique
+    let inputAdvanced = document.querySelectorAll(".input-advanced") // on recup tout les input
+
+    inputAdvanced.forEach(element => {
+        element.style.display = 'none'
+    });
+}
+
 window.addEventListener("DOMContentLoaded", () => {
+    initialisation() // pour cacher tout les champs de datas spécifique
     VerificationParam()
 })

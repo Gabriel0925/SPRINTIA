@@ -62,10 +62,12 @@ window.addEventListener("click", (event) => {
 })
 window.addEventListener("scroll", () => {
     const menuButtonMore = document.querySelector(".menu-button-more")
-    // on referme le menu plus
-    menuButtonMore.classList.remove("open")
+    if (menuButtonMore) {
+        // on referme le menu plus
+        menuButtonMore.classList.remove("open")
         // pout remettre l'icone plus
         document.getElementById("button-more").classList.add("fs-icon_plus")
+    }
 })
 // --- Fin menu plus ---
 

@@ -89,7 +89,7 @@
         <div class="conteneur-champs-outil">
  
             <!--onchange="dataSpecifique(value)"-->
-            <select id="profil-sport" autocomplete="off">
+            <select id="profil-sport" onchange="cacherInput()" autocomplete="off">
                     <optgroup label="LIBRE">
                         <option value="Libre">Sport : Libre</option>
                         <option value="Libre avec distance">Sport : Libre avec distance</option>
@@ -176,13 +176,13 @@
 
             <div class="cote-cote">
                 <div class="conteneur-input">
-                    <input type="number" id="fc-moy-entrainement-user" class="small" placeholder="FC moy." autocomplete="off">
-                    <div class="label-input">FC moy.</div>
+                    <input type="number" id="fc-moy-entrainement-user" class="small" placeholder="FC moy. (bpm)" autocomplete="off">
+                    <div class="label-input">FC moy. (bpm)</div>
                 </div>
                     
                 <div class="conteneur-input">
-                    <input type="text" id="fc-max-entrainement-user" class="small" placeholder="FC max" autocomplete="off" maxlength="80">
-                    <div class="label-input">FC max</div> 
+                    <input type="number" id="fc-max-entrainement-user" class="small" placeholder="FC max. (bpm)" autocomplete="off">
+                    <div class="label-input">FC max. (bpm)</div> 
                 </div>
             </div>
 
@@ -203,22 +203,22 @@
                 <div class="label-input">Dénivelé (m)</div>
             </div>
             <div class="conteneur-input input-advanced">
-                <input type="number" id="altitude-max-entrainement-user" placeholder="Altitude max." autocomplete="off">
-                <div class="label-input">Altitude max.</div>
+                <input type="number" id="altitude-max-entrainement-user" placeholder="Altitude max. (m)" autocomplete="off">
+                <div class="label-input">Altitude max. (m)</div>
             </div>
 
             <!-- Vitesse -->
             <div class="conteneur-input input-advanced">
-                <input type="number" id="allure-moy-entrainement-user" placeholder="Allure moy." autocomplete="off">
-                <div class="label-input">Allure moy.</div>
+                <input type="text" id="allure-moy-entrainement-user" placeholder="Allure moy. (/km)" autocomplete="off" maxlength="5">
+                <div class="label-input">Allure moy. (/km)</div>
             </div>
             <div class="conteneur-input input-advanced">
-                <input type="number" id="vitesse-moy-entrainement-user" placeholder="Vitesse moy." autocomplete="off">
-                <div class="label-input">Vitesse moy.</div>
+                <input type="number" id="vitesse-moy-entrainement-user" placeholder="Vitesse moy. (km/h)" autocomplete="off">
+                <div class="label-input">Vitesse moy. (km/h)</div>
             </div>
             <div class="conteneur-input input-advanced">
-                <input type="number" id="vitesse-max-entrainement-user" placeholder="Vitesse max." autocomplete="off">
-                <div class="label-input">Vitesse max.</div>
+                <input type="number" id="vitesse-max-entrainement-user" placeholder="Vitesse max. (km/h)" autocomplete="off">
+                <div class="label-input">Vitesse max. (km/h)</div>
             </div>
 
             
@@ -254,8 +254,8 @@
                 <div class="label-input">Nombre de sets</div>
             </div>
             <div class="conteneur-input input-advanced">
-                <input type="number" id="vitesse-smash-entrainement-user" placeholder="Vitesse de smash" autocomplete="off">
-                <div class="label-input">Vitesse de smash</div>
+                <input type="number" id="vitesse-smash-entrainement-user" placeholder="Vitesse de smash (km/h)" autocomplete="off">
+                <div class="label-input">Vitesse de smash (km/h)</div>
             </div>
             <div class="conteneur-input input-advanced">
                 <input type="number" id="nb-points-entrainement-user" placeholder="Nombre total de points" autocomplete="off">
@@ -265,7 +265,7 @@
 
         <!-- Sport de collectifs -->
             <div class="conteneur-input input-advanced">
-                <input type="number" id="score-entrainement-user" placeholder="Score" autocomplete="off">
+                <input type="text" id="score-entrainement-user" placeholder="Score" autocomplete="off" maxlength="7">
                 <div class="label-input">Score</div>
             </div>
             <div class="conteneur-input input-advanced">
@@ -314,7 +314,7 @@
                 <div class="label-input">Nombre total de reps</div>
             </div>
             <div class="conteneur-input input-advanced">
-                <input type="number" id="nb-séries-entrainement-user" placeholder="Nombre total de séries" autocomplete="off">
+                <input type="number" id="nb-series-entrainement-user" placeholder="Nombre total de séries" autocomplete="off">
                 <div class="label-input">Nombre total de séries</div>
             </div>
             <div class="conteneur-input input-advanced">
@@ -338,16 +338,16 @@
                 <div class="label-input">Série max.</div>
             </div>
             <div class="conteneur-input input-advanced">
-                <input type="number" id="style-danse-entrainement-user" placeholder="Style de danse" autocomplete="off">
+                <input type="text" id="style-danse-entrainement-user" placeholder="Style de danse" autocomplete="off" maxlength="150">
                 <div class="label-input">Style de danse</div>
             </div>
 
             <div class="conteneur-input input-advanced">
-                <input type="number" id="voies-effectuees-entrainement-user" placeholder="Voies effectuées" autocomplete="off">
+                <input type="text" id="voies-effectuees-entrainement-user" placeholder="Voies effectuées" autocomplete="off" maxlength="150">
                 <div class="label-input">Voies effectuées</div>
             </div>
             <div class="conteneur-input input-advanced">
-                <input type="number" id="difficulte-max-entrainement-user" placeholder="Difficulté max." autocomplete="off">
+                <input type="text" id="difficulte-max-entrainement-user" placeholder="Difficulté max." autocomplete="off" maxlength="3">
                 <div class="label-input">Difficulté max.</div>
             </div>
                 

@@ -110,9 +110,9 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
     "Rugby": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
     "Volley": ["nb-services-entrainement-user", "nb-smash-entrainement-user", "nb-sets-entrainement-user", "score-entrainement-user"],
 
-    "CrossFit": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-séries-entrainement-user", "poids-total-entrainement-user"],
-    "HIIT": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-séries-entrainement-user"],
-    "Musculation": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-séries-entrainement-user", "poids-total-entrainement-user"],
+    "CrossFit": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
+    "HIIT": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user"],
+    "Musculation": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
     "Rameur d'intérieur": ["distance-entrainement-user", "coups-de-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
 
     "Aviron": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
@@ -129,31 +129,33 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
 }
 
 function dataSpecifique(sportChoisi) {
-    // on change le texte
+    // recup du texte de la div : 'Plus de données'
     let textButtonDataSpe = document.querySelector(".plus-data")
-    let typeDisplay = "block"
+    let typeDisplay = "block"// variable qui changerai en fonction de si les champs spécifique sont dépliés ou non
 
+    // recupération du tableau (tableau présent dans un dico) des id des input en fonction du sport
     const tableauIdChampsSpecifique = SportIdChamps[sportChoisi]
     
-    if (tableauIdChampsSpecifique.length > 0) {
+    if (tableauIdChampsSpecifique.length > 0) {// si le tableau nest pas vide
         if (textButtonDataSpe) {
+            // si le text de la div est "plus de données" alors on met "moins de données" et inversement
             if (textButtonDataSpe.textContent == "Plus de données") {
                 textButtonDataSpe.textContent = "Moins de données"
             } else { // ça veut dire que le user a cliqué sur moins de data
                 textButtonDataSpe.textContent = "Plus de données"
-                typeDisplay = "none" // on cache les champs
+                typeDisplay = "none" // on change le contenu de la variable pour pouvoir cacher les input
             }
         }
 
         tableauIdChampsSpecifique.forEach(element => {
             let input = document.getElementById(element)
             if (input) {
-                input.parentElement.style.display = typeDisplay
-                input.style.display = typeDisplay
+                // on prend le parent de l'input cest a dire le conteneur de linput
+                input.parentElement.style.display = typeDisplay // on le cache ou on l'affiche suivant laction du user
             }
         });
 
-    } else {
+    } else {// si le tableau est vide, on previent le user qu'il ny a pas de datas en plus a afficher 
         alert("Ce sport n'a pas de données en plus.")
         return
     }
@@ -542,15 +544,23 @@ async function RegistrationWorkout() {
     return
 }
 
-function initialisation() { // pour cacher tout les champs de datas spécifique
+function cacherInput() { // pour cacher tout les champs de datas spécifique
     let inputAdvanced = document.querySelectorAll(".input-advanced") // on recup tout les input
 
     inputAdvanced.forEach(element => {
-        element.style.display = 'none'
+        element.style.display = 'none'// on les mets en display none
     });
+    
+    let textButtonDataSpe = document.querySelector(".plus-data")
+    if (textButtonDataSpe) { 
+        if (textButtonDataSpe.textContent != "Plus de données") {
+            // on remet le text plus de données si ce nest pas deja le cas
+            textButtonDataSpe.textContent = "Plus de données"
+        }
+    }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    initialisation() // pour cacher tout les champs de datas spécifique
+    cacherInput() // pour cacher tout les champs de datas spécifique
     VerificationParam()
 })

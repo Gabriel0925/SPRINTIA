@@ -1,66 +1,114 @@
+const BddNomData = { // sport avec les id correspondant aux champs de datas spécifique aux sports
+    "id": "id",
+    "sport": "Sport",
+    "date": "Date",
+    "nom": "Nom",
+    "duree": "Durée",
+    "rpe": "RPE",
+    "fc_moy": "FC moyenne",
+    "fc_max": "FC maximum",
+    "distance": "Distance",
+    "denivele": "Dénivelé",
+    "allure_moy": "Allure moyenne",
+    "vitesse_moy": "Vitesse moyenne",
+    "vitesse_max": "Vitesse maximum",
+    "cadence_moy": "Cadence moyenne",
+    "nb_pas": "Pas",
+    "altitude_max": "Altitude maximum",
+    "nb_coups": "Nombre de coups",
+    "nb_sets": "Nombre de sets",
+    "vitesse_smash": "Vitesse de smash",
+    "nb_points": "Nombre de points",
+    "nb_combats": "Nombre de combats",
+    "nb_victoires": "Nombre de victoires",
+    "nb_defaites": "Nombre de défaites",
+    "nb_chutes": "Nombre de chutes",
+    "score": "Score",
+    "nb_services": "Nombre de services",
+    "nb_smash": "Nombre de smash",
+    "nb_reps": "Nombre de reps",
+    "nb_series": "Nombre de séries",
+    "poids_total": "Poids total",
+    "coups_de_rame": "Coups de rame",
+    "nb_longueurs": "Nombre de longueurs",
+    "longueur_bassin": "Longueur du bassin",
+    "style_danse": "Style danse",
+    "nb_tours": "Nombre de tours",
+    "serie_max": "Séries maximum",
+    "nb_descentes": "Nombre de descentes",
+    "voies_effectuees": "Voies effectuées",
+    "difficulte_max": "Difficulté maximum",
+    "muscles_travailles": "Muscles travaillés",
+    "charge_entrainement": "Charge d'entraînement",
+}
+
 function afficherData(dataWorkout) {
+    // Structure de base 
     let structureHTML = `
-    <h1>${dataWorkout.nom}</h1>
+        <h1>${dataWorkout.nom}</h1>
 
-    <div class="conteneur-option">
-        <p class="data-essentiel"><strong>${dataWorkout.sport}</strong> · ${formatEuropeenDate(dataWorkout.date)}</p>
-        <i class="fs-icon_plus" id="button-more"></i>
-    </div>
-
-    <div class="menu-button-more">
-        <li id="button-modifier">Modifier</li>
-        <li id="button-supprimer">Supprimer</li>
-    </div>
-
-    <div class="conteneur-cube">
-
-        <div class="cube-data">
-            <p class="entete">Durée</p>
-            <p class="data">${dureeFormatee(dataWorkout.duree)}</p>
+        <div class="conteneur-option">
+            <p class="data-essentiel"><strong>${dataWorkout.sport}</strong> · ${formatEuropeenDate(dataWorkout.date)}</p>
+            <i class="fs-icon_plus" id="button-more"></i>
         </div>
 
-        <div class="cube-data">
-            <p class="entete">RPE</p>
-            <p class="data">${dataWorkout.rpe}/10</p>
+        <div class="menu-button-more">
+            <li id="button-modifier">Modifier</li>
+            <li id="button-supprimer">Supprimer</li>
         </div>
 
-        <div class="cube-data">
-            <p class="entete">Charge</p>
-            <p class="data">${dataWorkout.charge_entrainement}</p>
+        <div class="conteneur-cube"> 
+
+            <div class="cube-data">
+                <p class="entete">Durée</p>
+                <p class="data">${dureeFormatee(dataWorkout.duree)}</p>
+            </div>
+    `
+    
+    const tableauDataNotDisplay = ["Nom", "Sport", "Date", "Durée", "id"]
+    const tableauDataSeule = ["Muscles travaillés", "Style de danse", "Score", "Voies effectuées"]
+
+
+    Object.entries(dataWorkout).forEach(([cle, valeur]) => {
+        const nomData = BddNomData[cle]
+
+        if (valeur != null || valeur != undefined) { // si il y a une datas en undefined ou null alors on n'affiche pas cette datas
+            if (tableauDataNotDisplay.includes(nomData)) {
+                // pass
+            } else {
+                if (tableauDataSeule.includes(nomData)) {
+                    // on referme d'abord la div
+                    structureHTML += `
+                        </div>
+
+                        <div class="conteneur-cube">
+                            <div class="cube-data">
+                                <p class="entete">${nomData}</p>
+                                <p class="data">${valeur}</p>
+                            </div>
+                        </div>
+
+                        <div class="conteneur-cube">
+                    `
+
+                } else {
+                    structureHTML += `
+                        <div class="cube-data">
+                            <p class="entete">${nomData}</p>
+                            <p class="data">${valeur}</p>
+                        </div>
+                    `
+                }
+            }
+
+        }
+    });
+
+    structureHTML += `
         </div>
     `
 
-    if (dataWorkout.sport == "Course" || dataWorkout.sport == "Vélo" || dataWorkout.sport == "Marche") {
-        structureHTML += `
-            <div class="cube-data">
-                <p class="entete">Distance</p>
-                <p class="data">${dataWorkout.distance.toString().replace(".", ",")} km</p>
-            </div>
-            <div class="cube-data">
-                <p class="entete">Dénivelé</p>
-                <p class="data">${dataWorkout.denivele} m</p>
-            </div>
-        `
-    } else if (dataWorkout.sport == "Musculation") {
-        // ici il faut utiliser une astuce on referme le conteneur-cube et on le rouvre pour que les muscles travaillés est la place nécéssaire
-        // étant donné que c'est limite une description
-        structureHTML += `
-            </div>
-            <div class="conteneur-cube">
-                <div class="cube-data">
-                    <p class="entete">Muscles travailles</p>
-                    <p class="data">${dataWorkout.muscles_travailles}</p>
-                </div>
-            </div>
-        `
-    }
-
-    // on referme le conteneur-cube 
-    structureHTML += `</div>`
-
-
     document.querySelector(".page-entrainement").innerHTML = structureHTML
-
 
     return
 }

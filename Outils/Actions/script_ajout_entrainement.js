@@ -1,3 +1,43 @@
+const SportIdChamps = { // sport avec les id correspondant aux champs de datas spécifique aux sports
+    "Libre": [], 
+    "Libre avec distance": ["distance-entrainement-user"],
+
+    "Course": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user", "nb-pas-entrainement-user"],
+    "Marche": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "nb-pas-entrainement-user"],
+    "Randonnée": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "allure-moy-entrainement-user", "nb-pas-entrainement-user"],
+    "Vélo": ["distance-entrainement-user", "denivele-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user"],
+
+    "Badminton": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
+    "Tennis": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
+    "Tennis de table": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
+
+    "Boxe": ["nb-coups-entrainement-user", "nb-combats-entrainement-user", "nb-victoires-entrainement-user", "nb-defaites-entrainement-user"],
+    "Judo": ["nb-combats-entrainement-user", "nb-victoires-entrainement-user", "nb-chutes-entrainement-user"],
+
+    "Basketball": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Football": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Handball": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Rugby": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
+    "Volley": ["nb-services-entrainement-user", "nb-smash-entrainement-user", "nb-sets-entrainement-user", "score-entrainement-user"],
+
+    "CrossFit": ["muscles-travailles-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
+    "HIIT": ["muscles-travailles-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user"],
+    "Musculation": ["muscles-travailles-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
+    "Rameur d'intérieur": ["distance-entrainement-user", "coups-de-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
+
+    "Aviron": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
+    "Natation": ["distance-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
+    "Paddle": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
+
+    "Ski": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
+    "Ski de fond": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
+    "Snowboard": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
+
+    "Corde à sauter": ["nb-tours-entrainement-user", "cadence-moy-entrainement-user", "serie-max-entrainement-user"],
+    "Danse": ["style-danse-entrainement-user", "muscles-travailles-entrainement-user", "nb-pas-entrainement-user"],
+    "Escalade": ["voies-effectuees-entrainement-user", "difficulte-max-entrainement-user", "nb-chutes-entrainement-user"],
+}
+
 let IdEditWorkout = null // init variable globale
 
 async function MessagePrevention() {
@@ -47,40 +87,52 @@ async function VerificationParam() {
                 document.getElementById("title-page").textContent = "Modification de l'entraînement"
                 document.getElementById("coach-ajoute-entrainement").style.display = "none"
 
-                // remplissage des champs
-                document.getElementById("profil-sport").value = WorkoutDB.sport
-                document.getElementById("date-entrainement-user").value = WorkoutDB.date
-                document.getElementById("nom-entrainement-user").value = WorkoutDB.nom
-                document.getElementById("duree-entrainement-user").value = dureeFormatee(WorkoutDB.duree, "hh:mm:ss") // on exige le format "hh:mm:ss"
+                // Remettre les champs adaptée au sport
+                if (WorkoutDB.sport == "Libre") {
+                    // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher quand le sport c'est libre
+                    dataSpecifique(WorkoutDB.sport, true)
+                } else {
+                    dataSpecifique(WorkoutDB.sport, false)
+                }
 
+                // remplissage des champs qu'on ne peut pas remplir dans la boucle foreach
+                document.getElementById("profil-sport").value = WorkoutDB.sport
+                document.getElementById("duree-entrainement-user").value = dureeFormatee(WorkoutDB.duree, "hh:mm:ss") // on exige le format "hh:mm:ss"
                 // remettre le RPE sur bonne position
                 document.querySelector(".slider input").value = WorkoutDB.rpe
                 document.querySelector(".slider progress").value = WorkoutDB.rpe
                 document.querySelector(".slider-value").textContent = WorkoutDB.rpe
 
-                // Remettre les champs adaptée au sport
-                //SelectionSport(WorkoutDB.sport)
+                // tableau des datas à ne pas rentrer dans un input
+                const tableauDataNotInInput = ["sport", "duree", "rpe", "charge_entrainement", "id"]
 
-                // Remplissage des champs de sport particulier
-                if (WorkoutDB.distance) {
-                    document.getElementById("distance-entrainement-user").value = WorkoutDB.distance.toFixed(2)
-                    document.getElementById("denivele-entrainement-user").value = WorkoutDB.denivele
-                } else if (WorkoutDB.muscles_travailles) {
-                    document.getElementById("muscle-entrainement-user").value = WorkoutDB.muscles_travailles
-                }
+                // .entries c'est pour récupérer la clé et valeur d'un dico/object
+                Object.entries(WorkoutDB).forEach(([cle, valeur]) => {
+                    if (tableauDataNotInInput.includes(cle)) {
+                        // pass
+                    } else {
+                        const idData = cle.replace("_", "-") + "-entrainement-user"
+                        
+                        let input = document.getElementById(idData)
+                        if (input) {
+                            input.value = valeur // on affiche la valeur de la bdd dans le input correspondant à l'id de la donnée
+                        }
+                    }
+                });
+
             } else {  // si il y a rien dans la bdd par rapport à l'id correspond alors on demarre le mode normal 
-                //SelectionSport("Libre")
+                dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
                 await JrmCoach()
                 await MessagePrevention()
             }
 
         } else {
-            //SelectionSport("Libre")
+            dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
             await JrmCoach()
             await MessagePrevention()
         }
     } else {        
-        //SelectionSport("Libre")
+        dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
         await JrmCoach()
         await MessagePrevention()
     }
@@ -88,55 +140,17 @@ async function VerificationParam() {
     return
 }
 
-const SportIdChamps = { // sport avec les id correspondant aux champs de datas spécifique aux sports
-    "Libre": [], 
-    "Libre avec distance": ["distance-entrainement-user"],
-
-    "Course": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user", "nb-pas-entrainement-user"],
-    "Marche": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "nb-pas-entrainement-user"],
-    "Randonnée": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "allure-moy-entrainement-user", "nb-pas-entrainement-user"],
-    "Vélo": ["distance-entrainement-user", "denivele-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user"],
-
-    "Badminton": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
-    "Tennis": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
-    "Tennis de table": ["nb-coups-entrainement-user", "nb-sets-entrainement-user", "vitesse-smash-entrainement-user", "nb-points-entrainement-user", "nb-pas-entrainement-user"],
-
-    "Boxe": ["nb-coups-entrainement-user", "nb-combats-entrainement-user", "nb-victoires-entrainement-user", "nb-defaites-entrainement-user"],
-    "Judo": ["nb-combats-entrainement-user", "nb-victoires-entrainement-user", "nb-chutes-entrainement-user"],
-
-    "Basketball": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
-    "Football": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
-    "Handball": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
-    "Rugby": ["distance-entrainement-user", "score-entrainement-user", "nb-pas-entrainement-user"],
-    "Volley": ["nb-services-entrainement-user", "nb-smash-entrainement-user", "nb-sets-entrainement-user", "score-entrainement-user"],
-
-    "CrossFit": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
-    "HIIT": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user"],
-    "Musculation": ["muscle-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
-    "Rameur d'intérieur": ["distance-entrainement-user", "coups-de-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
-
-    "Aviron": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
-    "Natation": ["distance-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
-    "Paddle": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
-
-    "Ski": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
-    "Ski de fond": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
-    "Snowboard": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
-
-    "Corde à sauter": ["nb-tours-entrainement-user", "cadence-moy-entrainement-user", "serie-max-entrainement-user"],
-    "Danse": ["style-danse-entrainement-user", "muscle-entrainement-user", "nb-pas-entrainement-user"],
-    "Escalade": ["voies-effectuees-entrainement-user", "difficulte-max-entrainement-user", "nb-chutes-entrainement-user"],
-}
-
-function dataSpecifique(sportChoisi) {
+function dataSpecifique(sportChoisi, pasAlert) {
     // recup du texte de la div : 'Plus de données'
     let textButtonDataSpe = document.querySelector(".plus-data")
-    let typeDisplay = "block"// variable qui changerai en fonction de si les champs spécifique sont dépliés ou non
+    let typeDisplay = "block"
+    // variable qui changerai en fonction de si les champs spécifique sont dépliés ou non
 
     // recupération du tableau (tableau présent dans un dico) des id des input en fonction du sport
     const tableauIdChampsSpecifique = SportIdChamps[sportChoisi]
     
-    if (tableauIdChampsSpecifique.length > 0) {// si le tableau nest pas vide
+    if (tableauIdChampsSpecifique.length > 0) {
+    // si le tableau nest pas vide
         if (textButtonDataSpe) {
             // si le text de la div est "plus de données" alors on met "moins de données" et inversement
             if (textButtonDataSpe.textContent == "Plus de données") {
@@ -155,8 +169,11 @@ function dataSpecifique(sportChoisi) {
             }
         });
 
-    } else {// si le tableau est vide, on previent le user qu'il ny a pas de datas en plus a afficher 
-        alert("Ce sport n'a pas de données en plus.")
+    } else {
+        if (pasAlert == false) { // si on modifie un entrainement libre ça évite de mettre une alert pour rien
+            // si le tableau est vide, on previent le user qu'il ny a pas de datas en plus a afficher 
+            alert("Ce sport n'a pas de données en plus.")
+        }
         return
     }
 }
@@ -377,31 +394,135 @@ function conversionMinutes(DureeWorkoutUser) {
                 // Vérification que le user a bien saisis les infos
                 if (heures > 59 || minutes > 59 || secondes > 59) {
                     alert("Le format de la durée doit être hh:mm:ss avec hh, mm et ss inférieur à 60.")
-                    DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction RegistrationWorkout
+                    DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
                     return DureeWorkoutUser
                 }
 
                 // Conversion de la durée en minutes
                 DureeWorkoutUser = (heures*60) + minutes + (secondes/60)
-                // La vérification de la durée maximum/minimum se fait dans la fonction RegistrationWorkout
+                // La vérification de la durée maximum/minimum se fait dans la fonction saveWorkout
                 return DureeWorkoutUser
                 
             } else {
                 alert("Le format de la durée doit être hh:mm:ss avec hh, mm et ss avec 2 chiffres maximum.")
-                DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction RegistrationWorkout
+                DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
                 return DureeWorkoutUser
             }
         } else {
             alert("Veuillez respecter le format 'Heure:Minute:Seconde' (hh:mm:ss) pour le champ durée.")
-            DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction RegistrationWorkout
+            DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
             return DureeWorkoutUser
         }
     } else {
         alert("Veuillez respecter le format 'Heure:Minute:Seconde' (hh:mm:ss) pour le champ durée.")
-        DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction RegistrationWorkout
+        DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
         return DureeWorkoutUser
     }
 
+}
+
+async function saveWorkout() {
+    // Recup du bouton
+    let BoutonSauvegarde = document.getElementById("button-sauvegarder")
+
+    // Recup valeur des champs de base d'un entraînement
+    let SportWorkoutUser = document.getElementById("profil-sport").value.trim()
+    let DateWorkoutUser = document.getElementById("date-entrainement-user").value
+    let NameWorkoutUser = document.getElementById("nom-entrainement-user").value.trim()
+    let DureeWorkoutUser = document.getElementById("duree-entrainement-user").value.trim()
+    let ValueRpeUser = parseInt(document.querySelector(".slider progress").value)
+    let FcMoyUser = parseInt(document.getElementById("fc-moy-entrainement-user").value.trim())
+    let FcMaxUser = parseInt(document.getElementById("fc-max-entrainement-user").value.trim())
+
+
+    // Vérification des champs de base
+    if (!DateWorkoutUser || !DureeWorkoutUser || !NameWorkoutUser) {
+        alert("Veuillez remplir tous les champs du formulaire.")
+        return
+    }
+
+    // Prépa date pour les comparer ensuite
+    const DateUserFormatee = new Date(DateWorkoutUser)
+    const DateActuelle = new Date()
+    if (DateUserFormatee > DateActuelle) { // Comparaison de 2 dates
+        alert("La date ne peut pas être dans le future.")
+        return
+    }
+
+    DureeWorkoutUser = conversionMinutes(DureeWorkoutUser)
+    if (DureeWorkoutUser == null) {
+        return
+    }
+    if (DureeWorkoutUser <= 0) {
+        alert("Valeur non valide, la durée doit être un nombre supérieur à 0.")
+        return
+    }
+    if (DureeWorkoutUser >= 1440) {
+        alert("La durée de votre entraînement doit être inférieur à 24h00m.")
+        return
+    }
+
+    // si pas de datas alors on met sur undefined
+    if (!FcMoyUser) {FcMoyUser = undefined}
+    if (!FcMaxUser) {FcMaxUser = undefined}  
+    
+    // desactivation du bouton
+    BoutonSauvegarde.disabled = true 
+    BoutonSauvegarde.textContent = "Sauvegarde..."
+
+    // init
+    let chargeWorkout = 0
+    // Calcul Charge
+    chargeWorkout = Math.floor(DureeWorkoutUser*ValueRpeUser)
+    
+    let workoutData = {
+        sport: SportWorkoutUser,
+        date: DateWorkoutUser,
+        nom: NameWorkoutUser,
+        duree: DureeWorkoutUser,
+        rpe: ValueRpeUser,
+        fc_moy: FcMoyUser,
+        fc_max: FcMaxUser,
+        charge_entrainement: chargeWorkout
+    }
+
+    const tableauIdChampsSpe = SportIdChamps[SportWorkoutUser]
+
+    if (tableauIdChampsSpe.length > 0) {
+
+        tableauIdChampsSpe.forEach(element => {
+            const input = document.getElementById(element)
+
+            if (input) {
+                const cleData = element.replace("-entrainement-user", "").replace("-", "_")
+
+                let data = input.value.trim()
+                if (input.type == "number") {
+                    data = parseFloat(data)
+                }
+
+                if (data != "") {
+                    workoutData[cleData] = data
+                }
+            }
+                
+        });
+    }
+
+    // enregistre
+    await db.entrainement.add(workoutData)
+
+    // Pause
+    setTimeout(() => {
+        // Remise bouton etat normal
+        BoutonSauvegarde.textContent = "Sauvegarder"
+        BoutonSauvegarde.disabled = false
+
+        // Renvoie vers historique d'entraînement
+        window.location.href = "historique_entrainement.html?workoutregister" // on met un param dans l'URL
+    }, 800)
+
+    return
 }
 
 async function RegistrationWorkout() {
@@ -455,36 +576,10 @@ async function RegistrationWorkout() {
         DistanceWorkoutUser = parseFloat(document.getElementById("distance-entrainement-user").value.trim())
         DeniveleWorkoutUser = parseInt(document.getElementById("denivele-entrainement-user").value.trim())
 
-        // Vérifications
-        if (isNaN(DistanceWorkoutUser) || isNaN(DeniveleWorkoutUser)) {
-            alert("Veuillez remplir tous les champs du formulaire.")
-            return
-        }
-        if (DistanceWorkoutUser <= 0) {
-            alert("Valeur non valide, la distance doit être un nombre supérieur à 0.")
-            return
-        }
-        if (DistanceWorkoutUser > 1000) {
-            alert("La distance de votre entraînement ne doit pas dépasser 1000 kilomètres.")
-            return
-        }
-        if (DeniveleWorkoutUser < 0) {
-            alert("Valeur non valide, le denivelé doit être un nombre positif.")
-            return
-        }
-        if (DeniveleWorkoutUser > 10000) {
-            alert("Le dénivelé de votre entraînement ne doit pas dépasser 10 000 m.")
-            return
-        }
     } else if (SportWorkoutUser == "Musculation") {
         // Recup champs
         MusclesWorkoutUser = document.getElementById("muscle-entrainement-user").value.trim()
 
-        // Verifications
-        if (!MusclesWorkoutUser) {
-            alert("Veuillez remplir tous les champs du formulaire.")
-            return
-        }
     }
 
     // desactivation du bouton
@@ -548,7 +643,8 @@ function cacherInput() { // pour cacher tout les champs de datas spécifique
     let inputAdvanced = document.querySelectorAll(".input-advanced") // on recup tout les input
 
     inputAdvanced.forEach(element => {
-        element.style.display = 'none'// on les mets en display none
+        element.style.display = 'none'
+// on les mets en display none
     });
     
     let textButtonDataSpe = document.querySelector(".plus-data")

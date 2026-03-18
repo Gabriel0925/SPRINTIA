@@ -88,7 +88,6 @@
 
         <div class="conteneur-champs-outil">
  
-            <!--onchange="dataSpecifique(value)"-->
             <select id="profil-sport" onchange="cacherInput()" autocomplete="off">
                     <optgroup label="LIBRE">
                         <option value="Libre">Sport : Libre</option>
@@ -187,7 +186,7 @@
             </div>
 
             <!-- Pour inciter le user a rentrer plus de datas -->
-            <div class="conteneur-button-plus-data" onclick="dataSpecifique(document.getElementById('profil-sport').value)">
+            <div class="conteneur-button-plus-data" onclick="dataSpecifique(document.getElementById('profil-sport').value, false)">
                 <p class="plus-data">Plus de données</p>
             </div>
 
@@ -306,7 +305,7 @@
 
         <!-- Renforcement musculaire -->
             <div class="conteneur-input input-advanced">
-                <input type="text" id="muscle-entrainement-user" placeholder="Muscles travaillés" autocomplete="off" maxlength="150">
+                <input type="text" id="muscles-travailles-entrainement-user" placeholder="Muscles travaillés" autocomplete="off" maxlength="150">
                 <div class="label-input">Muscles travaillés</div>
             </div>
             <div class="conteneur-input input-advanced">
@@ -352,7 +351,7 @@
             </div>
                 
 
-            <button id="button-sauvegarder" onclick="RegistrationWorkout()">Sauvegarder</button>
+            <button id="button-sauvegarder" onclick="saveWorkout()">Sauvegarder</button>
         </div>
 
     </div>

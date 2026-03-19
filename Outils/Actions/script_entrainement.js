@@ -29,7 +29,7 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
     "nb_reps": "Nombre de reps",
     "nb_series": "Nombre de séries",
     "poids_total": "Poids total",
-    "coups_de_rame": "Coups de rame",
+    "coups_de-rame": "Coups de rame",
     "nb_longueurs": "Nombre de longueurs",
     "longueur_bassin": "Longueur du bassin",
     "style_danse": "Style danse",
@@ -43,7 +43,7 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
 }
 
 function afficherData(dataWorkout) {
-    // Structure de base 
+    // Structure de base de la page entrainement
     let structureHTML = `
         <h1>${dataWorkout.nom}</h1>
 
@@ -65,19 +65,29 @@ function afficherData(dataWorkout) {
             </div>
     `
     
+    // initialisation de 2 tableaux
     const tableauDataNotDisplay = ["Nom", "Sport", "Date", "Durée", "id"]
     const tableauDataSeule = ["Muscles travaillés", "Style de danse", "Score", "Voies effectuées"]
 
-
+    // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
-        const nomData = BddNomData[cle]
+        const nomData = BddNomData[cle] // on récupère le nom de la data ex: muscles_travailles => Muscles travaillés
+
+        let typeValeur = typeof(valeur) // on recup le type de la valeur
+        if (typeValeur == "number") { // si c'est un number alors
+            valeur = Number(valeur) // on convertit en nombre
+            if (isNaN(valeur)) { // et si la valeur est NaN (=quand le user met rien dans le champs lors de l'enregistrement de datas)
+                valeur = null // on met sur null pour que la condition ci-dessous n'affiche pas cette data
+            }
+        }
 
         if (valeur != null || valeur != undefined) { // si il y a une datas en undefined ou null alors on n'affiche pas cette datas
-            if (tableauDataNotDisplay.includes(nomData)) {
+            // on regarde si le nom de la data n'est pas dans le tableau car le nom, la date, le sport est dans la structure de base de la page html
+            if (tableauDataNotDisplay.includes(nomData)) { 
                 // pass
             } else {
-                if (tableauDataSeule.includes(nomData)) {
-                    // on referme d'abord la div
+                if (tableauDataSeule.includes(nomData)) { // on check si c'est une data qu'on doit afficher seul ou pas 
+                    // on referme d'abord la div conteneur-cube on la rouvre puis on la referme
                     structureHTML += `
                         </div>
 
@@ -92,6 +102,7 @@ function afficherData(dataWorkout) {
                     `
 
                 } else {
+                    // si c'est un data normal alors on met la div correspondante
                     structureHTML += `
                         <div class="cube-data">
                             <p class="entete">${nomData}</p>
@@ -108,6 +119,7 @@ function afficherData(dataWorkout) {
         </div>
     `
 
+    // on ajoute au conteneur
     document.querySelector(".page-entrainement").innerHTML = structureHTML
 
     return
@@ -158,9 +170,10 @@ async function initialisation() {
             
         }
     }
-else { // si il y a pas de parametres dans l'URL on renvoie vers l'historique pour éviter d'afficher une page vide
+    else { // si il y a pas de parametres dans l'URL on renvoie vers l'historique pour éviter d'afficher une page vide
         location.href = "historique_entrainement.html"
     }
+    
     return
 }
 

@@ -475,6 +475,7 @@ async function saveWorkout() {
     // Calcul Charge
     chargeWorkout = Math.floor(DureeWorkoutUser*ValueRpeUser)
     
+    // base du dico qu'on enregistrera
     let workoutData = {
         sport: SportWorkoutUser,
         date: DateWorkoutUser,
@@ -486,23 +487,27 @@ async function saveWorkout() {
         charge_entrainement: chargeWorkout
     }
 
+    // on regarde qu'elle champs on doit sauvegarde en stockant dans un tableau
     const tableauIdChampsSpe = SportIdChamps[SportWorkoutUser]
 
+    // si il y a un tableau
     if (tableauIdChampsSpe.length > 0) {
 
+        // on parcourt l'id des champs
         tableauIdChampsSpe.forEach(element => {
-            const input = document.getElementById(element)
+            const input = document.getElementById(element) // on recup l'input
 
-            if (input) {
+            if (input) { // si il y en a un alors
+                // on enleve -entrainement-user et on remplace '-' en "_" pour avoir le nom de la clé dans la BDD
                 const cleData = element.replace("-entrainement-user", "").replace("-", "_")
 
-                let data = input.value.trim()
-                if (input.type == "number") {
+                let data = input.value.trim() // on recup ce que le user a saisi
+                if (input.type == "number") { // si c'est un input number on convertit en nombre floatant
                     data = parseFloat(data)
                 }
 
                 if (data != "") {
-                    workoutData[cleData] = data
+                    workoutData[cleData] = data // on ajoute au dico la nouvelle valeur si elle n'est pas vide
                 }
             }
                 
@@ -511,6 +516,19 @@ async function saveWorkout() {
 
     // enregistre
     await db.entrainement.add(workoutData)
+
+        // await db.entrainement.put({
+        //     id: IdEditWorkout,
+        //     sport: SportWorkoutUser,
+        //     date: DateWorkoutUser,
+        //     nom: NameWorkoutUser,
+        //     duree: DureeWorkoutUser,
+        //     rpe: ValueRpeUser,
+        //     distance: DistanceWorkoutUser,
+        //     denivele: DeniveleWorkoutUser,
+        //     muscles_travailles: MusclesWorkoutUser,
+        //     charge_entrainement: ChargeWorkout
+        // })
 
     // Pause
     setTimeout(() => {

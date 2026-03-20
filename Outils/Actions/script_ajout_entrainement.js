@@ -26,7 +26,7 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
     "Rameur d'intérieur": ["distance-entrainement-user", "coups-de-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
 
     "Aviron": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
-    "Natation": ["distance-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
+    "Natation": ["distance-entrainement-user", "allure-moy-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
     "Paddle": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
 
     "Ski": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
@@ -513,22 +513,19 @@ async function saveWorkout() {
                 
         });
     }
+    
+    // variable pour gérer vers ou renvoyer
+    let modificationEntrainement = false
 
-    // enregistre
-    await db.entrainement.add(workoutData)
-
-        // await db.entrainement.put({
-        //     id: IdEditWorkout,
-        //     sport: SportWorkoutUser,
-        //     date: DateWorkoutUser,
-        //     nom: NameWorkoutUser,
-        //     duree: DureeWorkoutUser,
-        //     rpe: ValueRpeUser,
-        //     distance: DistanceWorkoutUser,
-        //     denivele: DeniveleWorkoutUser,
-        //     muscles_travailles: MusclesWorkoutUser,
-        //     charge_entrainement: ChargeWorkout
-        // })
+    // enregistrement ou modification
+    if (IdEditWorkout && IdEditWorkout != null) {
+        workoutData["id"] = IdEditWorkout
+        await db.entrainement.put(workoutData)
+        // mise sur true pour renvoyer vers lentrainement directement
+        modificationEntrainement = true
+    } else {
+        await db.entrainement.add(workoutData)
+    }
 
     // Pause
     setTimeout(() => {
@@ -536,20 +533,63 @@ async function saveWorkout() {
         BoutonSauvegarde.textContent = "Sauvegarder"
         BoutonSauvegarde.disabled = false
 
-        // Renvoie vers historique d'entraînement
-        window.location.href = "historique_entrainement.html?workoutregister" // on met un param dans l'URL
+        if (modificationEntrainement == true) {
+            // Renvoie vers historique d'entraînement
+            window.location.href = `entrainement.html?workout=${IdEditWorkout}` // on met un param dans l'URL
+        } else {
+            // Renvoie vers historique d'entraînement
+            window.location.href = "historique_entrainement.html?workoutregister" // on met un param dans l'URL
+        }
     }, 800)
 
     return
 }
 
-function cacherInput() { // pour cacher tout les champs de datas spécifique
+function cacherInput(value) { // pour cacher tout les champs de datas spécifique
     let inputAdvanced = document.querySelectorAll(".input-advanced") // on recup tout les input
 
     inputAdvanced.forEach(element => {
-        element.style.display = 'none'
-// on les mets en display none
+        element.style.display = 'none' // on les mets en display none
     });
+
+    // partie pour gérer la distance entre m et km
+    let inputDistance = document.getElementById("distance-entrainement-user")
+    if (value == "Natation" || value == "Rameur d'intérieur") { // value c'est le sport du combobox
+        if (inputDistance) {
+            inputDistance.placeholder = "Distance (m)"
+            inputDistance.nextElementSibling.textContent = "Distance (m)"
+        }
+
+    } else { // si le sport n'est pas la natation ou le rameur alors, on affiche la distance en km
+        if (inputDistance) {
+            inputDistance.placeholder = "Distance (km)"
+            inputDistance.nextElementSibling.textContent = "Distance (km)"
+        }
+
+    }
+
+    // partie pour gérer la distance entre m et km
+    let inputAllureMoy = document.getElementById("allure-moy-entrainement-user")
+    if (value == "Natation") { // value c'est le sport du combobox
+        if (inputAllureMoy) {
+            inputAllureMoy.placeholder = "Allure moy. (/100m)"
+            inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
+        }
+
+    } else if (value == "Rameur d'intérieur") { // value c'est le sport du combobox
+        if (inputAllureMoy) {
+            inputAllureMoy.placeholder = "Allure moy. (/500m)"
+            inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"
+        }
+
+    } else { // si le sport n'est pas la natation ou le rameur alors, on affiche la distance en km
+        if (inputAllureMoy) {
+            inputAllureMoy.placeholder = "Allure moy. (/km)"
+            inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/km)"
+        }
+
+    }
+
     
     let textButtonDataSpe = document.querySelector(".plus-data")
     if (textButtonDataSpe) { 

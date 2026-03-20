@@ -1,45 +1,45 @@
 const BddNomData = { // sport avec les id correspondant aux champs de datas spécifique aux sports
-    "id": "id",
-    "sport": "Sport",
-    "date": "Date",
-    "nom": "Nom",
-    "duree": "Durée",
-    "rpe": "RPE",
-    "fc_moy": "FC moyenne",
-    "fc_max": "FC maximum",
-    "distance": "Distance",
-    "denivele": "Dénivelé",
-    "allure_moy": "Allure moyenne",
-    "vitesse_moy": "Vitesse moyenne",
-    "vitesse_max": "Vitesse maximum",
-    "cadence_moy": "Cadence moyenne",
-    "nb_pas": "Pas",
-    "altitude_max": "Altitude maximum",
-    "nb_coups": "Nombre de coups",
-    "nb_sets": "Nombre de sets",
-    "vitesse_smash": "Vitesse de smash",
-    "nb_points": "Nombre de points",
-    "nb_combats": "Nombre de combats",
-    "nb_victoires": "Nombre de victoires",
-    "nb_defaites": "Nombre de défaites",
-    "nb_chutes": "Nombre de chutes",
-    "score": "Score",
-    "nb_services": "Nombre de services",
-    "nb_smash": "Nombre de smash",
-    "nb_reps": "Nombre de reps",
-    "nb_series": "Nombre de séries",
-    "poids_total": "Poids total",
-    "coups_de-rame": "Coups de rame",
-    "nb_longueurs": "Nombre de longueurs",
-    "longueur_bassin": "Longueur du bassin",
-    "style_danse": "Style danse",
-    "nb_tours": "Nombre de tours",
-    "serie_max": "Séries maximum",
-    "nb_descentes": "Nombre de descentes",
-    "voies_effectuees": "Voies effectuées",
-    "difficulte_max": "Difficulté maximum",
-    "muscles_travailles": "Muscles travaillés",
-    "charge_entrainement": "Charge d'entraînement",
+    "id": ["id", ""],
+    "sport": ["Sport", ""],
+    "date": ["Date", ""],
+    "nom": ["Nom", ""],
+    "duree": ["Durée", ""],
+    "rpe": ["RPE", "/10"],
+    "fc_moy": ["FC moyenne", "bpm"],
+    "fc_max": ["FC maximum", "bpm"],
+    "distance": ["Distance", ["km", "m"]],
+    "denivele": ["Dénivelé", "m"],
+    "allure_moy": ["Allure moyenne", ["/km", "/500m", "/100m"]],
+    "vitesse_moy": ["Vitesse moyenne", "km/h"],
+    "vitesse_max": ["Vitesse maximum", "km/h"],
+    "cadence_moy": ["Cadence moyenne", ["ppm", "tpm", "cpm"]], 
+    "nb_pas": ["Pas", ""],
+    "altitude_max": ["Altitude maximum", "m"],
+    "nb_coups": ["Nombre de coups", ""],
+    "nb_sets": ["Nombre de sets", ""],
+    "vitesse_smash": ["Vitesse de smash", "km/h"],
+    "nb_points": ["Nombre de points", ""],
+    "nb_combats": ["Nombre de combats", ""],
+    "nb_victoires": ["Nombre de victoires", ""],
+    "nb_defaites": ["Nombre de défaites", ""],
+    "nb_chutes": ["Nombre de chutes", ""],
+    "score": ["Score", ""],
+    "nb_services": ["Nombre de services", ""],
+    "nb_smash": ["Nombre de smash", ""],
+    "nb_reps": ["Nombre de reps", ""],
+    "nb_series": ["Nombre de séries", ""],
+    "poids_total": ["Poids total", "kg"],
+    "coups_de-rame": ["Coups de rame", ""],
+    "nb_longueurs": ["Nombre de longueurs", ""],
+    "longueur_bassin": ["Longueur du bassin", "m"],
+    "style_danse": ["Style danse", ""],
+    "nb_tours": ["Nombre de tours", ""],
+    "serie_max": ["Séries maximum", ""],
+    "nb_descentes": ["Nombre de descentes", ""],
+    "voies_effectuees": ["Voies effectuées", ""],
+    "difficulte_max": ["Difficulté maximum", ""],
+    "muscles_travailles": ["Muscles travaillés", ""],
+    "charge_entrainement": ["Charge d'entraînement", "TL"],
 }
 
 function afficherData(dataWorkout) {
@@ -71,7 +71,39 @@ function afficherData(dataWorkout) {
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
-        const nomData = BddNomData[cle] // on récupère le nom de la data ex: muscles_travailles => Muscles travaillés
+        const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 
+        const nomData = nomUniteData[0] // on récupère le nom de la data ex: muscles_travailles => Muscles travaillés
+        
+        // initialisation
+        let uniteData = ""
+        if (cle == "cadence_moy") { // si la datas c'est cadence moy on prend ppm ou tpm ou cpm en fonction du sport
+            if (dataWorkout.sport == "Course") {
+                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => ppm
+            } else if (dataWorkout.sport == "Vélo" || dataWorkout.sport == "Corde à sauter") {
+                uniteData = nomUniteData[1][1] // on récupère l'unité de la data => tpm
+            } else { // si c'est du rameur, aviron,...
+                uniteData = nomUniteData[1][2] // on récupère l'unité de la data => cpm
+            }
+
+        } else if (cle == "distance") {
+            if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur") {
+                uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
+            } else {
+                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => km
+            }
+
+        } else if (cle == "allure_moy") {
+            if (dataWorkout.sport == "Natation") {
+                uniteData = nomUniteData[1][2] // on récupère l'unité de la data  => /100m
+            } else if (dataWorkout.sport == "Rameur d'intérieur") {
+                uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => /500m
+            } else {
+                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km
+            }
+
+        } else {
+            uniteData = nomUniteData[1] // on récupère l'unité de la data ex: distance => km
+        }
 
         let typeValeur = typeof(valeur) // on recup le type de la valeur
         if (typeValeur == "number") { // si c'est un number alors
@@ -94,7 +126,7 @@ function afficherData(dataWorkout) {
                         <div class="conteneur-cube">
                             <div class="cube-data">
                                 <p class="entete">${nomData}</p>
-                                <p class="data">${valeur}</p>
+                                <p class="data">${valeur} <small>${uniteData}</small></p>
                             </div>
                         </div>
 
@@ -106,7 +138,7 @@ function afficherData(dataWorkout) {
                     structureHTML += `
                         <div class="cube-data">
                             <p class="entete">${nomData}</p>
-                            <p class="data">${valeur}</p>
+                            <p class="data">${valeur} <small>${uniteData}</small></p>
                         </div>
                     `
                 }

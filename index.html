@@ -505,7 +505,7 @@
                         DureeTotale += element // Ajout de la durée qui est entrain d'être parcourue
                         NbWorkout += 1 // Ajout de 1 pour calculer le nombre d'entraînement
 
-                        if (DistanceElement != null) { // Si il y a une distance dans cette séance
+                        if (DistanceElement != null && !isNaN(DistanceElement)) { // Si il y a une distance dans cette séance
                             ExistenDataDistance = true // Mise de la variable sur true pour que le coach affiche la distance dans son résumé
                             DistanceTotale += DistanceElement // ajout de la distance de la séance
                                                         

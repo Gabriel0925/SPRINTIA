@@ -1167,6 +1167,10 @@ div.conteneur-cube div.cube-data p.data{
     text-align: left;
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
+div.conteneur-cube div.cube-data p.data small{    
+    font-size: var(--P_SMALL);
+    text-align: left;
+}
 
 
 

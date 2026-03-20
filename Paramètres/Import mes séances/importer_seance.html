@@ -145,46 +145,6 @@
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
         <button class="import-trainingpeaks" onclick="document.getElementById('file-input-TP').click()" id="restoration-button">Importer fichier</button>
     </div>
-
-        
-    <h2>Runkeeper</h2>
-    <p class="text">
-        Vous utilisez Runkeeper quand vous courez ou vous avez connecté votre montre connectée à Runkeeper, dans les 2 cas vous pouvez
-        télécharger un fichier (csv) de votre historique d'entraînement depuis le site web de 
-        <a href="https://runkeeper.com/exportData" class="lien" target="_blank">Runkeeper</a> pour pouvoir l'importer dans Sprintia.
-        Pour ce faire, suivez les instructions :
-    </p>
-    <ul class="liste-fonctionnalites">
-        <li>
-            Cliquez sur le lien ci-contre.
-        </li>
-        <li>
-            Connectez-vous à votre compte Runkeeper.
-        </li>
-        <li>
-            Remplissez les champs de date.
-        </li>
-        <li>
-            Cliquez sur "Export".
-        </li>
-    </ul>
-    <p class="text">
-        Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'cardioActivities.csv' dans Sprintia.
-        <strong>Sprintia a besoin de votre âge pour estimer le RPE de chaque séance du fichier CSV Runkeeper.</strong>
-    </p>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
-            <div class="conteneur-input">
-                <input type="number" id="age-user" placeholder="Âge (obligatoire)" autocomplete="off">
-                <div class="label-input">Âge (obligatoire)</div>
-            </div>
-
-            <!-- On n' affiche pas le input file -->
-            <input type="file" id="file-input-runkeeper" accept=".csv" style="display: none;" onchange="uploadRunkeeper(event)">
-            <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-            <button class="import-runkeeper" onclick="verificationInputAge()">Importer fichier</button>
-        </div>
-    </div>
     
     <footer>
         <div class="conteneur-lien-footer">

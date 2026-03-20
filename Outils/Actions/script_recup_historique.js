@@ -16,35 +16,12 @@ async function Init() {
     const TableauSeparation = ParamURL.split("?")
     
     if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutregister") {
-        // timeout remis a 0 (suppresion plutot)
-        clearTimeout(Timer1)
-        clearTimeout(Timer2)
-        document.getElementById("a-logo").classList.remove("return", "pin-message")
-        
-        // petite récompense pour le user
-        document.getElementById("a-logo").classList.add("pin-message")
-
-        document.getElementById("a-logo").textContent = "Bien joué·e 🔥";
-
-        Timer1 = setTimeout(() => { 
-            document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
-            document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
-        }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
-
-        Timer2 = setTimeout(() => {
-            // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
-            document.getElementById("a-logo").classList.remove("return")
-            document.getElementById("a-logo").classList.remove("pin-message")
-        }, 3100) // durée choisis à la main
+        logoDynamique("Bien joué·e 🔥")
     }
 
     SauvegardeHistorique(HistoriqueDB)
     return
 }
-
-// init pour le logo dynamique
-let Timer1 = 0
-let Timer2 = 0
 
 function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
     let StructureHTML = `        
@@ -56,9 +33,6 @@ function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
             <p class="sport-date-workout">
                 ${workout.sport} · ${DateEuropeen}
             </p>
-            <p class="charge-workout">
-                Charge d'entraînement : <strong>${workout.charge_entrainement}</strong>
-            </p>
         </div>
         <div class="data-workout-paire">
             <p class="duree-workout">
@@ -68,30 +42,16 @@ function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
                 RPE : <strong>${workout.rpe}</strong>
             </p>
         </div>
+        <div class="data-workout-paire">
+            <p class="charge-workout">
+                Charge d'entraî. : <strong>${workout.charge_entrainement} TL</strong>
+            </p>
+        </div>
+        <div class="action-button-card-workout">
+            <button>Détail de l'entraînement</button>
+        </div>
+    </a>
     `
-
-    if (workout.sport == "Course" || workout.sport == "Vélo" || workout.sport == "Marche") {
-        StructureHTML += `
-            <div class="data-workout-paire">
-                <p class="duree-workout">
-                    <strong>${workout.distance.toFixed(2).toString().replace(".", ",")} km</strong>
-                </p>
-                <p class="rpe-workout">
-                    <strong>${workout.denivele} m</strong>
-                </p>
-            </div>
-        `
-    } else if (workout.sport == "Musculation") {
-        StructureHTML += `
-            <div class="data-workout-paire">
-                <p class="muscles-workout">
-                    ${workout.muscles_travailles}
-                </p>
-            </div>
-        `
-    }
-
-    StructureHTML += `</a>`
 
     CardWorkout.innerHTML = StructureHTML 
 

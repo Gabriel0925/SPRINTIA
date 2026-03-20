@@ -43,13 +43,6 @@ async function RecupValueNiveauCourse() {
     return {idDatas, NiveauDatas, DistanceDatas, ListeDate}
 }
 
-
-// init pour le logo dynamique
-// !!! attention ne pas mettre le meme nom de timer car ce fichier js est connecté à script outil, sinon erreur car =>
-// on fait let timer1 dans le fichiers script_outil et dans le fichier script_historique on fait aussi let Timer1 donc il faut donner un nom différent
-let Timer1Historique = 0
-let Timer2Historique = 0
-
 async function RemplirTableau() {
     // Recup des valeur dans bdd
     let {idDatas, NiveauDatas, DistanceDatas, ListeDate} = await RecupValueNiveauCourse()
@@ -109,27 +102,8 @@ async function RemplirTableau() {
                     // on fais apparaitre le message comme quoi sprintia n'a pas encore assez de données
                     document.getElementById("text-informatif").style.display = "block"
                 } 
-
-                // timeout remis a 0 (suppresion plutot)
-                clearTimeout(Timer1Historique)
-                clearTimeout(Timer2Historique)
-                document.getElementById("a-logo").classList.remove("return", "pin-message")
-            
-                // petite récompense pour le user
-                document.getElementById("a-logo").classList.add("pin-message")
-
-                document.getElementById("a-logo").textContent = "Supprimé 🗑️";
-
-                Timer1Historique =setTimeout(() => { 
-                    document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
-                    document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
-                }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
-
-                Timer2Historique = setTimeout(() => {
-                    // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
-                    document.getElementById("a-logo").classList.remove("return")
-                    document.getElementById("a-logo").classList.remove("pin-message")
-                }, 3100) // durée choisis à la main
+                
+                logoDynamique("Supprimé 🗑️")
             }
         })
 

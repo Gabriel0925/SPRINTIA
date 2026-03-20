@@ -120,6 +120,46 @@ async function VerificationParam() {
                     }
                 });
 
+                // --- Pour mettre à jour les champs en fonction de l'unité du sport
+
+                // partie pour gérer la distance entre m et km
+                let inputDistance = document.getElementById("distance-entrainement-user")
+                if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur") { 
+                    if (inputDistance) {
+                        inputDistance.placeholder = "Distance (m)"
+                        inputDistance.nextElementSibling.textContent = "Distance (m)"
+                    }
+
+                } else { // si le sport n'est pas la natation ou le rameur alors, on affiche la distance en km
+                    if (inputDistance) {
+                        inputDistance.placeholder = "Distance (km)"
+                        inputDistance.nextElementSibling.textContent = "Distance (km)"
+                    }
+
+                }
+
+                // partie pour gérer l'allure entre /km, /500m, /100m
+                let inputAllureMoy = document.getElementById("allure-moy-entrainement-user")
+                if (WorkoutDB.sport == "Natation") { 
+                    if (inputAllureMoy) {
+                        inputAllureMoy.placeholder = "Allure moy. (/100m)"
+                        inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
+                    }
+
+                } else if (WorkoutDB.sport == "Rameur d'intérieur") {
+                    if (inputAllureMoy) {
+                        inputAllureMoy.placeholder = "Allure moy. (/500m)"
+                        inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"
+                    }
+
+                } else { // si le sport n'est pas la natation ou le rameur alors, on affiche la distance en km
+                    if (inputAllureMoy) {
+                        inputAllureMoy.placeholder = "Allure moy. (/km)"
+                        inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/km)"
+                    }
+
+                }
+
             } else {  // si il y a rien dans la bdd par rapport à l'id correspond alors on demarre le mode normal 
                 dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
                 await JrmCoach()
@@ -568,7 +608,7 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
 
     }
 
-    // partie pour gérer la distance entre m et km
+    // partie pour gérer l'allure entre /km, /500m, /100m
     let inputAllureMoy = document.getElementById("allure-moy-entrainement-user")
     if (value == "Natation") { // value c'est le sport du combobox
         if (inputAllureMoy) {
@@ -589,7 +629,6 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
         }
 
     }
-
     
     let textButtonDataSpe = document.querySelector(".plus-data")
     if (textButtonDataSpe) { 
@@ -601,6 +640,6 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    cacherInput() // pour cacher tout les champs de datas spécifique
+    cacherInput("") // pour cacher tout les champs de datas spécifique
     VerificationParam()
 })

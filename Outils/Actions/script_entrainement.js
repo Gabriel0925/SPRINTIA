@@ -67,7 +67,7 @@ function afficherData(dataWorkout) {
     
     // initialisation de 2 tableaux
     const tableauDataNotDisplay = ["Nom", "Sport", "Date", "Durée", "id"]
-    const tableauDataSeule = ["Muscles travaillés", "Style de danse", "Score", "Voies effectuées"]
+    const tableauDataSeule = ["Charge d'entraînement", "Muscles travaillés", "Style de danse", "Score", "Voies effectuées"]
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {

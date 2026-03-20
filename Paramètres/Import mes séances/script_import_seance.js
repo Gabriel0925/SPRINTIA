@@ -1,27 +1,3 @@
-function logoDynamique() {
-    // timeout remis a 0 (suppresion plutot)
-    clearTimeout(Timer1)
-    clearTimeout(Timer2)
-    document.getElementById("a-logo").classList.remove("return", "pin-message")
-                
-    // petite récompense pour le user
-    document.getElementById("a-logo").classList.add("pin-message")
-
-    document.getElementById("a-logo").textContent = "Bien reçu 😋"
-
-    Timer1 = setTimeout(() => { 
-        document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
-        document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
-    }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
-
-    Timer2 = setTimeout(() => {
-        // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
-        document.getElementById("a-logo").classList.remove("return")
-        document.getElementById("a-logo").classList.remove("pin-message")
-    }, 3100) // durée choisis à la main
-    return
-}
-
 function extractionDate(dateWorkout) {
     if (dateWorkout == undefined) {return "jj:mm:aaaa"} // si pas de datas
 
@@ -70,10 +46,6 @@ function conversionMinutesTP(DureeWorkoutUser) {
     return DureeWorkoutUser
 }
 
-// init pour le logo dynamique
-let Timer1 = 0
-let Timer2 = 0
-
 async function uploadGarmin(event) {
     const fileCSV = event.target.files[0]
     let button = document.querySelector(".import-garmin")
@@ -100,6 +72,10 @@ async function uploadGarmin(event) {
         let indexDureeWorkout = enteteFile.indexOf("Durée")
         let indexTrainingEffectWorkout = enteteFile.indexOf("TE aérobie")
         let indexDistanceWorkout = enteteFile.indexOf("Distance")
+        let indexFcMoyWorkout = enteteFile.indexOf("Fréquence cardiaque moyenne")
+        let indexFcMaxWorkout = enteteFile.indexOf("Fréquence cardiaque maximale")        
+        let indexCadenceWorkout = enteteFile.indexOf("Cadence de vélo moyenne")
+        let indexAllureMoyWorkout = enteteFile.indexOf("Allure moyenne")
 
         // on regarde si le csv est en anglais
         if (indexSportWorkout == -1 && indexDureeWorkout == -1 && indexNomWorkout == -1) {
@@ -111,6 +87,10 @@ async function uploadGarmin(event) {
             indexDureeWorkout = enteteFile.indexOf("Time")
             indexTrainingEffectWorkout = enteteFile.indexOf("Aerobic TE")
             indexDistanceWorkout = enteteFile.indexOf("Distance")
+            indexFcMoyWorkout = enteteFile.indexOf("Avg HR")
+            indexFcMaxWorkout = enteteFile.indexOf("Max HR")        
+            indexCadenceWorkout = enteteFile.indexOf("Avg Bike Cadence")
+            indexAllureMoyWorkout = enteteFile.indexOf("Avg Pace")
         }
 
         for (const elt of dataHistoriqueEntrainement) {
@@ -121,14 +101,14 @@ async function uploadGarmin(event) {
             let dureeWorkout = elt[indexDureeWorkout]
             let trainingEffectWorkout = elt[indexTrainingEffectWorkout]
             let distanceWorkout = elt[indexDistanceWorkout]
+            let fcMoyWorkout = elt[indexFcMoyWorkout]
+            let fcMaxWorkout = elt[indexFcMaxWorkout]
+            let cadenceWorkout = elt[indexCadenceWorkout]
+            let allureMoyWorkout = elt[indexAllureMoyWorkout]
 
             if (elt.length <= 1) { // car la derniere ligne du CSV Garmin renvoie ça [''] et length == 1
                 //pass
             } else {
-                // ajout de datas pour les datas que je ne peux pas récupérer dans le CSV Garmin
-                let deniveleWorkout = 0
-                let musclesTravailleWorkout = "Pas de muscles travaillés"
-
                 // extraction uniquement de la date et passage du format hh:mm:ss en minutes pour la durée
                 dateWorkout = extractionDate(dateWorkout)
                 dureeWorkout = conversionMinutes(dureeWorkout)
@@ -136,6 +116,23 @@ async function uploadGarmin(event) {
                 // vérification
                 if (trainingEffectWorkout == "--" || trainingEffectWorkout == undefined) {
                     trainingEffectWorkout = "0.5" // car quand on va multiplier par 2 ça fera 1
+                }
+
+                // vérification pour voir si la data est vide
+                if (distanceWorkout == "--") {
+                    distanceWorkout = undefined
+                }
+                if (fcMoyWorkout == "--") {
+                    fcMoyWorkout = undefined
+                }
+                if (fcMaxWorkout == "--") {
+                    fcMaxWorkout = undefined
+                }
+                if (cadenceWorkout == "--") {
+                    cadenceWorkout = undefined
+                }
+                if (allureMoyWorkout == "--") {
+                    allureMoyWorkout = undefined
                 }
 
                 // on remet les bon nom de sport pour que Sprintia mettre les bonnes cartes dans l'historique d'entraînement
@@ -147,7 +144,21 @@ async function uploadGarmin(event) {
                     } else if (sportWorkout == "Marche à pied") {
                         sportWorkout="Marche"
                     } else if (sportWorkout == "Randonnée") {
-                        sportWorkout="Marche"
+                        sportWorkout="Randonnée"
+                    } else if (sportWorkout == "Rameur d'intérieur") {
+                        sportWorkout="Rameur d'intérieur"
+                    } else if (sportWorkout == "Nat. piscine") {
+                        sportWorkout="Natation"
+                    } else if (sportWorkout == "Ski en station") {
+                        sportWorkout="Ski"
+                    } else if (sportWorkout == "Basket-ball") {
+                        sportWorkout="Basketball"
+                    } else if (sportWorkout == "Volley-ball") {
+                        sportWorkout="Volley"
+                    } else if (sportWorkout == "Football") {
+                        sportWorkout="Football"
+                    } else if (sportWorkout == "Badminton") {
+                        sportWorkout="Badminton"
                     } else if (sportWorkout == "Musculation") { // ça peut paraitre debile mais ne pas enlever sinon le sport muscu va se transformer en Libre
                         sportWorkout="Musculation"
                     } else {
@@ -161,7 +172,21 @@ async function uploadGarmin(event) {
                     } else if (sportWorkout == "Walking") {
                         sportWorkout="Marche"
                     } else if (sportWorkout == "Hiking") {
-                        sportWorkout="Marche"
+                        sportWorkout="Randonnée"
+                    } else if (sportWorkout == "Indoor Rowing") {
+                        sportWorkout="Rameur d'intérieur"
+                    } else if (sportWorkout == "Pool Swim") {
+                        sportWorkout="Natation"
+                    } else if (sportWorkout == "Resort Skiing") {
+                        sportWorkout="Ski"
+                    } else if (sportWorkout == "Basketball") {
+                        sportWorkout="Basketball"
+                    } else if (sportWorkout == "Volleyball") {
+                        sportWorkout="Volley"
+                    } else if (sportWorkout == "Soccer/Football") {
+                        sportWorkout="Football"
+                    } else if (sportWorkout == "Badminton") {
+                        sportWorkout="Badminton"
                     } else if (sportWorkout == "Strength Training") {
                         sportWorkout="Musculation"
                     } else {
@@ -190,26 +215,24 @@ async function uploadGarmin(event) {
                     duree: dureeWorkout,
                     rpe: rpeWorkout,
                     distance: distanceWorkout,
-                    denivele: deniveleWorkout,
-                    muscles_travailles: musclesTravailleWorkout,
+                    fc_moy: fcMoyWorkout,
+                    fc_max: fcMaxWorkout,
+                    cadence_moy: cadenceWorkout,
+                    allure_moy: allureMoyWorkout,
                     charge_entrainement: chargeEntrainementWorkout
                 })
 
             }
         }
 
-        setTimeout(() => {
-            logoDynamique()
-        }, 650)
-
         // petite attente pour que le user voit le message dans le bouton
         setTimeout(() => {              
             button.disabled = false
             button.textContent = "Importer fichier"
+            logoDynamique("Bien reçu 😋")
         }, 650)    
 
     }
-
 
     return
 }
@@ -312,165 +335,11 @@ async function uploadTrainingPeaks(event) {
             }
         }
 
-        setTimeout(() => {
-            logoDynamique()
-        }, 650)
-
         // petite attente pour que le user voit le message dans le bouton
         setTimeout(() => {              
             button.disabled = false
             button.textContent = "Importer fichier"
-        }, 650)  
-
-    }
-
-
-    return
-}
-
-function verificationInputAge() {
-    let AgeUser = parseInt(document.getElementById("age-user").value.trim());
-
-    // Vérification du champ
-    if (isNaN(AgeUser)) {
-        alert("Erreur de saisie : le champ 'âge' doit être rempli.");
-        return
-    }
-    if (AgeUser <= 0) {
-        alert("Valeur non valide, l'âge doit être supérieur à 0.")
-        return
-    }
-    if (AgeUser >= 150) {
-        alert("Valeur non valide, l'âge doit être inférieur à 150.")
-        return
-    }
-
-    document.getElementById('file-input-runkeeper').click()
-}
-
-async function uploadRunkeeper(event) {
-    const fileCSV = event.target.files[0]
-    let button = document.querySelector(".import-runkeeper")
-
-    if (fileCSV) {
-        // Récupérer la valeur du champs, on l'utilise pour estimer sa FC max plus tard
-        let AgeUser = parseInt(document.getElementById("age-user").value
-            .trim());
-        // estimation fc max pour déterminer le RPE par la suite
-        // Formule de Tanaka
-        let fcMax = Math.round(208-0.7*AgeUser)
-
-        // transmet info au user
-        button.disabled = true
-        button.textContent = "Importation..."
-
-        // on lit le fichier et on convertit en texte
-        const readFile = await fileCSV.text()
-        
-        const ligneFile = Papa.parse(readFile) 
-        // on extrait uniquement la partie data du dico car les erreurs et meta on s'en fou
-        let dataHistoriqueEntrainement = ligneFile["data"]
-        // on récupere les entetes (ex : ["Sport,Duree,RPE"])  on supprimme l'élément à l'index 0 et on supprime que 1 élément
-        const enteteFile = dataHistoriqueEntrainement.splice(0, 1)[0] // index 0 car splice va renvoyer [["elem1", "elem2"]]
-
-        // recup des index
-        let indexSportWorkout = enteteFile.indexOf("Type")
-        let indexDateWorkout = enteteFile.indexOf("Date")
-        let indexDureeWorkout = enteteFile.indexOf("Duration")
-        let indexFcMoyWorkout = enteteFile.indexOf("Average Heart Rate (bpm)")
-        let indexDistanceWorkout = enteteFile.indexOf("Distance (km)")
-        let indexDeniveleWorkout = enteteFile.indexOf("Climb (m)")
-
-        for (const elt of dataHistoriqueEntrainement) {
-            // recup des datas
-            let sportWorkout = elt[indexSportWorkout]
-            let dateWorkout = elt[indexDateWorkout]
-            let dureeWorkout = elt[indexDureeWorkout]
-            let fcMoyWorkout = elt[indexFcMoyWorkout]
-            // calcul du RPE
-            let rpeWorkout = "1"
-            if (fcMoyWorkout == undefined) {rpeWorkout=1}
-            else if (fcMoyWorkout != "") {rpeWorkout = (fcMoyWorkout/fcMax)*10} // si il y a de la datas de fc moy alors on calcule le RPE
-
-            let distanceWorkout = elt[indexDistanceWorkout]
-            let deniveleWorkout = elt[indexDeniveleWorkout]
-
-            if (elt.length <= 1) { // car la derniere ligne du CSV renvoie ça [''] et length == 1
-                //pass
-            } else {
-                // ajout de datas pour les datas que je ne peux pas récupérer dans le CSV
-                let musclesTravailleWorkout = "Pas de muscles travaillés"
-
-                // extraction uniquement de la date et passage du format hh:mm:ss en minutes pour la durée
-                dureeWorkout = conversionMinutes(dureeWorkout)
-                dateWorkout = extractionDate(dateWorkout)
-
-                // arrondi de la distance car TP ne le fait pas
-                distanceWorkout = distanceWorkout // on convertit des metres au kilometre
-
-                // vérification
-                if (dureeWorkout == "") {
-                    // pas de datas donc on enregistre pas
-                } else {
-                    // on remet les bon nom de sport pour que Sprintia mettre les bonnes cartes dans l'historique d'entraînement
-                    if (sportWorkout == "Running") {
-                        sportWorkout="Course"
-                    } else if (sportWorkout == "Cycling") {
-                        sportWorkout="Vélo"
-                    } else if (sportWorkout == "Walking") {
-                        sportWorkout="Marche"
-                    } else if (sportWorkout == "Hiking") {
-                        sportWorkout="Marche"
-                    } else if (sportWorkout == "Strength Training" || sportWorkout == "Strength") { // je sais pas lequel utilise runkeeper mais ça doit être un des 2
-                        sportWorkout="Musculation"
-                    } else {
-                        sportWorkout = "Libre"
-                    }
-                    
-                    // pr le titre de l'entraînement
-                    let nomWorkout = ""
-                    if (sportWorkout == "Libre") {
-                        nomWorkout = "Séance " + sportWorkout.toLowerCase()  // pour mettre en minuscule
-                    } else {
-                        nomWorkout = "Séance de " + sportWorkout.toLowerCase() // pour mettre en minuscule
-                    }
-
-                    // conversion de type
-                    distanceWorkout = parseFloat(distanceWorkout)
-                    rpeWorkout = parseInt(rpeWorkout)
-
-                    // calcul du RPE et de la charge d'entrainement (petite sécurité mais normalement c'est bon)
-                    if (rpeWorkout < 1) { // si inférieur à 1 on le met sur la valeur minimum (=1)
-                        rpeWorkout = 1
-                    }
-                    if (rpeWorkout > 10) { // si supérieur à 10 on le met sur la valeur max (=10)
-                        rpeWorkout = 10
-                    }
-                    let chargeEntrainementWorkout = Math.floor(rpeWorkout*dureeWorkout)
-
-                    await db.entrainement.add({
-                        sport: sportWorkout,
-                        date: dateWorkout,
-                        nom: nomWorkout,
-                        duree: dureeWorkout,
-                        rpe: rpeWorkout,
-                        distance: distanceWorkout,
-                        denivele: deniveleWorkout,
-                        muscles_travailles: musclesTravailleWorkout,
-                        charge_entrainement: chargeEntrainementWorkout
-                    }) 
-                } 
-            }
-        }
-
-        setTimeout(() => {
-            logoDynamique()
-        }, 650)
-
-        // petite attente pour que le user voit le message dans le bouton
-        setTimeout(() => {              
-            button.disabled = false
-            button.textContent = "Importer fichier"
+            logoDynamique("Bien reçu 😋")
         }, 650)  
 
     }

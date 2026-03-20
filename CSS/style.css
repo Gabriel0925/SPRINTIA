@@ -46,8 +46,7 @@
     --DUREE_TRANSITION: 0.2s;
 
     /* Flèche vers le bas ComBox outils */
-    --URL_FLECHE_ICON: url("../Outils/Icons/icon_fleche_sombre.svg");
-    --URL_FLECHE_ICON_REVERSE: url("../Outils/Icons/icon_fleche_clair.svg");
+    --URL_FLECHE_ICON: url("/Assets/icons-interface/icon_fleche.svg");
 
     /* Couleur pour le hover des pastilles */
     --COULEUR_PASTILLES_0: #42a5f5; 
@@ -1059,15 +1058,9 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.
     color: var(--COULEUR_TEXT_SECONDAIRE);
     font-size: var(--P);
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.charge-workout{
+div.conteneur-cards-workout div.cards-history-workout p.charge-workout strong{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
-    font-size: var(--P);
-    margin-bottom: var(--ESPACE_XXS);
-}
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.charge-workout strong{
-    font-weight: 1000;
-    color: var(--COULEUR_ACCENT);
+    color: var(--COULEUR_ACCENT2);
 }
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire{
     display: flex;
@@ -1127,7 +1120,7 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
 }
 div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button:active{
     background-color: var(--COULEUR_ACCENT2);
-    transform: scale(var(--SCALE_NORMAL));
+    transform: scale(1);
 }
 div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button i{
     color: var(--COULEUR_BACKGROUND);
@@ -1616,7 +1609,7 @@ div.conteneur-champs-outil select {
     -webkit-appearance: none;
     -moz-appearance: none; 
     /* Pour la flèche */
-    background-image: var(--URL_FLECHE_ICON_REVERSE);
+    background-image: var(--URL_FLECHE_ICON);
     background-repeat: no-repeat;
     background-position: right var(--ESPACE_XS) center; /* On met à droite l'icone */
     background-size: var(--H3);

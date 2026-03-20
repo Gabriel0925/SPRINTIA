@@ -84,6 +84,35 @@ window.addEventListener("pageshow", (event) => {
 
 
 
+// --- Pour le logo dynamique ---
+let Timer1 = 0
+let Timer2 = 0
+
+function logoDynamique(message) {
+    // timeout remis a 0 (suppresion plutot)
+    clearTimeout(Timer1)
+    clearTimeout(Timer2)
+    document.getElementById("a-logo").classList.remove("return", "pin-message")
+
+    // animation du dynamic logo pour message au user
+    document.getElementById("a-logo").classList.add("pin-message")
+
+    document.getElementById("a-logo").textContent = message;
+
+    Timer1 = setTimeout(() => { 
+        document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
+        document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
+    }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
+
+    Timer2 = setTimeout(() => {
+        // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
+        document.getElementById("a-logo").classList.remove("return")
+        document.getElementById("a-logo").classList.remove("pin-message")
+    }, 3100) // durée choisis à la main
+}
+
+
+
 // --- Mise à jour local storage ---
 function majLocalStorage(versionStockee) {
     // migration de 4.0.0 à 4.0.1

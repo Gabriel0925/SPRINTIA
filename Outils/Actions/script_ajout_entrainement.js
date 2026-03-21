@@ -23,11 +23,11 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
     "CrossFit": ["muscles-travailles-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
     "HIIT": ["muscles-travailles-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user"],
     "Musculation": ["muscles-travailles-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
-    "Rameur d'intérieur": ["distance-entrainement-user", "coups-de-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
+    "Rameur d'intérieur": ["distance-entrainement-user", "coups-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
 
-    "Aviron": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
+    "Aviron": ["cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
     "Natation": ["distance-entrainement-user", "allure-moy-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
-    "Paddle": ["cadence-moy-entrainement-user", "coups-de-rame-entrainement-user"],
+    "Paddle": ["cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
 
     "Ski": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
     "Ski de fond": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
@@ -114,14 +114,19 @@ async function VerificationParam() {
                         const idData = cle.replace("_", "-") + "-entrainement-user"
                         
                         let input = document.getElementById(idData)
-                        if (input) {
+                        if (input && valeur != null && valeur != undefined) {
+                            if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur") {
+                                if (cle == "distance") {
+                                    valeur = valeur*1000
+                                }
+                            }
                             input.value = valeur // on affiche la valeur de la bdd dans le input correspondant à l'id de la donnée
                         }
                     }
                 });
 
                 // --- Pour mettre à jour les champs en fonction de l'unité du sport
-
+ 
                 // partie pour gérer la distance entre m et km
                 let inputDistance = document.getElementById("distance-entrainement-user")
                 if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur") { 
@@ -156,6 +161,28 @@ async function VerificationParam() {
                     if (inputAllureMoy) {
                         inputAllureMoy.placeholder = "Allure moy. (/km)"
                         inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/km)"
+                    }
+
+                }
+
+                // partie pour gérer la cadence moy entre ppm, tpm, cpm
+                let inputCadenceMoy = document.getElementById("cadence-moy-entrainement-user")
+                if (WorkoutDB.sport == "Vélo" || WorkoutDB.sport == "Corde à sauter") { 
+                    if (inputCadenceMoy) {
+                        inputCadenceMoy.placeholder = "Cadence moy (tpm)"
+                        inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (tpm)"
+                    }
+
+                } else if (WorkoutDB.sport == "Course") {
+                    if (inputCadenceMoy) {
+                        inputCadenceMoy.placeholder = "Cadence moy (ppm)"
+                        inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (ppm)"
+                    }
+
+                } else { // pr tout les autres sports
+                    if (inputCadenceMoy) {
+                        inputCadenceMoy.placeholder = "Cadence moy (cpm)"
+                        inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (cpm)"
                     }
 
                 }
@@ -503,12 +530,24 @@ async function saveWorkout() {
     }
 
     // si pas de datas alors on met sur undefined
-    if (!FcMoyUser) {FcMoyUser = undefined}
-    if (!FcMaxUser) {FcMaxUser = undefined}  
-    
-    // desactivation du bouton
-    BoutonSauvegarde.disabled = true 
-    BoutonSauvegarde.textContent = "Sauvegarde..."
+    if (!FcMoyUser) {FcMoyUser = undefined} else {
+        if (FcMoyUser >= 220) {
+            alert("Votre fréquence cardiaque moyenne doit être inférieur à 220 bpm.")
+            return
+        } else if (FcMoyUser <= 50) {
+            alert("Votre fréquence cardiaque moyenne doit être supérieur à 50 bpm.")
+            return
+        }
+    }
+    if (!FcMaxUser) {FcMaxUser = undefined} else {
+        if (FcMaxUser >= 220) {
+            alert("Votre fréquence cardiaque maximum doit être inférieur à 220 bpm.")
+            return
+        } else if (FcMaxUser <= 50) {
+            alert("Votre fréquence cardiaque maximum doit être supérieur à 50 bpm.")
+            return
+        }
+    }
 
     // init
     let chargeWorkout = 0
@@ -547,12 +586,145 @@ async function saveWorkout() {
                 }
 
                 if (data != "") {
-                    workoutData[cleData] = data // on ajoute au dico la nouvelle valeur si elle n'est pas vide
+                    // si le sport est natation, la distance est en metre donc on la convertit en km
+                    if (SportWorkoutUser == "Natation" || SportWorkoutUser == "Rameur d'intérieur") {
+                        if (cleData == "distance") {
+                            if (!isNaN(Number(data))) { // on regarde si il y a du contenu dans le input, la data
+                                data = data/1000 // on remet en kilomètres
+                            }
+                        }
+                    }
+
+                    // --- Vérification des champs spécifique ---   
+                    if (cleData == "distance") { // vérification pour le champs distance
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, la distance doit être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 1000) {
+                                alert("La distance de votre entraînement ne doit pas dépasser 1000 kilomètres.")
+                                return
+                            }
+                        }
+                    } else if (cleData == "denivele") { // vérification pour le champs denivele
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, le denivele doit être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 10000) {
+                                alert("Le denivele de votre entraînement ne doit pas dépasser 10 000 m.")
+                                return
+                            }
+                        }
+                    } else if (cleData == "vitesse_max" || cleData == "vitesse_smash") { // vérification pour le champs vitesse_max
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, la vitesse doit être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 200) {
+                                alert("La vitesse de votre entraînement ne doit pas dépasser 200 km/h.")
+                                return
+                            }
+                        }
+                    } else if (cleData == "cadence_moy") { // vérification pour le champs cadence_moy
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, la cadence moyenne doit être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 600) {
+                                alert("La cadence moyenne de votre entraînement doit être un nombre inférieur à 600.")
+                                return
+                            }
+                        }
+                    } else if (cleData == "nb_pas") { // vérification pour le champs nb_pas
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, le nombre de pas doit être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 800000) {
+                                alert("Le nombre de pas de votre entraînement doit être un nombre inférieur à 800000.")
+                                return
+                            }
+                        }
+                    } else if (cleData == "altitude_max") { // vérification pour le champs altitude_max
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, l'altitude maximum doit être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 10000) {
+                                alert("L'altitude maximum de votre entraînement doit être un nombre inférieur à 10000.")
+                                return
+                            }
+                        }
+                    } else if (cleData == "vitesse_moy") { // vérification pour le champs vitesse_moy
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, la vitesse moyenne doit être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 200) {
+                                alert("La vitesse moyenne de votre entraînement doit être un nombre inférieur à 200.")
+                                return
+                            }
+                        }
+                    } else if (cleData == "nb_coups" || cleData == "nb_sets" || cleData == "nb_defaites" || cleData == "nb_chutes" || cleData == "nb_victoires" || cleData == "nb_combats" || cleData == "nb_points" || cleData == "nb_services" || cleData == "nb_smash" || cleData == "nb_reps" || cleData == "nb_series" || cleData == "nb_longueurs" || cleData == "nb_descentes" || cleData == "serie_max" || cleData == "nb_tours") { 
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert(`Valeur non valide, le champs nommé : '${cleData}' doit être un nombre supérieur à 0.`)
+                                return
+                            }
+                            if (data >= 1000000) {
+                                alert(`Le champs nommé : '${cleData}' doit être un nombre inférieur à 1000000.`)
+                                return
+                            }
+                        }
+                    } else if (cleData == "coups_rame") { // vérification pour le champs coups_rame
+                        if (data) { // si il y a des datas dans le input
+
+                            // vérification
+                            if (data <= 0) {
+                                alert("Valeur non valide, les coups de rame doivent être un nombre supérieur à 0.")
+                                return
+                            }
+                            if (data >= 10000) {
+                                alert("Les coups de rame de votre entraînement doit être un nombre inférieur à 10000.")
+                                return
+                            }
+                        }
+                    }
+                    
+                    // on ajoute au dico la nouvelle valeur si elle n'est pas vide
+                    workoutData[cleData] = data 
                 }
             }
                 
         });
     }
+    // desactivation du bouton
+    BoutonSauvegarde.disabled = true 
+    BoutonSauvegarde.textContent = "Sauvegarde..."
     
     // variable pour gérer vers ou renvoyer
     let modificationEntrainement = false
@@ -626,6 +798,28 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
         if (inputAllureMoy) {
             inputAllureMoy.placeholder = "Allure moy. (/km)"
             inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/km)"
+        }
+
+    }
+
+    // partie pour gérer la cadence moy entre ppm, tpm, cpm
+    let inputCadenceMoy = document.getElementById("cadence-moy-entrainement-user")
+    if (value == "Vélo" || value == "Corde à sauter") { 
+        if (inputCadenceMoy) {
+            inputCadenceMoy.placeholder = "Cadence moy (tpm)"
+            inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (tpm)"
+        }
+
+    } else if (value == "Course") {
+        if (inputCadenceMoy) {
+            inputCadenceMoy.placeholder = "Cadence moy (ppm)"
+            inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (ppm)"
+        }
+
+    } else { // pr tout les autres sports
+        if (inputCadenceMoy) {
+            inputCadenceMoy.placeholder = "Cadence moy (cpm)"
+            inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (cpm)"
         }
 
     }

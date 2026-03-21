@@ -94,14 +94,18 @@ async function RecupData() {
         if (elementDate >= DateMoins7J) {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
-                    Tableau7J.push(DistanceWorkout)
-                    Tableau28J.push(DistanceWorkout)
+                    if (!isNaN(Number(DistanceWorkout))) {
+                        Tableau7J.push(DistanceWorkout)
+                        Tableau28J.push(DistanceWorkout)
+                    }
                 }
             }
         } else if (elementDate >= DateMoins28J) {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
-                    Tableau28J.push(DistanceWorkout)
+                    if (!isNaN(Number(DistanceWorkout))) {
+                        Tableau28J.push(DistanceWorkout)
+                    }
                 }
             }
         }

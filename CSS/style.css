@@ -46,7 +46,7 @@
     --DUREE_TRANSITION: 0.2s;
 
     /* Flèche vers le bas ComBox outils */
-    --URL_FLECHE_ICON: url("/Assets/icons-interface/icon_fleche.svg");
+    --URL_FLECHE_ICON: url("../Assets/icons-interface/icon_fleche.svg");
 
     /* Couleur pour le hover des pastilles */
     --COULEUR_PASTILLES_0: #42a5f5; 
@@ -1386,14 +1386,14 @@ div.conteneur-champs-outil .label-input.invisible {
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-champs-outil input[type="number"]:hover,
-div.conteneur-champs-outil input[type="text"]:hover,
-div.conteneur-champs-outil input[type="date"]:hover  {
+    div.conteneur-champs-outil input[type="text"]:hover,
+    div.conteneur-champs-outil input[type="date"]:hover  {
         box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
         transition: all ease-out var(--DUREE_TRANSITION);
     }
 }
-div.conteneur-champs-outil input[type="number"]:focus,
-div.conteneur-champs-outil input[type="text"]:focus  {
+    div.conteneur-champs-outil input[type="number"]:focus,
+    div.conteneur-champs-outil input[type="text"]:focus  {
     box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
     transition: all ease-out var(--DUREE_TRANSITION);
 }

@@ -29,7 +29,7 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
     "nb_reps": ["Nombre de reps", ""],
     "nb_series": ["Nombre de séries", ""],
     "poids_total": ["Poids total", "kg"],
-    "coups_de-rame": ["Coups de rame", ""],
+    "coups_rame": ["Coups de rame", ""],
     "nb_longueurs": ["Nombre de longueurs", ""],
     "longueur_bassin": ["Longueur du bassin", "m"],
     "style_danse": ["Style danse", ""],
@@ -73,6 +73,14 @@ function afficherData(dataWorkout) {
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
         const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 
         const nomData = nomUniteData[0] // on récupère le nom de la data ex: muscles_travailles => Muscles travaillés
+
+        let typeValeur = typeof(valeur) // on recup le type de la valeur
+        if (typeValeur == "number") { // si c'est un number alors
+            valeur = Number(valeur) // on convertit en nombre
+            if (isNaN(valeur)) { // et si la valeur est NaN (=quand le user met rien dans le champs lors de l'enregistrement de datas)
+                valeur = null // on met sur null pour que la condition ci-dessous n'affiche pas cette data
+            }
+        }
         
         // initialisation
         let uniteData = ""
@@ -88,6 +96,9 @@ function afficherData(dataWorkout) {
         } else if (cle == "distance") {
             if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur") {
                 uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
+                if (valeur != null) { // on passe des kilomètres en metres
+                    valeur = valeur*1000
+                }
             } else {
                 uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => km
             }
@@ -103,14 +114,6 @@ function afficherData(dataWorkout) {
 
         } else {
             uniteData = nomUniteData[1] // on récupère l'unité de la data ex: distance => km
-        }
-
-        let typeValeur = typeof(valeur) // on recup le type de la valeur
-        if (typeValeur == "number") { // si c'est un number alors
-            valeur = Number(valeur) // on convertit en nombre
-            if (isNaN(valeur)) { // et si la valeur est NaN (=quand le user met rien dans le champs lors de l'enregistrement de datas)
-                valeur = null // on met sur null pour que la condition ci-dessous n'affiche pas cette data
-            }
         }
 
         if (valeur != null || valeur != undefined) { // si il y a une datas en undefined ou null alors on n'affiche pas cette datas

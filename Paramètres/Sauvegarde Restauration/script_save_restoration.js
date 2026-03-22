@@ -48,16 +48,14 @@ async function DownloadDatas() {
     LienURL.href = UrlBlob // on créer le lien a href
     LienURL.download = "Sauvegarde-Sprintia.json" // pour enregistrer le fichier dans l'appareil d'un user
     LienURL.click() // on simmule le click pour lancer le download
-
-    // Légère pause
-    await new Promise(r => setTimeout(r, 650))
-    // confirmation sauvegarde
-    BoutonDownload.textContent = "Téléchargé"
+    
     // Pause
     await new Promise(r => setTimeout(r, 650))
     // remise etat normal
     BoutonDownload.textContent = "Télécharger mes données"
     BoutonDownload.disabled = false // Réactivation du bouton
+            
+    logoDynamique("📁 Téléchargé")
 
     return
 }
@@ -112,17 +110,15 @@ async function ReadFile(event) {
                 await db.JRM_Coach.add(element)
             }
             
-            // Légère pause
-            await new Promise(r => setTimeout(r, 650))
-            // confirmation sauvegarde
-            BoutonRestoration.textContent = "Restauré"
             // Pause
             await new Promise(r => setTimeout(r, 650))
             // remise etat normal
             BoutonRestoration.textContent = "Restaurer mes données"
             BoutonRestoration.disabled = false // Réactivation du bouton
-        
-            location.reload()    
+            
+            logoDynamique("Vous revoilà 😇")
+            // rechargement du theme
+            Preference()
         } catch {
             alert("Une erreur est survenue, veuillez réessayer !")
         }
@@ -149,17 +145,14 @@ async function SupprimerDatas() {
         await db.statut_analyse.clear()
         await db.JRM_Coach.clear()
 
-        // Légère pause
-        await new Promise(r => setTimeout(r, 650))
-        // confirmation sauvegarde
-        ButtonReinitialiser.textContent = "Réinitialisé"
         // Pause
         await new Promise(r => setTimeout(r, 650))
         // remise etat normal
         ButtonReinitialiser.textContent = "Réinitialiser Sprintia"
         ButtonReinitialiser.disabled = false // Réactivation du bouton
-        
-        location.reload()
+            
+        logoDynamique("🧹 Réinitialisé")
+        Preference()
     }
 
     return

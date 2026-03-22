@@ -84,7 +84,7 @@
 
     <div class="conteneur-cards-workout" id="liste-statut"></div>
     <div class="conteneur-centrage-marge">
-        <button id="button_afficher_plus" onclick="Historique()">
+        <button id="button_afficher_plus" onclick="AfficherPlus()">
             Afficher plus
         </button>
     </div> 
@@ -149,7 +149,9 @@
                     MessageDynamicLogo = "C'est reparti 🔥"
                 }
                 
-                logoDynamique(MessageDynamicLogo)
+                setTimeout(() => {
+                    logoDynamique(MessageDynamicLogo)
+                }, 200);
             }
             
             return
@@ -157,7 +159,9 @@
 
         // on stocke les datas dans un tableau
         let HistoriqueComplet = []
-        let NbCardsWorkoutAfficher = 0
+        const ConteneurCardsStatut = document.getElementById("liste-statut")
+        let NbCardStatutAfficher = 0
+        let NbTotalCardAfficher = parseInt(sessionStorage.getItem("NbCardHistoriqueStatutSave")) || 12
 
         async function recupData() {
             // Recup de l'historique
@@ -181,26 +185,114 @@
                 document.getElementById("button_afficher_plus").style.display = "none"
             }
 
-            await Historique()
+            await initialisationAffichage()
 
             return
         }
 
-        async function Historique() {
+        async function initialisationAffichage() { // pour quand on recharge la page
+            // Cacher le text comme quoi il n'y a pas dentrainement enregistrer
+            if (HistoriqueComplet.length > 0) {
+                document.getElementById("text-informatif").style.display = "none"
+            } 
+            if (HistoriqueComplet.length <= 12) {
+                document.getElementById("button_afficher_plus").style.display = "none"
+            }
+
+            let HistoriqueSauvegarder = HistoriqueComplet.slice(0, NbTotalCardAfficher)
+            
+            // Creation structure HTML
+            HistoriqueSauvegarder.forEach(elementBDD => {
+                const CardStatut = document.createElement("div")
+
+                CardStatut.classList.add("cards-history-workout")
+
+                // Inversion de la date de "2026-01-12" à "12-01-2026"
+                let DateEuropeen = ReturnDate(elementBDD.date)
+
+                let StructureHTML = `          
+                    <div class="data-workout-column">
+                        <p class="name-workout">
+                            Statut : ${elementBDD.statut}
+                        </p>
+                        <p class="sport-date-workout">
+                            ${DateEuropeen}
+                        </p>
+                    </div>
+                    `
+                
+                if (elementBDD.raison == null) {
+                    StructureHTML += `
+                    <div class="data-workout-paire">
+                        <p class="muscles-workout">
+                            Vous n'avez pas enregistré de raison.
+                        </p>
+                    </div>
+                    `
+                } else {
+                    StructureHTML += `
+                    <div class="data-workout-paire">
+                        <p class="muscles-workout">
+                            ${elementBDD.raison}
+                        </p>
+                    </div>
+                    `
+                }
+
+                StructureHTML += `
+                    <div class="action-button-card-workout">
+                        <button>
+                            <i class="fs-icon_supprimer"></i>
+                            Supprimer
+                        </button>
+                    </div>
+                    `
+
+                CardStatut.innerHTML = StructureHTML
+
+                let BoutonSupprimer = CardStatut.querySelector(".fs-icon_supprimer").parentElement // parent element pour ne pas prendre que l'icone
+                        
+                // Ajout de la logique pour la suppresion
+                BoutonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
+                    // Demande de confirmation avant
+                    if (confirm(`Supprimer ce statut "${elementBDD.statut}" ?`)) {
+                        await db.statut_analyse.delete(elementBDD.id) // supprimer la data de la bdd
+                        CardStatut.remove() // supprimer la ligne
+                        
+                        logoDynamique("Supprimé 🗑️")
+
+                        const NbCardStatut = document.querySelectorAll(".cards-history-workout")
+                        
+                        if (NbCardStatut.length == 0) { // si il n'y a pas de card alors on remet le message comme quoi il faut ajouter des datas
+                            document.getElementById("text-informatif").innerHTML = "Sprintia n'a pas encore assez de données pour afficher votre historique de statut. Veuillez <a href='statut_analyses.html' class='lien'>ajouter un statut</a>." // on précise que la page va se recharger par la suite
+                            document.getElementById("text-informatif").style.display = "block"
+                            document.getElementById("button_afficher_plus").style.display = "none"
+                        }
+
+                    }
+                })
+
+                ConteneurCardsStatut.appendChild(CardStatut)
+
+            });
+
+            // maj de la variable 
+            NbCardStatutAfficher = NbTotalCardAfficher
+        }
+
+        async function AfficherPlus() { // pour le bouton afficher plus
             // Cacher le text comme quoi il n'y a pas de statut enregistrer
             if (HistoriqueComplet.length <= 0) {
                 document.getElementById("button_afficher_plus").style.display = "none"
             }
             // Cacher le bouton si il n'y a plus d'element a charger
-            if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
+            if (HistoriqueComplet.length <= NbCardStatutAfficher) {
                 document.getElementById("button_afficher_plus").style.display = "none"
             }
-
-            const ConteneurCardsStatut = document.getElementById("liste-statut")
     
             // Coupage des datas pr le nb limite de cards
-            let HistoriqueNecessaire = HistoriqueComplet.slice(NbCardsWorkoutAfficher, NbCardsWorkoutAfficher+12)
-            NbCardsWorkoutAfficher += 12
+            let HistoriqueNecessaire = HistoriqueComplet.slice(NbCardStatutAfficher, NbCardStatutAfficher+12)
+            NbCardStatutAfficher += 12
 
             // Creation structure HTML
             HistoriqueNecessaire.forEach(elementBDD => {
@@ -265,10 +357,9 @@
                         const NbCardStatut = document.querySelectorAll(".cards-history-workout")
                         
                         if (NbCardStatut.length == 0) { // si il n'y a pas de card alors on remet le message comme quoi il faut ajouter des datas
-                            document.getElementById("text-informatif").textContent = "Chargement..." // on précise que la page va se recharger par la suite
+                            document.getElementById("text-informatif").innerHTML = "Sprintia n'a pas encore assez de données pour afficher votre historique de statut. Veuillez <a href='statut_analyses.html' class='lien'>ajouter un statut</a>." // on précise que la page va se recharger par la suite
                             document.getElementById("text-informatif").style.display = "block"
                             document.getElementById("button_afficher_plus").style.display = "none"
-                            location.reload()
                         }
 
                     }
@@ -277,6 +368,11 @@
                 ConteneurCardsStatut.appendChild(CardStatut)
 
             });
+
+            if (NbCardStatutAfficher > 12) {
+                sessionStorage.setItem("NbCardHistoriqueStatutSave", NbCardStatutAfficher)
+            }
+
             return
         }
 

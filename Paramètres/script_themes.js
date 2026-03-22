@@ -75,11 +75,14 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
     return
 }
 
+// !!! Si chamgement de nom de fonction préférence ne pas oublier de modifier le nom de fonction dans script_save_restoration et autre par, utilise la recherche global
 function Preference() {
     // Chercher les valeur dans la bdd
     const ColorUser = localStorage.getItem("ColorActuelleUse")
     if (ColorUser) {
         colorTheme(ColorUser, null) // on met l'id du li du thème en null pour pas que la fonction SelectedElement mettent à jour le li du thème en buggant
+    } else {
+        colorTheme("theme_azur", null)
     }
 }
 

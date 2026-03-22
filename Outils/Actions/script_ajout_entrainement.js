@@ -458,6 +458,13 @@ function conversionMinutes(DureeWorkoutUser) {
                 let minutes = parseInt(FormatDuree[1])
                 let secondes = parseInt(FormatDuree[2])
 
+                // vérification pour voir si le user n'a pas saisi une lettre
+                if (isNaN(heures) || isNaN(minutes) || isNaN(secondes)) {
+                    alert("Valeur non valide, vous avez saisi une lettre dans le champ durée.")
+                    DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
+                    return DureeWorkoutUser
+                }
+
                 // Vérification que le user a bien saisis les infos
                 if (heures > 59 || minutes > 59 || secondes > 59) {
                     alert("Le format de la durée doit être hh:mm:ss avec hh, mm et ss inférieur à 60.")
@@ -475,13 +482,45 @@ function conversionMinutes(DureeWorkoutUser) {
                 DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
                 return DureeWorkoutUser
             }
-        } else {
-            alert("Veuillez respecter le format 'Heure:Minute:Seconde' (hh:mm:ss) pour le champ durée.")
+        } else if (FormatDuree.length == 2) {
+
+            if (FormatDuree[0].length <= 2 && FormatDuree[1].length <= 2) {
+                // Extraction des minutes et secondes
+                let minutes = parseInt(FormatDuree[0])
+                let secondes = parseInt(FormatDuree[1])
+
+                // vérification pour voir si le user n'a pas saisi une lettre
+                if (isNaN(minutes) || isNaN(secondes)) {
+                    alert("Valeur non valide, vous avez saisi une lettre dans le champ durée.")
+                    DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
+                    return DureeWorkoutUser
+                }
+
+                // Vérification que le user a bien saisis les infos
+                if (minutes > 59 || secondes > 59) {
+                    alert("Le format de la durée doit être mm:ss avec mm et ss inférieur à 60.")
+                    DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
+                    return DureeWorkoutUser
+                }
+
+                // Conversion de la durée en minutes
+                DureeWorkoutUser = minutes + (secondes/60)
+                // La vérification de la durée maximum/minimum se fait dans la fonction saveWorkout
+                return DureeWorkoutUser
+                
+            } else {
+                alert("Le format de la durée doit être mm:ss avec mm et ss avec 2 chiffres maximum.")
+                DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
+                return DureeWorkoutUser
+            }
+        }
+        else {
+            alert("Veuillez respecter le format hh:mm:ss ou mm:ss pour le champ durée.")
             DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
             return DureeWorkoutUser
         }
     } else {
-        alert("Veuillez respecter le format 'Heure:Minute:Seconde' (hh:mm:ss) pour le champ durée.")
+        alert("Veuillez respecter le format hh:mm:ss ou mm:ss pour le champ durée.")
         DureeWorkoutUser = null // on met sur null pour pouvoir savoir qu'il y a eu une erreur et qu'il faut arreter la fonction saveWorkout
         return DureeWorkoutUser
     }
@@ -571,9 +610,7 @@ async function saveWorkout() {
 
     // si il y a un tableau
     if (tableauIdChampsSpe.length > 0) {
-
-        // on parcourt l'id des champs
-        tableauIdChampsSpe.forEach(element => {
+        for (const element of tableauIdChampsSpe) {
             const input = document.getElementById(element) // on recup l'input
 
             if (input) { // si il y en a un alors
@@ -720,7 +757,7 @@ async function saveWorkout() {
                 }
             }
                 
-        });
+        }
     }
     // desactivation du bouton
     BoutonSauvegarde.disabled = true 

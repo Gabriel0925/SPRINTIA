@@ -48,7 +48,7 @@ function afficherData(dataWorkout) {
         <h1>${dataWorkout.nom}</h1>
 
         <div class="conteneur-option">
-            <p class="data-essentiel"><strong>${dataWorkout.sport}</strong> · ${formatEuropeenDate(dataWorkout.date)}</p>
+            <p class="data-essentiel"><strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}</p>
             <i class="fs-icon_plus" id="button-more"></i>
         </div>
 

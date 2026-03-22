@@ -80,14 +80,12 @@
     <h1>Sprintia 4.1 : Plus complet</h1>
     <h2>Information</h2>
     <p class="text">
-        Type : Patch majeur
-        <br>
         Date de sortie : 29 Mars 2026
         <br>
         Taille du site : ... Mo
         <br><br>
         Sprintia 4.1 révolutionne le suivi de vos entraînements. Désormais, vous avez accès à plus de 25 sports allant de la course à pied
-        jusqu'au ski en passant par le rameur. De plus, chaque profil sportif a des données spécifiques à ce sport. Par exemple, pour le rameur
+        jusqu'au ski en passant par le rameur. De plus, chaque profil sportif possède données spécifiques à ce sport. Par exemple, pour le rameur
         vous pouvez renseigner le nombre de coups de rame ou encore la distance ou même votre allure. Pour vous faciliter la vie Sprintia peut remplir 
         intelligemment certains champs de données comme l'allure,...
     </p>
@@ -100,7 +98,7 @@
                                  Snowboard, Corde à sauter, Danse et Escalade.
         </li>
         <li>
-            Ajout de plein de données spécifique dans chaque sport. Par exemple, en course nous avons l'allure moyenne, en rameur nous avons
+            Ajout de plein de données spécifiques dans chaque sport. Par exemple, en course nous avons l'allure moyenne, en rameur nous avons
             les coups de rame ou encore en ski le nombre de descentes,...
         </li>
         <li>
@@ -111,7 +109,7 @@
             De plus, Sprintia peut désormais importer vos séances de basketball, volley, football, badminton, ski, natation, rameur et randonnée.
         </li>
         <li>
-            Pour la première fois Sprintia combine différente unité pour une même données en fonction du sport. Par exemple, en course la distance est
+            Pour la première fois Sprintia combine différentes unités pour une même donnée en fonction du sport. Par exemple, en course la distance est
             en km mais en natation, la distance est en m. Idem pour la cadence moy qui varie entre ppm (=pas par min), tpm (=tours par min) et cpm (=coups par min).
             Idem pour l'allure,...
         </li>
@@ -120,12 +118,23 @@
     <h2>📊 Améliorations</h2>
     <ul class="liste-fonctionnalites">
         <li>
-            La charge d'entraînement n'est plus affiché en bold mais en gras léger.
+            La charge d'entraînement n'est plus affichée en bold mais en gras léger.
         </li>
         <li>
-            Les cartes dans l'historique d'entraînement ont été revu pour s'adapter à l'ensemble des nouveaux sports. Il affichera des 
+            Les cartes dans l'historique d'entraînement ont été revues pour s'adapter à l'ensemble des nouveaux sports. Elles afficheront des 
             données qui sont la base de n'importe quel sport : le sport, la durée, la date, le nom de l'entraînement, le RPE 
-            et la charge d'entraînement. Donc, les cartes ne s'adapterons plus au type d'entraînement.
+            et la charge d'entraînement. Donc, les cartes ne s'adapteront plus au type d'entraînement.
+        </li>
+        <li>
+            Le champ durée (dans l'ajout d'entraînement) accepte désormais plusieurs formats : hh:mm:ss (heure:minute:seconde) et mm:ss 
+            (minute:seconde).
+        </li>
+        <li>
+            Le logo dynamique est désormais présent dans sauvegarde et restauration.
+        </li>
+        <li>
+            Désormais, Sprintia se souvient de l'endroit où vous vous êtes arrêté dans votre historique d'entraînement. Ce qui fluidifie l'expérience
+            utilisateur. Idem pour l'historique de statut.
         </li>
     </ul>
 
@@ -149,12 +158,19 @@
         <li>
             Optimisation du code de l'indulgence de course.
         </li>
+        <li>
+            Désormais, Sprintia vérifie si vous avez saisi une lettre dans le champ 'durée' lors de l'ajout d'entraînement. Ce qui permet
+            de rendre le code plus robuste et de minimiser le risque de bug.
+        </li>
+        <li>
+            Correction d'un bug dans l'historique de statut qui déclenchait le logo dynamique lors d'une suppression d'un élément de l'historique.
+        </li>
     </ul>
 
     <h2>🗑️ Fonctionnalités supprimées</h2>
     <ul class="liste-fonctionnalites">
         <li>
-            Vous ne pouvez plus importer votre historique d'entraînement depuis Runkeeper car Runkeeper ne donnaît pas accès a assez de donnée.
+            Vous ne pouvez plus importer votre historique d'entraînement depuis Runkeeper car Runkeeper ne donnaît pas accès a assez de données.
             De plus, la précision de l'estimation du RPE était très mauvaise.
         </li>
     </ul>

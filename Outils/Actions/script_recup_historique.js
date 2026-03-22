@@ -1,5 +1,6 @@
 // Init for function Afficher data
 let NbCardsWorkoutAfficher = 0
+let NbTotalCardsWorkoutAfficher = parseInt(sessionStorage.getItem("NbCardHistoriqueSave")) || 12
 let HistoriqueComplet = []
 
 async function Init() {
@@ -64,12 +65,43 @@ async function SauvegardeHistorique(HistoriqueDB) {
     HistoriqueDB.forEach(element => {
         HistoriqueComplet.push(element)
     });
-    await AfficherData()
+    await initialisationAffichage()
 
     return
 }
 
-async function AfficherData() {
+async function initialisationAffichage() { // pour quand on recharge la page
+    // Cacher le text comme quoi il n'y a pas dentrainement enregistrer
+    if (HistoriqueComplet.length > 0) {
+        document.getElementById("text-informatif").style.display = "none"
+    } 
+    if (HistoriqueComplet.length <= 12) {
+        document.getElementById("button_afficher_plus").style.display = "none"
+    }
+
+    const ConteneurCardsWorkout = document.getElementById("liste-workouts")
+
+    let HistoriqueSauvegarder = HistoriqueComplet.slice(0, NbTotalCardsWorkoutAfficher)
+    
+    // Creation structure HTML
+    HistoriqueSauvegarder.forEach(workout => {
+        const CardWorkout = document.createElement("div")
+
+        CardWorkout.classList.add("cards-history-workout")
+
+        // Inversion de la date de "2026-01-12" à "12-01-2026"
+        let DateEuropeen = formatEuropeenDate(workout.date)
+        let dureeWorkout = dureeFormatee(workout.duree, "null") // on exige aucun format
+
+        let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
+        ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
+    }); 
+
+    // maj de la variable 
+    NbCardsWorkoutAfficher = NbTotalCardsWorkoutAfficher
+}
+
+async function AfficherData() { // lors d'un clic sur le bouton afficher plus
     // Cacher le text comme quoi il n'y a pas dentrainement enregistrer
     if (HistoriqueComplet.length > 0) {
         document.getElementById("text-informatif").style.display = "none"
@@ -100,7 +132,11 @@ async function AfficherData() {
 
         let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
         ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
-    });
+    }); 
+
+    if (NbCardsWorkoutAfficher > 12) {
+        sessionStorage.setItem("NbCardHistoriqueSave", NbCardsWorkoutAfficher)
+    }
 
     return
 }

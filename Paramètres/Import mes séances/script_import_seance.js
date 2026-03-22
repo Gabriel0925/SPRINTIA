@@ -40,12 +40,6 @@ function conversionMinutes(DureeWorkoutUser) {
 
 }
 
-function conversionMinutesTP(DureeWorkoutUser) {
-    // training peaks renvoie 1.5 heure donc on le repasse en minutes -> 90 minutes
-    DureeWorkoutUser = DureeWorkoutUser*60
-    return DureeWorkoutUser
-}
-
 async function uploadGarmin(event) {
     const fileCSV = event.target.files[0]
     let button = document.querySelector(".import-garmin")
@@ -233,117 +227,6 @@ async function uploadGarmin(event) {
         }, 650)    
 
     }
-
-    return
-}
-
-async function uploadTrainingPeaks(event) {
-    const fileCSV = event.target.files[0]
-    let button = document.querySelector(".import-trainingpeaks")
-
-    if (fileCSV) {
-        // transmet info au user
-        button.disabled = true
-        button.textContent = "Importation..."
-
-        // on lit le fichier et on convertit en texte
-        const readFile = await fileCSV.text()
-        
-        const ligneFile = Papa.parse(readFile) 
-        // on extrait uniquement la partie data du dico car les erreurs et meta on s'en fou
-        let dataHistoriqueEntrainement = ligneFile["data"]
-        // on récupere les entetes (ex : ["Sport,Duree,RPE"])  on supprimme l'élément à l'index 0 et on supprime que 1 élément
-        const enteteFile = dataHistoriqueEntrainement.splice(0, 1)[0] // index 0 car splice va renvoyer [["elem1", "elem2"]]
-
-        // recup des index
-        let indexSportWorkout = enteteFile.indexOf("WorkoutType")
-        let indexDateWorkout = enteteFile.indexOf("WorkoutDay")
-        let indexNomWorkout = enteteFile.indexOf("Title")
-        let indexDureeWorkout = enteteFile.indexOf("TimeTotalInHours")
-        let indexRpe = enteteFile.indexOf("Rpe")
-        let indexDistanceWorkout = enteteFile.indexOf("DistanceInMeters")
-
-        for (const elt of dataHistoriqueEntrainement) {
-            // recup des datas
-            let sportWorkout = elt[indexSportWorkout]
-            let dateWorkout = elt[indexDateWorkout]
-            let nomWorkout = elt[indexNomWorkout]
-            let dureeWorkout = elt[indexDureeWorkout]
-            let rpeWorkout = elt[indexRpe]
-            let distanceWorkout = elt[indexDistanceWorkout]
-
-            if (elt.length <= 1) { // car la derniere ligne du CSV renvoie ça [''] et length == 1
-                //pass
-            } else {
-                // ajout de datas pour les datas que je ne peux pas récupérer dans le CSV
-                let deniveleWorkout = 0
-                let musclesTravailleWorkout = "Pas de muscles travaillés"
-
-                // passage du format hh:mm:ss en minutes pour la durée
-                dureeWorkout = conversionMinutesTP(dureeWorkout)
-
-                // arrondi de la distance car TP ne le fait pas
-                distanceWorkout = distanceWorkout/1000 // on convertit des metres au kilometre
-
-                // vérification
-                if (rpeWorkout == "" || rpeWorkout == undefined) {
-                    rpeWorkout = "1"
-                }
-                if (dureeWorkout == "") {
-                    // pas de datas donc on enregistre pas
-                } else {
-                    // on remet les bon nom de sport pour que Sprintia mettre les bonnes cartes dans l'historique d'entraînement
-                    if (sportWorkout == "Run") {
-                        sportWorkout="Course"
-                    } else if (sportWorkout == "Bike") {
-                        sportWorkout="Vélo"
-                    } else if (sportWorkout == "Walk") {
-                        sportWorkout="Marche"
-                    } else if (sportWorkout == "Hike") {
-                        sportWorkout="Marche"
-                    } else if (sportWorkout == "Strength") {
-                        sportWorkout="Musculation"
-                    } else {
-                        sportWorkout = "Libre"
-                    }
-
-                    // conversion de type
-                    distanceWorkout = parseFloat(distanceWorkout)
-                    rpeWorkout = parseInt(rpeWorkout)
-
-                    // calcul du RPE et de la charge d'entrainement (petite sécurité mais normalement c'est bon)
-                    if (rpeWorkout < 1) { // si inférieur à 1 on le met sur la valeur minimum (=1)
-                        rpeWorkout = 1
-                    }
-                    if (rpeWorkout > 10) { // si supérieur à 10 on le met sur la valeur max (=10)
-                        rpeWorkout = 10
-                    }
-                    let chargeEntrainementWorkout = Math.floor(rpeWorkout*dureeWorkout)
-
-                    await db.entrainement.add({
-                        sport: sportWorkout,
-                        date: dateWorkout,
-                        nom: nomWorkout,
-                        duree: dureeWorkout,
-                        rpe: rpeWorkout,
-                        distance: distanceWorkout,
-                        denivele: deniveleWorkout,
-                        muscles_travailles: musclesTravailleWorkout,
-                        charge_entrainement: chargeEntrainementWorkout
-                    }) 
-                } 
-            }
-        }
-
-        // petite attente pour que le user voit le message dans le bouton
-        setTimeout(() => {              
-            button.disabled = false
-            button.textContent = "Importer fichier"
-            logoDynamique("Bien reçu 😋")
-        }, 650)  
-
-    }
-
 
     return
 }

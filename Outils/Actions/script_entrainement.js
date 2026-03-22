@@ -97,19 +97,22 @@ function afficherData(dataWorkout) {
             if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur") {
                 uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
                 if (valeur != null) { // on passe des kilomètres en metres
-                    valeur = valeur*1000
+                    valeur = Math.floor(valeur*1000).toFixed(1).toString().replace(".", ",")
                 }
             } else {
                 uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => km
+                if (valeur != null) { // on passe des kilomètres en metres
+                    valeur = Math.floor(valeur).toFixed(2).toString().replace(".", ",")
+                }
             }
 
         } else if (cle == "allure_moy") {
             if (dataWorkout.sport == "Natation") {
-                uniteData = nomUniteData[1][2] // on récupère l'unité de la data  => /100m
+                uniteData = nomUniteData[1][2] // on récupère l'unité de la data  => /100m 
             } else if (dataWorkout.sport == "Rameur d'intérieur") {
-                uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => /500m
+                uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => /500m 
             } else {
-                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km
+                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km 
             }
 
         } else {

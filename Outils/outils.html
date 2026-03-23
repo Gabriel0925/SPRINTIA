@@ -381,12 +381,12 @@
                 if (OutilEpingler.includes(TitleOutil)) { // si le nom de l'outil est dans la liste alors on fait rien
                     // on fait rien (en gros = pass en python)
                 } else {
-                    if (OutilEpingler.length >= 3) { // si il y a deja 3 outils epinglé alors on ne fait rien mais message au user  
+                    if (OutilEpingler.length >= 5) { // si il y a deja 5 outils epinglé alors on ne fait rien mais message au user  
                         logoDynamique("Max atteint !")       
                         return
                     } else { 
                         // .unshift() permet de mettre le nom de l'outil en premiere position dans un tableau
-                        OutilEpingler.unshift(TitleOutil) // sinon on ajoute en premiere position le nom de l'outil
+                        OutilEpingler.unshift(TitleOutil) // on ajoute en premiere position le nom de l'outil
                         
                         // transmet l'info au user
                         logoDynamique("Placé à l'accueil")

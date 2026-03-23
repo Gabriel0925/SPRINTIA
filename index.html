@@ -131,6 +131,20 @@
                 <p class="text-outil-recent" id="P3">Niveau de course à pied</p>
             </div>
         </a>
+            
+        <a href="Outils/Indulgence de course/indulgence_course.html" class="L4">
+            <div class="card-outil-recent">
+                <i class="fs-icon_indulgence_course" id="I4"></i>
+                <p class="text-outil-recent" id="P4">Indulgence de course</p>
+            </div>
+        </a>
+            
+        <a href="Outils/Hydratation post-seance/hydratation_post-seance.html" class="L5">
+            <div class="card-outil-recent">
+                <i class="fs-icon_besoin_hydratation" id="I5"></i>
+                <p class="text-outil-recent" id="P5">Hydratation post-séance</p>
+            </div>
+        </a>
 
     </div>
 
@@ -203,7 +217,7 @@
                             ${SportWorkout} · ${DateWorkout}
                         </p>
                         <p class="charge-workout">
-                            Charge d'entraînement : <strong>${ChargeWorkout}</strong>
+                            Charge d'entraînement : <strong>${ChargeWorkout} TL</strong>
                         </p>
                     </div>
                 </a>
@@ -332,6 +346,8 @@
                 let OutilFavoris1 = OutilFavorieUser[0]
                 let OutilFavoris2 = OutilFavorieUser[1] || "Estimation VO₂max"
                 let OutilFavoris3 = OutilFavorieUser[2] || "Niveau course à pied"
+                let OutilFavoris4 = OutilFavorieUser[3] || "Indulgence de course"
+                let OutilFavoris5 = OutilFavorieUser[4] || "Hydratation post-séance"
 
                 // si l'outil favoris 1 est estimation VO2max alors on met la charge d'entrainement (c pr éviter d'avoir des doublons)
                 if (OutilFavoris1 == OutilFavoris2) {
@@ -348,6 +364,8 @@
                 document.getElementById("P1").textContent = OutilFavoris1
                 document.getElementById("P2").textContent = OutilFavoris2
                 document.getElementById("P3").textContent = OutilFavoris3
+                document.getElementById("P4").textContent = OutilFavoris4
+                document.getElementById("P5").textContent = OutilFavoris5
 
                 // Affichage de l'icone des outils favoris en cherchant dans le dico
                 document.getElementById("I1").classList = ""
@@ -359,10 +377,18 @@
                 document.getElementById("I3").classList = ""
                 document.getElementById("I3").classList.add(DicoNameIcon[OutilFavoris3])
 
+                document.getElementById("I4").classList = ""
+                document.getElementById("I4").classList.add(DicoNameIcon[OutilFavoris4])
+
+                document.getElementById("I5").classList = ""
+                document.getElementById("I5").classList.add(DicoNameIcon[OutilFavoris5])
+
                 // attribution des liens
                 document.getElementById("I1").parentElement.parentElement.href = DicoNameHref[OutilFavoris1]
                 document.getElementById("I2").parentElement.parentElement.href = DicoNameHref[OutilFavoris2]
                 document.getElementById("I3").parentElement.parentElement.href = DicoNameHref[OutilFavoris3]
+                document.getElementById("I4").parentElement.parentElement.href = DicoNameHref[OutilFavoris4]
+                document.getElementById("I5").parentElement.parentElement.href = DicoNameHref[OutilFavoris5]
            }
 
             return

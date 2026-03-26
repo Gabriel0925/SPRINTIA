@@ -25,20 +25,20 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
     "Musculation": ["muscles-travailles-entrainement-user", "nb-reps-entrainement-user", "nb-series-entrainement-user", "poids-total-entrainement-user"],
     "Rameur d'intérieur": ["distance-entrainement-user", "coups-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
 
-    "Aviron": ["cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
+    "Aviron": ["distance-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
     "Natation": ["distance-entrainement-user", "allure-moy-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
-    "Paddle": ["cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
+    "Paddle": ["distance-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
 
     "Ski": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
     "Ski de fond": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
     "Snowboard": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
 
     "Corde à sauter": ["nb-tours-entrainement-user", "cadence-moy-entrainement-user", "serie-max-entrainement-user"],
-    "Danse": ["style-danse-entrainement-user", "muscles-travailles-entrainement-user", "nb-pas-entrainement-user"],
     "Escalade": ["voies-effectuees-entrainement-user", "difficulte-max-entrainement-user", "nb-chutes-entrainement-user"],
 }
 
 let IdEditWorkout = null // init variable globale
+let descriptionEntrainement = undefined
 
 async function MessagePrevention() {
     // Check du statut du user
@@ -103,6 +103,11 @@ async function VerificationParam() {
                 document.querySelector(".slider progress").value = WorkoutDB.rpe
                 document.querySelector(".slider-value").textContent = WorkoutDB.rpe
 
+                // ajout d'une data a la variable globale
+                if (WorkoutDB.description != undefined || WorkoutDB.description != "") {
+                    descriptionEntrainement = WorkoutDB.description
+                }
+
                 // tableau des datas à ne pas rentrer dans un input
                 const tableauDataNotInInput = ["sport", "duree", "rpe", "charge_entrainement", "id"]
 
@@ -115,7 +120,7 @@ async function VerificationParam() {
                         
                         let input = document.getElementById(idData)
                         if (input && valeur != null && valeur != undefined) {
-                            if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur") {
+                            if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Paddle") {
                                 if (cle == "distance") {
                                     valeur = valeur*1000
                                 }
@@ -129,7 +134,7 @@ async function VerificationParam() {
  
                 // partie pour gérer la distance entre m et km
                 let inputDistance = document.getElementById("distance-entrainement-user")
-                if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur") { 
+                if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Paddle") { 
                     if (inputDistance) {
                         inputDistance.placeholder = "Distance (m)"
                         inputDistance.nextElementSibling.textContent = "Distance (m)"
@@ -151,7 +156,7 @@ async function VerificationParam() {
                         inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
                     }
 
-                } else if (WorkoutDB.sport == "Rameur d'intérieur") {
+                } else if (WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Paddle") {
                     if (inputAllureMoy) {
                         inputAllureMoy.placeholder = "Allure moy. (/500m)"
                         inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"
@@ -543,7 +548,7 @@ async function saveWorkout() {
 
     // Vérification des champs de base
     if (!DateWorkoutUser || !DureeWorkoutUser || !NameWorkoutUser) {
-        alert("Veuillez remplir tous les champs du formulaire.")
+        alert("Les champs avec '*' sont obligatoire, vous devez les remplir.")
         return
     }
 
@@ -592,6 +597,8 @@ async function saveWorkout() {
     let chargeWorkout = 0
     // Calcul Charge
     chargeWorkout = Math.floor(DureeWorkoutUser*ValueRpeUser)
+    // si la charge est inférieur à 1 alors on la met a 1
+    if (chargeWorkout < 1) {chargeWorkout = 1}
     
     // base du dico qu'on enregistrera
     let workoutData = {
@@ -624,7 +631,7 @@ async function saveWorkout() {
 
                 if (data != "") {
                     // si le sport est natation, la distance est en metre donc on la convertit en km
-                    if (SportWorkoutUser == "Natation" || SportWorkoutUser == "Rameur d'intérieur") {
+                    if (SportWorkoutUser == "Natation" || SportWorkoutUser == "Rameur d'intérieur" || SportWorkoutUser == "Aviron" || SportWorkoutUser == "Paddle") {
                         if (cleData == "distance") {
                             if (!isNaN(Number(data))) { // on regarde si il y a du contenu dans le input, la data
                                 data = data/1000 // on remet en kilomètres
@@ -769,6 +776,7 @@ async function saveWorkout() {
     // enregistrement ou modification
     if (IdEditWorkout && IdEditWorkout != null) {
         workoutData["id"] = IdEditWorkout
+        workoutData["description"] = descriptionEntrainement
         await db.entrainement.put(workoutData)
         // mise sur true pour renvoyer vers lentrainement directement
         modificationEntrainement = true
@@ -803,7 +811,7 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
 
     // partie pour gérer la distance entre m et km
     let inputDistance = document.getElementById("distance-entrainement-user")
-    if (value == "Natation" || value == "Rameur d'intérieur") { // value c'est le sport du combobox
+    if (value == "Natation" || value == "Rameur d'intérieur" || value == "Aviron" || value == "Paddle") { // value c'est le sport du combobox
         if (inputDistance) {
             inputDistance.placeholder = "Distance (m)"
             inputDistance.nextElementSibling.textContent = "Distance (m)"
@@ -825,7 +833,7 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
             inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
         }
 
-    } else if (value == "Rameur d'intérieur") { // value c'est le sport du combobox
+    } else if (value == "Rameur d'intérieur" || value == "Aviron" || value == "Paddle") { // value c'est le sport du combobox
         if (inputAllureMoy) {
             inputAllureMoy.placeholder = "Allure moy. (/500m)"
             inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"

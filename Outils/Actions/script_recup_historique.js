@@ -45,7 +45,7 @@ function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
         </div>
         <div class="data-workout-paire">
             <p class="charge-workout">
-                Charge d'entraî. : <strong>${workout.charge_entrainement} TL</strong>
+                Charge d'entraî. : <strong>${workout.charge_entrainement} CE</strong>
             </p>
         </div>
         <div class="action-button-card-workout">

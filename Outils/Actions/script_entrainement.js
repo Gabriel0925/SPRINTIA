@@ -32,15 +32,15 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
     "coups_rame": ["Coups de rame", ""],
     "nb_longueurs": ["Nombre de longueurs", ""],
     "longueur_bassin": ["Longueur du bassin", "m"],
-    "style_danse": ["Style danse", ""],
     "nb_tours": ["Nombre de tours", ""],
     "serie_max": ["Séries maximum", ""],
     "nb_descentes": ["Nombre de descentes", ""],
     "voies_effectuees": ["Voies effectuées", ""],
     "difficulte_max": ["Difficulté maximum", ""],
     "muscles_travailles": ["Muscles travaillés", ""],
-    "charge_entrainement": ["Charge d'entraînement", "TL"],
+    "charge_entrainement": ["Charge d'entraînement", "CE"],
 }
+let idWorkout = undefined
 
 function afficherData(dataWorkout) {
     // Structure de base de la page entrainement
@@ -67,98 +67,148 @@ function afficherData(dataWorkout) {
     
     // initialisation de 2 tableaux
     const tableauDataNotDisplay = ["Nom", "Sport", "Date", "Durée", "id"]
-    const tableauDataSeule = ["Charge d'entraînement", "Muscles travaillés", "Style de danse", "Score", "Voies effectuées"]
+    const tableauDataSeule = ["Charge d'entraînement", "Muscles travaillés", "Score", "Voies effectuées"]
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
-        const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 
-        const nomData = nomUniteData[0] // on récupère le nom de la data ex: muscles_travailles => Muscles travaillés
-
-        let typeValeur = typeof(valeur) // on recup le type de la valeur
-        if (typeValeur == "number") { // si c'est un number alors
-            valeur = Number(valeur) // on convertit en nombre
-            if (isNaN(valeur)) { // et si la valeur est NaN (=quand le user met rien dans le champs lors de l'enregistrement de datas)
-                valeur = null // on met sur null pour que la condition ci-dessous n'affiche pas cette data
-            }
-        }
-        
-        // initialisation
-        let uniteData = ""
-        if (cle == "cadence_moy") { // si la datas c'est cadence moy on prend ppm ou tpm ou cpm en fonction du sport
-            if (dataWorkout.sport == "Course") {
-                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => ppm
-            } else if (dataWorkout.sport == "Vélo" || dataWorkout.sport == "Corde à sauter") {
-                uniteData = nomUniteData[1][1] // on récupère l'unité de la data => tpm
-            } else { // si c'est du rameur, aviron,...
-                uniteData = nomUniteData[1][2] // on récupère l'unité de la data => cpm
-            }
-
-        } else if (cle == "distance") {
-            if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur") {
-                uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
-                if (valeur != null) { // on passe des kilomètres en metres
-                    valeur = Math.floor(valeur*1000).toFixed(1).toString().replace(".", ",")
-                }
-            } else {
-                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => km
-                if (valeur != null) { // on passe des kilomètres en metres
-                    valeur = Math.floor(valeur).toFixed(2).toString().replace(".", ",")
-                }
-            }
-
-        } else if (cle == "allure_moy") {
-            if (dataWorkout.sport == "Natation") {
-                uniteData = nomUniteData[1][2] // on récupère l'unité de la data  => /100m 
-            } else if (dataWorkout.sport == "Rameur d'intérieur") {
-                uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => /500m 
-            } else {
-                uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km 
-            }
-
+        if (cle=="description") {
+            // si c'est la description on ne fais rien on le fera plus tard
         } else {
-            uniteData = nomUniteData[1] // on récupère l'unité de la data ex: distance => km
-        }
+            const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 
+            const nomData = nomUniteData[0] // on récupère le nom de la data ex: muscles_travailles => Muscles travaillés
 
-        if (valeur != null || valeur != undefined) { // si il y a une datas en undefined ou null alors on n'affiche pas cette datas
-            // on regarde si le nom de la data n'est pas dans le tableau car le nom, la date, le sport est dans la structure de base de la page html
-            if (tableauDataNotDisplay.includes(nomData)) { 
-                // pass
+            let typeValeur = typeof(valeur) // on recup le type de la valeur
+            if (typeValeur == "number") { // si c'est un number alors
+                valeur = Number(valeur) // on convertit en nombre
+                if (isNaN(valeur)) { // et si la valeur est NaN (=quand le user met rien dans le champs lors de l'enregistrement de datas)
+                    valeur = null // on met sur null pour que la condition ci-dessous n'affiche pas cette data
+                }
+            }
+            
+            // initialisation
+            let uniteData = ""
+            if (cle == "cadence_moy") { // si la datas c'est cadence moy on prend ppm ou tpm ou cpm en fonction du sport
+                if (dataWorkout.sport == "Course") {
+                    uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => ppm
+                } else if (dataWorkout.sport == "Vélo" || dataWorkout.sport == "Corde à sauter") {
+                    uniteData = nomUniteData[1][1] // on récupère l'unité de la data => tpm
+                } else { // si c'est du rameur, aviron,...
+                    uniteData = nomUniteData[1][2] // on récupère l'unité de la data => cpm
+                }
+
+            } else if (cle == "distance") {
+                if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Paddle") {
+                    uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
+                    if (valeur != null) { // on passe des kilomètres en metres
+                        valeur = Math.floor(valeur*1000).toFixed(1).toString().replace(".", ",")
+                    }
+                } else {
+                    uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => km
+                    if (valeur != null) { // on passe des kilomètres en metres
+                        valeur = Math.floor(valeur).toFixed(2).toString().replace(".", ",")
+                    }
+                }
+
+            } else if (cle == "allure_moy") {
+                if (dataWorkout.sport == "Natation") {
+                    uniteData = nomUniteData[1][2] // on récupère l'unité de la data  => /100m 
+                } else if (dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Paddle") {
+                    uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => /500m 
+                } else {
+                    uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km 
+                }
+
             } else {
-                if (tableauDataSeule.includes(nomData)) { // on check si c'est une data qu'on doit afficher seul ou pas 
-                    // on referme d'abord la div conteneur-cube on la rouvre puis on la referme
-                    structureHTML += `
-                        </div>
+                uniteData = nomUniteData[1] // on récupère l'unité de la data ex: distance => km
+            }
 
-                        <div class="conteneur-cube">
+            if (valeur != null || valeur != undefined) { // si il y a une datas en undefined ou null alors on n'affiche pas cette datas
+                // on regarde si le nom de la data n'est pas dans le tableau car le nom, la date, le sport est dans la structure de base de la page html
+                if (tableauDataNotDisplay.includes(nomData)) { 
+                    // pass
+                } else {
+                    if (tableauDataSeule.includes(nomData)) { // on check si c'est une data qu'on doit afficher seul ou pas 
+                        // on referme d'abord la div conteneur-cube on la rouvre puis on la referme
+                        structureHTML += `
+                            </div>
+
+                            <div class="conteneur-cube">
+                                <div class="cube-data">
+                                    <p class="entete">${nomData}</p>
+                                    <p class="data">${valeur} <small>${uniteData}</small></p>
+                                </div>
+                            </div>
+
+                            <div class="conteneur-cube">
+                        `
+
+                    } else {
+                        // si c'est un data normal alors on met la div correspondante
+                        structureHTML += `
                             <div class="cube-data">
                                 <p class="entete">${nomData}</p>
                                 <p class="data">${valeur} <small>${uniteData}</small></p>
                             </div>
-                        </div>
-
-                        <div class="conteneur-cube">
-                    `
-
-                } else {
-                    // si c'est un data normal alors on met la div correspondante
-                    structureHTML += `
-                        <div class="cube-data">
-                            <p class="entete">${nomData}</p>
-                            <p class="data">${valeur} <small>${uniteData}</small></p>
-                        </div>
-                    `
+                        `
+                    }
                 }
-            }
 
+            }
         }
+
     });
 
     structureHTML += `
         </div>
+
+        <!-- Pour la description -->
+        <h2>Description</h2>
+        <textarea id="description-entrainement" oninput="apparitionButton()" maxlength=250 placeholder="Description de l'entraînement"></textarea>
+        <button id="button-sauvegarder-description-workout" style="display: none;" onclick="saveDescription()">Sauvegarder la description</button>
     `
 
     // on ajoute au conteneur
     document.querySelector(".page-entrainement").innerHTML = structureHTML
+
+    // on remplit le champs description entrainement si il y a du contenu dans la BDD
+    if (dataWorkout.description != undefined && dataWorkout.description) {
+        if (document.getElementById("description-entrainement")) { // on check si il y a un champs description sur la page
+            document.getElementById("description-entrainement").value = dataWorkout.description
+        }
+    }
+
+    return
+}
+
+function apparitionButton() {
+    // on recup et affiche le bouton sauvegarder
+    let buttonSave = document.getElementById("button-sauvegarder-description-workout")
+    buttonSave.style.display = "block"
+}
+
+async function saveDescription() {
+    let descriptionWorkout = document.getElementById("description-entrainement").value.trim()
+    let buttonSave = document.getElementById("button-sauvegarder-description-workout")
+
+    // message au user
+    buttonSave.disabled = true
+    buttonSave.textContent = "Sauvegarde..."
+    
+    // ne pas faire put sinon ça remplace update va rajouter cette data
+    await db.entrainement.update(idWorkout, {
+        description:descriptionWorkout
+    })
+
+    setTimeout(() => {
+        buttonSave.textContent = "Sauvegardé"
+    }, 650);
+
+    setTimeout(() => {
+        // remise à l'état d'origine
+        buttonSave.disabled = false
+        buttonSave.textContent = "Sauvegarder la description"
+        buttonSave.style.display = "none"
+    }, 1300);
 
     return
 }
@@ -171,40 +221,42 @@ async function initialisation() {
         const tableauSeparation = settingURL.split("=") // ["?workout", "id"]
         
         if (tableauSeparation.length == 2) { // vérification pour éviter d'essayer de prendre l'index 1 alors qu'il y a que l'index 0 ou alors qu'il 5 index
-            const idWorkout = parseInt(tableauSeparation[1]) // on recup l'id
+            idWorkout = parseInt(tableauSeparation[1]) // on recup l'id
 
             // recup des datas de l'entraînement
-            let dataWorkout = await db.entrainement.get(idWorkout) // ça renvoie un dico avec toutes les datas date, durée,...
+            if (idWorkout != undefined) {
+                let dataWorkout = await db.entrainement.get(idWorkout) // ça renvoie un dico avec toutes les datas date, durée,...
             
-            if (dataWorkout == null) { // si il n'y a pas d'entrainement avec l'id dans l'URL alors on renvoie à la page historique dentrainement pour éviter d'afficher une page vide
-                location.href = "historique_entrainement.html"
-                return
-            }
-
-            // ajout de la structure html
-            afficherData(dataWorkout)
-
-            // on donne un role au bouton
-            let buttonModifier = document.getElementById("button-modifier")
-            let buttonSupprimer = document.getElementById("button-supprimer") 
-
-            let connectCSS = document.documentElement
-            let recupVar = getComputedStyle(connectCSS)
-            // on donne une couleur au bouton supprimer
-            buttonSupprimer.style.color = recupVar.getPropertyValue("--COULEUR_ACCENT")
-
-            buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
-                // Demande de confirmation avant
-                if (confirm(`Supprimer l'entraînement "${dataWorkout.nom}" ?`)) {
-                    await db.entrainement.delete(dataWorkout.id) // supprimer la data de la bdd
-                    // retour à l'historique d'entraînement
-                    window.location.href = `historique_entrainement.html`       
+                if (dataWorkout == null) { // si il n'y a pas d'entrainement avec l'id dans l'URL alors on renvoie à la page historique dentrainement pour éviter d'afficher une page vide
+                    location.href = "historique_entrainement.html"
+                    return
                 }
-            })
 
-            buttonModifier.addEventListener("click", async () => { // Ajout d'une "action" au bouton edit
-                window.location.href = `ajouter_entraînement.html?edit=${dataWorkout.id}` // mettre un parametre dans l'URL
-            })
+                // ajout de la structure html
+                afficherData(dataWorkout)
+
+                // on donne un role au bouton
+                let buttonModifier = document.getElementById("button-modifier")
+                let buttonSupprimer = document.getElementById("button-supprimer") 
+
+                let connectCSS = document.documentElement
+                let recupVar = getComputedStyle(connectCSS)
+                // on donne une couleur au bouton supprimer
+                buttonSupprimer.style.color = recupVar.getPropertyValue("--COULEUR_ACCENT")
+
+                buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
+                    // Demande de confirmation avant
+                    if (confirm(`Supprimer l'entraînement "${dataWorkout.nom}" ?`)) {
+                        await db.entrainement.delete(dataWorkout.id) // supprimer la data de la bdd
+                        // retour à l'historique d'entraînement
+                        window.location.href = `historique_entrainement.html`       
+                    }
+                })
+
+                buttonModifier.addEventListener("click", async () => { // Ajout d'une "action" au bouton edit
+                    window.location.href = `ajouter_entraînement.html?edit=${dataWorkout.id}` // mettre un parametre dans l'URL
+                })
+            }
             
         }
     }

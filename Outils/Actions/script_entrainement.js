@@ -71,8 +71,8 @@ function afficherData(dataWorkout) {
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
-        if (cle=="description") {
-            // si c'est la description on ne fais rien on le fera plus tard
+        if (cle=="note") {
+            // si c'est la note on ne fais rien on le fera plus tard
         } else {
             const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 
             const nomData = nomUniteData[0] // on récupère le nom de la data ex: muscles_travailles => Muscles travaillés
@@ -161,19 +161,19 @@ function afficherData(dataWorkout) {
     structureHTML += `
         </div>
 
-        <!-- Pour la description -->
-        <h2>Description</h2>
-        <textarea id="description-entrainement" oninput="apparitionButton()" maxlength=250 placeholder="Description de l'entraînement"></textarea>
-        <button id="button-sauvegarder-description-workout" style="display: none;" onclick="saveDescription()">Sauvegarder la description</button>
+        <!-- Pour la note -->
+        <h2>Note</h2>
+        <textarea id="note-entrainement" oninput="apparitionButton()" maxlength=250 placeholder="Note de l'entraînement"></textarea>
+        <button id="button-sauvegarder-note-workout" style="display: none;" onclick="saveDescription()">Sauvegarder la note</button>
     `
 
     // on ajoute au conteneur
     document.querySelector(".page-entrainement").innerHTML = structureHTML
 
-    // on remplit le champs description entrainement si il y a du contenu dans la BDD
-    if (dataWorkout.description != undefined && dataWorkout.description) {
-        if (document.getElementById("description-entrainement")) { // on check si il y a un champs description sur la page
-            document.getElementById("description-entrainement").value = dataWorkout.description
+    // on remplit le champs note entrainement si il y a du contenu dans la BDD
+    if (dataWorkout.note != undefined && dataWorkout.note) {
+        if (document.getElementById("note-entrainement")) { // on check si il y a un champs note sur la page
+            document.getElementById("note-entrainement").value = dataWorkout.note
         }
     }
 
@@ -182,13 +182,13 @@ function afficherData(dataWorkout) {
 
 function apparitionButton() {
     // on recup et affiche le bouton sauvegarder
-    let buttonSave = document.getElementById("button-sauvegarder-description-workout")
+    let buttonSave = document.getElementById("button-sauvegarder-note-workout")
     buttonSave.style.display = "block"
 }
 
 async function saveDescription() {
-    let descriptionWorkout = document.getElementById("description-entrainement").value.trim()
-    let buttonSave = document.getElementById("button-sauvegarder-description-workout")
+    let noteWorkout = document.getElementById("note-entrainement").value.trim()
+    let buttonSave = document.getElementById("button-sauvegarder-note-workout")
 
     // message au user
     buttonSave.disabled = true
@@ -196,7 +196,7 @@ async function saveDescription() {
     
     // ne pas faire put sinon ça remplace update va rajouter cette data
     await db.entrainement.update(idWorkout, {
-        description:descriptionWorkout
+        note:noteWorkout
     })
 
     setTimeout(() => {
@@ -206,7 +206,7 @@ async function saveDescription() {
     setTimeout(() => {
         // remise à l'état d'origine
         buttonSave.disabled = false
-        buttonSave.textContent = "Sauvegarder la description"
+        buttonSave.textContent = "Sauvegarder la note"
         buttonSave.style.display = "none"
     }, 1300);
 

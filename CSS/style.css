@@ -400,7 +400,7 @@ button#download-button,
 button#restoration-button,
 button#reinitialiser-sprintia,
 button#reinitialiser,
-button#button-sauvegarder-description-workout { /* telecharger/restaurer mes données + Réinitialiser Sprintia + Réinitialiser votre coach */
+button#button-sauvegarder-note-workout { /* telecharger/restaurer mes données + Réinitialiser Sprintia + Réinitialiser votre coach */
     width: 270px;
 }
 button#conversion { /* convertir en allure */
@@ -1166,7 +1166,7 @@ div.conteneur-cube div.cube-data p.data small{
     text-align: left;
     color: var(--COULEUR_TEXT_SECONDAIRE);
 }
-textarea#description-entrainement {
+textarea#note-entrainement {
     width: 100%;
     height: 125px;
     background-color: var(--COULEUR_BACKGROUND_CARD);
@@ -1180,10 +1180,10 @@ textarea#description-entrainement {
     border: none;
     resize: none;
 }
-textarea#description-entrainement:focus {
+textarea#note-entrainement:focus {
     outline: none;
 }
-textarea#description-entrainement::placeholder {
+textarea#note-entrainement::placeholder {
     color: var(--COULEUR_TEXT_SECONDAIRE);
 }
 

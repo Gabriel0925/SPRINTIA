@@ -38,7 +38,7 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
 }
 
 let IdEditWorkout = null // init variable globale
-let descriptionEntrainement = undefined
+let noteEntrainement = undefined
 
 async function MessagePrevention() {
     // Check du statut du user
@@ -104,8 +104,8 @@ async function VerificationParam() {
                 document.querySelector(".slider-value").textContent = WorkoutDB.rpe
 
                 // ajout d'une data a la variable globale
-                if (WorkoutDB.description != undefined || WorkoutDB.description != "") {
-                    descriptionEntrainement = WorkoutDB.description
+                if (WorkoutDB.note != undefined || WorkoutDB.note != "") {
+                    noteEntrainement = WorkoutDB.note
                 }
 
                 // tableau des datas à ne pas rentrer dans un input
@@ -776,7 +776,7 @@ async function saveWorkout() {
     // enregistrement ou modification
     if (IdEditWorkout && IdEditWorkout != null) {
         workoutData["id"] = IdEditWorkout
-        workoutData["description"] = descriptionEntrainement
+        workoutData["note"] = noteEntrainement
         await db.entrainement.put(workoutData)
         // mise sur true pour renvoyer vers lentrainement directement
         modificationEntrainement = true
@@ -806,6 +806,10 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
     let inputAdvanced = document.querySelectorAll(".input-advanced") // on recup tout les input
 
     inputAdvanced.forEach(element => {
+        let input = element.querySelector("input")
+
+        if (input) {input.value = ""} // on les réinitialise donc on vide le champs input 
+
         element.style.display = 'none' // on les mets en display none
     });
 

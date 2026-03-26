@@ -48,14 +48,17 @@ async function DownloadDatas() {
     LienURL.href = UrlBlob // on créer le lien a href
     LienURL.download = "Sauvegarde-Sprintia.json" // pour enregistrer le fichier dans l'appareil d'un user
     LienURL.click() // on simmule le click pour lancer le download
-    
-    // Pause
-    await new Promise(r => setTimeout(r, 650))
-    // remise etat normal
-    BoutonDownload.textContent = "Télécharger mes données"
-    BoutonDownload.disabled = false // Réactivation du bouton
-            
-    logoDynamique("📁 Téléchargé")
+
+    setTimeout(() => {
+        // transimission du message
+        BoutonDownload.textContent = "Téléchargé"
+    }, 650);
+
+    setTimeout(() => {
+        // remise etat normal
+        BoutonDownload.textContent = "Télécharger mes données"
+        BoutonDownload.disabled = false // Réactivation du bouton
+    }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout
 
     return
 }
@@ -145,13 +148,18 @@ async function SupprimerDatas() {
         await db.statut_analyse.clear()
         await db.JRM_Coach.clear()
 
-        // Pause
-        await new Promise(r => setTimeout(r, 650))
-        // remise etat normal
-        ButtonReinitialiser.textContent = "Réinitialiser Sprintia"
-        ButtonReinitialiser.disabled = false // Réactivation du bouton
-            
-        logoDynamique("🧹 Réinitialisé")
+        setTimeout(() => {
+            // transimission du message
+            ButtonReinitialiser.textContent = "Réinitialisé"
+        }, 650);
+
+        setTimeout(() => {
+            // remise etat normal
+            ButtonReinitialiser.textContent = "Réinitialiser Sprintia"
+            ButtonReinitialiser.disabled = false // Réactivation du bouton
+        }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout
+
+        
         Preference()
     }
 

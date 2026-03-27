@@ -91,7 +91,6 @@
             <select id="profil-sport" onchange="cacherInput(value)" autocomplete="off">
                     <optgroup label="LIBRE"> 
                         <option value="Libre">Sport : Libre</option>
-                        <option value="Libre avec distance">Sport : Libre avec distance</option>
                     </optgroup>
 
                     <optgroup label="SPORTS BASIQUES">
@@ -185,7 +184,7 @@
             </div>
 
             <!-- Pour inciter le user a rentrer plus de datas -->
-            <div class="conteneur-button-plus-data" onclick="dataSpecifique(document.getElementById('profil-sport').value, false)">
+            <div class="conteneur-button-plus-data" onclick="dataSpecifique(document.getElementById('profil-sport').value)">
                 <p class="plus-data">Plus de données</p>
             </div>
 
@@ -354,7 +353,7 @@
     <p class="text">
         Le RPE (Rated Perceived Exertion) c'est une échelle permettant de mesurer l'effort perçu de votre entraînement.
     </p>
-    <ul class="liste-fonctionnalites">
+    <ul class="list-information">
         <li>RPE de 1 à 3 : Facile</li>
         <li>RPE de 4 à 6 : Modéré</li>
         <li>RPE de 7 à 8 : Difficile</li>

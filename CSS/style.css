@@ -328,6 +328,7 @@ button{
     cursor: pointer;
     display: block;
     align-items: center;
+    min-width: 110px; /* ! important */
     
     font-family: var(--FONT_FAMILY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -349,12 +350,6 @@ button:active{
     background-color: var(--COULEUR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
-
-/* Pr le bouton tout voir dans le conteneur scrolling des dernieres nouveautes dans les parametres */
-button#param-dernieres-nouveautes {
-    width: 110px;
-}
-
 /* pr button dans tableau */
 button.tableau {
     background-color: transparent;
@@ -387,14 +382,6 @@ button.tableau:active{
     transform: scale(var(--SCALE_NORMAL));
 }
 
-/* Pour les boutons afficher plus */
-button.absent{
-    display: none !important;
-}
-button.notif {
-    margin-top: var(--ESPACE_M);
-}
-
 /* pour les boutons dynamique */
 button#download-button,
 button#restoration-button,
@@ -422,10 +409,6 @@ a.lien {
 }
 a.lien:active{
     letter-spacing: 1px;
-}
-/* Balise code avec son conteneur */
-code {
-    color: var(--COULEUR_TEXT_SECONDAIRE);
 }
 
 
@@ -694,15 +677,14 @@ header .burger-menu li a.actif-burger-menu:active {
 
 
 /* ----- Style page "Accueil" ----- */
-div.conteneur-mise-avant {
+div.CoachBriefing {
     width: 100%;
     height: 100%;
     border-radius: var(--BORDER_BIG);
     margin: var(--ESPACE_XS) 0px;
     margin-top: var(--ESPACE_M);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     z-index: 1;
     position: relative;
     padding: var(--ESPACE_XXS);
@@ -710,22 +692,10 @@ div.conteneur-mise-avant {
     margin-bottom: 0;
     transition: all ease-out var(--DUREE_TRANSITION);
 }
-div.conteneur-mise-avant:active {
+div.CoachBriefing:active {
     transform: scale(var(--SCALE_SMALL));
 }
-div.conteneur-mise-avant div.zone-jrm {
-    width: 100%;
-    height: 100%;
-}
-div.conteneur-mise-avant p{
-    font-size: var(--H2);
-    line-height: 1.8;
-    text-align: left;
-    margin: var(--ESPACE_XS);
-    color: var(--COULEUR_BACKGROUND);
-    font-weight: 1000;
-}
-div.conteneur-mise-avant p.title-jrm{
+div.CoachBriefing p.CoachBriefing-title{
     font-size: var(--H3);
     margin: var(--ESPACE_S);
     margin-bottom: var(--ESPACE_XS);
@@ -734,14 +704,13 @@ div.conteneur-mise-avant p.title-jrm{
     color: var(--COULEUR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-div.conteneur-mise-avant p.interpretation-jrm{
+div.CoachBriefing p.CoachBriefing-interpretation{
     font-size: var(--P);
     margin: var(--ESPACE_S);
     margin-top: var(--ESPACE_XS);
     text-align: left;
     color: var(--COULEUR_BACKGROUND);
     font-weight: normal;
-    line-height: 1.4;
 }
 
 /* statut analyse */ 
@@ -860,7 +829,7 @@ div.conteneur-outil-recent div.card-outil-recent p{
 
 
 /* ----- Style page "Outils" ----- */
-div.conteneur-content-scrolling {
+div.carousel {
     max-width: var(--MAX_WIDTH);
     padding-bottom: var(--ESPACE_XS);
     margin: var(--ESPACE_XS) 0;
@@ -868,10 +837,10 @@ div.conteneur-content-scrolling {
     overflow-x: auto;
     height: fit-content;
 }
-div.conteneur-content-scrolling#historique-niveau-course {
+div.carousel#historique-niveau-course {
     display: block;
 }
-div.conteneur-content-scrolling div.card-outil {
+div.carousel div.card-outil {
     background-color: var(--COULEUR_BACKGROUND_CARD);
     margin: var(--ESPACE_XS);
     padding: var(--ESPACE_XS);
@@ -882,20 +851,20 @@ div.conteneur-content-scrolling div.card-outil {
     overflow: hidden;
     transition: all ease-out var(--DUREE_TRANSITION);
 }
-div.conteneur-content-scrolling div.card-outil.first {
+div.carousel div.card-outil.first {
     margin-left: 0;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-content-scrolling div.card-outil:hover {
+    div.carousel div.card-outil:hover {
         background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
         transform: translateY(-5px);
     }
 }
-div.conteneur-content-scrolling div.card-outil:active {
+div.carousel div.card-outil:active {
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.conteneur-content-scrolling div.card-outil div.icone{
+div.carousel div.card-outil div.icone{
     display: flex;
     justify-content: center;
     background-color: var(--COULEUR_ACCENT2);
@@ -904,20 +873,20 @@ div.conteneur-content-scrolling div.card-outil div.icone{
     width: 100%;
     position: relative;
 }
-div.conteneur-content-scrolling:nth-of-type(1) div.card-outil div.icone{
+div.carousel:nth-of-type(1) div.card-outil div.icone{
     background-color: var(--COULEUR_ACCENT);
 }
-div.conteneur-content-scrolling:nth-of-type(3) div.card-outil div.icone{
+div.carousel:nth-of-type(3) div.card-outil div.icone{
     background-color: var(--COULEUR_ACCENT);
-}div.conteneur-content-scrolling:nth-of-type(5) div.card-outil div.icone{
+}div.carousel:nth-of-type(5) div.card-outil div.icone{
     background-color: var(--COULEUR_ACCENT);
 }
-div.conteneur-content-scrolling div.card-outil div.icone i{
+div.carousel div.card-outil div.icone i{
     font-size: 5rem;    
     color: var(--COULEUR_BACKGROUND);
     margin: 0 auto;
 }
-div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler{
+div.carousel div.card-outil div.icone div.button-epingler{
     background-color: var(--COULEUR_BACKGROUND_CARD);
     opacity: 0.4;
     border-radius: var(--BORDER_NORMAL);
@@ -934,7 +903,7 @@ div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler{
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler:hover{
+    div.carousel div.card-outil div.icone div.button-epingler:hover{
         opacity: 0.8;
     }
 }
@@ -943,28 +912,28 @@ div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler{
     40% { transform: scale(1.2)}
     100% { transform: scale(1)}
 }
-div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler.actif{
+div.carousel div.card-outil div.icone div.button-epingler.actif{
     opacity: 1;
     animation: rebond 0.5s;
 }
-div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler i{
+div.carousel div.card-outil div.icone div.button-epingler i{
     font-size: 1.2rem;
     color: var(--COULEUR_TEXT_PRINCIPAL);
     transition: all ease-out var(--DUREE_TRANSITION);
 }
-div.conteneur-content-scrolling:nth-of-type(1) div.card-outil div.icone div.button-epingler.actif i{
+div.carousel:nth-of-type(1) div.card-outil div.icone div.button-epingler.actif i{
     color: var(--COULEUR_ACCENT);
 }
-div.conteneur-content-scrolling:nth-of-type(3) div.card-outil div.icone div.button-epingler.actif i{
+div.carousel:nth-of-type(3) div.card-outil div.icone div.button-epingler.actif i{
     color: var(--COULEUR_ACCENT);
-}div.conteneur-content-scrolling:nth-of-type(5) div.card-outil div.icone div.button-epingler.actif i{
+}div.carousel:nth-of-type(5) div.card-outil div.icone div.button-epingler.actif i{
     color: var(--COULEUR_ACCENT);
 }
 
-div.conteneur-content-scrolling div.card-outil div.icone div.button-epingler.actif i{
+div.carousel div.card-outil div.icone div.button-epingler.actif i{
     color: var(--COULEUR_ACCENT2);
 }
-div.conteneur-content-scrolling div.card-outil h1{
+div.carousel div.card-outil h1{
     font-size: var(--H3);
     margin-top: var(--ESPACE_XS);
     color: var(--COULEUR_TEXT_PRINCIPAL);
@@ -976,7 +945,7 @@ div.conteneur-content-scrolling div.card-outil h1{
     line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden; /* Pour cacher ce qui dépasse */
 }
-div.conteneur-content-scrolling div.card-outil p{
+div.carousel div.card-outil p{
     font-size: var(--P_SMALL);
     margin-top: var(--ESPACE_XXS);
     color: var(--COULEUR_TEXT_SECONDAIRE);
@@ -1099,7 +1068,7 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
     margin-top: var(--ESPACE_S_SMALL);
 }
 div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button{
-    font-weight: normal;
+    font-weight: var(--FONT_WEIGHT_BUTTON);
     background-color: var(--COULEUR_ACCENT);
     color: var(--COULEUR_BACKGROUND);
     font-size: var(--P);
@@ -1189,15 +1158,15 @@ textarea#note-entrainement::placeholder {
 
 
 
-div.conteneur-option {
+div.toolbar {
     display: flex;
     align-items: center;
     position: relative;
 }
-div.conteneur-option a {
+div.toolbar a {
     margin-left: auto;
 }
-div.conteneur-option h1 {
+div.toolbar h1 {
     margin: 0;
     display: -webkit-box;
     -webkit-box-orient: vertical; /* On compte les lignes verticalement */
@@ -1205,7 +1174,7 @@ div.conteneur-option h1 {
     line-clamp: 1; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden;
 }
-div.conteneur-option i {
+div.toolbar i {
     display: block;
     margin-left: auto;
     background-color: var(--COULEUR_BACKGROUND_CARD);
@@ -1218,11 +1187,11 @@ div.conteneur-option i {
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-option i:hover {
+    div.toolbar i:hover {
         background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     }
 }
-div.conteneur-option i:active {
+div.toolbar i:active {
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
@@ -1289,7 +1258,7 @@ div.menu-button-more li:active{
 }
 
 
-div.conteneur-option div.bouton-tool-bar {
+div.toolbar div.button-toolbar {
     background-color: var(--COULEUR_ACCENT);
     display: flex;
     align-items: center;
@@ -1298,21 +1267,21 @@ div.conteneur-option div.bouton-tool-bar {
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-option div.bouton-tool-bar:hover {
+    div.toolbar div.button-toolbar:hover {
         background-color: var(--COULEUR_ACCENT2);
     }
 }
-div.conteneur-option div.bouton-tool-bar:active {
+div.toolbar div.button-toolbar:active {
     background-color: var(--COULEUR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.conteneur-option div.bouton-tool-bar i{
+div.toolbar div.button-toolbar i{
     background-color: transparent;
     padding: var(--ESPACE_XXS);
     font-size: 1.8rem;
     color: var(--COULEUR_BACKGROUND);
 }
-div.conteneur-option div.bouton-tool-bar p{
+div.toolbar div.button-toolbar p{
     font-size: var(--P);
     color: var(--COULEUR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -1886,14 +1855,14 @@ div.conteneur-ensemble p.temps-recup {
 
 
 /* ----- Style page "Paramètres" ----- */
-div.conteneur-scrolling {
+div.carousel-content {
     display: inline-flex;
     align-items: center;
 }
-div.conteneur-scrolling#running-level {
+div.carousel-content#running-level {
     display: block;
 }
-div.conteneur-scrolling .card-nouveautes {
+div.carousel-content .card-nouveautes {
     width: 230px;
     background-color: var(--COULEUR_BACKGROUND_CARD);
     padding: var(--ESPACE_XS);
@@ -1901,21 +1870,21 @@ div.conteneur-scrolling .card-nouveautes {
     margin: var(--ESPACE_XS);
     transition: all ease-out var(--DUREE_TRANSITION);
 }
-div.conteneur-scrolling .card-nouveautes.first {
+div.carousel-content .card-nouveautes.first {
     margin-left: 0;
     width: 280px;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-scrolling .card-nouveautes:hover {
+    div.carousel-content .card-nouveautes:hover {
         transform: translateY(-5px);
         background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     }
 }
-div.conteneur-scrolling .card-nouveautes:active {
+div.carousel-content .card-nouveautes:active {
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.conteneur-scrolling .card-nouveautes-image p{
+div.carousel-content .card-nouveautes-image p{
     font-size: var(--H1);
     text-align: left;
     background-color: var(--COULEUR_ACCENT2);
@@ -1926,10 +1895,10 @@ div.conteneur-scrolling .card-nouveautes-image p{
     margin-bottom: var(--ESPACE_XS);
     padding-left: var(--ESPACE_S_SMALL);
 }
-div.conteneur-scrolling .card-nouveautes.first .card-nouveautes-image p{
+div.carousel-content .card-nouveautes.first .card-nouveautes-image p{
     background-color: var(--COULEUR_ACCENT);
 }
-div.conteneur-scrolling .card-nouveautes p.description-maj {
+div.carousel-content .card-nouveautes p.description-maj {
     font-size: var(--P);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -1942,19 +1911,19 @@ div.conteneur-scrolling .card-nouveautes p.description-maj {
     line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden; /* Pour cacher ce qui dépasse */
 }
-div.conteneur-scrolling .card-nouveautes div.date-maj {
+div.carousel-content .card-nouveautes div.date-maj {
     color: var(--COULEUR_TEXT_SECONDAIRE);
     font-size: var(--P_SMALL);
     margin-top: var(--ESPACE_XS);
 }
 /* Section choix param */
-div.conteneur-param {
+div.action-list {
     max-width: var(--MAX_WIDTH);
     margin: var(--ESPACE_S) auto;
 }
-div.conteneur-param div.acces-param,
-div.conteneur-param div.acces-param1,
-div.conteneur-param div.acces-param2 {
+div.action-list div.action-list-item,
+div.action-list div.action-list-item1,
+div.action-list div.action-list-item2 {
     display: flex; 
     align-items: center;
     margin: var(--ESPACE_XXS) 0px;
@@ -1963,38 +1932,38 @@ div.conteneur-param div.acces-param2 {
 
     transition: all ease-out var(--DUREE_TRANSITION);
 }
-div.conteneur-param div.acces-param.arrondi { /* pour la licence dans les paramètres */
+div.action-list div.action-list-item.arrondi { /* pour la licence dans les paramètres */
     border-radius: var(--BORDER_BIG);
 }
-div.conteneur-param div.acces-param1 {
+div.action-list div.action-list-item1 {
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
 }
-div.conteneur-param div.acces-param2 {
+div.action-list div.action-list-item2 {
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-param div.acces-param:hover,
-    div.conteneur-param div.acces-param1:hover,
-    div.conteneur-param div.acces-param2:hover{
+    div.action-list div.action-list-item:hover,
+    div.action-list div.action-list-item1:hover,
+    div.action-list div.action-list-item2:hover{
         background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     }
 }
-div.conteneur-param div.acces-param:active,
-div.conteneur-param div.acces-param1:active,
-div.conteneur-param div.acces-param2:active{
+div.action-list div.action-list-item:active,
+div.action-list div.action-list-item1:active,
+div.action-list div.action-list-item2:active{
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     border-radius: 50px;
     transform: scale(var(--SCALE_SMALL));
 }
-div.conteneur-param i{
+div.action-list i{
     color: var(--COULEUR_TEXT_PRINCIPAL);
     font-size: var(--H0);
 }
-div.conteneur-param div.acces-param p, 
-div.conteneur-param div.acces-param1 p,
-div.conteneur-param div.acces-param2 p{
+div.action-list div.action-list-item p, 
+div.action-list div.action-list-item1 p,
+div.action-list div.action-list-item2 p{
     margin-left: var(--ESPACE_S);
     font-size: var(--H3);
     color: var(--COULEUR_TEXT_PRINCIPAL);
@@ -2131,7 +2100,7 @@ div.conteneur-historique-versions .card-nouveautes div.date-maj {
     margin-top: var(--ESPACE_S);
 }
 /* Mise en page des patch notes */
-ul.liste-fonctionnalites li {
+ul.list-information li {
     list-style: initial;
     font-size: var(--P);
     color: var(--COULEUR_TEXT_SECONDAIRE);
@@ -2613,7 +2582,7 @@ div.conteneur-centrage-marge {
         border-radius: 50%;
     }
     /* Autre */    
-    div.conteneur-mise-avant p{
+    div.CoachBriefing p{
         font-size: var(--H3);
     }
 }

@@ -1,6 +1,5 @@
 const SportIdChamps = { // sport avec les id correspondant aux champs de datas spécifique aux sports
-    "Libre": [], 
-    "Libre avec distance": ["distance-entrainement-user"],
+    "Libre": ["distance-entrainement-user"],
 
     "Course": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user", "nb-pas-entrainement-user"],
     "Marche": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "nb-pas-entrainement-user"],
@@ -88,12 +87,7 @@ async function VerificationParam() {
                 document.getElementById("coach-ajoute-entrainement").style.display = "none"
 
                 // Remettre les champs adaptée au sport
-                if (WorkoutDB.sport == "Libre") {
-                    // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher quand le sport c'est libre
-                    dataSpecifique(WorkoutDB.sport, true)
-                } else {
-                    dataSpecifique(WorkoutDB.sport, false)
-                }
+                dataSpecifique(WorkoutDB.sport, false)
 
                 // remplissage des champs qu'on ne peut pas remplir dans la boucle foreach
                 document.getElementById("profil-sport").value = WorkoutDB.sport
@@ -212,7 +206,7 @@ async function VerificationParam() {
     return
 }
 
-function dataSpecifique(sportChoisi, pasAlert) {
+function dataSpecifique(sportChoisi, firstChargement) {
     // recup du texte de la div : 'Plus de données'
     let textButtonDataSpe = document.querySelector(".plus-data")
     let typeDisplay = "block"
@@ -221,16 +215,13 @@ function dataSpecifique(sportChoisi, pasAlert) {
     // recupération du tableau (tableau présent dans un dico) des id des input en fonction du sport
     const tableauIdChampsSpecifique = SportIdChamps[sportChoisi]
     
-    if (tableauIdChampsSpecifique.length > 0) {
-    // si le tableau nest pas vide
-        if (textButtonDataSpe) {
-            // si le text de la div est "plus de données" alors on met "moins de données" et inversement
-            if (textButtonDataSpe.textContent == "Plus de données") {
-                textButtonDataSpe.textContent = "Moins de données"
-            } else { // ça veut dire que le user a cliqué sur moins de data
-                textButtonDataSpe.textContent = "Plus de données"
-                typeDisplay = "none" // on change le contenu de la variable pour pouvoir cacher les input
-            }
+    if (textButtonDataSpe && firstChargement != true) {
+        // si le text de la div est "plus de données" alors on met "moins de données" et inversement
+        if (textButtonDataSpe.textContent == "Plus de données") {
+            textButtonDataSpe.textContent = "Moins de données"
+        } else { // ça veut dire que le user a cliqué sur moins de data
+            textButtonDataSpe.textContent = "Plus de données"
+            typeDisplay = "none" // on change le contenu de la variable pour pouvoir cacher les input
         }
 
         tableauIdChampsSpecifique.forEach(element => {
@@ -241,13 +232,7 @@ function dataSpecifique(sportChoisi, pasAlert) {
             }
         });
 
-    } else {
-        if (pasAlert == false) { // si on modifie un entrainement libre ça évite de mettre une alert pour rien
-            // si le tableau est vide, on previent le user qu'il ny a pas de datas en plus a afficher 
-            alert("Ce sport n'a pas de données en plus.")
-        }
-        return
-    }
+    } 
 }
 
 function GenererNbAleatoire() {

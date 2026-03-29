@@ -100,12 +100,13 @@ function afficherData(dataWorkout) {
                 if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Paddle") {
                     uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
                     if (valeur != null) { // on passe des kilomètres en metres
-                        valeur = Math.floor(valeur*1000).toFixed(1).toString().replace(".", ",")
+                        valeur = valeur*1000
+                        valeur= valeur.toFixed(1).toString().replace(".", ",")
                     }
                 } else {
                     uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => km
                     if (valeur != null) { // on passe des kilomètres en metres
-                        valeur = Math.floor(valeur).toFixed(2).toString().replace(".", ",")
+                        valeur = valeur.toFixed(2).toString().replace(".", ",")
                     }
                 }
 

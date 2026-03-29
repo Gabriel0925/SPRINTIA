@@ -2,7 +2,12 @@ function EstimationVMA() {
     // Recup datas des champs
     let TestUsers = document.getElementById("test-user").value
     let DistanceUser = parseFloat(document.getElementById("distance-user").value.replace(",", ".").trim())
-    let DureeUser = parseInt(document.getElementById("duree-user").value.trim())
+    let DureeUser = document.getElementById("duree-user").value.trim()
+
+    DureeUser = conversionMinutes(DureeUser)
+    if (DureeUser == null) {
+        return
+    }
 
     // Vérifications des champs
     if (isNaN(DistanceUser) || isNaN(DureeUser)) {
@@ -14,7 +19,7 @@ function EstimationVMA() {
         return
     }
     if (DistanceUser >= 30) {
-        alert("L'estimation VMA ne peut pas prédire un VMA avec une distance supérieur à 30 km.'")
+        alert("L'estimation VMA ne peut pas prédire une VMA avec une distance supérieur à 30 km.'")
         return
     }
 
@@ -69,7 +74,7 @@ function RemplirChamps() {
 
 
         let ChampsDuree = document.getElementById("duree-user")
-        ChampsDuree.value = 6
+        ChampsDuree.value = "0:6:0"
         ChampsDuree.readOnly = true 
 
         // Remise à 0 de la vma pr eviter la confusion aux yeux du user
@@ -81,7 +86,7 @@ function RemplirChamps() {
         ChampsDistance.readOnly = false // Pour désactiver la modification
 
         let ChampsDuree = document.getElementById("duree-user")
-        ChampsDuree.value = 12
+        ChampsDuree.value = "0:12:0"
         ChampsDuree.readOnly = true
 
         // Remise à 0 de la vma pr eviter la confusion aux yeux du user
@@ -118,5 +123,5 @@ function RemplirChamps() {
 
 // Initialisation du champs de base lors du chargement de la page
 let ChampsDuree = document.getElementById("duree-user")
-ChampsDuree.value = 6
+ChampsDuree.value = "0:6:0"
 ChampsDuree.readOnly = true 

@@ -7,7 +7,7 @@ function extractionDate(dateWorkout) {
     return separationDate[0]
 }
 
-function conversionMinutes(DureeWorkoutUser) {
+function conversionMinutesGarmin(DureeWorkoutUser) {
     if (DureeWorkoutUser == undefined) {return ""} // si pas de datas
 
     if (DureeWorkoutUser.includes(":")) {
@@ -105,7 +105,7 @@ async function uploadGarmin(event) {
             } else {
                 // extraction uniquement de la date et passage du format hh:mm:ss en minutes pour la durée
                 dateWorkout = extractionDate(dateWorkout)
-                dureeWorkout = conversionMinutes(dureeWorkout)
+                dureeWorkout = conversionMinutesGarmin(dureeWorkout)
 
                 // vérification
                 if (trainingEffectWorkout == "--" || trainingEffectWorkout == undefined) {

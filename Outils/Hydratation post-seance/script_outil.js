@@ -46,8 +46,13 @@ function CalculHydratationTotale(PoidsUser, rehydratation) {
 
 function CalculGeneral() {
     let PoidsUser = parseFloat(document.getElementById("poids-user").value.trim().replace(",", "."))
-    let DureeUser = parseInt(document.getElementById("duree-entrainement-user").value.trim())
+    let DureeUser = document.getElementById("duree-entrainement-user").value.trim()
     let ValueRpeUser = parseInt(document.querySelector(".slider progress").value)
+
+    DureeUser = conversionMinutes(DureeUser)
+    if (DureeUser == null) {
+        return
+    }
 
     // Vérification des champs
     if (isNaN(PoidsUser) || isNaN(DureeUser)) {

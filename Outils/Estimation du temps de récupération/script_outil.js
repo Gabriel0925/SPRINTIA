@@ -1,8 +1,14 @@
 function EstimationTempsRecuperation() {
     // Recup valeur des champs
-    let DureeUser = parseInt(document.getElementById("duree-entrainement-user").value.trim())
+    let DureeUser = document.getElementById("duree-entrainement-user").value.trim()
     let ValueRpeUser = parseInt(document.querySelector(".slider progress").value)
     let ProfilUser = document.getElementById("methode-user").value
+
+    // conversion de la durée en minutes
+    DureeUser = conversionMinutes(DureeUser)
+    if (DureeUser == null) {
+        return
+    }
 
     // Initialisation
     let CoefficientProfil = [1.35, 0.95, 0.65]

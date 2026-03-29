@@ -289,6 +289,8 @@ i {
 body {
     /* Pour la font */
     font-family: var(--FONT_FAMILY); 
+    /* Pour que les elements en position absolute respecte les contraintes du body comme le max-width */
+    position: relative;
     line-height: var(--LINE_HEIGHT);
     /* Pour le style */
     background-color: var(--COULEUR_BACKGROUND); 

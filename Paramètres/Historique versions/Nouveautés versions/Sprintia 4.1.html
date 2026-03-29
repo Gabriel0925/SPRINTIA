@@ -82,10 +82,10 @@
     <p class="text">
         Date de sortie : 29 Mars 2026
         <br>
-        Taille du site : 2,47 Mo
+        Taille du site : 2,85 Mo
         <br><br>
         Sprintia 4.1 révolutionne le suivi de vos entraînements. Désormais, vous avez accès à plus de 25 sports allant de la course à pied
-        jusqu'au ski en passant par le rameur. De plus, chaque profil sportif possède données spécifiques à ce sport. Par exemple, pour le rameur
+        jusqu'au ski en passant par le rameur. De plus, chaque profil sportif possède des données spécifiques à ce sport. Par exemple, pour le rameur
         vous pouvez renseigner le nombre de coups de rame ou encore la distance ou même votre allure.
     </p>
 
@@ -101,10 +101,10 @@
             les coups de rame ou encore en ski le nombre de descentes,...
         </li>
         <li>
-            Prise en compte de la FC moy. et de la FC max dans chaque sport. Cette donnée n'est pas obligatoire, néanmoins, elle peut être utile.
+            Prise en compte de la FC moy. et de la FC max. dans chaque sport. Cette donnée n'est pas obligatoire, néanmoins, elle peut être utile.
         </li>
         <li>
-            Sprintia peut extraire de nouvelles données du fichier CSV de Garmin Connect Web comme : l'allure moy, la fc moy/max et la cadence moyenne.
+            Sprintia peut extraire de nouvelles données du fichier CSV de Garmin Connect Web comme : l'allure moy, la FC moy/max et la cadence moyenne.
             De plus, Sprintia peut désormais importer vos séances de basketball, volley, football, badminton, ski, natation, rameur et randonnée.
         </li>
         <li>
@@ -113,7 +113,7 @@
             Idem pour l'allure,...
         </li>
         <li>
-            Vous avez désormais la possibilité d'ajouter des notes à votre entraînement pour immortaliser vos souvenirs, vos anecdotes...
+            Vous avez désormais la possibilité d'ajouter des notes à votre entraînement pour immortaliser vos souvenirs, vos anecdotes,...
         </li>
     </ul>
 
@@ -146,6 +146,9 @@
             Dans l'historique d'entraînement et ailleurs la charge d'entraînement a désormais une unité : CE avec C pour Charge et E 
             pour Entraînement.
         </li>
+        <li>
+            Tous les champs 'Durée' dans Sprintia acceptent désormais le format hh:mm:ss et mm:ss.
+        </li>
     </ul>
 
     <h2>🐛 Correction des bugs et optimisations</h2>
@@ -160,7 +163,7 @@
             Correction d'une erreur d'orthographe dans l'historique d'entraînement pour la musculation.
         </li>
         <li>
-            Amélioration de la maintenabilité du code pour l'enregistrement/visionage des entraînements.
+            Amélioration de la maintenabilité du code pour l'enregistrement/visionnage des entraînements.
         </li>
         <li>
             Optimisation et amélioration de la maintenabilité du code du logo dynamique.
@@ -180,17 +183,39 @@
             désormais ce n'est plus le cas.
         </li>
         <li>
-            Les messages d'erreurs ont été optimisé.
+            Les messages d'erreurs ont été optimisés.
+        </li>
+        <li>
+            Correction d'une erreur dans la sauvegarde et restauration. Je parlais de fichier CSV mais en réalité c'était du JSON. Le CSV était
+            présent dans les premières bêtas de Sprintia 4.
+        </li>
+        <li>
+            Correction d'un bug majeur qui faisait apparaitre le menu plus totalement à l'opposé de la où il devait être, bug uniquement présent sur
+            la version PC.
         </li>
     </ul>
 
     <h2>🗑️ Fonctionnalités supprimées</h2>
     <ul class="list-information">
         <li>
-            Vous ne pouvez plus importer votre historique d'entraînement depuis Runkeeper et TrainingPeaks car ils ne donnaient pas accès a assez de données.
+            Vous ne pouvez plus importer votre historique d'entraînement depuis Runkeeper et TrainingPeaks car ils ne donnaient pas accès à suffisamment de données.
             De plus, la précision de l'estimation du RPE était très mauvaise.
         </li>
     </ul>
+        
+    <h2>🖼️ Quelques images</h2>
+    <div class="gallery-version" id="img-ordi">
+        <img src="../Images versions 4.1/Ajout d'entraînement.png" alt="Interface d'ajout d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Historique d'entraînement.png" alt="Interface de l'historique d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Rapport d'entraînement.png" alt="Interface du rapport d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Sport.png" alt="Interface de tous les sports compatible avec Sprintia 4.1">
+    </div>
+    <div class="gallery-version" id="img-smartphone">
+        <img src="../Images versions 4.1/Ajout d'entraînement mobile.jpg" alt="Interface d'ajout d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Historique d'entraînement mobile.jpg" alt="Interface de l'historique d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Rapport d'entraînement mobile.jpg" alt="Interface du rapport d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Sport mobile.jpg" alt="Interface de tous les sports compatible avec Sprintia 4.1">
+    </div>
     
     <footer>
         <div class="conteneur-lien-footer">

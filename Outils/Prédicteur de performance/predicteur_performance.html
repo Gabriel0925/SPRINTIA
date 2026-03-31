@@ -77,21 +77,23 @@
     </header>
     
     <h1>Prédicteur de performance</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+
+    <section class="container-zone">
+
+        <div class="form">
             <select id="profil-user" onchange="AlgoPredicteur('select')" autocomplete="off">
                 <option value="Sprint">Votre profil : Sprinteur·se</option>
                 <option value="Equilibre">Votre profil : Équilibré·e</option>
                 <option value="Endurant">Votre profil : Endurant·e</option>
             </select>
                 
-            <div class="cote-cote">
-                <div class="conteneur-input">
+            <div class="side-by-side">
+                <div class="container-input">
                     <input type="number" class="small" id="vma-user" placeholder="VMA (km/h)" autocomplete="off">
                     <div class="label-input">VMA (km/h)</div>
                 </div>
                     
-                <div class="conteneur-input">
+                <div class="container-input">
                     <input type="number" class="small" id="distance-user" placeholder="Distance (km)" autocomplete="off">
                     <div class="label-input">Distance (km)</div>
                 </div>
@@ -99,24 +101,25 @@
 
             <button onclick="AlgoPredicteur('autre')">Estimer</button>
         </div>
-    </div>
 
-    <div class="conteneur-ensemble">
-        <div class="conteneur-box-deux">
-            <div class="box-result-deux">
-                <p class="score-imc">Temps estimé</p>
-                <p class="temps-recup" id="reponse-algo-temps">
-                    00 : 00 : 00
-                </p>
-            </div>
-            <div class="box-result-deux">
-                <p class="score-imc">Allure (min/km)</p>
-                <p class="temps-recup" id="reponse-algo-allure">
-                    00' 00"
-                </p>
-            </div>
+    </section>
+
+    <section class="container-zone">
+
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Temps estimé</p>
+            <p class="large-zone-result-result" id="reponse-algo-temps">
+                00 : 00 : 00
+            </p>
         </div>
-    </div>
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Allure (min/km)</p>
+            <p class="large-zone-result-result" id="reponse-algo-allure">
+                00' 00"
+            </p>
+        </div>
+
+    </section>
 
     <h2>C'est quoi le Prédicteur de performance ?</h2>
     <p class="text">

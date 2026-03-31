@@ -6,42 +6,51 @@
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="icon" type="image/svg+xml" href="Assets/icons-sprintia/Logo-Sprintia-Head-Clair.svg" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/svg+xml" href="Assets/icons-sprintia/Logo-Sprintia-Head-Sombre.svg" media="(prefers-color-scheme: dark)">
+<!-- Cette partie du head sera utilisée lors de la publication de votre outil
+    <link rel="stylesheet" href="../../../CSS/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../Assets/icons-sprintia/Logo-Sprintia-Head-Clair.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="../../../Assets/icons-sprintia/Logo-Sprintia-Head-Sombre.svg" media="(prefers-color-scheme: dark)">
 
-    <!-- <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="../../../manifest.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sprintia">
-    <link rel="apple-touch-icon" href="Assets/icons-sprintia/icon-1024-V4.0.2.png">
+    <link rel="apple-touch-icon" href="/Assets/icons-sprintia/icon-1024-V4.0.2.png">
     
-    <script src="Paramètres/script_themes.js"></script> -->
+    <script src="../../../Paramètres/script_themes.js"></script>
+-->
+
+    <!-- Cette partie du head est celle que vous allez utiliser lors du développement de votre outil -->
+    <link rel="stylesheet" href="CSS/style.css"> <!-- Connexion au CSS global de Sprintia qui permettra d'utiliser mes composants -->
+
+    <link rel="icon" type="image/svg+xml" href="Assets/icons-sprintia/Logo-Sprintia-Head-Clair.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="Assets/icons-sprintia/Logo-Sprintia-Head-Sombre.svg" media="(prefers-color-scheme: dark)">
+
 </head>
 
 <body>
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="#">Sprintia</a>
+                <a id="logo-dynamique">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
-                    <a href="#">
+                    <a>
                         <i class="fs-icon_accueil"></i>
                         Accueil
                     </a>
                 </li>
                 <li>
-                    <a class="actif" href="#">
+                    <a class="actif">
                         <i class="fs-icon_outils"></i>
                         Outils
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a>
                         <i class="fs-icon_parametres"></i>
                         Paramètres
                     </a>
@@ -55,19 +64,19 @@
         <div class="burger-menu">
             <ul class="links">
                 <li>
-                    <a href="#">
+                    <a>
                         <i class="fs-icon_accueil"></i>
                         Accueil
                     </a>
                 </li>
                 <li>
-                    <a class="actif-burger-menu" href="#">
+                    <a class="actif-burger-menu">
                         <i class="fs-icon_outils"></i>
                         Outils
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a>
                         <i class="fs-icon_parametres"></i>
                         Paramètres
                     </a>
@@ -77,34 +86,35 @@
     </header>
 
     <h1>Nom de l'outil</h1>
+
+    <!-- Ajouter le HTML de votre outil -->
     
     <footer>
         <div class="conteneur-lien-footer">
             <a class="a_title">Catégories</a>
-            <a class="a_footer" href="#">Accueil</a>
-            <a class="a_footer" href="#">Outils</a>
-            <a class="a_footer" href="#">Paramètres</a>
-            <a class="a_footer" href="#">Historique des versions</a>
-            <a class="a_footer" href="#">Thèmes</a>
+            <a class="a_footer">Accueil</a>
+            <a class="a_footer">Outils</a>
+            <a class="a_footer">Paramètres</a>
+            <a class="a_footer">Historique des versions</a>
+            <a class="a_footer">Thèmes</a>
         </div>
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="#">Charge d'entraînement</a>
-            <a class="a_footer" href="#">Estimation VO₂max</a>
-            <a class="a_footer" href="#">Niveau de course à pied</a>
+            <a class="a_footer">Charge d'entraînement</a>
+            <a class="a_footer">Estimation VO₂max</a>
+            <a class="a_footer">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="#">Licence (© 2026 Sprintia)</a>
-            <a class="a_footer" href="#">Politique de confidentialité</a>
+            <a class="a_footer">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer">Politique de confidentialité</a>
         </div>
     </footer>
 
-    <!-- Pour le burger menu -->
-    <script src="Assets/base-js/base.js"></script>
-    <script src="script_outil.js"></script>
+    <script src="Assets/base-js/base.js"></script> <!-- Connexion au fichier des fonctions globales de Sprintia -->
+    <script src="script_outil.js"></script> <!-- Connexion à la logique de votre outil (à votre fichier JS) -->
     
 </body>
 </html>

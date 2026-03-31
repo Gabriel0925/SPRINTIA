@@ -26,7 +26,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="../../index.html" id="a-logo">Sprintia</a>
+                <a href="../../index.html" id="logo-dynamique">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
@@ -82,9 +82,9 @@
         Créez votre propre coach : choisissez son nom, son style et même son avatar. 
         Votre coach, à votre image ! Votre coach vous tutoiera pour créer une meilleure proximité entre vous et le coach.
     </p>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
-            <div class="conteneur-input">
+    <section class="container-zone">
+        <div class="form">
+            <div class="container-input">
                 <input type="text" id="nom-coach" oninput="MajName(value)" placeholder="Nom" autocomplete="off" maxlength="20">
                 <div class="label-input">Nom</div>
             </div>
@@ -121,14 +121,14 @@
             <button onclick="SauvegardePreference()" id="bouton-save">Sauvegarder</button>
         </div>
 
-        <div class="box-result jrm-coach">
-            <p class="score-imc" id="NomCoach">JRM Coach :</p>
-            <p class="zone-imc" id="JRM-coach">
+        <div class="zone-coach">
+            <p class="zone-coach-name" id="NomCoach">JRM Coach :</p>
+            <p class="zone-coach-interpretation" id="JRM-coach">
                 Chargement...
             </p> 
         </div>
 
-    </div>
+    </section>
 
     <p class="text">
         Attention, en réinitialisant votre coach, le coach par défaut sera rétabli.

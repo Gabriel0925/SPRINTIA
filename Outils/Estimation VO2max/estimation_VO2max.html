@@ -77,19 +77,20 @@
     </header>
     
     <h1>Estimation VO₂max</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
             <select id="profil-user" onchange="ComboBoxVO2max()" autocomplete="off">
                     <option value="homme">Genre : Homme</option>
                     <option value="femme">Genre : Femme</option>
             </select>
-            <div class="cote-cote">
-                <div class="conteneur-input">
+            <div class="side-by-side">
+                <div class="container-input">
                     <input type="number" id="age-user" class="small" placeholder="Âge" autocomplete="off">
                     <div class="label-input">Âge</div>
                 </div>
                     
-                <div class="conteneur-input">
+                <div class="container-input">
                     <input type="number" id="vma-user" class="small" placeholder="VMA (km/h)" autocomplete="off">
                     <div class="label-input">VMA (km/h)</div>
                 </div>
@@ -98,13 +99,14 @@
             <button onclick="CalculVO2max()">Estimer</button>
         </div>
 
-        <div class="box-result">
-            <p class="score-imc">VO₂max estimé : <strong>0,0</strong></p>
-            <p class="zone-imc">
+        <div class="zone-result">
+            <p class="zone-result-name-result">VO₂max estimé : <strong>0,0</strong></p>
+            <p class="zone-result-interpretation">
                 Veuillez rentrer votre genre, âge ainsi que votre VMA pour avoir une interprétation.
             </p>
         </div>
-    </div>
+
+    </section>
 
     <h2>Le VO₂max c'est quoi ?</h2>
     <p class="text">

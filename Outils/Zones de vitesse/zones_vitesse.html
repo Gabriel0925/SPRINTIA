@@ -77,81 +77,86 @@
     </header>
     
     <h1>Zones de vitesse</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+
+    <section class="container-zone">
+        <div class="form">
                 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="vma-user" placeholder="VMA (km/h)" autocomplete="off">
                 <div class="label-input">VMA (km/h)</div>
             </div>
                     
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="vitesse-max-user" placeholder="Vitesse max (optionnelle)" autocomplete="off">
                 <div class="label-input">Vitesse max (optionnelle)</div>
             </div>
 
             <button onclick="ZoneVitesse()">Calculer</button>
         </div>
-    </div>
+    </section>
 
-    <div class="conteneur-rep-zone">
 
-        <div class="zone-cardio">
-            <div class="ensemble-p">
-                <p class="zone">Zone 1</p>
-                <p class="fonction-zone">Footing</p>
-            </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">km/h</p>
-            </div>
-        </div>
- 
-        <div class="zone-cardio">
-            <div class="ensemble-p">
-                <p class="zone">Zone 2</p>
-                <p class="fonction-zone">Endurance fondamentale</p>
-            </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">km/h</p>
+
+    <section class="container-box">
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 1</p>
+            <p class="small-zone-result-indication">Footing</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-unit">km/h</p>
             </div>
         </div>
 
-        <div class="zone-cardio">
-            <div class="ensemble-p">
-                <p class="zone">Zone 3</p>
-                <p class="fonction-zone">Endurance active</p>
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 2</p>
+            <p class="small-zone-result-indication">Endurance fondamentale</p>
+
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">km/h</p>
             </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">km/h</p>
+        </div>
+
+       <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 3</p>
+                <p class="small-zone-result-indication">Endurance active</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">km/h</p>
             </div>
         </div>
             
-        <div class="zone-cardio">
+        <div class="small-zone-result color-zone">
             <div class="ensemble-p">
-                <p class="zone">Zone 4</p>
-                <p class="fonction-zone">Tempo</p>
+                <p class="small-zone-result-name">Zone 4</p>
+                <p class="small-zone-result-indication">Tempo</p>
             </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">km/h</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">km/h</p>
             </div>
         </div>
 
-        <div class="zone-cardio">
+        <div class="small-zone-result color-zone">
             <div class="ensemble-p">
-                <p class="zone">Zone 5</p>
-                <p class="fonction-zone">Fractionné court</p>
+                <p class="small-zone-result-name">Zone 5</p>
+                <p class="small-zone-result-indication">Fractionné court</p>
             </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">km/h</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">km/h</p>
             </div>
         </div>
 
-    </div>
+    </section>
 
     <div class="conteneur-centrage-marge">
         <button onclick="ZoneAllure()" id="conversion">Convertir en allure</button>

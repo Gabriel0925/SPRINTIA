@@ -78,15 +78,16 @@
 
     <h1 id="title-page">Ajouter un entraînement</h1> 
 
-    <div class="conteneur-ensemble first">
-        <div class="box-result-deux" id="coach-ajoute-entrainement">
-            <p class="score-imc" id="nom-coach">JRM Coach :</p>
-            <p class="zone-imc" id="reponse-coach">
+    <section class="container-zone">
+
+        <div class="large-zone-coach" id="coach-ajoute-entrainement">
+            <p class="large-zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="large-zone-coach-interpretation" id="reponse-coach">
                 Chargement...
             </p> 
         </div>
 
-        <div class="conteneur-champs-outil">
+        <div class="form">
  
             <select id="profil-sport" onchange="cacherInput(value)" autocomplete="off">
                     <optgroup label="LIBRE"> 
@@ -145,19 +146,19 @@
 
             </select>
 
-            <div class="cote-cote">
-                <div class="conteneur-input">
-                    <input type="date" id="date-entrainement-user" autocomplete="off">
+            <div class="side-by-side">
+                <div class="container-input">
+                    <input type="date" class="small" id="date-entrainement-user" autocomplete="off">
                     <div class="label-input">Date</div>
                 </div>
                     
-                <div class="conteneur-input">
+                <div class="container-input">
                     <input type="text" id="nom-entrainement-user" class="small" placeholder="Nom de l'entraî. *" autocomplete="off" maxlength="80">
                     <div class="label-input">Nom de l'entraî. *</div> 
                 </div>
             </div>
                 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="text" id="duree-entrainement-user" placeholder="Durée (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
                 maxlength="8" autocomplete="off">
                 <div class="label-input">Durée (hh:mm:ss) *</div>
@@ -172,175 +173,175 @@
                 <div class="slider-value">1</div>
             </div>
 
-            <div class="cote-cote">
-                <div class="conteneur-input">
+            <div class="side-by-side">
+                <div class="container-input">
                     <input type="number" id="fc-moy-entrainement-user" class="small" placeholder="FC moy. (bpm)" autocomplete="off">
                     <div class="label-input">FC moy. (bpm)</div>
                 </div>
                     
-                <div class="conteneur-input">
+                <div class="container-input">
                     <input type="number" id="fc-max-entrainement-user" class="small" placeholder="FC max. (bpm)" autocomplete="off">
                     <div class="label-input">FC max. (bpm)</div> 
                 </div>
             </div>
 
             <!-- Pour inciter le user a rentrer plus de datas -->
-            <div class="conteneur-button-plus-data" onclick="dataSpecifique(document.getElementById('profil-sport').value)">
-                <p class="plus-data">Plus de données</p>
+            <div class="button-more-data" onclick="dataSpecifique(document.getElementById('profil-sport').value)">
+                <p class="button-more-data-text">Plus de données</p>
             </div>
 
     <!-- Champs dynamique en fonction du sport -->
             
         <!-- Sport extérieur (dist. + denivele) -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="distance-entrainement-user" placeholder="Distance (km)" autocomplete="off">
                 <div class="label-input">Distance (km)</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="denivele-entrainement-user" placeholder="Dénivelé (m)" autocomplete="off">
                 <div class="label-input">Dénivelé (m)</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="altitude-max-entrainement-user" placeholder="Altitude max. (m)" autocomplete="off">
                 <div class="label-input">Altitude max. (m)</div>
             </div>
 
             <!-- Vitesse -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="text" id="allure-moy-entrainement-user" placeholder="Allure moy. (/km)" autocomplete="off" maxlength="5">
                 <div class="label-input">Allure moy. (/km)</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="vitesse-moy-entrainement-user" placeholder="Vitesse moy. (km/h)" autocomplete="off">
                 <div class="label-input">Vitesse moy. (km/h)</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="vitesse-max-entrainement-user" placeholder="Vitesse max. (km/h)" autocomplete="off">
                 <div class="label-input">Vitesse max. (km/h)</div>
             </div>
 
             
             <!-- Cadence -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="cadence-moy-entrainement-user" placeholder="Cadence moy. (cpm)" autocomplete="off">
                 <div class="label-input">Cadence moy. (cpm)</div>
             </div>
 
 
         <!-- Sport d'eau -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-longueurs-entrainement-user" placeholder="Nombre de longueurs" autocomplete="off">
                 <div class="label-input">Nombre de longueurs</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="longueur-bassin-entrainement-user" placeholder="Longueur du bassin (m)" autocomplete="off">
                 <div class="label-input">Longueur du bassin (m)</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="coups-rame-entrainement-user" placeholder="Coups de rame" autocomplete="off">
                 <div class="label-input">Coups de rame</div>
             </div>
 
 
         <!-- Sport de raquette -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-coups-entrainement-user" placeholder="Nombre total de coups" autocomplete="off">
                 <div class="label-input">Nombre total de coups</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-sets-entrainement-user" placeholder="Nombre de sets" autocomplete="off">
                 <div class="label-input">Nombre de sets</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="vitesse-smash-entrainement-user" placeholder="Vitesse de smash (km/h)" autocomplete="off">
                 <div class="label-input">Vitesse de smash (km/h)</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-points-entrainement-user" placeholder="Nombre total de points" autocomplete="off">
                 <div class="label-input">Nombre total de points</div>
             </div>
 
 
         <!-- Sport de collectifs -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="text" id="score-entrainement-user" placeholder="Score" autocomplete="off" maxlength="7">
                 <div class="label-input">Score</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-services-entrainement-user" placeholder="Nombre de services" autocomplete="off">
                 <div class="label-input">Nombre de services</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-smash-entrainement-user" placeholder="Nombre de smash" autocomplete="off">
                 <div class="label-input">Nombre de smash</div>
             </div>
 
 
         <!-- Sport de combat -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-victoires-entrainement-user" placeholder="Nombre de victoires" autocomplete="off">
                 <div class="label-input">Nombre de victoires</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-chutes-entrainement-user" placeholder="Nombre de chutes" autocomplete="off">
                 <div class="label-input">Nombre de chutes</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-combats-entrainement-user" placeholder="Nombre de combats" autocomplete="off">
                 <div class="label-input">Nombre de combats</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-defaites-entrainement-user" placeholder="Nombre de défaites" autocomplete="off">
                 <div class="label-input">Nombre de défaites</div>
             </div>
 
 
         <!-- Sport d'hiver -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-descentes-entrainement-user" placeholder="Nombre de descentes" autocomplete="off">
                 <div class="label-input">Nombre de descentes</div>
             </div>
 
 
         <!-- Renforcement musculaire -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="text" id="muscles-travailles-entrainement-user" placeholder="Muscles travaillés" autocomplete="off" maxlength="150">
                 <div class="label-input">Muscles travaillés</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-reps-entrainement-user" placeholder="Nombre total de reps" autocomplete="off">
                 <div class="label-input">Nombre total de reps</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-series-entrainement-user" placeholder="Nombre total de séries" autocomplete="off">
                 <div class="label-input">Nombre total de séries</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="poids-total-entrainement-user" placeholder="Poids total (kg)" autocomplete="off">
                 <div class="label-input">Poids total (kg)</div>
             </div>
 
             
         <!-- Autres -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-pas-entrainement-user" placeholder="Nombre de pas" autocomplete="off">
                 <div class="label-input">Nombre de pas</div>
             </div>
             <!-- Pr le nombre de tour pour la corde à sauter -->
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="nb-tours-entrainement-user" placeholder="Nombre de tours" autocomplete="off">
                 <div class="label-input">Nombre de tours</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="number" id="serie-max-entrainement-user" placeholder="Série max." autocomplete="off">
                 <div class="label-input">Série max.</div>
             </div>
 
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="text" id="voies-effectuees-entrainement-user" placeholder="Voies effectuées" autocomplete="off" maxlength="150">
                 <div class="label-input">Voies effectuées</div>
             </div>
-            <div class="conteneur-input input-advanced">
+            <div class="container-input input-advanced">
                 <input type="text" id="difficulte-max-entrainement-user" placeholder="Difficulté max." autocomplete="off" maxlength="3">
                 <div class="label-input">Difficulté max.</div>
             </div>
@@ -348,7 +349,7 @@
             <button id="button-sauvegarder" onclick="saveWorkout()">Sauvegarder</button>
         </div>
 
-    </div>
+    </section>
 
     <h2>C'est quoi le RPE ?</h2>
     <p class="text">

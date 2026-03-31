@@ -44,27 +44,23 @@ function Zone(ScoreCourse) {
 function StartNiveau() {
     // Recup datas
     let DistanceUser = parseFloat(document.getElementById("distance-user").value.trim().replace(",", "."))
-    let ChampsErreur = document.getElementById("p-error")
+    let ChampsErreur = document.querySelector(".error-message")
 
     // on vide le champs erreur au moins si le user change 7 pour 4 bah ça enleve l'erreur
-    ChampsErreur.textContent =""
-            
-    // recup variable css
-    let RootCSS = document.documentElement
-    let StyleCSS = getComputedStyle(RootCSS)
+    ChampsErreur.textContent = ""
 
     // Vérification
     if (isNaN(DistanceUser)) {
         return
     }
     if (DistanceUser <= 0) {
+        ChampsErreur.style.display = 'block'
         ChampsErreur.textContent = "La distance doit être supérieure à 0."
-        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT") // ajout de la couleur
         return
     }
     if (DistanceUser >= 7) {
+        ChampsErreur.style.display = 'block'
         ChampsErreur.textContent = "La distance doit être inférieure à 7."
-        ChampsErreur.style.color = StyleCSS.getPropertyValue("--COULEUR_ACCENT") // ajout de la couleur
         return
     }
 

@@ -93,11 +93,11 @@
     </div>
 
     <a href="Outils/Actions/historique_entrainement.html">
-        <div class="CoachBriefing">
-            <p class="CoachBriefing-title">
+        <div class="large-zone-coach">
+            <p class="large-zone-coach-name">
                 JRM Coach :
             </p>
-            <p class="CoachBriefing-interpretation">
+            <p class="large-zone-coach-interpretation">
                 Chargement...
             </p>
         </div>
@@ -432,7 +432,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.querySelector(".CoachBriefing-title").innerHTML =  AvatarCoach + " " + NomCoach + " :"
+                document.querySelector(".zone-coach-name").innerHTML =  AvatarCoach + " " + NomCoach + " :"
             }
 
             // Pour les statuts
@@ -460,7 +460,7 @@
                         Interpretation = TableauPhraseJRM[3]
                     }
                     // On affiche l'interpretation dans la zone du JRM
-                    document.querySelector(".CoachBriefing-interpretation").innerHTML = Interpretation
+                    document.querySelector(".large-zone-coach-interpretation").innerHTML = Interpretation
                     return
                 }
             }
@@ -611,12 +611,12 @@
                     Interpretation += "<br><br>Essaie de prendre le temps de faire une séance de sport, ton corps te remerciera plus tard. Si tu fais un entraînement, même léger, tu dormiras mieux ce soir !"
                 }
 
-                document.querySelector(".CoachBriefing-interpretation").innerHTML = Interpretation // affichage dans le champs
+                document.querySelector(".large-zone-coach-interpretation").innerHTML = Interpretation // affichage dans le champs
 
             } else { // si il ny a pas de datas
                 let NotData = `Je n'ai pas encore assez de données pour analyser ta semaine d'entraînement. Continue tes efforts, j'ai hâte de voir tes permiers entraînements !`
 
-                document.querySelector(".CoachBriefing-interpretation").innerHTML = NotData
+                document.querySelector(".large-zone-coach-interpretation").innerHTML = NotData
             }
 
             return

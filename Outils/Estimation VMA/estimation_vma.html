@@ -77,21 +77,22 @@
     </header>
     
     <h1>Estimation VMA</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
             <select id="test-user" onchange="RemplirChamps()" autocomplete="off">
                     <option value="demi-cooper">Test : Demi-Cooper</option>
                     <option value="cooper">Test : Cooper</option>
                     <option value="luc-leger">Test : Luc léger</option>
                     <option value="course-reference">Course type (moins précis)</option>
             </select>
-            <div class="cote-cote">
-                <div class="conteneur-input">
+            <div class="side-by-side">
+                <div class="container-input">
                     <input type="number" id="distance-user" class="small" placeholder="Distance (km)" autocomplete="off">
                     <div class="label-input">Distance (km)</div>
                 </div>
                     
-                <div class="conteneur-input">
+                <div class="container-input">
                     <input type="text" id="duree-user" class="small" placeholder="Durée (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
                     maxlength="8" autocomplete="off">
                     <div class="label-input">Durée (hh:mm:ss)</div>
@@ -101,13 +102,14 @@
             <button onclick="EstimationVMA()">Estimer</button>
         </div>
 
-        <div class="box-result">
-            <p class="score-imc">VMA estimée</p>
-            <p class="temps-recup">
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">VMA estimée</p>
+            <p class="large-zone-result-result">
                 0 km/h
             </p>
         </div>
-    </div>
+
+    </section>
 
     <h2>C'est quoi la VMA ?</h2>
     <p class="text">

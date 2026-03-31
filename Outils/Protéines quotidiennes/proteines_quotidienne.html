@@ -16,7 +16,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sprintia">
-    <link rel="apple-touch-icon" href="/Assets/icons-sprintia/icon-1024-V4.0.2.png">
+    <link rel="apple-touch-icon" href="Assets/icons-sprintia/icon-1024-V4.0.2.png">
     
     <script src="../../Paramètres/script_themes.js"></script>
 </head>
@@ -77,8 +77,9 @@
     </header>
     
     <h1>Protéines quotidiennes</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
             <select id="objectif-user" onchange="ComboBox()" autocomplete="off">
                 <option value="Perte-poids">Objectif : Perte de poids</option>
                 <option value="Minimum">Objectif : Minimum vital</option>
@@ -87,7 +88,7 @@
                 <option value="Prise">Objectif : Prise de masse</option>
             </select>
                 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
                 <div class="label-input">Poids (kg)</div>
             </div>
@@ -95,13 +96,14 @@
             <button onclick="EstimationProteines()">Calculer</button>
         </div>
 
-        <div class="box-result">
-            <p class="score-imc">Protéines recommandées</p>
-            <p class="temps-recup">
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Protéines recommandées</p>
+            <p class="large-zone-result-result">
                 0 g/jour
             </p>
         </div>
-    </div>
+        
+    </section>
 
     <h2>Qu'est-ce que l'outil Protéines quotidiennes ?</h2>
     <p class="text">

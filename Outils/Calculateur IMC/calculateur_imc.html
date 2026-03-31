@@ -77,15 +77,16 @@
     </header>
 
     <h1>Calculateur IMC</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
                 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
                 <div class="label-input">Taille (cm)</div>
             </div>
                     
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
                 <div class="label-input">Poids (kg)</div>
             </div>
@@ -93,13 +94,14 @@
             <button onclick="CalculIMC()">Calculer</button>
         </div>
 
-        <div class="box-result">
-            <p class="score-imc">Votre IMC : <strong>00</strong></p>
-            <p class="zone-imc">
+        <div class="zone-result">
+            <p class="zone-result-name-result">Votre IMC : <strong>00</strong></p>
+            <p class="zone-result-interpretation">
                 Veuillez rentrer votre taille ainsi que votre poids pour avoir une interprétation.
             </p>
         </div>
-    </div>
+
+    </section>
 
     <h2>C'est quoi l'IMC ?</h2>
     <p class="text">

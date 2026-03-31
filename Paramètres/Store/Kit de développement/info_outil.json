@@ -1,0 +1,13 @@
+{
+    "nom_outil": "Nom de l'outil",
+    "version_outil": "1.0.0",
+    "auteur_outil": "Pseudo",
+    "description_outil": "Description de l'outil",
+    "date_creation_outil": "JJ-MM-AAAA",
+    
+    "info_developpement": {
+        "utilise_composants_sprintia_et_themes": true,
+        "utilise_composants_sprintia": false,
+        "utilise_css_personnalise": false
+    }
+}

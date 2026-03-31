@@ -92,22 +92,22 @@ function logoDynamique(message) {
     // timeout remis a 0 (suppresion plutot)
     clearTimeout(Timer1)
     clearTimeout(Timer2)
-    document.getElementById("a-logo").classList.remove("return", "pin-message")
+    document.getElementById("logo-dynamique").classList.remove("return", "pin-message")
 
     // animation du dynamic logo pour message au user
-    document.getElementById("a-logo").classList.add("pin-message")
+    document.getElementById("logo-dynamique").classList.add("pin-message")
 
-    document.getElementById("a-logo").textContent = message;
+    document.getElementById("logo-dynamique").textContent = message;
 
     Timer1 = setTimeout(() => { 
-        document.getElementById("a-logo").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
-        document.getElementById("a-logo").textContent = "Sprintia"; // on raffiche Sprintia
+        document.getElementById("logo-dynamique").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
+        document.getElementById("logo-dynamique").textContent = "Sprintia"; // on raffiche Sprintia
     }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
 
     Timer2 = setTimeout(() => {
         // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
-        document.getElementById("a-logo").classList.remove("return")
-        document.getElementById("a-logo").classList.remove("pin-message")
+        document.getElementById("logo-dynamique").classList.remove("return")
+        document.getElementById("logo-dynamique").classList.remove("pin-message")
     }, 3100) // durée choisis à la main
 }
 

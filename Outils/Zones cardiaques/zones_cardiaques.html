@@ -77,89 +77,96 @@
     </header>
 
     <h1>Zones cardiaques</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
+
             <select id="methode-user" onchange="MethodeChoisie()" autocomplete="off">
                 <option value="Reserve">Méthode : RFC (recommandé)</option>
                 <option value="Max">Méthode : FC max</option>
             </select>
                 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="age-user" placeholder="Âge" autocomplete="off">
                 <div class="label-input">Âge</div>
             </div>
 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="fc-repos-user" placeholder="FC repos" autocomplete="off">
                 <div class="label-input" id="label-fc-user">FC repos</div>
             </div>
 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="fc-max-user" placeholder="FC max (optionnelle)" autocomplete="off">
                 <div class="label-input">FC max (optionnelle)</div>
             </div>
 
             <button onclick="ChoixFonction()">Calculer</button>
-        </div>
-    </div>
 
-    <div class="conteneur-rep-zone">
-
-        <div class="zone-cardio">
-            <div class="ensemble-p">
-                <p class="zone">Zone 1</p>
-                <p class="fonction-zone">Récupération</p>
-            </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">bpm</p>
-            </div>
         </div>
 
-        <div class="zone-cardio">
-            <div class="ensemble-p">
-                <p class="zone">Zone 2</p>
-                <p class="fonction-zone">Endurance fondamentale</p>
-            </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">bpm</p>
+    </section>
+
+    <section class="container-box">
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 1</p>
+            <p class="small-zone-result-indication">Récupération</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-unit">bpm</p>
             </div>
         </div>
 
-       <div class="zone-cardio">
-            <div class="ensemble-p">
-                <p class="zone">Zone 3</p>
-                <p class="fonction-zone">Aérobie</p>
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 2</p>
+            <p class="small-zone-result-indication">Endurance fondamentale</p>
+
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">bpm</p>
             </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">bpm</p>
+        </div>
+
+       <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 3</p>
+                <p class="small-zone-result-indication">Aérobie</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">bpm</p>
             </div>
         </div>
             
-        <div class="zone-cardio">
+        <div class="small-zone-result color-zone">
             <div class="ensemble-p">
-                <p class="zone">Zone 4</p>
-                <p class="fonction-zone">Anaérobie</p>
+                <p class="small-zone-result-name">Zone 4</p>
+                <p class="small-zone-result-indication">Anaérobie</p>
             </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">bpm</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">bpm</p>
             </div>
         </div>
 
-        <div class="zone-cardio">
+        <div class="small-zone-result color-zone">
             <div class="ensemble-p">
-                <p class="zone">Zone 5</p>
-                <p class="fonction-zone">Maximum</p>
+                <p class="small-zone-result-name">Zone 5</p>
+                <p class="small-zone-result-indication">Maximum</p>
             </div>
-            <div class="conteneur-tranche-unite">
-                <p class="tranche-zone">0 - 0</p>
-                <p class="unite-zone">bpm</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-indication-unit">bpm</p>
             </div>
         </div>
-    </div>
+
+    </section>
 
     <h2>Quand les utiliser ?</h2>
     <ul class="list-information">

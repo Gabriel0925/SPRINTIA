@@ -77,19 +77,20 @@
     </header>
     
     <h1>Estimation 1RM</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
             <select id="methode-user" onchange="MethodeChoisie()" autocomplete="off">
                 <option value="Epley">Méthode : Epley</option>
                 <option value="Brzycki">Méthode : Brzycki</option>
             </select>
                 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="charge-user" placeholder="Charge (kg)" autocomplete="off">
                 <div class="label-input">Charge (kg)</div>
             </div>
                     
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="rep-user" placeholder="Répétitions" autocomplete="off">
                 <div class="label-input">Répétitions</div>
             </div>
@@ -97,13 +98,14 @@
             <button onclick="EstimationOneRep()">Estimer</button>
         </div>
 
-        <div class="box-result">
-            <p class="score-imc">Votre 1RM</p>
-            <p class="temps-recup">
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Votre 1RM</p>
+            <p class="large-zone-result-result">
                 00 kg
             </p>
         </div>
-    </div>
+
+    </section>
 
     <h2>Qu'est-ce que le 1RM ?</h2>
     <p class="text">

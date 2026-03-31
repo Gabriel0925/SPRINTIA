@@ -77,15 +77,16 @@
     </header>
     
     <h1>Hydratation post-séance</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
                 
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
                 <div class="label-input">Poids (kg)</div>
             </div>
                     
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="text" id="duree-entrainement-user" placeholder="Durée d'entraî. auj. (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
                 maxlength="8" autocomplete="off">
                 <div class="label-input">Durée entraî. auj. (hh:mm:ss)</div>
@@ -103,15 +104,16 @@
             <button onclick="CalculGeneral()">Estimer</button>
         </div>
 
-        <div class="box-result">
-            <p class="score-imc">Transpiration : <strong>0 mL</strong></p>
-            <p class="score-imc">Réhydratation : <strong>0 mL</strong></p>
-            <p class="score-imc">Hydratation du jour : <strong>0 mL</strong></p>
-            <p class="zone-imc">
+        <div class="zone-result">
+            <p class="zone-result-name-result">Transpiration : <strong>0 mL</strong></p>
+            <p class="zone-result-name-result">Réhydratation : <strong>0 mL</strong></p>
+            <p class="zone-result-name-result">Hydratation du jour : <strong>0 mL</strong></p>
+            <p class="zone-result-interpretation">
                 Veuillez rentrer votre poids, la durée de votre entraînement ainsi que le RPE pour avoir une interprétation.
             </p>
         </div>
-    </div>
+
+    </section>
 
     <h2>C'est quoi le RPE ?</h2>
     <p class="text">

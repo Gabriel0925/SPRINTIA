@@ -25,7 +25,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="../../index.html" id="a-logo">Sprintia</a>
+                <a href="../../index.html" id="logo-dynamique">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
@@ -89,15 +89,17 @@
     </p>
 
 
-    <div class="conteneur-ensemble">    
-        <div class="conteneur-champs-outil">    
-            <p class="text-info visible" id="p-error"></p>
+    <section class="container-zone">    
+        
+        <div class="form">
+
+            <p class="error-message"></p>
                 
-            <div class="conteneur-input">
-                <input type="date" class="long" id="date-niveau-course" autocomplete="off">
+            <div class="container-input">
+                <input type="date" id="date-niveau-course" autocomplete="off">
                 <div class="label-input">Date</div>
             </div>
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="StartNiveau()">
                 <div class="label-input">Distance (km)</div>
             </div>
@@ -105,13 +107,14 @@
             <button onclick="SauvegardeNiveauCourse()" id="button-sauvegarde-niveau">Sauvegarder</button>
         </div>
 
-        <div class="box-result" id="niveau-course">
-            <p class="score-imc">Niveau</p>
-            <p class="temps-recup">
+        <div class="large-zone-result" id="niveau-course">
+            <p class="large-zone-result-name">Niveau</p>
+            <p class="large-zone-result-result">
                 0
             </p>
         </div>
-    </div>
+
+    </section>
 
     <div class="chart-container" id="conteneur-graphique">
         <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->

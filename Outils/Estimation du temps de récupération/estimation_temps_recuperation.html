@@ -77,15 +77,16 @@
     </header>
     
     <h1>Estimation du temps de récupération</h1>
-    <div class="conteneur-ensemble">
-        <div class="conteneur-champs-outil">
+    <section class="container-zone">
+
+        <div class="form">
             <select id="methode-user" onchange="ComboBox()" autocomplete="off">
                 <option value="occasionnel">Sportif·ve occasionnel·le</option>
                 <option value="regulier">Sportif·ve régulier·e</option>
                 <option value="athlete">Athlète confirmé·e</option>
             </select>
               
-            <div class="conteneur-input">
+            <div class="container-input">
                 <input type="text" id="duree-entrainement-user" placeholder="Durée (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
                 maxlength="8" autocomplete="off">
                 <div class="label-input">Durée (hh:mm:ss)</div>
@@ -103,13 +104,14 @@
             <button onclick="EstimationTempsRecuperation()">Estimer</button>
         </div>
 
-        <div class="box-result">
-            <p class="score-imc">Temps de récup. estimé</p>
-            <p class="temps-recup">
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Temps de récup. estimé</p>
+            <p class="large-zone-result-result">
                 00 h
             </p>
         </div>
-    </div>
+
+    </section>
 
     <h2>C'est quoi le RPE ?</h2>
     <p class="text">

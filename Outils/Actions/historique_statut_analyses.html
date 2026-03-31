@@ -241,16 +241,13 @@
 
                 StructureHTML += `
                     <div class="action-button-card-workout">
-                        <button>
-                            <i class="fs-icon_supprimer"></i>
-                            Supprimer
-                        </button>
+                        <button class="btn-supprimer">Supprimer</button>
                     </div>
                     `
 
                 CardStatut.innerHTML = StructureHTML
 
-                let BoutonSupprimer = CardStatut.querySelector(".fs-icon_supprimer").parentElement // parent element pour ne pas prendre que l'icone
+                let BoutonSupprimer = CardStatut.querySelector(".btn-supprimer") // parent element pour ne pas prendre que l'icone
                         
                 // Ajout de la logique pour la suppresion
                 BoutonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton

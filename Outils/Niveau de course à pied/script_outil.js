@@ -54,13 +54,19 @@ function StartNiveau() {
         return
     }
     if (DistanceUser <= 0) {
-        ChampsErreur.style.display = 'block'
+        ChampsErreur.classList.add("visible")
         ChampsErreur.textContent = "La distance doit être supérieure à 0."
+        // remise à zéro
+        document.querySelector(".large-zone-result-result").textContent = 0
+        document.querySelector(".large-zone-result-name").textContent = "Niveau :"
         return
     }
     if (DistanceUser >= 7) {
-        ChampsErreur.style.display = 'block'
+        ChampsErreur.classList.add("visible")
         ChampsErreur.textContent = "La distance doit être inférieure à 7."
+        // remise à zéro
+        document.querySelector(".large-zone-result-result").textContent = 0
+        document.querySelector(".large-zone-result-name").textContent = "Niveau :"
         return
     }
 
@@ -69,8 +75,8 @@ function StartNiveau() {
     let Interpretation = Zone(ScoreCourse)
 
     // Affichage
-    document.querySelector(".temps-recup").textContent = ScoreCourse
-    document.querySelector(".score-imc").textContent = "Niveau : " + Interpretation
+    document.querySelector(".large-zone-result-result").textContent = ScoreCourse
+    document.querySelector(".large-zone-result-name").textContent = "Niveau : " + Interpretation
     return
 }
 
@@ -82,7 +88,7 @@ async function SauvegardeNiveauCourse() {
     let DateNiveauUser = document.getElementById("date-niveau-course").value
     let DistanceUser = document.getElementById("distance-user").value
     // Recup valeur niveau
-    let NiveauCourseUser = document.querySelector(".temps-recup").innerHTML.trim().replace(",", ".")
+    let NiveauCourseUser = document.querySelector(".large-zone-result-result").innerHTML.trim().replace(",", ".")
 
     // Recup de la date
     let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"

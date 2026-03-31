@@ -57,14 +57,14 @@ function EstimationVMA() {
     // Arrondi
     VmaEstimee = VmaEstimee.toFixed(1).replace(".", ",") + " km/h"
 
-    document.querySelector(".temps-recup").textContent = VmaEstimee
+    document.querySelector(".large-zone-result-result").textContent = VmaEstimee
     return
 }
 
 function RemplirChamps() {
     // Recup datas des champs
     let TestUsers = document.getElementById("test-user").value 
-    let ZonePourResult = document.querySelector(".temps-recup")
+    let ZonePourResult = document.querySelector(".large-zone-result-result")
 
     // Maj des champs en fonction du test choisi
     if (TestUsers === "demi-cooper") {

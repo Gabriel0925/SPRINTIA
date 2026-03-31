@@ -2140,7 +2140,7 @@ div.boite-ensemble-feature {
     margin: 0 auto;
     max-width: 900px;
 }
-div.conteneur-mode {
+div.banner-toggle {
     display: flex;
     align-items: center;
     background-color: var(--COULEUR_BACKGROUND_CARD);
@@ -2149,21 +2149,21 @@ div.conteneur-mode {
     margin: var(--ESPACE_M) 0;
     transition: all ease-out var(--DUREE_TRANSITION);
 }
-div.conteneur-mode i{
+div.banner-toggle i{
     font-size: var(--H0);
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
-div.conteneur-mode p.mode-choisis {
+div.banner-toggle p.mode-choisis {
     font-size: var(--H3);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     margin-right: auto;
     margin-left: var(--ESPACE_S);
 }
-div.conteneur-mode p.mode-choisis#sans-icone {
+div.banner-toggle p.mode-choisis#sans-icone {
     margin-left: var(--ESPACE_XXS);
 }
 /* Zone du champs du toggle */
-div.conteneur-mode input[type="checkbox"].toggle{
+div.banner-toggle input[type="checkbox"].toggle{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -2177,7 +2177,7 @@ div.conteneur-mode input[type="checkbox"].toggle{
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* C pr le rond du toggle */
-div.conteneur-mode input[type="checkbox"].toggle::after{
+div.banner-toggle input[type="checkbox"].toggle::after{
     content: "";
     position: absolute;
     top: 50%;
@@ -2190,12 +2190,12 @@ div.conteneur-mode input[type="checkbox"].toggle::after{
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Style mode off */
-div.conteneur-mode input[type="checkbox"].toggle:checked{
+div.banner-toggle input[type="checkbox"].toggle:checked{
     background-color: #636366;
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 /* Pour que le rond glisse */
-div.conteneur-mode input[type="checkbox"].toggle:checked:after{
+div.banner-toggle input[type="checkbox"].toggle:checked:after{
     left: 33%;
 }
 /* Section pour la couleur accentuation */

@@ -80,9 +80,9 @@ function CalculGeneral() {
     let Interpretation = "<strong>Petit conseil :</strong> ne buvez pas tout d'un coup, essayer de boire un verre toutes les 10-20 minutes."
 
     // Affichage des champs
-    let ChampResult = document.querySelectorAll(".score-imc")
+    let ChampResult = document.querySelectorAll(".zone-result-name-result")
     // Maj de l'interpretation
-    document.querySelector(".zone-imc").innerHTML = Interpretation
+    document.querySelector(".zone-result-interpretation").innerHTML = Interpretation
 
     ChampResult[0].innerHTML = TranspirationEstimee
     ChampResult[1].innerHTML = Rehydratation

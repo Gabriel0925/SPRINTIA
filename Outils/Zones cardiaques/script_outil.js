@@ -71,7 +71,7 @@ function ZoneFcMAX() {
     }
 
 
-    const BaliseTranche = document.querySelectorAll(".tranche-zone")
+    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
     BaliseTranche[0].textContent = ResultAlgoBox1;
     BaliseTranche[1].textContent = ResultAlgoBox2;
     BaliseTranche[2].textContent = ResultAlgoBox3;
@@ -167,7 +167,7 @@ function ZoneFcReserve() {
     }
 
 
-    const BaliseTranche = document.querySelectorAll(".tranche-zone")
+    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
     BaliseTranche[0].textContent = ResultAlgoBox1;
     BaliseTranche[1].textContent = ResultAlgoBox2;
     BaliseTranche[2].textContent = ResultAlgoBox3;
@@ -184,13 +184,13 @@ function MethodeChoisie() {
 
     if (Methode === "Max") {
         // supression/activation des champs
-        ChampFcMax.classList.remove("invisible")
-        ChampFcRepos.classList.add("invisible")
-        LabelFcRepos.classList.add("invisible")
+        ChampFcMax.style.display = "block"
+        ChampFcRepos.style.display = "none"
+        LabelFcRepos.style.display = "none"
     } else {
-        ChampFcMax.classList.remove("invisible")
-        ChampFcRepos.classList.remove("invisible")
-        LabelFcRepos.classList.remove("invisible")
+        ChampFcMax.style.display = "block"
+        ChampFcRepos.style.display = "block"
+        LabelFcRepos.style.display = "block"
     }
     return
 }

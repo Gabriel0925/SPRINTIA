@@ -61,7 +61,7 @@ function ZoneVitesse() {
         ResultAlgoBox5 =   "> " + FinZone4.toFixed(1).replace(".", ",")
     }
 
-    const BaliseTranche = document.querySelectorAll(".tranche-zone")
+    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
     BaliseTranche[0].innerHTML = ResultAlgoBox1;
     BaliseTranche[1].innerHTML = ResultAlgoBox2;
     BaliseTranche[2].innerHTML = ResultAlgoBox3;
@@ -69,7 +69,7 @@ function ZoneVitesse() {
     BaliseTranche[4].innerHTML = ResultAlgoBox5;
 
     // Maj de l'unité au cas ou le user aura fais conversion puis re-valider
-    const UnitTranche = document.querySelectorAll(".unite-zone")
+    const UnitTranche = document.querySelectorAll(".small-zone-result-unit")
     UnitTranche[0].textContent = "km/h";
     UnitTranche[1].textContent = "km/h";
     UnitTranche[2].textContent = "km/h";
@@ -194,7 +194,7 @@ function ZoneAllure() {
     }
 
     // On affiche les resultats
-    const BaliseTranche = document.querySelectorAll(".tranche-zone")
+    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
     BaliseTranche[0].innerHTML = ResultAlgoBox1;
     BaliseTranche[1].innerHTML = ResultAlgoBox2;
     BaliseTranche[2].innerHTML = ResultAlgoBox3;
@@ -202,7 +202,7 @@ function ZoneAllure() {
     BaliseTranche[4].innerHTML = ResultAlgoBox5;
 
     // Maj de l'unité
-    const UnitTranche = document.querySelectorAll(".unite-zone")
+    const UnitTranche = document.querySelectorAll(".small-zone-result-unit")
     UnitTranche[0].textContent = "/km";
     UnitTranche[1].textContent = "/km";
     UnitTranche[2].textContent = "/km";

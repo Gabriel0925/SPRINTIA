@@ -39,7 +39,7 @@ function EstimationProteines() {
 
     let Result = Math.floor(ResultProteines) + " g/jour"
 
-    document.querySelector(".temps-recup").textContent = Result
+    document.querySelector(".large-zone-result-result").textContent = Result
     return
 }
 

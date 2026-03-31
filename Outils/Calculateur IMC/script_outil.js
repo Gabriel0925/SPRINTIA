@@ -49,7 +49,7 @@ function CalculIMC() {
     }
 
     IMC = "Votre IMC : " + "<strong>" + IMC.toFixed(1).replace(".", ",") + "</strong>"
-    document.querySelector(".score-imc").innerHTML = IMC;
-    document.querySelector(".zone-imc").innerHTML = InterpretationZoneImc;
+    document.querySelector(".zone-result-name-result").innerHTML = IMC;
+    document.querySelector(".zone-result-interpretation").innerHTML = InterpretationZoneImc;
     return
 }

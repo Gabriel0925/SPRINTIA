@@ -166,10 +166,10 @@ function CalculVO2max() {
     let VO2maxEstime = "VO₂max estimé : " + "<strong>" + ResultVO2max.toFixed(1).replace(".", ",") + "</strong>"
 
     // Affichage
-    document.querySelector(".score-imc").innerHTML = VO2maxEstime
+    document.querySelector(".zone-result-name-result").innerHTML = VO2maxEstime
 
     let ZoneInterpretationVO2max = InterpretationVO2max(ResultVO2max, GenreUser, AgeUser)
-    document.querySelector(".zone-imc").innerHTML = ZoneInterpretationVO2max
+    document.querySelector(".zone-result-interpretation").innerHTML = ZoneInterpretationVO2max
     return
 }
 

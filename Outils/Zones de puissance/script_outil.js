@@ -37,7 +37,7 @@ function zonePuissance() {
     ResultAlgoBox7 = "> " + FinZone6
 
     // affichage
-    const BaliseTranche = document.querySelectorAll(".tranche-zone")
+    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
     BaliseTranche[0].textContent = ResultAlgoBox1
     BaliseTranche[1].textContent = ResultAlgoBox2
     BaliseTranche[2].textContent = ResultAlgoBox3

@@ -43,7 +43,7 @@ function EstimationTempsRecuperation() {
 
     let Result = Math.round(TempsRecup) + " h"
 
-    document.querySelector(".temps-recup").textContent = Result
+    document.querySelector(".large-zone-result-result").textContent = Result
 }
 
 function ComboBox() {

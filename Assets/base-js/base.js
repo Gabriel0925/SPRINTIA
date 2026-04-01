@@ -13,8 +13,8 @@ burgerMenuButton.onclick = function () {
 window.onclick = function (event) { // on track les click sur la page complete
     let TrackClickBurgerMenuButton = burgerMenuButton.contains(event.target) // pour tracker si il y a un click sur le bouton si oui = true sinon = false
     let TrackClickBurgerMenuOpen = burgerMenu.contains(event.target)
-    let TrackClickButtonMore = document.getElementById("button-more")
-    let TrackClickButtonInMenuMore = document.querySelector(".menu-button-more") // pour tracker si le user click sur un li dans le menu du bouton plus (ex dans entrainement : modifier,supprimer)
+    let TrackClickButtonMore = document.getElementById("button-group-button")
+    let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus (ex dans entrainement : modifier,supprimer)
      
     // si dans la page il y a le bouton plus alors on regarde si cest sur lui qu'on a cliqué
     if (TrackClickButtonMore && TrackClickButtonInMenuMore) {
@@ -31,12 +31,12 @@ window.onclick = function (event) { // on track les click sur la page complete
         burgerMenu.classList.remove("open")
         burgerMenuButtonIcon.classList.add("fs-icon_menu")
         // pour le menu plus
-        const menuButtonMore = document.querySelector(".menu-button-more")
+        const menuButtonMore = document.querySelector(".menu-many-action")
         if (menuButtonMore) {
             // on referme le menu plus
             menuButtonMore.classList.remove("open")
             // pout remettre l'icone plus
-            document.getElementById("button-more").classList.add("fs-icon_plus")
+            document.getElementById("button-group-button").classList.add("fs-icon_plus")
         }
     }
 }
@@ -50,10 +50,10 @@ window.addEventListener("scroll", () => {
 
 
 // --- Menu plus ---
-const menuButtonMore = document.querySelector(".menu-button-more")
+const menuButtonMore = document.querySelector(".menu-many-action")
 window.addEventListener("click", (event) => {
-    if (event.target.id == "button-more") {
-        const menuButtonMore = document.querySelector(".menu-button-more")
+    if (event.target.id == "button-group-button") {
+        const menuButtonMore = document.querySelector(".menu-many-action")
         menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
         const isOpenMenuMore = menuButtonMore.classList.contains('open')
@@ -61,12 +61,12 @@ window.addEventListener("click", (event) => {
     }
 })
 window.addEventListener("scroll", () => {
-    const menuButtonMore = document.querySelector(".menu-button-more")
+    const menuButtonMore = document.querySelector(".menu-many-action")
     if (menuButtonMore) {
         // on referme le menu plus
         menuButtonMore.classList.remove("open")
         // pout remettre l'icone plus
-        document.getElementById("button-more").classList.add("fs-icon_plus")
+        document.getElementById("button-group-button").classList.add("fs-icon_plus")
     }
 })
 // --- Fin menu plus ---

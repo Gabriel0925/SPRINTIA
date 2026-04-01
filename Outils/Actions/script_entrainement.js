@@ -48,20 +48,20 @@ function afficherData(dataWorkout) {
         <h1>${dataWorkout.nom}</h1>
 
         <div class="toolbar">
-            <p class="data-essentiel"><strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}</p>
-            <i class="fs-icon_plus" id="button-more"></i>
+            <p class="text-toolbar"><strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}</p>
+            <i class="fs-icon_plus" id="button-group-button"></i>
         </div>
 
-        <div class="menu-button-more">
+        <div class="menu-many-action">
             <li id="button-modifier">Modifier</li>
             <li id="button-supprimer">Supprimer</li>
         </div>
 
-        <div class="conteneur-cube"> 
+        <section class="container-block"> 
 
-            <div class="cube-data">
-                <p class="entete">Durée</p>
-                <p class="data">${dureeFormatee(dataWorkout.duree)}</p>
+            <div class="container-block-data">
+                <p class="container-block-data-header">Durée</p>
+                <p class="container-block-data-data">${dureeFormatee(dataWorkout.duree)}</p>
             </div>
     `
     
@@ -129,26 +129,26 @@ function afficherData(dataWorkout) {
                     // pass
                 } else {
                     if (tableauDataSeule.includes(nomData)) { // on check si c'est une data qu'on doit afficher seul ou pas 
-                        // on referme d'abord la div conteneur-cube on la rouvre puis on la referme
+                        // on referme d'abord la section container-block on la rouvre puis on la referme
                         structureHTML += `
-                            </div>
+                            </section>
 
-                            <div class="conteneur-cube">
-                                <div class="cube-data">
-                                    <p class="entete">${nomData}</p>
-                                    <p class="data">${valeur} <small>${uniteData}</small></p>
+                            <section class="container-block">
+                                <div class="container-block-data">
+                                    <p class="container-block-data-header">${nomData}</p>
+                                    <p class="container-block-data-data">${valeur} <small>${uniteData}</small></p>
                                 </div>
-                            </div>
+                            </section>
 
-                            <div class="conteneur-cube">
+                            <section class="container-block">
                         `
 
                     } else {
                         // si c'est un data normal alors on met la div correspondante
                         structureHTML += `
-                            <div class="cube-data">
-                                <p class="entete">${nomData}</p>
-                                <p class="data">${valeur} <small>${uniteData}</small></p>
+                            <div class="container-block-data">
+                                <p class="container-block-data-header">${nomData}</p>
+                                <p class="container-block-data-data">${valeur} <small>${uniteData}</small></p>
                             </div>
                         `
                     }
@@ -160,7 +160,7 @@ function afficherData(dataWorkout) {
     });
 
     structureHTML += `
-        </div>
+        </section>
 
         <!-- Pour la note -->
         <h2>Note</h2>
@@ -243,7 +243,7 @@ async function initialisation() {
                 let connectCSS = document.documentElement
                 let recupVar = getComputedStyle(connectCSS)
                 // on donne une couleur au bouton supprimer
-                buttonSupprimer.style.color = recupVar.getPropertyValue("--COULEUR_ACCENT")
+                buttonSupprimer.style.color = recupVar.getPropertyValue("--COLOR_ACCENT")
 
                 buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
                     // Demande de confirmation avant

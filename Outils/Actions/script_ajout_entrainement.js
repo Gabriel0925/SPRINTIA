@@ -208,7 +208,7 @@ async function VerificationParam() {
 
 function dataSpecifique(sportChoisi, firstChargement) {
     // recup du texte de la div : 'Plus de données'
-    let textButtonDataSpe = document.querySelector(".button-more-data-text")
+    let textButtonDataSpe = document.querySelector(".button-group-button-data-text")
     let typeDisplay = "block"
     // variable qui changerai en fonction de si les champs spécifique sont dépliés ou non
 
@@ -779,7 +779,7 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
 
     }
     
-    let textButtonDataSpe = document.querySelector(".button-more-data-text")
+    let textButtonDataSpe = document.querySelector(".button-group-button-data-text")
     if (textButtonDataSpe) { 
         if (textButtonDataSpe.textContent != "Plus de données") {
             // on remet le text plus de données si ce nest pas deja le cas

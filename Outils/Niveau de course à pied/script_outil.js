@@ -44,7 +44,7 @@ function Zone(ScoreCourse) {
 function StartNiveau() {
     // Recup datas
     let DistanceUser = parseFloat(document.getElementById("distance-user").value.trim().replace(",", "."))
-    let ChampsErreur = document.querySelector(".error-message")
+    let ChampsErreur = document.querySelector(".indication")
 
     // on vide le champs erreur au moins si le user change 7 pour 4 bah ça enleve l'erreur
     ChampsErreur.textContent = ""
@@ -204,9 +204,9 @@ async function GenererGraphique() {
     let RootCSS = document.documentElement
     let StyleCSS = getComputedStyle(RootCSS)
     // Recup variable css
-    let CouleurAccent = StyleCSS.getPropertyValue("--COULEUR_ACCENT")
-    let CouleurAccent2 = StyleCSS.getPropertyValue("--COULEUR_ACCENT2")
-    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COULEUR_TEXT_PRINCIPAL")
+    let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
+    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
+    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
     const barCanvas = document.getElementById("barCanvas")
     // Destruction de l'ancien graphique si il y en a un pour éviter une superposition de graphique

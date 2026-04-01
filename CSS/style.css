@@ -1,15 +1,15 @@
 /* Initialisation des variables */
 :root {
-    /* Couleurs Sprintia */
-    --COULEUR_ACCENT: #42a5f5; 
-    --COULEUR_ACCENT2: #90caf9; 
+    /* COLORs Sprintia */
+    --COLOR_ACCENT: #42a5f5; 
+    --COLOR_ACCENT2: #90caf9; 
     
-    --COULEUR_BACKGROUND: #000000;       
-    --COULEUR_BACKGROUND_CARD: #232222;
-    --COULEUR_BACKGROUND_CARD_HOVER: #373636; 
+    --COLOR_BACKGROUND: #000000;       
+    --COLOR_BACKGROUND_CARD: #232222;
+    --COLOR_BACKGROUND_CARD_HOVER: #373636; 
 
-    --COULEUR_TEXT_PRINCIPAL: #F0F4F8;
-    --COULEUR_TEXT_SECONDAIRE: #BDBDBD;
+    --COLOR_TEXT_PRIMARY: #F0F4F8;
+    --COLOR_TEXT_SECONDARY: #BDBDBD;
 
     /* Tailles & Configuration Font */
     --H0: 2.5rem; 
@@ -32,64 +32,63 @@
     --SCALE_NORMAL: 0.95;
 
     /* Marges intérieur/extérieur (Basé sur 0.5rem) */
-    --ESPACE_XXS: 0.25rem;   /* 4px */
-    --ESPACE_XS: 0.5rem;   /* 8px */
-    --ESPACE_S_SMALL: 0.9rem;     /* 16px */
-    --ESPACE_S: 1rem;     /* 16px */
-    --ESPACE_M: 1.5rem;   /* 24px */
-    --ESPACE_L: 2rem;     /* 32px */
-    --ESPACE_XL: 3rem;     /* 48px */
+    --SPACE_XXS: 0.25rem;   /* 4px */
+    --SPACE_XS: 0.5rem;   /* 8px */
+    --SPACE_S_SMALL: 0.9rem;     /* 16px */
+    --SPACE_S: 1rem;     /* 16px */
+    --SPACE_M: 1.5rem;   /* 24px */
+    --SPACE_L: 2rem;     /* 32px */
+    --SPACE_XL: 3rem;     /* 48px */
 
     /* Autres */
     --MAX_WIDTH: 1250px;
-    --EPAISSEUR_BORDER: 2.5px;
-    --DUREE_TRANSITION: 0.2s;
+    --TIME_TRANSITION: 0.2s;
 
     /* Flèche vers le bas ComBox outils */
     --URL_FLECHE_ICON: url("../Assets/icons-interface/icon_fleche.svg");
 
-    /* Couleur pour le hover des pastilles */
-    --COULEUR_PASTILLES_0: #42a5f5; 
-    --COULEUR_PASTILLES_0_HOVER: #90caf9; 
+    /* COLOR pour le hover des pastilles */
+    --COLOR_PASTILLES_0: #42a5f5; 
+    --COLOR_PASTILLES_0_HOVER: #90caf9; 
 
-    --COULEUR_PASTILLES_1: #FF5257; 
-    --COULEUR_PASTILLES_1_HOVER: #FF8A8E; 
+    --COLOR_PASTILLES_1: #FF5257; 
+    --COLOR_PASTILLES_1_HOVER: #FF8A8E; 
 
-    --COULEUR_PASTILLES_2: #FA6BFA; 
-    --COULEUR_PASTILLES_2_HOVER: #FFA8FF; 
+    --COLOR_PASTILLES_2: #FA6BFA; 
+    --COLOR_PASTILLES_2_HOVER: #FFA8FF; 
 
-    --COULEUR_PASTILLES_3: #B266F9; 
-    --COULEUR_PASTILLES_3_HOVER: #D7A8FF; 
+    --COLOR_PASTILLES_3: #B266F9; 
+    --COLOR_PASTILLES_3_HOVER: #D7A8FF; 
 
-    --COULEUR_PASTILLES_4: #0CBB5BFF; 
-    --COULEUR_PASTILLES_4_HOVER: #76E082; 
+    --COLOR_PASTILLES_4: #0CBB5BFF; 
+    --COLOR_PASTILLES_4_HOVER: #76E082; 
 
-    --COULEUR_PASTILLES_5: #0ac3a7; 
-    --COULEUR_PASTILLES_5_HOVER: #76e8d6; 
+    --COLOR_PASTILLES_5: #0ac3a7; 
+    --COLOR_PASTILLES_5_HOVER: #76e8d6; 
     
-    --COULEUR_PASTILLES_6: #6aabd3;  
-    --COULEUR_PASTILLES_6_HOVER: #acdefd;  
+    --COLOR_PASTILLES_6: #6aabd3;  
+    --COLOR_PASTILLES_6_HOVER: #acdefd;  
 
-    --COULEUR_PASTILLES_7: #f14d84; 
-    --COULEUR_PASTILLES_7_HOVER: #ff80ab; 
+    --COLOR_PASTILLES_7: #f14d84; 
+    --COLOR_PASTILLES_7_HOVER: #ff80ab; 
     
-    --COULEUR_PASTILLES_D1: #3a91ff;  
-    --COULEUR_PASTILLES_D2: #f782f0;  
+    --COLOR_PASTILLES_D1: #3a91ff;  
+    --COLOR_PASTILLES_D2: #f782f0;  
     
-    --COULEUR_PASTILLES_D3: #1498e4;  
-    --COULEUR_PASTILLES_D4: #fcaf6b;  
+    --COLOR_PASTILLES_D3: #1498e4;  
+    --COLOR_PASTILLES_D4: #fcaf6b;  
     
-    --COULEUR_PASTILLES_D5: #a477fe;  
-    --COULEUR_PASTILLES_D6: #4ce58c; 
+    --COLOR_PASTILLES_D5: #a477fe;  
+    --COLOR_PASTILLES_D6: #4ce58c; 
  
-    --COULEUR_PASTILLES_D7: #ffb82b;  
-    --COULEUR_PASTILLES_D8: #ff782f; 
+    --COLOR_PASTILLES_D7: #ffb82b;  
+    --COLOR_PASTILLES_D8: #ff782f; 
  
-    --COULEUR_PASTILLES_D9: #2e9c0f;  
-    --COULEUR_PASTILLES_D10: #d2cccc; 
+    --COLOR_PASTILLES_D9: #2e9c0f;  
+    --COLOR_PASTILLES_D10: #d2cccc; 
  
-    --COULEUR_PASTILLES_D11: #FFF700;  
-    --COULEUR_PASTILLES_D12: #fffb93;  
+    --COLOR_PASTILLES_D11: #FFF700;  
+    --COLOR_PASTILLES_D12: #fffb93;  
 }
 /* Pour les icônes */
 @font-face {
@@ -174,7 +173,7 @@ i {
 }
 .fs-icon_ia:before {
     content: "\e90b";
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 .fs-icon_IMC:before {
     content: "\e90c";
@@ -184,11 +183,11 @@ i {
 }
 .fs-icon_licence:before {
     content: "\e90e";
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 .fs-icon_mail:before {
     content: "\e90f";
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 .fs-icon_menu:before {
     content: "\e910";
@@ -213,14 +212,14 @@ i {
 }
 .fs-icon_partager:before {
     content: "\e917";
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 .fs-icon_pause:before {
     content: "\e918";
 }
 .fs-icon_play:before {
     content: "\e919";
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 .fs-icon_plus:before {
     content: "\e91a";
@@ -239,7 +238,7 @@ i {
 }
 .fs-icon_supprimer:before {
     content: "\e91f";
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 .fs-icon_telecharger:before {
     content: "\e920";
@@ -281,13 +280,13 @@ i {
     text-decoration: none;
     color: inherit;
     /* Pour les barres de slide (pr Firefox) */
-    scrollbar-color: var(--COULEUR_TEXT_SECONDAIRE) transparent;
+    scrollbar-color: var(--COLOR_TEXT_SECONDARY) transparent;
     scrollbar-width: thin;
 }
 /* Pour les barres de slide (pr Chrome/Safari) */
 *::-webkit-scrollbar {/* Pour l'épaisseur */width: 6px;}
 *::-webkit-scrollbar-track {background: transparent;}
-*::-webkit-scrollbar-thumb {background: var(--COULEUR_TEXT_SECONDAIRE);}
+*::-webkit-scrollbar-thumb {background: var(--COLOR_TEXT_SECONDARY);}
 
 body {
     /* Pour la font */
@@ -296,39 +295,39 @@ body {
     position: relative;
     line-height: var(--LINE_HEIGHT);
     /* Pour le style */
-    background-color: var(--COULEUR_BACKGROUND); 
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    background-color: var(--COLOR_BACKGROUND); 
+    color: var(--COLOR_TEXT_PRIMARY);
     /* Pour la base d'une page web de Sprintia */
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
     /* Pour désactiver le truc bleu lors d'un clic sur un element de linterface */
     -webkit-tap-highlight-color: transparent;
 }
 
 h1{
     font-size: var(--H2);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    margin-bottom: var(--ESPACE_S);
+    color: var(--COLOR_TEXT_PRIMARY);
+    margin-bottom: var(--SPACE_S);
 }
 h2{
     font-size: var(--H3);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    margin: var(--ESPACE_M) 0;
+    color: var(--COLOR_TEXT_PRIMARY);
+    margin: var(--SPACE_M) 0;
 }
 p.text {
     font-size: var(--P);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
-    margin: var(--ESPACE_S_SMALL) 0px;
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin: var(--SPACE_S_SMALL) 0px;
 }
 
 /* style button */
 button{
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     border: none;
-    color: var(--COULEUR_BACKGROUND);
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_S_SMALL);
+    color: var(--COLOR_BACKGROUND);
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_S_SMALL);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     display: block;
@@ -344,27 +343,27 @@ button{
     outline: none;
     -webkit-appearance: none;
 
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     button:hover{
-        background-color: var(--COULEUR_ACCENT2);
+        background-color: var(--COLOR_ACCENT2);
     }
 }
 button:active{
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
 /* pr button dans tableau */
-button.tableau {
+button.table {
     background-color: transparent;
     border: none;
     margin: 0px auto;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     align-items: center;
-    color: var(--COULEUR_ACCENT);
+    color: var(--COLOR_ACCENT);
     
     font-family: var(--FONT_FAMILY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -375,15 +374,15 @@ button.tableau {
     outline: none;
     -webkit-appearance: none;
 
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    button.tableau:hover{
-        color: var(--COULEUR_ACCENT2);
+    button.table:hover{
+        color: var(--COLOR_ACCENT2);
     }
 }
-button.tableau:active{
-    color: var(--COULEUR_ACCENT2);
+button.table:active{
+    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -402,11 +401,11 @@ button#conversion { /* convertir en allure */
 
 /* Lien text vers adresse */
 a.lien {
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
     cursor: pointer;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     text-decoration: underline;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     a.lien:hover{
@@ -423,38 +422,38 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: var(--ESPACE_M);
-    padding: var(--ESPACE_XL) 0;
+    margin-top: var(--SPACE_M);
+    padding: var(--SPACE_XL) 0;
 }
 footer div.conteneur-lien-footer {
     display: flex;
     flex-direction: column;
     min-width: 325px;
-    margin-top: var(--ESPACE_S);
+    margin-top: var(--SPACE_S);
 }
 footer a.a_title{
     font-size: var(--P);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COULEUR_TEXT_PRINCIPALE);
-    padding: var(--ESPACE_XS);
+    color: var(--COLOR_TEXT_PRIMARYE);
+    padding: var(--SPACE_XS);
 }
 footer a.a_footer{
     font-size: var(--P);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
-    padding: var(--ESPACE_XS);
-    margin: var(--ESPACE_XXS);
+    color: var(--COLOR_TEXT_SECONDARY);
+    padding: var(--SPACE_XS);
+    margin: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     footer a.a_footer:hover{
-        background-color: var(--COULEUR_BACKGROUND_CARD);
-        color: var(--COULEUR_ACCENT2);
+        background-color: var(--COLOR_BACKGROUND_CARD);
+        color: var(--COLOR_ACCENT2);
     }
 }
 footer a.a_footer:active{
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -477,24 +476,24 @@ header div.navbar {
 }
 header div.navbar .logo {
     width: 100%;
-    margin-right: var(--ESPACE_S);
+    margin-right: var(--SPACE_S);
 }
 header div.navbar .logo a {
     font-size: var(--H2);
-    color: var(--COULEUR_TEXT_PRINCIPAL); 
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_TEXT_PRIMARY); 
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
     width: 150px; /* width quand s'est écrit Sprintia */
     max-width: 350px;
     max-height: 55px; /* pour sécuriser lanimation */
     overflow: hidden; /* pour sécuriser lanimation */
     text-align: center;
     white-space: nowrap; /* empecher le retour à la ligne (pr l'animation) */
-    margin-top: var(--ESPACE_XS);
-    margin-bottom: var(--ESPACE_M);
+    margin-top: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_M);
 
     font-weight: 1000;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -508,8 +507,8 @@ header div.navbar .logo a {
     100% {transform: scale(1);} 
 }
 header div.navbar .logo a.pin-message { /* pour le 'dynamic island' */
-    background: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COULEUR_ACCENT);
+    background: var(--COLOR_BACKGROUND_CARD_HOVER);
+    border: 2px solid var(--COLOR_ACCENT);
     width: 100%;
     /* forcards permet de forcer de garder létat de l'élement a la fin de l'animation */
     animation: dynamic_logo 0.6s forwards;
@@ -522,78 +521,78 @@ header div.navbar .logo a.pin-message { /* pour le 'dynamic island' */
 }
 header div.navbar .logo a.pin-message.return { /* pour le retour à l'état initial 'dynamic island' */
     width: 150px;
-    border: 1px solid var(--COULEUR_ACCENT);
+    border: 1px solid var(--COLOR_ACCENT);
     /* forcards permet de forcer de garder létat de l'élement a la fin de l'animation */
     animation: reverse_dynamic_logo 0.6s forwards;
 }
 @media (hover: hover) and (pointer: fine) {
     header div.navbar .logo a:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 header div.navbar .logo a:active {
     transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 header div.navbar ul.links {
     display: flex;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin-top: var(--ESPACE_XS);
-    margin-bottom: var(--ESPACE_M);
-    box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    margin-top: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_M);
+    box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
     border-radius: 1.25rem;
 }
 header div.navbar div.burger-menu-button {
     font-size: var(--H0);
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_XS) var(--ESPACE_XXS);
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin-top: var(--ESPACE_XS);
-    margin-bottom: var(--ESPACE_M);
+    padding: var(--SPACE_XS) var(--SPACE_XXS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    margin-top: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_M);
     
-    box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
-    color: var(--COULEUR_ACCENT2);
+    box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
+    color: var(--COLOR_ACCENT2);
     cursor: pointer;
     display: none;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 /* Pour que le bouton rétrécisse au moment du clic */
 header div.navbar div.burger-menu-button:active {
     transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 header div.navbar ul.links li a {
-    color: var(--COULEUR_TEXT_PRINCIPAL); 
+    color: var(--COLOR_TEXT_PRIMARY); 
     font-size: var(--H3);
     width: 180px;
-    margin: var(--ESPACE_XXS);
+    margin: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
     padding: 9px 0px;
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 header div.navbar ul.links li a i {
     font-size: var(--H2);
-    margin-right: var(--ESPACE_S_SMALL);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    margin-right: var(--SPACE_S_SMALL);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     header div.navbar ul.links li a:hover {
-        color: var(--COULEUR_ACCENT2);
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 header div.navbar ul.links li a:active {
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 header div.navbar ul.links li a.actif {
-    color: var(--COULEUR_ACCENT2);
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_NORMAL);
 }
 
@@ -605,9 +604,9 @@ header .burger-menu {
     position: absolute;
     right: 0;
     width: 200px;
-    margin-right: var(--ESPACE_XS);
+    margin-right: var(--SPACE_XS);
     max-height: 0px;    
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: 1.25rem;
     overflow: hidden; 
 
@@ -617,13 +616,13 @@ header .burger-menu {
 header .burger-menu.open {
     max-height: 350px;
     transform: translate(0, 0) scale(1, 1); /* On remet la taille normale */
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD);
 
-    box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
+    box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
     transition: all 0.18s ease-out;
 }
 header .burger-menu li {
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
 }
 @keyframes rebond_icon_burger_open {
     0% { transform: translate(22px, -22px) scale(1)}
@@ -631,7 +630,7 @@ header .burger-menu li {
     100% { transform: translate(0px, 0px) scale(1)}
 }
 header .burger-menu.open li {
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 /* pas la meme durée en fonction du li */
 header .burger-menu.open li:nth-child(1) {
@@ -645,39 +644,39 @@ header .burger-menu.open li:nth-child(3) {
 }
 
 header .burger-menu li a {
-    color: var(--COULEUR_TEXT_PRINCIPAL); 
+    color: var(--COLOR_TEXT_PRIMARY); 
     font-size: var(--H3);
     min-width: 96%;
     display: block;
     text-align: left;
-    padding: var(--ESPACE_XS);
-    margin: var(--ESPACE_XXS);
+    padding: var(--SPACE_XS);
+    margin: var(--SPACE_XXS);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     border-radius: var(--BORDER_NORMAL);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
     display: flex;
     align-items: center;
 }
 header .burger-menu li a i {
     font-size: var(--H2);
-    margin-right: var(--ESPACE_XS);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    margin-right: var(--SPACE_XS);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 header .burger-menu li a:active {
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 header .burger-menu li a.actif-burger-menu {
-    color: var(--COULEUR_ACCENT2);
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 header .burger-menu li a.actif-burger-menu:active {
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 
 
@@ -685,33 +684,34 @@ header .burger-menu li a.actif-burger-menu:active {
 /* ----- Style page "Accueil" ----- */
 /* statut analyse */ 
 div.statut-analyse {
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin: var(--ESPACE_M) 0;
-    padding: var(--ESPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    margin: var(--SPACE_M) 0;
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
     flex-grow: 1;
     max-width: 425px;
+    cursor: pointer;
 
     display: flex;
     align-items: center;
-    transition: all var(--DUREE_TRANSITION) ease-out;
+    transition: all var(--TIME_TRANSITION) ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
     div.statut-analyse:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.statut-analyse:active{
     transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 div.statut-analyse i#statut{
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     font-size: var(--H2);
     border-radius: 50px;
-    color: var(--COULEUR_BACKGROUND);
-    padding: var(--ESPACE_XXS);
-    margin-right: var(--ESPACE_XS);
+    color: var(--COLOR_BACKGROUND);
+    padding: var(--SPACE_XXS);
+    margin-right: var(--SPACE_XS);
     text-align: center;
     width: 50px;
 }
@@ -721,38 +721,38 @@ div.conteneur-centrage {
     display: flex;
     justify-content: center;
 }
-.button-more {
+.button-group-button {
     display: flex;
     align-items: center;
     text-align: center;
 
-    background-color: var(--COULEUR_ACCENT);
-    padding: var(--ESPACE_S_SMALL);
+    background-color: var(--COLOR_ACCENT);
+    padding: var(--SPACE_S_SMALL);
     border-radius: var(--BORDER_NORMAL);
-    margin: var(--ESPACE_S) var(--ESPACE_XS) var(--ESPACE_L) var(--ESPACE_S);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    margin: var(--SPACE_S) var(--SPACE_XS) var(--SPACE_L) var(--SPACE_S);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    .button-more:hover {
-        background-color: var(--COULEUR_ACCENT2);
+    .button-group-button:hover {
+        background-color: var(--COLOR_ACCENT2);
     }
 }
-.button-more:active {
-    background-color: var(--COULEUR_ACCENT2);
+.button-group-button:active {
+    background-color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
-.icon-more i{
+.button-group-button-icon i{
     font-size: var(--H3);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COULEUR_BACKGROUND);
-    margin: 0 var(--ESPACE_XXS);
+    color: var(--COLOR_BACKGROUND);
+    margin: 0 var(--SPACE_XXS);
     vertical-align: middle; /* Aligne l'image au centre verticalement */
 }
-p.txt_plus{
+p.button-group-button-text{
     font-size: var(--P);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COULEUR_BACKGROUND);
-    margin: 0 var(--ESPACE_XXS);
+    color: var(--COLOR_BACKGROUND);
+    margin: 0 var(--SPACE_XXS);
 }
 
 /* pour les outils récemment utilisés */
@@ -766,33 +766,33 @@ div.conteneur-outil-recent a{
     width: 400px;
 }
 div.conteneur-outil-recent div.card-outil-recent{
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_NORMAL);
-    margin: var(--ESPACE_XS);
+    margin: var(--SPACE_XS);
 
     display: flex;
     align-items: center;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-outil-recent div.card-outil-recent:hover{
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.conteneur-outil-recent div.card-outil-recent:active{
     transform: scale(var(--SCALE_SMALL));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 div.conteneur-outil-recent div.card-outil-recent i{
     background-color: transparent;
     font-size: var(--H1);
-    margin: var(--ESPACE_XS);
+    margin: var(--SPACE_XS);
 }
 div.conteneur-outil-recent div.card-outil-recent p{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin: var(--ESPACE_XS) 0;
-    margin-left: var(--ESPACE_XXS);
-    margin-right: var(--ESPACE_S);
+    margin: var(--SPACE_XS) 0;
+    margin-left: var(--SPACE_XXS);
+    margin-right: var(--SPACE_S);
     font-size: var(--P);
 }
 
@@ -801,76 +801,76 @@ div.conteneur-outil-recent div.card-outil-recent p{
 /* ----- Style page "Outils" ----- */
 div.carousel {
     max-width: var(--MAX_WIDTH);
-    padding-bottom: var(--ESPACE_XS);
-    margin: var(--ESPACE_XS) 0;
+    padding-bottom: var(--SPACE_XS);
+    margin: var(--SPACE_XS) 0;
     display: flex;
     overflow-x: auto;
     height: fit-content;
 }
-div.carousel#historique-niveau-course {
+div.carousel.table {
     display: block;
 }
 div.carousel div.card-outil {
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG); /*border de l'image + padding = 1.1rem + 0.5rem = 1.6rem*/
 
     width: 235px;
     height: fit-content;
     overflow: hidden;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 div.carousel div.card-outil.first {
     margin-left: 0;
 }
 @media (hover: hover) and (pointer: fine) {
     div.carousel div.card-outil:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
         transform: translateY(-5px);
     }
 }
 div.carousel div.card-outil:active {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 div.carousel div.card-outil div.icone{
     display: flex;
     justify-content: center;
-    background-color: var(--COULEUR_ACCENT2);
-    padding: var(--ESPACE_XXS);
+    background-color: var(--COLOR_ACCENT2);
+    padding: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
     width: 100%;
     position: relative;
 }
 div.carousel:nth-of-type(1) div.card-outil div.icone{
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
 }
 div.carousel:nth-of-type(3) div.card-outil div.icone{
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
 }div.carousel:nth-of-type(5) div.card-outil div.icone{
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
 }
 div.carousel div.card-outil div.icone i{
     font-size: 5rem;    
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     margin: 0 auto;
 }
 div.carousel div.card-outil div.icone div.button-epingler{
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD);
     opacity: 0.4;
     border-radius: var(--BORDER_NORMAL);
     position: absolute;
     overflow: hidden;
     width: 30px;
     height: 30px;
-    right: var(--ESPACE_XS);
-    top: var(--ESPACE_XS);
+    right: var(--SPACE_XS);
+    top: var(--SPACE_XS);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.carousel div.card-outil div.icone div.button-epingler:hover{
@@ -888,25 +888,25 @@ div.carousel div.card-outil div.icone div.button-epingler.actif{
 }
 div.carousel div.card-outil div.icone div.button-epingler i{
     font-size: 1.2rem;
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    color: var(--COLOR_TEXT_PRIMARY);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 div.carousel:nth-of-type(1) div.card-outil div.icone div.button-epingler.actif i{
-    color: var(--COULEUR_ACCENT);
+    color: var(--COLOR_ACCENT);
 }
 div.carousel:nth-of-type(3) div.card-outil div.icone div.button-epingler.actif i{
-    color: var(--COULEUR_ACCENT);
+    color: var(--COLOR_ACCENT);
 }div.carousel:nth-of-type(5) div.card-outil div.icone div.button-epingler.actif i{
-    color: var(--COULEUR_ACCENT);
+    color: var(--COLOR_ACCENT);
 }
 
 div.carousel div.card-outil div.icone div.button-epingler.actif i{
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
 }
 div.carousel div.card-outil h1{
     font-size: var(--H3);
-    margin-top: var(--ESPACE_XS);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    margin-top: var(--SPACE_XS);
+    color: var(--COLOR_TEXT_PRIMARY);
     min-height: 60px;
     
     display: -webkit-box;
@@ -917,8 +917,8 @@ div.carousel div.card-outil h1{
 }
 div.carousel div.card-outil p{
     font-size: var(--P_SMALL);
-    margin-top: var(--ESPACE_XXS);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+    margin-top: var(--SPACE_XXS);
+    color: var(--COLOR_TEXT_SECONDARY);
 
     display: -webkit-box;
     -webkit-box-orient: vertical; /* On compte les lignes verticalement */
@@ -933,44 +933,44 @@ div.conteneur-cards-workout {
     display: block;
     margin: 0 auto;
     max-width: 900px;
-    margin-bottom: var(--ESPACE_XL);
+    margin-bottom: var(--SPACE_XL);
 }
 div.conteneur-cards-workout div.cards-history-workout {
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: 1.55rem;
     height: fit-content;
     overflow: hidden;
 
-    margin: var(--ESPACE_L) 0;
-    padding: var(--ESPACE_XS);
+    margin: var(--SPACE_L) 0;
+    padding: var(--SPACE_XS);
 
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-cards-workout div.cards-history-workout:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.conteneur-cards-workout div.cards-history-workout:active {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
 
 /* pour adapter légèrement les cards et les animations des cards de derniers entraînement sur la page d'accueil */
 div.conteneur-cards-workout.home { 
-    margin-bottom: var(--ESPACE_L);
+    margin-bottom: var(--SPACE_L);
     max-width: none;
 }
 div.conteneur-cards-workout div.cards-history-workout.home { 
-    margin: var(--ESPACE_M) 0;
+    margin: var(--SPACE_M) 0;
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-cards-workout div.cards-history-workout.home:hover{
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.conteneur-cards-workout div.cards-history-workout.home:active{
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
 /* fin de la partie derniers entrainement home */
@@ -980,8 +980,8 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-column{
     flex-direction: column;
 }
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p{
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    padding: var(--ESPACE_XXS);
+    color: var(--COLOR_TEXT_PRIMARY);
+    padding: var(--SPACE_XXS);
 }
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.name-workout{
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -995,22 +995,22 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.
 }
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.sport-date-workout{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+    color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P);
 }
 div.conteneur-cards-workout div.cards-history-workout p.charge-workout strong{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
 }
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire{
     display: flex;
-    margin: var(--ESPACE_XXS) 0;
+    margin: var(--SPACE_XXS) 0;
 }
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p{
-    color: var(--COULEUR_TEXT_PRINCIPALE);
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_TEXT_PRIMARYE);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     font-size: var(--P);
     text-align: left;
     width: 160px;
@@ -1022,7 +1022,7 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p s
     letter-spacing: 0.1px;
 }
 div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p.muscles-workout{
-    margin-top: var(--ESPACE_XXS);
+    margin-top: var(--SPACE_XXS);
     text-align: left;
 
     display: -webkit-box;
@@ -1035,12 +1035,12 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: var(--ESPACE_S_SMALL);
+    margin-top: var(--SPACE_S_SMALL);
 }
 div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    background-color: var(--COULEUR_ACCENT);
-    color: var(--COULEUR_BACKGROUND);
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
     font-size: var(--P);
     display: flex;
     justify-content: center;
@@ -1049,83 +1049,83 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
 
     flex-grow: 1;
     margin: 4px;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
 
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button:hover{
-        background-color: var(--COULEUR_ACCENT2);
+        background-color: var(--COLOR_ACCENT2);
     }
 }
 div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button:active{
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     transform: scale(1);
 }
 div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button i{
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     font-size: var(--P);
     font-weight: normal;
-    margin-right: var(--ESPACE_XXS);
+    margin-right: var(--SPACE_XXS);
 }
 /* fin card workout */
 
 /* --- Pour le détail de l'entraînement --- */
-p.data-essentiel {
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+p.text-toolbar {
+    color: var(--COLOR_TEXT_SECONDARY);
 }
-p.data-essentiel strong{
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+p.text-toolbar strong{
+    color: var(--COLOR_TEXT_PRIMARY);
 }
-div.conteneur-cube{
+section.container-block{
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    gap: var(--ESPACE_M);
-    margin-top: var(--ESPACE_M);
+    gap: var(--SPACE_M);
+    margin-top: var(--SPACE_M);
 }
-div.conteneur-cube div.cube-data {
-    border-top: 2px solid var(--COULEUR_BACKGROUND_CARD_HOVER);
-    padding: var(--ESPACE_XXS);
+section.container-block div.container-block-data {
+    border-top: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+    padding: var(--SPACE_XXS);
     min-width: 150px;
     flex: 1;
 }
-div.conteneur-cube div.cube-data p.entete{    
+section.container-block div.container-block-data p.container-block-data-header{    
     font-size: var(--P_SMALL);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+    color: var(--COLOR_TEXT_SECONDARY);
 }
-div.conteneur-cube div.cube-data p.data{    
+section.container-block div.container-block-data p.container-block-data-data{    
     font-size: var(--H3);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     text-align: left;
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
-div.conteneur-cube div.cube-data p.data small{    
+section.container-block div.container-block-data p.container-block-data-data small{    
     font-size: var(--P_SMALL);
     text-align: left;
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+    color: var(--COLOR_TEXT_SECONDARY);
 }
 textarea {
     width: 100%;
     height: 125px;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_ACCENT);
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
     font-size: var(--P);
     font-family: var(--FONT_FAMILY);
     line-height: var(--LINE_HEIGHT);
 
     border: none;
     resize: none;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 textarea:focus {
     outline: none;
-    box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
+    box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
 }
 textarea::placeholder {
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
@@ -1149,34 +1149,34 @@ div.toolbar h1 {
 div.toolbar i {
     display: block;
     margin-left: auto;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    padding: var(--ESPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_TEXT_PRIMARY);
+    padding: var(--SPACE_XS);
     cursor: pointer;
     border-radius: 50%;
     font-size: var(--H1);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.toolbar i:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.toolbar i:active {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 
 /* --- Pour le menu plus --- */
-div.menu-button-more {
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+div.menu-many-action {
+    background-color: var(--COLOR_BACKGROUND_CARD);
     width: 200px;
     position: absolute;
     right: 0;
-    margin-top: var(--ESPACE_S);
-    margin-right: var(--ESPACE_M);
-    padding: var(--ESPACE_XS);
+    margin-top: var(--SPACE_S);
+    margin-right: var(--SPACE_M);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 
     overflow: hidden;
@@ -1184,14 +1184,14 @@ div.menu-button-more {
     transform: translate(83px, -100px) scale(0);
     transition: all ease-out 0.15s;
 }
-div.menu-button-more.open {
+div.menu-many-action.open {
     transform: translate(0) scale(1);
     opacity:1;
     transition: all ease-out 0.15s;
 }
-div.menu-button-more li {
+div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     transition: all ease-out 0.3s;
     cursor: pointer;
@@ -1201,64 +1201,64 @@ div.menu-button-more li {
     40% { transform: translate(-20px, 10px) scale(0.75)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
-div.menu-button-more.open li:nth-child(1) {
+div.menu-many-action.open li:nth-child(1) {
     animation: rebond_icon_menu_open 0.4s ease-out;
 }
-div.menu-button-more.open li:nth-child(2) {
+div.menu-many-action.open li:nth-child(2) {
     animation: rebond_icon_menu_open 0.43s ease-out;
 }
-div.menu-button-more.open li:nth-child(3) {
+div.menu-many-action.open li:nth-child(3) {
     animation: rebond_icon_menu_open 0.47s ease-out;
 }
-div.menu-button-more.open li:nth-child(4) {
+div.menu-many-action.open li:nth-child(4) {
     animation: rebond_icon_menu_open 0.51s ease-out;
 }
-div.menu-button-more.open li:nth-child(5) {
+div.menu-many-action.open li:nth-child(5) {
     animation: rebond_icon_menu_open 0.55s ease-out;
 }
-div.menu-button-more.open li:nth-child(6) {
+div.menu-many-action.open li:nth-child(6) {
     animation: rebond_icon_menu_open 0.59s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.menu-button-more li:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    div.menu-many-action li:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.menu-button-more li:active{
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+div.menu-many-action li:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 
 
 div.toolbar div.button-toolbar {
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     display: flex;
     align-items: center;
     border-radius: var(--BORDER_BIG);
-    padding: var(--ESPACE_XXS);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    padding: var(--SPACE_XXS);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.toolbar div.button-toolbar:hover {
-        background-color: var(--COULEUR_ACCENT2);
+        background-color: var(--COLOR_ACCENT2);
     }
 }
 div.toolbar div.button-toolbar:active {
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
 div.toolbar div.button-toolbar i{
     background-color: transparent;
-    padding: var(--ESPACE_XXS);
+    padding: var(--SPACE_XXS);
     font-size: 1.8rem;
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
 }
 div.toolbar div.button-toolbar p{
     font-size: var(--P);
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin: var(--ESPACE_XXS) 0;
-    margin-right: var(--ESPACE_XS);
+    margin: var(--SPACE_XXS) 0;
+    margin-right: var(--SPACE_XS);
 }
 
 
@@ -1270,22 +1270,22 @@ section.container-zone {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: var(--ESPACE_M);
-    margin: var(--ESPACE_M) 0px;
+    gap: var(--SPACE_M);
+    margin: var(--SPACE_M) 0px;
 }
 section.container-box {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: var(--ESPACE_XXS);
-    margin: var(--ESPACE_M) 0px;
+    gap: var(--SPACE_XXS);
+    margin: var(--SPACE_M) 0px;
 }
 
 
 /* --- Zone pour le coach --- */
 div.zone-coach {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     overflow: hidden;
 
     flex-grow: 1;
@@ -1293,48 +1293,54 @@ div.zone-coach {
     height: auto;
     min-height: 180px;
 
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
+}
+div.zone-coach.clickable:active {
+    transform: scale(var(--SCALE_SMALL));
 }
 div.zone-coach p.zone-coach-name {
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
-    margin-bottom: var(--ESPACE_XS);
+    margin-bottom: var(--SPACE_XS);
 }
 div.zone-coach p.zone-coach-interpretation {
-    color: var(--COULEUR_BACKGROUND);
-    max-height: 160px;
+    color: var(--COLOR_BACKGROUND);
 }
 
 
 /* --- Zone pour le coach --- */
 div.large-zone-coach {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     overflow: hidden;
 
     flex-grow: 1;
     height: auto;
 
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
+    transition: all ease-out var(--TIME_TRANSITION);
+}
+div.large-zone-coach.clickable:active {
+    transform: scale(var(--SCALE_SMALL));
 }
 div.large-zone-coach p.large-zone-coach-name {
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
-    margin-bottom: var(--ESPACE_XS);
+    margin-bottom: var(--SPACE_XS);
 }
 div.large-zone-coach p.large-zone-coach-interpretation {
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
 }
 
 
 /* --- Zone pour le résultat et l'interprétation --- */
 div.zone-result {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     overflow: hidden;
 
     flex-grow: 1;
@@ -1342,39 +1348,39 @@ div.zone-result {
     height: auto;
     min-height: 180px;
 
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
 }
 div.zone-result p.zone-result-name-result{
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
-    margin-bottom: var(--ESPACE_XS);
+    margin-bottom: var(--SPACE_XS);
 }
 div.zone-result p.zone-result-interpretation{
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     max-height: 160px;
 }
 
 /* --- Zone pour mettre en avant le résultat --- */
 div.large-zone-result {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
 
     flex-grow: 1;
     max-width: 420px;
     min-width: 300px;
     min-height: 160px;
 
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
 }
 div.large-zone-result p.large-zone-result-name {
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 }
 div.large-zone-result p.large-zone-result-result {
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     font-weight: 1000;
     font-size: var(--H1);
 
@@ -1389,18 +1395,18 @@ div.large-zone-result p.large-zone-result-result {
 /* --- Zone des petites boxs --- */
 div.small-zone-result {
     border-radius: var(--BORDER_BIG);
-    color: var(--COULEUR_BACKGROUND);
-    background-color: var(--COULEUR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+    background-color: var(--COLOR_ACCENT);
     overflow: hidden;
 
     display: flex;
     flex-direction: column;
-    margin: var(--ESPACE_S);
-    padding: var(--ESPACE_S);
+    margin: var(--SPACE_S);
+    padding: var(--SPACE_S);
 
     width: 200px;
     height: 180px;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 div.small-zone-result.color-zone:nth-child(1) {
     background-color: #3dbaf9;
@@ -1429,14 +1435,14 @@ div.small-zone-result p.small-zone-result-name {
 }
 div.small-zone-result p.small-zone-result-indication {
     font-size: var(--P);
-    margin: var(--ESPACE_XS) 0;
+    margin: var(--SPACE_XS) 0;
 }
 div.small-zone-result div.container-result {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: auto;
-    gap: var(--ESPACE_XS);
+    gap: var(--SPACE_XS);
 }
 div.small-zone-result div.container-result p.small-zone-result-result{
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -1450,23 +1456,23 @@ div.small-zone-result div.container-result p.small-zone-result-result-unit{
 /* --- Formulaire --- */
 div.form {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD);
     overflow: hidden;
     
     display: flex;
     flex-direction: column;
-    padding: var(--ESPACE_XXS);
+    padding: var(--SPACE_XXS);
 
     width: 420px;
 }
 /* Message d'erreur intégré au formulaire */
-div.form p.error-message {
+div.form p.indication {
     display: none;
-    color: var(--COULEUR_ACCENT);
+    color: var(--COLOR_ACCENT);
     text-align: center;
-    margin: var(--ESPACE_XXS);
+    margin: var(--SPACE_XXS);
 }
-div.form p.error-message.visible{
+div.form p.indication.visible{
     display: block;
 }
 div.form div.side-by-side {
@@ -1485,13 +1491,13 @@ input[type="text"]::-webkit-inner-spin-button {
 input[type="number"],
 input[type="text"] {
     border-radius: var(--BORDER_NORMAL);
-    color: var(--COULEUR_ACCENT2);
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border: 0;
 
-    padding: var(--ESPACE_S);
-    margin: var(--ESPACE_XS); /* !!! Attention la margin et le width sont liés !!! */
-    width: calc(100% - (var(--ESPACE_XS) * 2));
+    padding: var(--SPACE_S);
+    margin: var(--SPACE_XS); /* !!! Attention la margin et le width sont liés !!! */
+    width: calc(100% - (var(--SPACE_XS) * 2));
     font-size: var(--P);
     font-family: var(--FONT_FAMILY);
     
@@ -1500,7 +1506,7 @@ input[type="text"] {
     appearance: text-field;
     z-index: 1111;
 
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 input[type="number"].small,
 input[type="text"].small {
@@ -1510,19 +1516,19 @@ input[type="text"].small {
     input[type="number"]:hover,
     input[type="text"]:hover,
     input[type="date"]:hover  {
-        box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
+        box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
     }
 }
 input[type="number"]:focus,
 input[type="text"]:focus,
 input[type="date"]:focus {
-    box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
+    box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
 }
 /* Pour les input date */
 input[type="date"]{
-    width: calc(100% - (var(--ESPACE_XS) * 2));
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    color: var(--COULEUR_ACCENT2);
+    width: calc(100% - (var(--SPACE_XS) * 2));
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
 
     border: none;
@@ -1533,10 +1539,10 @@ input[type="date"]{
 
     font-family: var(--FONT_FAMILY);
     font-size: var(--P);
-    padding: var(--ESPACE_S);
-    margin: var(--ESPACE_XS);
+    padding: var(--SPACE_S);
+    margin: var(--SPACE_XS);
     
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 /* Pour le niveau de course */
 input[type="date"].small{
@@ -1558,25 +1564,25 @@ div.label-input {
     font-size: var(--P);
 
     top: 50%;
-    left: var(--ESPACE_XS);
+    left: var(--SPACE_XS);
     transform: translateY(-50%);
     pointer-events: none; /* Pour pouvoir cliquer sur le input */
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
 
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
     background-color: transparent;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 input:focus,
 input:valid {
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
 }
 input:focus + .label-input,
 input:not(:placeholder-shown) + .label-input {
-    color: var(--COULEUR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
     margin-left: 0;
-    padding: var(--ESPACE_XXS);
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    padding: var(--SPACE_XXS);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_BIG);
     transform: translateY(-40px) scale(0.8);
     z-index: 1111;
@@ -1586,8 +1592,8 @@ input:not(:placeholder-shown) + .label-input {
 /* Pour chrome, safari */
 .slider-cont { /* Le conteneur du slider */
     display: flex;
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_XS) 0px;
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_XS) 0px;
     align-items: center;
 }
 .slider {
@@ -1610,25 +1616,25 @@ input:not(:placeholder-shown) + .label-input {
     appearance: none;
     width: 33px;
     height: 23px;
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    border: 2px solid var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     transform: scale(1.15);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     .slider input::-webkit-slider-thumb:hover{
-        background-color: var(--COULEUR_ACCENT2);
+        background-color: var(--COLOR_ACCENT2);
         transform: scale(1.4);
-        border: 2px solid var(--COULEUR_ACCENT2);
-        transition: all ease-out var(--DUREE_TRANSITION);
+        border: 2px solid var(--COLOR_ACCENT2);
+        transition: all ease-out var(--TIME_TRANSITION);
     }
 } 
 .slider input::-webkit-slider-thumb:active{
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     transform: scale(1.4);
-    border: 2px solid var(--COULEUR_ACCENT2);
+    border: 2px solid var(--COLOR_ACCENT2);
     transition: all ease-out 0.05s;
 }
 .slider progress {
@@ -1641,10 +1647,10 @@ input:not(:placeholder-shown) + .label-input {
 }
 /* La track du slider */
 .slider progress::-webkit-progress-bar {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);  
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);  
 }
 .slider progress::-webkit-progress-value {
-    background-color: var(--COULEUR_ACCENT2); 
+    background-color: var(--COLOR_ACCENT2); 
     border-radius: var(--BORDER_NORMAL);
     border: 0px;
 }
@@ -1655,18 +1661,18 @@ input:not(:placeholder-shown) + .label-input {
     appearance: none;
     width: 33px;
     height: 23px;
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    border: 2px solid var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     transform: scale(1.15);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     .slider input::-moz-range-thumb:hover{
-        background-color: var(--COULEUR_ACCENT2);
+        background-color: var(--COLOR_ACCENT2);
         transform: scale(1.3);
-        transition: all ease-out var(--DUREE_TRANSITION);
+        transition: all ease-out var(--TIME_TRANSITION);
     }
 }
 .slider progress {
@@ -1674,31 +1680,31 @@ input:not(:placeholder-shown) + .label-input {
     height: 20px;
     appearance: none;
     border-radius: var(--BORDER_NORMAL);
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     overflow: hidden;
     border: none;
 }
-/* la partie couleur rempli */
+/* la partie COLOR rempli */
 .slider progress::-moz-progress-bar{
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
 }
 /* !!! fin de la partie firefox */
 /* La valeur du slider */
 .slider-value {
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
 }
 /* le nom du slider */
 .slider-name {
-    margin-right: var(--ESPACE_S);
+    margin-right: var(--SPACE_S);
 }
 
 /* --- Style des combobox --- */
 select {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_S);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_TEXT_PRIMARY);
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_S);
     border: 0px;
     border-radius: var(--BORDER_NORMAL);
     height: 55px;
@@ -1713,15 +1719,15 @@ select {
     /* Pour la flèche */
     background-image: var(--URL_FLECHE_ICON);
     background-repeat: no-repeat;
-    background-position: right var(--ESPACE_XS) center; /* On met à droite l'icone */
+    background-position: right var(--SPACE_XS) center; /* On met à droite l'icone */
     background-size: var(--H3);
 
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     select:hover {
-        box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
-        transition: all ease-out var(--DUREE_TRANSITION);
+        box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
+        transition: all ease-out var(--TIME_TRANSITION);
     }
 }
 /* ":focus" c'est quand la boite est selectionné*/
@@ -1730,48 +1736,48 @@ select:focus {
     outline: none;
     border: none;
     /* Style */
-    box-shadow: 0px 0px 5px var(--COULEUR_ACCENT2);
+    box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
 }
 
 /* --- Pour le bouton plus de données dans ajouter un entraînement --- */
-div.button-more-data {
-    margin: var(--ESPACE_XS);
+div.button-group-button-data {
+    margin: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
-    border: 2px solid var(--COULEUR_ACCENT);
-    padding: var(--ESPACE_XS);
+    border: 2px solid var(--COLOR_ACCENT);
+    padding: var(--SPACE_XS);
     display: flex;
     align-items: center;
     cursor: pointer;
-    transition: all ease-in-out var(--DUREE_TRANSITION);
+    transition: all ease-in-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.button-more-data:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    div.button-group-button-data:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.button-more-data:active {
+div.button-group-button-data:active {
     transform: scale(var(--SCALE_NORMAL));
 }
-div.button-more-data p.button-more-data-text{
-    color: var(--COULEUR_ACCENT);
+div.button-group-button-data p.button-group-button-data-text{
+    color: var(--COLOR_ACCENT);
 }
 
 
 
 /* pr l'ensemble de bouton */
-div.conteneur-action-charge {
+div.button-group {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD);
     width: fit-content;
-    margin: var(--ESPACE_M) auto;
+    margin: var(--SPACE_M) auto;
     border-radius: 2rem;
 
-    gap: var(--ESPACE_XS); /* on utilise gap pour pas doublée les marges, la marge ne s'applique que entre les éléments */
-    padding: var(--ESPACE_XS);
+    gap: var(--SPACE_XS); /* on utilise gap pour pas doublée les marges, la marge ne s'applique que entre les éléments */
+    padding: var(--SPACE_XS);
 }
-div.conteneur-action-charge div.button-more{
+div.button-group div.button-group-button{
     margin: 0; /* grace au gap plus besoin de mettre de marge */
     border-radius: var(--BORDER_BIG);
 }
@@ -1779,34 +1785,31 @@ div.conteneur-action-charge div.button-more{
 /* Pour graphique outil niveau de course */
 div.chart-container {
     display: block;
-    margin: var(--ESPACE_L) var(--ESPACE_XXS);
+    margin: var(--SPACE_L) var(--SPACE_XXS);
 }
 
 
 /* Pr les tableaux */
 table {
-    display: none;
-}
-table.visible {
     display: table;
-    margin: var(--ESPACE_XS) auto;
+    margin: var(--SPACE_XS) auto;
     width: 100%;
     border-collapse: collapse; /* Pr eviter les doubles bordures */
 }
-table.visible tr th,
-table.visible tr td {
-    border-bottom: 2px solid var(--COULEUR_BACKGROUND_CARD_HOVER);
+table tr th,
+table tr td {
+    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-table.visible tr th {
-    padding: var(--ESPACE_XS);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+table tr th {
+    padding: var(--SPACE_XS);
+    color: var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--P);
-    min-width: 120px;
+    min-width: 130px;
 }
-table.visible tr td {
-    padding: var(--ESPACE_XS);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+table tr td {
+    padding: var(--SPACE_XS);
+    color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
     text-align: center;
 }
@@ -1822,16 +1825,16 @@ div.carousel-content {
     display: inline-flex;
     align-items: center;
 }
-div.carousel-content#running-level {
+div.carousel-content.table {
     display: block;
 }
 div.carousel-content .card-nouveautes {
     width: 230px;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
-    margin: var(--ESPACE_XS);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    margin: var(--SPACE_XS);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 div.carousel-content .card-nouveautes.first {
     margin-left: 0;
@@ -1840,32 +1843,32 @@ div.carousel-content .card-nouveautes.first {
 @media (hover: hover) and (pointer: fine) {
     div.carousel-content .card-nouveautes:hover {
         transform: translateY(-5px);
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.carousel-content .card-nouveautes:active {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 div.carousel-content .card-nouveautes-image p{
     font-size: var(--H1);
     text-align: left;
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     font-weight: 1000;
-    padding: var(--ESPACE_XXS);
-    color: var(--COULEUR_BACKGROUND);
+    padding: var(--SPACE_XXS);
+    color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--ESPACE_XS);
-    padding-left: var(--ESPACE_S_SMALL);
+    margin-bottom: var(--SPACE_XS);
+    padding-left: var(--SPACE_S_SMALL);
 }
 div.carousel-content .card-nouveautes.first .card-nouveautes-image p{
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
 }
 div.carousel-content .card-nouveautes p.description-maj {
     font-size: var(--P);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    padding: var(--ESPACE_XXS);
+    padding: var(--SPACE_XXS);
     cursor: pointer;
 
     display: -webkit-box;
@@ -1875,25 +1878,25 @@ div.carousel-content .card-nouveautes p.description-maj {
     overflow: hidden; /* Pour cacher ce qui dépasse */
 }
 div.carousel-content .card-nouveautes div.date-maj {
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+    color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
-    margin-top: var(--ESPACE_XS);
+    margin-top: var(--SPACE_XS);
 }
 /* Section choix param */
 div.action-list {
     max-width: var(--MAX_WIDTH);
-    margin: var(--ESPACE_S) auto;
+    margin: var(--SPACE_S) auto;
 }
 div.action-list div.action-list-item,
 div.action-list div.action-list-item1,
 div.action-list div.action-list-item2 {
     display: flex; 
     align-items: center;
-    margin: var(--ESPACE_XXS) 0px;
-    padding: var(--ESPACE_XS);
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    margin: var(--SPACE_XXS) 0px;
+    padding: var(--SPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
 
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 div.action-list div.action-list-item.arrondi { /* pour la licence dans les paramètres */
     border-radius: var(--BORDER_BIG);
@@ -1910,26 +1913,26 @@ div.action-list div.action-list-item2 {
     div.action-list div.action-list-item:hover,
     div.action-list div.action-list-item1:hover,
     div.action-list div.action-list-item2:hover{
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.action-list div.action-list-item:active,
 div.action-list div.action-list-item1:active,
 div.action-list div.action-list-item2:active{
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: 50px;
     transform: scale(var(--SCALE_SMALL));
 }
 div.action-list i{
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H0);
 }
 div.action-list div.action-list-item p, 
 div.action-list div.action-list-item1 p,
 div.action-list div.action-list-item2 p{
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
     font-size: var(--H3);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
@@ -1941,20 +1944,20 @@ div.conteneur-historique-versions {
 }
 /* Card mise en avant derniere version */
 .conteneur-historique-versions .box-last-maj{
-    background: var(--COULEUR_BACKGROUND_CARD);
+    background: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
     max-width: 1150px;
-    margin: var(--ESPACE_S);
-    padding: var(--ESPACE_XS);
-    transition: all var(--DUREE_TRANSITION) ease-out;
+    margin: var(--SPACE_S);
+    padding: var(--SPACE_XS);
+    transition: all var(--TIME_TRANSITION) ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
     .conteneur-historique-versions .box-last-maj:hover{
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 .conteneur-historique-versions .box-last-maj:active{
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
 /* Contenu supérieur */
@@ -1962,12 +1965,12 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
     font-size: var(--H1);
     width: fit-content;
     text-align: left;
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     font-weight: 1000;
-    padding: var(--ESPACE_XS) var(--ESPACE_S);
-    color: var(--COULEUR_BACKGROUND);
+    padding: var(--SPACE_XS) var(--SPACE_S);
+    color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--ESPACE_S);
+    margin-bottom: var(--SPACE_S);
 }
 div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-image-last-maj p.date-last-maj{
     font-size: var(--H3);
@@ -1975,38 +1978,38 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
 /* Contenu inférieur */
 .conteneur-historique-versions .box-last-maj div.content2 {
     display: block;
-    margin-top: var(--ESPACE_XS);
+    margin-top: var(--SPACE_XS);
 }
 .conteneur-historique-versions .box-last-maj div.content2 .description{
     font-size: var(--P);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
     cursor: pointer;
 }
 .conteneur-historique-versions .box-last-maj div.content2 button{
     font-size: var(--P);
     font: var(--FONT_FAMILY);
-    color: var(--COULEUR_BACKGROUND);
+    color: var(--COLOR_BACKGROUND);
     cursor: pointer;
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     margin: 0;
-    margin-top: var(--ESPACE_XS);
+    margin-top: var(--SPACE_XS);
     text-align: center;
 
     border-color: transparent;
     border: 0px transparent;
 
     border-radius: var(--BORDER_NORMAL);
-    background-color: var(--COULEUR_ACCENT);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    background-color: var(--COLOR_ACCENT);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     .conteneur-historique-versions .box-last-maj div.content2 button:hover {
-        background-color: var(--COULEUR_ACCENT2);
+        background-color: var(--COLOR_ACCENT2);
     }
 }
 .conteneur-historique-versions .box-last-maj div.content2 button:active{
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     transform: scale(1); /* pour éviter que le bouton s'enfonce alors que la card fais deja un transform scale */
 }
 /* Card Historique versions */
@@ -2018,37 +2021,37 @@ div.conteneur-historique-versions .card-nouveautes.visible {
     width: 370px;
     flex-grow: 1;
     display: block;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 
-    margin: var(--ESPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 620px */
-    transition: all ease-out var(--DUREE_TRANSITION);
+    margin: var(--SPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 620px */
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-historique-versions .card-nouveautes.visible:hover {
-        background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.conteneur-historique-versions .card-nouveautes.visible:active {
-    background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 div.conteneur-historique-versions .card-nouveautes-image p {
     font-size: var(--H1);
     text-align: left;
-    background-color: var(--COULEUR_ACCENT2);
+    background-color: var(--COLOR_ACCENT2);
     font-weight: 1000;
-    padding: var(--ESPACE_XXS);
-    color: var(--COULEUR_BACKGROUND);
+    padding: var(--SPACE_XXS);
+    color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--ESPACE_XS);
-    padding-left: var(--ESPACE_S_SMALL);
+    margin-bottom: var(--SPACE_XS);
+    padding-left: var(--SPACE_S_SMALL);
 }
 div.conteneur-historique-versions .card-nouveautes p.description-maj {
     font-size: var(--P);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    padding: var(--ESPACE_XXS);
+    color: var(--COLOR_TEXT_PRIMARY);
+    padding: var(--SPACE_XXS);
     cursor: pointer;
 
     display: -webkit-box;
@@ -2058,25 +2061,25 @@ div.conteneur-historique-versions .card-nouveautes p.description-maj {
     overflow: hidden; /* Pour cacher ce qui dépasse */
 }
 div.conteneur-historique-versions .card-nouveautes div.date-maj {
-    color: var(--COULEUR_TEXT_SECONDAIRE);
+    color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
-    margin-top: var(--ESPACE_S);
+    margin-top: var(--SPACE_S);
 }
 /* Mise en page des patch notes */
 ul.list-information li {
     list-style: initial;
     font-size: var(--P);
-    color: var(--COULEUR_TEXT_SECONDAIRE);
-    margin: var(--ESPACE_XS) var(--ESPACE_M);
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin: var(--SPACE_XS) var(--SPACE_M);
 }    
 
 /* Pour les images des versions */
 div.gallery-version {
     display: flex;
     flex-wrap: wrap;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: 1.9rem;
-    padding: var(--ESPACE_S_SMALL);
+    padding: var(--SPACE_S_SMALL);
 }
 div.gallery-version#img-smartphone{
     display: none;
@@ -2084,7 +2087,7 @@ div.gallery-version#img-smartphone{
 div.gallery-version img{    
     width: 100%;
     border-radius: var(--BORDER_NORMAL);
-    margin-top: var(--ESPACE_S_SMALL);
+    margin-top: var(--SPACE_S_SMALL);
 }    
 div.gallery-version img:nth-child(1){    
     margin: 0;
@@ -2101,21 +2104,21 @@ div.boite-ensemble-feature {
 div.banner-toggle {
     display: flex;
     align-items: center;
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
-    margin: var(--ESPACE_M) 0;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    margin: var(--SPACE_M) 0;
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 div.banner-toggle i{
     font-size: var(--H0);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 div.banner-toggle p {
     font-size: var(--H3);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
+    color: var(--COLOR_TEXT_PRIMARY);
     margin-right: auto;
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
 }
 /* Zone du champs du toggle */
 div.banner-toggle input[type="checkbox"].toggle{
@@ -2125,11 +2128,11 @@ div.banner-toggle input[type="checkbox"].toggle{
     position: relative;
     width: 60px;
     height: 32px;
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
 
     cursor: pointer;
     border-radius: 5rem;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 /* C pr le rond du toggle */
 div.banner-toggle input[type="checkbox"].toggle::after{
@@ -2142,12 +2145,12 @@ div.banner-toggle input[type="checkbox"].toggle::after{
     width: 35px;
     background-color: #f3f3f3;
     border-radius: 5rem;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 /* Style mode off */
 div.banner-toggle input[type="checkbox"].toggle:checked{
     background-color: #636366;
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 /* Pour que le rond glisse */
 div.banner-toggle input[type="checkbox"].toggle:checked:after{
@@ -2155,13 +2158,13 @@ div.banner-toggle input[type="checkbox"].toggle:checked:after{
 }
 
 
-/* Section pour la couleur accentuation */
+/* Section pour la COLOR accentuation */
 ol.conteneur-color-acuentation{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    gap: var(--ESPACE_M);
+    gap: var(--SPACE_M);
 }
 li.option-color {
     width: 40%;
@@ -2171,16 +2174,16 @@ li.option-color {
     position: relative;
     z-index: 1;
     font-size: var(--H3);
-    color: var(--COULEUR_TEXT_PRINCIPAL);
-    background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS) var(--ESPACE_S);
+    color: var(--COLOR_TEXT_PRIMARY);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_XS) var(--SPACE_S);
     border-radius: var(--BORDER_NORMAL);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     /* Changer la color du txt lors du survol donc quand il y a la couche du before egalement */
     li.option-color:hover{
-        color: var(--COULEUR_BACKGROUND);
+        color: var(--COLOR_BACKGROUND);
     }
 }
 ol li.option-color:active{
@@ -2193,7 +2196,7 @@ ol li.option-color::before{
     top: 0;
     left: 0;
     height: 100%;
-    background-color: var(--COULEUR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     width: 10px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -2203,66 +2206,66 @@ ol li.option-color::before{
 @media (hover: hover) and (pointer: fine) {
     ol li.option-color:hover::before{ /* ça affiche la couche du before */
         width: 100%;
-        transition: all ease-out var(--DUREE_TRANSITION);
+        transition: all ease-out var(--TIME_TRANSITION);
     }
 }
 /* celui selectionné */
 ol li.option-color.selected{
-    color: var(--COULEUR_BACKGROUND); /* Changement couleur du texte */
+    color: var(--COLOR_BACKGROUND); /* Changement COLOR du texte */
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    transition: all ease-out var(--DUREE_TRANSITION);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 ol li.option-color.selected::before{
     width: 100%; /* le li selectionner direct à 100% pr diférencier */
     transition: all ease-out 0.3s;
 }
-/* Couleur individuel en fonction de l'ordre des li */
+/* COLOR individuel en fonction de l'ordre des li */
 ol li.option-color.option-color:nth-child(1)::before{ /* ça prend le premier li ds le code */
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_0) 50%, var(--COULEUR_PASTILLES_0_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_0) 50%, var(--COLOR_PASTILLES_0_HOVER) 50%);
 }
 ol li.option-color:nth-child(2)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_1) 50%, var(--COULEUR_PASTILLES_1_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_1) 50%, var(--COLOR_PASTILLES_1_HOVER) 50%);
 }
 ol li.option-color:nth-child(3)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_2) 50%, var(--COULEUR_PASTILLES_2_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_2) 50%, var(--COLOR_PASTILLES_2_HOVER) 50%);
 }
 ol li.option-color:nth-child(4)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_3) 50%, var(--COULEUR_PASTILLES_3_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_3) 50%, var(--COLOR_PASTILLES_3_HOVER) 50%);
 }
 ol li.option-color:nth-child(5)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_4) 50%, var(--COULEUR_PASTILLES_4_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_4) 50%, var(--COLOR_PASTILLES_4_HOVER) 50%);
 }
 ol li.option-color:nth-child(6)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_5) 50%, var(--COULEUR_PASTILLES_5_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_5) 50%, var(--COLOR_PASTILLES_5_HOVER) 50%);
 }
 ol li.option-color:nth-child(7)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_6) 50%, var(--COULEUR_PASTILLES_6_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_6) 50%, var(--COLOR_PASTILLES_6_HOVER) 50%);
 }
 ol li.option-color:nth-child(8)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_7) 50%, var(--COULEUR_PASTILLES_7_HOVER) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_7) 50%, var(--COLOR_PASTILLES_7_HOVER) 50%);
 }
 ol li.option-color:nth-child(9)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D7) 50%, var(--COULEUR_PASTILLES_D8) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D7) 50%, var(--COLOR_PASTILLES_D8) 50%);
 }
 ol li.option-color:nth-child(10)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D3) 50%, var(--COULEUR_PASTILLES_D4) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D3) 50%, var(--COLOR_PASTILLES_D4) 50%);
 }
 ol li.option-color:nth-child(11)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D1) 50%, var(--COULEUR_PASTILLES_D2) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D1) 50%, var(--COLOR_PASTILLES_D2) 50%);
 }
 ol li.option-color:nth-child(12)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D5) 50%, var(--COULEUR_PASTILLES_D6) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D5) 50%, var(--COLOR_PASTILLES_D6) 50%);
 }
 ol li.option-color:nth-child(13)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D9) 50%, var(--COULEUR_PASTILLES_D10) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D9) 50%, var(--COLOR_PASTILLES_D10) 50%);
 }
 ol li.option-color:nth-child(14)::before{
-    background: linear-gradient(130deg, var(--COULEUR_PASTILLES_D11) 50%, var(--COULEUR_PASTILLES_D12) 50%);
+    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D11) 50%, var(--COLOR_PASTILLES_D12) 50%);
 }
 /* Style du bouton réinitialiser */
 div.conteneur-centrage-marge {
-    padding: var(--ESPACE_XS);
-    margin: var(--ESPACE_S);
+    padding: var(--SPACE_XS);
+    margin: var(--SPACE_S);
     justify-content: center;
     display: flex;
 }
@@ -2280,7 +2283,7 @@ div.conteneur-centrage-marge {
 /* page accueil */
 @media (max-width : 480px) {
     div.conteneur-outil-recent div.card-outil-recent {
-        margin: var(--ESPACE_XS) 0;
+        margin: var(--SPACE_XS) 0;
     }
 }
 
@@ -2337,13 +2340,13 @@ div.conteneur-centrage-marge {
 }
 @media (max-width: 640px) {
     div.conteneur-historique-versions .card-nouveautes.visible{
-        width: calc(100% - (var(--ESPACE_S_SMALL) * 2));
+        width: calc(100% - (var(--SPACE_S_SMALL) * 2));
     }
 }
 @media (max-width: 510px) {
     div.conteneur-historique-versions .card-nouveautes.visible {
         width: 100%;
-        margin: var(--ESPACE_S) 0px;
+        margin: var(--SPACE_S) 0px;
     }
 }
 @media (max-width: 350px) {
@@ -2361,10 +2364,10 @@ div.conteneur-centrage-marge {
         padding: 0;
     }
     div.gallery-version img:nth-child(1){
-        margin: var(--ESPACE_XS) 0;
+        margin: var(--SPACE_XS) 0;
     }
     div.gallery-version img{
-        margin: var(--ESPACE_XS) 0;
+        margin: var(--SPACE_XS) 0;
     }
     div.gallery-version#img-ordi{
         display: none;
@@ -2391,14 +2394,14 @@ div.conteneur-centrage-marge {
 
 @media (max-width: 510px) {
     .conteneur-historique-versions .box-last-maj {
-        margin: var(--ESPACE_S) 0px;
+        margin: var(--SPACE_S) 0px;
     }
 }
 
 /* ----- Pour l'interieur des outils ----- */
 @media (max-width: 1008px) {
     div.container-zone div.box-result {
-        margin: var(--ESPACE_S);
+        margin: var(--SPACE_S);
         width: 420px;
     }
 }
@@ -2409,7 +2412,7 @@ div.conteneur-centrage-marge {
     div.form input[type="number"].small,
     div.form input[type="date"],
     div.form input[type="text"].small {
-        width: calc(100% - (var(--ESPACE_XS) * 2));
+        width: calc(100% - (var(--SPACE_XS) * 2));
     }
 }
 /* Zones cardiaques */
@@ -2440,10 +2443,10 @@ div.conteneur-centrage-marge {
 @media (max-width: 500px) {
     /* Box des zones */
     div.small-zone-result {
-        margin: var(--ESPACE_S) 0;
+        margin: var(--SPACE_S) 0;
         width: 100%;
         height: fit-content;
-        padding: var(--ESPACE_S_SMALL);
+        padding: var(--SPACE_S_SMALL);
     }
     div.small-zone-result div.container-result p.small-zone-result-result{
         font-size: var(--H2);
@@ -2455,13 +2458,13 @@ div.conteneur-centrage-marge {
 
 @media (max-width: 545px) {
     /* Pr l'ensemble des boutons ajouter,... */
-    div.conteneur-action-charge .txt_plus#bouton-action-charge{
+    div.button-group .button-group-button-text#bouton-action-charge{
         display: none;
     }
-    div.conteneur-action-charge{
+    div.button-group{
         border-radius: 50px;
     }
-    div.conteneur-action-charge div.button-more{
+    div.button-group div.button-group-button{
         border-radius: 50%;
     }
 }

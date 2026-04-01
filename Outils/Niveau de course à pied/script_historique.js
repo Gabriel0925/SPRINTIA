@@ -51,8 +51,9 @@ async function RemplirTableau() {
     let TableauHistorique = document.getElementById("tableau-historique")
 
     if (NiveauDatas.length > 0) {
-        TableauHistorique.classList.add("visible")
         document.getElementById("text-informatif").style.display = "none"
+    } else {
+        TableauHistorique.style.display = 'none'
     }
 
     let compteur = 0
@@ -81,7 +82,7 @@ async function RemplirTableau() {
         ColonneButtonSupprimer.appendChild(BoutonSupprTableau)
 
         // Ajout de la class
-        BoutonSupprTableau.classList.add("tableau")
+        BoutonSupprTableau.classList.add("table")
 
         const EtapeBoucle = compteur // Grâce a const la variable ne change jamais donc chaque bouton enregistre sa ligne en fonction de letape de la bouclz
         // Ajout de la logique pour la suppresion

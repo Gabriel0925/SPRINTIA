@@ -27,13 +27,13 @@ function SelectedElement(idElement) {
 
 function colorTheme(theme, idElement) {
     if (theme == "theme_azur") { // si c'est le thème de base alors on réinitialise les variables
-        document.documentElement.style.removeProperty("--COULEUR_ACCENT")
-        document.documentElement.style.removeProperty("--COULEUR_ACCENT2")
+        document.documentElement.style.removeProperty("--COLOR_ACCENT")
+        document.documentElement.style.removeProperty("--COLOR_ACCENT2")
     } else {
         let tableauTheme = ThemeConfig[theme] // on recherche le tableau du theme correspondant pour avoir accès au thème
         // on met à jour les variables
-        document.documentElement.style.setProperty("--COULEUR_ACCENT", tableauTheme[0])
-        document.documentElement.style.setProperty("--COULEUR_ACCENT2", tableauTheme[1])
+        document.documentElement.style.setProperty("--COLOR_ACCENT", tableauTheme[0])
+        document.documentElement.style.setProperty("--COLOR_ACCENT2", tableauTheme[1])
     }
     // maj dans la "BDD"
     localStorage.setItem("ColorActuelleUse", theme) 

@@ -288,9 +288,9 @@ async function Initialisation() {
     let RootCSS = document.documentElement
     let StyleCSS = getComputedStyle(RootCSS)
     // Recup variable css
-    let CouleurAccent = StyleCSS.getPropertyValue("--COULEUR_ACCENT")
-    let CouleurAccent2 = StyleCSS.getPropertyValue("--COULEUR_ACCENT2")
-    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COULEUR_TEXT_PRINCIPAL")
+    let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
+    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
+    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
     const barCanvas = document.getElementById("barCanvas")
 

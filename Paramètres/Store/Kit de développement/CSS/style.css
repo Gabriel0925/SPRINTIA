@@ -33,12 +33,12 @@
 
     /* Marges intérieur/extérieur (Basé sur 0.5rem) */
     --ESPACE_XXS: 0.25rem;   /* 4px */
-    --ESPACE_XS: 0.5rem;   /* 8px */
-    --ESPACE_S_SMALL: 0.9rem;     /* 16px */
-    --ESPACE_S: 1rem;     /* 16px */
-    --ESPACE_M: 1.5rem;   /* 24px */
-    --ESPACE_L: 2rem;     /* 32px */
-    --ESPACE_XL: 3rem;     /* 48px */
+    --SPACE_XS: 0.5rem;   /* 8px */
+    --SPACE_S_SMALL: 0.9rem;     /* 16px */
+    --SPACE_S: 1rem;     /* 16px */
+    --SPACE_M: 1.5rem;   /* 24px */
+    --SPACE_L: 2rem;     /* 32px */
+    --SPACE_XL: 3rem;     /* 48px */
 
     /* Autres */
     --MAX_WIDTH: 1250px;
@@ -301,7 +301,7 @@ body {
     /* Pour la base d'une page web de Sprintia */
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
     /* Pour désactiver le truc bleu lors d'un clic sur un element de linterface */
     -webkit-tap-highlight-color: transparent;
 }
@@ -309,17 +309,17 @@ body {
 h1{
     font-size: var(--H2);
     color: var(--COULEUR_TEXT_PRINCIPAL);
-    margin-bottom: var(--ESPACE_S);
+    margin-bottom: var(--SPACE_S);
 }
 h2{
     font-size: var(--H3);
     color: var(--COULEUR_TEXT_PRINCIPAL);
-    margin: var(--ESPACE_M) 0;
+    margin: var(--SPACE_M) 0;
 }
 p.text {
     font-size: var(--P);
     color: var(--COULEUR_TEXT_SECONDAIRE);
-    margin: var(--ESPACE_S_SMALL) 0px;
+    margin: var(--SPACE_S_SMALL) 0px;
 }
 
 /* style button */
@@ -327,8 +327,8 @@ button{
     background-color: var(--COULEUR_ACCENT);
     border: none;
     color: var(--COULEUR_BACKGROUND);
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_S_SMALL);
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_S_SMALL);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     display: block;
@@ -360,7 +360,7 @@ button.tableau {
     background-color: transparent;
     border: none;
     margin: 0px auto;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     align-items: center;
@@ -422,25 +422,25 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: var(--ESPACE_M);
-    padding: var(--ESPACE_XL) 0;
+    margin-top: var(--SPACE_M);
+    padding: var(--SPACE_XL) 0;
 }
 footer div.conteneur-lien-footer {
     display: flex;
     flex-direction: column;
     min-width: 325px;
-    margin-top: var(--ESPACE_S);
+    margin-top: var(--SPACE_S);
 }
 footer a.a_title{
     font-size: var(--P);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COULEUR_TEXT_PRINCIPALE);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
 }
 footer a.a_footer{
     font-size: var(--P);
     color: var(--COULEUR_TEXT_SECONDAIRE);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     margin: var(--ESPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
     transition: all ease-out var(--DUREE_TRANSITION);
@@ -476,7 +476,7 @@ header div.navbar {
 }
 header div.navbar .logo {
     width: 100%;
-    margin-right: var(--ESPACE_S);
+    margin-right: var(--SPACE_S);
 }
 header div.navbar .logo a {
     font-size: var(--H2);
@@ -489,11 +489,11 @@ header div.navbar .logo a {
     overflow: hidden; /* pour sécuriser lanimation */
     text-align: center;
     white-space: nowrap; /* empecher le retour à la ligne (pr l'animation) */
-    margin-top: var(--ESPACE_XS);
-    margin-bottom: var(--ESPACE_M);
+    margin-top: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_M);
 
     font-weight: 1000;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -537,18 +537,18 @@ header div.navbar .logo a:active {
 header div.navbar ul.links {
     display: flex;
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin-top: var(--ESPACE_XS);
-    margin-bottom: var(--ESPACE_M);
+    margin-top: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_M);
     box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
     border-radius: 1.25rem;
 }
 header div.navbar div.burger-menu-button {
     font-size: var(--H0);
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_XS) var(--ESPACE_XXS);
+    padding: var(--SPACE_XS) var(--ESPACE_XXS);
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin-top: var(--ESPACE_XS);
-    margin-bottom: var(--ESPACE_M);
+    margin-top: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_M);
     
     box-shadow: 0px 5px 20px var(--COULEUR_BACKGROUND);
     color: var(--COULEUR_ACCENT2);
@@ -576,7 +576,7 @@ header div.navbar ul.links li a {
 }
 header div.navbar ul.links li a i {
     font-size: var(--H2);
-    margin-right: var(--ESPACE_S_SMALL);
+    margin-right: var(--SPACE_S_SMALL);
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -604,7 +604,7 @@ header .burger-menu {
     position: absolute;
     right: 0;
     width: 200px;
-    margin-right: var(--ESPACE_XS);
+    margin-right: var(--SPACE_XS);
     max-height: 0px;    
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     border-radius: 1.25rem;
@@ -649,7 +649,7 @@ header .burger-menu li a {
     min-width: 96%;
     display: block;
     text-align: left;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     margin: var(--ESPACE_XXS);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     border-radius: var(--BORDER_NORMAL);
@@ -659,7 +659,7 @@ header .burger-menu li a {
 }
 header .burger-menu li a i {
     font-size: var(--H2);
-    margin-right: var(--ESPACE_XS);
+    margin-right: var(--SPACE_XS);
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 header .burger-menu li a:active {
@@ -686,8 +686,8 @@ div.zone-coach {
     width: 100%;
     height: 100%;
     border-radius: var(--BORDER_BIG);
-    margin: var(--ESPACE_XS) 0px;
-    margin-top: var(--ESPACE_M);
+    margin: var(--SPACE_XS) 0px;
+    margin-top: var(--SPACE_M);
     display: flex;
     flex-direction: column;
     z-index: 1;
@@ -702,8 +702,8 @@ div.zone-coach:active {
 }
 div.zone-coach p.zone-coach-name{
     font-size: var(--H3);
-    margin: var(--ESPACE_S);
-    margin-bottom: var(--ESPACE_XS);
+    margin: var(--SPACE_S);
+    margin-bottom: var(--SPACE_XS);
     line-height: normal;
     text-align: left;
     color: var(--COULEUR_BACKGROUND);
@@ -711,8 +711,8 @@ div.zone-coach p.zone-coach-name{
 }
 div.zone-coach p.zone-coach-interpretation{
     font-size: var(--P);
-    margin: var(--ESPACE_S);
-    margin-top: var(--ESPACE_XS);
+    margin: var(--SPACE_S);
+    margin-top: var(--SPACE_XS);
     text-align: left;
     color: var(--COULEUR_BACKGROUND);
     font-weight: normal;
@@ -721,8 +721,8 @@ div.zone-coach p.zone-coach-interpretation{
 /* statut analyse */ 
 div.statut-analyse {
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin: var(--ESPACE_M) 0;
-    padding: var(--ESPACE_XS);
+    margin: var(--SPACE_M) 0;
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
     flex-grow: 1;
     max-width: 425px;
@@ -746,7 +746,7 @@ div.statut-analyse i#statut{
     border-radius: 50px;
     color: var(--COULEUR_BACKGROUND);
     padding: var(--ESPACE_XXS);
-    margin-right: var(--ESPACE_XS);
+    margin-right: var(--SPACE_XS);
     text-align: center;
     width: 50px;
 }
@@ -756,34 +756,34 @@ div.conteneur-centrage {
     display: flex;
     justify-content: center;
 }
-.button-more {
+.button-group-button {
     display: flex;
     align-items: center;
     text-align: center;
 
     background-color: var(--COULEUR_ACCENT);
-    padding: var(--ESPACE_S_SMALL);
+    padding: var(--SPACE_S_SMALL);
     border-radius: var(--BORDER_NORMAL);
-    margin: var(--ESPACE_S) var(--ESPACE_XS) var(--ESPACE_L) var(--ESPACE_S);
+    margin: var(--SPACE_S) var(--SPACE_XS) var(--SPACE_L) var(--SPACE_S);
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    .button-more:hover {
+    .button-group-button:hover {
         background-color: var(--COULEUR_ACCENT2);
     }
 }
-.button-more:active {
+.button-group-button:active {
     background-color: var(--COULEUR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
-.icon-more i{
+.button-group-button-icon i{
     font-size: var(--H3);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COULEUR_BACKGROUND);
     margin: 0 var(--ESPACE_XXS);
     vertical-align: middle; /* Aligne l'image au centre verticalement */
 }
-p.txt_plus{
+p.button-group-button-text{
     font-size: var(--P);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COULEUR_BACKGROUND);
@@ -803,7 +803,7 @@ div.conteneur-outil-recent a{
 div.conteneur-outil-recent div.card-outil-recent{
     background-color: var(--COULEUR_BACKGROUND_CARD);
     border-radius: var(--BORDER_NORMAL);
-    margin: var(--ESPACE_XS);
+    margin: var(--SPACE_XS);
 
     display: flex;
     align-items: center;
@@ -821,13 +821,13 @@ div.conteneur-outil-recent div.card-outil-recent:active{
 div.conteneur-outil-recent div.card-outil-recent i{
     background-color: transparent;
     font-size: var(--H1);
-    margin: var(--ESPACE_XS);
+    margin: var(--SPACE_XS);
 }
 div.conteneur-outil-recent div.card-outil-recent p{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin: var(--ESPACE_XS) 0;
+    margin: var(--SPACE_XS) 0;
     margin-left: var(--ESPACE_XXS);
-    margin-right: var(--ESPACE_S);
+    margin-right: var(--SPACE_S);
     font-size: var(--P);
 }
 
@@ -836,8 +836,8 @@ div.conteneur-outil-recent div.card-outil-recent p{
 /* ----- Style page "Outils" ----- */
 div.carousel {
     max-width: var(--MAX_WIDTH);
-    padding-bottom: var(--ESPACE_XS);
-    margin: var(--ESPACE_XS) 0;
+    padding-bottom: var(--SPACE_XS);
+    margin: var(--SPACE_XS) 0;
     display: flex;
     overflow-x: auto;
     height: fit-content;
@@ -847,8 +847,8 @@ div.carousel#historique-niveau-course {
 }
 div.carousel div.card-outil {
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_XS);
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG); /*border de l'image + padding = 1.1rem + 0.5rem = 1.6rem*/
 
     width: 235px;
@@ -899,8 +899,8 @@ div.carousel div.card-outil div.icone div.button-epingler{
     overflow: hidden;
     width: 30px;
     height: 30px;
-    right: var(--ESPACE_XS);
-    top: var(--ESPACE_XS);
+    right: var(--SPACE_XS);
+    top: var(--SPACE_XS);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -940,7 +940,7 @@ div.carousel div.card-outil div.icone div.button-epingler.actif i{
 }
 div.carousel div.card-outil h1{
     font-size: var(--H3);
-    margin-top: var(--ESPACE_XS);
+    margin-top: var(--SPACE_XS);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     min-height: 60px;
     
@@ -968,7 +968,7 @@ div.conteneur-cards-workout {
     display: block;
     margin: 0 auto;
     max-width: 900px;
-    margin-bottom: var(--ESPACE_XL);
+    margin-bottom: var(--SPACE_XL);
 }
 div.conteneur-cards-workout div.cards-history-workout {
     background-color: var(--COULEUR_BACKGROUND_CARD);
@@ -976,8 +976,8 @@ div.conteneur-cards-workout div.cards-history-workout {
     height: fit-content;
     overflow: hidden;
 
-    margin: var(--ESPACE_L) 0;
-    padding: var(--ESPACE_XS);
+    margin: var(--SPACE_L) 0;
+    padding: var(--SPACE_XS);
 
     transition: all ease-out var(--DUREE_TRANSITION);
 }
@@ -993,11 +993,11 @@ div.conteneur-cards-workout div.cards-history-workout:active {
 
 /* pour adapter légèrement les cards et les animations des cards de derniers entraînement sur la page d'accueil */
 div.conteneur-cards-workout.home { 
-    margin-bottom: var(--ESPACE_L);
+    margin-bottom: var(--SPACE_L);
     max-width: none;
 }
 div.conteneur-cards-workout div.cards-history-workout.home { 
-    margin: var(--ESPACE_M) 0;
+    margin: var(--SPACE_M) 0;
 }
 @media (hover: hover) and (pointer: fine) {
     div.conteneur-cards-workout div.cards-history-workout.home:hover{
@@ -1045,7 +1045,7 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p{
     color: var(--COULEUR_TEXT_PRINCIPALE);
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     font-size: var(--P);
     text-align: left;
     width: 160px;
@@ -1070,7 +1070,7 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: var(--ESPACE_S_SMALL);
+    margin-top: var(--SPACE_S_SMALL);
 }
 div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button{
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -1084,7 +1084,7 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
 
     flex-grow: 1;
     margin: 4px;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
 
     transition: all ease-out var(--DUREE_TRANSITION);
 }
@@ -1116,8 +1116,8 @@ div.conteneur-cube{
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    gap: var(--ESPACE_M);
-    margin-top: var(--ESPACE_M);
+    gap: var(--SPACE_M);
+    margin-top: var(--SPACE_M);
 }
 div.conteneur-cube div.cube-data {
     border-top: 2px solid var(--COULEUR_BACKGROUND_CARD_HOVER);
@@ -1146,7 +1146,7 @@ textarea#note-entrainement {
     background-color: var(--COULEUR_BACKGROUND_CARD);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
     font-size: var(--P);
     font-family: var(--FONT_FAMILY);
     line-height: var(--LINE_HEIGHT);
@@ -1184,7 +1184,7 @@ div.toolbar i {
     margin-left: auto;
     background-color: var(--COULEUR_BACKGROUND_CARD);
     color: var(--COULEUR_TEXT_PRINCIPAL);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     cursor: pointer;
     border-radius: 50%;
     font-size: var(--H1);
@@ -1202,14 +1202,14 @@ div.toolbar i:active {
 }
 
 /* --- Pour le menu plus --- */
-div.menu-button-more {
+div.menu-button-group-button {
     background-color: var(--COULEUR_BACKGROUND_CARD);
     width: 200px;
     position: absolute;
     right: 0;
-    margin-top: var(--ESPACE_S);
-    margin-right: var(--ESPACE_M);
-    padding: var(--ESPACE_XS);
+    margin-top: var(--SPACE_S);
+    margin-right: var(--SPACE_M);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 
     overflow: hidden;
@@ -1217,14 +1217,14 @@ div.menu-button-more {
     transform: translate(83px, -100px) scale(0);
     transition: all ease-out 0.15s;
 }
-div.menu-button-more.open {
+div.menu-button-group-button.open {
     transform: translate(0) scale(1);
     opacity:1;
     transition: all ease-out 0.15s;
 }
-div.menu-button-more li {
+div.menu-button-group-button li {
     border-radius: var(--BORDER_NORMAL);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     transition: all ease-out 0.3s;
     cursor: pointer;
@@ -1234,30 +1234,30 @@ div.menu-button-more li {
     40% { transform: translate(-20px, 10px) scale(0.75)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
-div.menu-button-more.open li:nth-child(1) {
+div.menu-button-group-button.open li:nth-child(1) {
     animation: rebond_icon_menu_open 0.4s ease-out;
 }
-div.menu-button-more.open li:nth-child(2) {
+div.menu-button-group-button.open li:nth-child(2) {
     animation: rebond_icon_menu_open 0.43s ease-out;
 }
-div.menu-button-more.open li:nth-child(3) {
+div.menu-button-group-button.open li:nth-child(3) {
     animation: rebond_icon_menu_open 0.47s ease-out;
 }
-div.menu-button-more.open li:nth-child(4) {
+div.menu-button-group-button.open li:nth-child(4) {
     animation: rebond_icon_menu_open 0.51s ease-out;
 }
-div.menu-button-more.open li:nth-child(5) {
+div.menu-button-group-button.open li:nth-child(5) {
     animation: rebond_icon_menu_open 0.55s ease-out;
 }
-div.menu-button-more.open li:nth-child(6) {
+div.menu-button-group-button.open li:nth-child(6) {
     animation: rebond_icon_menu_open 0.59s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.menu-button-more li:hover {
+    div.menu-button-group-button li:hover {
         background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     }
 }
-div.menu-button-more li:active{
+div.menu-button-group-button li:active{
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
@@ -1291,14 +1291,14 @@ div.toolbar div.button-toolbar p{
     color: var(--COULEUR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     margin: var(--ESPACE_XXS) 0;
-    margin-right: var(--ESPACE_XS);
+    margin-right: var(--SPACE_XS);
 }
 
 /* conteneur des input + button */
 div.conteneur-champs-outil {
     background-color: var(--COULEUR_BACKGROUND_CARD);
     overflow: hidden;
-    margin: 0 var(--ESPACE_S);
+    margin: 0 var(--SPACE_S);
     display: flex;
     flex-direction: column;
     border-radius: var(--BORDER_BIG);
@@ -1339,8 +1339,8 @@ div.conteneur-champs-outil input[type="number"].small,
 div.conteneur-champs-outil input[type="text"].small {
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     border: 0;
-    margin: var(--ESPACE_XS); /* !!! Attention si je modifie le margin il faut le modifier aussi dans le responsive !!! */
-    padding: var(--ESPACE_S);
+    margin: var(--SPACE_XS); /* !!! Attention si je modifie le margin il faut le modifier aussi dans le responsive !!! */
+    padding: var(--SPACE_S);
     border-radius: var(--BORDER_NORMAL);
     width: 190px;
     outline: none;
@@ -1358,10 +1358,10 @@ div.conteneur-champs-outil input[type="text"] {
     border: 0;
 
     /* !!! Attention la margin et le width sont liés !!! */
-    margin: var(--ESPACE_XS);
-    width: calc(100% - (var(--ESPACE_XS) * 2));
+    margin: var(--SPACE_XS);
+    width: calc(100% - (var(--SPACE_XS) * 2));
     
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
     border-radius: var(--BORDER_NORMAL);
     outline: none;
     -moz-appearance: textfield; /* desactive les styles de base de firefox */
@@ -1403,10 +1403,10 @@ div.conteneur-champs-outil .label-input {
     font-size: var(--P);
 
     top: 50%;
-    left: var(--ESPACE_XS);
+    left: var(--SPACE_XS);
     transform: translateY(-50%);
     pointer-events: none; /* Pour pouvoir cliquer sur le input */
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
 
     color: var(--COULEUR_TEXT_PRINCIPAL);
     background-color: transparent;
@@ -1431,8 +1431,8 @@ div.conteneur-champs-outil input:not(:placeholder-shown) + .label-input {
 /* Pour chrome, safari */
 div.conteneur-champs-outil .slider-cont { /* Le conteneur du slider */
     display: flex;
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_XS) 0px;
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_XS) 0px;
     align-items: center;
 }
 div.conteneur-champs-outil .slider {
@@ -1531,11 +1531,11 @@ div.conteneur-champs-outil .slider progress::-moz-progress-bar{
 /* !!! fin de la partie firefox */
 /* La valeur du slider */
 div.conteneur-champs-outil .slider-value {
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
 }
 /* le nom du slider */
 div.conteneur-champs-outil .slider-name {
-    margin-right: var(--ESPACE_S);
+    margin-right: var(--SPACE_S);
 }
 
 
@@ -1552,8 +1552,8 @@ div.conteneur-champs-outil input[type="date"]{
     cursor: pointer;
     font-family: var(--FONT_FAMILY);
     font-size: var(--P);
-    padding: var(--ESPACE_S);
-    margin: var(--ESPACE_XS);
+    padding: var(--SPACE_S);
+    margin: var(--SPACE_XS);
     
     width: 190px;
     transition: all ease-out var(--DUREE_TRANSITION);
@@ -1571,10 +1571,10 @@ div.conteneur-champs-outil input[type="date"].long{
     cursor: pointer;
     font-family: var(--FONT_FAMILY);
     font-size: var(--P);
-    padding: var(--ESPACE_S);
-    margin: var(--ESPACE_XS);
+    padding: var(--SPACE_S);
+    margin: var(--SPACE_XS);
     
-    width: calc(100% - (var(--ESPACE_XS) * 2));
+    width: calc(100% - (var(--SPACE_XS) * 2));
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.conteneur-champs-outil input[type="date"]:focus{
@@ -1591,8 +1591,8 @@ div.conteneur-champs-outil input[type="date"]::-webkit-calendar-picker-indicator
 div.conteneur-champs-outil select {
     background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     color: var(--COULEUR_TEXT_PRINCIPAL);
-    margin: var(--ESPACE_XS);
-    padding: var(--ESPACE_S);
+    margin: var(--SPACE_XS);
+    padding: var(--SPACE_S);
     border: 0px;
     border-radius: var(--BORDER_NORMAL);
     height: 55px;
@@ -1607,7 +1607,7 @@ div.conteneur-champs-outil select {
     /* Pour la flèche */
     background-image: var(--URL_FLECHE_ICON);
     background-repeat: no-repeat;
-    background-position: right var(--ESPACE_XS) center; /* On met à droite l'icone */
+    background-position: right var(--SPACE_XS) center; /* On met à droite l'icone */
     background-size: var(--H3);
 
     transition: all ease-out var(--DUREE_TRANSITION);
@@ -1628,25 +1628,25 @@ div.conteneur-champs-outil select:focus {
 }
 
 /* Pour le bouton plus de datas dans ajouter un entraî */
-div.button-more-data {
-    margin: var(--ESPACE_XS);
+div.button-group-button-data {
+    margin: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     border: 2px solid var(--COULEUR_ACCENT);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: all ease-in-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.button-more-data:hover {
+    div.button-group-button-data:hover {
         background-color: var(--COULEUR_BACKGROUND_CARD_HOVER);
     }
 }
-div.button-more-data:active {
+div.button-group-button-data:active {
     transform: scale(var(--SCALE_NORMAL));
 }
-div.button-more-data p.button-more-data-text{
+div.button-group-button-data p.button-group-button-data-text{
     color: var(--COULEUR_ACCENT);
 }
 
@@ -1658,7 +1658,7 @@ div.container-zone {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: var(--ESPACE_M) 0px;
+    margin: var(--SPACE_M) 0px;
 }
 div.container-zone#indulgence-course {
     margin: 0;
@@ -1674,8 +1674,8 @@ div.container-zone div.box-result-deux-small {
     background-color: var(--COULEUR_ACCENT);
     width: 420px;
     min-height: 200px;
-    padding: var(--ESPACE_S);
-    margin: var(--ESPACE_S);
+    padding: var(--SPACE_S);
+    margin: var(--SPACE_S);
     z-index: 1;
     position: relative;
     transition: all ease-out var(--DUREE_TRANSITION);
@@ -1688,7 +1688,7 @@ div.container-zone.first div.box-result-deux-small {
 div.container-zone div.box-result-deux#coach-ajoute-entrainement {
     width: 100%;
     min-height: auto;
-    margin: var(--ESPACE_S) 0;
+    margin: var(--SPACE_S) 0;
 }
 /* Pour la charge d'entraînement */
 div.container-zone div.box-result-deux-small {
@@ -1701,13 +1701,13 @@ div.conteneur-action-charge {
     align-items: center;
     background-color: var(--COULEUR_BACKGROUND_CARD);
     width: fit-content;
-    margin: var(--ESPACE_M) auto;
+    margin: var(--SPACE_M) auto;
     border-radius: 2rem;
 
-    gap: var(--ESPACE_XS); /* on utilise gap pour pas doublée les marges, la marge ne s'applique que entre les éléments */
-    padding: var(--ESPACE_XS);
+    gap: var(--SPACE_XS); /* on utilise gap pour pas doublée les marges, la marge ne s'applique que entre les éléments */
+    padding: var(--SPACE_XS);
 }
-div.conteneur-action-charge div.button-more{
+div.conteneur-action-charge div.button-group-button{
     margin: 0; /* grace au gap plus besoin de mettre de marge */
     border-radius: var(--BORDER_BIG);
 }
@@ -1715,7 +1715,7 @@ div.conteneur-action-charge div.button-more{
 /* Pour graphique outil niveau de course */
 div.chart-container {
     display: block;
-    margin: var(--ESPACE_L) var(--ESPACE_XXS);
+    margin: var(--SPACE_L) var(--ESPACE_XXS);
 }
 
 
@@ -1725,7 +1725,7 @@ table {
 }
 table.visible {
     display: table;
-    margin: var(--ESPACE_XS) auto;
+    margin: var(--SPACE_XS) auto;
     width: 100%;
     border-collapse: collapse; /* Pr eviter les doubles bordures */
 }
@@ -1734,14 +1734,14 @@ table.visible tr td {
     border-bottom: 2px solid var(--COULEUR_BACKGROUND_CARD_HOVER);
 }
 table.visible tr th {
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--P);
     min-width: 120px;
 }
 table.visible tr td {
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     color: var(--COULEUR_TEXT_SECONDAIRE);
     font-size: var(--P_SMALL);
     text-align: center;
@@ -1755,8 +1755,8 @@ div.conteneur-rep-zone {
 }
 /* Box des zones */
 div.conteneur-rep-zone div.zone-cardio {
-    margin: var(--ESPACE_S);
-    padding: var(--ESPACE_S);
+    margin: var(--SPACE_S);
+    padding: var(--SPACE_S);
     width: 200px;
     height: 180px;
     border-radius: var(--BORDER_BIG);
@@ -1794,12 +1794,12 @@ div.conteneur-rep-zone div.zone-cardio p.zone{
     font-size: var(--H2);
     color: #000000;
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin: 0px 0px var(--ESPACE_S) 0px;
+    margin: 0px 0px var(--SPACE_S) 0px;
 }
 div.conteneur-rep-zone div.zone-cardio p.fonction-zone{
     font-size: var(--P);
     color: #000000;
-    margin: 0px 0px var(--ESPACE_S) 0px;
+    margin: 0px 0px var(--SPACE_S) 0px;
 }
 div.conteneur-tranche-unite {
     display: flex;
@@ -1827,7 +1827,7 @@ div.container-zone div.box-result {
     border-radius: var(--BORDER_BIG);
     background-color: var(--COULEUR_ACCENT);
     width: 420px;
-    padding: var(--ESPACE_S);
+    padding: var(--SPACE_S);
     z-index: 1;
     position: relative;
     transition: all ease-out var(--DUREE_TRANSITION);
@@ -1842,7 +1842,7 @@ div.container-zone p {
 div.container-zone p.score-imc {
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
-    margin-bottom: var(--ESPACE_XS);
+    margin-bottom: var(--SPACE_XS);
 }
 div.container-zone p.temps-recup {
     font-weight: 1000;
@@ -1852,8 +1852,8 @@ div.container-zone p.temps-recup {
     align-items: center;
     font-size: var(--H1);
     width: 100%;
-    height: calc(100% - (var(--ESPACE_M) * 2));;
-    margin: var(--ESPACE_S) 0;
+    height: calc(100% - (var(--SPACE_M) * 2));;
+    margin: var(--SPACE_S) 0;
 }
 
 
@@ -1870,9 +1870,9 @@ div.carousel-content#running-level {
 div.carousel-content .card-nouveautes {
     width: 230px;
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
-    margin: var(--ESPACE_XS);
+    margin: var(--SPACE_XS);
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.carousel-content .card-nouveautes.first {
@@ -1897,8 +1897,8 @@ div.carousel-content .card-nouveautes-image p{
     padding: var(--ESPACE_XXS);
     color: var(--COULEUR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--ESPACE_XS);
-    padding-left: var(--ESPACE_S_SMALL);
+    margin-bottom: var(--SPACE_XS);
+    padding-left: var(--SPACE_S_SMALL);
 }
 div.carousel-content .card-nouveautes.first .card-nouveautes-image p{
     background-color: var(--COULEUR_ACCENT);
@@ -1919,12 +1919,12 @@ div.carousel-content .card-nouveautes p.description-maj {
 div.carousel-content .card-nouveautes div.date-maj {
     color: var(--COULEUR_TEXT_SECONDAIRE);
     font-size: var(--P_SMALL);
-    margin-top: var(--ESPACE_XS);
+    margin-top: var(--SPACE_XS);
 }
 /* Section choix param */
 div.action-list {
     max-width: var(--MAX_WIDTH);
-    margin: var(--ESPACE_S) auto;
+    margin: var(--SPACE_S) auto;
 }
 div.action-list div.action-list-item,
 div.action-list div.action-list-item1,
@@ -1932,7 +1932,7 @@ div.action-list div.action-list-item2 {
     display: flex; 
     align-items: center;
     margin: var(--ESPACE_XXS) 0px;
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     background-color: var(--COULEUR_BACKGROUND_CARD);
 
     transition: all ease-out var(--DUREE_TRANSITION);
@@ -1969,7 +1969,7 @@ div.action-list i{
 div.action-list div.action-list-item p, 
 div.action-list div.action-list-item1 p,
 div.action-list div.action-list-item2 p{
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
     font-size: var(--H3);
     color: var(--COULEUR_TEXT_PRINCIPAL);
 }
@@ -1986,8 +1986,8 @@ div.conteneur-historique-versions {
     background: var(--COULEUR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
     max-width: 1150px;
-    margin: var(--ESPACE_S);
-    padding: var(--ESPACE_XS);
+    margin: var(--SPACE_S);
+    padding: var(--SPACE_XS);
     transition: all var(--DUREE_TRANSITION) ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -2006,10 +2006,10 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
     text-align: left;
     background-color: var(--COULEUR_ACCENT);
     font-weight: 1000;
-    padding: var(--ESPACE_XS) var(--ESPACE_S);
+    padding: var(--SPACE_XS) var(--SPACE_S);
     color: var(--COULEUR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--ESPACE_S);
+    margin-bottom: var(--SPACE_S);
 }
 div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-image-last-maj p.date-last-maj{
     font-size: var(--H3);
@@ -2017,7 +2017,7 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
 /* Contenu inférieur */
 .conteneur-historique-versions .box-last-maj div.content2 {
     display: block;
-    margin-top: var(--ESPACE_XS);
+    margin-top: var(--SPACE_XS);
 }
 .conteneur-historique-versions .box-last-maj div.content2 .description{
     font-size: var(--P);
@@ -2030,9 +2030,9 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
     color: var(--COULEUR_BACKGROUND);
     cursor: pointer;
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     margin: 0;
-    margin-top: var(--ESPACE_XS);
+    margin-top: var(--SPACE_XS);
     text-align: center;
 
     border-color: transparent;
@@ -2061,10 +2061,10 @@ div.conteneur-historique-versions .card-nouveautes.visible {
     flex-grow: 1;
     display: block;
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 
-    margin: var(--ESPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 620px */
+    margin: var(--SPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 620px */
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -2084,8 +2084,8 @@ div.conteneur-historique-versions .card-nouveautes-image p {
     padding: var(--ESPACE_XXS);
     color: var(--COULEUR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--ESPACE_XS);
-    padding-left: var(--ESPACE_S_SMALL);
+    margin-bottom: var(--SPACE_XS);
+    padding-left: var(--SPACE_S_SMALL);
 }
 div.conteneur-historique-versions .card-nouveautes p.description-maj {
     font-size: var(--P);
@@ -2102,14 +2102,14 @@ div.conteneur-historique-versions .card-nouveautes p.description-maj {
 div.conteneur-historique-versions .card-nouveautes div.date-maj {
     color: var(--COULEUR_TEXT_SECONDAIRE);
     font-size: var(--P_SMALL);
-    margin-top: var(--ESPACE_S);
+    margin-top: var(--SPACE_S);
 }
 /* Mise en page des patch notes */
 ul.list-information li {
     list-style: initial;
     font-size: var(--P);
     color: var(--COULEUR_TEXT_SECONDAIRE);
-    margin: var(--ESPACE_XS) var(--ESPACE_M);
+    margin: var(--SPACE_XS) var(--SPACE_M);
 }    
 
 /* Pour les images des versions */
@@ -2118,7 +2118,7 @@ div.gallery-version {
     flex-wrap: wrap;
     background-color: var(--COULEUR_BACKGROUND_CARD);
     border-radius: 1.9rem;
-    padding: var(--ESPACE_S_SMALL);
+    padding: var(--SPACE_S_SMALL);
 }
 div.gallery-version#img-smartphone{
     display: none;
@@ -2126,7 +2126,7 @@ div.gallery-version#img-smartphone{
 div.gallery-version img{    
     width: 100%;
     border-radius: var(--BORDER_NORMAL);
-    margin-top: var(--ESPACE_S_SMALL);
+    margin-top: var(--SPACE_S_SMALL);
 }    
 div.gallery-version img:nth-child(1){    
     margin: 0;
@@ -2144,9 +2144,9 @@ div.banner-toggle {
     display: flex;
     align-items: center;
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS);
+    padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
-    margin: var(--ESPACE_M) 0;
+    margin: var(--SPACE_M) 0;
     transition: all ease-out var(--DUREE_TRANSITION);
 }
 div.banner-toggle i{
@@ -2157,7 +2157,7 @@ div.banner-toggle p.mode-choisis {
     font-size: var(--H3);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     margin-right: auto;
-    margin-left: var(--ESPACE_S);
+    margin-left: var(--SPACE_S);
 }
 div.banner-toggle p.mode-choisis#sans-icone {
     margin-left: var(--ESPACE_XXS);
@@ -2204,7 +2204,7 @@ ol.conteneur-color-acuentation{
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    gap: var(--ESPACE_M);
+    gap: var(--SPACE_M);
 }
 li.option-color {
     width: 40%;
@@ -2216,7 +2216,7 @@ li.option-color {
     font-size: var(--H3);
     color: var(--COULEUR_TEXT_PRINCIPAL);
     background-color: var(--COULEUR_BACKGROUND_CARD);
-    padding: var(--ESPACE_XS) var(--ESPACE_S);
+    padding: var(--SPACE_XS) var(--SPACE_S);
     border-radius: var(--BORDER_NORMAL);
     transition: all ease-out var(--DUREE_TRANSITION);
 }
@@ -2304,8 +2304,8 @@ ol li.option-color:nth-child(14)::before{
 }
 /* Style du bouton réinitialiser */
 div.conteneur-centrage-marge {
-    padding: var(--ESPACE_XS);
-    margin: var(--ESPACE_S);
+    padding: var(--SPACE_XS);
+    margin: var(--SPACE_S);
     justify-content: center;
     display: flex;
 }
@@ -2323,7 +2323,7 @@ div.conteneur-centrage-marge {
 /* page accueil */
 @media (max-width : 480px) {
     div.conteneur-outil-recent div.card-outil-recent {
-        margin: var(--ESPACE_XS) 0;
+        margin: var(--SPACE_XS) 0;
     }
 }
 
@@ -2380,13 +2380,13 @@ div.conteneur-centrage-marge {
 }
 @media (max-width: 640px) {
     div.conteneur-historique-versions .card-nouveautes.visible{
-        width: calc(100% - (var(--ESPACE_S_SMALL) * 2));
+        width: calc(100% - (var(--SPACE_S_SMALL) * 2));
     }
 }
 @media (max-width: 510px) {
     div.conteneur-historique-versions .card-nouveautes.visible {
         width: 100%;
-        margin: var(--ESPACE_S) 0px;
+        margin: var(--SPACE_S) 0px;
     }
 }
 @media (max-width: 350px) {
@@ -2404,10 +2404,10 @@ div.conteneur-centrage-marge {
         padding: 0;
     }
     div.gallery-version img:nth-child(1){
-        margin: var(--ESPACE_XS) 0;
+        margin: var(--SPACE_XS) 0;
     }
     div.gallery-version img{
-        margin: var(--ESPACE_XS) 0;
+        margin: var(--SPACE_XS) 0;
     }
     div.gallery-version#img-ordi{
         display: none;
@@ -2434,7 +2434,7 @@ div.conteneur-centrage-marge {
 
 @media (max-width: 510px) {
     .conteneur-historique-versions .box-last-maj {
-        margin: var(--ESPACE_S) 0px;
+        margin: var(--SPACE_S) 0px;
     }
 }
 
@@ -2448,7 +2448,7 @@ div.conteneur-centrage-marge {
 @media (max-width: 1008px) {
     div.conteneur-champs-outil,
     div.container-zone div.box-result {
-        margin: var(--ESPACE_S);
+        margin: var(--SPACE_S);
         width: 420px;
     }
 }
@@ -2467,7 +2467,7 @@ div.conteneur-centrage-marge {
     div.container-zone div.box-result,
     div.container-zone div.box-result-deux {
         width: 100%;
-        margin: var(--ESPACE_S) 0px;
+        margin: var(--SPACE_S) 0px;
     }
     div.container-zone div.box-result#niveau-course {
         height: 140px;
@@ -2478,7 +2478,7 @@ div.conteneur-centrage-marge {
     div.conteneur-champs-outil input[type="number"].small,
     div.conteneur-champs-outil input[type="date"],
     div.conteneur-champs-outil input[type="text"].small {
-        width: calc(100% - (var(--ESPACE_XS) * 2));
+        width: calc(100% - (var(--SPACE_XS) * 2));
     }
 }
 /* Zones cardiaques */
@@ -2516,16 +2516,16 @@ div.conteneur-centrage-marge {
     /* Box des zones */
     div.conteneur-rep-zone div.zone-cardio {
         width: 200px;
-        margin: var(--ESPACE_XS);
+        margin: var(--SPACE_XS);
     }
 }
 @media (max-width: 460px) {
     /* Box des zones */
     div.conteneur-rep-zone div.zone-cardio {
-        margin: var(--ESPACE_S) 0;
+        margin: var(--SPACE_S) 0;
         width: 100%;
         height: fit-content;
-        padding: var(--ESPACE_S_SMALL);
+        padding: var(--SPACE_S_SMALL);
     }
     div.conteneur-rep-zone div.zone-cardio div.ensemble-p {
         display: flex;
@@ -2536,7 +2536,7 @@ div.conteneur-centrage-marge {
         font-size: var(--H3);
     }
     div.conteneur-rep-zone div.zone-cardio div.conteneur-tranche-unite {
-        margin-top: var(--ESPACE_XS);
+        margin-top: var(--SPACE_XS);
     }
     div.conteneur-rep-zone div.zone-cardio p.fonction-zone{
         margin-left: auto;
@@ -2570,20 +2570,20 @@ div.conteneur-centrage-marge {
         align-items: center;
         min-height: auto;
         flex: 1; /*Pour que les deux boîtes occupent tout l'espace disponible en tenant sur la même ligne*/
-        padding: var(--ESPACE_S);
-        margin: var(--ESPACE_S);
+        padding: var(--SPACE_S);
+        margin: var(--SPACE_S);
     }
 }
 
 @media (max-width: 545px) {
     /* Pr l'ensemble des boutons ajouter,... */
-    div.conteneur-action-charge .txt_plus#bouton-action-charge{
+    div.conteneur-action-charge .button-group-button-text#bouton-action-charge{
         display: none;
     }
     div.conteneur-action-charge{
         border-radius: 50px;
     }
-    div.conteneur-action-charge div.button-more{
+    div.conteneur-action-charge div.button-group-button{
         border-radius: 50%;
     }
     /* Autre */    
@@ -2595,8 +2595,8 @@ div.conteneur-centrage-marge {
     div.container-zone div.box-result-deux-small {
         flex: auto;
         width: fit-content;
-        padding: var(--ESPACE_S);
-        margin: var(--ESPACE_S) var(--ESPACE_XXS);
+        padding: var(--SPACE_S);
+        margin: var(--SPACE_S) var(--ESPACE_XXS);
     }
 }
 

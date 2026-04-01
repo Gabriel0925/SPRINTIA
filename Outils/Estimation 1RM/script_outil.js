@@ -25,7 +25,7 @@ function EstimationOneRep() {
     }
 
     let ResultEstimation = Estimation1RM.toFixed(1).replace(".", ",") + " kg"
-    document.querySelector(".temps-recup").textContent = ResultEstimation
+    document.querySelector(".large-zone-result-result").textContent = ResultEstimation
     return
 }
 

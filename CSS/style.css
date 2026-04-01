@@ -45,7 +45,7 @@
     --TIME_TRANSITION: 0.2s;
 
     /* Flèche vers le bas ComBox outils */
-    --URL_FLECHE_ICON: url("../Assets/icons-interface/icon_fleche.svg");
+    --URL_FLECHE_ICON: url("../Assets/icons/icon_fleche.svg");
 
     /* COLOR pour le hover des pastilles */
     --COLOR_PASTILLES_0: #42a5f5; 
@@ -387,15 +387,8 @@ button.table:active{
 }
 
 /* pour les boutons dynamique */
-button#download-button,
-button#restoration-button,
-button#reinitialiser-sprintia,
-button#reinitialiser,
-button#button-sauvegarder-note-workout { /* telecharger/restaurer mes données + Réinitialiser Sprintia + Réinitialiser votre coach */
+button.size-block { /* telecharger/restaurer mes données + Réinitialiser Sprintia + Réinitialiser votre coach */
     width: 270px;
-}
-button#conversion { /* convertir en allure */
-    width: 230px;
 }
 
 
@@ -717,7 +710,7 @@ div.statut-analyse i#statut{
 }
 
 /* Bouton voir plus */
-div.conteneur-centrage {
+div.container-center {
     display: flex;
     justify-content: center;
 }
@@ -756,16 +749,16 @@ p.button-group-button-text{
 }
 
 /* pour les outils récemment utilisés */
-div.conteneur-outil-recent {
+section.container-tools-pin {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
-div.conteneur-outil-recent a{
+section.container-tools-pin a{
     flex-grow: 1;
     width: 400px;
 }
-div.conteneur-outil-recent div.card-outil-recent{
+section.container-tools-pin div.tools-pin{
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_NORMAL);
     margin: var(--SPACE_XS);
@@ -775,20 +768,20 @@ div.conteneur-outil-recent div.card-outil-recent{
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-outil-recent div.card-outil-recent:hover{
+    section.container-tools-pin div.tools-pin:hover{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.conteneur-outil-recent div.card-outil-recent:active{
+section.container-tools-pin div.tools-pin:active{
     transform: scale(var(--SCALE_SMALL));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-div.conteneur-outil-recent div.card-outil-recent i{
+section.container-tools-pin div.tools-pin i{
     background-color: transparent;
     font-size: var(--H1);
     margin: var(--SPACE_XS);
 }
-div.conteneur-outil-recent div.card-outil-recent p{
+section.container-tools-pin div.tools-pin p{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     margin: var(--SPACE_XS) 0;
     margin-left: var(--SPACE_XXS);
@@ -810,7 +803,7 @@ div.carousel {
 div.carousel.table {
     display: block;
 }
-div.carousel div.card-outil {
+div.carousel div.card-tool {
     background-color: var(--COLOR_BACKGROUND_CARD);
     margin: var(--SPACE_XS);
     padding: var(--SPACE_XS);
@@ -821,20 +814,20 @@ div.carousel div.card-outil {
     overflow: hidden;
     transition: all ease-out var(--TIME_TRANSITION);
 }
-div.carousel div.card-outil.first {
+div.carousel div.card-tool.first {
     margin-left: 0;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.carousel div.card-outil:hover {
+    div.carousel div.card-tool:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
         transform: translateY(-5px);
     }
 }
-div.carousel div.card-outil:active {
+div.carousel div.card-tool:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.carousel div.card-outil div.icone{
+div.carousel div.card-tool div.icone{
     display: flex;
     justify-content: center;
     background-color: var(--COLOR_ACCENT2);
@@ -843,20 +836,20 @@ div.carousel div.card-outil div.icone{
     width: 100%;
     position: relative;
 }
-div.carousel:nth-of-type(1) div.card-outil div.icone{
+div.carousel:nth-of-type(1) div.card-tool div.icone{
     background-color: var(--COLOR_ACCENT);
 }
-div.carousel:nth-of-type(3) div.card-outil div.icone{
+div.carousel:nth-of-type(3) div.card-tool div.icone{
     background-color: var(--COLOR_ACCENT);
-}div.carousel:nth-of-type(5) div.card-outil div.icone{
+}div.carousel:nth-of-type(5) div.card-tool div.icone{
     background-color: var(--COLOR_ACCENT);
 }
-div.carousel div.card-outil div.icone i{
+div.carousel div.card-tool div.icone i{
     font-size: 5rem;    
     color: var(--COLOR_BACKGROUND);
     margin: 0 auto;
 }
-div.carousel div.card-outil div.icone div.button-epingler{
+div.carousel div.card-tool div.icone div.button-epingler{
     background-color: var(--COLOR_BACKGROUND_CARD);
     opacity: 0.4;
     border-radius: var(--BORDER_NORMAL);
@@ -873,7 +866,7 @@ div.carousel div.card-outil div.icone div.button-epingler{
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.carousel div.card-outil div.icone div.button-epingler:hover{
+    div.carousel div.card-tool div.icone div.button-epingler:hover{
         opacity: 0.8;
     }
 }
@@ -882,28 +875,28 @@ div.carousel div.card-outil div.icone div.button-epingler{
     40% { transform: scale(1.2)}
     100% { transform: scale(1)}
 }
-div.carousel div.card-outil div.icone div.button-epingler.actif{
+div.carousel div.card-tool div.icone div.button-epingler.actif{
     opacity: 1;
     animation: rebond 0.5s;
 }
-div.carousel div.card-outil div.icone div.button-epingler i{
+div.carousel div.card-tool div.icone div.button-epingler i{
     font-size: 1.2rem;
     color: var(--COLOR_TEXT_PRIMARY);
     transition: all ease-out var(--TIME_TRANSITION);
 }
-div.carousel:nth-of-type(1) div.card-outil div.icone div.button-epingler.actif i{
+div.carousel:nth-of-type(1) div.card-tool div.icone div.button-epingler.actif i{
     color: var(--COLOR_ACCENT);
 }
-div.carousel:nth-of-type(3) div.card-outil div.icone div.button-epingler.actif i{
+div.carousel:nth-of-type(3) div.card-tool div.icone div.button-epingler.actif i{
     color: var(--COLOR_ACCENT);
-}div.carousel:nth-of-type(5) div.card-outil div.icone div.button-epingler.actif i{
+}div.carousel:nth-of-type(5) div.card-tool div.icone div.button-epingler.actif i{
     color: var(--COLOR_ACCENT);
 }
 
-div.carousel div.card-outil div.icone div.button-epingler.actif i{
+div.carousel div.card-tool div.icone div.button-epingler.actif i{
     color: var(--COLOR_ACCENT2);
 }
-div.carousel div.card-outil h1{
+div.carousel div.card-tool h1{
     font-size: var(--H3);
     margin-top: var(--SPACE_XS);
     color: var(--COLOR_TEXT_PRIMARY);
@@ -915,7 +908,7 @@ div.carousel div.card-outil h1{
     line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden; /* Pour cacher ce qui dépasse */
 }
-div.carousel div.card-outil p{
+div.carousel div.card-tool p{
     font-size: var(--P_SMALL);
     margin-top: var(--SPACE_XXS);
     color: var(--COLOR_TEXT_SECONDARY);
@@ -929,13 +922,13 @@ div.carousel div.card-outil p{
 
 
 /* Pour les cards workout history */
-div.conteneur-cards-workout {
+section.container-workout-cards {
     display: block;
     margin: 0 auto;
     max-width: 900px;
     margin-bottom: var(--SPACE_XL);
 }
-div.conteneur-cards-workout div.cards-history-workout {
+section.container-workout-cards div.cards-history-workout {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: 1.55rem;
     height: fit-content;
@@ -947,43 +940,43 @@ div.conteneur-cards-workout div.cards-history-workout {
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-cards-workout div.cards-history-workout:hover {
+    section.container-workout-cards div.cards-history-workout:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.conteneur-cards-workout div.cards-history-workout:active {
+section.container-workout-cards div.cards-history-workout:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
 
 /* pour adapter légèrement les cards et les animations des cards de derniers entraînement sur la page d'accueil */
-div.conteneur-cards-workout.home { 
+section.container-workout-cards.home { 
     margin-bottom: var(--SPACE_L);
     max-width: none;
 }
-div.conteneur-cards-workout div.cards-history-workout.home { 
+section.container-workout-cards div.cards-history-workout.home { 
     margin: var(--SPACE_M) 0;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-cards-workout div.cards-history-workout.home:hover{
+    section.container-workout-cards div.cards-history-workout.home:hover{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.conteneur-cards-workout div.cards-history-workout.home:active{
+section.container-workout-cards div.cards-history-workout.home:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
 /* fin de la partie derniers entrainement home */
 
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-column{
+section.container-workout-cards div.cards-history-workout div.data-workout-column{
     display: flex;
     flex-direction: column;
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p{
+section.container-workout-cards div.cards-history-workout div.data-workout-column p{
     color: var(--COLOR_TEXT_PRIMARY);
     padding: var(--SPACE_XXS);
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.name-workout{
+section.container-workout-cards div.cards-history-workout div.data-workout-column p.name-workout{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
@@ -993,20 +986,20 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.
     line-clamp: 5; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden;
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-column p.sport-date-workout{
+section.container-workout-cards div.cards-history-workout div.data-workout-column p.sport-date-workout{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P);
 }
-div.conteneur-cards-workout div.cards-history-workout p.charge-workout strong{
+section.container-workout-cards div.cards-history-workout p.charge-workout strong{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COLOR_ACCENT2);
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire{
+section.container-workout-cards div.cards-history-workout div.data-workout-paire{
     display: flex;
     margin: var(--SPACE_XXS) 0;
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p{
+section.container-workout-cards div.cards-history-workout div.data-workout-paire p{
     color: var(--COLOR_TEXT_PRIMARYE);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_NORMAL);
@@ -1017,11 +1010,11 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p{
     margin: 2px 4px;
     flex-grow: 1;
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p strong{
+section.container-workout-cards div.cards-history-workout div.data-workout-paire p strong{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     letter-spacing: 0.1px;
 }
-div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p.muscles-workout{
+section.container-workout-cards div.cards-history-workout div.data-workout-paire p.muscles-workout{
     margin-top: var(--SPACE_XXS);
     text-align: left;
 
@@ -1031,13 +1024,13 @@ div.conteneur-cards-workout div.cards-history-workout div.data-workout-paire p.m
     line-clamp: 6; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden;
 }
-div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout{
+section.container-workout-cards div.cards-history-workout div.action-button-card-workout{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: var(--SPACE_S_SMALL);
 }
-div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button{
+section.container-workout-cards div.cards-history-workout div.action-button-card-workout button{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     background-color: var(--COLOR_ACCENT);
     color: var(--COLOR_BACKGROUND);
@@ -1054,15 +1047,15 @@ div.conteneur-cards-workout div.cards-history-workout div.action-button-card-wor
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button:hover{
+    section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:hover{
         background-color: var(--COLOR_ACCENT2);
     }
 }
-div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button:active{
+section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:active{
     background-color: var(--COLOR_ACCENT2);
     transform: scale(1);
 }
-div.conteneur-cards-workout div.cards-history-workout div.action-button-card-workout button i{
+section.container-workout-cards div.cards-history-workout div.action-button-card-workout button i{
     color: var(--COLOR_BACKGROUND);
     font-size: var(--P);
     font-weight: normal;
@@ -1168,6 +1161,38 @@ div.toolbar i:active {
     transform: scale(var(--SCALE_NORMAL));
 }
 
+
+div.toolbar div.button-toolbar {
+    background-color: var(--COLOR_ACCENT);
+    display: flex;
+    align-items: center;
+    border-radius: var(--BORDER_BIG);
+    padding: var(--SPACE_XXS);
+    transition: all ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.toolbar div.button-toolbar:hover {
+        background-color: var(--COLOR_ACCENT2);
+    }
+}
+div.toolbar div.button-toolbar:active {
+    background-color: var(--COLOR_ACCENT2);
+    transform: scale(var(--SCALE_NORMAL));
+}
+div.toolbar div.button-toolbar i{
+    background-color: transparent;
+    padding: var(--SPACE_XXS);
+    font-size: 1.8rem;
+    color: var(--COLOR_BACKGROUND);
+}
+div.toolbar div.button-toolbar p{
+    font-size: var(--P);
+    color: var(--COLOR_BACKGROUND);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    margin: var(--SPACE_XXS) 0;
+    margin-right: var(--SPACE_XS);
+}
+
 /* --- Pour le menu plus --- */
 div.menu-many-action {
     background-color: var(--COLOR_BACKGROUND_CARD);
@@ -1228,40 +1253,6 @@ div.menu-many-action li:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-
-
-div.toolbar div.button-toolbar {
-    background-color: var(--COLOR_ACCENT);
-    display: flex;
-    align-items: center;
-    border-radius: var(--BORDER_BIG);
-    padding: var(--SPACE_XXS);
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.toolbar div.button-toolbar:hover {
-        background-color: var(--COLOR_ACCENT2);
-    }
-}
-div.toolbar div.button-toolbar:active {
-    background-color: var(--COLOR_ACCENT2);
-    transform: scale(var(--SCALE_NORMAL));
-}
-div.toolbar div.button-toolbar i{
-    background-color: transparent;
-    padding: var(--SPACE_XXS);
-    font-size: 1.8rem;
-    color: var(--COLOR_BACKGROUND);
-}
-div.toolbar div.button-toolbar p{
-    font-size: var(--P);
-    color: var(--COLOR_BACKGROUND);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin: var(--SPACE_XXS) 0;
-    margin-right: var(--SPACE_XS);
-}
-
-
 
 
 
@@ -1828,7 +1819,7 @@ div.carousel-content {
 div.carousel-content.table {
     display: block;
 }
-div.carousel-content .card-nouveautes {
+div.carousel-content .card-releases {
     width: 230px;
     background-color: var(--COLOR_BACKGROUND_CARD);
     padding: var(--SPACE_XS);
@@ -1836,21 +1827,21 @@ div.carousel-content .card-nouveautes {
     margin: var(--SPACE_XS);
     transition: all ease-out var(--TIME_TRANSITION);
 }
-div.carousel-content .card-nouveautes.first {
+div.carousel-content a:nth-child(1) .card-releases {
     margin-left: 0;
     width: 280px;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.carousel-content .card-nouveautes:hover {
+    div.carousel-content .card-releases:hover {
         transform: translateY(-5px);
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.carousel-content .card-nouveautes:active {
+div.carousel-content .card-releases:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.carousel-content .card-nouveautes-image p{
+div.carousel-content .card-releases-image p{
     font-size: var(--H1);
     text-align: left;
     background-color: var(--COLOR_ACCENT2);
@@ -1861,10 +1852,10 @@ div.carousel-content .card-nouveautes-image p{
     margin-bottom: var(--SPACE_XS);
     padding-left: var(--SPACE_S_SMALL);
 }
-div.carousel-content .card-nouveautes.first .card-nouveautes-image p{
+div.carousel-content a:nth-child(1) .card-releases .card-releases-image p{
     background-color: var(--COLOR_ACCENT);
 }
-div.carousel-content .card-nouveautes p.description-maj {
+div.carousel-content .card-releases p.description-maj {
     font-size: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -1877,7 +1868,7 @@ div.carousel-content .card-nouveautes p.description-maj {
     line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden; /* Pour cacher ce qui dépasse */
 }
-div.carousel-content .card-nouveautes div.date-maj {
+div.carousel-content .card-releases div.date-maj {
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
     margin-top: var(--SPACE_XS);
@@ -1887,9 +1878,7 @@ div.action-list {
     max-width: var(--MAX_WIDTH);
     margin: var(--SPACE_S) auto;
 }
-div.action-list div.action-list-item,
-div.action-list div.action-list-item1,
-div.action-list div.action-list-item2 {
+div.action-list div.action-list-item {
     display: flex; 
     align-items: center;
     margin: var(--SPACE_XXS) 0px;
@@ -1898,14 +1887,14 @@ div.action-list div.action-list-item2 {
 
     transition: all ease-out var(--TIME_TRANSITION);
 }
-div.action-list div.action-list-item.arrondi { /* pour la licence dans les paramètres */
+div.action-list div.action-list-item.round { /* pour la licence dans les paramètres */
     border-radius: var(--BORDER_BIG);
 }
-div.action-list div.action-list-item1 {
+div.action-list a:nth-child(1) div.action-list-item {
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
 }
-div.action-list div.action-list-item2 {
+div.action-list a:nth-last-child(1) div.action-list-item {
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
 }
@@ -1916,9 +1905,7 @@ div.action-list div.action-list-item2 {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.action-list div.action-list-item:active,
-div.action-list div.action-list-item1:active,
-div.action-list div.action-list-item2:active{
+div.action-list div.action-list-item:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: 50px;
     transform: scale(var(--SCALE_SMALL));
@@ -1927,9 +1914,7 @@ div.action-list i{
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H0);
 }
-div.action-list div.action-list-item p, 
-div.action-list div.action-list-item1 p,
-div.action-list div.action-list-item2 p{
+div.action-list div.action-list-item p{
     margin-left: var(--SPACE_S);
     font-size: var(--H3);
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1937,13 +1922,13 @@ div.action-list div.action-list-item2 p{
 
 
 /* ----- Style page "Historique des versions" ----- */
-div.conteneur-historique-versions {
+section.container-version-history {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 /* Card mise en avant derniere version */
-.conteneur-historique-versions .box-last-maj{
+section.container-version-history .box-last-maj{
     background: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
     max-width: 1150px;
@@ -1952,16 +1937,16 @@ div.conteneur-historique-versions {
     transition: all var(--TIME_TRANSITION) ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
-    .conteneur-historique-versions .box-last-maj:hover{
+    section.container-version-history .box-last-maj:hover{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-.conteneur-historique-versions .box-last-maj:active{
+section.container-version-history .box-last-maj:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
 /* Contenu supérieur */
-div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-image-last-maj {
+section.container-version-history .box-last-maj div.content1 .card-releases-image-last-maj {
     font-size: var(--H1);
     width: fit-content;
     text-align: left;
@@ -1972,20 +1957,20 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
     border-radius: var(--BORDER_NORMAL);
     margin-bottom: var(--SPACE_S);
 }
-div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-image-last-maj p.date-last-maj{
+section.container-version-history .box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
     font-size: var(--H3);
 }
 /* Contenu inférieur */
-.conteneur-historique-versions .box-last-maj div.content2 {
+section.container-version-history .box-last-maj div.content2 {
     display: block;
     margin-top: var(--SPACE_XS);
 }
-.conteneur-historique-versions .box-last-maj div.content2 .description{
+section.container-version-history .box-last-maj div.content2 .description{
     font-size: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
     cursor: pointer;
 }
-.conteneur-historique-versions .box-last-maj div.content2 button{
+section.container-version-history .box-last-maj div.content2 button{
     font-size: var(--P);
     font: var(--FONT_FAMILY);
     color: var(--COLOR_BACKGROUND);
@@ -2004,20 +1989,20 @@ div.conteneur-historique-versions .box-last-maj div.content1 .card-nouveautes-im
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    .conteneur-historique-versions .box-last-maj div.content2 button:hover {
+    section.container-version-history .box-last-maj div.content2 button:hover {
         background-color: var(--COLOR_ACCENT2);
     }
 }
-.conteneur-historique-versions .box-last-maj div.content2 button:active{
+section.container-version-history .box-last-maj div.content2 button:active{
     background-color: var(--COLOR_ACCENT2);
     transform: scale(1); /* pour éviter que le bouton s'enfonce alors que la card fais deja un transform scale */
 }
 /* Card Historique versions */
 /* Les cards sont invisible de base */
-div.conteneur-historique-versions .card-nouveautes {
+section.container-version-history .card-releases {
     display: none;
 }
-div.conteneur-historique-versions .card-nouveautes.visible {
+section.container-version-history .card-releases.visible {
     width: 370px;
     flex-grow: 1;
     display: block;
@@ -2029,15 +2014,15 @@ div.conteneur-historique-versions .card-nouveautes.visible {
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.conteneur-historique-versions .card-nouveautes.visible:hover {
+    section.container-version-history .card-releases.visible:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.conteneur-historique-versions .card-nouveautes.visible:active {
+section.container-version-history .card-releases.visible:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.conteneur-historique-versions .card-nouveautes-image p {
+section.container-version-history .card-releases-image p {
     font-size: var(--H1);
     text-align: left;
     background-color: var(--COLOR_ACCENT2);
@@ -2048,7 +2033,7 @@ div.conteneur-historique-versions .card-nouveautes-image p {
     margin-bottom: var(--SPACE_XS);
     padding-left: var(--SPACE_S_SMALL);
 }
-div.conteneur-historique-versions .card-nouveautes p.description-maj {
+section.container-version-history .card-releases p.description-maj {
     font-size: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
     padding: var(--SPACE_XXS);
@@ -2060,7 +2045,7 @@ div.conteneur-historique-versions .card-nouveautes p.description-maj {
     line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden; /* Pour cacher ce qui dépasse */
 }
-div.conteneur-historique-versions .card-nouveautes div.date-maj {
+section.container-version-history .card-releases div.date-maj {
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
     margin-top: var(--SPACE_S);
@@ -2095,12 +2080,7 @@ div.gallery-version img:nth-child(1){
 
 
 
-
-/* ----- Style page "Thèmes" ----- */
-div.boite-ensemble-feature {
-    margin: 0 auto;
-    max-width: 900px;
-}
+/* ----- Thèmes + Toggle----- */
 div.banner-toggle {
     display: flex;
     align-items: center;
@@ -2159,12 +2139,14 @@ div.banner-toggle input[type="checkbox"].toggle:checked:after{
 
 
 /* Section pour la COLOR accentuation */
-ol.conteneur-color-acuentation{
+ol.container-color-accentuation{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     gap: var(--SPACE_M);
+    max-width: 900px;
+    margin: var(--SPACE_L) auto;
 }
 li.option-color {
     width: 40%;
@@ -2263,7 +2245,7 @@ ol li.option-color:nth-child(14)::before{
     background: linear-gradient(130deg, var(--COLOR_PASTILLES_D11) 50%, var(--COLOR_PASTILLES_D12) 50%);
 }
 /* Style du bouton réinitialiser */
-div.conteneur-centrage-marge {
+div.container-center-marge {
     padding: var(--SPACE_XS);
     margin: var(--SPACE_S);
     justify-content: center;
@@ -2282,76 +2264,71 @@ div.conteneur-centrage-marge {
 
 /* page accueil */
 @media (max-width : 480px) {
-    div.conteneur-outil-recent div.card-outil-recent {
+    section.container-tools-pin div.tools-pin {
         margin: var(--SPACE_XS) 0;
     }
 }
 
 /* card hisotrique versions */
 @media (max-width: 1245px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 360px;
     }
 }
 @media (max-width: 1205px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 340px;
     }
 }
 @media (max-width: 1140px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 320px;
     }
 }
 @media (max-width: 1080px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 430px;
     }
 }
 @media (max-width: 975px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 400px;
     }
 }
 @media (max-width: 905px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 370px;
     }
 }
 @media (max-width: 845px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 340px;
     }
 }
 @media (max-width: 790px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 320px;
     }
 }
 @media (max-width: 742px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 300px;
     }
 }
 @media (max-width: 690px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: 270px;
     }
 }
 @media (max-width: 640px) {
-    div.conteneur-historique-versions .card-nouveautes.visible{
+    section.container-version-history .card-releases.visible{
         width: calc(100% - (var(--SPACE_S_SMALL) * 2));
     }
 }
 @media (max-width: 510px) {
-    div.conteneur-historique-versions .card-nouveautes.visible {
+    section.container-version-history .card-releases.visible {
         width: 100%;
         margin: var(--SPACE_S) 0px;
-    }
-}
-@media (max-width: 350px) {
-    div.cards-history-workout div.data-workout-paire p.muscles-workout{  
-        padding: 0.3rem; /* !! Ne pas changer ou alors test en responsive avec 320 en width */
     }
 }
 
@@ -2378,7 +2355,7 @@ div.conteneur-centrage-marge {
 }
 @media (max-width: 540px) {
     /* Pour la card derniere nouveauté */
-    .conteneur-historique-versions .box-last-maj div.content2 .description{
+    section.container-version-history .box-last-maj div.content2 .description{
         display: -webkit-box;
         -webkit-box-orient: vertical; /* On compte les lignes verticalement */
         -webkit-line-clamp: 12;
@@ -2387,24 +2364,18 @@ div.conteneur-centrage-marge {
     }
 }
 @media (max-width: 480px) {
-    .conteneur-historique-versions .box-last-maj div.content2 button {
+    section.container-version-history .box-last-maj div.content2 button {
         width: 100%;
     }
 }
 
 @media (max-width: 510px) {
-    .conteneur-historique-versions .box-last-maj {
+    section.container-version-history .box-last-maj {
         margin: var(--SPACE_S) 0px;
     }
 }
 
 /* ----- Pour l'interieur des outils ----- */
-@media (max-width: 1008px) {
-    div.container-zone div.box-result {
-        margin: var(--SPACE_S);
-        width: 420px;
-    }
-}
 @media (max-width: 490px) {
     div.form div.side-by-side {
         display: block;

@@ -14,7 +14,7 @@ window.onclick = function (event) { // on track les click sur la page complete
     let TrackClickBurgerMenuButton = burgerMenuButton.contains(event.target) // pour tracker si il y a un click sur le bouton si oui = true sinon = false
     let TrackClickBurgerMenuOpen = burgerMenu.contains(event.target)
     let TrackClickButtonMore = document.getElementById("button-group-button")
-    let TrackClickButtonInMenuMore = document.querySelector(".menu-button-group-button") // pour tracker si le user click sur un li dans le menu du bouton plus (ex dans entrainement : modifier,supprimer)
+    let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus (ex dans entrainement : modifier,supprimer)
      
     // si dans la page il y a le bouton plus alors on regarde si cest sur lui qu'on a cliqué
     if (TrackClickButtonMore && TrackClickButtonInMenuMore) {
@@ -31,7 +31,7 @@ window.onclick = function (event) { // on track les click sur la page complete
         burgerMenu.classList.remove("open")
         burgerMenuButtonIcon.classList.add("fs-icon_menu")
         // pour le menu plus
-        const menuButtonMore = document.querySelector(".menu-button-group-button")
+        const menuButtonMore = document.querySelector(".menu-many-action")
         if (menuButtonMore) {
             // on referme le menu plus
             menuButtonMore.classList.remove("open")
@@ -50,10 +50,10 @@ window.addEventListener("scroll", () => {
 
 
 // --- Menu plus ---
-const menuButtonMore = document.querySelector(".menu-button-group-button")
+const menuButtonMore = document.querySelector(".menu-many-action")
 window.addEventListener("click", (event) => {
     if (event.target.id == "button-group-button") {
-        const menuButtonMore = document.querySelector(".menu-button-group-button")
+        const menuButtonMore = document.querySelector(".menu-many-action")
         menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
         const isOpenMenuMore = menuButtonMore.classList.contains('open')
@@ -61,7 +61,7 @@ window.addEventListener("click", (event) => {
     }
 })
 window.addEventListener("scroll", () => {
-    const menuButtonMore = document.querySelector(".menu-button-group-button")
+    const menuButtonMore = document.querySelector(".menu-many-action")
     if (menuButtonMore) {
         // on referme le menu plus
         menuButtonMore.classList.remove("open")
@@ -73,21 +73,12 @@ window.addEventListener("scroll", () => {
 
 
 
-// --- Pr gérer le BFCache ---
-window.addEventListener("pageshow", (event) => {
-    // Pour contrer le BFCache parce qu'il mettait en cache mes anciennes pages pour éviter de les recharger mais ça causait probleme pour les thèmes
-    if (event.persisted) { // event.persisted = quand la page est dans le cache
-        // forcer de lancer la fonction qui charge le thème quand on fait un retour donc quand la page viens du BFCache
-        user_preference()
-    }
-});
-
-
-
 // --- Pour le logo dynamique ---
+
+
+
 let Timer1 = 0
 let Timer2 = 0
-
 function logoDynamique(message) {
     // timeout remis a 0 (suppresion plutot)
     clearTimeout(Timer1)
@@ -110,10 +101,6 @@ function logoDynamique(message) {
         document.getElementById("logo-dynamique").classList.remove("pin-message")
     }, 3100) // durée choisis à la main
 }
-
-
-
-// --- Fin mise à jour local storage ---
 
 
 

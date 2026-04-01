@@ -1,6 +1,6 @@
-/* Initialisation des variables */
+/* Initialisation des variables CSS */
 :root {
-    /* COLORs Sprintia */
+    /* Couleur de l'interface de Sprintia */
     --COLOR_ACCENT: #42a5f5; 
     --COLOR_ACCENT2: #90caf9; 
     
@@ -11,7 +11,7 @@
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
-    /* Tailles & Configuration Font */
+    /* Tailles & Configuration de la font */
     --H0: 2.5rem; 
     --H1: 2rem;
     --H2: 1.6rem;
@@ -27,27 +27,27 @@
     --BORDER_NORMAL: 1rem;
     --BORDER_BIG: 1.5rem;
 
-    /* Enfoncement d'un élément lors d'un clic */
+    /* Valeur d'enfoncement d'un élément lors d'un clic (pour les ':active') */
     --SCALE_SMALL: 0.98;
     --SCALE_NORMAL: 0.95;
 
-    /* Marges intérieur/extérieur (Basé sur 0.5rem) */
-    --SPACE_XXS: 0.25rem;   /* 4px */
-    --SPACE_XS: 0.5rem;   /* 8px */
-    --SPACE_S_SMALL: 0.9rem;     /* 16px */
-    --SPACE_S: 1rem;     /* 16px */
-    --SPACE_M: 1.5rem;   /* 24px */
-    --SPACE_L: 2rem;     /* 32px */
-    --SPACE_XL: 3rem;     /* 48px */
-
-    /* Autres */
+    /* Marges  */
+    --SPACE_XXS: 0.25rem;
+    --SPACE_XS: 0.5rem;
+    --SPACE_S_SMALL: 0.9rem;
+    --SPACE_S: 1rem;
+    --SPACE_M: 1.5rem;
+    --SPACE_L: 2rem;
+    --SPACE_XL: 3rem;
+    
+    /* Autres variables */
     --MAX_WIDTH: 1250px;
     --TIME_TRANSITION: 0.2s;
 
-    /* Flèche vers le bas ComBox outils */
+    /* URL flèche vers le bas pour les combobox */
     --URL_FLECHE_ICON: url("../Assets/icons/icon_fleche.svg");
 
-    /* COLOR pour le hover des pastilles */
+    /* Couleur pour le hover des pastilles des thèmes */
     --COLOR_PASTILLES_0: #42a5f5; 
     --COLOR_PASTILLES_0_HOVER: #90caf9; 
 
@@ -90,7 +90,7 @@
     --COLOR_PASTILLES_D11: #FFF700;  
     --COLOR_PASTILLES_D12: #fffb93;  
 }
-/* Pour les icônes */
+/* Pour les icônes dans l'application */
 @font-face {
     font-family: 'Font-Sprintia';
     src:  url('../Assets/icons/Font-Sprintia-V4.2.eot?7gygna');
@@ -126,6 +126,7 @@
     font-weight: 900;
     src: url('../Assets/fonts/zalando-sans-semiexpanded-v2-latin-900.woff2') format('woff2'); 
 }
+/* Configuration des icônes de l'application */
 i {
     font-family: 'Font-Sprintia' !important;
     /*speak: never;*/
@@ -159,119 +160,92 @@ i {
 .fs-icon_coach:before {
     content: "\e906";
 }
-.fs-icon_confidentialite:before {
+.fs-icon_epingler:before {
     content: "\e907";
 }
-.fs-icon_epingler:before {
+.fs-icon_fermer:before {
     content: "\e908";
 }
-.fs-icon_fermer:before {
+.fs-icon_historique:before {
     content: "\e909";
 }
-.fs-icon_historique:before {
+.fs-icon_IMC:before {
     content: "\e90a";
 }
-.fs-icon_ia:before {
+.fs-icon_import_file:before {
     content: "\e90b";
-    color: var(--COLOR_TEXT_PRIMARY);
-}
-.fs-icon_IMC:before {
-    content: "\e90c";
 }
 .fs-icon_indulgence_course:before {
+    content: "\e90c";
+}
+.fs-icon_labs:before {
     content: "\e90d";
 }
-.fs-icon_licence:before {
-    content: "\e90e";
-    color: var(--COLOR_TEXT_PRIMARY);
-}
-.fs-icon_mail:before {
-    content: "\e90f";
-    color: var(--COLOR_TEXT_PRIMARY);
-}
 .fs-icon_menu:before {
-    content: "\e910";
+    content: "\e90e";
 }
 .fs-icon_miles_km:before {
-    content: "\e911";
-}
-.fs-icon_mode_clair_sombre:before {
-    content: "\e912";
+    content: "\e90f";
 }
 .fs-icon_modifier:before {
-    content: "\e913";
+    content: "\e910";
 }
 .fs-icon_niveau_course:before {
-    content: "\e914";
+    content: "\e911";
 }
 .fs-icon_outils:before {
-    content: "\e915";
+    content: "\e912";
 }
 .fs-icon_parametres:before {
-    content: "\e916";
+    content: "\e913";
 }
 .fs-icon_partager:before {
-    content: "\e917";
-    color: var(--COLOR_TEXT_PRIMARY);
+    content: "\e914";
 }
 .fs-icon_pause:before {
-    content: "\e918";
-}
-.fs-icon_play:before {
-    content: "\e919";
-    color: var(--COLOR_TEXT_PRIMARY);
+    content: "\e915";
 }
 .fs-icon_plus:before {
-    content: "\e91a";
+    content: "\e916";
 }
 .fs-icon_predicteur_performance:before {
-    content: "\e91b";
+    content: "\e917";
+}
+.fs-icon_profil:before {
+    content: "\e918";
 }
 .fs-icon_proteines:before {
-    content: "\e91c";
-}
-.fs-icon_sauvegarde:before {
-    content: "\e91d";
-}
-.fs-icon_store:before {
-    content: "\e91e";
+    content: "\e919";
 }
 .fs-icon_supprimer:before {
-    content: "\e91f";
-    color: var(--COLOR_TEXT_PRIMARY);
-}
-.fs-icon_telecharger:before {
-    content: "\e920";
+    content: "\e91a";
 }
 .fs-icon_temps_recup:before {
-    content: "\e921";
+    content: "\e91b";
 }
 .fs-icon_themes:before {
-    content: "\e922";
+    content: "\e91c";
 }
 .fs-icon_transpiration:before {
-    content: "\e923";
-}
-.fs-icon_upload:before {
-    content: "\e924";
+    content: "\e91d";
 }
 .fs-icon_VMA:before {
-    content: "\e925";
+    content: "\e91e";
 }
 .fs-icon_VO2MAX:before {
-    content: "\e926";
+    content: "\e91f";
 }
 .fs-icon_zones_cardiaques:before {
-    content: "\e927";
+    content: "\e920";
 }
 .fs-icon_zones_puissance:before {
-    content: "\e928";
+    content: "\e921";
 }
 .fs-icon_zones_vitesse:before {
-    content: "\e929";
+    content: "\e922";
 }
 
-/* ----- On reset le style ----- */
+/* --- Reset du style de base d'une page d'HTML --- */
 * {
     margin: 0;
     padding: 0;
@@ -283,25 +257,22 @@ i {
     scrollbar-color: var(--COLOR_TEXT_SECONDARY) transparent;
     scrollbar-width: thin;
 }
-/* Pour les barres de slide (pr Chrome/Safari) */
+/* --- Reset du style pour les sliders */
 *::-webkit-scrollbar {/* Pour l'épaisseur */width: 6px;}
 *::-webkit-scrollbar-track {background: transparent;}
 *::-webkit-scrollbar-thumb {background: var(--COLOR_TEXT_SECONDARY);}
 
 body {
-    /* Pour la font */
     font-family: var(--FONT_FAMILY); 
-    /* Pour que les elements en position absolute respecte les contraintes du body comme le max-width */
+    /* Pour que les éléments en position 'absolute' respecte les contraintes du body comme le max-width */
     position: relative;
     line-height: var(--LINE_HEIGHT);
-    /* Pour le style */
     background-color: var(--COLOR_BACKGROUND); 
     color: var(--COLOR_TEXT_PRIMARY);
-    /* Pour la base d'une page web de Sprintia */
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
     padding: var(--SPACE_S);
-    /* Pour désactiver le truc bleu lors d'un clic sur un element de linterface */
+    /* Pour désactiver le highlight bleu lors d'un clic sur les balises a majoritairement */
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -321,7 +292,6 @@ p.text {
     margin: var(--SPACE_S_SMALL) 0px;
 }
 
-/* style button */
 button{
     background-color: var(--COLOR_ACCENT);
     border: none;
@@ -338,7 +308,6 @@ button{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--P);
     
-    /* desactive le style par defaut */
     appearance: none;
     outline: none;
     -webkit-appearance: none;
@@ -354,7 +323,7 @@ button:active{
     background-color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
-/* pr button dans tableau */
+/* Pour les boutons dans un tableau */
 button.table {
     background-color: transparent;
     border: none;
@@ -369,7 +338,6 @@ button.table {
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--P);
     
-    /* desactive le style par defaut */
     appearance: none;
     outline: none;
     -webkit-appearance: none;
@@ -385,14 +353,13 @@ button.table:active{
     color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
-
-/* pour les boutons dynamique */
-button.size-block { /* telecharger/restaurer mes données + Réinitialiser Sprintia + Réinitialiser votre coach */
+/* Pour les boutons dynamique */
+button.size-block {
     width: 270px;
 }
 
 
-/* Lien text vers adresse */
+/* Pour des liens vers une adresse */
 a.lien {
     color: var(--COLOR_ACCENT2);
     cursor: pointer;
@@ -410,7 +377,6 @@ a.lien:active{
 }
 
 
-/* ----- Footer ----- */
 footer {
     display: flex;
     flex-wrap: wrap;
@@ -434,6 +400,7 @@ footer a.a_footer{
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     padding: var(--SPACE_XS);
+    cursor: pointer;
     margin: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
     transition: all ease-out var(--TIME_TRANSITION);
@@ -452,13 +419,11 @@ footer a.a_footer:active{
 
 
 
-/* ----- Style de la Nav-Bar ----- */
 header {
     position: sticky;
     top: 0;
     margin: 0 auto;
     background-color: transparent;
-    /* Le z-index sert que les cartes ne passe pas devant lors d'un hover */
     z-index: 2000;
 }
 header div.navbar {
@@ -476,14 +441,15 @@ header div.navbar .logo a {
     color: var(--COLOR_TEXT_PRIMARY); 
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
-    width: 150px; /* width quand s'est écrit Sprintia */
+    width: 150px; /* width quand c'est écrit Sprintia */
     max-width: 350px;
-    max-height: 55px; /* pour sécuriser lanimation */
-    overflow: hidden; /* pour sécuriser lanimation */
+    max-height: 55px; /* pour sécuriser l'animation */
+    overflow: hidden; /* pour sécuriser l'animation */
     text-align: center;
-    white-space: nowrap; /* empecher le retour à la ligne (pr l'animation) */
+    white-space: nowrap; /* empêcher le retour à la ligne (pr l'animation) */
     margin-top: var(--SPACE_XS);
     margin-bottom: var(--SPACE_M);
+    cursor: pointer;
 
     font-weight: 1000;
     padding: var(--SPACE_XS);
@@ -499,23 +465,23 @@ header div.navbar .logo a {
     50% {transform: scale(0.85);} 
     100% {transform: scale(1);} 
 }
-header div.navbar .logo a.pin-message { /* pour le 'dynamic island' */
+header div.navbar .logo a.pin-message { /* pour le logo dynamique */
     background: var(--COLOR_BACKGROUND_CARD_HOVER);
     border: 2px solid var(--COLOR_ACCENT);
     width: 100%;
-    /* forcards permet de forcer de garder létat de l'élement a la fin de l'animation */
+    /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: dynamic_logo 0.6s forwards;
 }
-@keyframes reverse_dynamic_logo { /* animation pour le retour à l'etat normal de "Ajouté à l'accueil" vers "Sprintia" */
+@keyframes reverse_dynamic_logo {
     0% {transform: scale(1);} 
     25% {transform: scale(0.85);} 
     50% {transform: scale(1.15);} 
     100% { transform: scale(1);} 
 }
-header div.navbar .logo a.pin-message.return { /* pour le retour à l'état initial 'dynamic island' */
+header div.navbar .logo a.pin-message.return { /* pour le retour à l'état initial */
     width: 150px;
     border: 1px solid var(--COLOR_ACCENT);
-    /* forcards permet de forcer de garder létat de l'élement a la fin de l'animation */
+    /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: reverse_dynamic_logo 0.6s forwards;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -549,7 +515,6 @@ header div.navbar div.burger-menu-button {
     display: none;
     transition: all ease-out var(--TIME_TRANSITION);
 }
-/* Pour que le bouton rétrécisse au moment du clic */
 header div.navbar div.burger-menu-button:active {
     transform: scale(var(--SCALE_NORMAL));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -558,6 +523,7 @@ header div.navbar ul.links li a {
     color: var(--COLOR_TEXT_PRIMARY); 
     font-size: var(--H3);
     width: 180px;
+    cursor: pointer;
     margin: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
     padding: 9px 0px;
@@ -591,7 +557,6 @@ header div.navbar ul.links li a.actif {
 
 
 
-/* ----- Menu Hamburger ----- */
 header .burger-menu {
     display: none;
     position: absolute;
@@ -608,7 +573,7 @@ header .burger-menu {
 }
 header .burger-menu.open {
     max-height: 350px;
-    transform: translate(0, 0) scale(1, 1); /* On remet la taille normale */
+    transform: translate(0, 0) scale(1, 1); 
     background-color: var(--COLOR_BACKGROUND_CARD);
 
     box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
@@ -625,7 +590,6 @@ header .burger-menu li {
 header .burger-menu.open li {
     color: var(--COLOR_TEXT_PRIMARY);
 }
-/* pas la meme durée en fonction du li */
 header .burger-menu.open li:nth-child(1) {
     animation: rebond_icon_burger_open 0.36s ease-out;
 }
@@ -641,6 +605,7 @@ header .burger-menu li a {
     font-size: var(--H3);
     min-width: 96%;
     display: block;
+    cursor: pointer;
     text-align: left;
     padding: var(--SPACE_XS);
     margin: var(--SPACE_XXS);
@@ -674,8 +639,6 @@ header .burger-menu li a.actif-burger-menu:active {
 
 
 
-/* ----- Style page "Accueil" ----- */
-/* statut analyse */ 
 div.statut-analyse {
     background-color: var(--COLOR_BACKGROUND_CARD);
     margin: var(--SPACE_M) 0;
@@ -709,7 +672,6 @@ div.statut-analyse i#statut{
     width: 50px;
 }
 
-/* Bouton voir plus */
 div.container-center {
     display: flex;
     justify-content: center;
@@ -739,7 +701,7 @@ div.container-center {
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COLOR_BACKGROUND);
     margin: 0 var(--SPACE_XXS);
-    vertical-align: middle; /* Aligne l'image au centre verticalement */
+    vertical-align: middle; 
 }
 p.button-group-button-text{
     font-size: var(--P);
@@ -748,7 +710,8 @@ p.button-group-button-text{
     margin: 0 var(--SPACE_XXS);
 }
 
-/* pour les outils récemment utilisés */
+
+
 section.container-tools-pin {
     display: flex;
     flex-wrap: wrap;
@@ -791,7 +754,6 @@ section.container-tools-pin div.tools-pin p{
 
 
 
-/* ----- Style page "Outils" ----- */
 div.carousel {
     max-width: var(--MAX_WIDTH);
     padding-bottom: var(--SPACE_XS);
@@ -807,7 +769,7 @@ div.carousel div.card-tool {
     background-color: var(--COLOR_BACKGROUND_CARD);
     margin: var(--SPACE_XS);
     padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_BIG); /*border de l'image + padding = 1.1rem + 0.5rem = 1.6rem*/
+    border-radius: var(--BORDER_BIG);
 
     width: 235px;
     height: fit-content;
@@ -903,10 +865,10 @@ div.carousel div.card-tool h1{
     min-height: 60px;
     
     display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
+    -webkit-box-orient: vertical; 
     -webkit-line-clamp: 2; /* Limite à 2 lignes */
-    line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
-    overflow: hidden; /* Pour cacher ce qui dépasse */
+    line-clamp: 2; /* Je met également ça pour que ça assure la compatibilité avec tous les navigateurs */
+    overflow: hidden;
 }
 div.carousel div.card-tool p{
     font-size: var(--P_SMALL);
@@ -914,14 +876,13 @@ div.carousel div.card-tool p{
     color: var(--COLOR_TEXT_SECONDARY);
 
     display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
-    -webkit-line-clamp: 3; /* Limite à 3 lignes */
-    line-clamp: 3; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
-    overflow: hidden; /* Pour cacher ce qui dépasse */
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3; 
+    line-clamp: 3;
+    overflow: hidden; 
 }
 
 
-/* Pour les cards workout history */
 section.container-workout-cards {
     display: block;
     margin: 0 auto;
@@ -949,7 +910,7 @@ section.container-workout-cards div.cards-history-workout:active {
     transform: scale(var(--SCALE_SMALL));
 }
 
-/* pour adapter légèrement les cards et les animations des cards de derniers entraînement sur la page d'accueil */
+/* Pour adapter légèrement les cards et les animations des cards de derniers entraînements sur la page d'accueil */
 section.container-workout-cards.home { 
     margin-bottom: var(--SPACE_L);
     max-width: none;
@@ -966,7 +927,7 @@ section.container-workout-cards div.cards-history-workout.home:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
-/* fin de la partie derniers entrainement home */
+/* fin de la partie derniers entrainements dans la page d'accueil */
 
 section.container-workout-cards div.cards-history-workout div.data-workout-column{
     display: flex;
@@ -981,9 +942,9 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
     font-size: var(--H3);
 
     display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
-    line-clamp: 5; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
+    line-clamp: 5;
     overflow: hidden;
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.sport-date-workout{
@@ -1019,9 +980,9 @@ section.container-workout-cards div.cards-history-workout div.data-workout-paire
     text-align: left;
 
     display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
-    line-clamp: 6; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
+    line-clamp: 6; 
     overflow: hidden;
 }
 section.container-workout-cards div.cards-history-workout div.action-button-card-workout{
@@ -1063,7 +1024,8 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
 }
 /* fin card workout */
 
-/* --- Pour le détail de l'entraînement --- */
+
+
 p.text-toolbar {
     color: var(--COLOR_TEXT_SECONDARY);
 }
@@ -1134,9 +1096,9 @@ div.toolbar a {
 div.toolbar h1 {
     margin: 0;
     display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
+    -webkit-box-orient: vertical; 
     -webkit-line-clamp: 1;
-    line-clamp: 1; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
+    line-clamp: 1; 
     overflow: hidden;
 }
 div.toolbar i {
@@ -1193,7 +1155,8 @@ div.toolbar div.button-toolbar p{
     margin-right: var(--SPACE_XS);
 }
 
-/* --- Pour le menu plus --- */
+
+
 div.menu-many-action {
     background-color: var(--COLOR_BACKGROUND_CARD);
     width: 200px;
@@ -1256,7 +1219,6 @@ div.menu-many-action li:active{
 
 
 
-/* --- Conteneur les outils --- */
 section.container-zone {
     display: flex;
     justify-content: center;
@@ -1301,7 +1263,7 @@ div.zone-coach p.zone-coach-interpretation {
 }
 
 
-/* --- Zone pour le coach --- */
+/* --- Zone pour le coach qui prend tout l'espace dispo --- */
 div.large-zone-coach {
     border-radius: var(--BORDER_BIG);
     background-color: var(--COLOR_ACCENT2);
@@ -1444,7 +1406,8 @@ div.small-zone-result div.container-result p.small-zone-result-result-unit{
     font-size: var(--H3);
 }
 
-/* --- Formulaire --- */
+
+
 div.form {
     border-radius: var(--BORDER_BIG);
     background-color: var(--COLOR_BACKGROUND_CARD);
@@ -1456,7 +1419,7 @@ div.form {
 
     width: 420px;
 }
-/* Message d'erreur intégré au formulaire */
+/* Pour les messages intégré au formulaire */
 div.form p.indication {
     display: none;
     color: var(--COLOR_ACCENT);
@@ -1515,7 +1478,7 @@ input[type="text"]:focus,
 input[type="date"]:focus {
     box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
 }
-/* Pour les input date */
+/* Pour les inputs date */
 input[type="date"]{
     width: calc(100% - (var(--SPACE_XS) * 2));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -1535,12 +1498,11 @@ input[type="date"]{
     
     transition: all ease-out var(--TIME_TRANSITION);
 }
-/* Pour le niveau de course */
 input[type="date"].small{
     width: 190px;
 }
 /* Pour chrome, safari */
-input[type="date"]::-webkit-calendar-picker-indicator{ /*pour cacher l'icone */
+input[type="date"]::-webkit-calendar-picker-indicator{ 
     display: none;
     -webkit-appearance: none;
 }
@@ -1549,7 +1511,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{ /*pour cacher l'icone */
 input::placeholder {
     color: transparent !important; /* Il faut mettre le !important sinon ça ne marche pas */
 }
-/* Logique d'animations */
+/* Logique de l'animation */
 div.label-input {
     position: absolute;
     font-size: var(--P);
@@ -1557,7 +1519,7 @@ div.label-input {
     top: 50%;
     left: var(--SPACE_XS);
     transform: translateY(-50%);
-    pointer-events: none; /* Pour pouvoir cliquer sur le input */
+    pointer-events: none; /* Pour pouvoir cliquer sur le input qui est sous la div label */
     margin-left: var(--SPACE_S);
 
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1646,7 +1608,6 @@ input:not(:placeholder-shown) + .label-input {
     border: 0px;
 }
 /* Même chose mais pour firefox */
-/* Pr le point du slider */
 .slider input::-moz-range-thumb{
     -webkit-appearance: none;
     appearance: none;
@@ -1675,12 +1636,10 @@ input:not(:placeholder-shown) + .label-input {
     overflow: hidden;
     border: none;
 }
-/* la partie COLOR rempli */
 .slider progress::-moz-progress-bar{
     background-color: var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
 }
-/* !!! fin de la partie firefox */
 /* La valeur du slider */
 .slider-value {
     margin-left: var(--SPACE_S);
@@ -1703,14 +1662,13 @@ select {
     font-family: var(--FONT_FAMILY);
     cursor: pointer;
 
-    /*ça enleve le style de base */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none; 
-    /* Pour la flèche */
+    /* Pour l'icône de la flèche */
     background-image: var(--URL_FLECHE_ICON);
     background-repeat: no-repeat;
-    background-position: right var(--SPACE_XS) center; /* On met à droite l'icone */
+    background-position: right var(--SPACE_XS) center; /* On met l'icône à droite */
     background-size: var(--H3);
 
     transition: all ease-out var(--TIME_TRANSITION);
@@ -1721,7 +1679,6 @@ select {
         transition: all ease-out var(--TIME_TRANSITION);
     }
 }
-/* ":focus" c'est quand la boite est selectionné*/
 select:focus {
     /* Pour enlever une barre de base */
     outline: none;
@@ -1731,7 +1688,7 @@ select:focus {
 }
 
 /* --- Pour le bouton plus de données dans ajouter un entraînement --- */
-div.button-group-button-data {
+div.form-different-button {
     margin: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     border: 2px solid var(--COLOR_ACCENT);
@@ -1742,14 +1699,14 @@ div.button-group-button-data {
     transition: all ease-in-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.button-group-button-data:hover {
+    div.form-different-button:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.button-group-button-data:active {
+div.form-different-button:active {
     transform: scale(var(--SCALE_NORMAL));
 }
-div.button-group-button-data p.button-group-button-data-text{
+div.form-different-button p.form-different-button-text{
     color: var(--COLOR_ACCENT);
 }
 
@@ -1765,27 +1722,28 @@ div.button-group {
     margin: var(--SPACE_M) auto;
     border-radius: 2rem;
 
-    gap: var(--SPACE_XS); /* on utilise gap pour pas doublée les marges, la marge ne s'applique que entre les éléments */
+    gap: var(--SPACE_XS); 
     padding: var(--SPACE_XS);
 }
 div.button-group div.button-group-button{
-    margin: 0; /* grace au gap plus besoin de mettre de marge */
+    margin: 0; 
     border-radius: var(--BORDER_BIG);
 }
 
-/* Pour graphique outil niveau de course */
+
+
 div.chart-container {
     display: block;
     margin: var(--SPACE_L) var(--SPACE_XXS);
 }
 
 
-/* Pr les tableaux */
+
 table {
     display: table;
     margin: var(--SPACE_XS) auto;
     width: 100%;
-    border-collapse: collapse; /* Pr eviter les doubles bordures */
+    border-collapse: collapse; /* Pour éviter les doubles bordures */
 }
 table tr th,
 table tr td {
@@ -1807,11 +1765,6 @@ table tr td {
 
 
 
-
-
-
-
-/* ----- Style page "Paramètres" ----- */
 div.carousel-content {
     display: inline-flex;
     align-items: center;
@@ -1863,20 +1816,22 @@ div.carousel-content .card-releases p.description-maj {
     cursor: pointer;
 
     display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
+    -webkit-box-orient: vertical; 
     -webkit-line-clamp: 2;
-    line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
-    overflow: hidden; /* Pour cacher ce qui dépasse */
+    line-clamp: 2; 
+    overflow: hidden;
 }
 div.carousel-content .card-releases div.date-maj {
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
     margin-top: var(--SPACE_XS);
 }
-/* Section choix param */
+
+
+
 div.action-list {
     max-width: var(--MAX_WIDTH);
-    margin: var(--SPACE_S) auto;
+    margin: var(--SPACE_L) auto;
 }
 div.action-list div.action-list-item {
     display: flex; 
@@ -1887,9 +1842,6 @@ div.action-list div.action-list-item {
 
     transition: all ease-out var(--TIME_TRANSITION);
 }
-div.action-list div.action-list-item.round { /* pour la licence dans les paramètres */
-    border-radius: var(--BORDER_BIG);
-}
 div.action-list a:nth-child(1) div.action-list-item {
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
@@ -1899,15 +1851,13 @@ div.action-list a:nth-last-child(1) div.action-list-item {
     border-bottom-right-radius: 1.5rem;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.action-list div.action-list-item:hover,
-    div.action-list div.action-list-item1:hover,
-    div.action-list div.action-list-item2:hover{
+    div.action-list div.action-list-item:hover{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
 div.action-list div.action-list-item:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border-radius: 50px;
+    border-radius: var(--BORDER_BIG);
     transform: scale(var(--SCALE_SMALL));
 }
 div.action-list i{
@@ -1921,13 +1871,12 @@ div.action-list div.action-list-item p{
 }
 
 
-/* ----- Style page "Historique des versions" ----- */
+
 section.container-version-history {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-/* Card mise en avant derniere version */
 section.container-version-history .box-last-maj{
     background: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
@@ -1945,7 +1894,6 @@ section.container-version-history .box-last-maj:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
-/* Contenu supérieur */
 section.container-version-history .box-last-maj div.content1 .card-releases-image-last-maj {
     font-size: var(--H1);
     width: fit-content;
@@ -1960,7 +1908,6 @@ section.container-version-history .box-last-maj div.content1 .card-releases-imag
 section.container-version-history .box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
     font-size: var(--H3);
 }
-/* Contenu inférieur */
 section.container-version-history .box-last-maj div.content2 {
     display: block;
     margin-top: var(--SPACE_XS);
@@ -1997,9 +1944,7 @@ section.container-version-history .box-last-maj div.content2 button:active{
     background-color: var(--COLOR_ACCENT2);
     transform: scale(1); /* pour éviter que le bouton s'enfonce alors que la card fais deja un transform scale */
 }
-/* Card Historique versions */
-/* Les cards sont invisible de base */
-section.container-version-history .card-releases {
+section.container-version-history .card-releases { /* Les cards sont invisible de base */
     display: none;
 }
 section.container-version-history .card-releases.visible {
@@ -2010,7 +1955,7 @@ section.container-version-history .card-releases.visible {
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 
-    margin: var(--SPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 620px */
+    margin: var(--SPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 640px */
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -2040,17 +1985,19 @@ section.container-version-history .card-releases p.description-maj {
     cursor: pointer;
 
     display: -webkit-box;
-    -webkit-box-orient: vertical; /* On compte les lignes verticalement */
+    -webkit-box-orient: vertical; 
     -webkit-line-clamp: 2;
-    line-clamp: 2; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
-    overflow: hidden; /* Pour cacher ce qui dépasse */
+    line-clamp: 2; 
+    overflow: hidden; 
 }
 section.container-version-history .card-releases div.date-maj {
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
     margin-top: var(--SPACE_S);
 }
-/* Mise en page des patch notes */
+
+
+
 ul.list-information li {
     list-style: initial;
     font-size: var(--P);
@@ -2058,7 +2005,8 @@ ul.list-information li {
     margin: var(--SPACE_XS) var(--SPACE_M);
 }    
 
-/* Pour les images des versions */
+
+
 div.gallery-version {
     display: flex;
     flex-wrap: wrap;
@@ -2080,7 +2028,6 @@ div.gallery-version img:nth-child(1){
 
 
 
-/* ----- Thèmes + Toggle----- */
 div.banner-toggle {
     display: flex;
     align-items: center;
@@ -2100,6 +2047,9 @@ div.banner-toggle p {
     margin-right: auto;
     margin-left: var(--SPACE_S);
 }
+
+
+
 /* Zone du champs du toggle */
 div.banner-toggle input[type="checkbox"].toggle{
     -webkit-appearance: none;
@@ -2114,7 +2064,7 @@ div.banner-toggle input[type="checkbox"].toggle{
     border-radius: 5rem;
     transition: all ease-out var(--TIME_TRANSITION);
 }
-/* C pr le rond du toggle */
+/* C'est pour le rond du toggle */
 div.banner-toggle input[type="checkbox"].toggle::after{
     content: "";
     position: absolute;
@@ -2138,7 +2088,7 @@ div.banner-toggle input[type="checkbox"].toggle:checked:after{
 }
 
 
-/* Section pour la COLOR accentuation */
+
 ol.container-color-accentuation{
     display: flex;
     flex-wrap: wrap;
@@ -2163,7 +2113,6 @@ li.option-color {
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    /* Changer la color du txt lors du survol donc quand il y a la couche du before egalement */
     li.option-color:hover{
         color: var(--COLOR_BACKGROUND);
     }
@@ -2171,7 +2120,6 @@ li.option-color {
 ol li.option-color:active{
     transform: scale(var(--SCALE_NORMAL));
 }
-/* 2ème couche du li lors du hover */
 ol li.option-color::before{
     content: "";
     position: absolute;
@@ -2186,23 +2134,23 @@ ol li.option-color::before{
     transition: all ease-out 0.3s;
 }
 @media (hover: hover) and (pointer: fine) {
-    ol li.option-color:hover::before{ /* ça affiche la couche du before */
+    ol li.option-color:hover::before{ 
         width: 100%;
         transition: all ease-out var(--TIME_TRANSITION);
     }
 }
 /* celui selectionné */
 ol li.option-color.selected{
-    color: var(--COLOR_BACKGROUND); /* Changement COLOR du texte */
+    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 ol li.option-color.selected::before{
-    width: 100%; /* le li selectionner direct à 100% pr diférencier */
+    width: 100%; 
     transition: all ease-out 0.3s;
 }
-/* COLOR individuel en fonction de l'ordre des li */
-ol li.option-color.option-color:nth-child(1)::before{ /* ça prend le premier li ds le code */
+/* Couleur individuelle en fonction du thème du li */
+ol li.option-color.option-color:nth-child(1)::before{ 
     background: linear-gradient(130deg, var(--COLOR_PASTILLES_0) 50%, var(--COLOR_PASTILLES_0_HOVER) 50%);
 }
 ol li.option-color:nth-child(2)::before{
@@ -2244,7 +2192,9 @@ ol li.option-color:nth-child(13)::before{
 ol li.option-color:nth-child(14)::before{
     background: linear-gradient(130deg, var(--COLOR_PASTILLES_D11) 50%, var(--COLOR_PASTILLES_D12) 50%);
 }
-/* Style du bouton réinitialiser */
+
+
+
 div.container-center-marge {
     padding: var(--SPACE_XS);
     margin: var(--SPACE_S);
@@ -2255,21 +2205,18 @@ div.container-center-marge {
 
 
 /* ----- RESPONSIVE ----- */
-/* Footer */
 @media (max-width: 1025px) {
     footer {
         display: block;
     }
 }
 
-/* page accueil */
 @media (max-width : 480px) {
     section.container-tools-pin div.tools-pin {
         margin: var(--SPACE_XS) 0;
     }
 }
 
-/* card hisotrique versions */
 @media (max-width: 1245px) {
     section.container-version-history .card-releases.visible{
         width: 360px;
@@ -2332,8 +2279,6 @@ div.container-center-marge {
     }
 }
 
-
-/* ----- Pour la section Historique des versions ----- */
 @media (max-width: 630px) {
     div.gallery-version {
         border: none;
@@ -2354,13 +2299,12 @@ div.container-center-marge {
     }
 }
 @media (max-width: 540px) {
-    /* Pour la card derniere nouveauté */
     section.container-version-history .box-last-maj div.content2 .description{
         display: -webkit-box;
-        -webkit-box-orient: vertical; /* On compte les lignes verticalement */
+        -webkit-box-orient: vertical; 
         -webkit-line-clamp: 12;
-        line-clamp: 12; /* Je met egalement ça pour que ça assure la compatibilité avec tous les navigateurs */
-        overflow: hidden; /* Pour cacher ce qui dépasse */
+        line-clamp: 12; 
+        overflow: hidden; 
     }
 }
 @media (max-width: 480px) {
@@ -2375,7 +2319,6 @@ div.container-center-marge {
     }
 }
 
-/* ----- Pour l'interieur des outils ----- */
 @media (max-width: 490px) {
     div.form div.side-by-side {
         display: block;
@@ -2386,9 +2329,8 @@ div.container-center-marge {
         width: calc(100% - (var(--SPACE_XS) * 2));
     }
 }
-/* Zones cardiaques */
+
 @media (max-width: 1208px) {
-    /* Box des zones */
     div.small-zone-result {
         width: 300px;
     }
@@ -2400,7 +2342,6 @@ div.container-center-marge {
     }
 }
 @media (max-width: 705px) {
-    /* Box des zones */
     div.small-zone-result {
         width: 200px;
     }
@@ -2412,7 +2353,6 @@ div.container-center-marge {
     }
 }
 @media (max-width: 500px) {
-    /* Box des zones */
     div.small-zone-result {
         margin: var(--SPACE_S) 0;
         width: 100%;
@@ -2428,21 +2368,21 @@ div.container-center-marge {
 }
 
 @media (max-width: 545px) {
-    /* Pr l'ensemble des boutons ajouter,... */
-    div.button-group .button-group-button-text#bouton-action-charge{
+    div.button-group .button-group-button-text{
         display: none;
     }
     div.button-group{
         border-radius: 50px;
     }
     div.button-group div.button-group-button{
+        width: 55px;
+        height: 55px;
         border-radius: 50%;
     }
 }
 
 
 
-/* ----- Le menu Hamburger ----- */
 @media (max-width: 990px) {
     header div.navbar ul.links {
         display: none;

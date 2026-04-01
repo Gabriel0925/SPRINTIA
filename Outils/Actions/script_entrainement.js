@@ -54,6 +54,7 @@ function afficherData(dataWorkout) {
 
         <div class="menu-many-action">
             <li id="button-modifier">Modifier</li>
+            <li id="button-partager">Partager</li>
             <li id="button-supprimer">Supprimer</li>
         </div>
 

@@ -10,13 +10,13 @@ burgerMenuButton.onclick = function () {
     burgerMenuButtonIcon.classList = isOpen ? 'fs-icon_fermer' : 'fs-icon_menu'
 }
 
-window.onclick = function (event) { // on track les click sur la page complete
+window.onclick = function (event) { // on track les clicks sur la page complète
     let TrackClickBurgerMenuButton = burgerMenuButton.contains(event.target) // pour tracker si il y a un click sur le bouton si oui = true sinon = false
     let TrackClickBurgerMenuOpen = burgerMenu.contains(event.target)
     let TrackClickButtonMore = document.getElementById("button-group-button")
-    let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus (ex dans entrainement : modifier,supprimer)
+    let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus
      
-    // si dans la page il y a le bouton plus alors on regarde si cest sur lui qu'on a cliqué
+    // si dans la page il y a le bouton plus alors on regarde si c'est sur lui qu'on a cliqué
     if (TrackClickButtonMore && TrackClickButtonInMenuMore) {
         TrackClickButtonMore = TrackClickButtonMore.contains(event.target)
         TrackClickButtonInMenuMore = TrackClickButtonInMenuMore.contains(event.target)
@@ -35,7 +35,7 @@ window.onclick = function (event) { // on track les click sur la page complete
         if (menuButtonMore) {
             // on referme le menu plus
             menuButtonMore.classList.remove("open")
-            // pout remettre l'icone plus
+            // pour remettre l'icone plus
             document.getElementById("button-group-button").classList.add("fs-icon_plus")
         }
     }
@@ -65,7 +65,7 @@ window.addEventListener("scroll", () => {
     if (menuButtonMore) {
         // on referme le menu plus
         menuButtonMore.classList.remove("open")
-        // pout remettre l'icone plus
+        // pour remettre l'icone plus
         document.getElementById("button-group-button").classList.add("fs-icon_plus")
     }
 })
@@ -89,26 +89,29 @@ let Timer1 = 0
 let Timer2 = 0
 
 function logoDynamique(message) {
-    // timeout remis a 0 (suppresion plutot)
     clearTimeout(Timer1)
     clearTimeout(Timer2)
-    document.getElementById("logo-dynamique").classList.remove("return", "pin-message")
+    // Recup du logo dynamique
+    let elementLogoDynamique = document.getElementById("logo-dynamique")
 
-    // animation du dynamic logo pour message au user
-    document.getElementById("logo-dynamique").classList.add("pin-message")
+    // Initialisation (Remise à 0)
+    elementLogoDynamique.classList.remove("return", "pin-message")
 
-    document.getElementById("logo-dynamique").textContent = message;
+    // Déclenchement de l'animation pour afficher le message au user
+    elementLogoDynamique.classList.add("pin-message")
+    // Affichage message au user
+    elementLogoDynamique.textContent = message;
 
     Timer1 = setTimeout(() => { 
-        document.getElementById("logo-dynamique").classList.add("return") // a ré-ajoute une class pour qu'il y est une animation de retour
-        document.getElementById("logo-dynamique").textContent = "Sprintia"; // on raffiche Sprintia
-    }, 2500); // on laisse le message pendant 2,5s pour que le user est le temps de le lire
+        elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
+        elementLogoDynamique.textContent = "Sprintia"; // on ré-affiche 'Sprintia' dans le logo dynamique
+    }, 2500);
 
     Timer2 = setTimeout(() => {
-        // remise à l'état initial, on supprime les 2 class qu'on a mis dès la fin du setTimeout au dessus
-        document.getElementById("logo-dynamique").classList.remove("return")
-        document.getElementById("logo-dynamique").classList.remove("pin-message")
-    }, 3100) // durée choisis à la main
+        // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
+        elementLogoDynamique.classList.remove("return")
+        elementLogoDynamique.classList.remove("pin-message")
+    }, 3100)
 }
 
 
@@ -173,7 +176,7 @@ if (versionStockee != versionActuelle) {
 
 
 
-// --- Pour passer le format de la date en Européen ---
+// --- Pour passer le format de la date en Européen de AAAA/MM/JJ à JJ/MM/AAAA ---
 function formatEuropeenDate(dateWorkout) {
     let dateEuropeen = ""
 
@@ -195,7 +198,7 @@ function dureeFormatee(minutes, format) {
     // Initialisation
     let result = ""
     // Si l'heure est inférieur à 1 on affiche mm:ss pas besoin d'afficher hh:mm:ss
-    if (heure < 1 && format != "hh:mm:ss") {  // si le parametre 'format' indique hh:mm:ss alors on va dans le else (pour la modification d'entraînement)
+    if (heure < 1 && format != "hh:mm:ss") {  // si le parametre 'format' indique hh:mm:ss alors on va dans le else
         result = minutesRestante.toString().padStart(2, "0") + ":" + secondeRestante.toString().padStart(2, "0")
     } else { // Sinon on affiche tous (hh:mm:ss)
         result = heure.toString().padStart(2, "0") + ":" + minutesRestante.toString().padStart(2, "0") + ":" + secondeRestante.toString().padStart(2, "0")

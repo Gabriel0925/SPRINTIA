@@ -230,3 +230,8 @@ async function uploadGarmin(event) {
 
     return
 }
+
+async function uploadFileFit(event) {
+    
+    return
+}

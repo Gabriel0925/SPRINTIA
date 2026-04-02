@@ -71,7 +71,7 @@ function CalculGeneral() {
     // Appelle aux fonctions
     let ValueTranspirationEstimee = CalculTranspiration(PoidsUser, DureeUser, ValueRpeUser)
     let ValueTranspirationEstimeeMl = ValueTranspirationEstimee*1000
-    let rehydratation = CalculHydratation(ValueTranspirationEstimeeMl)
+    let rehydratation = CalculHydratation(ValueTranspirationEstimeeMl) 
 
     // Mise en variable pour passez à l'affichage
     let TranspirationEstimee = "Transpiration : " + "<strong>" + Math.round(ValueTranspirationEstimeeMl) + " mL"  + "</strong>"

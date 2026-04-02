@@ -78,46 +78,33 @@
     </header>
     
     <h1>Importer des données</h1>
-
-    <h2>Garmin</h2>
     <p class="text">
-        Vous avez une montre Garmin et vous voulez importer votre historique d'entraînement sur Sprintia, vous êtes au bon endroit.
-        Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînement disponible sur 
-        <a href="https://connect.garmin.com/app/activities" class="lien" target="_blank">Garmin Connect Web</a>.
-        Pour récupérer ce fichier, suivez les instructions :
+        Vous voulez importer vos données d'entraînements depuis un autre service comme Garmin, Coros, Strava,... Vous êtes au bon endroit.
+        Pour importer vos données, veuillez télécharger le fichier (.FIT) de votre historique d'entraînement depuis n'importe qu'elle plateforme.
     </p>
+
     <ul class="list-information">
         <li>
-            Cliquez sur le lien ci-contre.
+            Pour télécharger plusieurs fichiers à la fois, compressez-les au format (.ZIP).
         </li>
         <li>
-            Connectez-vous à votre compte Garmin.
+            Pour télécharger vos données en un seul fichier, le format requis est (.FIT).
         </li>
         <li>
-            La langue de Garmin Connect Web doit être le <strong>Français</strong> ou l'<strong>Anglais</strong>.
+            Actuellement, Sprintia prend en compte les sports suivants : "Course", "Marche", "Randonnée", "Vélo", "HIIT", "Musculation", "Rameur d'intérieur", "Natation",
+            "Ski", "Ski de fond", "Snowboard" et "Escalade". Toutes les activités importées ne seront pas nécessairement acceptées en raison de problèmes de compatibilité.
         </li>
         <li>
-            Cliquez sur "Export CSV" (en haut à droite), le fichier CSV a dû se télécharger.
+            Si vous importer un sport qui n'est pas dans la liste ci-dessus, Sprintia l'importera en tant que sport "Libre".
         </li>
     </ul>
 
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-garmin" accept=".csv" style="display: none;" onchange="uploadGarmin(event)">
+        <input type="file" id="file-input" accept=".fit" style="display: none;" onchange="uploadFileFit(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block import-garmin" onclick="document.getElementById('file-input-garmin').click()" id="restoration-button">Importer fichier</button>
+        <button class="size-block" onclick="document.getElementById('file-input').click()">Importer fichier</button>
     </div> 
-
-    <h2>Conseil</h2>
-    <ul class="list-information">
-        <li>
-            1er conseil : Importer uniquement les 30 derniers jours de votre historique d'entraînement, juste pour calibrer les algorithmes de Sprintia.
-        </li>
-        <li>
-            2ème conseil : Vérifier dans l'historique d'entraînement de Sprintia que tout a bien été importer correctement. Si ce n'est pas le cas, 
-            je vous conseille de modifier l'entraînement pour corriger l'erreur.
-        </li>
-    </ul>
     
     <footer>
         <div class="conteneur-lien-footer">

@@ -231,7 +231,75 @@ async function uploadGarmin(event) {
     return
 }
 
-async function uploadFileFit(event) {
-    
+async function uploadFileTCX(event) {
+    const fileTCX = event.target.files[0]
+    let button = document.getElementById("button-import")
+
+    if (fileTCX) {
+        // transmet info au user
+        button.disabled = true
+        button.textContent = "Importation..."
+
+        // Lecture du fichier en texte
+        let textFile = await fileTCX.text()
+        
+        // Création d'un objet pour transformer le texte en DOM
+        const parser = new DOMParser()
+
+        // transformation du texte en document XML c'est un langage équivalent à HTML
+        const xmlDoc = parser.parseFromString(textFile, "text/xml") // "parseFromString" pour convertir ce text en str
+
+        console.log(xmlDoc)
+
+        const dataLap = xmlDoc.getElementsByTagName("Lap")
+        const tableauDataLap = Array.from(dataLap) // création d'un tableau pour les balises LAP
+
+        // Recup du sport et de la date
+        const workoutSport = xmlDoc.querySelector("Activity").getAttribute("Sport")
+        let XmlDate = xmlDoc.querySelector("Id").textContent // on obtient ça : 2026-03-28T08:08:56Z
+        let tableauXmlDate = XmlDate.split("T") // ["2026-03-28", "08:08:56Z"]
+        const workoutDate = tableauXmlDate[0] // 2026-03-28
+
+        let dataWorkout = {            
+            sport: workoutSport,
+            date: workoutDate,
+            nom: "",
+            duree: "",
+            rpe: "",
+            fc_moy: "",
+            fc_max: "",
+            charge_entrainement: ""
+        }
+
+        // Init pour la boucle
+        let workoutTimeSecondes = null
+        let workoutDistanceMeters = null
+        let lapFcMoy= []
+        let lapFcMax = []
+        let lapMaximumSpeedMS = []
+
+        // Boucle qui parcoure tous les lap de l'entraînement
+        tableauDataLap.forEach(element => {
+            workoutTimeSecondes += Number(element.querySelector("TotalTimeSeconds").textContent)
+            workoutDistanceMeters += Number(element.querySelector("DistanceMeters").textContent)
+            lapFcMoy.push(Number(element.querySelector("AverageHeartRateBpm Value").textContent))
+            lapFcMax.push(Number(element.querySelector("MaximumHeartRateBpm Value").textContent))
+            lapMaximumSpeedMS.push(Number(element.querySelector("MaximumSpeed").textContent))
+        });
+
+        console.log(workoutDistanceMeters + " m" + "\n" + workoutTimeSecondes + " sec" + "\n" + lapFcMoy + "\n" + lapFcMax + "\n" + lapMaximumSpeedMS)
+
+        // petite attente pour que le user voit le message dans le bouton
+        setTimeout(() => {              
+            button.disabled = false
+            button.textContent = "Importer fichier"
+            logoDynamique("Bien reçu 😋")
+        }, 650)   
+
+        // Objectif récupérer le dénivelé positif + trouver la fc max dans le tableau + trouver la fc moyenne dans le tableau +
+        // trouver la vitesse max de l'entraînement + sécuriser au cas ou il n'y aura pas de maximum speed +
+        // faire les conversion + regarder dans d'autre tcx pour voir si on peut pas récup la cadence, le nb de pas, les notes,...
+    }
+
     return
 }

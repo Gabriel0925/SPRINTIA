@@ -101,9 +101,9 @@
 
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input" accept=".fit" style="display: none;" onchange="uploadFileFit(event)">
+        <input type="file" id="file-input" accept=".tcx" style="display: none;" onchange="uploadFileTCX(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input').click()">Importer fichier</button>
+        <button class="size-block" onclick="document.getElementById('file-input').click()" id="button-import">Importer fichier</button>
     </div> 
     
     <footer>

@@ -447,15 +447,3 @@ async function uploadFileTCX(event) {
 
     return
 }
-
-function importStrava() {
-    const clientId = "220484" // pr dire à Strava que c'est Sprintia qui vient vers lui
-    const redirectUri = "https://sprintia.vercel.app/Paramètres/Import des données/import_strava.html"
-    const scope = "activity:read_all" // pour récup toutes les datas de l'utilisateur
-
-    // construction de l'URL de Strava
-    const urlStrava = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=
-                        ${redirectUri}&response_type=code&scope=${scope}&approval_prompt=force`
-
-    window.location.href = urlStrava // on renvoie le user pr qu'il connecte son compte
-}

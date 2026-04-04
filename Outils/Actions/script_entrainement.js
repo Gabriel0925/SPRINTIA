@@ -101,12 +101,14 @@ function afficherData(dataWorkout) {
                 if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Paddle") {
                     uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
                     if (valeur != null) { // on passe des kilomètres en metres
+                        valeur = Number(valeur) // on convertit en nombre pour etre sur
                         valeur = valeur*1000
                         valeur= valeur.toFixed(1).toString().replace(".", ",")
                     }
                 } else {
                     uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => km
                     if (valeur != null) { // on passe des kilomètres en metres
+                        valeur = Number(valeur) // on convertit en nombre pour etre sur
                         valeur = valeur.toFixed(2).toString().replace(".", ",")
                     }
                 }
@@ -119,6 +121,12 @@ function afficherData(dataWorkout) {
                 } else {
                     uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km 
                 }
+
+            } else if (cle=="vitesse_max") {
+                uniteData = nomUniteData[1]
+                if (valeur!=null) {
+                    valeur = Number(valeur).toFixed(2).toString().replace(".", ",")
+                } 
 
             } else {
                 uniteData = nomUniteData[1] // on récupère l'unité de la data ex: distance => km

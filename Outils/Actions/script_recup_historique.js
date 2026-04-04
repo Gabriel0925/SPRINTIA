@@ -17,7 +17,7 @@ async function Init() {
     const TableauSeparation = ParamURL.split("?")
     
     if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutregister") {
-        logoDynamique("Bien joué·e 🔥")
+        logoDynamique("Bien joué 🔥")
     }
 
     SauvegardeHistorique(HistoriqueDB)

@@ -42,7 +42,7 @@ function conversionMinutesGarmin(DureeWorkoutUser) {
 
 async function uploadGarmin(event) {
     const fileCSV = event.target.files[0]
-    let button = document.querySelector(".import-garmin")
+    let button = document.getElementById("button-import-garmin")
     let langueEnglish = false
 
     if (fileCSV) {
@@ -231,75 +231,231 @@ async function uploadGarmin(event) {
     return
 }
 
+// Init
+const dicoNameSport = {
+    "Running":"Course",
+    "Biking":"Vélo",
+    "Other":"Libre"
+}
 async function uploadFileTCX(event) {
     const fileTCX = event.target.files[0]
-    let button = document.getElementById("button-import")
+    let button = document.getElementById("button-import-tcx")
 
     if (fileTCX) {
-        // transmet info au user
-        button.disabled = true
-        button.textContent = "Importation..."
+        try {
+            // transmet info au user
+            button.disabled = true
+            button.textContent = "Importation..."
 
-        // Lecture du fichier en texte
-        let textFile = await fileTCX.text()
-        
-        // Création d'un objet pour transformer le texte en DOM
-        const parser = new DOMParser()
+            // Lecture du fichier en texte
+            let textFile = await fileTCX.text()
+            
+            // Création d'un objet pour transformer le texte en DOM
+            const parser = new DOMParser()
 
-        // transformation du texte en document XML c'est un langage équivalent à HTML
-        const xmlDoc = parser.parseFromString(textFile, "text/xml") // "parseFromString" pour convertir ce text en str
+            // transformation du texte en document XML c'est un langage équivalent à HTML
+            const xmlDoc = parser.parseFromString(textFile, "text/xml") // "parseFromString" pour convertir ce text en str
 
-        console.log(xmlDoc)
+            //console.log(xmlDoc)
 
-        const dataLap = xmlDoc.getElementsByTagName("Lap")
-        const tableauDataLap = Array.from(dataLap) // création d'un tableau pour les balises LAP
+            const dataLap = xmlDoc.getElementsByTagName("Lap")
+            const tableauDataLap = Array.from(dataLap) // création d'un tableau pour les balises LAP
 
-        // Recup du sport et de la date
-        const workoutSport = xmlDoc.querySelector("Activity").getAttribute("Sport")
-        let XmlDate = xmlDoc.querySelector("Id").textContent // on obtient ça : 2026-03-28T08:08:56Z
-        let tableauXmlDate = XmlDate.split("T") // ["2026-03-28", "08:08:56Z"]
-        const workoutDate = tableauXmlDate[0] // 2026-03-28
+            // Recup du sport et de la date
+            const workoutSport = dicoNameSport[xmlDoc.querySelector("Activity").getAttribute("Sport")] || "Libre" // si le sport n'est pas dans le dico on le met en Libre
+            let XmlDate = xmlDoc.querySelector("Id").textContent // on obtient ça : 2026-03-28T08:08:56Z
+            let tableauXmlDate = XmlDate.split("T") // ["2026-03-28", "08:08:56Z"]
+            const workoutDate = tableauXmlDate[0] // 2026-03-28
 
-        let dataWorkout = {            
-            sport: workoutSport,
-            date: workoutDate,
-            nom: "",
-            duree: "",
-            rpe: "",
-            fc_moy: "",
-            fc_max: "",
-            charge_entrainement: ""
-        }
+            // Init pour la boucle
+            let workoutTime = 0
+            let workoutDistance = 0
+            let lapFcMoy= []
+            let lapFcMax = []
+            let lapMaximumSpeed = []
+            let lapCadence = []
 
-        // Init pour la boucle
-        let workoutTimeSecondes = null
-        let workoutDistanceMeters = null
-        let lapFcMoy= []
-        let lapFcMax = []
-        let lapMaximumSpeedMS = []
+            // Boucle qui parcoure tous les lap de l'entraînement et qui convertit par exemple des metres au km directement
+            tableauDataLap.forEach(element => {
+                workoutTime += Number(element.querySelector("TotalTimeSeconds").textContent) // on ne convertit pas ici car lors du calcul de la FC moyenne on va diviser par le temps total de l'entrainement en secondes
+                workoutDistance += Number(element.querySelector("DistanceMeters").textContent)/1000 // conversion des m en km
 
-        // Boucle qui parcoure tous les lap de l'entraînement
-        tableauDataLap.forEach(element => {
-            workoutTimeSecondes += Number(element.querySelector("TotalTimeSeconds").textContent)
-            workoutDistanceMeters += Number(element.querySelector("DistanceMeters").textContent)
-            lapFcMoy.push(Number(element.querySelector("AverageHeartRateBpm Value").textContent))
-            lapFcMax.push(Number(element.querySelector("MaximumHeartRateBpm Value").textContent))
-            lapMaximumSpeedMS.push(Number(element.querySelector("MaximumSpeed").textContent))
-        });
+                // Récup des BPM moyen et max de l'entraînement
+                let fcMoy = element.querySelector("AverageHeartRateBpm Value")
+                // formule pr la fc moy d'un entrainement : (FC moy du lap * durée du lap en secondes) / durée totale de l'entrainement en secondes
+                if (fcMoy) {lapFcMoy.push(Number(fcMoy.textContent)*Number(element.querySelector("TotalTimeSeconds").textContent))} 
+                let fcMax = element.querySelector("MaximumHeartRateBpm Value")
+                if (fcMax) {lapFcMax.push(Number(fcMax.textContent))}
 
-        console.log(workoutDistanceMeters + " m" + "\n" + workoutTimeSecondes + " sec" + "\n" + lapFcMoy + "\n" + lapFcMax + "\n" + lapMaximumSpeedMS)
+                // recup de la vitesse max si cette donnée est présente
+                let maximumSpeed = element.querySelector("MaximumSpeed")
+                if (maximumSpeed) {lapMaximumSpeed.push(Number(maximumSpeed.textContent)*3.6)} // conversion des m/s en km/h
 
-        // petite attente pour que le user voit le message dans le bouton
-        setTimeout(() => {              
+                // recup de la cadence si cette donnée est présente
+                let cadence = element.querySelector("Cadence")
+                if (cadence) {lapCadence.push(Number(cadence.textContent))}
+
+            });
+
+            // Boucle pour trouver la fc maxi du tableau qui contient la fc max de chaque tour
+            let workoutFcMax = lapFcMax[0] || undefined
+            if (lapFcMax.length > 0) {
+                lapFcMax.forEach(element => {
+                    if (element > workoutFcMax) {workoutFcMax=element}
+                });
+            } else {
+                workoutFcMax = undefined
+            }
+
+            // boucle pour parcourir les FC moyenne de chaque lap et trouver la FC moyenne de l'entraînement
+            let workoutFcMoy = 0
+            if (lapFcMoy.length > 0) {
+                lapFcMoy.forEach(element => {
+                    workoutFcMoy += element
+                });
+                // On divise par le nombre de lap
+                workoutFcMoy = Math.round(workoutFcMoy/workoutTime) // rappel de la formule : (FC moy du lap * durée du lap en secondes) / durée totale de l'entrainement en secondes
+            } else {
+                workoutFcMoy = undefined
+            }
+
+            // Boucle pour trouver la vitesse max du tableau qui contient la vitesse max de chaque tour
+            let workoutMaximumSpeed = lapMaximumSpeed[0] || undefined
+            if (lapMaximumSpeed.length > 0) {
+                lapMaximumSpeed.forEach(element => {
+                    if (element > workoutMaximumSpeed) {workoutMaximumSpeed=element}
+                });
+            } else {
+                workoutMaximumSpeed = undefined
+            }
+
+            // boucle pour parcourir les FC moyenne de chaque lap et trouver la FC moyenne de l'entraînement
+            let workoutCadenceMoy = 0
+            let compteur2 = 0
+            if (lapCadence.length > 0) {
+                lapCadence.forEach(element => {
+                    workoutCadenceMoy += element
+                    compteur2 += 1
+                });
+                // On divise par le nombre de lap
+                workoutCadenceMoy = Math.floor(workoutCadenceMoy/compteur2)
+            } else {workoutCadenceMoy=undefined}
+
+            // conversion des secondes en minutes pour la durée de l'entrainement
+            workoutTime = workoutTime/60
+
+            // arrondi des valeurs de distance et du vitesse max
+            if (workoutDistance != 0 && workoutDistance != undefined) {workoutDistance = workoutDistance.toFixed(2)} else {workoutDistance = undefined}
+            if (workoutMaximumSpeed != 0 && workoutMaximumSpeed != undefined) {workoutMaximumSpeed = workoutMaximumSpeed.toFixed(2)} else {workoutMaximumSpeed = undefined}
+
+            // derniere vérification au niveau de la cadence
+            if (workoutCadenceMoy == 0) {workoutCadenceMoy = undefined}
+
+            // récup du dénivelé positif de l'entraînement 
+            const dataAltitude = xmlDoc.getElementsByTagName("AltitudeMeters")
+            // init pour la boucle
+            let workoutDenivele = 0
+            if (dataAltitude.length > 0) {
+                const tableauDataAltitude = Array.from(dataAltitude) // conversion du xml en tableau
+                let deniveleLastLap = Number(tableauDataAltitude[0].textContent)
+                tableauDataAltitude.forEach(element => {
+                    // formule pr calculer le denivele positif : si le denivele du lap actuel est supérieur au denivele du lap précédent alors on ajoute la différence au dénivelé total de l'entraînement
+                    if (Number(element.textContent) > deniveleLastLap) {
+                        workoutDenivele = workoutDenivele+(Number(element.textContent)-deniveleLastLap) 
+                    }
+
+                    deniveleLastLap = Number(element.textContent) // on met à jour le dénivelé du lap précédent pour la prochaine itération de la boucle
+                });
+
+                // arrondi des valeurs
+                workoutDenivele = Math.floor(workoutDenivele)
+
+            }
+            if (workoutDenivele == 0) {workoutDenivele = undefined}
+
+            // calcul du RPE
+            // formule ci dessous à améliorer parce qu'elle n'est pas prouvé scientifiquement
+            let rpeWorkout = Math.round((workoutFcMoy/workoutFcMax)*10) || 1 // formule pour calculer le RPE : (FC moy / FC max) * 10
+            if (rpeWorkout < 1) { // si inférieur à 1 on le met sur la valeur minimum (=1)
+                rpeWorkout = 1
+            } else if (rpeWorkout > 10) { // si supérieur à 10 on le met sur la valeur max (=10)
+                rpeWorkout = 10
+            }
+            let chargeEntrainementWorkout = Math.floor(rpeWorkout*workoutTime) 
+
+            // si la durée de l'entrainement est pas définie ou égale à 0 on enregsitre rien
+            if (workoutTime == 0 || workoutTime == undefined) {
+                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient une durée d'entraînement valide.")
+                button.disabled = false
+                button.textContent = "Importer fichier"
+                return
+            }
+            // pareil mais pour la date
+            if (workoutDate == undefined || new Date(workoutDate) == "Invalid Date") {
+                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient une date d'entraînement valide.")
+                button.disabled = false
+                button.textContent = "Importer fichier"
+                return
+            }
+
+            // enregistrement des datas recup dans la BDD 
+            if (workoutSport != "Libre") { 
+                await db.entrainement.add({
+                    sport: workoutSport,
+                    nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
+                    date: workoutDate,
+                    duree: workoutTime,     
+                    rpe: rpeWorkout,
+                    fc_moy: workoutFcMoy,
+                    fc_max: workoutFcMax,
+                    distance:workoutDistance,
+                    vitesse_max: workoutMaximumSpeed,
+                    cadence_moy: workoutCadenceMoy,
+                    denivele: workoutDenivele,
+                    charge_entrainement: chargeEntrainementWorkout
+                });
+            } else { // si le sport est libre on enregistre mais on limite le nombre de données on autorise de prendre que la distance comme datas spe
+                await db.entrainement.add({
+                    sport: workoutSport,
+                    nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
+                    date: workoutDate,
+                    duree: workoutTime,     
+                    rpe: rpeWorkout,
+                    fc_moy: workoutFcMoy,
+                    fc_max: workoutFcMax,
+                    distance:workoutDistance,
+                    charge_entrainement: chargeEntrainementWorkout
+                });
+            }
+
+            // logo dynamique pour dire que c'est okk
+            setTimeout(() => {              
+                button.disabled = false
+                button.textContent = "Importer fichier"
+                logoDynamique("Bien reçu 😋")
+            }, 650)   
+
+        } catch {
+            alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX est valide et réessayez.")
             button.disabled = false
             button.textContent = "Importer fichier"
-            logoDynamique("Bien reçu 😋")
-        }, 650)   
+        }
 
-        // Objectif récupérer le dénivelé positif + trouver la fc max dans le tableau + trouver la fc moyenne dans le tableau +
-        // trouver la vitesse max de l'entraînement + sécuriser au cas ou il n'y aura pas de maximum speed +
-        // faire les conversion + regarder dans d'autre tcx pour voir si on peut pas récup la cadence, le nb de pas, les notes,...
+    } else {
+        alert("Veuiillez sélectionner un fichier pour l'importer.")
     }
 
     return
+}
+
+function importStrava() {
+    const clientId = "220484" // pr dire à Strava que c'est Sprintia qui vient vers lui
+    const redirectUri = "https://sprintia.vercel.app/Paramètres/Import des données/import_strava.html"
+    const scope = "activity:read_all" // pour récup toutes les datas de l'utilisateur
+
+    // construction de l'URL de Strava
+    const urlStrava = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=
+                        ${redirectUri}&response_type=code&scope=${scope}&approval_prompt=force`
+
+    window.location.href = urlStrava // on renvoie le user pr qu'il connecte son compte
 }

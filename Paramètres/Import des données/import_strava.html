@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Importer des données</title>
+    <title>Sprintia - Import depuis Strava</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,35 +77,25 @@
         </div>
     </header>
     
-    <h1>Importer des données</h1>
+    <h1>Importer depuis Strava</h1>
 
-    <h2>Import via application</h2>
-    <div class="action-list">
+    <p class="text">
+        Cette fonctionnalité vous permet d'importer les <strong>30 derniers jours de votre historique d'entraînement</strong> depuis Strava. 
+        C'est un excellent moyen de calibrer les algorithmes de Sprintia pour qu'ils s'adaptent à vous.
+    </p>
+    <ul class="list-information">
+        <li>
+            Vous avez juste besoin de <strong>connecter votre compte Strava</strong> et Sprintia importera automatiquement votre historique
+            d'entraînement des 30 derniers jours.
+        </li>
+    </ul>
 
-        <a href="import_strava.html">
-            <div class="action-list-item">
-                <p class="text-param">Strava</p>
-            </div>
-        </a>        
-
-    </div>
-
-
-    <h2>Import via fichier</h2>
-    <div class="action-list">
-
-        <a href="import_tcx.html">
-            <div class="action-list-item">
-                <p class="text-param">Fichier TCX</p>
-            </div>
-        </a>        
-        <a href="import_garmin_csv.html">
-            <div class="action-list-item">
-                <p class="text-param">Fichier Garmin CSV</p>
-            </div>
-        </a>
-
-    </div>
+    <div class="container-center-marge">
+        <button class="size-block" onclick="importStrava()">Importer depuis Strava</button>
+    </div> 
+    <div class="container-center-marge">
+        <p class="text">Powered by Strava</p>
+    </div> 
 
     
     <footer>
@@ -141,6 +131,35 @@
     <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script_import_seance.js"></script>
+
+    <script>
+        async function afterConnexionStrava() {
+
+            // Strava va ensuite renvoyer vers notre page avec des params dans l'URL
+            const paramURL = new URLSearchParams(window.location.search) // creation d'un objet
+            const codeTempo = paramURL.get("code") // on recup le code
+            const error = paramURL.get("error") // on regarde si il y a une erreur ex:le user a refusé
+
+            if (error) {
+                window.location.href = "importer_donnees.html"
+                return // si le user n'a pas autorisé on relance la page import données
+            }
+            if (codeTempo) {
+                // on renvoie vers la fonction vercel qui tourne sur le serveur
+                fetch(`/api/echange?code=${codeTempo}`)
+                .then(reponse => response.json())
+                .then(dataStravaUser => {
+                    console.log(dataStravaUser)
+                })
+                .catch(erreur => {
+                    alert("Une erreur est survenue lors de l'import depuis Strava.")
+                })
+            }
+        }
+
+        // lancement de la vérif à chaque chargement de page
+        afterConnexionStrava()
+    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

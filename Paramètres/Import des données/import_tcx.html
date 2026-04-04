@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Importer des données</title>
+    <title>Sprintia - Import TCX</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,36 +77,29 @@
         </div>
     </header>
     
-    <h1>Importer des données</h1>
+    <h1>Importer un fichier TCX</h1>
+    <p class="text">
+        Vous voulez importer les datas d'un entraînement depuis un autre service comme Garmin, Coros, Strava,... Vous êtes au bon endroit.
+        Pour importer vos données, <strong>veuillez télécharger le fichier (.TCX)</strong> de votre historique d'entraînement depuis n'importe qu'elle plateforme.
+    </p>
+    <ul class="list-information">
+        <li>
+            Le format requis est (.TCX). Si le service que vous utilisez ne propose pas ce format, téléchargez vos données au format (.FIT)
+            puis utilisez un convertisseur de fichier FIT vers TCX. Je vous recommande 
+            <a href="https://www.fitfiletools.com/convert" target="_blank" class="lien">FitFileTools</a>.
+        </li>
+        <li>
+            Le format TCX prend en compte les sports suivants : Course, Vélo et Autre. Si le sport de votre entraînement n'est pas pris en compte,
+            Sprintia l'importera en tant que sport "Libre".
+        </li>
+    </ul>
 
-    <h2>Import via application</h2>
-    <div class="action-list">
-
-        <a href="import_strava.html">
-            <div class="action-list-item">
-                <p class="text-param">Strava</p>
-            </div>
-        </a>        
-
-    </div>
-
-
-    <h2>Import via fichier</h2>
-    <div class="action-list">
-
-        <a href="import_tcx.html">
-            <div class="action-list-item">
-                <p class="text-param">Fichier TCX</p>
-            </div>
-        </a>        
-        <a href="import_garmin_csv.html">
-            <div class="action-list-item">
-                <p class="text-param">Fichier Garmin CSV</p>
-            </div>
-        </a>
-
-    </div>
-
+    <div class="container-center-marge">
+        <!-- On n' affiche pas le input file -->
+        <input type="file" id="file-input-tcx" accept=".tcx" style="display: none;" onchange="uploadFileTCX(event)">
+        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+        <button class="size-block" onclick="document.getElementById('file-input-tcx').click()" id="button-import-tcx">Importer TCX</button>
+    </div> 
     
     <footer>
         <div class="conteneur-lien-footer">
@@ -139,7 +132,6 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
     <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script_import_seance.js"></script>
 
     

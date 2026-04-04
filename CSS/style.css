@@ -1064,7 +1064,7 @@ textarea {
     width: 100%;
     height: 125px;
     background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_ACCENT);
+    color: var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
     padding: var(--SPACE_S);
     font-size: var(--P);

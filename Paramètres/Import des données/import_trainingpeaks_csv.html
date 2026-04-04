@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Sprintia Labs</title>
+    <title>Sprintia - Import TrainingPeaks CSV</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="../../index.html">Sprintia</a>
+                <a href="../../index.html" id="logo-dynamique">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
@@ -77,49 +77,44 @@
         </div>
     </header>
     
-    <div class="toolbar">
-        <h1>Sprintia Labs</h1>
-        <i class="fs-icon_a_propos" onclick="window.location.href='sprintia_labs_info.html'"></i>
+    <h1>Importer un fichier TrainingPeaks CSV</h1>
+
+    <p class="text">
+        Vous avez synchronisé votre montre (Apple Watch, Coros, Polar, Suunto...) avec TrainingPeaks. Vous pouvez grâce à cela importer 
+        votre historique d'entraînement sur Sprintia en important le fichier '.csv' que vous pouvez trouver sur le
+        <a href="https://app.trainingpeaks.com/" class="lien" target="_blank">site web de TrainingPeaks</a>.
+        Pour ce faire, suivez les instructions :
+    </p>
+    <ul class="list-information">
+        <li>
+            Cliquez sur le lien ci-contre.
+        </li>
+        <li>
+            Connectez-vous à votre compte TrainingPeaks.
+        </li>
+        <li>
+            Allez dans les paramètres (cliquer sur votre photo de profil en haut à droite puis "Settings").
+        </li>
+        <li>
+            Rendez-vous dans "Export data".
+        </li>
+        <li>
+            Remplissez les champs de la catégorie "Workout Summary".
+        </li>
+        <li>
+            Appuyez sur "Exporter".
+        </li>
+    </ul>
+    <p class="text">
+        Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'workouts.csv' dans Sprintia.
+    </p>
+    <div class="container-center-marge">
+        <!-- On n' affiche pas le input file -->
+        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadTrainingPeaks(event)">
+        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+        <button class="size-block" onclick="document.getElementById('file-input-TP').click()" id="button-import-TP">Importer CSV</button>
     </div>
 
-    <div class="bande-annonce" style="
-        background-color: var(--COLOR_ACCENT); 
-        border-radius: var(--BORDER_NORMAL);
-        padding: var(--SPACE_S);
-        margin: var(--SPACE_M) auto;
-    ">
-        <p style="
-            color: var(--COLOR_BACKGROUND);
-            font-weight: 1000;
-            font-size: var(--H2);
-        ">
-            · Expérimenter<br>· Découvrez<br>· Aidez
-        </p>
-    </div>
-
-    <h2>Algorithmes d'apprentissage</h2>
-    <div class="outil" style="
-        background-color: var(--COLOR_BACKGROUND_CARD);
-        border-radius: var(--BORDER_NORMAL);
-        padding: var(--SPACE_S);
-        margin: var(--SPACE_M) auto;
-    " onclick="window.location.href='Algorithmes d\'apprentissage/Prediction_RPE.html'">
-        <p style="
-            color: var(--COLOR_TEXT_PRIMARY);
-            font-weight: 1000;
-            font-size: var(--H3);
-        ">
-            Prédiction RPE
-        </p>        
-        <p style="
-            color: var(--COLOR_TEXT_SECONDARY);
-            font-size: var(--P);
-            margin-top: var(--SPACE_XS);
-        ">
-            Cette algorithme a pour but de prédire le RPE (Rate of Perceived Exertion) de votre entraînement en fonction des données de votre 
-            entraînement (FC, Durée,...). 
-        </p>
-    </div>
     
     <footer>
         <div class="conteneur-lien-footer">
@@ -140,13 +135,20 @@
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="Licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../Licence/Licence.html">Licence (© 2026 Sprintia)</a>
             <a class="a_footer" href="../Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
         </div>
     </footer>
     
     <!-- Pour le burger menu -->
     <script src="../../Assets/base-js/base.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script_import_seance.js"></script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

@@ -18,6 +18,8 @@ async function Init() {
     
     if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutregister") {
         logoDynamique("Bien joué 🔥")
+    } else if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutimport") {
+        logoDynamique("Bien reçu 😋")
     }
 
     SauvegardeHistorique(HistoriqueDB)

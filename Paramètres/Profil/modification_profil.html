@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Profil</title>
+    <title>Sprintia - Modification profil</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,70 +77,45 @@
         </div>
     </header>
     
-    <h1>Profil</h1>
-    <h2>Information profil</h2>
-    
-    <table id="tableau-historique">
-        
-        <tbody>
-            <tr>
-                <td>Genre</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Taille</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Poids</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>FC repos</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>FC max.</td>
-                <td>-</td>
-            </tr>
-
-        </tbody>
-
-    </table>
-    
-    <div class="container-center-marge">
-        <button class="size-block" onclick="window.location.href = 'modification_profil.html'">Modifier mon profil</button>
-    </div>
-
-    <h2>Sauvegarde</h2>
+    <h1>Modification profil</h1>
     <p class="text">
-        Vous voulez changer de smartphone ou alors vous souhaitez transférer vos données vers un autre appareil informatique (ex: votre PC) ?
-        Vous êtes au bon endroit ! La fonctionnalité de sauvegarde permet de télécharger, exporter vos données au format JSON ce qui permettera par
-        la suite de restaurer vos données (voir plus bas dans la page) sur votre nouvel appareil,...
+        <strong>Vos données personnelles reste en local sur votre appareil. </strong>
+        <br><br>
+        En enregistrant vos données, Sprintia vous fera
+        gagner du temps lors de l'utilisation de nos outils, en pré-remplissant automatiquement les champs correspondants. De plus,
+        les algorithmes seront plus précis car ils pourront s'adapter à votre profil.
     </p>
-    <div class="container-center-marge">
-        <button class="size-block" onclick="DownloadDatas()" id="download-button">Télécharger mes données</button>
-    </div>
 
-    <h2>Restauration</h2>
-    <p class="text">
-        La fonctionnalité de restauration permet d'ingérer vos données (qui ont été téléchargée au format JSON au préalable) dans Sprintia. Cette fonction est utile
-        si vous changez d'appareil informatique. <strong>Attention, en important des données vous écraserez vos données actuelle</strong>.
-    </p>
-    <div class="container-center-marge">
-        <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input" accept=".json" style="display: none;" onchange="ReadFile(event)">
-        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input').click()" id="restoration-button">Restaurer mes données</button>
-    </div>
-        
-    <h2>Réinitialiser Sprintia</h2>
-    <p class="text">
-        Si vous avez envie de supprimer l'entièreté de vos données, cliquez sur le bouton ci-dessous.
-    </p>
-    <div class="container-center-marge">
-        <button class="size-block" onclick="SupprimerDatas()" id="reinitialiser-sprintia">Réinitialiser Sprintia</button>
-    </div> 
+    <section class="container-zone">
+        <div class="form">
+
+            <select id="genre-user" autocomplete="off">
+                <option value="Libre">Genre : Homme</option>
+                <option value="Libre">Genre : Femme</option>
+                <option value="Libre">Genre : Autre</option>
+            </select>
+
+            <div class="container-input">
+                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                <div class="label-input">Poids (kg)</div>
+            </div>
+
+            <div class="side-by-side">
+                <div class="container-input">
+                    <input type="number" class="small" id="fc-repos-user" placeholder="FC repos (bpm)" autocomplete="off">
+                    <div class="label-input">FC repos (bpm)</div>
+                </div>
+                        
+                <div class="container-input">
+                    <input type="number" id="fc-max-user" class="small" placeholder="FC max. (bpm)" autocomplete="off">
+                    <div class="label-input">FC max. (bpm)</div> 
+                </div>
+            </div>
+
+            <button>Sauvegarder</button>
+
+        </div>
+    </section>
     
     <footer>
         <div class="conteneur-lien-footer">

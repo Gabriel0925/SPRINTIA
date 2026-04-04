@@ -1097,8 +1097,8 @@ div.toolbar h1 {
     margin: 0;
     display: -webkit-box;
     -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 1;
-    line-clamp: 1; 
+    -webkit-line-clamp: 2;
+    line-clamp: 2; 
     overflow: hidden;
 }
 div.toolbar i {
@@ -1124,37 +1124,47 @@ div.toolbar i:active {
 }
 
 
-div.toolbar div.button-toolbar {
-    background-color: var(--COLOR_ACCENT);
+div.button-flottant {
     display: flex;
+    justify-content: center;
     align-items: center;
+    gap: var(--SPACE_XS);
+
+    cursor: pointer;
+    position: fixed;
+    bottom: var(--SPACE_S);
+    right: var(--SPACE_S);
+    padding: var(--SPACE_S);
+    box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
+
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
-    padding: var(--SPACE_XXS);
+    font-size: var(--H1);
+
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.toolbar div.button-toolbar:hover {
+    div.button-flottant:hover {
         background-color: var(--COLOR_ACCENT2);
     }
 }
-div.toolbar div.button-toolbar:active {
+div.button-flottant:active {
     background-color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.toolbar div.button-toolbar i{
-    background-color: transparent;
-    padding: var(--SPACE_XXS);
-    font-size: 1.8rem;
-    color: var(--COLOR_BACKGROUND);
+@media (max-width: 600px) {
+    div.button-flottant {
+        bottom: var(--SPACE_S);
+        right: var(--SPACE_S);
+        padding: var(--SPACE_S);
+        border-radius: 50%;
+        font-size: var(--H0);
+    }
+    div.button-flottant p {
+        display: none;
+    }
 }
-div.toolbar div.button-toolbar p{
-    font-size: var(--P);
-    color: var(--COLOR_BACKGROUND);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin: var(--SPACE_XXS) 0;
-    margin-right: var(--SPACE_XS);
-}
-
 
 
 div.menu-many-action {

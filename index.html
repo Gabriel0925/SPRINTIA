@@ -77,14 +77,11 @@
         </div>
     </header> 
     
-    <div class="toolbar">
-        <h1>Accueil</h1> 
-        <a href="Outils/Actions/ajouter_entraînement.html">
-            <div class="button-toolbar">
-                <i class="fs-icon_add"></i>
-                <p>Ajouter</p>
-            </div>
-        </a>
+    <h1>Accueil</h1> 
+
+    <div class="button-flottant" onclick="window.location.href = 'Outils/Actions/ajouter_entraînement.html'">
+        <i class="fs-icon_add"></i>
+        <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
 
     <div class="statut-analyse"  onclick="location.href = 'Outils/Actions/statut_analyses.html'">
@@ -165,8 +162,6 @@
         <button id="afficher-historique" onclick="location.href='Outils/Actions/historique_entrainement.html'">
             Afficher l'historique
         </button>
-    </div>
-
     </div>
     
     <footer>

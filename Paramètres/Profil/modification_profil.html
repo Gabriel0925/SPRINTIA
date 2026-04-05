@@ -82,17 +82,18 @@
         <strong>Vos données personnelles reste en local sur votre appareil. </strong>
         <br><br>
         En enregistrant vos données, Sprintia vous fera
-        gagner du temps lors de l'utilisation de nos outils, en pré-remplissant automatiquement les champs correspondants. De plus,
-        les algorithmes seront plus précis car ils pourront s'adapter à votre profil.
+        gagner du temps lors de l'utilisation de mes outils, en pré-remplissant automatiquement les champs correspondants. De plus,
+        elles permettent de débloquer des fonctionnalités comme l'estimation des calories brûlées lors de vos entraînements,...
+    </p>
     </p>
 
     <section class="container-zone">
         <div class="form">
 
             <select id="genre-user" autocomplete="off">
-                <option value="Libre">Genre : Homme</option>
-                <option value="Libre">Genre : Femme</option>
-                <option value="Libre">Genre : Autre</option>
+                <option value="Homme">Genre : Homme</option>
+                <option value="Femme">Genre : Femme</option>
+                <option value="Autre">Genre : Autre</option>
             </select>
 
             <div class="container-input">
@@ -112,10 +113,14 @@
                 </div>
             </div>
 
-            <button>Sauvegarder</button>
+            <button id="button-save" onclick="saveProfil()">Sauvegarder</button>
 
         </div>
     </section>
+
+    <div class="container-center-marge">
+        <button id="button-supprimer" onclick="supprimerProfil()">Supprimer mon profil</button>
+    </div>
     
     <footer>
         <div class="conteneur-lien-footer">
@@ -148,6 +153,101 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
     <script src="script_save_restoration.js"></script>
+
+    <script>
+        async function saveProfil() {
+            let button = document.getElementById("button-save")
+
+            // recup des champs
+            let genre = document.getElementById("genre-user").value
+            let poids = document.getElementById("poids-user").value
+            let fcRepos = document.getElementById("fc-repos-user").value    
+            let fcMax = document.getElementById("fc-max-user").value
+
+            // vérification des champs pour voir si ils sont vides 
+            if (poids === "" || fcRepos === "" || fcMax === "") {
+                alert("Tous les champs sont obligatoires. Veuillez les remplir.")
+                return
+            }
+            // vérif des valeurs saisies
+            if (poids <= 0) {
+                alert("Valeur non valide, le poids doit être un nombre supérieur à 0.")
+                return
+            }
+            if (poids >= 1000) {
+                alert("Valeur non valide, le poids doit être un nombre inférieur à 1000.")
+                return
+            }
+            if (fcRepos <= 20) {
+                alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre supérieur à 20.")
+                return
+            }
+            if (fcMax <= 70) {
+                alert("Valeur non valide, la fréquence cardiaque max. doit être un nombre supérieur à 70.")
+                return
+            }
+            if (fcMax >= 300 && fcRepos >= 300) {
+                alert("Valeur non valide, la fréquence cardiaque max. et de repos doivent être des nombres inférieurs à 300.")
+                return
+            }
+
+            // conversion + ajout de propreté
+            poids = Number(poids).toFixed(1)
+            fcRepos = parseInt(fcRepos)
+            fcMax = parseInt(fcMax)
+
+            // desactivation
+            button.textContent = "Sauvegarde..."
+            button.disabled = true
+
+            // sauvegarde dans indexed db
+            await db.profil.put({
+                id: 1,
+                genre: genre,
+                poids: poids,
+                fc_repos: fcRepos,
+                fc_max: fcMax
+            })
+
+
+            setTimeout(() => {
+                button.textContent = "Sauvegardé"
+            }, 650);
+
+            setTimeout(() => {
+                button.textContent = "Sauvegarder"
+                button.disabled = false
+                window.location.href = "profil.html"
+            }, 1300);
+
+            return
+        }
+
+        async function remplirChamps() {
+            // recup des datas
+            let profil = await db.profil.toArray()
+
+            if (profil.length > 0) {
+                profil = profil[0] // Prendre le premier element donc profil est un dico désormais
+                document.getElementById("genre-user").value = profil.genre
+                document.getElementById("poids-user").value = profil.poids
+                document.getElementById("fc-repos-user").value = profil.fc_repos
+                document.getElementById("fc-max-user").value = profil.fc_max
+            }
+        }
+
+        async function supprimerProfil() {
+            if (confirm("Êtes-vous sûr de vouloir supprimer votre profil ?")) {
+                await db.profil.clear() // suppression du profil dans indexed db
+                window.location.href = "profil.html" // redirection vers la page de profil pour voir que les champs sont vides
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            remplirChamps()
+        })
+    
+    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

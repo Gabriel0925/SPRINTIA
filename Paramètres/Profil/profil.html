@@ -78,17 +78,17 @@
     </header>
     
     <h1>Profil</h1>
+
     <h2>Information profil</h2>
-    
+    <p class="text">
+        Ces données ne sont pas obligatoire mais elles permettent
+        de débloquer des fonctionnalités comme l'estimation des calories brûlées lors de vos entraînements,...
+    </p>
     <table id="tableau-historique">
         
         <tbody>
             <tr>
                 <td>Genre</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Taille</td>
                 <td>-</td>
             </tr>
             <tr>
@@ -174,6 +174,51 @@
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
     <script src="script_save_restoration.js"></script>
 
+    <script>
+        const dicoCorrespondance = {
+            "genre": "Genre",
+            "poids": "Poids",
+            "fc_repos": "FC repos",
+            "fc_max": "FC max."
+        }
+        const dicoUnite = {
+            "genre": "",
+            "poids": " kg",
+            "fc_repos": " bpm",
+            "fc_max": " bpm"
+        }
+
+        async function remplirTableau() {
+            let data = await db.profil.toArray()
+
+            if (data.length > 0) {
+                data = data[0] // on recup le dico des datas
+
+                // remplir les td
+                let td = document.querySelectorAll("td")
+
+                // init
+                let compteur = 0
+
+                Object.entries(data).forEach(key => {
+                    if (key[0] == "id") { // si c'est l'id on s'en fous
+                        //pass
+                    } else {
+                        const dataName = dicoCorrespondance[key[0]] // recup du nom de la data ex : genre devient Genre
+                        
+                        // maintenant remplir le tableau
+                        td[compteur].textContent = dataName // ex: Genre
+                        td[compteur+1].textContent = key[1] + dicoUnite[key[0]] // ex: Homme
+
+                        compteur += 2 // incrémentation de +2 car on remplit 2 td à la fois
+                    }
+
+                });
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", remplirTableau)
+    </script>
     
     <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>

@@ -20,6 +20,7 @@ async function DownloadDatas() {
     let NiveauCourseDB = await db.niveau_course.toArray()
     let StatutDB = await db.statut_analyse.toArray()
     let JrmCoachDB = await db.JRM_Coach.toArray()
+    let ProfilDB = await db.profil.toArray()
 
     // (!!!--- Modifier si ajout de table ---!!!)
     // Dictionnaire avec les datas du local storage et les tables de l'indexed DB
@@ -29,7 +30,8 @@ async function DownloadDatas() {
             entrainement: WorkoutDB,
             niveau_course: NiveauCourseDB,
             statut_analyse: StatutDB,
-            JRM_Coach: JrmCoachDB
+            JRM_Coach: JrmCoachDB,
+            profil: ProfilDB
         }
     }
 
@@ -91,6 +93,7 @@ async function ReadFile(event) {
             const TableNiveauCOurse = DataFileIndexedDB.niveau_course
             const TableStatuts = DataFileIndexedDB.statut_analyse
             const TableJRMCoach = DataFileIndexedDB.JRM_Coach
+            const TableProfil = DataFileIndexedDB.profil
 
             // (!!!--- Modifier si ajout de table ---!!!)
             // on vide chaque table de l'indexedDB avant d'ajouter les datas
@@ -98,19 +101,36 @@ async function ReadFile(event) {
             await db.niveau_course.clear()
             await db.statut_analyse.clear()
             await db.JRM_Coach.clear()
+            await db.profil.clear()
 
             // (!!!--- Modifier si ajout de table ---!!!)
-            for (let element of TableEntrainement) { // on recupere les datas ligne par ligne de la table correspondante
-                await db.entrainement.add(element)
+            if (TableEntrainement.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
+                for (let element of TableEntrainement) { // on recupere les datas ligne par ligne de la table correspondante
+                    await db.entrainement.add(element)
+                }
             }
-            for (let element of TableNiveauCOurse) { // on recupere les datas ligne par ligne de la table correspondante
-                await db.niveau_course.add(element)
+            if (TableNiveauCOurse.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
+                for (let element of TableNiveauCOurse) { // on recupere les datas ligne par ligne de la table correspondante
+                    await db.niveau_course.add(element)
+                }
             }
-            for (let element of TableStatuts) { // on recupere les datas ligne par ligne de la table correspondante
-                await db.statut_analyse.add(element)
+            if (TableStatuts.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
+                for (let element of TableStatuts) { // on recupere les datas ligne par ligne de la table correspondante
+                    await db.statut_analyse.add(element)
+                }
             }
-            for (let element of TableJRMCoach) { // on recupere les datas ligne par ligne de la table correspondante
-                await db.JRM_Coach.add(element)
+            if (TableJRMCoach.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
+                for (let element of TableJRMCoach) { // on recupere les datas ligne par ligne de la table correspondante
+                    await db.JRM_Coach.add(element)
+                }
+            }
+
+            // vérification si la table profil existe parce que cette table a été ajouté avec Sprintia 4.2 
+            if (TableProfil != undefined && TableProfil.length > 0) {     
+                for (let element of TableProfil) { // on recupere les datas ligne par ligne de la table correspondante
+                    // on le met à l'id 1 car il y a que cette ligne dans la bdd
+                    await db.profil.put(element, 1) 
+                }
             }
             
             // Pause
@@ -122,6 +142,7 @@ async function ReadFile(event) {
             logoDynamique("Vous revoilà 😇")
             // rechargement du theme
             Preference()
+
         } catch {
             alert("Une erreur est survenue, veuillez réessayer !")
         }
@@ -147,6 +168,7 @@ async function SupprimerDatas() {
         await db.niveau_course.clear()
         await db.statut_analyse.clear()
         await db.JRM_Coach.clear()
+        await db.profil.clear()
 
         setTimeout(() => {
             // transimission du message

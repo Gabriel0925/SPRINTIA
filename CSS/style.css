@@ -442,7 +442,7 @@ header div.navbar .logo a {
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
     width: 150px; /* width quand c'est écrit Sprintia */
-    max-width: 350px;
+    max-width: 300px;
     max-height: 55px; /* pour sécuriser l'animation */
     overflow: hidden; /* pour sécuriser l'animation */
     text-align: center;
@@ -2392,8 +2392,15 @@ div.container-center-marge {
 }
 
 
-
-@media (max-width: 990px) {
+@media (max-width:890px) {
+    header div.navbar ul.links li a {
+        width: 160px;
+    }
+    header div.navbar ul.links li a i {
+        margin-right: var(--SPACE_XS);
+    }
+}
+@media (max-width: 830px) {
     header div.navbar ul.links {
         display: none;
     }

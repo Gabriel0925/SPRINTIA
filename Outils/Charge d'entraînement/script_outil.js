@@ -253,7 +253,12 @@ async function CalculCharge() {
 
     // calcul du ratio
     let Ratio = ChargeAigue/(ChargeChronique/nbSemaine) // on met charge chronique par semaine pr le ratio
-    return {Ratio, ChargeAigue, ChargeChronique, AnalysePossible}
+    
+    // calcul pour la cible
+    let cibleCe7Jmin = 0.8*(ChargeChronique/nbSemaine)
+    let cibleCe7Jmax = 1.35*(ChargeChronique/nbSemaine)
+
+    return {Ratio, ChargeAigue, ChargeChronique, AnalysePossible, cibleCe7Jmin, cibleCe7Jmax}
 }
 
 async function Initialisation() {
@@ -263,10 +268,15 @@ async function Initialisation() {
     // recup des charges plus interpretation et affichage
     let {ChargeDatas, ListeDate} = await RecupValueGraphique()
     
-    let {Ratio, ChargeAigue, ChargeChronique, AnalysePossible} = await CalculCharge()
+    let {Ratio, ChargeAigue, ChargeChronique, AnalysePossible, cibleCe7Jmin, cibleCe7Jmax} = await CalculCharge()
 
     if (ChargeAigue) {
         document.getElementById("charge-7j").textContent = ChargeAigue
+
+        if (cibleCe7Jmin && cibleCe7Jmax) {
+            // affichage de la cible
+            document.getElementById("cible-charge-7j").textContent = "Cible : " + parseInt(cibleCe7Jmin) + " - " + parseInt(cibleCe7Jmax)
+        }
     }
     if (ChargeChronique) {
         document.getElementById("charge-28j").textContent = ChargeChronique

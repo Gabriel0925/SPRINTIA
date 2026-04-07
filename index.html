@@ -26,7 +26,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="index.html">Sprintia</a>
+                <a id="logo-dynamique" href="index.html">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
@@ -77,16 +77,20 @@
         </div>
     </header> 
     
-    <h1>Accueil</h1> 
-
+    <h1>Accueil</h1>    
+    
     <div class="button-flottant" onclick="window.location.href = 'Outils/Actions/ajouter_entraînement.html'">
         <i class="fs-icon_add"></i>
         <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
-
-    <div class="statut-analyse"  onclick="location.href = 'Outils/Actions/statut_analyses.html'">
-        <i id="statut" class="fs-icon_pause"></i>
-        <p id="statut-actuel">Statut : chargement...</p>
+    
+    <div class="action-list" style="margin: var(--SPACE_M) 0;">
+        <a>
+            <div class="action-list-item" onclick="changeStatut()">
+                <i class="fs-icon_pause"></i>
+                <p id="statut-actuel">Statut : chargement...</p>
+            </div>
+        </a>
     </div>
 
     <a href="Outils/Actions/historique_entrainement.html">
@@ -143,7 +147,7 @@
 
     </section>
 
-    <h2>Entraînement récent (3 sem.)</h2>
+    <h2>Volume d'entraî. (4 sem.)</h2>
     <p class="text">
         Ce graphique permet de suivre votre régularité en comparant votre temps total d'entraînement par semaine.
     </p>
@@ -281,6 +285,30 @@
         })
     </script>
 
+    <!-- Pour le statut actuel -->
+    <script>
+        function changeStatut() {
+            if (localStorage.getItem("StatutAnalyse") == "Actif·ve" || localStorage.getItem("StatutAnalyse") == null) {
+                document.getElementById("statut-actuel").textContent = "Statut : Pause"
+                localStorage.setItem("StatutAnalyse", "Pause")
+                logoDynamique("😴 Snooze")
+
+            } else {
+                document.getElementById("statut-actuel").textContent = "Statut : Actif·ve"
+                localStorage.setItem("StatutAnalyse", "Actif·ve")
+                logoDynamique("⚡ C'est parti !")
+
+            }
+        }
+
+        function statutActuel() {
+            let statut = localStorage.getItem("StatutAnalyse")
+            if (statut == null) {statut = "Actif·ve"}
+            document.getElementById("statut-actuel").textContent = "Statut : " + statut
+        }
+
+        window.addEventListener("DOMContentLoaded", statutActuel())
+    </script>
 
     <!-- Pour les outils favoris -->
     <script>
@@ -380,27 +408,6 @@
         })
     </script>
 
-    <!-- Pour le statut actuel -->
-    <script>
-        async function nameStatut() {
-            const HistoriqueDB = await db.statut_analyse.toArray()
-
-            let statutActuel = HistoriqueDB.map(element => element.statut).reverse()
-
-            if (statutActuel.length > 0) {
-                document.getElementById("statut-actuel").textContent = "Statut : " + statutActuel[0]
-            } else {
-                document.getElementById("statut-actuel").textContent = "Statut : Actif·ve"
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            nameStatut()
-        })
-    </script>
-
     <!-- Pour le JRM Coach -->
     <script>
         function PassageHeureJRMCoach(minutes) {
@@ -431,33 +438,11 @@
             }
 
             // Pour les statuts
-            let StatutDB = await db.statut_analyse.toArray()
+            let StatutDB = localStorage.getItem("StatutAnalyse") || "Actif·ve"
 
-            if (StatutDB.length > 0) {
-                let TableauStatut = StatutDB.map(elementDB => elementDB.statut).reverse()
-                 // si il ny a pas de datas
-                let TableauPhraseJRM = [
-                    "Tu as signalé que tu es en vacances ! Profite de ces jours de vacances pour te reposer et passer du temps avec ta famille,...",
-                    "Tu as signalé que tu es blessé·e ! Dans ces moments là, c'est compliqué, je le sais, mais si tu continues à faire du sport en étant blessé·e, tu risques de retarder ta guérison.",
-                    "Tu as signalé que tu es malade ! Je sais que c'est dur mais essaie de ne pas t'entraîner, car ton organisme a besoin de repos.",
-                    "Tu as suspendu les analyses. Je ne peux donc pas analyser ta semaine d'entraînement."
-                ]
-                let Interpretation = ""
-
-                if (TableauStatut[0] != "Actif·ve") { // si le statut n'est pas sur actif alors on met les interpretations
-                    if (TableauStatut[0] == "Vacances") { // Attribution d'une interpretation en fonction du statut
-                        Interpretation = TableauPhraseJRM[0]
-                    } else if (TableauStatut[0] == "Blessure") {
-                        Interpretation = TableauPhraseJRM[1]
-                    } else if (TableauStatut[0] == "Malade") {
-                        Interpretation = TableauPhraseJRM[2]
-                    } else if (TableauStatut[0] == "Suspendre") {
-                        Interpretation = TableauPhraseJRM[3]
-                    }
-                    // On affiche l'interpretation dans la zone du JRM
-                    document.querySelector(".large-zone-coach-interpretation").innerHTML = Interpretation
-                    return
-                }
+            if (StatutDB && StatutDB != "Actif·ve") { // si le statut d'analyse du user est en pause
+                    document.querySelector(".large-zone-coach-interpretation").innerHTML = "Ton statut d'analyse est actuellement en pause. Je ne peux donc pas analyser tes entraînements."
+                return
             }
 
             if (HistoriqueDB.length > 0) { // Si il y a des datas
@@ -631,6 +616,7 @@
             DureeTotalSemaine = 0 // Variable deja défini en haut du script (remise à 0)
             let DureeTotalSemaine2 = 0
             let DureeTotalSemaine3 = 0
+            let DureeTotalSemaine4 = 0
     
             // Date recup
             const DateActuelle = new Date()
@@ -651,6 +637,11 @@
             DateMoins21J = new Date(DateMoins21J).toISOString()
             DateMoins21J = DateMoins21J.split("T")[0] 
 
+            let DateMoins28J = new Date() // voir commentaire au dessus pr explication
+            DateMoins28J = DateMoins28J.setDate(DateActuelle.getDate() - 28) 
+            DateMoins28J = new Date(DateMoins28J).toISOString()
+            DateMoins28J = DateMoins28J.split("T")[0] 
+
             // Recup data in BDD
             const HistoriqueDB = await db.entrainement.toArray()
 
@@ -668,15 +659,18 @@
             let TableauDureeSemaine = [] 
             let TableauDureeSemaine2 = [] 
             let TableauDureeSemaine3 = [] 
+            let TableauDureeSemaine4 = [] 
             let compteur = 0
 
             DateDataSemaine.forEach(element => { // Parcours des dates
                 if (element >= DateMoins7J) {
-                    TableauDureeSemaine.push(Math.floor(DureeDataSemaine[compteur])) // tableau pour la durée des 7 derniers jours
+                    TableauDureeSemaine.push(DureeDataSemaine[compteur]) // tableau pour la durée des 7 derniers jours
                 } else if (element >= DateMoins14J) {
-                    TableauDureeSemaine2.push(Math.floor(DureeDataSemaine[compteur])) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
+                    TableauDureeSemaine2.push(DureeDataSemaine[compteur]) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
                 } else if (element >= DateMoins21J) {
-                    TableauDureeSemaine3.push(Math.floor(DureeDataSemaine[compteur])) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
+                    TableauDureeSemaine3.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
+                } else if (element >= DateMoins28J) {
+                    TableauDureeSemaine4.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
                 }
                 
                 compteur += 1
@@ -692,93 +686,30 @@
             TableauDureeSemaine3.forEach(element => {
                 DureeTotalSemaine3 += element
             })
+            TableauDureeSemaine4.forEach(element => {
+                DureeTotalSemaine4 += element
+            })
 
-            const TableauPourGraphique = [DureeTotalSemaine3, DureeTotalSemaine2, DureeTotalSemaine]
+            const TableauPourGraphique = [Math.floor(DureeTotalSemaine4), Math.floor(DureeTotalSemaine3), Math.floor(DureeTotalSemaine2), Math.floor(DureeTotalSemaine)]
 
             return TableauPourGraphique
         }
 
-        // Initialisation de la variable du graphique pour que le code ce rappelle de l'ancien graphique "stockée" dans le BFCache 
-        // Pr éviter de superposer un graphique
-        let barChart = null
-
-        async function GenererGraphique() {
+        async function graph() {
             // recup des datas
             let TableauPourGraphique = await RecupData()
 
-            // Récup les variables css
-            let RootCSS = document.documentElement
-            let StyleCSS = getComputedStyle(RootCSS)
-            // Recup variable css
-            let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
-            let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
-            let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
-
-            const barCanvas = document.getElementById("barCanvas")
-
-            // Destruction de l'ancien graphique si il y en a un pour éviter une superposition de graphique
-            if (barChart) {
-                barChart.destroy()
-            }
-
-            barChart = new Chart(barCanvas, {
-                type:"line",
-                    data:{
-                        labels: ["S-3", "S-2", "S-1"],
-                        datasets: [{
-                            data: TableauPourGraphique,
-                            borderColor : CouleurAccent, // Ligne des niveau couleur
-                            backgroundColor: CouleurAccent2,
-                            fill: true, // Pour remplir le graphique de la couleur background
-                            pointRadius: 8, // Taille du point
-                            pointHoverRadius: 10,
-                            pointBackgroundColor: CouleurAccent,
-                            pointBorderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true, // Activation du responsive
-                        maintainAspectRatio: false, // Tres important pour responsive sur mobile
-                        
-                        plugins: {
-                            legend: {
-                                display: false // Masque la legende qui sert a rien dans mon cas
-                            }
-                        },
-                            
-                        scales: {
-                            y: { // COuleur + taille des txt sur axe des ordonnées
-                                grid: {
-                                    display: false // pr enlever la grille sur l'axe y (et x voir plus bas)
-                                },
-                                ticks: {
-                                    color: CouleurTextPrincipal, 
-                                    font: {size: 13}
-                                },
-                                beginAtZero: true, // Pr commencer à 0
-                            },
-                            x: { // idem pour abscisse
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    color: CouleurTextPrincipal,
-                                    font: {size: 13}
-                                }
-                            }
-                        }
-                    }
-            })
+            genererGraphique(["S-4", "S-3", "S-2", "S-1"], TableauPourGraphique)
         }
 
         window.addEventListener("DOMContentLoaded", () => {
-            GenererGraphique()
+            graph()
         })
 
         // Pour recharger le graphique si c'est dans le BFCache
         window.addEventListener("pageshow", (event) => {
             if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
-                GenererGraphique()
+                graph()
             }
         })
     </script>

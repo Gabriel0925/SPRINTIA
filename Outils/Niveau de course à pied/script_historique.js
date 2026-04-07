@@ -91,11 +91,11 @@ async function RemplirTableau() {
             if (confirm("Supprimer ce niveau de course ?")) {
                 await db.niveau_course.delete(idDatas[EtapeBoucle]) // supprimer la data de la bdd
                 await NouvelleLigne.remove() // supprimer la ligne
-                GenererGraphique()
+
+                graph()
 
                 let DataTableau = document.querySelectorAll("td") // Recup des lignes pour savoir quand il faut cacher le tableau
                 let Tableau = document.getElementById("tableau-historique") // recup du tableau
-                console.log(DataTableau)
 
                 if (DataTableau.length <= 0) {
                     // On cache tout

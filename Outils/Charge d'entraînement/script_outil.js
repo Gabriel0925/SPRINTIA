@@ -1,7 +1,3 @@
-// Initialisation de la variable du graphique pour que le code ce rappelle de l'ancien graphique "stockée" dans le BFCache 
-// Pr éviter de superposer un graphique
-let barChart = null
-
 function ReturnDate(DateWorkout) {
     let DateEuropeen = ""
 
@@ -87,41 +83,14 @@ async function InterpretationJRM(Ratio, AnalysePossible) {
         "Statut : <strong>Surentraînement</strong><br>Ton corps n'arrive pas à bien récupérer de tes entraînements récents, n'oublie jamais que le muscle se construit au repos, pas à la salle, repose-toi un peu avant d'aller à la salle."
     ] 
 
-    const PhraseJRMStatut = [
-        "Statut : <strong>Vacances</strong><br>Profite de cette pause pour te ressourcer, apprécier les moments en famille, te reposer. Mais n'oublie pas de revenir encore plus motivé·e pour battre tous tes records !",
-        "Statut : <strong>Blessure</strong><br>Prends vraiment le temps de laisser ton corps se régénérer complètement, afin de revenir encore plus fort·e que jamais.",
-        "Statut : <strong>Malade</strong><br>Ne va pas t'entraîner, ton organisme a besoin de récupérer pour le moment, mais dès que tu seras guéri·e tu pourras reprendre tes entraînements.",
-        "Statut : <strong>Suspension</strong><br>Profite-en pour te reposer, j'analyserai tes entraînements seulement quand tu seras prêt·e !"
-    ]
+    const PhraseJRMStatut = "Statut : <strong>Pause</strong><br>Actuellement les analyses sont en pause je ne peux donc pas analyser ta charge d'entraînement pour déterminer si ton entraînement est productif,..."
 
-    // Check du statut du user
-    let HistoriqueDB = await db.statut_analyse.toArray()
+    let StatutActuel = localStorage.getItem("StatutAnalyse") || "Actif·ve" // Check du statut du user
+    if (StatutActuel && StatutActuel != "Actif·ve") {
+        Interpretation = PhraseJRMStatut
+        document.getElementById("cible-charge-7j").textContent = "Charge aiguë"
 
-    let StatutData = HistoriqueDB.map(statutBDD => statutBDD.statut).reverse() // reverse pour inverser la liste pour l'ordre
-
-    // Unit 
-    let LastStatutUser = ""
-    if (StatutData.length > 0) {
-        // on prend l'index 0 pour avoir son dernier statut
-        LastStatutUser = StatutData[0]
-    } else {
-        // si il n'y a pas de statut on le met sur actif
-        LastStatutUser = "Actif·ve"
-    }
-
-    if (LastStatutUser == "Vacances") {
-        Interpretation = PhraseJRMStatut[0]
-
-    } else if (LastStatutUser == "Blessure") {
-        Interpretation = PhraseJRMStatut[1]
-        
-    } else if (LastStatutUser == "Malade") {
-        Interpretation = PhraseJRMStatut[2]
-        
-    } else if (LastStatutUser == "Suspendre") {
-        Interpretation = PhraseJRMStatut[3]
-        
-    } else if (LastStatutUser == "Actif·ve") {
+    } else if (StatutActuel == "Actif·ve") {
         // Déterminer le coach choisis du user
         let CoachUserDB = await db.JRM_Coach.toArray()
         let StyleCoachUser = PhraseJRMBienveillant // attribution du style de coach a utilisé pour l'interpretation
@@ -293,69 +262,8 @@ async function Initialisation() {
         ChargeDatas = [0, 0, 0]
         ListeDate = ["Lundi", "Mercredi", "Samedi"]
     }
-
-    // Récup les variables css
-    let RootCSS = document.documentElement
-    let StyleCSS = getComputedStyle(RootCSS)
-    // Recup variable css
-    let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
-    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
-    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
-
-    const barCanvas = document.getElementById("barCanvas")
-
-    if (barChart) { // si il y a deja un graphique on le suppr
-        barChart.destroy();
-    }
-
-    barChart = new Chart(barCanvas, {
-        type:"line",
-            data:{
-                labels: ListeDate,
-                datasets: [{
-                    data: ChargeDatas,
-                    borderColor : CouleurAccent, // Ligne des niveau couleur
-                    backgroundColor: CouleurAccent2,
-                    fill: true, // Pour remplir le graphique de la couleur background
-                    pointRadius: 8, // Taille du point
-                    pointHoverRadius: 10,
-                    pointBackgroundColor: CouleurAccent,
-                    pointBorderWidth: 0
-                }]
-                },
-            options: {
-                responsive: true, // Activation du responsive
-                maintainAspectRatio: false, // Tres important pour responsive sur mobile
-                    
-                plugins: {
-                    legend: {
-                        display: false // Masque la legende qui sert a rien dans mon cas
-                    }
-                },
-                    
-                scales: {
-                    y: { // COuleur + taille des txt sur axe des ordonnées
-                        grid: {
-                            display: false // pr enlever la grille sur l'axe y (et x voir plus bas)
-                        },
-                        ticks: {
-                            color: CouleurTextPrincipal, 
-                            font: {size: 13}
-                        },
-                        beginAtZero: true, // Pr commencer à 0
-                    },
-                    x: { // idem pour abscisse
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            color: CouleurTextPrincipal,
-                            font: {size: 13}
-                        }
-                    }
-                }
-            }
-    })
+    
+    genererGraphique(ListeDate, ChargeDatas)
 }
 
 

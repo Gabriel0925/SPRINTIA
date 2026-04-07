@@ -18,7 +18,6 @@ async function DownloadDatas() {
     // recup des datas de chaque table de l'indexedDB 
     let WorkoutDB = await db.entrainement.toArray()
     let NiveauCourseDB = await db.niveau_course.toArray()
-    let StatutDB = await db.statut_analyse.toArray()
     let JrmCoachDB = await db.JRM_Coach.toArray()
     let ProfilDB = await db.profil.toArray()
 
@@ -29,7 +28,6 @@ async function DownloadDatas() {
         DataIndexedDB: {
             entrainement: WorkoutDB,
             niveau_course: NiveauCourseDB,
-            statut_analyse: StatutDB,
             JRM_Coach: JrmCoachDB,
             profil: ProfilDB
         }
@@ -91,7 +89,6 @@ async function ReadFile(event) {
             // on isole les datas de chaque table
             const TableEntrainement = DataFileIndexedDB.entrainement
             const TableNiveauCOurse = DataFileIndexedDB.niveau_course
-            const TableStatuts = DataFileIndexedDB.statut_analyse
             const TableJRMCoach = DataFileIndexedDB.JRM_Coach
             const TableProfil = DataFileIndexedDB.profil
 
@@ -99,7 +96,6 @@ async function ReadFile(event) {
             // on vide chaque table de l'indexedDB avant d'ajouter les datas
             await db.entrainement.clear()
             await db.niveau_course.clear()
-            await db.statut_analyse.clear()
             await db.JRM_Coach.clear()
             await db.profil.clear()
 
@@ -112,11 +108,6 @@ async function ReadFile(event) {
             if (TableNiveauCOurse.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
                 for (let element of TableNiveauCOurse) { // on recupere les datas ligne par ligne de la table correspondante
                     await db.niveau_course.add(element)
-                }
-            }
-            if (TableStatuts.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
-                for (let element of TableStatuts) { // on recupere les datas ligne par ligne de la table correspondante
-                    await db.statut_analyse.add(element)
                 }
             }
             if (TableJRMCoach.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
@@ -166,7 +157,6 @@ async function SupprimerDatas() {
         // on vide chaque table de l'indexedDB avant d'ajouter les datas
         await db.entrainement.clear()
         await db.niveau_course.clear()
-        await db.statut_analyse.clear()
         await db.JRM_Coach.clear()
         await db.profil.clear()
 

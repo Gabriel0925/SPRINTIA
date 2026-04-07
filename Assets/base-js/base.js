@@ -87,7 +87,6 @@ window.addEventListener("pageshow", (event) => {
 // --- Pour le logo dynamique ---
 let Timer1 = 0
 let Timer2 = 0
-
 function logoDynamique(message) {
     clearTimeout(Timer1)
     clearTimeout(Timer2)
@@ -112,6 +111,76 @@ function logoDynamique(message) {
         elementLogoDynamique.classList.remove("return")
         elementLogoDynamique.classList.remove("pin-message")
     }, 3100)
+}
+
+
+
+// --- Pour le grapique ---
+// Initialisation de la variable du graphique pour que le code ce rappelle de l'ancien graphique "stockée" dans le BFCache 
+let barChart = null // Pr éviter de superposer un graphique
+async function genererGraphique(listeX, listeY) {
+    // Récup les variables css
+    let RootCSS = document.documentElement
+    let StyleCSS = getComputedStyle(RootCSS)
+    // Recup variable css
+    let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
+    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
+    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
+
+    const barCanvas = document.getElementById("barCanvas")
+
+    if (barChart) { // si il y a deja un graphique on le suppr
+        barChart.destroy()
+    }
+
+    barChart = new Chart(barCanvas, {
+        type:"line",
+            data:{
+                labels: listeX,
+                datasets: [{
+                    data: listeY,
+                    borderColor : CouleurAccent, // Ligne des niveau couleur
+                    backgroundColor: CouleurAccent2,
+                    fill: true, // Pour remplir le graphique de la couleur background
+                    pointRadius: 8, // Taille du point
+                    pointHoverRadius: 10,
+                    pointBackgroundColor: CouleurAccent,
+                    pointBorderWidth: 0
+                }]
+                },
+            options: {
+                responsive: true, // Activation du responsive
+                maintainAspectRatio: false, // Tres important pour responsive sur mobile
+                    
+                plugins: {
+                    legend: {
+                        display: false // Masque la legende qui sert a rien dans mon cas
+                    }
+                },
+                    
+                scales: {
+                    y: { // COuleur + taille des txt sur axe des ordonnées
+                        grid: {
+                            display: false // pr enlever la grille sur l'axe y (et x voir plus bas)
+                        },
+                        ticks: {
+                            color: CouleurTextPrincipal, 
+                            font: {size: 13}
+                        },
+                        beginAtZero: true, // Pr commencer à 0
+                    },
+                    x: { // idem pour abscisse
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: CouleurTextPrincipal,
+                            font: {size: 13}
+                        }
+                    }
+                }
+            }
+    })
 }
 
 

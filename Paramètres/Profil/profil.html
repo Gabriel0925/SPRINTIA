@@ -79,6 +79,15 @@
     
     <h1>Profil</h1>
 
+    <div class="action-list">
+        <a>
+            <div class="action-list-item" onclick="changeStatut()">
+                <i class="fs-icon_pause"></i>
+                <p id="statut-actuel">Statut : chargement...</p>
+            </div>
+        </a>
+    </div>
+
     <h2>Information profil</h2>
     <p class="text">
         Ces données ne sont pas obligatoire mais elles permettent
@@ -174,6 +183,32 @@
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
     <script src="script_save_restoration.js"></script>
 
+    <!-- Pour le statut actuel -->
+    <script>
+        function changeStatut() {
+            if (localStorage.getItem("StatutAnalyse") == "Actif·ve" || localStorage.getItem("StatutAnalyse") == null) {
+                document.getElementById("statut-actuel").textContent = "Statut : Pause"
+                localStorage.setItem("StatutAnalyse", "Pause")
+                logoDynamique("😴 Snooze")
+
+            } else {
+                document.getElementById("statut-actuel").textContent = "Statut : Actif·ve"
+                localStorage.setItem("StatutAnalyse", "Actif·ve")
+                logoDynamique("⚡ C'est parti !")
+
+            }
+        }
+
+        function statutActuel() {
+            let statut = localStorage.getItem("StatutAnalyse")
+            if (statut == null) {statut = "Actif·ve"}
+            document.getElementById("statut-actuel").textContent = "Statut : " + statut
+        }
+
+        window.addEventListener("DOMContentLoaded", statutActuel())
+    </script>
+
+    <!-- Pour le tableau -->
     <script>
         const dicoCorrespondance = {
             "genre": "Genre",

@@ -106,6 +106,26 @@
             
     </section>
 
+    <h2>Volume d'entraî. (4 sem.)</h2>
+    <div class="chart-container" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
+    <div class="action-list">
+        
+        <a href="../Actions/historique_entrainement.html">
+            <div class="action-list-item">
+                <p id="somme-28J"><strong>43 km</strong> sur 28 jours</p>
+            </div>
+        </a>
+        <a href="../Actions/historique_entrainement.html">
+            <div class="action-list-item">
+                <p id="km-par-semaine"><strong>43 km</strong> par semaine</p>
+            </div>
+        </a>
+
+    </div>
+
     <h2>C'est quoi l'Indulgence de course ?</h2>
     <p class="text">
         L’indulgence de course vous aide à ajuster votre kilométrage des 7 prochains jours pour rester dans une progression 
@@ -144,7 +164,7 @@
     <script src="../../Assets/base-js/base.js"></script>
 
     <!-- Import de la bibliothèque pr le graphique -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script> 
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->

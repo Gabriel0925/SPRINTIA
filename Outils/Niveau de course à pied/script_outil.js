@@ -1,7 +1,3 @@
-// Initialisation de la variable du graphique pour que le code ce rappelle de l'ancien graphique "stockée" dans le BFCache 
-// Pr éviter de superposer un graphique
-let barChart = null
-
 function Score(DistanceUser) {
     // Calcul VMA + VO2max
     let DistanceM = DistanceUser*1000 // km en metres
@@ -17,7 +13,7 @@ function Score(DistanceUser) {
         ScoreCourse = 20+((DistanceM-DistanceMin)/(DistanceMax-DistanceMin))*80
     }
 
-    return ScoreCourse.toFixed(1).replace(".", ",")
+    return Number(ScoreCourse).toFixed(1).replace(".", ",")
 }
 
 function Zone(ScoreCourse) {
@@ -132,7 +128,7 @@ async function SauvegardeNiveauCourse() {
     BoutonLimite1Clic.textContent = "Sauvegarder"
     BoutonLimite1Clic.disabled = false // Réactivation du bouton
 
-    GenererGraphique()
+    graph()
     
     logoDynamique(`${NiveauCourseUser.toString().replace(".", ",")} ! Bravo 🔥`)
 }
@@ -191,7 +187,7 @@ async function RecupValueNiveauCourseGraphique() {
 }
 
 // Pour le Graphique
-async function GenererGraphique() {
+async function graph() {
     // attendre la recup des datas
     let {NiveauDatas, ListeDate} = await RecupValueNiveauCourseGraphique()
 
@@ -200,78 +196,16 @@ async function GenererGraphique() {
         ListeDate = ["Janvier", "Février", "Mars"]
     }
     
-    // Récup les variables css
-    let RootCSS = document.documentElement
-    let StyleCSS = getComputedStyle(RootCSS)
-    // Recup variable css
-    let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
-    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
-    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
-
-    const barCanvas = document.getElementById("barCanvas")
-    // Destruction de l'ancien graphique si il y en a un pour éviter une superposition de graphique
-    if (barChart) {
-        barChart.destroy()
-    }
-
-    barChart = new Chart(barCanvas, {
-        type:"line",
-        data:{
-            labels: ListeDate,
-            datasets: [{
-                data: NiveauDatas,
-                borderColor : CouleurAccent, // Ligne des niveau couleur
-                backgroundColor: CouleurAccent2,
-                fill: true, // Pour remplir le graphique de la couleur background
-                pointRadius: 8, // Taille du point
-                pointHoverRadius: 10,
-                pointBackgroundColor: CouleurAccent,
-                pointBorderWidth: 0
-            }]
-        },
-        options: {
-            responsive: true, // Activation du responsive
-            maintainAspectRatio: false, // Tres important pour responsive sur mobile
-               
-            plugins: {
-                legend: {
-                    display: false // Masque la legende qui sert a rien dans mon cas
-                }
-            },
-                
-            scales: {
-                y: { // COuleur + taille des txt sur axe des ordonnées
-                    grid: {
-                        display: false // pr enlever la grille sur l'axe y (et x voir plus bas)
-                    },
-                    ticks: {
-                        color: CouleurTextPrincipal, 
-                        font: {size: 13}
-                    },
-                    beginAtZero: true, // Pr commencer à 0
-                },
-                x: { // idem pour abscisse
-                    grid: {
-                        display: false // pr enlever la grille sur l'axe y (et x voir plus bas)
-                    },
-                    ticks: {
-                        color: CouleurTextPrincipal,
-                        font: {size: 13}
-                    }
-                }
-            }
-        }
-    })
-    return
+    genererGraphique(ListeDate, NiveauDatas)
 }
 
 // Pour recharger le graphique si c'est dans le BFCache
 window.addEventListener("pageshow", (event) => {
     if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
-        GenererGraphique()
+        graph()
     }
 })
 
 window.addEventListener("DOMContentLoaded", () => {
-    GenererGraphique()
+    graph()
 })

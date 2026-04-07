@@ -639,75 +639,10 @@ header .burger-menu li a.actif-burger-menu:active {
 
 
 
-div.statut-analyse {
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    margin: var(--SPACE_M) 0;
-    padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_BIG);
-    flex-grow: 1;
-    max-width: 425px;
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    transition: all var(--TIME_TRANSITION) ease-out;
-}
-@media (hover: hover) and (pointer: fine) {
-    div.statut-analyse:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-div.statut-analyse:active{
-    transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-}
-div.statut-analyse i#statut{
-    background-color: var(--COLOR_ACCENT);
-    font-size: var(--H2);
-    border-radius: 50px;
-    color: var(--COLOR_BACKGROUND);
-    padding: var(--SPACE_XXS);
-    margin-right: var(--SPACE_XS);
-    text-align: center;
-    width: 50px;
-}
 
 div.container-center {
     display: flex;
     justify-content: center;
-}
-.button-group-button {
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    background-color: var(--COLOR_ACCENT);
-    padding: var(--SPACE_S_SMALL);
-    border-radius: var(--BORDER_NORMAL);
-    margin: var(--SPACE_S) var(--SPACE_XS) var(--SPACE_L) var(--SPACE_S);
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    .button-group-button:hover {
-        background-color: var(--COLOR_ACCENT2);
-    }
-}
-.button-group-button:active {
-    background-color: var(--COLOR_ACCENT2);
-    transform: scale(var(--SCALE_NORMAL));
-}
-.button-group-button-icon i{
-    font-size: var(--H3);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COLOR_BACKGROUND);
-    margin: 0 var(--SPACE_XXS);
-    vertical-align: middle; 
-}
-p.button-group-button-text{
-    font-size: var(--P);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COLOR_BACKGROUND);
-    margin: 0 var(--SPACE_XXS);
 }
 
 
@@ -833,9 +768,9 @@ div.carousel div.card-tool div.icone div.button-epingler{
     }
 }
 @keyframes rebond {
-    0% { transform: scale(1)}
-    40% { transform: scale(1.2)}
-    100% { transform: scale(1)}
+    0% { transform: translateY(0px)}
+    40% { transform: translateY(5px)}
+    100% { transform: translateY(0px)}
 }
 div.carousel div.card-tool div.icone div.button-epingler.actif{
     opacity: 1;
@@ -1872,7 +1807,7 @@ div.action-list div.action-list-item:active {
 }
 div.action-list i{
     color: var(--COLOR_TEXT_PRIMARY);
-    font-size: var(--H0);
+    font-size: 2.25rem;
 }
 div.action-list div.action-list-item p{
     margin-left: var(--SPACE_S);
@@ -2374,20 +2309,6 @@ div.container-center-marge {
     }
     div.small-zone-result div.container-result p.small-zone-result-unit{
         font-size: var(--H3);
-    }
-}
-
-@media (max-width: 545px) {
-    div.button-group .button-group-button-text{
-        display: none;
-    }
-    div.button-group{
-        border-radius: 50px;
-    }
-    div.button-group div.button-group-button{
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
     }
 }
 

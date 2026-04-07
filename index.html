@@ -84,7 +84,7 @@
         <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
     
-    <div class="action-list" style="margin: var(--SPACE_M) 0;">
+    <div class="action-list" style="margin: var(--SPACE_M) 0; max-width: 450px;">
         <a>
             <div class="action-list-item" onclick="changeStatut()">
                 <i class="fs-icon_pause"></i>
@@ -489,8 +489,8 @@
                 TableauDuree.forEach(element => {
                     // Mise en variable des elements de chaque tableau qui correspondant au data de l'entrainement 
                     DateElement = TableauDate[compteur]
-                    DistanceElement = TableauDistance[compteur]
-                    DeniveleElement = TableauDenivele[compteur]
+                    DistanceElement = Number(TableauDistance[compteur])
+                    DeniveleElement = Number(TableauDenivele[compteur])
                     SportElement = TableauSport[compteur]
 
                     if (DateElement >= DateMoins7J) { // Si la date est plus lointaine que 7J on prend pas
@@ -535,7 +535,7 @@
                 
                 // Si il y a des datas de distance
                 if (ExistenDataDistance == true) {
-                    Interpretation += `<br><br><strong>↔️ ${Number(DistanceTotale).toFixed(1).replace(".", ",")} km</strong>` // Ajout de la distance totale peut importe le sport dans l'interpretation
+                    Interpretation += `<br><br><strong>↔️ ${DistanceTotale.toFixed(1).replace(".", ",")} km</strong>` // Ajout de la distance totale peut importe le sport dans l'interpretation
 
                     // Tous ses if pour savoir quel est le sport que le user a le plus pratiqué cette semaine en fonction de la distance
                     if (DistanceTotaleCourse >= DistanceTotaleVelo && DistanceTotaleCourse >= DistanceTotaleMarche) {
@@ -544,7 +544,7 @@
                                 Interpretation += " de course à pied"
                             } else {  
                                 // cette interpretation pour que le user sache que sur 600 km parcourue cette semaine il en a fait 30 en course par exemple
-                                Interpretation += `<br><strong>🏃 ${Number(DistanceTotaleCourse).toFixed(1).replace(".", ",")} km de course à pied</strong>` 
+                                Interpretation += `<br><strong>🏃 ${DistanceTotaleCourse.toFixed(1).replace(".", ",")} km de course à pied</strong>` 
                             }
                           
                         } 
@@ -555,7 +555,7 @@
                                 Interpretation += " de vélo" 
                             } else {
                                 // cette interpretation pour que le user sache que sur 600 km parcourue cette semaine il en a fait 30 de vélo par exemple
-                                Interpretation += `<br><strong>🚴 ${Number(DistanceTotaleVelo).toFixed(1).replace(".", ",")} km de vélo</strong>`
+                                Interpretation += `<br><strong>🚴 ${DistanceTotaleVelo.toFixed(1).replace(".", ",")} km de vélo</strong>`
                             }
 
                         }
@@ -566,7 +566,7 @@
                                 Interpretation += " de marche"
                             } else {
                                 // cette interpretation pour que le user sache que sur 600 km parcourue cette semaine il en a fait 30 en marche par exemple
-                                Interpretation += `<br><strong>🚶‍♂️ ${Number(DistanceTotaleMarche).toFixed(1).replace(".", ",")} km de marche</strong>`
+                                Interpretation += `<br><strong>🚶‍♂️ ${DistanceTotaleMarche.toFixed(1).replace(".", ",")} km de marche</strong>`
                             }
                             
                         }
@@ -574,7 +574,7 @@
                     }
                     
                     if (DeniveleTotale > 0) { // Si le dénivelé est supérieur a 0 on l'affiche
-                        Interpretation += `<br><strong>🏔️ ${Number(Math.floor(DeniveleTotale))} m</strong> de dénivelé`
+                        Interpretation += `<br><strong>🏔️ ${Math.floor(DeniveleTotale)} m</strong> de dénivelé`
                     }
                 }
 

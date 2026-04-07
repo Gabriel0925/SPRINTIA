@@ -95,7 +95,7 @@ async function RecupData() {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
-                        Tableau7J.push(DistanceWorkout)
+                        Tableau7J.push(Number(DistanceWorkout))
                     }
                 }
             }
@@ -103,7 +103,7 @@ async function RecupData() {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
-                        Tableau14J.push(DistanceWorkout)
+                        Tableau14J.push(Number(DistanceWorkout))
                     }
                 }
             }
@@ -111,7 +111,7 @@ async function RecupData() {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
-                        Tableau21J.push(DistanceWorkout)
+                        Tableau21J.push(Number(DistanceWorkout))
                     }
                 }
             }
@@ -119,7 +119,7 @@ async function RecupData() {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
-                        Tableau28J.push(DistanceWorkout)
+                        Tableau28J.push(Number(DistanceWorkout))
                     }
                 }
             }

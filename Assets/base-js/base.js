@@ -231,11 +231,31 @@ function majLocalStorage(versionStockee) {
         localStorage.setItem("VersionLocalStorage", "4.0.2")
         versionStockee = "4.0.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
     }
+    
+    // migration de 4.0.2 à 4.2
+    if (versionStockee == "4.0.2") {
+        let tableauOutilPin = localStorage.getItem("OutilsPin")
+
+        if (tableauOutilPin != null) { // si il y a rien dans le local storage (=null) on ne fait rien
+            tableauOutilPin = JSON.parse(tableauOutilPin) // transformation en objet js
+
+            tableauOutilPin.forEach(element => {
+                if (element == "Hydratation post-séance") { // si dans le local storge des outil pin il y a l'hydratation post-séance alors on le remplace par le nouveau nom de l'outil
+                    let indexElement = tableauOutilPin.indexOf(element)
+                    tableauOutilPin[indexElement] = "Hydratation" // nouveau nom de l'outil
+                    localStorage.setItem("OutilsPin", JSON.stringify(tableauOutilPin))
+                }
+            });
+        }
+
+        localStorage.setItem("VersionLocalStorage", "4.2")
+        versionStockee = "4.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
+    }
 
     return
 }
 
-const versionActuelle = "4.0.2"
+const versionActuelle = "4.2"
 let versionStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
 
 if (versionStockee != versionActuelle) {

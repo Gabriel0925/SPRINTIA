@@ -39,34 +39,6 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
 let IdEditWorkout = null // init variable globale
 let noteEntrainement = undefined
 
-async function MessagePrevention() {
-    // Check du statut du user
-    let HistoriqueDB = await db.statut_analyse.toArray()
-
-    let StatutData = HistoriqueDB.map(statutBDD => statutBDD.statut).reverse() // reverse pour inverser la liste pour l'ordre
-
-    // Unit 
-    let LastStatutUser = ""
-    if (StatutData.length > 0) {
-        // on prend l'index 0 pour avoir son dernier statut
-        LastStatutUser = StatutData[0]
-    } else {
-        // si il n'y a pas de statut on le met sur actif
-        LastStatutUser = "Actif·ve"
-    }
-    
-    // Vérif + message de prévention
-    if (LastStatutUser == "Vacances") {
-        alert("Tu es en vacances et tu t'entraînes quand même ! Tu es très discipliné·e mais va y tranquille les vacances c'est fait pour ça aussi.")
-    } else if (LastStatutUser == "Blessure") {
-        alert("Attention ! Tu as signalé une blessure. Faire un entraînement va aggraver ta blessure, privilégie la récupération pour pouvoir revenir plus fort·e.")
-    } else if (LastStatutUser == "Malade") {
-        alert("Tu as signalé que tu étais malade, ce n'est pas très mature de faire un entraînement, ton organisme a besoin de repos pour guérir. Si tu tiens à ton entraînement, essaie de faire un entraînement léger en intensité.")
-    } 
-            
-    return
-}
-
 async function VerificationParam() {
     const ParametreURL = window.location.search // on recherche si il y a un param dans l'URL (ex : ?edit=7)
     let TableauSeparation = ParametreURL.split("=") // exemple ['?edit', '7']
@@ -190,18 +162,15 @@ async function VerificationParam() {
             } else {  // si il y a rien dans la bdd par rapport à l'id correspond alors on demarre le mode normal 
                 dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
                 await JrmCoach()
-                await MessagePrevention()
             }
 
         } else {
             dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
             await JrmCoach()
-            await MessagePrevention()
         }
     } else {        
         dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
         await JrmCoach()
-        await MessagePrevention()
     }
 
     return
@@ -500,6 +469,35 @@ async function saveWorkout() {
         }
     }
 
+    // Calcul de la transpiration
+    let profilDB = await db.profil.get(1)
+    let TranspirationEstimee = 0
+    let HydratationEstimee = 0
+
+    if (profilDB != undefined) {
+        let poidsUser = Number(profilDB.poids)
+        let DureeHeure = DureeWorkoutUser/60 // Conversion de la durée en heure
+        let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
+
+        // Attribution de la valeur du RPE
+        if (ValueRpeUser <= 3) {
+            CoefficientRpe = CoefficientRpe[0]
+        } else if (ValueRpeUser <= 6) {
+            CoefficientRpe = CoefficientRpe[1]
+        } else if (ValueRpeUser <= 8) {
+            CoefficientRpe = CoefficientRpe[2]
+        } else {
+            CoefficientRpe = CoefficientRpe[3]
+        }
+
+        // Calcul
+        TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
+        HydratationEstimee = Math.round(TranspirationEstimee*1.2)
+    } else {
+        TranspirationEstimee = undefined
+        HydratationEstimee = undefined
+    }
+
     // init
     let chargeWorkout = 0
     // Calcul Charge
@@ -516,6 +514,8 @@ async function saveWorkout() {
         rpe: ValueRpeUser,
         fc_moy: FcMoyUser,
         fc_max: FcMaxUser,
+        transpiration_estimee: TranspirationEstimee,
+        hydratation_estimee: HydratationEstimee,
         charge_entrainement: chargeWorkout
     }
 

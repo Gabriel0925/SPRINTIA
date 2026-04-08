@@ -90,14 +90,22 @@
 
     <h2>Information profil</h2>
     <p class="text">
-        Ces données ne sont pas obligatoire mais elles permettent
-        de débloquer des fonctionnalités comme l'estimation des calories brûlées lors de vos entraînements,...
+        Ces données ne sont pas obligatoire mais elles permettent de débloquer des fonctionnalités comme 
+        l'estimation de la transpiration de votre entraînement,...
     </p>
     <table id="tableau-historique">
         
         <tbody>
             <tr>
-                <td>Genre</td>
+                <td>Sexe</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Âge</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Taille</td>
                 <td>-</td>
             </tr>
             <tr>
@@ -106,10 +114,6 @@
             </tr>
             <tr>
                 <td>FC repos</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>FC max.</td>
                 <td>-</td>
             </tr>
 
@@ -211,16 +215,18 @@
     <!-- Pour le tableau -->
     <script>
         const dicoCorrespondance = {
-            "genre": "Genre",
+            "sexe": "Sexe",
+            "age": "Âge",
+            "taille": "Taille",
             "poids": "Poids",
-            "fc_repos": "FC repos",
-            "fc_max": "FC max."
+            "fc_repos": "FC Repos"
         }
         const dicoUnite = {
-            "genre": "",
+            "sexe": "",
+            "age": " ans",
+            "taille": " cm",
             "poids": " kg",
-            "fc_repos": " bpm",
-            "fc_max": " bpm"
+            "fc_repos": " bpm"
         }
 
         async function remplirTableau() {

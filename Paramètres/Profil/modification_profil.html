@@ -82,35 +82,38 @@
         <strong>Vos données personnelles reste en local sur votre appareil. </strong>
         <br><br>
         En enregistrant vos données, Sprintia vous fera
-        gagner du temps lors de l'utilisation de mes outils, en pré-remplissant automatiquement les champs correspondants. De plus,
-        elles permettent de débloquer des fonctionnalités comme l'estimation des calories brûlées lors de vos entraînements,...
-    </p>
+        gagner du temps lors de l'utilisation des outils, en pré-remplissant automatiquement les champs correspondants. De plus,
+        elles permettent de débloquer des fonctionnalités comme l'estimation de la transpiration de votre entraînement,...
     </p>
 
     <section class="container-zone">
         <div class="form">
 
-            <select id="genre-user" autocomplete="off">
-                <option value="Homme">Genre : Homme</option>
-                <option value="Femme">Genre : Femme</option>
-                <option value="Autre">Genre : Autre</option>
+            <select id="sexe-user" autocomplete="off">
+                <option value="Homme">Sexe : Homme</option>
+                <option value="Femme">Sexe : Femme</option>
             </select>
 
             <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                <div class="label-input">Poids (kg)</div>
+                <input type="number" id="age-user" placeholder="Âge" autocomplete="off">
+                <div class="label-input">Âge</div>
             </div>
 
             <div class="side-by-side">
                 <div class="container-input">
-                    <input type="number" class="small" id="fc-repos-user" placeholder="FC repos (bpm)" autocomplete="off">
-                    <div class="label-input">FC repos (bpm)</div>
+                    <input class="small" type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
+                    <div class="label-input">Taille (cm)</div>
                 </div>
-                        
+
                 <div class="container-input">
-                    <input type="number" id="fc-max-user" class="small" placeholder="FC max. (bpm)" autocomplete="off">
-                    <div class="label-input">FC max. (bpm)</div> 
+                    <input class="small" type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                    <div class="label-input">Poids (kg)</div>
                 </div>
+            </div>
+
+            <div class="container-input">
+                <input type="number" id="fc-repos-user" placeholder="FC repos (bpm)" autocomplete="off">
+                <div class="label-input">FC repos (bpm)</div>
             </div>
 
             <button id="button-save" onclick="saveProfil()">Sauvegarder</button>
@@ -121,6 +124,13 @@
     <div class="container-center-marge">
         <button id="button-supprimer" onclick="supprimerProfil()">Supprimer mon profil</button>
     </div>
+
+    <h2>Comment calculer sa FC au repos ?</h2>
+    <p class="text">
+        Il y a plusieurs solutions, la première vous avez une montre connectée/sportive qui vous donne votre FC au repos. La seconde,
+        prenez votre pouls au poignet ou au cou (le matin au réveil) et comptez le nombre de pulsation sur 30 secondes. Multipliez ensuite ce nombre par 2 pour 
+        avoir la fréquence cardiaque par minute. Le résultat de ce calcul sera votre FC au repos.
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">
@@ -159,42 +169,37 @@
             let button = document.getElementById("button-save")
 
             // recup des champs
-            let genre = document.getElementById("genre-user").value
-            let poids = document.getElementById("poids-user").value
-            let fcRepos = document.getElementById("fc-repos-user").value    
-            let fcMax = document.getElementById("fc-max-user").value
+            let sexeUser = document.getElementById("sexe-user").value
+            let ageUser = parseInt(document.getElementById("age-user").value)
+            let tailleUser = parseInt(document.getElementById("taille-user").value)
+            let poidsUser = Number(document.getElementById("poids-user").value)
+            let fcReposUser = parseInt(document.getElementById("fc-repos-user").value)
 
             // vérification des champs pour voir si ils sont vides 
-            if (poids === "" || fcRepos === "" || fcMax === "") {
-                alert("Tous les champs sont obligatoires. Veuillez les remplir.")
+            if (isNaN(ageUser) || isNaN(tailleUser) || isNaN(poidsUser) || isNaN(fcReposUser)) {
+                alert("Erreur de saisie : tous les champs doivent être remplis.")
                 return
             }
             // vérif des valeurs saisies
-            if (poids <= 0) {
-                alert("Valeur non valide, le poids doit être un nombre supérieur à 0.")
+            if (ageUser <= 0 || tailleUser <= 0 || poidsUser <= 0 || fcReposUser <= 0) {
+                alert("Valeur non valide, les champs doivent être un nombre supérieur à 0.")
                 return
             }
-            if (poids >= 1000) {
+            if (tailleUser >= 350) {
+                alert("Valeur non valide, la taille doit être un nombre inférieur à 350.")
+                return
+            }
+            if (poidsUser >= 1000) {
                 alert("Valeur non valide, le poids doit être un nombre inférieur à 1000.")
                 return
             }
-            if (fcRepos <= 20) {
-                alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre supérieur à 20.")
-                return
-            }
-            if (fcMax <= 70) {
-                alert("Valeur non valide, la fréquence cardiaque max. doit être un nombre supérieur à 70.")
-                return
-            }
-            if (fcMax >= 300 && fcRepos >= 300) {
-                alert("Valeur non valide, la fréquence cardiaque max. et de repos doivent être des nombres inférieurs à 300.")
+            if (fcReposUser <= 20 || fcReposUser >= 220) {
+                alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre compris entre 20 et 220 bpm.")
                 return
             }
 
-            // conversion + ajout de propreté
-            poids = Number(poids).toFixed(1)
-            fcRepos = parseInt(fcRepos)
-            fcMax = parseInt(fcMax)
+            // conversion
+            poidsUser = Number(poidsUser).toFixed(1)
 
             // desactivation
             button.textContent = "Sauvegarde..."
@@ -203,10 +208,11 @@
             // sauvegarde dans indexed db
             await db.profil.put({
                 id: 1,
-                genre: genre,
-                poids: poids,
-                fc_repos: fcRepos,
-                fc_max: fcMax
+                sexe: sexeUser,
+                age: ageUser,
+                taille: tailleUser,
+                poids: poidsUser,
+                fc_repos: fcReposUser
             })
 
 
@@ -229,10 +235,11 @@
 
             if (profil.length > 0) {
                 profil = profil[0] // Prendre le premier element donc profil est un dico désormais
-                document.getElementById("genre-user").value = profil.genre
+                document.getElementById("sexe-user").value = profil.sexe
+                document.getElementById("age-user").value = profil.age
+                document.getElementById("taille-user").value = profil.taille
                 document.getElementById("poids-user").value = profil.poids
                 document.getElementById("fc-repos-user").value = profil.fc_repos
-                document.getElementById("fc-max-user").value = profil.fc_max
             }
         }
 

@@ -83,6 +83,14 @@
         <i class="fs-icon_add"></i>
         <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
+
+    <a id="configurer-sprintia" href="Paramètres/Profil/modification_profil.html">
+        <div class="config-profil">
+            <i class="fs-icon_profil"></i>
+            <p>Configurer Sprintia</p>
+            <p class="description">Pour débloquer toutes les fonctionnalités de Sprintia, veuillez configurer votre profil.</p>
+        </div>
+    </a>
     
     <div class="action-list" style="margin: var(--SPACE_M) 0; max-width: 450px;">
         <a>
@@ -131,10 +139,10 @@
             </div>
         </a>
             
-        <a href="Outils/Hydratation post-seance/hydratation_post-seance.html" class="L4">
+        <a href="Outils/Hydratation/hydratation.html" class="L4">
             <div class="tools-pin">
                 <i class="fs-icon_besoin_hydratation" id="I4"></i>
-                <p class="text-outil-recent" id="P4">Hydratation post-séance</p>
+                <p class="text-outil-recent" id="P4">Hydratation</p>
             </div>
         </a>
             
@@ -200,6 +208,19 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+
+    <!-- Configuration Sprintia -->
+    <script>
+        async function configSprintia() { // permet d'enlever le panneau de configuration une fois que le user a configurer
+            const profilData = await db.profil.get(1)
+
+            if (profilData != undefined) {
+                document.getElementById("configurer-sprintia").style.display = "none"
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", configSprintia())
+    </script>
 
     <!-- Pour les 3 derniers entrainements -->
     <script> 
@@ -292,11 +313,13 @@
                 document.getElementById("statut-actuel").textContent = "Statut : Pause"
                 localStorage.setItem("StatutAnalyse", "Pause")
                 logoDynamique("😴 Snooze")
+                JRMCoach()
 
             } else {
                 document.getElementById("statut-actuel").textContent = "Statut : Actif·ve"
                 localStorage.setItem("StatutAnalyse", "Actif·ve")
                 logoDynamique("⚡ C'est parti !")
+                JRMCoach()
 
             }
         }
@@ -329,7 +352,7 @@
             "Zones de vitesse": "fs-icon_zones_vitesse",
             "Zones de puissance": "fs-icon_zones_puissance",
 
-            "Hydratation post-séance": "fs-icon_besoin_hydratation",
+            "Hydratation": "fs-icon_besoin_hydratation",
             "Convertisseur km/miles": "fs-icon_miles_km"
         }
 
@@ -350,7 +373,7 @@
             "Zones de vitesse": "Outils/Zones de vitesse/zones_vitesse.html",
             "Zones de puissance": "Outils/Zones de puissance/zones de puissance.html",
 
-            "Hydratation post-séance": "Outils/Hydratation post-seance/hydratation_post-seance.html",
+            "Hydratation": "Outils/Hydratation/hydratation.html",
             "Convertisseur km/miles": "Outils/Convertisseur miles-km/convertisseur_miles_km.html"
         }
 

@@ -39,6 +39,8 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
     "difficulte_max": ["Difficulté maximum", ""],
     "muscles_travailles": ["Muscles travaillés", ""],
     "charge_entrainement": ["Charge d'entraînement", "CE"],
+    "transpiration_estimee": ["Transpiration estimée", "mL"],
+    "hydratation_estimee": ["Réhydratation conseillée", "mL"],
 }
 let idWorkout = undefined
 
@@ -64,11 +66,31 @@ function afficherData(dataWorkout) {
                 <p class="container-block-data-header">Durée</p>
                 <p class="container-block-data-data">${dureeFormatee(dataWorkout.duree)}</p>
             </div>
+            <div class="container-block-data">
+                <p class="container-block-data-header">RPE</p>
+                <p class="container-block-data-data">${dataWorkout.rpe} <small>/10</small></p>
+            </div>
+
+        </section>
+            
+        <section class="container-block"> 
+
+            <div class="container-block-data">
+                <p class="container-block-data-header">Charge d'entraînement</p>
+                <p class="container-block-data-data">
+                    ${dataWorkout.charge_entrainement} 
+                    <small>CE</small>
+                </p>
+            </div>
+
+        </section>
+
+        <section class="container-block"> 
     `
     
     // initialisation de 2 tableaux
-    const tableauDataNotDisplay = ["Nom", "Sport", "Date", "Durée", "id"]
-    const tableauDataSeule = ["Charge d'entraînement", "Muscles travaillés", "Score", "Voies effectuées"]
+    const tableauDataNotDisplay = ["id", "Nom", "Sport", "Date", "Durée", "RPE", "Charge d'entraînement"]
+    const tableauDataSeule = ["Muscles travaillés", "Score", "Voies effectuées"]
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {

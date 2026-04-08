@@ -644,6 +644,35 @@ div.container-center {
     display: flex;
     justify-content: center;
 }
+div.config-profil {
+    display: flex;
+    flex-direction: column;
+    gap: var(--SPACE_XS);
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+    font-size: 1.35rem;
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    padding: var(--SPACE_S);
+    cursor: pointer;
+    border-radius: var(--BORDER_BIG);
+    transition: all ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.config-profil:hover {
+        background-color: var(--COLOR_ACCENT2);
+    }
+}
+div.config-profil:active {
+    background-color: var(--COLOR_ACCENT2);
+    transform: scale(var(--SCALE_SMALL));
+}
+div.config-profil i{
+    font-size: var(--H1);
+}
+div.config-profil p.description{                
+    font-size: var(--P);
+    font-weight: normal;
+}
 
 
 
@@ -658,8 +687,10 @@ section.container-tools-pin a{
 }
 section.container-tools-pin div.tools-pin{
     background-color: var(--COLOR_BACKGROUND_CARD);
-    border-radius: var(--BORDER_NORMAL);
+    border-radius: var(--BORDER_BIG);
     margin: var(--SPACE_XS);
+    padding: var(--SPACE_XS);
+    gap: var(--SPACE_S);
 
     display: flex;
     align-items: center;
@@ -677,13 +708,10 @@ section.container-tools-pin div.tools-pin:active{
 section.container-tools-pin div.tools-pin i{
     background-color: transparent;
     font-size: var(--H1);
-    margin: var(--SPACE_XS);
 }
 section.container-tools-pin div.tools-pin p{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     margin: var(--SPACE_XS) 0;
-    margin-left: var(--SPACE_XXS);
-    margin-right: var(--SPACE_S);
     font-size: var(--P);
 }
 
@@ -826,7 +854,7 @@ section.container-workout-cards {
 }
 section.container-workout-cards div.cards-history-workout {
     background-color: var(--COLOR_BACKGROUND_CARD);
-    border-radius: 1.55rem;
+    border-radius: var(--BORDER_BIG);
     height: fit-content;
     overflow: hidden;
 
@@ -1076,6 +1104,7 @@ div.button-flottant {
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
     font-size: var(--H1);
+    z-index: 1002;
 
     transition: all ease-out var(--TIME_TRANSITION);
 }

@@ -56,7 +56,6 @@ function afficherData(dataWorkout) {
 
         <div class="menu-many-action">
             <li id="button-modifier">Modifier</li>
-            <li id="button-partager">Partager</li>
             <li id="button-supprimer">Supprimer</li>
         </div>
 
@@ -144,7 +143,7 @@ function afficherData(dataWorkout) {
                     uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km 
                 }
 
-            } else if (cle=="vitesse_max") {
+            } else if (cle=="vitesse_max" || cle=="vitesse_moy" || cle=="poids_total") {
                 uniteData = nomUniteData[1]
                 if (valeur!=null) {
                     valeur = Number(valeur).toFixed(2).toString().replace(".", ",")

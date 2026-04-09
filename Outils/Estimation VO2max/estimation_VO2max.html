@@ -80,9 +80,9 @@
     <section class="container-zone">
 
         <div class="form">
-            <select id="profil-user" onchange="ComboBoxVO2max()" autocomplete="off">
-                    <option value="homme">Genre : Homme</option>
-                    <option value="femme">Genre : Femme</option>
+            <select id="sexe-user" onchange="ComboBoxVO2max()" autocomplete="off">
+                    <option value="Homme">Sexe : Homme</option>
+                    <option value="Femme">Sexe : Femme</option>
             </select>
             <div class="side-by-side">
                 <div class="container-input">
@@ -148,7 +148,13 @@
 
     <!-- Pour le burger menu -->
     <script src="../../Assets/base-js/base.js"></script>
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
     <script src="script_outil.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", remplissageChamps(["sexe-user", "age-user"]))
+    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

@@ -296,6 +296,35 @@ async function uploadGarmin(event) {
                         // petite sécurité 
                         if (chargeEntrainementWorkout < 1 || chargeEntrainementWorkout == undefined) {chargeEntrainementWorkout = 1} // si inférieur à 1 on le met sur la valeur minimum (=1)
 
+                        // Calcul de la transpiration
+                        let profilDB = await db.profil.get(1)
+                        let TranspirationEstimee = 0
+                        let HydratationEstimee = 0
+
+                        if (profilDB != undefined) {
+                            let poidsUser = Number(profilDB.poids)
+                            let DureeHeure = dureeWorkout/60 // Conversion de la durée en heure
+                            let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
+
+                            // Attribution de la valeur du RPE
+                            if (rpeWorkout <= 3) {
+                                CoefficientRpe = CoefficientRpe[0]
+                            } else if (rpeWorkout <= 6) {
+                                CoefficientRpe = CoefficientRpe[1]
+                            } else if (rpeWorkout <= 8) {
+                                CoefficientRpe = CoefficientRpe[2]
+                            } else {
+                                CoefficientRpe = CoefficientRpe[3]
+                            }
+
+                            // Calcul
+                            TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
+                            HydratationEstimee = Math.round(TranspirationEstimee*1.2)
+                        } else {
+                            TranspirationEstimee = undefined
+                            HydratationEstimee = undefined
+                        }
+
                         if (sportWorkout != "Libre") { // si le sport est différent de Libre on enregistre toutes les datas
                             await db.entrainement.add({
                                 sport: sportWorkout,
@@ -308,7 +337,9 @@ async function uploadGarmin(event) {
                                 fc_max: fcMaxWorkout,
                                 cadence_moy: cadenceWorkout,
                                 allure_moy: allureMoyWorkout,
-                                charge_entrainement: chargeEntrainementWorkout
+                                charge_entrainement: chargeEntrainementWorkout,
+                                transpiration_estimee: TranspirationEstimee,
+                                hydratation_estimee:HydratationEstimee
                             })
                         } else { // si le sport est libre
                             await db.entrainement.add({
@@ -320,7 +351,9 @@ async function uploadGarmin(event) {
                                 distance: distanceWorkout,
                                 fc_moy: fcMoyWorkout,
                                 fc_max: fcMaxWorkout,
-                                charge_entrainement: chargeEntrainementWorkout
+                                charge_entrainement: chargeEntrainementWorkout,
+                                transpiration_estimee: TranspirationEstimee,
+                                hydratation_estimee:HydratationEstimee
                             })
                         }
 
@@ -482,6 +515,35 @@ async function uploadTrainingPeaks(event) {
 
                         if (chargeEntrainementWorkout < 1) {chargeEntrainementWorkout = 1} // si inférieur à 1 on le met sur la valeur minimum (=1)
 
+                        // Calcul de la transpiration
+                        let profilDB = await db.profil.get(1)
+                        let TranspirationEstimee = 0
+                        let HydratationEstimee = 0
+
+                        if (profilDB != undefined) {
+                            let poidsUser = Number(profilDB.poids)
+                            let DureeHeure = dureeWorkout/60 // Conversion de la durée en heure
+                            let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
+
+                            // Attribution de la valeur du RPE
+                            if (rpeWorkout <= 3) {
+                                CoefficientRpe = CoefficientRpe[0]
+                            } else if (rpeWorkout <= 6) {
+                                CoefficientRpe = CoefficientRpe[1]
+                            } else if (rpeWorkout <= 8) {
+                                CoefficientRpe = CoefficientRpe[2]
+                            } else {
+                                CoefficientRpe = CoefficientRpe[3]
+                            }
+
+                            // Calcul
+                            TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
+                            HydratationEstimee = Math.round(TranspirationEstimee*1.2)
+                        } else {
+                            TranspirationEstimee = undefined
+                            HydratationEstimee = undefined
+                        }
+
                         // enregistrement différent selon le sport
                         if (sportWorkout != "Libre") { // si le sport est différent de Libre on enregistre toutes les datas
                             await db.entrainement.add({
@@ -495,7 +557,9 @@ async function uploadTrainingPeaks(event) {
                                 fc_max: fcMaxWorkout,
                                 cadence_moy: cadenceMoyWorkout,
                                 charge_entrainement: chargeEntrainementWorkout,
-                                note: descriptionWorkout
+                                note: descriptionWorkout,
+                                transpiration_estimee: TranspirationEstimee,
+                                hydratation_estimee:HydratationEstimee
                             })
                         } else { // si le sport est libre
                             await db.entrainement.add({
@@ -508,7 +572,9 @@ async function uploadTrainingPeaks(event) {
                                 fc_moy: fcMoyWorkout,
                                 fc_max: fcMaxWorkout,
                                 charge_entrainement: chargeEntrainementWorkout,
-                                note: descriptionWorkout
+                                note: descriptionWorkout,
+                                transpiration_estimee: TranspirationEstimee,
+                                hydratation_estimee:HydratationEstimee
                             })
                         }
 
@@ -576,7 +642,6 @@ async function uploadFileTCX(event) {
             let lapFcMoy= []
             let lapFcMax = []
             let lapMaximumSpeed = []
-            let lapCadence = []
 
             // Boucle qui parcoure tous les lap de l'entraînement et qui convertit par exemple des metres au km directement
             tableauDataLap.forEach(element => {
@@ -593,10 +658,6 @@ async function uploadFileTCX(event) {
                 // recup de la vitesse max si cette donnée est présente
                 let maximumSpeed = element.querySelector("MaximumSpeed")
                 if (maximumSpeed) {lapMaximumSpeed.push(Number(maximumSpeed.textContent)*3.6)} // conversion des m/s en km/h
-
-                // recup de la cadence si cette donnée est présente
-                let cadence = element.querySelector("Cadence")
-                if (cadence) {lapCadence.push(Number(cadence.textContent))}
 
             });
 
@@ -632,27 +693,12 @@ async function uploadFileTCX(event) {
                 workoutMaximumSpeed = undefined
             }
 
-            // boucle pour parcourir les FC moyenne de chaque lap et trouver la FC moyenne de l'entraînement
-            let workoutCadenceMoy = 0
-            let compteur2 = 0
-            if (lapCadence.length > 0) {
-                lapCadence.forEach(element => {
-                    workoutCadenceMoy += element
-                    compteur2 += 1
-                });
-                // On divise par le nombre de lap
-                workoutCadenceMoy = Math.floor(workoutCadenceMoy/compteur2)
-            } else {workoutCadenceMoy=undefined}
-
             // conversion des secondes en minutes pour la durée de l'entrainement
             workoutTime = workoutTime/60
 
             // arrondi des valeurs de distance et du vitesse max
-            if (workoutDistance != 0 && workoutDistance != undefined) {workoutDistance = workoutDistance.toFixed(2)} else {workoutDistance = undefined}
-            if (workoutMaximumSpeed != 0 && workoutMaximumSpeed != undefined) {workoutMaximumSpeed = workoutMaximumSpeed.toFixed(2)} else {workoutMaximumSpeed = undefined}
-
-            // derniere vérification au niveau de la cadence
-            if (workoutCadenceMoy == 0) {workoutCadenceMoy = undefined}
+            if (workoutDistance != 0 && workoutDistance != undefined) {workoutDistance = Number(workoutDistance.toFixed(2))} else {workoutDistance = undefined}
+            if (workoutMaximumSpeed != 0 && workoutMaximumSpeed != undefined) {workoutMaximumSpeed = Number(workoutMaximumSpeed.toFixed(2))} else {workoutMaximumSpeed = undefined}
 
             // récup du dénivelé positif de l'entraînement 
             const dataAltitude = xmlDoc.getElementsByTagName("AltitudeMeters")
@@ -675,6 +721,27 @@ async function uploadFileTCX(event) {
 
             }
             if (workoutDenivele == 0) {workoutDenivele = undefined}
+
+            let workoutAllureMoy = 0
+            let workoutVitesseMoy = 0
+            if (workoutSport != "Libre") {
+                if (workoutSport == "Course" && workoutDistance > 0) {
+                    // Calcul de l'allure en course à pied
+                    workoutAllureMoy = workoutTime/workoutDistance // on obtient par exemple : 7.65
+
+                    let min = Math.floor(workoutAllureMoy) // pour recup les minutes
+                    let sec = Math.round((workoutAllureMoy%1)*60) // conversion du reste en seconde 
+                    workoutAllureMoy = `${min}:${sec.toString().padStart(2, "0")}`
+
+                } else if (workoutSport == "Vélo" && workoutDistance > 0) {
+                    // conversion des min en heures
+                    let workoutTimeHour = workoutTime/60
+                    workoutVitesseMoy = Number((workoutDistance/workoutTimeHour).toFixed(2))
+
+                }
+            }
+            if (workoutAllureMoy == 0) {workoutAllureMoy = undefined}
+            if (workoutVitesseMoy == 0) {workoutVitesseMoy = undefined}
 
             // calcul du RPE
             // formule ci dessous à améliorer parce qu'elle n'est pas prouvé scientifiquement
@@ -701,6 +768,35 @@ async function uploadFileTCX(event) {
                 return
             }
 
+            // Calcul de la transpiration
+            let profilDB = await db.profil.get(1)
+            let TranspirationEstimee = 0
+            let HydratationEstimee = 0
+
+            if (profilDB != undefined) {
+                let poidsUser = Number(profilDB.poids)
+                let DureeHeure = workoutTime/60 // Conversion de la durée en heure
+                let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
+
+                // Attribution de la valeur du RPE
+                if (rpeWorkout <= 3) {
+                    CoefficientRpe = CoefficientRpe[0]
+                } else if (rpeWorkout <= 6) {
+                    CoefficientRpe = CoefficientRpe[1]
+                } else if (rpeWorkout <= 8) {
+                    CoefficientRpe = CoefficientRpe[2]
+                } else {
+                    CoefficientRpe = CoefficientRpe[3]
+                }
+
+                // Calcul
+                TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
+                HydratationEstimee = Math.round(TranspirationEstimee*1.2)
+            } else {
+                TranspirationEstimee = undefined
+                HydratationEstimee = undefined
+            }
+
             // enregistrement des datas recup dans la BDD 
             if (workoutSport != "Libre") { 
                 await db.entrainement.add({
@@ -712,10 +808,13 @@ async function uploadFileTCX(event) {
                     fc_moy: workoutFcMoy,
                     fc_max: workoutFcMax,
                     distance:workoutDistance,
+                    allure_moy: workoutAllureMoy,
+                    vitesse_moy: workoutVitesseMoy,
                     vitesse_max: workoutMaximumSpeed,
-                    cadence_moy: workoutCadenceMoy,
                     denivele: workoutDenivele,
-                    charge_entrainement: chargeEntrainementWorkout
+                    charge_entrainement: chargeEntrainementWorkout,
+                    transpiration_estimee: TranspirationEstimee,
+                    hydratation_estimee: HydratationEstimee
                 });
             } else { // si le sport est libre on enregistre mais on limite le nombre de données on autorise de prendre que la distance comme datas spe
                 await db.entrainement.add({
@@ -727,7 +826,9 @@ async function uploadFileTCX(event) {
                     fc_moy: workoutFcMoy,
                     fc_max: workoutFcMax,
                     distance:workoutDistance,
-                    charge_entrainement: chargeEntrainementWorkout
+                    charge_entrainement: chargeEntrainementWorkout,
+                    transpiration_estimee: TranspirationEstimee,
+                    hydratation_estimee: HydratationEstimee
                 });
             }
 

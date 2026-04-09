@@ -572,6 +572,8 @@ async function saveWorkout() {
                                 alert("Le denivele de votre entraînement ne doit pas dépasser 10 000 m.")
                                 return
                             }
+
+                            data = parseInt(data)
                         }
                     } else if (cleData == "vitesse_max" || cleData == "vitesse_smash") { // vérification pour le champs vitesse_max
                         if (data) { // si il y a des datas dans le input
@@ -585,6 +587,8 @@ async function saveWorkout() {
                                 alert("La vitesse de votre entraînement ne doit pas dépasser 200 km/h.")
                                 return
                             }
+
+                            data = Number(data).toFixed(2)
                         }
                     } else if (cleData == "cadence_moy") { // vérification pour le champs cadence_moy
                         if (data) { // si il y a des datas dans le input
@@ -598,6 +602,8 @@ async function saveWorkout() {
                                 alert("La cadence moyenne de votre entraînement doit être un nombre inférieur à 600.")
                                 return
                             }
+
+                            data = parseInt(data)
                         }
                     } else if (cleData == "nb_pas") { // vérification pour le champs nb_pas
                         if (data) { // si il y a des datas dans le input
@@ -611,6 +617,8 @@ async function saveWorkout() {
                                 alert("Le nombre de pas de votre entraînement doit être un nombre inférieur à 800000.")
                                 return
                             }
+
+                            data = parseInt(data)
                         }
                     } else if (cleData == "altitude_max") { // vérification pour le champs altitude_max
                         if (data) { // si il y a des datas dans le input
@@ -624,6 +632,8 @@ async function saveWorkout() {
                                 alert("L'altitude maximum de votre entraînement doit être un nombre inférieur à 10000.")
                                 return
                             }
+
+                            data = parseInt(data)
                         }
                     } else if (cleData == "vitesse_moy") { // vérification pour le champs vitesse_moy
                         if (data) { // si il y a des datas dans le input
@@ -637,6 +647,8 @@ async function saveWorkout() {
                                 alert("La vitesse moyenne de votre entraînement doit être un nombre inférieur à 200.")
                                 return
                             }
+
+                            data = Number(data).toFixed(2)
                         }
                     } else if (cleData == "nb_coups" || cleData == "nb_sets" || cleData == "nb_defaites" || cleData == "nb_chutes" || cleData == "nb_victoires" || cleData == "nb_combats" || cleData == "nb_points" || cleData == "nb_services" || cleData == "nb_smash" || cleData == "nb_reps" || cleData == "nb_series" || cleData == "nb_longueurs" || cleData == "nb_descentes" || cleData == "serie_max" || cleData == "nb_tours") { 
                         if (data) { // si il y a des datas dans le input
@@ -650,6 +662,8 @@ async function saveWorkout() {
                                 alert(`Le champs nommé : '${cleData}' doit être un nombre inférieur à 1000000.`)
                                 return
                             }
+
+                            data = parseInt(data)
                         }
                     } else if (cleData == "coups_rame") { // vérification pour le champs coups_rame
                         if (data) { // si il y a des datas dans le input
@@ -663,6 +677,8 @@ async function saveWorkout() {
                                 alert("Les coups de rame de votre entraînement doit être un nombre inférieur à 10000.")
                                 return
                             }
+
+                            data = parseInt(data)
                         }
                     }
                     

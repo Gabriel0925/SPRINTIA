@@ -265,6 +265,31 @@ if (versionStockee != versionActuelle) {
 
 
 
+// --- Pour pré-remplir les champs auto. ---
+async function remplissageChamps(tableauId) {
+    const idInputNameInDB = {
+        "sexe-user": "sexe",
+        "age-user": "age",
+        "taille-user": "taille",
+        "poids-user": "poids",
+        "fc-repos-user": "fc_repos"
+    }
+    const profilData = await db.profil.get(1)
+
+    if (profilData && profilData != undefined) { // si il y a des datas
+        tableauId.forEach(element => { // on parcourt le tableau des id de la page
+            let input = document.getElementById(element) // on recup l'input
+            let data = idInputNameInDB[element] // on passe de l'id au nom qu'il y a dans la bdd ex: age-user -> age
+
+            if (input) { // si il y a l'input alors affiche la data qu'il y a dans la BDD
+                input.value = profilData[data]
+            }
+        });
+    }
+}
+
+
+
 // --- Pour passer le format de la date en Européen de AAAA/MM/JJ à JJ/MM/AAAA ---
 function formatEuropeenDate(dateWorkout) {
     let dateEuropeen = ""

@@ -7,7 +7,7 @@ function InterpretationVO2max(ResultVO2max, GenreUser, AgeUser){
         "<strong>Zone faible :</strong><br>Votre VO₂max est faible pour votre âge. Essayez d'être moins sédentaire au quotidien."
     ]
 
-    if (GenreUser == "homme") {
+    if (GenreUser == "Homme") {
         if (AgeUser <= 19){
             if (ResultVO2max > 60){
                 Interpretation = Interpretation[0]
@@ -137,7 +137,7 @@ function InterpretationVO2max(ResultVO2max, GenreUser, AgeUser){
 }
 function CalculVO2max() {
     // Récupérer la valeur des champs
-    let GenreUser = document.getElementById("profil-user").value;
+    let SexeUser = document.getElementById("sexe-user").value;
     let AgeUser = parseInt(document.getElementById("age-user").value
         .trim().replace(",", "."));
     let VmaUser = parseFloat(document.getElementById("vma-user").value
@@ -168,7 +168,7 @@ function CalculVO2max() {
     // Affichage
     document.querySelector(".zone-result-name-result").innerHTML = VO2maxEstime
 
-    let ZoneInterpretationVO2max = InterpretationVO2max(ResultVO2max, GenreUser, AgeUser)
+    let ZoneInterpretationVO2max = InterpretationVO2max(ResultVO2max, SexeUser, AgeUser)
     document.querySelector(".zone-result-interpretation").innerHTML = ZoneInterpretationVO2max
     return
 }

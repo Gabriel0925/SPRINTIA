@@ -47,48 +47,68 @@
     /* URL flèche vers le bas pour les combobox */
     --URL_FLECHE_ICON: url("../Assets/icons/icon_fleche.svg");
 
-    /* Couleur pour le hover des pastilles des thèmes */
-    --COLOR_PASTILLES_0: #42a5f5; 
-    --COLOR_PASTILLES_0_HOVER: #90caf9; 
+    /* Couleur pour le hover des pastilles des thèmes monochrome */
+    --COLOR_MONOCHROMES_1: #42a5f5; 
+    --COLOR_MONOCHROMES_1_HOVER: #90caf9; 
 
-    --COLOR_PASTILLES_1: #FF5257; 
-    --COLOR_PASTILLES_1_HOVER: #FF8A8E; 
+    --COLOR_MONOCHROMES_2: #FF5257; 
+    --COLOR_MONOCHROMES_2_HOVER: #FF8A8E; 
 
-    --COLOR_PASTILLES_2: #FA6BFA; 
-    --COLOR_PASTILLES_2_HOVER: #FFA8FF; 
+    --COLOR_MONOCHROMES_3: #FA6BFA; 
+    --COLOR_MONOCHROMES_3_HOVER: #FFA8FF; 
 
-    --COLOR_PASTILLES_3: #B266F9; 
-    --COLOR_PASTILLES_3_HOVER: #D7A8FF; 
+    --COLOR_MONOCHROMES_4: #B266F9; 
+    --COLOR_MONOCHROMES_4_HOVER: #D7A8FF; 
 
-    --COLOR_PASTILLES_4: #0CBB5BFF; 
-    --COLOR_PASTILLES_4_HOVER: #76E082; 
+    --COLOR_MONOCHROMES_5: #0CBB5BFF; 
+    --COLOR_MONOCHROMES_5_HOVER: #76E082; 
 
-    --COLOR_PASTILLES_5: #0ac3a7; 
-    --COLOR_PASTILLES_5_HOVER: #76e8d6; 
+    --COLOR_MONOCHROMES_6: #0ac3a7; 
+    --COLOR_MONOCHROMES_6_HOVER: #76e8d6; 
     
-    --COLOR_PASTILLES_6: #6aabd3;  
-    --COLOR_PASTILLES_6_HOVER: #acdefd;  
+    --COLOR_MONOCHROMES_7: #6aabd3;  
+    --COLOR_MONOCHROMES_7_HOVER: #acdefd;  
 
-    --COLOR_PASTILLES_7: #f14d84; 
-    --COLOR_PASTILLES_7_HOVER: #ff80ab; 
-    
-    --COLOR_PASTILLES_D1: #3a91ff;  
-    --COLOR_PASTILLES_D2: #f782f0;  
-    
-    --COLOR_PASTILLES_D3: #1498e4;  
-    --COLOR_PASTILLES_D4: #fcaf6b;  
-    
-    --COLOR_PASTILLES_D5: #a477fe;  
-    --COLOR_PASTILLES_D6: #4ce58c; 
+    --COLOR_MONOCHROMES_8: #f14d84; 
+    --COLOR_MONOCHROMES_8_HOVER: #ff80ab; 
  
-    --COLOR_PASTILLES_D7: #ffb82b;  
-    --COLOR_PASTILLES_D8: #ff782f; 
+    --COLOR_MONOCHROMES_9: #FFF700;  
+    --COLOR_MONOCHROMES_9_HOVER: #fffb93;
  
-    --COLOR_PASTILLES_D9: #2e9c0f;  
-    --COLOR_PASTILLES_D10: #d2cccc; 
+    --COLOR_MONOCHROMES_10: #FF9A9E;  
+    --COLOR_MONOCHROMES_10_HOVER: #FAD0C4;  
+
+
+    /* thèmes binomes */
+    --COLOR_BINOMES_1: #3a91ff;  
+    --COLOR_BINOMES_1_HOVER: #f782f0;  
+    
+    --COLOR_BINOMES_2: #1498e4;  
+    --COLOR_BINOMES_2_HOVER: #fcaf6b;  
+    
+    --COLOR_BINOMES_3: #a477fe;  
+    --COLOR_BINOMES_3_HOVER: #4ce58c; 
  
-    --COLOR_PASTILLES_D11: #FFF700;  
-    --COLOR_PASTILLES_D12: #fffb93;  
+    --COLOR_BINOMES_4: #ffb82b;  
+    --COLOR_BINOMES_4_HOVER: #ff782f; 
+ 
+    --COLOR_BINOMES_5: #2e9c0f;  
+    --COLOR_BINOMES_5_HOVER: #d2cccc;
+ 
+    --COLOR_BINOMES_6: #4683D8;  
+    --COLOR_BINOMES_6_HOVER: #00D2FF;
+ 
+    --COLOR_BINOMES_7: #00d4ff;  
+    --COLOR_BINOMES_7_HOVER: #E0FFFF;
+ 
+    --COLOR_BINOMES_8: #269cbc;  
+    --COLOR_BINOMES_8_HOVER: #7ac18b;
+ 
+    --COLOR_BINOMES_9: #FEADA6;  
+    --COLOR_BINOMES_9_HOVER: #F5EFEF;
+
+    --COLOR_BINOMES_10: #ffd1ff;  
+    --COLOR_BINOMES_10_HOVER: #FDFBFB;
 }
 /* Pour les icônes dans l'application */
 @font-face {
@@ -733,6 +753,7 @@ div.carousel div.card-tool {
     margin: var(--SPACE_XS);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
+    cursor: pointer;
 
     width: 235px;
     height: fit-content;
@@ -2124,47 +2145,68 @@ ol li.option-color.selected::before{
     transition: all ease-out 0.3s;
 }
 /* Couleur individuelle en fonction du thème du li */
-ol li.option-color.option-color:nth-child(1)::before{ 
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_0) 50%, var(--COLOR_PASTILLES_0_HOVER) 50%);
+/* --- Monochromes --- */
+ol li.option-color.option-color#monochromes-1::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_1) 50%, var(--COLOR_MONOCHROMES_1_HOVER) 50%);
 }
-ol li.option-color:nth-child(2)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_1) 50%, var(--COLOR_PASTILLES_1_HOVER) 50%);
+ol li.option-color.option-color#monochromes-2::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_2) 50%, var(--COLOR_MONOCHROMES_2_HOVER) 50%);
 }
-ol li.option-color:nth-child(3)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_2) 50%, var(--COLOR_PASTILLES_2_HOVER) 50%);
+ol li.option-color.option-color#monochromes-3::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_3) 50%, var(--COLOR_MONOCHROMES_3_HOVER) 50%);
 }
-ol li.option-color:nth-child(4)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_3) 50%, var(--COLOR_PASTILLES_3_HOVER) 50%);
+ol li.option-color.option-color#monochromes-4::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_4) 50%, var(--COLOR_MONOCHROMES_4_HOVER) 50%);
 }
-ol li.option-color:nth-child(5)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_4) 50%, var(--COLOR_PASTILLES_4_HOVER) 50%);
+ol li.option-color.option-color#monochromes-5::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_5) 50%, var(--COLOR_MONOCHROMES_5_HOVER) 50%);
 }
-ol li.option-color:nth-child(6)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_5) 50%, var(--COLOR_PASTILLES_5_HOVER) 50%);
+ol li.option-color.option-color#monochromes-6::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_6) 50%, var(--COLOR_MONOCHROMES_6_HOVER) 50%);
 }
-ol li.option-color:nth-child(7)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_6) 50%, var(--COLOR_PASTILLES_6_HOVER) 50%);
+ol li.option-color.option-color#monochromes-7::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_7) 50%, var(--COLOR_MONOCHROMES_7_HOVER) 50%);
 }
-ol li.option-color:nth-child(8)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_7) 50%, var(--COLOR_PASTILLES_7_HOVER) 50%);
+ol li.option-color.option-color#monochromes-8::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_8) 50%, var(--COLOR_MONOCHROMES_8_HOVER) 50%);
 }
-ol li.option-color:nth-child(9)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D7) 50%, var(--COLOR_PASTILLES_D8) 50%);
+ol li.option-color.option-color#monochromes-9::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_9) 50%, var(--COLOR_MONOCHROMES_9_HOVER) 50%);
 }
-ol li.option-color:nth-child(10)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D3) 50%, var(--COLOR_PASTILLES_D4) 50%);
+ol li.option-color.option-color#monochromes-10::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_10) 50%, var(--COLOR_MONOCHROMES_10_HOVER) 50%);
 }
-ol li.option-color:nth-child(11)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D1) 50%, var(--COLOR_PASTILLES_D2) 50%);
+
+/* --- Binomes --- */
+ol li.option-color.option-color#binomes-1::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_1) 50%, var(--COLOR_BINOMES_1_HOVER) 50%);
 }
-ol li.option-color:nth-child(12)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D5) 50%, var(--COLOR_PASTILLES_D6) 50%);
+ol li.option-color.option-color#binomes-2::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_2) 50%, var(--COLOR_BINOMES_2_HOVER) 50%);
 }
-ol li.option-color:nth-child(13)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D9) 50%, var(--COLOR_PASTILLES_D10) 50%);
+ol li.option-color.option-color#binomes-3::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_3) 50%, var(--COLOR_BINOMES_3_HOVER) 50%);
 }
-ol li.option-color:nth-child(14)::before{
-    background: linear-gradient(130deg, var(--COLOR_PASTILLES_D11) 50%, var(--COLOR_PASTILLES_D12) 50%);
+ol li.option-color.option-color#binomes-4::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_4) 50%, var(--COLOR_BINOMES_4_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-5::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_5) 50%, var(--COLOR_BINOMES_5_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-6::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_6) 50%, var(--COLOR_BINOMES_6_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-7::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_7) 50%, var(--COLOR_BINOMES_7_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-8::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_8) 50%, var(--COLOR_BINOMES_8_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-9::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_9) 50%, var(--COLOR_BINOMES_9_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-10::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_10) 50%, var(--COLOR_BINOMES_10_HOVER) 50%);
 }
 
 

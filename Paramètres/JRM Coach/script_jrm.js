@@ -81,47 +81,8 @@ function ChangeAvatar(value) {
         NameJRM = "JRM Coach"
     }
 
-    if (value == "👨") {
-        ZoneNameJRM.innerHTML = "👨" + " " + NameJRM + " :"
-    } else if (value == "👩") {
-        ZoneNameJRM.innerHTML = "👩" + " " + NameJRM + " :"
-    } else if (value == "🥸") {
-        ZoneNameJRM.innerHTML = "🥸" + " " + NameJRM + " :"
-    } else if (value == "🤠") {
-        ZoneNameJRM.innerHTML = "🤠" + " " + NameJRM + " :"
-    } else if (value == "👴") {
-        ZoneNameJRM.innerHTML = "👴" + " " + NameJRM + " :"
-    } else if (value == "👵") {
-        ZoneNameJRM.innerHTML = "👵" + " " + NameJRM + " :"
-    } else if (value == "🤡") {
-        ZoneNameJRM.innerHTML = "🤡" + " " + NameJRM + " :"
-    } else if (value == "🤖") {
-        ZoneNameJRM.innerHTML = "🤖" + " " + NameJRM + " :"
-    } else if (value == "🥷") {
-        ZoneNameJRM.innerHTML = "🥷" + " " + NameJRM + " :"
-    } else if (value == "🏃") {
-        ZoneNameJRM.innerHTML = "🏃" + " " + NameJRM + " :"
-    } else if (value == "🚴") {
-        ZoneNameJRM.innerHTML = "🚴" + " " + NameJRM + " :"
-    } else if (value == "🏋️") {
-        ZoneNameJRM.innerHTML = "🏋️" + " " + NameJRM + " :"
-    } else if (value == "👻") {
-        ZoneNameJRM.innerHTML = "👻" + " " + NameJRM + " :"
-    } else if (value == "🦆") {
-        ZoneNameJRM.innerHTML = "🦆" + " " + NameJRM + " :"
-    } else if (value == "🦍") {
-        ZoneNameJRM.innerHTML = "🦍" + " " + NameJRM + " :"
-    } else if (value == "🦐") {
-        ZoneNameJRM.innerHTML = "🦐" + " " + NameJRM + " :"
-    } else if (value == "😺") {
-        ZoneNameJRM.innerHTML = "😺" + " " + NameJRM + " :"
-    } else if (value == "🐵") {
-        ZoneNameJRM.innerHTML = "🐵" + " " + NameJRM + " :"
-    } else if (value == "🐻") {
-        ZoneNameJRM.innerHTML = "🐻" + " " + NameJRM + " :"
-    }  else {
-        ZoneNameJRM.innerHTML = NameJRM + " :"
-    }   
+    // maj de l'avatar dans la zone du coach
+    ZoneNameJRM.innerHTML = value + " " + NameJRM + " :"
 
     return
 }

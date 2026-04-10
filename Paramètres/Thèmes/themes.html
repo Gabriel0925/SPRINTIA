@@ -79,63 +79,92 @@
 
     <h1>Thèmes</h1>
     
+    <h2>Monochromes</h2>
     <ol class="container-color-accentuation">
-        <li class="option-color selected" onclick="colorTheme('theme_azur', id)" id="elem1">
+        <li class="option-color selected" onclick="colorTheme('theme_azur', id)" id="monochromes-1">
             Azur
         </li>
                 
-        <li class="option-color" onclick="colorTheme('theme_carmin', id)"  id="elem2">
+        <li class="option-color" onclick="colorTheme('theme_carmin', id)"  id="monochromes-2">
             Carmin
         </li>
 
-        <li class="option-color" onclick="colorTheme('theme_fuchsia', id)"  id="elem3">
+        <li class="option-color" onclick="colorTheme('theme_fuchsia', id)"  id="monochromes-3">
             Fuchsia
         </li>
 
-        <li class="option-color" onclick="colorTheme('theme_lavande', id)" id="elem4">
+        <li class="option-color" onclick="colorTheme('theme_lavande', id)" id="monochromes-4">
             Lavande
         </li>
 
-        <li class="option-color" onclick="colorTheme('theme_vegetation', id)" id="elem5">
+        <li class="option-color" onclick="colorTheme('theme_vegetation', id)" id="monochromes-5">
             Végétation
         </li>
 
-        <li class="option-color" onclick="colorTheme('theme_menthe', id)" id="elem6">
+        <li class="option-color" onclick="colorTheme('theme_menthe', id)" id="monochromes-6">
             Menthe
         </li>
 
-        <li class="option-color" onclick="colorTheme('theme_pierre_lune', id)" id="elem7">
+        <li class="option-color" onclick="colorTheme('theme_pierre_lune', id)" id="monochromes-7">
             Lune
         </li>
 
-        <li class="option-color" onclick="colorTheme('theme_framboise', id)" id="elem8">
+        <li class="option-color" onclick="colorTheme('theme_framboise', id)" id="monochromes-8">
             Framboise
         </li>
+
+        <li class="option-color" onclick="colorTheme('Citron', id)"  id="monochromes-9">
+            Citron
+        </li>
+
+        <li class="option-color" onclick="colorTheme('theme_peche', id)"  id="monochromes-10">
+            Pêche
+        </li>
                 
-        <li class="option-color" onclick="colorTheme('theme_feu', id)"  id="elem9">
-            Feu
-        </li> 
+    </ol>
 
-        <li class="option-color" onclick="colorTheme('theme_plage', id)"  id="elem10">
-            Plage
-        </li>
 
-        <li class="option-color" onclick="colorTheme('Hortensia', id)"  id="elem11">
+    <h2>Binômes</h2>
+    <ol class="container-color-accentuation">   
+        <li class="option-color" onclick="colorTheme('Hortensia', id)"  id="binomes-1">
             Hortensia
-        </li>
+        </li>   
 
-        <li class="option-color" onclick="colorTheme('Aurore', id)"  id="elem12">
+        <li class="option-color" onclick="colorTheme('theme_plage', id)"  id="binomes-2">
+            Plage
+        </li>  
+
+        <li class="option-color" onclick="colorTheme('Aurore', id)"  id="binomes-3">
             Aurore
         </li>
 
-        <li class="option-color" onclick="colorTheme('Muguet', id)"  id="elem13">
+        <li class="option-color" onclick="colorTheme('theme_feu', id)"  id="binomes-4">
+            Feu
+        </li> 
+
+        <li class="option-color" onclick="colorTheme('Muguet', id)"  id="binomes-5">
             Muguet
         </li>
 
-        <li class="option-color" onclick="colorTheme('Citron', id)"  id="elem14">
-            Citron
+        <li class="option-color" onclick="colorTheme('theme_foudre', id)"  id="binomes-6">
+            Foudre
         </li>
-                
+
+        <li class="option-color" onclick="colorTheme('theme_glacier', id)"  id="binomes-7">
+            Glacier
+        </li>
+
+        <li class="option-color" onclick="colorTheme('theme_amazonie', id)"  id="binomes-8">
+            Amazonie
+        </li>
+
+        <li class="option-color" onclick="colorTheme('theme_quartz_rose', id)"  id="binomes-9">
+            Quartz rose
+        </li>
+
+        <li class="option-color" onclick="colorTheme('theme_guimauve', id)"  id="binomes-10">
+            Guimauve
+        </li>
     </ol>
 
     <div class="container-center-marge">
@@ -172,20 +201,27 @@
         document.addEventListener("DOMContentLoaded", function() {
             // Pr restaure le selected du li
             let idElementTheme = {
-                "theme_azur": "elem1",
-                "theme_carmin": "elem2",
-                "theme_fuchsia": "elem3",
-                "theme_lavande": "elem4",
-                "theme_vegetation": "elem5",
-                "theme_menthe": "elem6",
-                "theme_pierre_lune": "elem7",
-                "theme_framboise": "elem8",
-                "theme_feu": "elem9",
-                "theme_plage": "elem10",
-                "Hortensia": "elem11",
-                "Aurore": "elem12",
-                "Muguet": "elem13",
-                "Citron": "elem14"
+                "theme_azur": "monochromes-1",
+                "theme_carmin": "monochromes-2",
+                "theme_fuchsia": "monochromes-3",
+                "theme_lavande": "monochromes-4",
+                "theme_vegetation": "monochromes-5",
+                "theme_menthe": "monochromes-6",
+                "theme_pierre_lune": "monochromes-7",
+                "theme_framboise": "monochromes-8",
+                "Citron": "monochromes-9",
+                "theme_peche": "monochromes-10",
+
+                "Hortensia": "binomes-1",
+                "theme_plage": "binomes-2",
+                "Aurore": "binomes-3",
+                "theme_feu": "binomes-4",
+                "Muguet": "binomes-5",
+                "theme_foudre": "binomes-6",
+                "theme_glacier": "binomes-7",
+                "theme_amazonie": "binomes-8",
+                "theme_quartz_rose": "binomes-9",
+                "theme_guimauve": "binomes-10"
             }
             let themeUse = localStorage.getItem("ColorActuelleUse")
 
@@ -197,41 +233,6 @@
 
             if (idElement) {
                 SelectedElement(idElement)
-            }
-        })
-
-        function themeHarmonie(event) {
-            let ToggleHarmonie = event.target
-
-            if (ToggleHarmonie.checked) { // quand toggle est desactiver
-                localStorage.setItem("ToggleThemeComplet", "False")
-            } else { // quand toggle est activé
-                localStorage.setItem("ToggleThemeComplet", "True")
-            }
-
-            return
-        }
-
-        function RestaureToggleThemeComplet() { // pour restaurer la position de "Appliquer thème aux icones"
-            let ToggleHarmonie = document.getElementById("toggle-theme-complet")
-
-            let lastPositionToggleHarmonie = localStorage.getItem("ToggleThemeComplet")
-
-            if (lastPositionToggleHarmonie == "True") {
-                ToggleHarmonie.checked = false
-            } else {
-                ToggleHarmonie.checked = true
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            RestaureToggleThemeComplet()
-        })
-        window.addEventListener("pageshow", (event) => {
-            if (event.persisted) {
-                RestaureToggleThemeComplet()
             }
         })
     </script>

@@ -60,7 +60,22 @@ async function VerificationParam() {
                 document.querySelector(".fs-icon_import_file").style.display = "none"
 
                 // Remettre les champs adaptée au sport
-                dataSpecifique(WorkoutDB.sport, false)
+                dataSpecifique(WorkoutDB.sport, false)  
+                const dicoRPE = {
+                    1:"Facile",
+                    2:"Facile",
+                    3:"Facile",
+
+                    4:"Modéré",
+                    5:"Modéré",
+                    6:"Modéré",
+
+                    7:"Difficile",
+                    8:"Difficile",
+
+                    9:"Effort maximal",
+                    10:"Effort maximal"
+                }
 
                 // remplissage des champs qu'on ne peut pas remplir dans la boucle foreach
                 document.getElementById("profil-sport").value = WorkoutDB.sport
@@ -68,7 +83,7 @@ async function VerificationParam() {
                 // remettre le RPE sur bonne position
                 document.querySelector(".slider input").value = WorkoutDB.rpe
                 document.querySelector(".slider progress").value = WorkoutDB.rpe
-                document.querySelector(".slider-value").textContent = WorkoutDB.rpe
+                document.querySelector(".slider-name").innerHTML = "RPE : <span class='RPE'>" + WorkoutDB.rpe + "</span>" + dicoRPE[WorkoutDB.rpe]
 
                 // ajout d'une data a la variable globale
                 if (WorkoutDB.note != undefined || WorkoutDB.note != "") {

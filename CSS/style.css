@@ -4,7 +4,7 @@
     --COLOR_ACCENT: #42a5f5; 
     --COLOR_ACCENT2: #90caf9; 
     
-    --COLOR_BACKGROUND: #000000;       
+    --COLOR_BACKGROUND: #000000;
     --COLOR_BACKGROUND_CARD: #232222;
     --COLOR_BACKGROUND_CARD_HOVER: #373636; 
 
@@ -1539,10 +1539,8 @@ input:not(:placeholder-shown) + .label-input {
 /* --- Style des sliders --- */
 /* Pour chrome, safari */
 .slider-cont { /* Le conteneur du slider */
-    display: flex;
     margin: var(--SPACE_XS);
     padding: var(--SPACE_XS) 0px;
-    align-items: center;
 }
 .slider {
     position: relative;
@@ -1562,8 +1560,8 @@ input:not(:placeholder-shown) + .label-input {
 .slider input::-webkit-slider-thumb{
     -webkit-appearance: none;
     appearance: none;
-    width: 33px;
-    height: 23px;
+    width: 37px;
+    height: 27px;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border: 2px solid var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
@@ -1574,14 +1572,14 @@ input:not(:placeholder-shown) + .label-input {
 @media (hover: hover) and (pointer: fine) {
     .slider input::-webkit-slider-thumb:hover{
         background-color: var(--COLOR_ACCENT2);
-        transform: scale(1.4);
+        transform: scale(1.25);
         border: 2px solid var(--COLOR_ACCENT2);
         transition: all ease-out var(--TIME_TRANSITION);
     }
 } 
 .slider input::-webkit-slider-thumb:active{
     background-color: var(--COLOR_ACCENT2);
-    transform: scale(1.4);
+    transform: scale(1.25);
     border: 2px solid var(--COLOR_ACCENT2);
     transition: all ease-out 0.05s;
 }
@@ -1606,8 +1604,8 @@ input:not(:placeholder-shown) + .label-input {
 .slider input::-moz-range-thumb{
     -webkit-appearance: none;
     appearance: none;
-    width: 33px;
-    height: 23px;
+    width: 37px;
+    height: 27px;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border: 2px solid var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
@@ -1618,7 +1616,7 @@ input:not(:placeholder-shown) + .label-input {
 @media (hover: hover) and (pointer: fine) {
     .slider input::-moz-range-thumb:hover{
         background-color: var(--COLOR_ACCENT2);
-        transform: scale(1.3);
+        transform: scale(1.25);
         transition: all ease-out var(--TIME_TRANSITION);
     }
 }
@@ -1635,13 +1633,16 @@ input:not(:placeholder-shown) + .label-input {
     background-color: var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
 }
-/* La valeur du slider */
-.slider-value {
-    margin-left: var(--SPACE_S);
-}
 /* le nom du slider */
 .slider-name {
+    margin-bottom: var(--SPACE_XS);
     margin-right: var(--SPACE_S);
+}
+.slider-name span.RPE {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    padding: 0.15rem var(--SPACE_XS);
+    margin: 0 var(--SPACE_XS);
+    border-radius: var(--BORDER_BIG);
 }
 
 /* --- Style des combobox --- */
@@ -2137,7 +2138,6 @@ ol li.option-color::before{
 /* celui selectionné */
 ol li.option-color.selected{
     color: var(--COLOR_BACKGROUND);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 ol li.option-color.selected::before{

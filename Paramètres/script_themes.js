@@ -9,6 +9,7 @@ const ThemeConfig = {
     "theme_framboise": ["#f14d84", "#ff80ab"],
     "Citron": ["#FFF700", "#fffb93"],
     "theme_peche": ["#FF9A9E", "#FAD0C4"],
+    "theme_corail": ["#FF8559", "#fdb195"],
 
     "Hortensia": ["#3a91ff", "#f782f0"], 
     "theme_plage": ["#1498e4", "#fcaf6b"],
@@ -19,7 +20,9 @@ const ThemeConfig = {
     "theme_glacier": ["#00d4ff", "#E0FFFF"],
     "theme_amazonie": ["#269cbc", "#7ac18b"],
     "theme_quartz_rose": ["#FEADA6", "#F5EFEF"],
-    "theme_guimauve": ["#ffd1ff", "#FDFBFB"]
+    "theme_guimauve": ["#ffd1ff", "#FDFBFB"],
+    "theme_cssf": ["#51a6d7", "#f8e622"],
+    "theme_baies": ["#749aee", "#fb8288"]
 }
 // init variable
 let theme = "theme_azur"

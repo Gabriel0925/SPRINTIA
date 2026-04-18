@@ -58,6 +58,7 @@ async function InterpretationJRM(Ratio, AnalysePossible) {
     
     // Si l'utilisateur a fait moins de 3 entrainements sur les 28 derniers jours on analyse pas
     if (AnalysePossible == false) {
+        document.getElementById("cible-charge-7j").textContent = "Charge aiguë"
         return Interpretation // on return l'analyse par défaut
     }
 

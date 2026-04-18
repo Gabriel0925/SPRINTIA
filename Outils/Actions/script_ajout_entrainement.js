@@ -34,6 +34,7 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
 
     "Corde à sauter": ["nb-tours-entrainement-user", "cadence-moy-entrainement-user", "serie-max-entrainement-user"],
     "Escalade": ["voies-effectuees-entrainement-user", "difficulte-max-entrainement-user", "nb-chutes-entrainement-user"],
+    "Sport de chambre": ["nb-positions-entrainement-user", "cadence-moy-entrainement-user"],
 }
 
 let IdEditWorkout = null // init variable globale
@@ -665,7 +666,7 @@ async function saveWorkout() {
 
                             data = Number(data).toFixed(2)
                         }
-                    } else if (cleData == "nb_coups" || cleData == "nb_sets" || cleData == "nb_defaites" || cleData == "nb_chutes" || cleData == "nb_victoires" || cleData == "nb_combats" || cleData == "nb_points" || cleData == "nb_services" || cleData == "nb_smash" || cleData == "nb_reps" || cleData == "nb_series" || cleData == "nb_longueurs" || cleData == "nb_descentes" || cleData == "serie_max" || cleData == "nb_tours") { 
+                    } else if (cleData == "nb_coups" || cleData == "nb_sets" || cleData == "nb_defaites" || cleData == "nb_chutes" || cleData == "nb_victoires" || cleData == "nb_combats" || cleData == "nb_points" || cleData == "nb_services" || cleData == "nb_smash" || cleData == "nb_reps" || cleData == "nb_series" || cleData == "nb_longueurs" || cleData == "nb_descentes" || cleData == "serie_max" || cleData == "nb_tours" || cleData == "nb_positions") { 
                         if (data) { // si il y a des datas dans le input
 
                             // vérification

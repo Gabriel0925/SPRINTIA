@@ -77,6 +77,9 @@
  
     --COLOR_MONOCHROMES_10: #FF9A9E;  
     --COLOR_MONOCHROMES_10_HOVER: #FAD0C4;  
+ 
+    --COLOR_MONOCHROMES_11: #FF8559;  
+    --COLOR_MONOCHROMES_11_HOVER: #fdb195;  
 
 
     /* thèmes binomes */
@@ -109,6 +112,12 @@
 
     --COLOR_BINOMES_10: #ffd1ff;  
     --COLOR_BINOMES_10_HOVER: #FDFBFB;
+
+    --COLOR_BINOMES_11: #51a6d7;  
+    --COLOR_BINOMES_11_HOVER: #f8e622;
+
+    --COLOR_BINOMES_12: #749aee;  
+    --COLOR_BINOMES_12_HOVER: #fb8288;
 }
 /* Pour les icônes dans l'application */
 @font-face {
@@ -2176,6 +2185,9 @@ ol li.option-color.option-color#monochromes-9::before{
 ol li.option-color.option-color#monochromes-10::before{ 
     background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_10) 50%, var(--COLOR_MONOCHROMES_10_HOVER) 50%);
 }
+ol li.option-color.option-color#monochromes-11::before{ 
+    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_11) 50%, var(--COLOR_MONOCHROMES_11_HOVER) 50%);
+}
 
 /* --- Binomes --- */
 ol li.option-color.option-color#binomes-1::before{ 
@@ -2207,6 +2219,12 @@ ol li.option-color.option-color#binomes-9::before{
 }
 ol li.option-color.option-color#binomes-10::before{ 
     background: linear-gradient(130deg, var(--COLOR_BINOMES_10) 50%, var(--COLOR_BINOMES_10_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-11::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_11) 50%, var(--COLOR_BINOMES_11_HOVER) 50%);
+}
+ol li.option-color.option-color#binomes-12::before{ 
+    background: linear-gradient(130deg, var(--COLOR_BINOMES_12) 50%, var(--COLOR_BINOMES_12_HOVER) 50%);
 }
 
 

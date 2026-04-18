@@ -31,6 +31,7 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
     "poids_total": ["Poids total", "kg"],
     "coups_rame": ["Coups de rame", ""],
     "nb_longueurs": ["Nombre de longueurs", ""],
+    "nb_positions": ["Nombre de positions", ""],
     "longueur_bassin": ["Longueur du bassin", "m"],
     "nb_tours": ["Nombre de tours", ""],
     "serie_max": ["Séries maximum", ""],
@@ -40,7 +41,7 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
     "muscles_travailles": ["Muscles travaillés", ""],
     "charge_entrainement": ["Charge d'entraînement", "CE"],
     "transpiration_estimee": ["Transpiration estimée", "mL"],
-    "hydratation_estimee": ["Réhydratation conseillée", "mL"],
+    "hydratation_estimee": ["Réhydratation conseillée", "mL"]
 }
 let idWorkout = undefined
 
@@ -90,6 +91,7 @@ function afficherData(dataWorkout) {
     // initialisation de 2 tableaux
     const tableauDataNotDisplay = ["id", "Nom", "Sport", "Date", "Durée", "RPE", "Charge d'entraînement"]
     const tableauDataSeule = ["Muscles travaillés", "Score", "Voies effectuées"]
+    let sixSeven = false
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
@@ -105,6 +107,7 @@ function afficherData(dataWorkout) {
                 if (isNaN(valeur)) { // et si la valeur est NaN (=quand le user met rien dans le champs lors de l'enregistrement de datas)
                     valeur = null // on met sur null pour que la condition ci-dessous n'affiche pas cette data
                 }
+                if (valeur != null && valeur == 67) {sixSeven=true}
             }
             
             // initialisation
@@ -207,6 +210,9 @@ function afficherData(dataWorkout) {
             document.getElementById("note-entrainement").value = dataWorkout.note
         }
     }
+
+    if (dataWorkout.sport == "Sport de chambre") {logoDynamique("Quel athlète 😏")}
+    else if (sixSeven==true) {logoDynamique("SIX-SEVEN 😏")}
 
     return
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Calculateur IMC</title>
+    <title>Sprintia - Import GPX</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,15 +17,16 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sprintia">
     <link rel="apple-touch-icon" href="/Assets/icons-sprintia/icon-1024-V4.0.2.png">
-    
-    <script src="../../Paramètres/script_themes.js"></script>
+
+    <!-- Pour les thèmes -->
+    <script src="../script_themes.js"></script>
 </head>
 
 <body>
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="../../index.html">Sprintia</a>
+                <a href="../../index.html" id="logo-dynamique">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
@@ -35,13 +36,13 @@
                     </a>
                 </li>
                 <li>
-                    <a class="actif" href="../outils.html">
+                    <a href="../../Outils/outils.html">
                         <i class="fs-icon_outils"></i>
                         Progression
                     </a>
                 </li>
                 <li>
-                    <a href="../../Paramètres/parametres.html">
+                    <a class="actif" href="../parametres.html">
                         <i class="fs-icon_parametres"></i>
                         Plus
                     </a>
@@ -61,13 +62,13 @@
                     </a>
                 </li>
                 <li>
-                    <a class="actif-burger-menu" href="../outils.html">
+                    <a href="../../Outils/outils.html">
                         <i class="fs-icon_outils"></i>
                         Progression
                     </a>
                 </li>
                 <li>
-                    <a href="../../Paramètres/parametres.html">
+                    <a class="actif-burger-menu" href="../parametres.html">
                         <i class="fs-icon_parametres"></i>
                         Plus
                     </a>
@@ -75,78 +76,41 @@
             </ul>
         </div>
     </header>
-
-    <h1>Calculateur IMC</h1>
-    <section class="container-zone">
-
-        <div class="form">
-                
-            <div class="container-input">
-                <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
-                <div class="label-input">Taille (cm)</div>
-            </div>
-                    
-            <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                <div class="label-input">Poids (kg)</div>
-            </div>
-
-            <button onclick="CalculIMC()">Calculer</button>
-        </div>
-
-        <div class="zone-result">
-            <p class="zone-result-name-result">Votre IMC : <strong>00</strong></p>
-            <p class="zone-result-interpretation">
-                Veuillez rentrer votre taille ainsi que votre poids pour avoir une interprétation.
-            </p>
-        </div>
-
-    </section>
-
-    <h2>C'est quoi l'IMC ?</h2>
-    <p class="text">
-        L'IMC (indice de masse corporelle) sert à estimer la corpulence. Ce n'est pas un indicateur sportif, mais plutôt un repère de santé.
-    </p>
-    <h2>Le problème de l'IMC ?</h2>
-    <p class="text">
-        L'IMC estime la corpulence à partir de la taille et du poids, mais il ne connait pas votre masse musculaire ! Par exemple, vous pouvez
-        être en obésité sévère alors qu'en réalité vous allez juste à la salle et que vous êtes musclé. Mais ça, l'IMC ne le saura jamais.
-        C'est pourquoi, il faut savoir prendre du recul sur les résultats de cet indicateur.
-    </p>
+    
+    <h1>Importer un fichier GPX</h1>
     
     <footer>
         <div class="conteneur-lien-footer">
             <a class="a_title">Catégories</a>
             <a class="a_footer" href="../../index.html">Accueil</a>
-            <a class="a_footer" href="../outils.html">Outils</a>
-            <a class="a_footer" href="../../Paramètres/parametres.html">Paramètres</a>
-            <a class="a_footer" href="../../Paramètres/Historique versions/historique versions.html">Historique des versions</a>
-            <a class="a_footer" href="../../Paramètres/Thèmes/themes.html">Thèmes</a>
+            <a class="a_footer" href="../../Outils/outils.html">Outils</a>
+            <a class="a_footer" href="../parametres.html">Paramètres</a>
+            <a class="a_footer" href="../Historique versions/historique versions.html">Historique des versions</a>
+            <a class="a_footer" href="../Thèmes/themes.html">Thèmes</a>
         </div>
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="../Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="../../Outils/Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../Outils/Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../Outils/Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="../../Paramètres/Licence/Licence.html">Licence (© 2026 Sprintia)</a>
-            <a class="a_footer" href="../../Paramètres/Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
+            <a class="a_footer" href="../Licence/Licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
         </div>
     </footer>
-
+    
     <!-- Pour le burger menu -->
     <script src="../../Assets/base-js/base.js"></script>
+
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
-    <script src="script_outil.js"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["taille-user", "poids-user"]))
-    </script>
+    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
+    <script src="script_import_seance.js"></script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

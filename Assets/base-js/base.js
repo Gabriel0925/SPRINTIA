@@ -182,6 +182,49 @@ async function genererGraphique(listeX, listeY) {
             }
     })
 }
+async function genererGraphiqueCamenbert(listeX, listeY) {
+    // Récup les variables css
+    let RootCSS = document.documentElement
+    let StyleCSS = getComputedStyle(RootCSS)
+    // Recup variable css
+    let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
+    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
+    let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
+
+    const barCanvas = document.getElementById("barCanvas")
+
+    if (barChart) { // si il y a deja un graphique on le suppr
+        barChart.destroy()
+    }
+
+    barChart = new Chart(barCanvas, {
+        type:"doughnut",
+            data:{
+                labels: listeX,
+                datasets: [{
+                    data: listeY,
+                    borderColor : CouleurAccent, // Ligne des niveau couleur
+                    backgroundColor: CouleurAccent2,
+                    fill: true, // Pour remplir le graphique de la couleur background
+                    pointRadius: 8, // Taille du point
+                    pointHoverRadius: 10,
+                    pointBackgroundColor: CouleurAccent,
+                    pointBorderWidth: 0
+                }]
+                },
+            options: {
+                responsive: true, // Activation du responsive
+                maintainAspectRatio: false, // Tres important pour responsive sur mobile
+                    
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+
+            }
+    })
+}
 
 
 

@@ -80,17 +80,59 @@
 
     <section class="segmented-button">
 
-        <div class="segmented-button-button actif">
-            <p>Semaine</p>
+        <div class="segmented-button-button actif" id="semaine" onclick="
+            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.getElementById('semaine').classList.add('actif')
+
+            init(DateMoins7J)
+        ">
+            <p>7J</p>
         </div>
-        <div class="segmented-button-button">
-            <p>Mois</p>
+        <div class="segmented-button-button" id="mois" onclick="
+            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.getElementById('mois').classList.add('actif')
+
+            init(DateMoins30J)
+        ">
+            <p>30J</p>
         </div>
-        <div class="segmented-button-button">
-            <p>Année</p>
+        <div class="segmented-button-button" id="annee" onclick="
+            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.getElementById('annee').classList.add('actif')
+
+            init(DateMoins365J)
+        ">
+            <p>365J</p>
         </div>
 
     </section>
+
+    <h2>Statistiques générale</h2>
+    <section class="container-block"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Durée</p>
+            <p class="container-block-data-data" id="duree">00:00</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Nb entraînement</p>
+            <p class="container-block-data-data" id="nb-entrainement">0</p>
+        </div>
+
+    </section>
+
+    <section class="container-block"> 
+        <div class="container-block-data">
+            <p class="container-block-data-header">Charge d'entraînement totale</p>
+            <p class="container-block-data-data" id="charge-entrainement">0 CE</p>
+        </div>
+    </section>
+
+    <h2>Sports les plus pratiqués</h2>
+    <div class="chart-container" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
 
     
     <footer>
@@ -119,10 +161,59 @@
 
     <!-- Pour le burger menu -->
     <script src="../../Assets/base-js/base.js"></script>
-    
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>   
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../Assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+    <script>
+        const DateActuelle = new Date()
+
+        let DateMoins7J = DateActuelle.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
+        // On prend que ce qui nous interesse donc la premiere partie
+        DateMoins7J = DateMoins7J.split('T')[0] // on obtient '2026-01-21'
+
+        let DateMoins30J = DateActuelle.setDate(DateActuelle.getDate() - 30) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        DateMoins30J = new Date(DateMoins30J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
+        // On prend que ce qui nous interesse donc la premiere partie
+        DateMoins30J = DateMoins30J.split('T')[0] // on obtient '2026-01-21'
+
+        let DateMoins365J = DateActuelle.setDate(DateActuelle.getDate() - 365) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        DateMoins365J = new Date(DateMoins365J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
+        // On prend que ce qui nous interesse donc la premiere partie
+        DateMoins365J = DateMoins365J.split('T')[0] // on obtient '2026-01-21'
+        
+        async function init(dateChoisie) {
+            // recup data des derniers jours en fonction de la date
+            const historiqueDB = await db.entrainement.where("date").above(dateChoisie).toArray()
+
+            let tableauDuree = historiqueDB.map(elt => elt.duree)
+            let tableauCharge = historiqueDB.map(elt => elt.charge_entrainement)
+            let dureeEntrainementUser = 0
+            let chargeEntrainementUser = 0
+
+            let compteur=0
+            tableauDuree.forEach(element => {
+                dureeEntrainementUser += element
+                chargeEntrainementUser += tableauCharge[compteur]
+
+                compteur+=1
+            });
+
+            dureeEntrainementUser = dureeFormatee(dureeEntrainementUser, null)
+            document.getElementById("duree").textContent = dureeEntrainementUser
+            document.getElementById("charge-entrainement").textContent = chargeEntrainementUser + " CE"
+            document.getElementById("nb-entrainement").textContent = tableauDuree.length
+
+            genererGraphiqueCamenbert()
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", init(DateMoins7J))
+    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

@@ -751,6 +751,42 @@ section.container-tools-pin div.tools-pin p{
 }
 
 
+section.segmented-button {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: fit-content;
+    padding: var(--SPACE_XS);
+    border-radius: var(--BORDER_BIG);
+    gap: var(--SPACE_XS);
+}
+section.segmented-button div.segmented-button-button {
+    padding: var(--SPACE_XS);
+    border-radius: var(--BORDER_NORMAL);
+    cursor: pointer;
+    width: 90px;
+    text-align: center;
+    transition: all ease-out var(--TIME_TRANSITION);
+}
+@media (hover:hover) and (pointer: fine) {
+    section.segmented-button div.segmented-button-button:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+section.segmented-button div.segmented-button-button:active {
+    transform: scale(var(--SCALE_NORMAL));
+}
+section.segmented-button div.segmented-button-button.actif {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    padding: var(--SPACE_XS);
+    border-radius: var(--BORDER_NORMAL);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    color: var(--COLOR_ACCENT2);
+}
+
+
 
 div.carousel {
     max-width: var(--MAX_WIDTH);

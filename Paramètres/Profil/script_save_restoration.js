@@ -129,6 +129,9 @@ async function ReadFile(event) {
             // remise etat normal
             BoutonRestoration.textContent = "Restaurer mes données"
             BoutonRestoration.disabled = false // Réactivation du bouton
+
+            // et remplit le tableau si il y a des datas
+            await remplirTableau()
             
             logoDynamique("Vous revoilà 😇")
             // rechargement du theme

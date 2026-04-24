@@ -187,17 +187,13 @@ async function genererGraphiqueCamenbert(label, listePourcentage) {
     let RootCSS = document.documentElement
     let StyleCSS = getComputedStyle(RootCSS)
     // Recup variable css
-    let colorGraph = [
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_1"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_2"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_3"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_4"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_5"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_6"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_7"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_8"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_9"),
-        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_10"),
+    let colorGraph = [ // 30 couleurs car il y a 28 sports dans la version 4.2
+        "#42a5f5", "#66bb6a", "#ffa726", "#ef5350", "#ab47bc",
+        "#26a69a", "#ec407a", "#ffee58", "#8d6e63", "#78909c",
+        "#5c6bc0", "#d4e157", "#ffca28", "#26c6da", "#9ccc65",
+        "#ba68c8", "#ff7043", "#bdbdbd", "#90a4ae", "#f06292",
+        "#4db6ac", "#81c784", "#a1887f", "#7986cb", "#ff8a65",
+        "#4dd0e1", "#dce775", "#ffd54f", "#64b5f6", "#ffb74d"
     ]
     let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
@@ -208,12 +204,12 @@ async function genererGraphiqueCamenbert(label, listePourcentage) {
     }
 
     barChart = new Chart(barCanvas, {
-        type:"pie",
+        type:"doughnut",
             data:{
                 labels: label,
                 datasets: [{
                     data: listePourcentage,
-                    borderColor : colorGraph, // Ligne des niveau couleur
+                    borderColor: colorGraph,
                     backgroundColor: colorGraph,
                 }]
                 },
@@ -223,7 +219,11 @@ async function genererGraphiqueCamenbert(label, listePourcentage) {
                     
                 plugins: {
                     legend: {
-                        display: true
+                        display: false,
+                        // position:"left",
+                        labels: {
+                            color: CouleurTextPrincipal
+                        }
                     }
                 }
 

@@ -129,10 +129,60 @@
     </section>
 
     <h2>Sports les plus pratiqués</h2>
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-    </div>
+    <p class="text" id="message-not-datas" style="display: none;">
+        Sprintia n'a pas assez de données pour afficher vos sports les plus pratiqués.
+    </p>
+    <section class="sports-pratiques">
+
+        <div class="carousel table">
+            <div class="carousel-content table">
+                <table id="tableau-historique">
+                    <thead>
+                        <tr>
+                            <th>Classement</th>
+                            <th>Sport</th>
+                            <th>Pourcentage</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+
+                    </thead>
+
+                    <tbody><!-- Remplis en js --></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="chart-container" id="conteneur-graphique">
+            <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+            <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+        </div>
+
+    </section>
 
     
     <footer>
@@ -187,53 +237,73 @@
         
         async function init(dateChoisie) {
             // recup data des derniers jours en fonction de la date
-            const historiqueDB = await db.entrainement.where("date").above(dateChoisie).toArray()
+            const historiqueDB = await db.entrainement.where("date").above(dateChoisie).toArray() // la var dateChoisie change en fonction du selected dans l'interface
+
+            // quand il n'y a pas de datas
+            if (historiqueDB.length <= 0) {
+                document.querySelector(".sports-pratiques").style.display = "none"
+                document.getElementById("message-not-datas").style.display = "block"
+                return
+            }
 
             // Tableau des entraînements en fonction de ce qu'a choisis le user comme date (7J, 30J, 365J)
             let tableauDuree = historiqueDB.map(elt => elt.duree)
             let tableauSport = historiqueDB.map(elt => elt.sport)
             let tableauCharge = historiqueDB.map(elt => elt.charge_entrainement)
+
+            // init pr la boucle
             let dureeEntrainementUser = 0
             let chargeEntrainementUser = 0
-
             let compteur=0
-            tableauDuree.forEach(element => {
+
+            tableauDuree.forEach(element => { // boucle pour faire la somme de la durée et de la charge d'entraînement
                 dureeEntrainementUser += element
                 chargeEntrainementUser += tableauCharge[compteur]
 
                 compteur+=1
             });
 
-            dureeEntrainementUser = dureeFormatee(dureeEntrainementUser, null)
+            dureeEntrainementUser = dureeFormatee(dureeEntrainementUser, null) // conversion au format hh:mm:ss ou mm:ss
+
+            // remplissage des champs
             document.getElementById("duree").textContent = dureeEntrainementUser
             document.getElementById("charge-entrainement").textContent = chargeEntrainementUser + " CE"
             document.getElementById("nb-entrainement").textContent = tableauDuree.length
             
-            let DicoNbEntrainementSport = {}
+            let DicoNbEntrainementSport = {} // init pour les futures boucles ex : {"Course":3} 3 pour le nb d'entrainement en course
             tableauSport.forEach(elt => {
-                if (!DicoNbEntrainementSport[elt]) {
+                if (!DicoNbEntrainementSport[elt]) { // si il n'y a pas ce sport dans le dico alors on le init à 1
                     DicoNbEntrainementSport[elt] = 1
-                } else {    
+                } else { // sinon on prend le nombre d'activité dans le dico et on lui ajoute 1
                     let nbActuelSport = DicoNbEntrainementSport[elt]
                     let newNbSport = nbActuelSport+1
                     DicoNbEntrainementSport[elt] = newNbSport
                 }
             });
 
-            let nbTotaleEntrainement = 0
+            let nbTotaleEntrainement = 0 // init pour compter le nombre d'entraînement totale pour préparer la prochaine boucle
             Object.entries(DicoNbEntrainementSport).forEach(([sport, nbWorkout]) => {
                 nbTotaleEntrainement += nbWorkout
             })
             
+            // init de 2 tableaux
             let pourcentageSport = []
             let labelSport = []
             Object.entries(DicoNbEntrainementSport).forEach(([sport, nbEntrainement]) => {
+                // calcul du pourcentage ex : 10 entrainements totale (donc 10 entrainements c'est 100%) -> dont 2 entrainements de course
+                // donc (2*100)/10
                 let pourcentageDeCeSport = (nbEntrainement*100)/nbTotaleEntrainement
+
+                // ajout de la data dans les tableaux
                 pourcentageSport.push(pourcentageDeCeSport.toFixed(2))
                 labelSport.push(sport)
             })
 
+            // genereation du graphique
             genererGraphiqueCamenbert(labelSport, pourcentageSport)
+
+            // Remplissage du tableau du classement des sports
+            
 
             return
         }

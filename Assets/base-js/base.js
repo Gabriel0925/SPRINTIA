@@ -182,13 +182,23 @@ async function genererGraphique(listeX, listeY) {
             }
     })
 }
-async function genererGraphiqueCamenbert(listeX, listeY) {
+async function genererGraphiqueCamenbert(label, listePourcentage) {
     // Récup les variables css
     let RootCSS = document.documentElement
     let StyleCSS = getComputedStyle(RootCSS)
     // Recup variable css
-    let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
-    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
+    let colorGraph = [
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_1"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_2"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_3"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_4"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_5"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_6"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_7"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_8"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_9"),
+        StyleCSS.getPropertyValue("--COLOR_MONOCHROMES_10"),
+    ]
     let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
     const barCanvas = document.getElementById("barCanvas")
@@ -198,18 +208,13 @@ async function genererGraphiqueCamenbert(listeX, listeY) {
     }
 
     barChart = new Chart(barCanvas, {
-        type:"doughnut",
+        type:"pie",
             data:{
-                labels: listeX,
+                labels: label,
                 datasets: [{
-                    data: listeY,
-                    borderColor : CouleurAccent, // Ligne des niveau couleur
-                    backgroundColor: CouleurAccent2,
-                    fill: true, // Pour remplir le graphique de la couleur background
-                    pointRadius: 8, // Taille du point
-                    pointHoverRadius: 10,
-                    pointBackgroundColor: CouleurAccent,
-                    pointBorderWidth: 0
+                    data: listePourcentage,
+                    borderColor : colorGraph, // Ligne des niveau couleur
+                    backgroundColor: colorGraph,
                 }]
                 },
             options: {

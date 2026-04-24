@@ -189,7 +189,9 @@
             // recup data des derniers jours en fonction de la date
             const historiqueDB = await db.entrainement.where("date").above(dateChoisie).toArray()
 
+            // Tableau des entraînements en fonction de ce qu'a choisis le user comme date (7J, 30J, 365J)
             let tableauDuree = historiqueDB.map(elt => elt.duree)
+            let tableauSport = historiqueDB.map(elt => elt.sport)
             let tableauCharge = historiqueDB.map(elt => elt.charge_entrainement)
             let dureeEntrainementUser = 0
             let chargeEntrainementUser = 0
@@ -206,8 +208,32 @@
             document.getElementById("duree").textContent = dureeEntrainementUser
             document.getElementById("charge-entrainement").textContent = chargeEntrainementUser + " CE"
             document.getElementById("nb-entrainement").textContent = tableauDuree.length
+            
+            let DicoNbEntrainementSport = {}
+            tableauSport.forEach(elt => {
+                if (!DicoNbEntrainementSport[elt]) {
+                    DicoNbEntrainementSport[elt] = 1
+                } else {    
+                    let nbActuelSport = DicoNbEntrainementSport[elt]
+                    let newNbSport = nbActuelSport+1
+                    DicoNbEntrainementSport[elt] = newNbSport
+                }
+            });
 
-            genererGraphiqueCamenbert()
+            let nbTotaleEntrainement = 0
+            Object.entries(DicoNbEntrainementSport).forEach(([sport, nbWorkout]) => {
+                nbTotaleEntrainement += nbWorkout
+            })
+            
+            let pourcentageSport = []
+            let labelSport = []
+            Object.entries(DicoNbEntrainementSport).forEach(([sport, nbEntrainement]) => {
+                let pourcentageDeCeSport = (nbEntrainement*100)/nbTotaleEntrainement
+                pourcentageSport.push(pourcentageDeCeSport.toFixed(2))
+                labelSport.push(sport)
+            })
+
+            genererGraphiqueCamenbert(labelSport, pourcentageSport)
 
             return
         }

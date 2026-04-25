@@ -863,25 +863,6 @@ section.container-workout-cards div.cards-history-workout:active {
     transform: scale(var(--SCALE_SMALL));
 }
 
-/* Pour adapter légèrement les cards et les animations des cards de derniers entraînements sur la page d'accueil */
-section.container-workout-cards.home { 
-    margin-bottom: var(--SPACE_L);
-    max-width: none;
-}
-section.container-workout-cards div.cards-history-workout.home { 
-    margin: var(--SPACE_M) 0;
-}
-@media (hover: hover) and (pointer: fine) {
-    section.container-workout-cards div.cards-history-workout.home:hover{
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-section.container-workout-cards div.cards-history-workout.home:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_SMALL));
-}
-/* fin de la partie derniers entrainements dans la page d'accueil */
-
 section.container-workout-cards div.cards-history-workout div.data-workout-column{
     display: flex;
     flex-direction: column;

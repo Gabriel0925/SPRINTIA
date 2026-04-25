@@ -86,7 +86,7 @@
                 <div class="label-input">Poids (kg)</div>
             </div>
 
-            <button onclick="CalculGeneral()">Estimer</button>
+            <button id="button-estimer" onclick="CalculGeneral()">Estimer</button>
         </div>
 
         <div class="zone-result">
@@ -139,7 +139,13 @@
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script_outil.js"></script>
     <script>
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["poids-user"]))
+        window.addEventListener("DOMContentLoaded", async () => {
+            await remplissageChamps(["poids-user"])
+
+            if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
+                document.getElementById("button-estimer").click()
+            }
+        })
     </script>
 
     

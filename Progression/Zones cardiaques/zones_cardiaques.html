@@ -101,7 +101,7 @@
                 <div class="label-input">FC max (optionnelle)</div>
             </div>
 
-            <button onclick="ChoixFonction()">Calculer</button>
+            <button id="button-calcul" onclick="ChoixFonction()">Calculer</button>
 
         </div>
 
@@ -252,7 +252,13 @@
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script_outil.js"></script>
     <script>
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["age-user", "fc-repos-user"]))
+        window.addEventListener("DOMContentLoaded", async () => {
+            await remplissageChamps(["age-user", "fc-repos-user"])
+
+            if (document.getElementById("age-user").value && document.getElementById("fc-repos-user").value && !isNaN(document.getElementById("age-user").value) && !isNaN(document.getElementById("fc-repos-user").value)) {
+                document.getElementById("button-calcul").click()
+            }
+        })
     </script>
 
     

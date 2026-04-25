@@ -91,7 +91,7 @@
                 <div class="label-input">Poids (kg)</div>
             </div>
 
-            <button onclick="CalculIMC()">Calculer</button>
+            <button id="button-calcul-imc" onclick="CalculIMC()">Calculer</button>
         </div>
 
         <div class="zone-result">
@@ -145,7 +145,13 @@
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script_outil.js"></script>
     <script>
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["taille-user", "poids-user"]))
+        window.addEventListener("DOMContentLoaded", async () => {
+            await remplissageChamps(["taille-user", "poids-user"])
+
+            if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && !isNaN(document.getElementById("taille-user").value) && !isNaN(document.getElementById("poids-user").value)) {
+                document.getElementById("button-calcul-imc").click()
+            }
+        })
     </script>
 
     

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia 4.1 - Patch Note</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/icons-sprintia/Logo-Sprintia-Head-Clair.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/icons-sprintia/Logo-Sprintia-Head-Sombre.svg" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../manifest.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-1024-V4.0.2.png">
+
+    <!-- Pour les thèmes -->
+    <script src="../../script_themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../../../index.html">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_accueil"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_outils"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../../parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_accueil"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_outils"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../../parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <h1>Sprintia 4.1 : Plus complet</h1>
+    <h2>Information</h2>
+    <p class="text">
+        Date de sortie : 29 Mars 2026
+        <br>
+        Taille du site : 2,85 Mo
+        <br><br>
+        Sprintia 4.1 révolutionne le suivi de vos entraînements. Désormais, vous avez accès à plus de 25 sports allant de la course à pied
+        jusqu'au ski en passant par le rameur. De plus, chaque profil sportif possède des données spécifiques à ce sport. Par exemple, pour le rameur
+        vous pouvez renseigner le nombre de coups de rame ou encore la distance ou même votre allure.
+    </p>
+
+    <h2>🆕 Nouvelles fonctionnalités</h2>
+    <ul class="list-information">
+        <li>
+            Ajout de 22 sports : Randonnée, Badminton, Tennis, Tennis de table, Boxe, Judo, Basketball, Football,
+                                 Handball, Rugby, Volley, CrossFit, HIIT, Rameur d'intérieur, Aviron, Natation, Paddle, Ski, Ski de fond,
+                                 Snowboard, Corde à sauter et Escalade.
+        </li>
+        <li>
+            Ajout de plein de données spécifiques dans chaque sport. Par exemple, en course nous avons l'allure moyenne, en rameur nous avons
+            les coups de rame ou encore en ski le nombre de descentes,...
+        </li>
+        <li>
+            Prise en compte de la FC moy. et de la FC max. dans chaque sport. Cette donnée n'est pas obligatoire, néanmoins, elle peut être utile.
+        </li>
+        <li>
+            Sprintia peut extraire de nouvelles données du fichier CSV de Garmin Connect Web comme : l'allure moy, la FC moy/max et la cadence moyenne.
+            De plus, Sprintia peut désormais importer vos séances de basketball, volley, football, badminton, ski, natation, rameur et randonnée.
+        </li>
+        <li>
+            Pour la première fois Sprintia combine différentes unités pour une même donnée en fonction du sport. Par exemple, en course la distance est
+            en km mais en natation, la distance est en m. Idem pour la cadence moy qui varie entre ppm (=pas par min), tpm (=tours par min) et cpm (=coups par min).
+            Idem pour l'allure,...
+        </li>
+        <li>
+            Vous avez désormais la possibilité d'ajouter des notes à votre entraînement pour immortaliser vos souvenirs, vos anecdotes,...
+        </li>
+    </ul>
+
+    <h2>📊 Améliorations</h2>
+    <ul class="list-information">
+        <li>
+            La charge d'entraînement n'est plus affichée en bold mais en gras léger.
+        </li>
+        <li>
+            Les cartes dans l'historique d'entraînement ont été revues pour s'adapter à l'ensemble des nouveaux sports. Elles afficheront des 
+            données qui sont la base de n'importe quel sport : le sport, la durée, la date, le nom de l'entraînement, le RPE 
+            et la charge d'entraînement. Donc, les cartes ne s'adapteront plus au type d'entraînement.
+        </li>
+        <li>
+            Le champ durée (dans l'ajout d'entraînement) accepte désormais plusieurs formats : hh:mm:ss (heure:minute:seconde) et mm:ss 
+            (minute:seconde).
+        </li>
+        <li>
+            Le logo dynamique est désormais présent dans sauvegarde et restauration.
+        </li>
+        <li>
+            Désormais, Sprintia se souvient de l'endroit où vous vous êtes arrêté dans votre historique d'entraînement. Ce qui fluidifie l'expérience
+            utilisateur. Idem pour l'historique de statut.
+        </li>
+        <li>
+            Vous pouvez désormais épingler sur la page d'accueil jusqu'à 5 outils. De plus, si vous épinglez vos 2 outils préférés
+            alors vous aurez seulement vos 2 outils préférés car les recommandations statiques ont été supprimées.
+        </li>
+        <li>
+            Dans l'historique d'entraînement et ailleurs la charge d'entraînement a désormais une unité : CE avec C pour Charge et E 
+            pour Entraînement.
+        </li>
+        <li>
+            Tous les champs 'Durée' dans Sprintia acceptent désormais le format hh:mm:ss et mm:ss.
+        </li>
+    </ul>
+
+    <h2>🐛 Correction des bugs et optimisations</h2>
+    <ul class="list-information">
+        <li>
+            Correction d'une erreur de titre de page pour le patch note de Sprintia 4.0.3 qui était nommé Sprintia 4.0.2.
+        </li>
+        <li>
+            Correction d'un bug lors de la fermeture du menu plus dans le détail de vos entraînements lors du scroll.
+        </li>
+        <li>
+            Correction d'une erreur d'orthographe dans l'historique d'entraînement pour la musculation.
+        </li>
+        <li>
+            Amélioration de la maintenabilité du code pour l'enregistrement/visionnage des entraînements.
+        </li>
+        <li>
+            Optimisation et amélioration de la maintenabilité du code du logo dynamique.
+        </li>
+        <li>
+            Optimisation du code de l'indulgence de course.
+        </li>
+        <li>
+            Désormais, Sprintia vérifie si vous avez saisi une lettre dans le champ 'durée' lors de l'ajout d'entraînement. Ce qui permet
+            de rendre le code plus robuste et de minimiser le risque de bug.
+        </li>
+        <li>
+            Correction d'un bug dans l'historique de statut qui déclenchait le logo dynamique lors d'une suppression d'un élément de l'historique.
+        </li>
+        <li>
+            Lors la première utilisation de Sprintia, sur la page d'accueil, si vous n'aviez pas épinglé d'outil, ça provoquait une erreur
+            désormais ce n'est plus le cas.
+        </li>
+        <li>
+            Les messages d'erreurs ont été optimisés.
+        </li>
+        <li>
+            Correction d'une erreur dans la sauvegarde et restauration. Je parlais de fichier CSV mais en réalité c'était du JSON. Le CSV était
+            présent dans les premières bêtas de Sprintia 4.
+        </li>
+        <li>
+            Correction d'un bug majeur qui faisait apparaitre le menu plus totalement à l'opposé de la où il devait être, bug uniquement présent sur
+            la version PC.
+        </li>
+    </ul>
+
+    <h2>🗑️ Fonctionnalités supprimées</h2>
+    <ul class="list-information">
+        <li>
+            Vous ne pouvez plus importer votre historique d'entraînement depuis Runkeeper et TrainingPeaks car ils ne donnaient pas accès à suffisamment de données.
+            De plus, la précision de l'estimation du RPE était très mauvaise.
+        </li>
+    </ul>
+        
+    <h2>🖼️ Quelques images</h2>
+    <div class="gallery-version" id="img-ordi">
+        <img src="../Images versions 4.1/Ajout d'entraînement.png" alt="Interface d'ajout d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Historique d'entraînement.png" alt="Interface de l'historique d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Rapport d'entraînement.png" alt="Interface du rapport d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Sport.png" alt="Interface de tous les sports compatible avec Sprintia 4.1">
+    </div>
+    <div class="gallery-version" id="img-smartphone">
+        <img src="../Images versions 4.1/Ajout d'entraînement mobile.jpg" alt="Interface d'ajout d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Historique d'entraînement mobile.jpg" alt="Interface de l'historique d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Rapport d'entraînement mobile.jpg" alt="Interface du rapport d'entraînement de Sprintia 4.1">
+        <img src="../Images versions 4.1/Sport mobile.jpg" alt="Interface de tous les sports compatible avec Sprintia 4.1">
+    </div>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="/index.html">Accueil</a>
+            <a class="a_footer" href="../../../progression/progression.html">Outils</a>
+            <a class="a_footer" href="../../parametres.html">Paramètres</a>
+            <a class="a_footer" href="../../historique-versions/historique versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../Thèmes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Outils conseillés</a>
+            <a class="a_footer" href="../../../progression/Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../../progression/Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../../progression/Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../Licence/Licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../../Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <!-- Pour le burger menu -->
+    <script src="../../../assets/base-js/base.js"></script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

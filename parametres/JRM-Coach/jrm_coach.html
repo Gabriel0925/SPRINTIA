@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - JRM Coach</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../assets/icons-sprintia/Logo-Sprintia-Head-Clair.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="../../assets/icons-sprintia/Logo-Sprintia-Head-Sombre.svg" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../manifest.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-1024-V4.0.2.png">
+
+    <!-- Pour les thèmes -->
+    <script src="../script_themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../../index.html" id="logo-dynamique">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_accueil"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../progression/progression.html">
+                        <i class="fs-icon_outils"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_accueil"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../progression/progression.html">
+                        <i class="fs-icon_outils"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+    <h1 id="title-h1">JRM Coach</h1>
+    <p class="text">
+        Créez votre propre coach : choisissez son nom, son style et même son avatar. 
+        Votre coach, à votre image ! Votre coach vous tutoiera pour créer une meilleure proximité entre vous et le coach.
+    </p>
+    <section class="container-zone">
+        <div class="form">
+            <div class="container-input">
+                <input type="text" id="nom-coach" oninput="MajName(value)" placeholder="Nom" autocomplete="off" maxlength="20">
+                <div class="label-input">Nom</div>
+            </div>
+
+            <select id="style-coach" onchange="ChangeStyle(value)" autocomplete="off">
+                <option value="Bienveillant">Style : Bienveillant</option>
+                <option value="Strict-Motivant">Style : Strict & Motivant</option>
+                <option value="Copain">Style : Copain</option>
+                <option value="Go-muscu">Style : Go muscu</option>
+            </select>
+            <select id="avatar-coach" onchange="ChangeAvatar(value)" autocomplete="off">
+                <optgroup label="Personnages">
+                    <option value="👨">Avatar : 👨</option>
+                    <option value="👩">Avatar : 👩</option> 
+                    <option value="👴">Avatar : 👴</option>
+                    <option value="👵">Avatar : 👵</option>
+                </optgroup>
+
+                <optgroup label="Expressions">
+                    <option value="🤠">Avatar : 🤠</option>
+                    <option value="😎">Avatar : 😎</option>
+                    <option value="😇">Avatar : 😇</option>
+                    <option value="🥸">Avatar : 🥸</option>
+                </optgroup>
+
+                <optgroup label="Coach">
+                    <option value="🧠">Avatar : 🧠</option>
+                    <option value="💪">Avatar : 💪</option>
+                    <option value="⏱️">Avatar : ⏱️</option>
+                </optgroup>
+
+                <optgroup label="Sportifs·ves">
+                    <option value="🏃">Avatar : 🏃</option>
+                    <option value="🏃‍♀️">Avatar : 🏃‍♀️</option>
+                    <option value="🚴">Avatar : 🚴</option>
+                    <option value="🚴‍♀️">Avatar : 🚴‍♀️</option>
+                    <option value="🏊">Avatar : 🏊</option>
+                    <option value="🏊‍♀️">Avatar : 🏊‍♀️</option>
+                    <option value="🏋️">Avatar : 🏋️</option>
+                    <option value="🏋‍♀️">Avatar : 🏋‍♀️</option>
+                </optgroup>
+
+                <optgroup label="Fantaisie"> 
+                    <option value="🤡">Avatar : 🤡</option>
+                    <option value="😈">Avatar : 😈</option>
+                    <option value="🤖">Avatar : 🤖</option>
+                    <option value="🥷">Avatar : 🥷</option>
+                </optgroup>
+
+                <optgroup label="Événements">
+                    <option value="🎅">Avatar : 🎅</option>
+                    <option value="👻">Avatar : 👻</option>
+                    <option value="🎃">Avatar : 🎃</option>
+                    <option value="👽">Avatar : 👽</option>
+                </optgroup>
+
+                <optgroup label="Animaux">
+                    <option value="🦆">Avatar : 🦆</option>
+                    <option value="🦍">Avatar : 🦍</option>
+                    <option value="🦐">Avatar : 🦐</option>
+                    <option value="😺">Avatar : 😺</option>
+                    <option value="🐵">Avatar : 🐵</option>
+                    <option value="🐻">Avatar : 🐻</option>
+                    <option value="🐼">Avatar : 🐼</option>
+                    <option value="🦊">Avatar : 🦊</option>
+                    <option value="🐶">Avatar : 🐶</option>
+                    <option value="🦁">Avatar : 🦁</option>
+                    <option value="🦉">Avatar : 🦉</option>
+                    <option value="🦥">Avatar : 🦥</option>
+                    <option value="🐰">Avatar : 🐰</option>
+                    <option value="🐴">Avatar : 🐴</option>
+                    <option value="🐬">Avatar : 🐬</option>
+                    <option value="🐢">Avatar : 🐢</option>
+                    <option value="🐞">Avatar : 🐞</option>
+                    <option value="🐝">Avatar : 🐝</option>
+                    <option value="🐍">Avatar : 🐍</option>
+                    <option value="🦩">Avatar : 🦩</option>
+                </optgroup>
+
+                <optgroup label="Option">
+                    <option value="">Avatar : Rien</option>
+                </optgroup>
+
+            </select>
+
+            <button onclick="SauvegardePreference()" id="bouton-save">Sauvegarder</button>
+        </div>
+
+        <div class="zone-coach">
+            <p class="zone-coach-name" id="NomCoach">JRM Coach :</p>
+            <p class="zone-coach-interpretation" id="JRM-coach">
+                Chargement...
+            </p> 
+        </div>
+
+    </section>
+
+    <div class="container-center-marge">
+        <button class="size-block" id="reinitialiser" onclick="Reinitialisation()">Réinitialiser votre coach</button>
+    </div>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../index.html">Accueil</a>
+            <a class="a_footer" href="../../progression/progression.html">Outils</a>
+            <a class="a_footer" href="../parametres.html">Paramètres</a>
+            <a class="a_footer" href="../historique-versions/historique versions.html">Historique des versions</a>
+            <a class="a_footer" href="../Thèmes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Outils conseillés</a>
+            <a class="a_footer" href="../../progression/Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../progression/Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../progression/Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../Licence/Licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <!-- Pour le burger menu -->
+    <script src="../../assets/base-js/base.js"></script>
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+    <script src="script_jrm.js"></script>
+    <script>
+        async function NomCoachInit() {
+            // Recup datas
+            let CoachUserDB = await db.JRM_Coach.toArray()
+
+            if (CoachUserDB.length > 0) { // Si il y a des datas
+                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+                document.getElementById("title-h1").textContent = NomCoach
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            NomCoachInit()
+        })
+    </script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

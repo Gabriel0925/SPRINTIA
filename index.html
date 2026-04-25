@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" href="/Assets/icons-sprintia/icon-1024-V4.0.2.png">
 
     <!-- Pour les thèmes -->
-    <script src="Paramètres/script_themes.js"></script>
+    <script src="parametres/script_themes.js"></script>
 </head>
 
 <body>
@@ -36,13 +36,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Outils/outils.html">
+                    <a href="progression/progression.html">
                         <i class="fs-icon_outils"></i>
                         Progression
                     </a>
                 </li>
                 <li>
-                    <a href="Paramètres/parametres.html">
+                    <a href="parametres/parametres.html">
                         <i class="fs-icon_parametres"></i>
                         Paramètres
                     </a>
@@ -62,13 +62,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Outils/outils.html">
+                    <a href="progression/progression.html">
                         <i class="fs-icon_outils"></i>
                         Progression
                     </a>
                 </li>
                 <li>
-                    <a href="Paramètres/parametres.html">
+                    <a href="parametres/parametres.html">
                         <i class="fs-icon_parametres"></i>
                         Paramètres
                     </a>
@@ -77,31 +77,22 @@
         </div>
     </header> 
     
-    <h1>Accueil</h1>    
+    <h1>Entraînement</h1>    
     
-    <div class="button-flottant" onclick="window.location.href = 'Outils/Actions/ajouter_entraînement.html'">
+    <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter_entraînement.html'">
         <i class="fs-icon_add"></i>
         <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
 
-    <a id="configurer-sprintia" href="Paramètres/Profil/modification_profil.html">
+    <a id="configurer-sprintia" href="parametres/Profil/modification_profil.html">
         <div class="config-profil">
             <i class="fs-icon_profil"></i>
             <p>Configurer Sprintia</p>
             <p class="description">Pour débloquer toutes les fonctionnalités de Sprintia, veuillez configurer votre profil.</p>
         </div>
     </a>
-    
-    <div class="action-list" style="margin: var(--SPACE_M) 0; max-width: 450px; cursor: pointer;">
-        <a>
-            <div class="action-list-item" onclick="changeStatut()">
-                <i class="fs-icon_pause"></i>
-                <p id="statut-actuel">Statut : chargement...</p>
-            </div>
-        </a>
-    </div>
 
-    <a href="Outils/Actions/historique_entrainement.html">
+    <a href="entrainement/statistiques.html">
         <div class="large-zone-coach clickable">
             <p class="large-zone-coach-name">
                 JRM Coach :
@@ -112,49 +103,6 @@
         </div>
     </a>
 
-    <h2 id="outils recent">Outils conseillés</h2>
-    <p class="text" id="info-bulle">
-        Cette section disparaîtra dès que vous aurez épinglé au moins un outil.
-    </p>
-    <section class="container-tools-pin">
-
-        <a href="Outils/Charge d'entraînement/charge_entrainement.html" class="L1">
-            <div class="tools-pin">
-                <i class="fs-icon_charge_entrainement" id="I1"></i>
-                <p class="text-outil-recent" id="P1">Charge d'entraînement</p>
-            </div>
-        </a>
-
-        <a href="Outils/Estimation VO2max/estimation_VO2max.html" class="L2">
-            <div class="tools-pin">
-                <i class="fs-icon_VO2MAX" id="I2"></i>
-                <p class="text-outil-recent" id="P2">Estimation VO²max</p>
-            </div>
-        </a>
-            
-        <a href="Outils/Niveau de course à pied/niveau_course.html" class="L3">
-            <div class="tools-pin">
-                <i class="fs-icon_niveau_course" id="I3"></i>
-                <p class="text-outil-recent" id="P3">Niveau de course à pied</p>
-            </div>
-        </a>
-            
-        <a href="Outils/Hydratation/hydratation.html" class="L4">
-            <div class="tools-pin">
-                <i class="fs-icon_besoin_hydratation" id="I4"></i>
-                <p class="text-outil-recent" id="P4">Hydratation</p>
-            </div>
-        </a>
-            
-        <a href="Outils/Indulgence de course/indulgence_course.html" class="L5">
-            <div class="tools-pin">
-                <i class="fs-icon_indulgence_course" id="I5"></i>
-                <p class="text-outil-recent" id="P5">Indulgence de course</p>
-            </div>
-        </a>
-
-    </section>
-
     <h2>Volume d'entraî. (4 sem.)</h2>
     <p class="text">
         Ce graphique permet de suivre votre régularité en comparant votre temps total d'entraînement par semaine.
@@ -164,39 +112,45 @@
         <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
     </div>
 
-    <h2>Derniers entraînements</h2>
-    <p class="text" id="text-pas-entrainement">
-        Vous n'avez pas encore enregistré d'entraînement.
-    </p>
-    <section class="container-workout-cards home" id="liste-workouts"></section> <!-- Remplis en JS -->
+    <h2>Historique d'entraînement</h2>
+    <p class="text" id="text-informatif">
+        Sprintia n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
+        <a href="ajouter_entraînement.html" class="lien">ajouter un entraînement</a>.
+    </p> 
 
-    <div class="container-center-marge">
-        <button id="afficher-historique" onclick="location.href='Outils/Actions/historique_entrainement.html'">
-            Afficher l'historique
-        </button>
+    <div class="button-flottant" onclick="window.location.href = 'ajouter_entraînement.html'">
+        <i class="fs-icon_add"></i>
+        <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
+
+    <section class="container-workout-cards" id="liste-workouts"></section>
+    <div class="container-center-marge">
+        <button id="button_afficher_plus" onclick="AfficherData()">
+            Afficher plus
+        </button>
+    </div> 
     
     <footer>
         <div class="conteneur-lien-footer">
             <a class="a_title">Catégories</a>
             <a class="a_footer" href="index.html">Accueil</a>
-            <a class="a_footer" href="Outils/outils.html">Outils</a>
-            <a class="a_footer" href="Paramètres/parametres.html">Paramètres</a>
-            <a class="a_footer" href="Paramètres/Historique versions/historique versions.html">Historique des versions</a>
-            <a class="a_footer" href="Paramètres/Thèmes/themes.html">Thèmes</a>
+            <a class="a_footer" href="progression/progression.html">Outils</a>
+            <a class="a_footer" href="parametres/parametres.html">Paramètres</a>
+            <a class="a_footer" href="parametres/Historique versions/historique versions.html">Historique des versions</a>
+            <a class="a_footer" href="parametres/Thèmes/themes.html">Thèmes</a>
         </div>
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="Outils/Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="Outils/Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="Outils/Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="progression/Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="progression/Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="progression/Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="Paramètres/Licence/Licence.html">Licence (© 2026 Sprintia)</a>
-            <a class="a_footer" href="Paramètres/Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
+            <a class="a_footer" href="parametres/Licence/Licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="parametres/Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
         </div>
     </footer>
     
@@ -220,219 +174,6 @@
         }
 
         window.addEventListener("DOMContentLoaded", configSprintia())
-    </script>
-
-    <!-- Pour les 3 derniers entrainements -->
-    <script> 
-        function HTMLCard(CardWorkout, idWorkout, NameWorkout, SportWorkout, DateWorkout, ChargeWorkout) {
-            let StructureHTML = `
-                <a href="Outils/Actions/entrainement.html?workout=${idWorkout}">
-                    <div class="data-workout-column">
-                        <p class="name-workout">
-                            ${NameWorkout}
-                        </p>
-                        <p class="sport-date-workout">
-                            ${SportWorkout} · ${DateWorkout}
-                        </p>
-                        <div class="data-workout-paire">
-                            <p class="charge-workout">
-                                Charge d'entraînement : <strong>${ChargeWorkout} CE</strong>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            `
-
-            CardWorkout.innerHTML = StructureHTML 
-
-            let CardWorkoutHTML = CardWorkout
-
-            return CardWorkoutHTML
-        }
-
-        async function AfficherData() {
-            // on recup les datas
-            let HistoriqueDB = await db.entrainement.toArray()
-
-            // Trier par date 
-            HistoriqueDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
-                if (element1.date < element2.date) return 1
-                if (element1.date > element2.date) return -1
-            })
-
-            // on recup les datas necessaire
-            let TableauIdWorkout = HistoriqueDB.map(elementDB => elementDB.id).slice(0, 3) 
-            let TableauNameWorkout = HistoriqueDB.map(elementDB => elementDB.nom).slice(0, 3) 
-            let TableauSport = HistoriqueDB.map(elementDB => elementDB.sport).slice(0, 3)
-            let TableauDateWorkout = HistoriqueDB.map(elementDB => elementDB.date).slice(0, 3)
-            let TableauChargeWorkout = HistoriqueDB.map(elementDB => elementDB.charge_entrainement).slice(0, 3)
-
-            if (TableauNameWorkout.length <= 0) {
-                // on cache la secction si il y a pas de datas
-                document.getElementById("liste-workouts").style.display = "none"
-                document.getElementById("afficher-historique").style.display = "none" // on cache le bouton
-            } else { // si il y a des datas
-                document.getElementById("text-pas-entrainement").style.display = "none" // on cache le text comme quoi il n'y a pas d'entrainement
-                // initialisation pour la boucle
-                let compteur = 0
-                let SportWorkout = 0
-                let idWorkout = 0
-                let DateWorkout = 0
-                let ChargeWorkout = 0
-                const ConteneurCardsWorkout = document.getElementById("liste-workouts") // recupération du conteneur des cards
-
-                TableauNameWorkout.forEach(NameWorkout => {
-                    // maj des variables en fonction de l'entrainement
-                    idWorkout = TableauIdWorkout[compteur]
-                    SportWorkout = TableauSport[compteur]
-                    DateWorkout = formatEuropeenDate(TableauDateWorkout[compteur])
-                    ChargeWorkout = TableauChargeWorkout[compteur]
-
-                    // on créer la card html
-                    const CardWorkout = document.createElement("div")
-                    CardWorkout.classList.add("cards-history-workout")
-                    CardWorkout.classList.add("home")
-
-                    let CardWorkoutHTML = HTMLCard(CardWorkout, idWorkout, NameWorkout, SportWorkout, DateWorkout, ChargeWorkout) // appelle a la fonction
-                    ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
-
-                    compteur += 1 // incrementation
-                });
-            } 
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            AfficherData()
-        })
-    </script>
-
-    <!-- Pour le statut actuel -->
-    <script>
-        function changeStatut() {
-            if (localStorage.getItem("StatutAnalyse") == "Actif·ve" || localStorage.getItem("StatutAnalyse") == null) {
-                document.getElementById("statut-actuel").textContent = "Statut : Pause"
-                localStorage.setItem("StatutAnalyse", "Pause")
-                logoDynamique("😴 Snooze")
-                JRMCoach()
-
-            } else {
-                document.getElementById("statut-actuel").textContent = "Statut : Actif·ve"
-                localStorage.setItem("StatutAnalyse", "Actif·ve")
-                logoDynamique("⚡ C'est parti !")
-                JRMCoach()
-
-            }
-        }
-
-        function statutActuel() {
-            let statut = localStorage.getItem("StatutAnalyse")
-            if (statut == null) {statut = "Actif·ve"}
-            document.getElementById("statut-actuel").textContent = "Statut : " + statut
-        }
-
-        window.addEventListener("DOMContentLoaded", statutActuel())
-    </script>
-
-    <!-- Pour les outils favoris -->
-    <script>
-        const DicoNameIcon = { // dico avec le nom des outils et le nom de la class de l'icone
-            "Charge d'entraînement": "fs-icon_charge_entrainement",
-            "Récupération": "fs-icon_recuperation",
-            "Indulgence de course": "fs-icon_indulgence_course",
-            "Estimation du temps de récupération": "fs-icon_temps_recup",
-
-            "Zones cardiaques": "fs-icon_zones_cardiaques",
-            "Protéines quotidiennes": "fs-icon_proteines",
-            "Estimation 1RM": "fs-icon_1RM",
-            "Calculateur IMC": "fs-icon_IMC",
-
-            "Niveau course à pied": "fs-icon_niveau_course",
-            "Prédicteur de performance": "fs-icon_predicteur_performance",
-            "Estimation VMA": "fs-icon_VMA",
-            "Estimation VO₂max": "fs-icon_VO2MAX",
-            "Zones de vitesse": "fs-icon_zones_vitesse",
-            "Zones de puissance": "fs-icon_zones_puissance",
-
-            "Hydratation": "fs-icon_besoin_hydratation",
-            "Convertisseur km/miles": "fs-icon_miles_km"
-        }
-
-        const DicoNameHref = { // dico avec le nom des outils et le nom de la class de l'icone
-            "Charge d'entraînement": "Outils/Charge d'entraînement/charge_entrainement.html",
-            "Récupération": "Outils/Récupération/recuperation.html",
-            "Indulgence de course": "Outils/Indulgence de course/indulgence_course.html",
-            "Estimation du temps de récupération": "Outils/Estimation du temps de récupération/estimation_temps_recuperation.html",
-
-            "Zones cardiaques": "Outils/Zones cardiaques/zones_cardiaques.html",
-            "Protéines quotidiennes": "Outils/Protéines quotidiennes/proteines_quotidienne.html",
-            "Estimation 1RM": "Outils/Estimation 1RM/estimation_1RM.html",
-            "Calculateur IMC": "Outils/Calculateur IMC/calculateur_imc.html",
-
-            "Niveau course à pied": "Outils/Niveau de course à pied/niveau_course.html",
-            "Prédicteur de performance": "Outils/Prédicteur de performance/predicteur_performance.html",
-            "Estimation VMA": "Outils/Estimation VMA/estimation_vma.html",
-            "Estimation VO₂max": "Outils/Estimation VO2max/estimation_VO2max.html",
-            "Zones de vitesse": "Outils/Zones de vitesse/zones_vitesse.html",
-            "Zones de puissance": "Outils/Zones de puissance/zones de puissance.html",
-
-            "Hydratation": "Outils/Hydratation/hydratation.html",
-            "Convertisseur km/miles": "Outils/Convertisseur miles-km/convertisseur_miles_km.html"
-        }
-
-        function FavoriteTools() {
-           let OutilFavorieUser = JSON.parse(localStorage.getItem("OutilsPin")) || []
-        
-           if (OutilFavorieUser.length > 0) {
-                // changement du titre quand il y a des datas le titre passe de "Outils conseillés" => "Outils épinglés"
-                document.getElementById("outils recent").textContent = "Outils épinglés"
-                // on cache le message info bulle
-                document.getElementById("info-bulle").style.display = "none"
-
-                // initialisation
-                // tableau des noms des id des elements de la page
-                let idNomOutil = ["P1", "P2", "P3", "P4", "P5"] 
-                let idIconOutil = ["I1", "I2", "I3", "I4", "I5"]
-                let idLienOutil = ["L1", "L2", "L3", "L4", "L5"]
-                let compteur = 0
-                let stop = false
-                let nomOutilEpingle = ""
-
-                idNomOutil.forEach(nomOutil => {
-                    // init pour se tour
-                    // on remet à 0 pour le nouveau tour de la boucle
-                    stop = false
-                    nomOutilEpingle = OutilFavorieUser[compteur]
-
-                    // on regarde si il y a un outil a mettre sinon on affiche rien
-                    if (!nomOutilEpingle) {
-                        document.getElementById(nomOutil).parentElement.parentElement.style.display = 'none'
-                        stop = true
-                    } else {
-                        // affichage du nom de l'outil épinglé
-                        document.getElementById(nomOutil).textContent = nomOutilEpingle
-                    }
-
-                    if (stop == false) { // si il y a du contenu a mettre on le met
-                        // on réinitialise la class de l'icon et on change la class pour changer l'icone en cherchant ds un dico
-                        document.getElementById(idIconOutil[compteur]).classList = ""
-                        document.getElementById(idIconOutil[compteur]).classList.add(DicoNameIcon[nomOutilEpingle])
-
-                        // attribution du lien de l'outil
-                        document.querySelector("." + idLienOutil[compteur]).href = DicoNameHref[nomOutilEpingle]
-                    }
-
-                    compteur += 1 // incrémentation
-                });
-           } 
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            FavoriteTools()
-        })
     </script>
 
     <!-- Pour le JRM Coach -->
@@ -462,14 +203,6 @@
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
                 document.querySelector(".large-zone-coach-name").innerHTML =  AvatarCoach + " " + NomCoach + " :"
-            }
-
-            // Pour les statuts
-            let StatutDB = localStorage.getItem("StatutAnalyse") || "Actif·ve"
-
-            if (StatutDB && StatutDB != "Actif·ve") { // si le statut d'analyse du user est en pause
-                    document.querySelector(".large-zone-coach-interpretation").innerHTML = "Ton statut d'analyse est actuellement en pause. Je ne peux donc pas analyser tes entraînements."
-                return
             }
 
             if (HistoriqueDB.length > 0) { // Si il y a des datas
@@ -738,6 +471,158 @@
             if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
                 graph()
             }
+        })
+    </script>
+
+    <!-- Historique d'entraînement -->
+    <script>
+        // Init for function Afficher data
+        let NbCardsWorkoutAfficher = 0
+        let NbTotalCardsWorkoutAfficher = parseInt(sessionStorage.getItem("NbCardHistoriqueSave")) || 8
+        let HistoriqueComplet = []
+
+        async function Init() {
+            // Recup de l'historique
+            let HistoriqueDB = await db.entrainement.toArray() // recup de toutes les datas
+            // Trier par date 
+            HistoriqueDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
+                if (element1.date < element2.date) return 1
+                if (element1.date > element2.date) return -1
+            })
+
+            // animation du dynamic logo pour féliciter le user
+            const ParamURL = window.location.search
+            const TableauSeparation = ParamURL.split("?")
+            
+            if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutregister") {
+                logoDynamique("Bien joué 🔥")
+            } else if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutimport") {
+                logoDynamique("Bien reçu 😋")
+            }
+
+            SauvegardeHistorique(HistoriqueDB)
+            return
+        }
+
+        function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
+            let StructureHTML = `        
+            <a href="entrainement/entrainement.html?workout=${workout.id}">  
+                <div class="data-workout-column">
+                    <p class="name-workout">
+                        ${workout.nom}
+                    </p>
+                    <p class="sport-date-workout">
+                        ${workout.sport} · ${DateEuropeen}
+                    </p>
+                </div>
+                <div class="data-workout-paire">
+                    <p class="duree-workout">
+                        <strong>${dureeWorkout}</strong>
+                    </p>
+                    <p class="rpe-workout">
+                        RPE : <strong>${workout.rpe}</strong>
+                    </p>
+                </div>
+                <div class="data-workout-paire">
+                    <p class="charge-workout">
+                        Charge d'entraî. : <strong>${workout.charge_entrainement} CE</strong>
+                    </p>
+                </div>
+                <div class="action-button-card-workout">
+                    <button>Détail de l'entraînement</button>
+                </div>
+            </a>
+            `
+
+            CardWorkout.innerHTML = StructureHTML 
+
+            let CardWorkoutHTML = CardWorkout
+
+            return CardWorkoutHTML
+        }
+
+        async function SauvegardeHistorique(HistoriqueDB) {
+            HistoriqueDB.forEach(element => {
+                HistoriqueComplet.push(element)
+            });
+            await initialisationAffichage()
+
+            return
+        }
+
+        async function initialisationAffichage() { // pour quand on recharge la page
+            // Cacher le text comme quoi il n'y a pas dentrainement enregistrer
+            if (HistoriqueComplet.length > 0) {
+                document.getElementById("text-informatif").style.display = "none"
+            } 
+            if (HistoriqueComplet.length <= 8) {
+                document.getElementById("button_afficher_plus").style.display = "none"
+            }
+
+            const ConteneurCardsWorkout = document.getElementById("liste-workouts")
+
+            let HistoriqueSauvegarder = HistoriqueComplet.slice(0, NbTotalCardsWorkoutAfficher)
+            
+            // Creation structure HTML
+            HistoriqueSauvegarder.forEach(workout => {
+                const CardWorkout = document.createElement("div")
+
+                CardWorkout.classList.add("cards-history-workout")
+
+                // Inversion de la date de "2026-01-8" à "8-01-2026"
+                let DateEuropeen = formatEuropeenDate(workout.date)
+                let dureeWorkout = dureeFormatee(workout.duree, "null") // on exige aucun format
+
+                let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
+                ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
+            }); 
+
+            // maj de la variable 
+            NbCardsWorkoutAfficher = NbTotalCardsWorkoutAfficher
+        }
+
+        async function AfficherData() { // lors d'un clic sur le bouton afficher plus
+            // Cacher le text comme quoi il n'y a pas dentrainement enregistrer
+            if (HistoriqueComplet.length > 0) {
+                document.getElementById("text-informatif").style.display = "none"
+            } 
+            // Cacher le bouton si il n'y a plus d'element a charger
+            if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
+                document.getElementById("button_afficher_plus").style.display = "none"
+            }
+            if (HistoriqueComplet.length <= 8) {
+                document.getElementById("button_afficher_plus").style.display = "none"
+            }
+
+            const ConteneurCardsWorkout = document.getElementById("liste-workouts")
+
+            // Coupage des datas pr le nb limite de cards
+            let HistoriqueNecessaire = HistoriqueComplet.slice(NbCardsWorkoutAfficher, NbCardsWorkoutAfficher+8)
+            NbCardsWorkoutAfficher += 8
+
+            // Creation structure HTML
+            HistoriqueNecessaire.forEach(workout => {
+                const CardWorkout = document.createElement("div")
+
+                CardWorkout.classList.add("cards-history-workout")
+
+                // Inversion de la date de "2026-01-8" à "8-01-2026"
+                let DateEuropeen = formatEuropeenDate(workout.date)
+                let dureeWorkout = dureeFormatee(workout.duree, "null") // on exige aucun format
+
+                let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
+                ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
+            }); 
+
+            if (NbCardsWorkoutAfficher > 8) {
+                sessionStorage.setItem("NbCardHistoriqueSave", NbCardsWorkoutAfficher)
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", async () => {
+            await Init()
         })
     </script>
 

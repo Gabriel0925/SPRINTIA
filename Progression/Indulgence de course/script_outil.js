@@ -224,9 +224,6 @@ async function InterpretationJRM(Distance7J, Distance28J, IndulgenceDeCourseFin)
     // Recup du champs JRM
     let InterpretationParagraphe = document.getElementById("reponse-coach-indulgence")
 
-    // On regarde le statut du user
-    let StatutActuel = localStorage.getItem("StatutAnalyse") || "Actif·ve"
-
     // Déterminer le coach choisis du user
     let CoachUserDB = await db.JRM_Coach.toArray()
     let Interpretation = InterpretationBienveillant // attribution du style de coach a utilisé
@@ -246,20 +243,13 @@ async function InterpretationJRM(Distance7J, Distance28J, IndulgenceDeCourseFin)
 
     // quand il y a pas de données
     if (Distance28J > 0) {
-        // Attribution d'une interpretation et ajout direct dans le champs corespondant en fonction du statut 'actif' == mode normal, mode quotidien
-        if (StatutActuel && StatutActuel != "Actif·ve") {
-            InterpretationParagraphe.innerHTML = Interpretation["5"]
-            // vu que c'est en pause, on ne recommande pas de distance hebdo.
-            document.getElementById("reponse-algo-indulgence").innerHTML = "Pause"
-        } else if (StatutActuel == "Actif·ve") { // en mode normal
-            // en fonction du résultat des calculs, attribution d'une interpretation
-            if (Distance28J <= Distance7J && Distance7J <= IndulgenceDeCourseFin) {
-                InterpretationParagraphe.innerHTML = Interpretation["3"]
-            } else if (Distance7J > IndulgenceDeCourseFin) {
-                InterpretationParagraphe.innerHTML = Interpretation["4"]
-            } else {
-                InterpretationParagraphe.innerHTML = Interpretation["2"]
-            }
+        // en fonction du résultat des calculs, attribution d'une interpretation
+        if (Distance28J <= Distance7J && Distance7J <= IndulgenceDeCourseFin) {
+            InterpretationParagraphe.innerHTML = Interpretation["3"]
+        } else if (Distance7J > IndulgenceDeCourseFin) {
+            InterpretationParagraphe.innerHTML = Interpretation["4"]
+        } else {
+            InterpretationParagraphe.innerHTML = Interpretation["2"]
         }
     } else {
         InterpretationParagraphe.innerHTML = Interpretation["1"]

@@ -298,11 +298,20 @@ function majLocalStorage(versionStockee) {
         localStorage.setItem("VersionLocalStorage", "4.2")
         versionStockee = "4.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
     }
+    
+    // migration de 4.2 à 4.3
+    if (versionStockee == "4.2") {
+        localStorage.removeItem("StatutAnalyse")
+        localStorage.removeItem("OutilsPin")
+
+        localStorage.setItem("VersionLocalStorage", "4.3")
+        versionStockee = "4.3" // maj de la variable pour enchaine avec les futures if de nouvelle version
+    }
 
     return
 }
 
-const versionActuelle = "4.2"
+const versionActuelle = "4.3"
 let versionStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
 
 if (versionStockee != versionActuelle) {

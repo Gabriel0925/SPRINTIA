@@ -86,36 +86,29 @@ async function InterpretationJRM(Ratio, AnalysePossible) {
 
     const PhraseJRMStatut = "Statut : <strong>Pause</strong><br>Actuellement les analyses sont en pause je ne peux donc pas analyser ta charge d'entraînement pour déterminer si ton entraînement est productif,..."
 
-    let StatutActuel = localStorage.getItem("StatutAnalyse") || "Actif·ve" // Check du statut du user
-    if (StatutActuel && StatutActuel != "Actif·ve") {
-        Interpretation = PhraseJRMStatut
-        document.getElementById("cible-charge-7j").textContent = "Charge aiguë"
-
-    } else if (StatutActuel == "Actif·ve") {
-        // Déterminer le coach choisis du user
-        let CoachUserDB = await db.JRM_Coach.toArray()
-        let StyleCoachUser = PhraseJRMBienveillant // attribution du style de coach a utilisé pour l'interpretation
-        if (CoachUserDB.length > 0) {  // si le user a enregistré qqch alors on met le style du coach qu'il a choisis
-            let TableauStyleCoach = CoachUserDB.map(elementDB => elementDB.style) // recup du style
-            // On check le style de coach que le user a choisi et on attribue le tableau correspondant
-            if (TableauStyleCoach[0] == "Bienveillant") {
-                StyleCoachUser = PhraseJRMBienveillant
-            } else if (TableauStyleCoach[0] == "Strict-Motivant") {
-                StyleCoachUser = PhraseJRMStrictMotivant
-            } else if (TableauStyleCoach[0] == "Copain") {
-                StyleCoachUser = PhraseJRMCopain
-            } else {
-                StyleCoachUser = PhraseJRGoMuscu
-            }
+    // Déterminer le coach choisis du user
+    let CoachUserDB = await db.JRM_Coach.toArray()
+    let StyleCoachUser = PhraseJRMBienveillant // attribution du style de coach a utilisé pour l'interpretation
+    if (CoachUserDB.length > 0) {  // si le user a enregistré qqch alors on met le style du coach qu'il a choisis
+        let TableauStyleCoach = CoachUserDB.map(elementDB => elementDB.style) // recup du style
+        // On check le style de coach que le user a choisi et on attribue le tableau correspondant
+        if (TableauStyleCoach[0] == "Bienveillant") {
+            StyleCoachUser = PhraseJRMBienveillant
+        } else if (TableauStyleCoach[0] == "Strict-Motivant") {
+            StyleCoachUser = PhraseJRMStrictMotivant
+        } else if (TableauStyleCoach[0] == "Copain") {
+            StyleCoachUser = PhraseJRMCopain
+        } else {
+            StyleCoachUser = PhraseJRGoMuscu
         }
+    }
 
-        if (Ratio <= 0.8) { // Interpretation en fonction du ratio
-            Interpretation = StyleCoachUser[0]
-        } else if (Ratio <= 1.35) {
-            Interpretation = StyleCoachUser[1]
-        } else if (Ratio >= 1.35) {
-            Interpretation = StyleCoachUser[2]
-        }
+    if (Ratio <= 0.8) { // Interpretation en fonction du ratio
+        Interpretation = StyleCoachUser[0]
+    } else if (Ratio <= 1.35) {
+        Interpretation = StyleCoachUser[1]
+    } else if (Ratio >= 1.35) {
+        Interpretation = StyleCoachUser[2]
     }
 
     return Interpretation

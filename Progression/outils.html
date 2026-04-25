@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - Outils</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="icon" type="image/svg+xml" href="../Assets/icons-sprintia/Logo-Sprintia-Head-Clair.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="../Assets/icons-sprintia/Logo-Sprintia-Head-Sombre.svg" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../manifest.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/Assets/icons-sprintia/icon-1024-V4.0.2.png">
+    
+    <script src="../Paramètres/script_themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../index.html" id="logo-dynamique">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../index.html">
+                        <i class="fs-icon_accueil"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="outils.html">
+                        <i class="fs-icon_outils"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../Paramètres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../index.html">
+                        <i class="fs-icon_accueil"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="outils.html">
+                        <i class="fs-icon_outils"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../Paramètres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <h1>Tous les outils</h1>
+    <h2>Progression</h2>
+
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <div class="card-tool first" onclick="window.location.href = 'Charge d\'entraînement/charge_entrainement.html'">
+                <div class="icone">
+                    <i class="fs-icon_charge_entrainement"></i>
+                    <!-- utilisation de 'event.stopPropagation()' pour éviter que l'élément parent envoie sur la page charge d'entrainement quand le user pin un outil -->
+                    <div class="button-epingler" id="Charge d'entraînement" onclick="event.stopPropagation(); PinOutil(this, 'Charge d\'entraînement')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Charge d'entraînement</h1>
+                <p>Découvrez la quantité de stress physique que vous imposez à votre corps de part vos entraînements.</p>
+            </div>
+            <div class="card-tool" onclick="window.location.href = 'Récupération/recuperation.html'">
+                <div class="icone">
+                    <i class="fs-icon_recuperation"></i>
+                    <div class="button-epingler" id="Récupération" onclick="event.stopPropagation(); PinOutil(this, 'Récupération')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Récupération</h1>
+                <p>Suivez l'évolution de votre récupération et découvrez votre capacité à fournir un effort physique aujourd'hui.</p>
+            </div>
+            <div class="card-tool" onclick="window.location.href = 'Indulgence de course/indulgence_course.html'">
+                <div class="icone">
+                    <i class="fs-icon_indulgence_course"></i>
+                    <div class="button-epingler" id="Indulgence de course" onclick="event.stopPropagation(); PinOutil(this, 'Indulgence de course')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Indulgence de course</h1>
+                <p>Découvrez une fourchette de distance hebdomadaire conseillé en fonction de vos dernières semaines de course.</p>
+            </div>     
+            <div class="card-tool" onclick="window.location.href = 'Estimation du temps de récupération/estimation_temps_recuperation.html'">
+                <div class="icone">
+                    <i class="fs-icon_temps_recup"></i>
+                    <div class="button-epingler" id="Estimation du temps de récupération" onclick="event.stopPropagation(); PinOutil(this, 'Estimation du temps de récupération')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Estimation du temps de récupération</h1>
+                <p>Découvrez le temps de récupération optimal pour récupérer de votre dernier entraînement.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <h2>Santé & Musculation</h2>
+
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <div class="card-tool first"  onclick="window.location.href = 'Zones cardiaques/zones_cardiaques.html'">
+                <div class="icone">
+                    <i class="fs-icon_zones_cardiaques"></i>
+                    <div class="button-epingler" id="Zones cardiaques" onclick="event.stopPropagation(); PinOutil(this, 'Zones cardiaques')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Zones cardiaques</h1>
+                <p>Découvrez vos zones de fréquence cardiaque pour adapter l’intensité de vos entraînements.</p>
+            </div>         
+            <div class="card-tool" onclick="window.location.href = 'Protéines quotidiennes/proteines_quotidienne.html'">
+                <div class="icone">
+                    <i class="fs-icon_proteines"></i>
+                    <div class="button-epingler" id="Protéines quotidiennes" onclick="event.stopPropagation(); PinOutil(this, 'Protéines quotidiennes')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>  
+                <h1>Protéines quotidiennes</h1>
+                <p>Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.</p>
+            </div>    
+            <div class="card-tool" onclick="window.location.href = 'Estimation 1RM/estimation_1RM.html'">
+                <div class="icone">
+                    <i class="fs-icon_1RM"></i>
+                    <div class="button-epingler" id="Estimation 1RM" onclick="event.stopPropagation(); PinOutil(this, 'Estimation 1RM')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div> 
+                <h1>Estimation 1RM</h1>
+                <p>Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.</p>
+            </div> 
+                   
+            <div class="card-tool" onclick="window.location.href = 'Calculateur IMC/calculateur_imc.html'">
+                <div class="icone">
+                    <i class="fs-icon_IMC"></i>
+                    <div class="button-epingler" id="Calculateur IMC" onclick="event.stopPropagation(); PinOutil(this, 'Calculateur IMC')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Calculateur IMC</h1>
+                <p>Calculez votre IMC et obtenez une interprétation de votre IMC. Parce que les chiffres, c’est bien, mais ça ne veut pas tout dire !</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <h2>Course à pied</h2>
+
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <div class="card-tool first"  onclick="window.location.href = 'Niveau de course à pied/niveau_course.html'">
+                <div class="icone">
+                    <i class="fs-icon_niveau_course"></i>
+                    <div class="button-epingler" id="Niveau course à pied" onclick="event.stopPropagation(); PinOutil(this, 'Niveau course à pied')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Niveau course à pied</h1>
+                <p>Évaluez votre niveau de course grâce à un test puis obtenez un score ainsi qu'une zone pour suivre vos progrès.</p>
+            </div>     
+            <div class="card-tool" onclick="window.location.href = 'Prédicteur de performance/predicteur_performance.html'">
+                <div class="icone">
+                    <i class="fs-icon_predicteur_performance"></i>
+                    <div class="button-epingler" id="Prédicteur de performance" onclick="event.stopPropagation(); PinOutil(this, 'Prédicteur de performance')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Prédicteur de performance</h1>
+                <p>Découvrez votre temps au 10 km, semi-marathon, marathon,... Tout ça grâce à votre VMA.</p>
+            </div>    
+            <div class="card-tool" onclick="window.location.href = 'Estimation VMA/estimation_vma.html'">
+                <div class="icone">
+                    <i class="fs-icon_VMA"></i>
+                    <div class="button-epingler" id="Estimation VMA" onclick="event.stopPropagation(); PinOutil(this, 'Estimation VMA')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>
+                <h1>Estimation VMA</h1>
+                <p>Estimez votre VMA et identifiez vos zones d’allure idéales pour structurer vos séances de fractionné,...</p>
+            </div> 
+
+            <div class="card-tool" onclick="window.location.href = 'Estimation VO2max/estimation_VO2max.html'">
+                <div class="icone">
+                    <i class="fs-icon_VO2MAX"></i>
+                    <div class="button-epingler" id="Estimation VO₂max" onclick="event.stopPropagation(); PinOutil(this, 'Estimation VO₂max')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>   
+                <h1>Estimation VO₂max</h1>
+                <p>Estimez votre VO₂max et obtenez une analyse avec des zones adaptées à votre âge, le tout grâce à votre VMA.</p>
+            </div>  
+            <div class="card-tool" onclick="window.location.href = 'Zones de vitesse/zones_vitesse.html'">
+                <div class="icone">
+                    <i class="fs-icon_zones_vitesse"></i>
+                    <div class="button-epingler" id="Zones de vitesse" onclick="event.stopPropagation(); PinOutil(this, 'Zones de vitesse')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>  
+                <h1>Zones de vitesse</h1>
+                <p>Découvrez vos zones de vitesse grâce à votre VMA pour optimiser vos entraînements.</p>
+            </div>     
+            <div class="card-tool" onclick="window.location.href = 'Zones de puissance/zones de puissance.html'">
+                <div class="icone">
+                    <i class="fs-icon_zones_puissance"></i>
+                    <div class="button-epingler" id="Zones de puissance" onclick="event.stopPropagation(); PinOutil(this, 'Zones de puissance')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div> 
+                <h1>Zones de puissance</h1>
+                <p>Découvrez vos zones de puissance grâce à votre rFTPw.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <h2>Autres</h2>
+
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <div class="card-tool first"  onclick="window.location.href = 'Hydratation/hydratation.html'">
+                <div class="icone">
+                    <i class="fs-icon_besoin_hydratation"></i>
+                    <div class="button-epingler" id="Hydratation" onclick="event.stopPropagation(); PinOutil(this, 'Hydratation')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div> 
+                <h1>Hydratation</h1>
+                <p>
+                    Calculez la quantité d'eau dont votre corps a besoin au quotidien.
+                </p>
+            </div>  
+
+            <div class="card-tool" onclick="window.location.href = 'Convertisseur miles-km/convertisseur_miles_km.html'">
+                <div class="icone">
+                    <i class="fs-icon_miles_km"></i>
+                    <div class="button-epingler" id="Convertisseur km/miles" onclick="event.stopPropagation(); PinOutil(this, 'Convertisseur km/miles')">
+                        <i class="fs-icon_epingler"></i>
+                    </div>
+                </div>  
+                <h1>Convertisseur km/miles</h1>
+                <p>Convertissez une distance des kilomètres en miles ou inversement.</p>
+            </div> 
+
+        </div>
+    </div>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../index.html">Accueil</a>
+            <a class="a_footer" href="outils.html">Outils</a>
+            <a class="a_footer" href="../Paramètres/parametres.html">Paramètres</a>
+            <a class="a_footer" href="../Paramètres/Historique versions/historique versions.html">Historique des versions</a>
+            <a class="a_footer" href="../Paramètres/Thèmes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Outils conseillés</a>
+            <a class="a_footer" href="Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../Paramètres/Licence/Licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../Paramètres/Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+
+    <!-- Pour le burger menu -->
+    <script src="../Assets/base-js/base.js"></script>
+
+    <script>
+        // .parse() cest pour convertir le txt en objet js ici en tableau
+        let OutilEpingler = JSON.parse(localStorage.getItem("OutilsPin")) || [] // soit il y a des datas dans le localstorage sinon on initialise à vide
+
+        function PinOutil(elementHTML, TitleOutil) {
+            // si l'élément a deja la class actif (ça veut dire qu'il est "cocher") alors on enleve le actif pour le "decocher"
+            if (elementHTML.classList.contains("actif")) {
+                // transmet l'info au user
+                document.getElementById("logo-dynamique").classList.add("pin-message")
+
+                elementHTML.classList.remove("actif")
+                
+                logoDynamique("Désépinglé")
+                
+                if (OutilEpingler.includes(TitleOutil)) { // si le nom de l'outil est dans la liste
+                    let index = OutilEpingler.indexOf(TitleOutil) // on repere a quelle position il est dans la liste
+                    OutilEpingler.splice(index, 1) // pour supprimer l'element du tableau et le 1 sert a supprimer que 1 element pour eviter de supprimer tous les elements qui suivent
+                }
+
+            } else { // si le pin de l'outil est "decocher"
+                if (OutilEpingler.includes(TitleOutil)) { // si le nom de l'outil est dans la liste alors on fait rien
+                    // on fait rien (en gros = pass en python)
+                } else {
+                    if (OutilEpingler.length >= 5) { // si il y a deja 5 outils epinglé alors on ne fait rien mais message au user  
+                        logoDynamique("Max atteint !")       
+                        return
+                    } else { 
+                        // .unshift() permet de mettre le nom de l'outil en premiere position dans un tableau
+                        OutilEpingler.unshift(TitleOutil) // on ajoute en premiere position le nom de l'outil
+                        
+                        // transmet l'info au user
+                        logoDynamique("Placé à l'accueil")
+                    }
+                }
+                // si toute les verifications sont bonnes alors on "coche" le pin
+                elementHTML.classList.add("actif") // ajout d'une class pour le rendre moins opacte
+            }
+
+            // stringify permet de "convertir" les tableaux en text c'est linverse de .parse()
+            localStorage.setItem("OutilsPin", JSON.stringify(OutilEpingler)) // on met a jour les datas dans le local storage
+        }
+
+        function InitPin() {
+            let OutilPin = JSON.parse(localStorage.getItem("OutilsPin"))
+            
+            if (OutilPin == null) { return } // quand c'est la premiere fois que le user va sur la page d'accueil pour eviter une erreur.
+
+            if (OutilPin.length > 0) {
+                OutilPin.forEach(element => {
+                    document.getElementById(element).classList.add("actif")
+                });
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            InitPin()
+        })
+    </script>
+
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

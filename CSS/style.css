@@ -45,7 +45,7 @@
     --TIME_TRANSITION: 0.2s;
 
     /* URL flèche vers le bas pour les combobox */
-    --URL_FLECHE_ICON: url("../assets/icons/icon_fleche.svg");
+    --URL_FLECHE_ICON: url("../assets/icons/icon-fleche.svg");
 
     /* Couleur pour le hover des pastilles des thèmes monochrome */
     --COLOR_MONOCHROMES_1: #42a5f5; 
@@ -122,11 +122,11 @@
 /* Pour les icônes dans l'application */
 @font-face {
     font-family: 'Font-Sprintia';
-    src:  url('../assets/icons/Font-Sprintia-V4.3.eot?7gygna');
-    src:  url('../assets/icons/Font-Sprintia-V4.3.eot?7gygna#iefix') format('embedded-opentype'),
-        url('../assets/icons/Font-Sprintia-V4.3.ttf?7gygna') format('truetype'),
-        url('../assets/icons/Font-Sprintia-V4.3.woff?7gygna') format('woff'),
-        url('../assets/icons/Font-Sprintia-V4.3.svg?7gygna#Font-Sprintia') format('svg');
+    src:  url('../assets/icons/font-sprintia-V4.3.eot?7gygna');
+    src:  url('../assets/icons/font-sprintia-V4.3.eot?7gygna#iefix') format('embedded-opentype'),
+        url('../assets/icons/font-sprintia-V4.3.ttf?7gygna') format('truetype'),
+        url('../assets/icons/font-sprintia-V4.3.woff?7gygna') format('woff'),
+        url('../assets/icons/font-sprintia-V4.3.svg?7gygna#Font-Sprintia') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -174,19 +174,19 @@ i {
 .fs-icon_a_propos:before {
   content: "\e901";
 }
-.fs-icon_accueil:before {
+.fs-icon_add:before {
   content: "\e902";
 }
-.fs-icon_add:before {
+.fs-icon_besoin_hydratation:before {
   content: "\e903";
 }
-.fs-icon_besoin_hydratation:before {
+.fs-icon_charge_entrainement:before {
   content: "\e904";
 }
-.fs-icon_charge_entrainement:before {
+.fs-icon_coach:before {
   content: "\e905";
 }
-.fs-icon_coach:before {
+.fs-icon_entrainement:before {
   content: "\e906";
 }
 .fs-icon_epingler:before {
@@ -222,25 +222,25 @@ i {
 .fs-icon_niveau_course:before {
   content: "\e911";
 }
-.fs-icon_outils:before {
+.fs-icon_parametres:before {
   content: "\e912";
 }
-.fs-icon_parametres:before {
+.fs-icon_partager:before {
   content: "\e913";
 }
-.fs-icon_partager:before {
+.fs-icon_pause:before {
   content: "\e914";
 }
-.fs-icon_pause:before {
+.fs-icon_plus:before {
   content: "\e915";
 }
-.fs-icon_plus:before {
+.fs-icon_predicteur_performance:before {
   content: "\e916";
 }
-.fs-icon_predicteur_performance:before {
+.fs-icon_profil:before {
   content: "\e917";
 }
-.fs-icon_profil:before {
+.fs-icon_progression:before {
   content: "\e918";
 }
 .fs-icon_proteines:before {
@@ -557,7 +557,7 @@ header div.navbar div.burger-menu-button:active {
 header div.navbar ul.links li a {
     color: var(--COLOR_TEXT_PRIMARY); 
     font-size: var(--H3);
-    width: 180px;
+    width: 190px;
     cursor: pointer;
     margin: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
@@ -570,7 +570,7 @@ header div.navbar ul.links li a {
 }
 header div.navbar ul.links li a i {
     font-size: var(--H2);
-    margin-right: var(--SPACE_S_SMALL);
+    margin-right: var(--SPACE_XS);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -596,14 +596,14 @@ header .burger-menu {
     display: none;
     position: absolute;
     right: 0;
-    width: 200px;
+    width: 215px;
     margin-right: var(--SPACE_XS);
     max-height: 0px;    
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: 1.25rem;
     overflow: hidden; 
 
-    transform: translateY(-20px) translateX(82px) scale(0.1, 0.4);
+    transform: translateY(-20px) translateX(90px) scale(0.1, 0.4);
     transition: all 0.15s ease-out;
 }
 header .burger-menu.open {
@@ -686,6 +686,7 @@ div.config-profil {
     background-color: var(--COLOR_ACCENT);
     color: var(--COLOR_BACKGROUND);
     font-size: 1.35rem;
+    margin-top: var(--SPACE_M);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     padding: var(--SPACE_S);
     cursor: pointer;
@@ -709,46 +710,6 @@ div.config-profil p.description{
     font-weight: normal;
 }
 
-
-
-section.container-tools-pin {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-section.container-tools-pin a{
-    flex-grow: 1;
-    width: 400px;
-}
-section.container-tools-pin div.tools-pin{
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    border-radius: var(--BORDER_BIG);
-    margin: var(--SPACE_XS);
-    padding: var(--SPACE_XS);
-    gap: var(--SPACE_S);
-
-    display: flex;
-    align-items: center;
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    section.container-tools-pin div.tools-pin:hover{
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-section.container-tools-pin div.tools-pin:active{
-    transform: scale(var(--SCALE_SMALL));
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-}
-section.container-tools-pin div.tools-pin i{
-    background-color: transparent;
-    font-size: var(--H1);
-}
-section.container-tools-pin div.tools-pin p{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin: var(--SPACE_XS) 0;
-    font-size: var(--P);
-}
 
 
 section.segmented-button {
@@ -849,53 +810,6 @@ div.carousel div.card-tool div.icone i{
     font-size: 5rem;    
     color: var(--COLOR_BACKGROUND);
     margin: 0 auto;
-}
-div.carousel div.card-tool div.icone div.button-epingler{
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    opacity: 0.4;
-    border-radius: var(--BORDER_NORMAL);
-    position: absolute;
-    overflow: hidden;
-    width: 30px;
-    height: 30px;
-    right: var(--SPACE_XS);
-    top: var(--SPACE_XS);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.carousel div.card-tool div.icone div.button-epingler:hover{
-        opacity: 0.8;
-    }
-}
-@keyframes rebond {
-    0% { transform: translateY(0px)}
-    40% { transform: translateY(5px)}
-    100% { transform: translateY(0px)}
-}
-div.carousel div.card-tool div.icone div.button-epingler.actif{
-    opacity: 1;
-    animation: rebond 0.5s;
-}
-div.carousel div.card-tool div.icone div.button-epingler i{
-    font-size: 1.2rem;
-    color: var(--COLOR_TEXT_PRIMARY);
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-div.carousel:nth-of-type(1) div.card-tool div.icone div.button-epingler.actif i{
-    color: var(--COLOR_ACCENT);
-}
-div.carousel:nth-of-type(3) div.card-tool div.icone div.button-epingler.actif i{
-    color: var(--COLOR_ACCENT);
-}div.carousel:nth-of-type(5) div.card-tool div.icone div.button-epingler.actif i{
-    color: var(--COLOR_ACCENT);
-}
-
-div.carousel div.card-tool div.icone div.button-epingler.actif i{
-    color: var(--COLOR_ACCENT2);
 }
 div.carousel div.card-tool h1{
     font-size: var(--H3);
@@ -2450,7 +2364,7 @@ div.container-center-marge {
 
 @media (max-width:890px) {
     header div.navbar ul.links li a {
-        width: 160px;
+        width: 180px;
     }
     header div.navbar ul.links li a i {
         margin-right: var(--SPACE_XS);

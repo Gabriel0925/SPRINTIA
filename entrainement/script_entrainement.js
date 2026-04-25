@@ -291,7 +291,7 @@ async function initialisation() {
                 })
 
                 buttonModifier.addEventListener("click", async () => { // Ajout d'une "action" au bouton edit
-                    window.location.href = `ajouter_entraînement.html?edit=${dataWorkout.id}` // mettre un parametre dans l'URL
+                    window.location.href = `ajouter-entrainement.html?edit=${dataWorkout.id}` // mettre un parametre dans l'URL
                 })
             }
             

@@ -18,7 +18,7 @@
     <meta name="apple-mobile-web-app-title" content="Sprintia">
     <link rel="apple-touch-icon" href="../assets/icons-sprintia/icon-1024-V4.0.2.png">
     
-    <script src="../parametres/script_themes.js"></script>
+    <script src="../parametres/script-themes.js"></script>
 </head>  
 
 <body>
@@ -30,13 +30,13 @@
             <ul class="links">
                 <li>
                     <a class="actif" href="../index.html">
-                        <i class="fs-icon_accueil"></i>
+                        <i class="fs-icon_entrainement"></i>
                         Entraînement
                     </a>
                 </li>
                 <li>
                     <a href="../progression/progression.html">
-                        <i class="fs-icon_outils"></i>
+                        <i class="fs-icon_progression"></i>
                         Progression
                     </a>
                 </li>
@@ -56,13 +56,13 @@
             <ul class="links">
                 <li>
                     <a class="actif-burger-menu" href="../../index.html">
-                        <i class="fs-icon_accueil"></i>
+                        <i class="fs-icon_entrainement"></i>
                         Entraînement
                     </a>
                 </li>
                 <li>
                     <a href="../progression/progression.html">
-                        <i class="fs-icon_outils"></i>
+                        <i class="fs-icon_progression"></i>
                         Progression
                     </a>
                 </li>
@@ -205,8 +205,8 @@
             <a class="a_footer" href="../index.html">Accueil</a>
             <a class="a_footer" href="../progression/progression.html">Outils</a>
             <a class="a_footer" href="../parametres/parametres.html">Paramètres</a>
-            <a class="a_footer" href="../parametres/historique-versions/historique versions.html">Historique des versions</a>
-            <a class="a_footer" href="../parametres/Thèmes/themes.html">Thèmes</a>
+            <a class="a_footer" href="../parametres/historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../parametres/themes/themes.html">Thèmes</a>
         </div>
            
         <div class="conteneur-lien-footer">             
@@ -218,8 +218,8 @@
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="../parametres/Licence/Licence.html">Licence (© 2026 Sprintia)</a>
-            <a class="a_footer" href="../parametres/Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
+            <a class="a_footer" href="../parametres/licence/licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../parametres/politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
         </div>
     </footer>
 
@@ -230,7 +230,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>   
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="../../assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script>
         const DateActuelle = new Date()
 
@@ -283,7 +283,6 @@
                         if (element.distance != undefined && !isNaN(element.distance)) {
                             compteurDistance += element.distance
                         }
-                        compteurDistance += element.distance
                     }
 
                 }

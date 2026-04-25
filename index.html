@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-1024-V4.0.2.png">
 
     <!-- Pour les thèmes -->
-    <script src="parametres/script_themes.js"></script>
+    <script src="parametres/script-themes.js"></script>
 </head>
 
 <body>
@@ -31,13 +31,13 @@
             <ul class="links">
                 <li>
                     <a class="actif" href="index.html">
-                        <i class="fs-icon_accueil"></i>
+                        <i class="fs-icon_entrainement"></i>
                         Entraînement
                     </a>
                 </li>
                 <li>
                     <a href="progression/progression.html">
-                        <i class="fs-icon_outils"></i>
+                        <i class="fs-icon_progression"></i>
                         Progression
                     </a>
                 </li>
@@ -57,13 +57,13 @@
             <ul class="links">
                 <li>
                     <a class="actif-burger-menu" href="index.html">
-                        <i class="fs-icon_accueil"></i>
+                        <i class="fs-icon_entrainement"></i>
                         Entraînement
                     </a>
                 </li>
                 <li>
                     <a href="progression/progression.html">
-                        <i class="fs-icon_outils"></i>
+                        <i class="fs-icon_progression"></i>
                         Progression
                     </a>
                 </li>
@@ -77,20 +77,25 @@
         </div>
     </header> 
     
-    <h1>Entraînement</h1>    
+    <div class="toolbar">
+        <h1>Entraînement</h1>
+        <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
+    </div>
     
-    <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter_entraînement.html'">
+    <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'">
         <i class="fs-icon_add"></i>
         <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
 
-    <a id="configurer-sprintia" href="parametres/Profil/modification_profil.html">
+    <a id="configurer-sprintia" href="parametres/Profil/modification-profil.html">
         <div class="config-profil">
             <i class="fs-icon_profil"></i>
             <p>Configurer Sprintia</p>
             <p class="description">Pour débloquer toutes les fonctionnalités de Sprintia, veuillez configurer votre profil.</p>
         </div>
     </a>
+
+    <h2>Analyse</h2>
 
     <a href="entrainement/statistiques.html">
         <div class="large-zone-coach clickable">
@@ -115,10 +120,10 @@
     <h2>Historique d'entraînement</h2>
     <p class="text" id="text-informatif">
         Sprintia n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
-        <a href="entrainement/ajouter_entraînement.html" class="lien">ajouter un entraînement</a>.
+        <a href="entrainement/ajouter-entrainement.html" class="lien">ajouter un entraînement</a>.
     </p> 
 
-    <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter_entraînement.html'">
+    <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'">
         <i class="fs-icon_add"></i>
         <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
     </div>
@@ -136,8 +141,8 @@
             <a class="a_footer" href="index.html">Accueil</a>
             <a class="a_footer" href="progression/progression.html">Outils</a>
             <a class="a_footer" href="parametres/parametres.html">Paramètres</a>
-            <a class="a_footer" href="parametres/historique-versions/historique versions.html">Historique des versions</a>
-            <a class="a_footer" href="parametres/Thèmes/themes.html">Thèmes</a>
+            <a class="a_footer" href="parametres/historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="parametres/themes/themes.html">Thèmes</a>
         </div>
            
         <div class="conteneur-lien-footer">             
@@ -149,8 +154,8 @@
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="parametres/Licence/Licence.html">Licence (© 2026 Sprintia)</a>
-            <a class="a_footer" href="parametres/Politique de confidentialité/politique_confidentialite.html">Politique de confidentialité</a>
+            <a class="a_footer" href="parametres/licence/licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="parametres/politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
         </div>
     </footer>
     
@@ -161,7 +166,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>   
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="assets/base-js/DB_config.js"></script> <!-- Connexion bdd -->
+    <script src="assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
 
     <!-- Configuration Sprintia -->
     <script>

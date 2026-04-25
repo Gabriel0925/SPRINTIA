@@ -96,6 +96,14 @@
         ">
             <p>30J</p>
         </div>
+        <div class="segmented-button-button" id="trois-mois" onclick="
+            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.getElementById('trois-mois').classList.add('actif')
+
+            init(DateMoins90J)
+        ">
+            <p>90J</p>
+        </div>
         <div class="segmented-button-button" id="annee" onclick="
             document.querySelector('.segmented-button-button.actif').classList.remove('actif')
             document.getElementById('annee').classList.add('actif')
@@ -229,6 +237,11 @@
         DateMoins30J = new Date(DateMoins30J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
         // On prend que ce qui nous interesse donc la premiere partie
         DateMoins30J = DateMoins30J.split('T')[0] // on obtient '2026-01-21'
+
+        let DateMoins90J = DateActuelle.setDate(DateActuelle.getDate() - 90) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        DateMoins90J = new Date(DateMoins90J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
+        // On prend que ce qui nous interesse donc la premiere partie
+        DateMoins90J = DateMoins90J.split('T')[0] // on obtient '2026-01-21'
 
         let DateMoins365J = DateActuelle.setDate(DateActuelle.getDate() - 365) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
         DateMoins365J = new Date(DateMoins365J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'

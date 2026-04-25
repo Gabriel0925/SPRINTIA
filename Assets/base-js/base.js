@@ -219,8 +219,8 @@ async function genererGraphiqueCamenbert(label, listePourcentage) {
                     
                 plugins: {
                     legend: {
-                        display: false,
-                        // position:"left",
+                        display: true,
+                        position:"left",
                         labels: {
                             color: CouleurTextPrincipal
                         }

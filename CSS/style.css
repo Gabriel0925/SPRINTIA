@@ -766,7 +766,7 @@ section.segmented-button div.segmented-button-button {
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
-    width: 90px;
+    width: 60px;
     text-align: center;
     transition: all ease-out var(--TIME_TRANSITION);
 }

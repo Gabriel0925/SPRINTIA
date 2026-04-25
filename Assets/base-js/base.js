@@ -118,7 +118,7 @@ function logoDynamique(message) {
 // --- Pour le grapique ---
 // Initialisation de la variable du graphique pour que le code ce rappelle de l'ancien graphique "stockée" dans le BFCache 
 let barChart = null // Pr éviter de superposer un graphique
-async function genererGraphique(listeX, listeY) {
+async function genererGraphiqueLine(listeX, listeY) {
     // Récup les variables css
     let RootCSS = document.documentElement
     let StyleCSS = getComputedStyle(RootCSS)
@@ -182,7 +182,7 @@ async function genererGraphique(listeX, listeY) {
             }
     })
 }
-async function genererGraphiqueCamenbert(label, listePourcentage) {
+async function genererGraphiqueDoughnut(label, listePourcentage) {
     // Récup les variables css
     let RootCSS = document.documentElement
     let StyleCSS = getComputedStyle(RootCSS)
@@ -219,8 +219,7 @@ async function genererGraphiqueCamenbert(label, listePourcentage) {
                     
                 plugins: {
                     legend: {
-                        display: true,
-                        position:"left",
+                        display: false,
                         labels: {
                             color: CouleurTextPrincipal
                         }

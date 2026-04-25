@@ -196,7 +196,7 @@ async function graph() {
         ListeDate = ["Janvier", "Février", "Mars"]
     }
     
-    genererGraphique(ListeDate, NiveauDatas)
+    genererGraphiqueLine(ListeDate, NiveauDatas)
 }
 
 // Pour recharger le graphique si c'est dans le BFCache

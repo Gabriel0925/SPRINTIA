@@ -264,7 +264,7 @@ async function Initialisation() {
         ListeDate = ["Lundi", "Mercredi", "Samedi"]
     }
     
-    genererGraphique(ListeDate, ChargeDatas)
+    genererGraphiqueLine(ListeDate, ChargeDatas)
 }
 
 

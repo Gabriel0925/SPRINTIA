@@ -166,7 +166,7 @@ async function RecupData() {
         Distance28J += element
     });
 
-    genererGraphique(["S-4", "S-3", "S-2", "S-1"], [Math.floor(Distance28J), Math.floor(Distance21J), Math.floor(Distance14J), Math.floor(Distance7J)])
+    genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [Math.floor(Distance28J), Math.floor(Distance21J), Math.floor(Distance14J), Math.floor(Distance7J)])
 
     // Affichage dans "Distance réel sur 7J"
     document.getElementById("reponse-algo-allure").textContent = Number(Distance7J).toFixed(1).replace(".", ",") + " km"

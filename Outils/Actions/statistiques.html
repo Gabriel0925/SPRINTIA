@@ -78,10 +78,10 @@
 
     <h1>Statistiques</h1>
 
-    <section class="segmented-button">
+    <section class="segmented-button duree">
 
         <div class="segmented-button-button actif" id="semaine" onclick="
-            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('semaine').classList.add('actif')
 
             init(DateMoins7J)
@@ -89,7 +89,7 @@
             <p>7J</p>
         </div>
         <div class="segmented-button-button" id="mois" onclick="
-            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('mois').classList.add('actif')
 
             init(DateMoins30J)
@@ -97,7 +97,7 @@
             <p>30J</p>
         </div>
         <div class="segmented-button-button" id="trois-mois" onclick="
-            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('trois-mois').classList.add('actif')
 
             init(DateMoins90J)
@@ -105,7 +105,7 @@
             <p>90J</p>
         </div>
         <div class="segmented-button-button" id="annee" onclick="
-            document.querySelector('.segmented-button-button.actif').classList.remove('actif')
+            document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('annee').classList.add('actif')
 
             init(DateMoins365J)
@@ -136,60 +136,67 @@
         </div>
     </section>
 
-    <h2>Sports les plus pratiqués</h2>
+    <h2>Sports pratiqués (en %)</h2>
     <p class="text" id="message-not-datas" style="display: none;">
         Sprintia n'a pas assez de données pour afficher vos sports les plus pratiqués.
     </p>
+    <p class="text">
+        Cliquez sur une part pour afficher le sport correspondant et le pourcentage.
+    </p>
     <section class="sports-pratiques">
-
-        <div class="carousel table">
-            <div class="carousel-content table">
-                <table id="tableau-historique">
-                    <thead>
-                        <tr>
-                            <th>Classement</th>
-                            <th>Sport</th>
-                            <th>Pourcentage</th>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-
-                    </thead>
-
-                    <tbody><!-- Remplis en js --></tbody>
-                </table>
-            </div>
-        </div>
-
         <div class="chart-container" id="conteneur-graphique">
             <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
             <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
+    </section>
 
+    <h2>Statistiques par sport</h2>
+    <section class="segmented-button stats-sport">
+
+        <div class="segmented-button-button actif" id="sport-course" style="width: 90px;" onclick="
+            document.querySelector('.segmented-button.stats-sport .segmented-button-button.actif').classList.remove('actif')
+            document.getElementById('sport-course').classList.add('actif')
+
+            statistiquesParSport('Course')
+            ">
+            <p>Course</p>
+        </div>
+        <div class="segmented-button-button" id="sport-velo" style="width: 90px;" onclick="
+            document.querySelector('.segmented-button.stats-sport .segmented-button-button.actif').classList.remove('actif')
+            document.getElementById('sport-velo').classList.add('actif')
+
+            statistiquesParSport('Vélo')
+        ">
+            <p>Vélo</p>
+        </div>
+        <div class="segmented-button-button" id="sport-natation" style="width: 90px;" onclick="
+            document.querySelector('.segmented-button.stats-sport .segmented-button-button.actif').classList.remove('actif')
+            document.getElementById('sport-natation').classList.add('actif')
+
+            statistiquesParSport('Natation')
+        ">
+            <p>Natation</p>
+        </div>
+
+    </section>
+
+    <section class="container-block"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Durée</p>
+            <p class="container-block-data-data" id="duree-sport">00:00</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Nb entraînement</p>
+            <p class="container-block-data-data" id="nb-entrainement-sport">0</p>
+        </div>
+
+    </section>
+    <section class="container-block"> 
+        <div class="container-block-data">
+            <p class="container-block-data-header">Distance</p>
+            <p class="container-block-data-data" id="distance-sport">0 km</p>
+        </div>
     </section>
 
     
@@ -247,10 +254,62 @@
         DateMoins365J = new Date(DateMoins365J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
         // On prend que ce qui nous interesse donc la premiere partie
         DateMoins365J = DateMoins365J.split('T')[0] // on obtient '2026-01-21'
+
+        // var globale pour la date et le sport
+        let dateDemandee = DateMoins7J
+        let sportDemandee = "Course"
+
+        async function statistiquesParSport(sportForFunction) {
+            // recup data des derniers jours en fonction de la date
+            const historiqueDBStats = await db.entrainement.where("date").above(dateDemandee).toArray() // la var dateChoisie change en fonction du selected dans l'interface
+
+            // maj de la variable globale
+            sportDemandee = sportForFunction
+
+            // init du compteur pour compter le nb d'entrainement
+            let compteurNbEntrainement = 0
+            let compteurDuree = 0
+            let compteurDistance = 0
+
+            historiqueDBStats.forEach(element => {
+                // si le sport dans la BDD est égale aux sport de la navbar stats par sport
+                if (element.sport == sportForFunction) {
+                    compteurNbEntrainement += 1 // maj de la variable pr compter le nombre d'entrainement en course par exemple
+
+                    // si il y a une durée et qu'elle est utilisable alors on ajoute
+                    if (element.duree != undefined && !isNaN(element.duree)) {
+                        compteurDuree += element.duree
+                        
+                        // si la distance n'est pas en undefined ou autre alors on l'ajoute
+                        if (element.distance != undefined && !isNaN(element.distance)) {
+                            compteurDistance += element.distance
+                        }
+                        compteurDistance += element.distance
+                    }
+
+                }
+            });
+
+            // remplissage des champs
+            document.getElementById("duree-sport").textContent = dureeFormatee(compteurDuree, null)
+            document.getElementById("nb-entrainement-sport").textContent = compteurNbEntrainement.toLocaleString('fr-FR')
+
+            if (sportDemandee == "Natation") { // si c'est de la natation alors on met en metre
+                compteurDistance = compteurDistance*1000
+                document.getElementById("distance-sport").innerHTML = compteurDistance.toFixed(1).replace(".", ",") + ' <small>m</small>'
+            } else {
+                document.getElementById("distance-sport").innerHTML = compteurDistance.toFixed(2).replace(".", ",") + ' <small>km</small>'
+            }
+
+            return
+        }
         
         async function init(dateChoisie) {
             // recup data des derniers jours en fonction de la date
             const historiqueDB = await db.entrainement.where("date").above(dateChoisie).toArray() // la var dateChoisie change en fonction du selected dans l'interface
+
+            // maj de la var global
+            dateDemandee = dateChoisie
 
             // quand il n'y a pas de datas
             if (historiqueDB.length <= 0) {
@@ -267,7 +326,7 @@
             // init pr la boucle
             let dureeEntrainementUser = 0
             let chargeEntrainementUser = 0
-            let compteur=0
+            let compteur = 0
 
             tableauDuree.forEach(element => { // boucle pour faire la somme de la durée et de la charge d'entraînement
                 dureeEntrainementUser += element
@@ -280,8 +339,9 @@
 
             // remplissage des champs
             document.getElementById("duree").textContent = dureeEntrainementUser
-            document.getElementById("charge-entrainement").textContent = chargeEntrainementUser + " CE"
-            document.getElementById("nb-entrainement").textContent = tableauDuree.length
+            // .toLocaleString('fr-FR') pour passer de 10000 -> 10 000
+            document.getElementById("charge-entrainement").innerHTML = chargeEntrainementUser.toLocaleString('fr-FR') + ' <small>CE</small>'
+            document.getElementById("nb-entrainement").textContent = tableauDuree.length.toLocaleString('fr-FR')
             
             let DicoNbEntrainementSport = {} // init pour les futures boucles ex : {"Course":3} 3 pour le nb d'entrainement en course
             tableauSport.forEach(elt => {
@@ -313,10 +373,10 @@
             })
 
             // genereation du graphique
-            genererGraphiqueCamenbert(labelSport, pourcentageSport)
+            genererGraphiqueDoughnut(labelSport, pourcentageSport)
 
-            // Remplissage du tableau du classement des sports
-            
+            // remplissage des stats par sport
+            await statistiquesParSport(sportDemandee)
 
             return
         }

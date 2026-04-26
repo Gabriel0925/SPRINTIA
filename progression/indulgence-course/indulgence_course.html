@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Protéines quotidiennes</title>
+    <title>Sprintia - Indulgence de course</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sprintia">
-    <link rel="apple-touch-icon" href="assets/icons-sprintia/icon-1024-V4.0.2.png">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-1024-V4.0.2.png">
     
     <script src="../../parametres/script-themes.js"></script>
 </head>
@@ -76,86 +76,64 @@
         </div>
     </header>
     
-    <h1>Protéines quotidiennes</h1>
+    <h1>Indulgence de course</h1>
+
     <section class="container-zone">
 
-        <div class="form">
-            <select id="objectif-user" onchange="ComboBox()" autocomplete="off">
-                <option value="Perte-poids">Objectif : Perte de poids</option>
-                <option value="Minimum">Objectif : Minimum vital</option>
-                <option value="Meilleure">Objectif : Meilleure santé</option>
-                <option value="Maintien">Objectif : Maintien de la masse</option>
-                <option value="Prise">Objectif : Prise de masse</option>
-            </select>
-                
-            <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                <div class="label-input">Poids (kg)</div>
-            </div>
-
-            <button onclick="EstimationProteines()">Calculer</button>
+        <div class="zone-coach">
+            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
+                Chargement...
+            </p> 
         </div>
 
-        <div class="large-zone-result">
-            <p class="large-zone-result-name">Protéines recommandées</p>
-            <p class="large-zone-result-result">
-                0 g/jour
-            </p>
-        </div>
-        
     </section>
 
-    <h2>Qu'est-ce que l'outil Protéines quotidiennes ?</h2>
-    <p class="text">
-        L'outil Protéines quotidiennes vous indique la quantité optimale de protéines à consommer chaque jour, en fonction de votre poids et 
-        de votre objectif. Il vous aide à adapter votre alimentation pour préserver votre masse musculaire, améliorer votre récupération,...
-    </p>
+    <section class="container-zone">
 
-    <h2>Aliments protéinés</h2>
-    <ul class="list-information">
-        <li>
-            Des oeufs
-        </li>
-        <li>
-            De la viande, du poisson
-        </li>
-        <li>
-            Des noix, des amandes, des flocons d'avoine (le top au petit-déjeuner)
-        </li>
-        <li>
-            Des produits laitiers faibles en gras
-        </li>
-        <li>
-            Des boissons
-        </li>
-        <li>
-            De la Whey protéine
-        </li>
-    </ul>
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Distance hebdo. conseillée</p>
+            <p class="large-zone-result-result" id="reponse-algo-indulgence">
+                0 - 0 km
+            </p>
+        </div>
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Distance réel sur 7J</p>
+            <p class="large-zone-result-result" id="reponse-algo-allure">
+                0 km
+            </p>
+        </div>
+            
+    </section>
 
-    <h2>Quand est-ce qu'un produit est considéré comme protéiné ?</h2>
-    <p class="text">
-        Pour commencer, il faut poser les bases, voici les tranches pour des aliments de 100g.
-    </p>
-    <ul class="list-information">
-        <li>
-            Un aliment avec moins de 5 grammes est considéré comme <strong>faible</strong>.
-        </li>
-        <li>
-            Un aliment qui possède entre 5 et 12 grammes c'est la tranche <strong>moyenne</strong>. 
-        </li>
-        <li>
-            Un aliment qui possède entre 13 et 20 grammes de protéines est considéré comme <strong>élevé</strong>.
-        </li>
-        <li>
-            Un aliment avec plus de 20 grammes est considéré comme <strong>très élevé</strong>.
-        </li>
-    </ul>
+    <h2>Volume d'entraî. (4 sem.)</h2>
+    <div class="chart-container" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
+    <div class="action-list">
+        
+        <a href="../Actions/historique_entrainement.html">
+            <div class="action-list-item">
+                <p id="somme-28J"><strong>43 km</strong> sur 28 jours</p>
+            </div>
+        </a>
+        <a href="../Actions/historique_entrainement.html">
+            <div class="action-list-item">
+                <p id="km-par-semaine"><strong>43 km</strong> par semaine</p>
+            </div>
+        </a>
 
-    <h2>Les protéines font-elles maigrir ?</h2>
+    </div>
+
+    <h2>C'est quoi l'Indulgence de course ?</h2>
     <p class="text">
-        Oui, en agissant comme un coupe-faim. Un apport plus élevé en protéines augmente 
-        les niveaux des hormones de satiété, tout en réduisant vos niveaux de ghréline, l'hormone de la faim.
+        L’indulgence de course vous aide à ajuster votre kilométrage des 7 prochains jours pour rester dans une progression 
+        optimale, sans dépasser votre limite et éviter de vous blesser. 
+        <strong>
+            Cet outil est conçu pour les personnes qui débutent la course à pied, ou qui reprennent la course à pied après 
+            une pause, voire qui se lancent dans un nouveau plan d’entrainement.
+        </strong>
     </p>
     
     <footer>
@@ -170,9 +148,9 @@
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="../Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau_course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
@@ -184,12 +162,30 @@
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script> 
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script_outil.js"></script>
+    <script src="script-outil.js"></script> 
+
+    <!-- Pour le JRM Coach -->
     <script>
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["poids-user"]))
+        async function JRMCoachUser() {
+            let CoachUserDB = await db.JRM_Coach.toArray()
+
+            if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
+                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+                document.getElementById("nom-coach").textContent = AvatarCoach + " " + NomCoach + " :"
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            JRMCoachUser()
+        })
     </script>
 
     

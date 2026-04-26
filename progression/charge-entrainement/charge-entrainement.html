@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Calculateur IMC</title>
+    <title>Sprintia - Charge d'entraînement</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-1024-V4.0.2.png">
     
     <script src="../../parametres/script-themes.js"></script>
-</head>
+</head>  
 
 <body>
     <header>
@@ -75,43 +75,65 @@
             </ul>
         </div>
     </header>
+    
+    <h1>Charge d'entraînement</h1>
 
-    <h1>Calculateur IMC</h1>
+    <div class="button-flottant" onclick="window.location.href = '../../entrainement/ajouter-entrainement.html'">
+        <i class="fs-icon_add"></i>
+        <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+    </div>
+
     <section class="container-zone">
 
-        <div class="form">
-                
-            <div class="container-input">
-                <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
-                <div class="label-input">Taille (cm)</div>
-            </div>
-                    
-            <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                <div class="label-input">Poids (kg)</div>
-            </div>
-
-            <button id="button-calcul-imc" onclick="CalculIMC()">Calculer</button>
-        </div>
-
-        <div class="zone-result">
-            <p class="zone-result-name-result">Votre IMC : <strong>00</strong></p>
-            <p class="zone-result-interpretation">
-                Veuillez rentrer votre taille ainsi que votre poids pour avoir une interprétation.
-            </p>
+        <div class="zone-coach">
+            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
+                Chargement...
+            </p> 
         </div>
 
     </section>
+    
+    <section class="container-box">
 
-    <h2>C'est quoi l'IMC ?</h2>
+        <div class="small-zone-result">
+            <p class="small-zone-result-name">Charge 7J</p>
+            <p class="small-zone-result-indication" id="cible-charge-7j">Cible : pas assez de données</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result" id="charge-7j">0</p>
+                <p class="small-zone-result-unit">CE</p>
+            </div>
+        </div>
+        <div class="small-zone-result">
+            <p class="small-zone-result-name">Charge 28J</p>
+            <p class="small-zone-result-indication">Charge chronique</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result" id="charge-28j">0</p>
+                <p class="small-zone-result-unit">CE</p>
+            </div>
+        </div>
+        
+    </section>
+
+    <div class="chart-container" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
+
+    <h2>C'est quoi la charge d'entraînement ?</h2>
     <p class="text">
-        L'IMC (indice de masse corporelle) sert à estimer la corpulence. Ce n'est pas un indicateur sportif, mais plutôt un repère de santé.
+        La charge d'entraînement permet de quantifier le stress physique imposé à votre corps
+        durant les 7 derniers jours. La charge d'entraînement prend en compte la durée de 
+        l'entraînement et l'effort fourni durant cet entraînement. La charge des 7 derniers jours
+        est comparée sur les 28 derniers jours afin d'avoir une idée de votre progression par 
+        rapport à avant. En respectant la charge d'entraînement vous réduisez le risque de vous blesser.
     </p>
-    <h2>Le problème de l'IMC ?</h2>
+
+    <h2>À quoi ça sert la charge d'entraînement ?</h2>
     <p class="text">
-        L'IMC estime la corpulence à partir de la taille et du poids, mais il ne connait pas votre masse musculaire ! Par exemple, vous pouvez
-        être en obésité sévère alors qu'en réalité vous allez juste à la salle et que vous êtes musclé. Mais ça, l'IMC ne le saura jamais.
-        C'est pourquoi, il faut savoir prendre du recul sur les résultats de cet indicateur.
+        La charge d'entraînement sert à optimiser l'intensité et le volume de vos entraînements futurs.
     </p>
     
     <footer>
@@ -126,9 +148,9 @@
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="../Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau_course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
@@ -140,21 +162,33 @@
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>   
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script_outil.js"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", async () => {
-            await remplissageChamps(["taille-user", "poids-user"])
 
-            if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && !isNaN(document.getElementById("taille-user").value) && !isNaN(document.getElementById("poids-user").value)) {
-                document.getElementById("button-calcul-imc").click()
+    <!-- Pour le JRM Coach -->
+    <script>
+        async function JRMCoachUser() {
+            let CoachUserDB = await db.JRM_Coach.toArray()
+
+            if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
+                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+                document.getElementById("nom-coach").textContent = AvatarCoach + " " + NomCoach + " :"
             }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            JRMCoachUser()
         })
     </script>
 
-    
+    <script src="script-outil.js"></script>
+
     <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>
 </body>

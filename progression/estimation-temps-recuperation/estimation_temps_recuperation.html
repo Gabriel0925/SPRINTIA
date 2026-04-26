@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Estimation VO₂max</title>
+    <title>Sprintia - Estimation du temps de récupération</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,50 +76,50 @@
         </div>
     </header>
     
-    <h1>Estimation VO₂max</h1>
+    <h1>Estimation du temps de récupération</h1>
     <section class="container-zone">
 
         <div class="form">
-            <select id="sexe-user" onchange="ComboBoxVO2max()" autocomplete="off">
-                    <option value="Homme">Sexe : Homme</option>
-                    <option value="Femme">Sexe : Femme</option>
+            <select id="methode-user" onchange="ComboBox()" autocomplete="off">
+                <option value="occasionnel">Sportif·ve occasionnel·le</option>
+                <option value="regulier">Sportif·ve régulier·e</option>
+                <option value="athlete">Athlète confirmé·e</option>
             </select>
-            <div class="side-by-side">
-                <div class="container-input">
-                    <input type="number" id="age-user" class="small" placeholder="Âge" autocomplete="off">
-                    <div class="label-input">Âge</div>
-                </div>
-                    
-                <div class="container-input">
-                    <input type="number" id="vma-user" class="small" placeholder="VMA (km/h)" autocomplete="off">
-                    <div class="label-input">VMA (km/h)</div>
+              
+            <div class="container-input">
+                <input type="text" id="duree-entrainement-user" placeholder="Durée (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
+                maxlength="8" autocomplete="off">
+                <div class="label-input">Durée (hh:mm:ss)</div>
+            </div>
+                
+            <div class="slider-cont">
+                <div class="slider-name">RPE : <span class="RPE">1</span>Facile</div>
+                <div class="slider">
+                    <input type="range" min="1" max="10" value="1" autocomplete="off">
+                    <progress min="1" max="10" value="1"></progress>
                 </div>
             </div>
 
-            <button onclick="CalculVO2max()">Estimer</button>
+            <button onclick="EstimationTempsRecuperation()">Estimer</button>
         </div>
 
-        <div class="zone-result">
-            <p class="zone-result-name-result">VO₂max estimé : <strong>0,0</strong></p>
-            <p class="zone-result-interpretation">
-                Veuillez rentrer votre genre, âge ainsi que votre VMA pour avoir une interprétation.
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Temps de récup. estimé</p>
+            <p class="large-zone-result-result">
+                00 h
             </p>
         </div>
 
     </section>
-
-    <h2>Le VO₂max c'est quoi ?</h2>
+    
+    <h2>Comment se servir de cet algorithme ?</h2>
     <p class="text">
-        Le VO₂max représente le volume maximal d'oxygène que votre corps peut utiliser pendant un effort intense.
-    </p>
-    <h2>Comment s'en servir ?</h2>
-    <p class="text">
-        Le VO₂max sert majoritairement à évaluer votre niveau de forme. Vous pouvez l'utiliser pour voir si vos entraînements portent leurs fruits.
-    </p>
-    <h2>Comment connaître votre VMA ?</h2>
-    <p class="text">
-        Vous ne connaissez pas votre VMA ? Ce n'est pas très compliqué à évaluer, pour cela je vous renvoie vers l'outil dédié : 
-        <a href="../Estimation VMA/estimation_vma.html" class="lien">Estimation VMA</a>
+        Après un entraînement intense, léger,... Votre corps a besoin de récupérer, cet algorithme estime la durée de récupération nécessaire
+        pour que votre corps se répare complètement. Or, votre corps n'a pas besoin d'être tout le temps à 100%. C'est pour cela que cet algorithme
+        donne un temps de récupération avant votre prochain gros entraînement.
+        <br><br>
+        Par exemple, si l'algorithme vous suggère 54h de récupération, ça veut dire qu'il ne faudrait pas faire de gros entraînements avant 54h.
+        Néanmoins, vous pouvez totalement faire un entraînement léger.
     </p>
     
     <footer>
@@ -134,9 +134,9 @@
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="../Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau_course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
@@ -148,12 +148,33 @@
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
-    <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script_outil.js"></script>
+    <script src="script-outil.js"></script>
+
+    <!-- Pour le RPE -->
     <script>
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["sexe-user", "age-user"]))
+        let Slider = document.querySelector(".slider input")
+        let Progress = document.querySelector(".slider progress")
+        let Display = document.querySelector(".slider-name")
+        const ressentiRPE = {
+            1:"Facile",
+            2:"Facile",
+            3:"Facile",
+
+            4:"Modéré",
+            5:"Modéré",
+            6:"Modéré",
+
+            7:"Difficile",
+            8:"Difficile",
+
+            9:"Effort maximal",
+            10:"Effort maximal"
+        }
+
+        Slider.addEventListener("input", function() {
+            Progress.value = this.value
+            Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + ressentiRPE[this.value]
+        })
     </script>
 
     

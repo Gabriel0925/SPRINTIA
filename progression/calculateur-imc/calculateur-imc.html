@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Convertisseur km/miles</title>
+    <title>Sprintia - Calculateur IMC</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,27 +76,42 @@
         </div>
     </header>
 
-    <h1>Convertisseur km/miles</h1>
+    <h1>Calculateur IMC</h1>
     <section class="container-zone">
 
         <div class="form">
+                
             <div class="container-input">
-                <input type="number" id="kilometres" placeholder="Saisis les kilomètres" oninput="KmMiles()" autocomplete="off">
-                <div class="label-input">Saisis les kilomètres</div>
+                <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
+                <div class="label-input">Taille (cm)</div>
             </div>
                     
             <div class="container-input">
-                <input type="number" id="miles" placeholder="Ou saisis les miles" oninput="MilesKm()" autocomplete="off">
-                <div class="label-input">Ou saisis les miles</div>
+                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                <div class="label-input">Poids (kg)</div>
             </div>
+
+            <button id="button-calcul-imc" onclick="CalculIMC()">Calculer</button>
+        </div>
+
+        <div class="zone-result">
+            <p class="zone-result-name-result">Votre IMC : <strong>00</strong></p>
+            <p class="zone-result-interpretation">
+                Veuillez rentrer votre taille ainsi que votre poids pour avoir une interprétation.
+            </p>
         </div>
 
     </section>
 
-    <h2>À quoi ça sert de convertir les kilomètres en miles ?</h2>
+    <h2>C'est quoi l'IMC ?</h2>
     <p class="text">
-        L'Europe utilise le système métrique donc les distances sont en kilomètres. Mais dans d'autres pays comme au États-Unis ou autre, ils utilisent
-        les miles pour les distances. Le convertisseur km/miles vous permet de connaître la distance en kilomètre d'une course au États-Unis ou inversement.
+        L'IMC (indice de masse corporelle) sert à estimer la corpulence. Ce n'est pas un indicateur sportif, mais plutôt un repère de santé.
+    </p>
+    <h2>Le problème de l'IMC ?</h2>
+    <p class="text">
+        L'IMC estime la corpulence à partir de la taille et du poids, mais il ne connait pas votre masse musculaire ! Par exemple, vous pouvez
+        être en obésité sévère alors qu'en réalité vous allez juste à la salle et que vous êtes musclé. Mais ça, l'IMC ne le saura jamais.
+        C'est pourquoi, il faut savoir prendre du recul sur les résultats de cet indicateur.
     </p>
     
     <footer>
@@ -111,9 +126,9 @@
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="../Charge d'entraînement/charge_entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../Estimation VO2max/estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../Niveau de course à pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation_VO2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau_course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
@@ -125,7 +140,19 @@
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
-    <script src="script_outil.js"></script>
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="script-outil.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", async () => {
+            await remplissageChamps(["taille-user", "poids-user"])
+
+            if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && !isNaN(document.getElementById("taille-user").value) && !isNaN(document.getElementById("poids-user").value)) {
+                document.getElementById("button-calcul-imc").click()
+            }
+        })
+    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

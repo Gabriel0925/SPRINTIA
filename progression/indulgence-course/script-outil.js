@@ -174,7 +174,7 @@ async function RecupData() {
     // on aditionne toutes les variables pour avoir la distance sur 28j pour comparer la semaine actuelle a l'ancienne
     Distance28J = Distance7J+Distance14J+Distance21J+Distance28J
     // affichage de la somme des distances sur 28 derniers jours
-    document.getElementById("somme-28J").innerHTML = `<strong>${Number(Distance28J).toFixed(2).replace(".", ",")} km</strong> sur 28 jours`
+    document.getElementById("somme-28J").innerHTML = Number(Distance28J).toFixed(2).replace(".", ",") + " <small>km</small>"
 
     return {Distance7J, Distance28J, nbSemaine}
 }
@@ -192,7 +192,7 @@ async function CalculIndulgence() {
     Distance28J = Number(Distance28J)/nbSemaine
 
     // affichage
-    document.getElementById("km-par-semaine").innerHTML = `<strong>${Number(Distance28J).toFixed(2).replace(".", ",")} km</strong> par semaine`
+    document.getElementById("km-par-semaine").innerHTML = Number(Distance28J).toFixed(2).replace(".", ",") + " <small>km</small>"
 
     // Analyse pour avoir la fouchette de distance conseillée (les coef sont diférent en fonction de la distance)
     if (Distance28J <= 10) {

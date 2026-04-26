@@ -1,5 +1,5 @@
 # Sprintia
-![Image logo Sprintia](./assets/icons-sprintia/icon-1024-V4.0.2.png)
+![Image logo Sprintia](./assets/icons-sprintia/icon-512-V4.3.png)
 
 Sprintia est conçu pour vous aider avant et après un entraînement grâce à des algorithmes 100% gratuits. Vous pouvez y accéder depuis ce lien :
 [Tester Sprintia](https://sprintia.vercel.app)

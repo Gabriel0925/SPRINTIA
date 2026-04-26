@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Estimation du temps de récupération</title>
+    <title>Sprintia - Estimation VMA</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,50 +76,61 @@
         </div>
     </header>
     
-    <h1>Estimation du temps de récupération</h1>
+    <h1>Estimation VMA</h1>
     <section class="container-zone">
 
         <div class="form">
-            <select id="methode-user" onchange="ComboBox()" autocomplete="off">
-                <option value="occasionnel">Sportif·ve occasionnel·le</option>
-                <option value="regulier">Sportif·ve régulier·e</option>
-                <option value="athlete">Athlète confirmé·e</option>
+            <select id="test-user" onchange="RemplirChamps()" autocomplete="off">
+                    <option value="demi-cooper">Test : Demi-Cooper</option>
+                    <option value="cooper">Test : Cooper</option>
+                    <option value="luc-leger">Test : Luc léger</option>
+                    <option value="course-reference">Course type (moins précis)</option>
             </select>
-              
-            <div class="container-input">
-                <input type="text" id="duree-entrainement-user" placeholder="Durée (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
-                maxlength="8" autocomplete="off">
-                <div class="label-input">Durée (hh:mm:ss)</div>
-            </div>
-                
-            <div class="slider-cont">
-                <div class="slider-name">RPE : <span class="RPE">1</span>Facile</div>
-                <div class="slider">
-                    <input type="range" min="1" max="10" value="1" autocomplete="off">
-                    <progress min="1" max="10" value="1"></progress>
+            <div class="side-by-side">
+                <div class="container-input">
+                    <input type="number" id="distance-user" class="small" placeholder="Distance (km)" autocomplete="off">
+                    <div class="label-input">Distance (km)</div>
+                </div>
+                    
+                <div class="container-input">
+                    <input type="text" id="duree-user" class="small" placeholder="Durée (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
+                    maxlength="8" autocomplete="off">
+                    <div class="label-input">Durée (hh:mm:ss)</div>
                 </div>
             </div>
 
-            <button onclick="EstimationTempsRecuperation()">Estimer</button>
+            <button onclick="EstimationVMA()">Estimer</button>
         </div>
 
         <div class="large-zone-result">
-            <p class="large-zone-result-name">Temps de récup. estimé</p>
+            <p class="large-zone-result-name">VMA estimée</p>
             <p class="large-zone-result-result">
-                00 h
+                0 km/h
             </p>
         </div>
 
     </section>
-    
-    <h2>Comment se servir de cet algorithme ?</h2>
+
+    <h2>C'est quoi la VMA ?</h2>
     <p class="text">
-        Après un entraînement intense, léger,... Votre corps a besoin de récupérer, cet algorithme estime la durée de récupération nécessaire
-        pour que votre corps se répare complètement. Or, votre corps n'a pas besoin d'être tout le temps à 100%. C'est pour cela que cet algorithme
-        donne un temps de récupération avant votre prochain gros entraînement.
-        <br><br>
-        Par exemple, si l'algorithme vous suggère 54h de récupération, ça veut dire qu'il ne faudrait pas faire de gros entraînements avant 54h.
-        Néanmoins, vous pouvez totalement faire un entraînement léger.
+        La VMA (vitesse maximale aérobie) est la vitesse de course à laquelle votre corps atteint sa consommation maximale d'oxygène.
+        C'est un indicateur clé pour les coureurs·es, il permet de définir des zones-vitesse/allure pour varier vos entraînements.
+        Réévaluez votre VMA tous les 2-3 mois pour ajuster vos allures d'entraînement et voir si vous avez progressé. Pour calculer vos zones
+        de vitesse je vous renvoie
+        <a class="lien" href="../zones-vitesse/zones-vitesse.html">ici</a>.
+    </p>
+
+    <h2>Comment se servir de la VMA ?</h2>
+    <p class="text">
+        Premièrement, la VMA sert à définir vos allures d'entraînement parce qu'on ne court pas toujours à 100% de sa VMA mais pour en savoir
+        plus à ce sujet je vous renvoie à
+        <a class="lien" href="../zones-vitesse/zones-vitesse.html">l'outil dédié</a>.
+    </p>
+    <p class="text">
+        Deuxièmement, votre VMA donne une indication purement théorique de votre potentiel sur une course (à condition d'avoir 
+        l'endurance nécessaire).
+        <br>
+        Pour finir, la VMA permet d'évaluer votre état de forme et votre progression au cours du temps.
     </p>
     
     <footer>
@@ -135,8 +146,8 @@
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
             <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../estimation-vo2max/estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../niveau-course-a-pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
@@ -149,33 +160,6 @@
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
     <script src="script-outil.js"></script>
-
-    <!-- Pour le RPE -->
-    <script>
-        let Slider = document.querySelector(".slider input")
-        let Progress = document.querySelector(".slider progress")
-        let Display = document.querySelector(".slider-name")
-        const ressentiRPE = {
-            1:"Facile",
-            2:"Facile",
-            3:"Facile",
-
-            4:"Modéré",
-            5:"Modéré",
-            6:"Modéré",
-
-            7:"Difficile",
-            8:"Difficile",
-
-            9:"Effort maximal",
-            10:"Effort maximal"
-        }
-
-        Slider.addEventListener("input", function() {
-            Progress.value = this.value
-            Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + ressentiRPE[this.value]
-        })
-    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

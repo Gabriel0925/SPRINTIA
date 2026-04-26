@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Protéines quotidiennes</title>
+    <title>Sprintia - Estimation du temps de récupération</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sprintia">
-    <link rel="apple-touch-icon" href="assets/icons-sprintia/icon-1024-V4.0.2.png">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-1024-V4.0.2.png">
     
     <script src="../../parametres/script-themes.js"></script>
 </head>
@@ -76,86 +76,50 @@
         </div>
     </header>
     
-    <h1>Protéines quotidiennes</h1>
+    <h1>Estimation du temps de récupération</h1>
     <section class="container-zone">
 
         <div class="form">
-            <select id="objectif-user" onchange="ComboBox()" autocomplete="off">
-                <option value="Perte-poids">Objectif : Perte de poids</option>
-                <option value="Minimum">Objectif : Minimum vital</option>
-                <option value="Meilleure">Objectif : Meilleure santé</option>
-                <option value="Maintien">Objectif : Maintien de la masse</option>
-                <option value="Prise">Objectif : Prise de masse</option>
+            <select id="methode-user" onchange="ComboBox()" autocomplete="off">
+                <option value="occasionnel">Sportif·ve occasionnel·le</option>
+                <option value="regulier">Sportif·ve régulier·e</option>
+                <option value="athlete">Athlète confirmé·e</option>
             </select>
-                
+              
             <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                <div class="label-input">Poids (kg)</div>
+                <input type="text" id="duree-entrainement-user" placeholder="Durée (hh:mm:ss) *" title="Formats acceptés : hh:mm:ss ou mm:ss"
+                maxlength="8" autocomplete="off">
+                <div class="label-input">Durée (hh:mm:ss)</div>
+            </div>
+                
+            <div class="slider-cont">
+                <div class="slider-name">RPE : <span class="RPE">1</span>Facile</div>
+                <div class="slider">
+                    <input type="range" min="1" max="10" value="1" autocomplete="off">
+                    <progress min="1" max="10" value="1"></progress>
+                </div>
             </div>
 
-            <button onclick="EstimationProteines()">Calculer</button>
+            <button onclick="EstimationTempsRecuperation()">Estimer</button>
         </div>
 
         <div class="large-zone-result">
-            <p class="large-zone-result-name">Protéines recommandées</p>
+            <p class="large-zone-result-name">Temps de récup. estimé</p>
             <p class="large-zone-result-result">
-                0 g/jour
+                00 h
             </p>
         </div>
-        
+
     </section>
-
-    <h2>Qu'est-ce que l'outil Protéines quotidiennes ?</h2>
+    
+    <h2>Comment se servir de cet algorithme ?</h2>
     <p class="text">
-        L'outil Protéines quotidiennes vous indique la quantité optimale de protéines à consommer chaque jour, en fonction de votre poids et 
-        de votre objectif. Il vous aide à adapter votre alimentation pour préserver votre masse musculaire, améliorer votre récupération,...
-    </p>
-
-    <h2>Aliments protéinés</h2>
-    <ul class="list-information">
-        <li>
-            Des oeufs
-        </li>
-        <li>
-            De la viande, du poisson
-        </li>
-        <li>
-            Des noix, des amandes, des flocons d'avoine (le top au petit-déjeuner)
-        </li>
-        <li>
-            Des produits laitiers faibles en gras
-        </li>
-        <li>
-            Des boissons
-        </li>
-        <li>
-            De la Whey protéine
-        </li>
-    </ul>
-
-    <h2>Quand est-ce qu'un produit est considéré comme protéiné ?</h2>
-    <p class="text">
-        Pour commencer, il faut poser les bases, voici les tranches pour des aliments de 100g.
-    </p>
-    <ul class="list-information">
-        <li>
-            Un aliment avec moins de 5 grammes est considéré comme <strong>faible</strong>.
-        </li>
-        <li>
-            Un aliment qui possède entre 5 et 12 grammes c'est la tranche <strong>moyenne</strong>. 
-        </li>
-        <li>
-            Un aliment qui possède entre 13 et 20 grammes de protéines est considéré comme <strong>élevé</strong>.
-        </li>
-        <li>
-            Un aliment avec plus de 20 grammes est considéré comme <strong>très élevé</strong>.
-        </li>
-    </ul>
-
-    <h2>Les protéines font-elles maigrir ?</h2>
-    <p class="text">
-        Oui, en agissant comme un coupe-faim. Un apport plus élevé en protéines augmente 
-        les niveaux des hormones de satiété, tout en réduisant vos niveaux de ghréline, l'hormone de la faim.
+        Après un entraînement intense, léger,... Votre corps a besoin de récupérer, cet algorithme estime la durée de récupération nécessaire
+        pour que votre corps se répare complètement. Or, votre corps n'a pas besoin d'être tout le temps à 100%. C'est pour cela que cet algorithme
+        donne un temps de récupération avant votre prochain gros entraînement.
+        <br><br>
+        Par exemple, si l'algorithme vous suggère 54h de récupération, ça veut dire qu'il ne faudrait pas faire de gros entraînements avant 54h.
+        Néanmoins, vous pouvez totalement faire un entraînement léger.
     </p>
     
     <footer>
@@ -171,8 +135,8 @@
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
             <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../estimation-vo2max/estimation_VO2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../niveau-course-a-pied/niveau_course.html">Niveau de course à pied</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
         </div>
             
         <div class="conteneur-lien-footer">
@@ -184,12 +148,33 @@
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
-    <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-outil.js"></script>
+
+    <!-- Pour le RPE -->
     <script>
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["poids-user"]))
+        let Slider = document.querySelector(".slider input")
+        let Progress = document.querySelector(".slider progress")
+        let Display = document.querySelector(".slider-name")
+        const ressentiRPE = {
+            1:"Facile",
+            2:"Facile",
+            3:"Facile",
+
+            4:"Modéré",
+            5:"Modéré",
+            6:"Modéré",
+
+            7:"Difficile",
+            8:"Difficile",
+
+            9:"Effort maximal",
+            10:"Effort maximal"
+        }
+
+        Slider.addEventListener("input", function() {
+            Progress.value = this.value
+            Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + ressentiRPE[this.value]
+        })
     </script>
 
     

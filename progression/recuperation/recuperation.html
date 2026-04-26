@@ -77,6 +77,41 @@
     </header>
     
     <h1>Récupération</h1>
+
+    <div class="button-flottant" onclick="window.location.href = 'ajouter-recuperation.html'">
+        <i class="fs-icon_add"></i>
+        <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+    </div>
+
+    <section class="container-zone">
+
+        <div class="zone-coach">
+            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
+                Chargement...
+            </p> 
+        </div>
+
+    </section>
+    <section class="container-block"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">FC repos</p>
+            <p class="container-block-data-data" id="somme-28J">48  <small>bpm</small></p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Niveau de fatigue</p>
+            <p class="container-block-data-data" id="km-par-semaine">5  <small>/10</small></p>
+        </div>
+
+    </section>
+
+    <h2>FC repos au cours du temps</h2>
+    <div class="chart-container" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
+
     
     <footer>
         <div class="conteneur-lien-footer">
@@ -104,10 +139,17 @@
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script> 
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-outil.js"></script>
+    <script src="script-outil.js"></script> 
+
+    <script>
+        window.addEventListener("DOMContentLoaded", genererGraphiqueLine(["L", "M", "M", "J", "V"], [45, 47, 49, 46, 43]))
+    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

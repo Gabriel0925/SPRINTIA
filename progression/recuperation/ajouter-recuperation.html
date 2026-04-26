@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Charge d'entraînement</title>
+    <title>Sprintia - Ajouter une récupération</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +16,10 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sprintia">
-    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-512-V4.3.png">
+    <link rel="apple-touch-icon" href="assets/icons-sprintia/icon-512-V4.3.png">
     
     <script src="../../parametres/script-themes.js"></script>
-</head>  
+</head>
 
 <body>
     <header>
@@ -76,61 +76,35 @@
         </div>
     </header>
     
-    <h1>Charge d'entraînement</h1>
+    <h1>Ajouter une récupération</h1>
 
     <section class="container-zone">
 
-        <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
-            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
-                Chargement...
-            </p> 
+        <div class="form">
+
+            <div class="container-input">
+                <input type="date" id="date-entrainement-user" autocomplete="off">
+                <div class="label-input">Date</div>
+            </div>
+                    
+            <div class="container-input">
+                <input type="text" id="fc-repos-user" placeholder="FC repos *" autocomplete="off" maxlength="80">
+                <div class="label-input">FC repos *</div> 
+            </div>
+                
+            <div class="slider-cont">
+                <div class="slider-name">Nuit passée : <span class="RPE">1</span> Réparatrice</div>
+                <div class="slider">
+                    <input type="range" min="1" max="10" value="1" autocomplete="off">
+                    <progress min="1" max="10" value="1"></progress>
+                </div>
+            </div>
+                
+            <button id="button-sauvegarder" onclick="saveWorkout()">Sauvegarder</button>
         </div>
 
     </section>
-    
-    <section class="container-box">
 
-        <div class="small-zone-result">
-            <p class="small-zone-result-name">Charge 7J</p>
-            <p class="small-zone-result-indication" id="cible-charge-7j">Cible : pas assez de données</p>
-
-            <div class="container-result">
-                <p class="small-zone-result-result" id="charge-7j">0</p>
-                <p class="small-zone-result-unit">CE</p>
-            </div>
-        </div>
-        <div class="small-zone-result">
-            <p class="small-zone-result-name">Charge 28J</p>
-            <p class="small-zone-result-indication">Charge chronique</p>
-
-            <div class="container-result">
-                <p class="small-zone-result-result" id="charge-28j">0</p>
-                <p class="small-zone-result-unit">CE</p>
-            </div>
-        </div>
-        
-    </section>
-
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-    </div>
-
-    <h2>C'est quoi la charge d'entraînement ?</h2>
-    <p class="text">
-        La charge d'entraînement permet de quantifier le stress physique imposé à votre corps
-        durant les 7 derniers jours. La charge d'entraînement prend en compte la durée de 
-        l'entraînement et l'effort fourni durant cet entraînement. La charge des 7 derniers jours
-        est comparée sur les 28 derniers jours afin d'avoir une idée de votre progression par 
-        rapport à avant. En respectant la charge d'entraînement vous réduisez le risque de vous blesser.
-    </p>
-
-    <h2>À quoi ça sert la charge d'entraînement ?</h2>
-    <p class="text">
-        La charge d'entraînement sert à optimiser l'intensité et le volume de vos entraînements futurs.
-    </p>
-    
     <footer>
         <div class="conteneur-lien-footer">
             <a class="a_title">Catégories</a>
@@ -143,7 +117,7 @@
            
         <div class="conteneur-lien-footer">             
             <a class="a_title">Outils conseillés</a>
-            <a class="a_footer" href="charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
             <a class="a_footer" href="../estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
             <a class="a_footer" href="../niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
         </div>
@@ -157,33 +131,46 @@
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
-
-    <!-- Import de la bibliothèque pr le graphique -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>   
+    
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-
-    <!-- Pour le JRM Coach -->
+    <script src="script-outil.js"></script>
+    
+    <!-- Pour le ressenti de la nuit passée -->
     <script>
-        async function JRMCoachUser() {
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("nom-coach").textContent = AvatarCoach + " " + NomCoach + " :"
-            }
+        let Slider = document.querySelector(".slider input")
+        let Progress = document.querySelector(".slider progress")
+        let Display = document.querySelector(".slider-name")
+        const ressentiFatigue = {
+            1: "Réparatrice",
+            2: "Excellente",
+            3: "Très bonne",
+            4: "Bonne",
+            5: "Correcte",
+            6: "Moyenne",
+            7: "Agitée",
+            8: "Mauvaise",
+            9: "Très mauvaise",
+            10: "Nuit blanche"
         }
 
-        window.addEventListener("DOMContentLoaded", () => {
-            JRMCoachUser()
+        Slider.addEventListener("input", function() {
+            Progress.value = this.value
+            Display.innerHTML = "Nuit passée : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + ressentiFatigue[this.value]
         })
+
+        let ChampDate = document.getElementById("date-entrainement-user")
+        let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"
+        // Enlever la partie qui nous interrese pas
+        DateActuelle = DateActuelle.split("T") // ['2026-01-24', '13:57:55.505Z']
+        DateActuelle = DateActuelle[0] // '2026-01-24'
+
+        ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
+        ChampDate.value = DateActuelle
     </script>
 
-    <script src="script-outil.js"></script>
-
+    
     <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>
 </body>

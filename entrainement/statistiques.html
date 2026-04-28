@@ -234,22 +234,26 @@
     <script>
         const DateActuelle = new Date()
 
-        let DateMoins7J = DateActuelle.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        let DateMoins7J = new Date()
+        DateMoins7J = DateMoins7J.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
         DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
         // On prend que ce qui nous interesse donc la premiere partie
         DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
 
-        let DateMoins30J = DateActuelle.setDate(DateActuelle.getDate() - 30) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        let DateMoins30J = new Date()
+        DateMoins30J = DateMoins30J.setDate(DateActuelle.getDate() - 30) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
         DateMoins30J = new Date(DateMoins30J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
         // On prend que ce qui nous interesse donc la premiere partie
         DateMoins30J = DateMoins30J.split('T')[0] // on obtient '2026-01-21'
 
-        let DateMoins90J = DateActuelle.setDate(DateActuelle.getDate() - 90) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        let DateMoins90J = new Date()
+        DateMoins90J = DateMoins90J.setDate(DateActuelle.getDate() - 90) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
         DateMoins90J = new Date(DateMoins90J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
         // On prend que ce qui nous interesse donc la premiere partie
         DateMoins90J = DateMoins90J.split('T')[0] // on obtient '2026-01-21'
 
-        let DateMoins365J = DateActuelle.setDate(DateActuelle.getDate() - 365) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+        let DateMoins365J = new Date()
+        DateMoins365J = DateMoins365J.setDate(DateActuelle.getDate() - 365) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
         DateMoins365J = new Date(DateMoins365J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
         // On prend que ce qui nous interesse donc la premiere partie
         DateMoins365J = DateMoins365J.split('T')[0] // on obtient '2026-01-21'
@@ -260,8 +264,8 @@
 
         async function statistiquesParSport(sportForFunction) {
             // recup data des derniers jours en fonction de la date
-            const historiqueDBStats = await db.entrainement.where("date").above(dateDemandee).toArray() // la var dateChoisie change en fonction du selected dans l'interface
-            
+            const historiqueDBStats = await db.entrainement.where("date").aboveOrEqual(dateDemandee).toArray() // la var dateChoisie change en fonction du selected dans l'interface
+
             console.log(historiqueDBStats)
 
             // maj de la variable globale
@@ -274,9 +278,7 @@
 
             historiqueDBStats.forEach(element => {
                 // si le sport dans la BDD est égale aux sport de la navbar stats par sport
-                if (element.sport == sportForFunction) {
-                    compteurNbEntrainement += 1 // maj de la variable pr compter le nombre d'entrainement en course par exemple
-
+                if (element.sport == sportDemandee) {
                     // si il y a une durée et qu'elle est utilisable alors on ajoute
                     if (element.duree != undefined && !isNaN(element.duree)) {
                         compteurDuree += element.duree
@@ -285,6 +287,8 @@
                         if (element.distance != undefined && !isNaN(element.distance)) {
                             compteurDistance += element.distance
                         }
+                    
+                        compteurNbEntrainement += 1 // maj de la variable pr compter le nombre d'entrainement en course par exemple
                     }
 
                 }
@@ -306,7 +310,7 @@
         
         async function init(dateChoisie) {
             // recup data des derniers jours en fonction de la date
-            const historiqueDB = await db.entrainement.where("date").above(dateChoisie).toArray() // la var dateChoisie change en fonction du selected dans l'interface
+            const historiqueDB = await db.entrainement.where("date").aboveOrEqual(dateChoisie).toArray() // la var dateChoisie change en fonction du selected dans l'interface
 
             // maj de la var global
             dateDemandee = dateChoisie

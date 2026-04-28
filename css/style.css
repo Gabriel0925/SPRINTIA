@@ -428,7 +428,7 @@ footer div.conteneur-lien-footer {
 footer a.a_title{
     font-size: var(--P);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COLOR_TEXT_PRIMARYE);
+    color: var(--COLOR_TEXT_PRIMARY);
     padding: var(--SPACE_XS);
 }
 footer a.a_footer{
@@ -895,7 +895,7 @@ section.container-workout-cards div.cards-history-workout div.data-workout-paire
     margin: var(--SPACE_XXS) 0;
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-paire p{
-    color: var(--COLOR_TEXT_PRIMARYE);
+    color: var(--COLOR_TEXT_PRIMARY);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_NORMAL);
     padding: var(--SPACE_XS);
@@ -1182,9 +1182,10 @@ section.container-box {
 
 /* --- Zone pour le coach --- */
 div.zone-coach {
+    margin-top: var(--SPACE_M); 
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COLOR_ACCENT2);
-    overflow: hidden;
+    z-index: 1;
+    position: relative;
 
     flex-grow: 1;
     max-width: 420px;
@@ -1193,26 +1194,36 @@ div.zone-coach {
 
     padding: var(--SPACE_S);
 }
+div.zone-coach::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    filter: blur(30px);
+    z-index: -1;
+}
 div.zone-coach.clickable:active {
     transform: scale(var(--SCALE_SMALL));
 }
 div.zone-coach p.zone-coach-name {
-    color: var(--COLOR_BACKGROUND);
+    color: var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
     margin-bottom: var(--SPACE_XS);
 }
 div.zone-coach p.zone-coach-interpretation {
-    color: var(--COLOR_BACKGROUND);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
 /* --- Zone pour le coach qui prend tout l'espace dispo --- */
 div.large-zone-coach {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COLOR_ACCENT2);
-    overflow: hidden;
+    position: relative;
 
     flex-grow: 1;
     height: auto;
@@ -1220,26 +1231,35 @@ div.large-zone-coach {
     padding: var(--SPACE_S);
     transition: all ease-out var(--TIME_TRANSITION);
 }
+div.large-zone-coach::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    filter: blur(30px);
+    z-index: -1;
+}
 div.large-zone-coach.clickable:active {
     transform: scale(var(--SCALE_SMALL));
 }
 div.large-zone-coach p.large-zone-coach-name {
-    color: var(--COLOR_BACKGROUND);
+    color: var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
     margin-bottom: var(--SPACE_XS);
 }
 div.large-zone-coach p.large-zone-coach-interpretation {
-    color: var(--COLOR_BACKGROUND);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
 /* --- Zone pour le résultat et l'interprétation --- */
 div.zone-result {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COLOR_ACCENT);
-    overflow: hidden;
 
     flex-grow: 1;
     max-width: 420px;
@@ -1247,6 +1267,19 @@ div.zone-result {
     min-height: 180px;
 
     padding: var(--SPACE_S);
+    position: relative;
+    overflow: hidden;
+}
+div.zone-result::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(220deg, var(--COLOR_ACCENT) 100%, var(--COLOR_ACCENT) 100%);
+    filter: blur(25px);
+    z-index: -1;
 }
 div.zone-result p.zone-result-name-result{
     color: var(--COLOR_BACKGROUND);
@@ -1263,7 +1296,6 @@ div.zone-result p.zone-result-interpretation{
 /* --- Zone pour mettre en avant le résultat --- */
 div.large-zone-result {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COLOR_ACCENT);
 
     flex-grow: 1;
     max-width: 420px;
@@ -1271,6 +1303,19 @@ div.large-zone-result {
     min-height: 160px;
 
     padding: var(--SPACE_S);
+    position: relative;
+    overflow: hidden;
+}
+div.large-zone-result::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(220deg, var(--COLOR_ACCENT) 100%, var(--COLOR_ACCENT) 100%);
+    filter: blur(25px);
+    z-index: -1;
 }
 div.large-zone-result p.large-zone-result-name {
     color: var(--COLOR_BACKGROUND);
@@ -1294,8 +1339,8 @@ div.large-zone-result p.large-zone-result-result {
 div.small-zone-result {
     border-radius: var(--BORDER_BIG);
     color: var(--COLOR_BACKGROUND);
-    background-color: var(--COLOR_ACCENT);
     overflow: hidden;
+    position: relative;
 
     display: flex;
     flex-direction: column;
@@ -1306,26 +1351,37 @@ div.small-zone-result {
     height: 180px;
     transition: all ease-out var(--TIME_TRANSITION);
 }
-div.small-zone-result.color-zone:nth-child(1) {
-    background-color: #3dbaf9;
+div.small-zone-result::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(220deg, var(--COLOR_ACCENT) 100%, var(--COLOR_ACCENT) 100%);
+    filter: blur(25px);
+    z-index: -1;
 }
-div.small-zone-result.color-zone:nth-child(2) {
-    background-color: #1fff80;
+div.small-zone-result.color-zone:nth-child(1)::before {
+    background: linear-gradient(220deg, #3dbaf9 100%, #3dbaf9 100%);
 }
-div.small-zone-result.color-zone:nth-child(3) {
-    background-color: #e7e625;
+div.small-zone-result.color-zone:nth-child(2)::before {
+    background: linear-gradient(220deg, #1fff80 100%, #1fff80 100%);
 }
-div.small-zone-result.color-zone:nth-child(4) {
-    background-color: #ff781e;
+div.small-zone-result.color-zone:nth-child(3)::before {
+    background: linear-gradient(220deg, #e7e625 100%, #e7e625 100%);
 }
-div.small-zone-result.color-zone:nth-child(5) {
-    background-color: #ff4b4c;
+div.small-zone-result.color-zone:nth-child(4)::before {
+    background: linear-gradient(220deg, #ff781e 100%, #ff781e 100%);
 }
-div.small-zone-result.color-zone:nth-child(6) {
-    background-color: #d672ff;
+div.small-zone-result.color-zone:nth-child(5)::before {
+    background: linear-gradient(220deg, #ff4b4c 100%, #ff4b4c 100%);
 }
-div.small-zone-result.color-zone:nth-child(7) {
-    background-color: #7b68ee;
+div.small-zone-result.color-zone:nth-child(6)::before {
+    background: linear-gradient(220deg, #d672ff 100%, #d672ff 100%);
+}
+div.small-zone-result.color-zone:nth-child(7)::before {
+    background: linear-gradient(220deg, #7b68ee 100%, #7b68ee 100%);
 }
 div.small-zone-result p.small-zone-result-name {
     font-size: var(--H2);

@@ -62,7 +62,6 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
         
         // maj des valeurs dans la base de données
         localStorage.setItem("ColorActuelleUse", "theme_azur");
-        localStorage.setItem("ToggleThemeComplet", "False")
 
         // Légère pause
         await new Promise(r => setTimeout(r, 650))
@@ -70,9 +69,7 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
         // confirmation sauvegarde
         Button.textContent = "Réinitialisé"
 
-        document.getElementById("toggle-theme-complet").checked = true // on désactive le toggle harmonie (valeur par défaut)
-
-        colorTheme("theme_azur", "elem1") // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
+        colorTheme("theme_azur", "monochromes-1") // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
 
         // Pause
         await new Promise(r => setTimeout(r, 650))

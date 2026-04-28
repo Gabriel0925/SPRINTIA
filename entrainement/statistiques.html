@@ -235,9 +235,9 @@
         const DateActuelle = new Date()
 
         let DateMoins7J = DateActuelle.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-        DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
+        DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
         // On prend que ce qui nous interesse donc la premiere partie
-        DateMoins7J = DateMoins7J.split('T')[0] // on obtient '2026-01-21'
+        DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
 
         let DateMoins30J = DateActuelle.setDate(DateActuelle.getDate() - 30) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
         DateMoins30J = new Date(DateMoins30J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
@@ -261,6 +261,8 @@
         async function statistiquesParSport(sportForFunction) {
             // recup data des derniers jours en fonction de la date
             const historiqueDBStats = await db.entrainement.where("date").above(dateDemandee).toArray() // la var dateChoisie change en fonction du selected dans l'interface
+            
+            console.log(historiqueDBStats)
 
             // maj de la variable globale
             sportDemandee = sportForFunction

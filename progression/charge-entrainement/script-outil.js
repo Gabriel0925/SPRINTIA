@@ -82,10 +82,8 @@ async function InterpretationJRM(Ratio, AnalysePossible) {
         "Statut : <strong>Désentraînement</strong><br>Tu régresses là ! Il ne faut pas hésiter à faire 1 ou 2 répétitions en plus sur tes séries pour pouvoir augmenter ton RPE et par conséquent ta charge d'entraînement.",
         "Statut : <strong>Productif</strong><br>GG, tu progresses, je vois que tu mets une bonne intensité pendant tes séances, continue comme ça. Tu n'as presque plus besoin de moi.",
         "Statut : <strong>Surentraînement</strong><br>Ton corps n'arrive pas à bien récupérer de tes entraînements récents, n'oublie jamais que le muscle se construit au repos, pas à la salle, repose-toi un peu avant d'aller à la salle."
-    ] 
-
-    const PhraseJRMStatut = "Statut : <strong>Pause</strong><br>Actuellement les analyses sont en pause je ne peux donc pas analyser ta charge d'entraînement pour déterminer si ton entraînement est productif,..."
-
+    ]
+    
     // Déterminer le coach choisis du user
     let CoachUserDB = await db.JRM_Coach.toArray()
     let StyleCoachUser = PhraseJRMBienveillant // attribution du style de coach a utilisé pour l'interpretation

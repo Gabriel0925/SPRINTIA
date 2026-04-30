@@ -81,13 +81,13 @@
     <div class="button-flottant" onclick="window.location.href = 'ajouter-recuperation.html'">
         <i class="fs-icon_add"></i>
         <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
-    </div>
+    </div> 
 
     <section class="container-zone">
 
         <div class="zone-coach">
             <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
-            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
+            <p class="zone-coach-interpretation" id="reponse-coach">
                 Chargement...
             </p> 
         </div>
@@ -146,11 +146,6 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-outil.js"></script> 
-
-    <script>
-        window.addEventListener("DOMContentLoaded", genererGraphiqueLine(["L", "M", "M", "J", "V"], [45, 47, 49, 46, 43]))
-    </script>
-
     
     <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>

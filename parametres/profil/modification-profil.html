@@ -193,8 +193,8 @@
                 alert("Valeur non valide, le poids doit être un nombre inférieur à 1000.")
                 return
             }
-            if (fcReposUser <= 20 || fcReposUser >= 220) {
-                alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre compris entre 20 et 220 bpm.")
+            if (fcReposUser < 20 || fcReposUser > 140) {
+                alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre compris entre 20 et 140 bpm.")
                 return
             }
 

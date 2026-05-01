@@ -83,21 +83,13 @@
         <div class="form">
 
             <div class="container-input">
-                <input type="date" id="date-entrainement-user" autocomplete="off">
+                <input type="date" id="date-recuperation" autocomplete="off">
                 <div class="label-input">Date</div>
             </div>
                     
             <div class="container-input">
-                <input type="text" id="fc-repos-user" placeholder="FC repos *" autocomplete="off" maxlength="80">
+                <input type="text" id="fc-repos-recuperation" placeholder="FC repos *" autocomplete="off" maxlength="80">
                 <div class="label-input">FC repos *</div> 
-            </div>
-                
-            <div class="slider-cont">
-                <div class="slider-name">Nuit passée : <span class="RPE">1</span> Réparatrice</div>
-                <div class="slider">
-                    <input type="range" min="1" max="10" value="1" autocomplete="off">
-                    <progress min="1" max="10" value="1"></progress>
-                </div>
             </div>
                 
             <button id="button-sauvegarder" onclick="saveRecuperation()">Sauvegarder</button>
@@ -139,28 +131,7 @@
     
     <!-- Pour le ressenti de la nuit passée -->
     <script>
-        let Slider = document.querySelector(".slider input")
-        let Progress = document.querySelector(".slider progress")
-        let Display = document.querySelector(".slider-name")
-        const ressentiFatigue = {
-            1: "Réparatrice",
-            2: "Excellente",
-            3: "Très bonne",
-            4: "Bonne",
-            5: "Correcte",
-            6: "Moyenne",
-            7: "Agitée",
-            8: "Mauvaise",
-            9: "Très mauvaise",
-            10: "Nuit blanche"
-        }
-
-        Slider.addEventListener("input", function() {
-            Progress.value = this.value
-            Display.innerHTML = "Nuit passée : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + ressentiFatigue[this.value]
-        })
-
-        let ChampDate = document.getElementById("date-entrainement-user")
+        let ChampDate = document.getElementById("date-recuperation")
         let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"
         // Enlever la partie qui nous interrese pas
         DateActuelle = DateActuelle.split("T") // ['2026-01-24', '13:57:55.505Z']

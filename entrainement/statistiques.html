@@ -266,8 +266,6 @@
             // recup data des derniers jours en fonction de la date
             const historiqueDBStats = await db.entrainement.where("date").aboveOrEqual(dateDemandee).toArray() // la var dateChoisie change en fonction du selected dans l'interface
 
-            console.log(historiqueDBStats)
-
             // maj de la variable globale
             sportDemandee = sportForFunction
 

@@ -127,7 +127,6 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-outil.js"></script>
     
     <!-- Pour le ressenti de la nuit passée -->
     <script>
@@ -139,6 +138,55 @@
 
         ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
         ChampDate.value = DateActuelle
+
+        async function saveRecuperation() {
+            // recup
+            let champsDate = document.getElementById("date-recuperation").value
+            let champsFcRepos = parseInt(document.getElementById("fc-repos-recuperation").value)
+            let BoutonSauvegarde = document.getElementById("button-sauvegarder")
+
+            // verif des champs
+            if (!champsDate || !champsFcRepos || isNaN(champsFcRepos)) {
+                alert("Les champs avec '*' sont obligatoire, vous devez les remplir.")
+                return
+            }
+
+            // Prépa date pour les comparer ensuite
+            const dateUserFormatee = new Date(champsDate)
+            const dateActuelle = new Date()
+            if (dateUserFormatee > dateActuelle) { // Comparaison de 2 dates
+                alert("La date ne peut pas être dans le future.")
+                return
+            }
+            
+            if (champsFcRepos <= 0) {
+                alert("Valeur non valide, la FC repos doit être un nombre supérieur à 0.")
+                return
+            }
+            if (champsFcRepos < 20 || champsFcRepos > 140) {
+                alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre compris entre 20 et 140 bpm.")
+                return
+            }
+
+            // sauvegarde
+            await db.recuperation.add({
+                date:champsDate,
+                fc_repos:champsFcRepos
+            })
+
+            // Transmet l'info au user
+            BoutonSauvegarde.disabled = true 
+            BoutonSauvegarde.textContent = "Sauvegarde..."
+
+            setTimeout(() => {
+                BoutonSauvegarde.textContent = "Sauvegarder"
+                BoutonSauvegarde.disabled = false
+
+                window.location.href = `recuperation.html`
+            }, 800)
+
+            return
+        }
     </script>
 
     

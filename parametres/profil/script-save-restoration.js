@@ -20,6 +20,7 @@ async function DownloadDatas() {
     let NiveauCourseDB = await db.niveau_course.toArray()
     let JrmCoachDB = await db.JRM_Coach.toArray()
     let ProfilDB = await db.profil.toArray()
+    let recupDB = await db.recuperation.toArray()
 
     // (!!!--- Modifier si ajout de table ---!!!)
     // Dictionnaire avec les datas du local storage et les tables de l'indexed DB
@@ -29,7 +30,8 @@ async function DownloadDatas() {
             entrainement: WorkoutDB,
             niveau_course: NiveauCourseDB,
             JRM_Coach: JrmCoachDB,
-            profil: ProfilDB
+            profil: ProfilDB,
+            recuperation:recupDB
         }
     }
 
@@ -91,6 +93,7 @@ async function ReadFile(event) {
             const TableNiveauCOurse = DataFileIndexedDB.niveau_course
             const TableJRMCoach = DataFileIndexedDB.JRM_Coach
             const TableProfil = DataFileIndexedDB.profil
+            const TableRecuperation = DataFileIndexedDB.recuperation
 
             // (!!!--- Modifier si ajout de table ---!!!)
             // on vide chaque table de l'indexedDB avant d'ajouter les datas
@@ -98,6 +101,7 @@ async function ReadFile(event) {
             await db.niveau_course.clear()
             await db.JRM_Coach.clear()
             await db.profil.clear()
+            await db.recuperation.clear()
 
             // (!!!--- Modifier si ajout de table ---!!!)
             if (TableEntrainement.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
@@ -115,12 +119,18 @@ async function ReadFile(event) {
                     await db.JRM_Coach.add(element)
                 }
             }
-
             // vérification si la table profil existe parce que cette table a été ajouté avec Sprintia 4.2 
             if (TableProfil != undefined && TableProfil.length > 0) {     
                 for (let element of TableProfil) { // on recupere les datas ligne par ligne de la table correspondante
                     // on le met à l'id 1 car il y a que cette ligne dans la bdd
                     await db.profil.put(element, 1) 
+                }
+            }
+            // vérification si la table profil existe parce que cette table a été ajouté avec Sprintia 4.2 
+            if (TableRecuperation != undefined && TableRecuperation.length > 0) {     
+                for (let element of TableRecuperation) { // on recupere les datas ligne par ligne de la table correspondante
+                    // on le met à l'id 1 car il y a que cette ligne dans la bdd
+                    await db.recuperation.put(element, 1) 
                 }
             }
             
@@ -162,6 +172,7 @@ async function SupprimerDatas() {
         await db.niveau_course.clear()
         await db.JRM_Coach.clear()
         await db.profil.clear()
+        await db.recuperation.clear()
 
         setTimeout(() => {
             // transimission du message

@@ -1201,7 +1201,7 @@ div.zone-coach::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(30px) brightness(0.8);
+    filter: blur(30px) brightness(0.7);
     z-index: -1;
 }
 div.zone-coach.clickable:active {
@@ -1238,7 +1238,7 @@ div.large-zone-coach::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(30px) brightness(0.8);
+    filter: blur(30px) brightness(0.7);
     z-index: -1;
 }
 div.large-zone-coach.clickable:active {

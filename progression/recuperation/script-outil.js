@@ -35,6 +35,14 @@ dateMoins7J = new Date(dateMoins7J).toISOString() // permet de recup "2026-01-21
 // On prend que ce qui nous interesse donc la premiere partie
 dateMoins7J = dateMoins7J.split("T")[0] // on obtient "2026-01-21"
 
+async function remplissageTableau() {
+    // recup du tableau
+    let tableauHistorique = document.getElementById("tableau-historique")
+
+    
+    return
+}
+
 async function init() {
     // recup des datas pour le graphique
     const historique = await db.recuperation.where("date").aboveOrEqual(dateMoins7J).toArray()
@@ -91,6 +99,9 @@ async function init() {
 
     // generation du graphique
     genererGraphiqueLine(thisWeekForGraphic, tableauFcReposComplete)
+
+    // remplissage du tableau
+    await remplissageTableau()
 
     return
 }

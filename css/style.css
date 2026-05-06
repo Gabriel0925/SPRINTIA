@@ -1732,6 +1732,10 @@ table tr td {
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
     text-align: center;
+    white-space: nowrap; /* pour éviter que le text/button reviennent à la ligne */
+}
+table tr td button{
+    display: inline-block;
 }
 
 

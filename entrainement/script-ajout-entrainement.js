@@ -730,11 +730,11 @@ async function saveWorkout() {
         BoutonSauvegarde.disabled = false
 
         if (modificationEntrainement == true) {
-            // Renvoie vers historique d'entraînement
+            // Renvoi vers la page entraînement
             window.location.href = `entrainement.html?workout=${IdEditWorkout}` // on met un param dans l'URL
         } else {
-            // Renvoie vers historique d'entraînement
-            window.location.href = "historique_entrainement.html?workoutregister" // on met un param dans l'URL
+            // Renvoi vers la page entraînement
+            window.location.href = "../index.html?workoutregister" // on met un param dans l'URL
         }
     }, 800)
 

@@ -265,7 +265,7 @@ async function initialisation() {
                 let dataWorkout = await db.entrainement.get(idWorkout) // ça renvoie un dico avec toutes les datas date, durée,...
             
                 if (dataWorkout == null) { // si il n'y a pas d'entrainement avec l'id dans l'URL alors on renvoie à la page historique dentrainement pour éviter d'afficher une page vide
-                    location.href = "historique_entrainement.html"
+                    location.href = "../index.html"
                     return
                 }
 
@@ -286,7 +286,7 @@ async function initialisation() {
                     if (confirm(`Supprimer l'entraînement "${dataWorkout.nom}" ?`)) {
                         await db.entrainement.delete(dataWorkout.id) // supprimer la data de la bdd
                         // retour à l'historique d'entraînement
-                        window.location.href = `historique_entrainement.html`       
+                        window.location.href = `../index.html`       
                     }
                 })
 
@@ -298,7 +298,7 @@ async function initialisation() {
         }
     }
     else { // si il y a pas de parametres dans l'URL on renvoie vers l'historique pour éviter d'afficher une page vide
-        location.href = "historique_entrainement.html"
+        location.href = "../index.html"
     }
     
     return

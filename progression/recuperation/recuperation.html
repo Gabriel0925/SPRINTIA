@@ -25,7 +25,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="../../index.html">Sprintia</a>
+                <a id="logo-dynamique" href="../../index.html">Sprintia</a>
             </div>
             <ul class="links">
                 <li>
@@ -99,6 +99,10 @@
             <p class="container-block-data-header">FC repos du jour</p>
             <p class="container-block-data-data" id="fc-repos-today">--  <small>bpm</small></p>
         </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Moyenne 30J</p>
+            <p class="container-block-data-data" id="fc-repos-moyenne-30j">--  <small>bpm</small></p>
+        </div>
 
     </section>
 
@@ -109,6 +113,10 @@
     </div>
 
     <h2>Historique</h2>
+    <p class="text" id="text-informatif" style="display: none;">
+        Sprintia n'a pas encore assez de données pour afficher votre historique de récupération. Veuillez
+        <a href="ajouter-recuperation.html" class="lien">ajouter une récupération</a>.
+    </p>
     <div class="carousel table">
         <div class="carousel-content table">
             <table id="tableau-historique">
@@ -116,6 +124,7 @@
                     <tr>
                         <th>Date</th>
                         <th>FC repos</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -123,6 +132,19 @@
             </table>
         </div>
     </div>
+
+    <h2>C'est quoi l'algorithme de récupération ?</h2>
+    <p class="text">
+        Cet algorithme vous permet de suivre votre récupération grâce à votre FC repos (=fréquence cardiaque au repos). Cet algorithme
+        peut vous indiquer si vous êtes prêt à fournir un effort physique aujourd'hui. 
+        <strong>
+            Attention, l'algorithme recommande mais c'est vous qui restez maître de votre corps et de vos sensations.
+        </strong>
+        <br><br>
+        Cet algorithme peut même prédire une maladie (grippe,...) avant que les premiers symptômes n'apparaissent grâce à une augmentation rapide de votre FC repos.
+        Malheureusement, il ne peut pas vous dire que vous êtes malade, mais si vous voyez que votre FC repos augmente de jour en jour alors que vous ne vous êtes peut ou pas entraîné, 
+        c'est peut-être un signe que votre corps lutte contre une infection. Dans ce cas, je vous conseille d'écouter votre corps.
+    </p>
 
     
     <footer>

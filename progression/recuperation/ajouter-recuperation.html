@@ -76,7 +76,7 @@
         </div>
     </header>
     
-    <h1>Ajouter une récupération</h1>
+    <h1 id="title-page">Ajouter une récupération</h1>
 
     <section class="container-zone">
 
@@ -96,6 +96,13 @@
         </div>
 
     </section>
+
+    <h2>Comment calculer sa FC au repos ?</h2>
+    <p class="text">
+        Il y a plusieurs solutions, la première vous avez une montre connectée/sportive qui vous donne votre FC au repos. La seconde,
+        prenez votre pouls au poignet ou au cou (le matin au réveil) et comptez le nombre de pulsation sur 30 secondes. Multipliez ensuite ce nombre par 2 pour 
+        avoir la fréquence cardiaque par minute. Le résultat de ce calcul sera votre FC au repos.
+    </p>
 
     <footer>
         <div class="conteneur-lien-footer">
@@ -128,7 +135,7 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     
-    <!-- Pour le ressenti de la nuit passée -->
+    <!-- Pour le ressenti de la nuit passée et pour la sauvegarde -->
     <script>
         let ChampDate = document.getElementById("date-recuperation")
         let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"
@@ -138,6 +145,9 @@
 
         ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
         ChampDate.value = DateActuelle
+
+        let modificationData = false // variable pour savoir si on est en train de modifier une data ou pas
+        let idRecupModif = undefined
 
         async function saveRecuperation() {
             // recup
@@ -167,12 +177,46 @@
                 alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre compris entre 20 et 140 bpm.")
                 return
             }
+                
+            if (modificationData != true){ // si on modifie ça sert a rien de mettre le message "vous avez déjà enregistré une récupération"
+                // vérification si il y a deja une data ce jour ci
+                let dataToday = await db.recuperation
+                    .where("date")
+                    .equals(champsDate)
+                    .toArray()
 
-            // sauvegarde
-            await db.recuperation.add({
-                date:champsDate,
-                fc_repos:champsFcRepos
-            })
+                if (dataToday.length > 0) {
+                    let confirmUpdate = confirm("Vous avez déjà enregistré une récupération pour cette date. Voulez-vous la remplacer ?")
+                    if (!confirmUpdate) {
+                        return
+                    } else {
+                        await db.recuperation
+                            .where("date")
+                            .equals(champsDate) // pour trouver la data qui à la date de la var champsDate
+                            .delete() // supprime pour la save par la suite
+                    }
+                }
+            }
+
+            if (modificationData == true) {
+                // modification de la recup
+                if (idRecupModif != undefined) {
+                    await db.recuperation.put({
+                        id:idRecupModif,
+                        date:champsDate,
+                        fc_repos:champsFcRepos
+                    })
+                } else {
+                    alert("Une erreur est survenue lors de la modification de votre récupération, veuillez réessayer.")
+                    return
+                }
+            } else {
+                // sauvegarde
+                await db.recuperation.add({
+                    date:champsDate,
+                    fc_repos:champsFcRepos
+                })
+            }
 
             // Transmet l'info au user
             BoutonSauvegarde.disabled = true 
@@ -187,6 +231,41 @@
 
             return
         }
+
+        async function editRecuperation() {            
+            const parametreURL = window.location.search // on recherche si il y a un param dans l'URL (ex : ?edit=7)
+            let tableauSeparation = parametreURL.split("=") // exemple ['?edit', '7']
+
+            if (tableauSeparation.length == 2) { // vérification si il y a bien 2 partie
+                // conversion de l'id en int
+                const ID = parseInt(tableauSeparation[1])
+
+                // Recup des datas du workout
+                if (ID) {
+                    const dataRecuperation = await db.recuperation.get(ID)
+
+                    if (dataRecuperation) {
+                        // remplissage du formulaire avec les datas
+                        document.getElementById("date-recuperation").value = dataRecuperation.date
+                        document.getElementById("fc-repos-recuperation").value = dataRecuperation.fc_repos
+                    } else {
+                        window.location.href = `recuperation.html` // si jamais il n'y a pas de data avec l'id dans l'URL on retourne à la page de liste des récupérations
+                    }
+
+                    // maj des textes de la page
+                    document.getElementById("title-page").textContent = "Modifier la récupération"
+
+                    // maj var
+                    modificationData = true
+                    idRecupModif = dataRecuperation.id
+                }
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", editRecuperation)
+
     </script>
 
     

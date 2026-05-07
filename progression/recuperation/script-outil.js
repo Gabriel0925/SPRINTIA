@@ -110,6 +110,20 @@ async function jrmCoach() {
         // affichage de la moyenne des 30 derniers jours
         document.getElementById("fc-repos-moyenne-30j").innerHTML = `${moyenne30J}  <small>bpm</small>`
 
+        // on regarde si on peut mettre à jour la FC repos du user
+        const profilDB = await db.profil.toArray()
+        let fcReposProfilUser = profilDB[0].fc_repos
+        if (fcReposProfilUser != moyenne30J) {
+            await db.profil.put({
+                id: 1,
+                sexe: profilDB[0].sexe,
+                age: profilDB[0].age,
+                taille: profilDB[0].taille,
+                poids: profilDB[0].poids,
+                fc_repos: fcReposProfilUser
+            })
+        }
+
         if (historiqueData30J.length >= 7) {
 
             // désignation d'une tranche pr l'interpretation

@@ -80,10 +80,15 @@
     <h1>Profil</h1>
 
     <h2>Information profil</h2>
+
     <p class="text">
-        Ces données ne sont pas obligatoire mais elles permettent de débloquer des fonctionnalités comme 
-        l'estimation de la transpiration de votre entraînement,...
+        La fonctionnalité ci-dessous permet à Sprintia de mettre à jour certaines données comme la FC repos
+        automatiquement lorsque que vous utilisez Sprintia.
     </p>
+    <div class="banner-toggle">
+        <p>Mise à jour auto.</p>
+        <input class="toggle" type="checkbox" onclick="DesactiverBanniere(event)" id="toggle-banniere">
+    </div>
     <table id="tableau-historique">
         
         <tbody>
@@ -111,7 +116,7 @@
         </tbody>
 
     </table>
-    
+
     <div class="container-center-marge">
         <button class="size-block" onclick="window.location.href = 'modification-profil.html'">Modifier mon profil</button>
     </div>

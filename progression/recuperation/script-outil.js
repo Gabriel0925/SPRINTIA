@@ -81,8 +81,19 @@ function returnDate(dateRecup) {
 async function jrmCoach() {
     // maj du contenu de certaines partie de la page
     let zoneReponseCoach = document.getElementById("reponse-coach")
+    let zoneNameCoach = document.getElementById("nom-coach")
+    
     let interpretation = dicoInterpretation["Bienveillant"][0] // quand il n'y a pas de data
-    zoneReponseCoach.innerHTML = interpretation
+    zoneReponseCoach.innerHTML = interpretation // init
+    
+    // pr le nom du coach
+    let CoachUserDB = await db.JRM_Coach.toArray()
+    if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
+        let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+        let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+        zoneNameCoach.innerHTML =  AvatarCoach + " " + NomCoach + " :"
+    }
 
     // recup des 30 derniers jours de datas
     const historiqueData30J = await db.recuperation.where("date").aboveOrEqual(dateMoins30J).toArray()
@@ -213,7 +224,7 @@ async function remplissageTableau() {
 
 async function init(role) {
     // recup des datas pour le graphique
-    const historique = await db.recuperation.where("date").aboveOrEqual(dateMoins7J).toArray()
+    const historique = await db.recuperation.where("date").above(dateMoins7J).toArray()
     
     // init pr la boucle
     let dicoDataFormatee = {} // structure "Jour":FC_repos exemple : "M":43
@@ -270,6 +281,7 @@ async function init(role) {
         await remplissageTableau()
     }
 
+    // pour l'interpretation et changer le nom du coach
     await jrmCoach()
 
     return

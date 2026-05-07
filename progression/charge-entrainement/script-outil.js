@@ -1,3 +1,11 @@
+const dateActuelle = new Date()
+
+let dateMoins28J = new Date()
+dateMoins28J = dateMoins28J.setDate(dateActuelle.getDate() - 28) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+dateMoins28J = new Date(dateMoins28J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
+// On prend que ce qui nous interesse donc la premiere partie
+dateMoins28J = dateMoins28J.split("T")[0] // on obtient "2026-01-21"
+
 function ReturnDate(DateWorkout) {
     let DateEuropeen = ""
 
@@ -8,48 +16,70 @@ function ReturnDate(DateWorkout) {
 }
 
 async function RecupValueGraphique() {
-    // Initialisation 
-    let TailleHardware = window.innerWidth
-    let NbValeurRecup = -13
-
-    // Logique de nb datas en fonction du devices
-    if (TailleHardware <= 520) {
-        NbValeurRecup = -4
-    } else if (TailleHardware <= 640) {
-        NbValeurRecup = -6
-    } else if (TailleHardware <= 720) {
-        NbValeurRecup = -7
-    } else if (TailleHardware <= 790) {
-        NbValeurRecup = -8
-    } else if (TailleHardware <= 1000) {
-        NbValeurRecup = -10
-    } 
-
     // Recup value Data
-    const ValeurDB = await db.entrainement.toArray()    
-    
-    // Trier par date 
-    ValeurDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
-        if (element1.date < element2.date) return -1
-        if (element1.date > element2.date) return 1
-    })
+    const valeurDB = await db.entrainement.where("date").aboveOrEqual(dateMoins28J).toArray()
+    valeurDB.reverse() // pour trier de la plus récente à la plus ancienne
 
-    // map permet de retourner une nouvelle liste a partir d'une premiere liste et de prendre qu'une seule clé d'un objet
-    // slice permet de découper un tableau pour en garder qu'une partie grace aux indices
-    const ChargeDatas = ValeurDB.slice(NbValeurRecup).map(dataBDD => dataBDD.charge_entrainement) // -10 pr prendre les 10 dernieres valeur
-    const DateDatas = ValeurDB.slice(NbValeurRecup).map(dataBDD => dataBDD.date)
+    let DateMoins7J = new Date()
+    DateMoins7J = DateMoins7J.setDate(dateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+    DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
+    // On prend que ce qui nous interesse donc la premiere partie
+    DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
 
-    // initialisation d'une liste qui contiendra les dates pour le graphique
-    let ListeDate = []
-    let DateEuropeen = ""
+    let DateMoins14J = new Date() // voir commentaire au dessus pr explication
+    DateMoins14J = DateMoins14J.setDate(dateActuelle.getDate() - 14) 
+    DateMoins14J = new Date(DateMoins14J).toISOString()
+    DateMoins14J = DateMoins14J.split("T")[0] 
 
-    // remise des dates au format français
-    DateDatas.forEach(element => {
-        DateEuropeen = ReturnDate(element)
-        ListeDate.push(DateEuropeen)
+    let DateMoins21J = new Date() // voir commentaire au dessus pr explication
+    DateMoins21J = DateMoins21J.setDate(dateActuelle.getDate() - 21) 
+    DateMoins21J = new Date(DateMoins21J).toISOString()
+    DateMoins21J = DateMoins21J.split("T")[0] 
+
+    let DateMoins28J = new Date() // voir commentaire au dessus pr explication
+    DateMoins28J = DateMoins28J.setDate(dateActuelle.getDate() - 28) 
+    DateMoins28J = new Date(DateMoins28J).toISOString()
+    DateMoins28J = DateMoins28J.split("T")[0] 
+
+    // init pour la boucle
+    let tableau7J = []
+    let tableau14J = []
+    let tableau21J = []
+    let tableau28J = []
+
+    valeurDB.forEach(element => {
+        if (element.date >= DateMoins7J) {
+            tableau7J.push(element.charge_entrainement)
+        } else if (element.date >= DateMoins14J) {
+            tableau14J.push(element.charge_entrainement)
+        } else if (element.date >= DateMoins21J) {
+            tableau21J.push(element.charge_entrainement)
+        } else if (element.date >= DateMoins28J) {
+            tableau28J.push(element.charge_entrainement)
+        }
+    });
+
+    // init pour la somme
+    let chargeWeek7J = 0
+    let chargeWeek14J = 0
+    let chargeWeek21J = 0
+    let chargeWeek28J = 0
+
+    // passons a la somme
+    tableau7J.forEach(element => {
+        chargeWeek7J += element
+    });
+    tableau14J.forEach(element => {
+        chargeWeek14J += element
+    });
+    tableau21J.forEach(element => {
+        chargeWeek21J += element
+    });
+    tableau28J.forEach(element => {
+        chargeWeek28J += element
     });
     
-    return {ChargeDatas, ListeDate}
+    return [Math.floor(chargeWeek28J), Math.floor(chargeWeek21J), Math.floor(chargeWeek14J), Math.floor(chargeWeek7J)]
 }
 
 async function InterpretationJRM(Ratio, AnalysePossible) {
@@ -227,7 +257,7 @@ async function Initialisation() {
     let HTMLInterpretationJRM  = document.getElementById("reponse-coach-indulgence")
 
     // recup des charges plus interpretation et affichage
-    let {ChargeDatas, ListeDate} = await RecupValueGraphique()
+    let ChargeDatas = await RecupValueGraphique()
     
     let {Ratio, ChargeAigue, ChargeChronique, AnalysePossible, cibleCe7Jmin, cibleCe7Jmax} = await CalculCharge()
 
@@ -252,10 +282,9 @@ async function Initialisation() {
     // Generation Graphique
     if (ChargeDatas.length <= 0) {
         ChargeDatas = [0, 0, 0]
-        ListeDate = ["Lundi", "Mercredi", "Samedi"]
     }
     
-    genererGraphiqueLine(ListeDate, ChargeDatas)
+    genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], ChargeDatas)
 }
 
 

@@ -105,23 +105,38 @@ async function jrmCoach() {
         historiqueData30J.forEach(element => {
             sommeFcRepos += element.fc_repos
         });
-        let moyenne30J = Math.round(sommeFcRepos / historiqueData30J.length)
+        let moyenne30J = Math.round(sommeFcRepos/historiqueData30J.length)
 
         // affichage de la moyenne des 30 derniers jours
         document.getElementById("fc-repos-moyenne-30j").innerHTML = `${moyenne30J}  <small>bpm</small>`
 
         // on regarde si on peut mettre à jour la FC repos du user
         const profilDB = await db.profil.toArray()
-        let fcReposProfilUser = profilDB[0].fc_repos
-        if (fcReposProfilUser != moyenne30J) {
-            await db.profil.put({
-                id: 1,
-                sexe: profilDB[0].sexe,
-                age: profilDB[0].age,
-                taille: profilDB[0].taille,
-                poids: profilDB[0].poids,
-                fc_repos: fcReposProfilUser
-            })
+        if (profilDB.length > 0) { // si le user a configurer son profil alors on peut peut etre faire la maj auto
+            let fcReposProfilUser = profilDB[0].fc_repos
+
+            if (fcReposProfilUser != moyenne30J) {
+                let majAutoProfil = localStorage.getItem("majAutoProfil") || "True" // si pas de data alors on met undefined
+
+                // si la maj auto est activé alors on met à jour la fc repos du profil sinon on ne fait rien
+                if (majAutoProfil == "True") { // si le toggle maj auto profil est activé alors on met à jour
+                    // avant de modifier il faut vérifier si l'id 1 a déja des datas si oui on update sinon on fais rien
+                    let profilExists = await db.profil.get(1)
+
+                    if (profilExists) {
+                        await db.profil.put({
+                            id: 1,
+                            sexe: profilDB[0].sexe,
+                            age: profilDB[0].age,
+                            taille: profilDB[0].taille,
+                            poids: profilDB[0].poids,
+                            fc_repos: moyenne30J
+                        })
+                    }
+
+                }
+            }
+
         }
 
         if (historiqueData30J.length >= 7) {

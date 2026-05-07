@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Indulgence de course</title>
+    <title>Sprintia - Paramètres Indulgence de course</title>
     <meta charset="utf-8">
     <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,66 +76,14 @@
         </div>
     </header>
     
-    <div class="toolbar">
-        <h1>Indulgence de course</h1>
-        <a href="parametres-indulgence-course.html"><i class="fs-icon_parametres"></i></a>
-    </div>
+    <h1>Paramètres Indulgence de course</h1>
 
-    <section class="container-zone">
-
-        <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
-            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
-                Chargement...
-            </p> 
-        </div>
-
-    </section>
-
-    <section class="container-zone">
-
-        <div class="large-zone-result">
-            <p class="large-zone-result-name">Distance hebdo. conseillée</p>
-            <p class="large-zone-result-result" id="reponse-algo-indulgence">
-                0 - 0 km
-            </p>
-        </div>
-        <div class="large-zone-result">
-            <p class="large-zone-result-name">Distance réel sur 7J</p>
-            <p class="large-zone-result-result" id="reponse-algo-allure">
-                0 km
-            </p>
-        </div>
-            
-    </section>
-
-    <h2>Volume d'entraî. (4 sem.)</h2>
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-    </div>
-    <section class="container-block"> 
-
-        <div class="container-block-data">
-            <p class="container-block-data-header">Distance 28J</p>
-            <p class="container-block-data-data" id="somme-28J">0,00  <small>km</small></p>
-        </div>
-        <div class="container-block-data">
-            <p class="container-block-data-header">Distance moy. par semaine</p>
-            <p class="container-block-data-data" id="km-par-semaine">0,00  <small>km</small></p>
-        </div>
-
-    </section>
-
-    <h2>C'est quoi l'Indulgence de course ?</h2>
-    <p class="text">
-        L’indulgence de course vous aide à ajuster votre kilométrage des 7 prochains jours pour rester dans une progression 
-        optimale, sans dépasser votre limite et éviter de vous blesser. 
-        <strong>
-            Cet outil est conçu pour les personnes qui débutent la course à pied, ou qui reprennent la course à pied après 
-            une pause, voire qui se lancent dans un nouveau plan d’entrainement.
-        </strong>
-    </p>
+    <h2>Type de coureur</h2>
+    <select style="width: 100%; margin: 0px; max-width: 450px;" id="methode-user" onchange="" autocomplete="off">
+            <option value="occasionnel">Coureur·se occasionnel·le</option>
+            <option value="regulier">Coureur régulier·e</option>
+            <option value="athlete">Coureur confirmé·e</option>
+    </select>
     
     <footer>
         <div class="conteneur-lien-footer">
@@ -169,26 +117,6 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-outil.js"></script> 
-
-    <!-- Pour le JRM Coach -->
-    <script>
-        async function JRMCoachUser() {
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("nom-coach").textContent = AvatarCoach + " " + NomCoach + " :"
-            }
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            JRMCoachUser()
-        })
-    </script>
-
     
     <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>

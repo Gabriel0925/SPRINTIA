@@ -214,7 +214,8 @@
                 poids: poidsUser,
                 fc_repos: fcReposUser
             })
-
+            // sauvegarde local storage pour la maj auto du profil
+            localStorage.setItem("majAutoProfil", "True")
 
             setTimeout(() => {
                 button.textContent = "Sauvegardé"

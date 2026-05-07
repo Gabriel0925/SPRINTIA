@@ -87,7 +87,7 @@
     </p>
     <div class="banner-toggle">
         <p>Mise à jour auto.</p>
-        <input class="toggle" type="checkbox" onclick="DesactiverBanniere(event)" id="toggle-banniere">
+        <input class="toggle" type="checkbox" onclick="toggleMajAuto(event)" id="toggle-banniere">
     </div>
     <table id="tableau-historique">
         
@@ -229,7 +229,34 @@
             }
         }
 
-        window.addEventListener("DOMContentLoaded", remplirTableau)
+        async function toggleMajAuto(event) {
+            let toggle = event.target
+            let dataProfil = await db.profil.get(1) // on recup les données du profil
+            // si il y a pas de datas on ne laisse pas la possiblité d'activer le toggle
+            if (!dataProfil) {
+                alert("Pour pouvoir activer ce paramètre vous devez d'abord configurer votre profil en cliquant sur 'Modifier mon profil'.")
+                toggle.checked = true // on desactive le toggle
+                return
+            }
+            // si le toggle est coché alors on met à jour la valeur dans le local storage sinon on la met à false
+            if (toggle.checked) {localStorage.setItem("majAutoProfil", "False")}
+            else {localStorage.setItem("majAutoProfil", "True")}
+        }
+
+        function init() {
+            let majAutoProfil = localStorage.getItem("majAutoProfil") || "False" // si le user a pas config son profil alors on desactive la maj auto
+
+            if (majAutoProfil == "True") { // si la fonction maj auto est activé alors on active le toggle
+                document.getElementById("toggle-banniere").checked = false
+            } else { // sinon on le désactive
+                document.getElementById("toggle-banniere").checked = true
+            }
+
+            // on remplit la tableau
+            remplirTableau()
+        }
+
+        window.addEventListener("DOMContentLoaded", init)
     </script>
     
     <!-- Pour avoir les statistiques de visite du site -->

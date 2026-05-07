@@ -78,12 +78,33 @@
     
     <h1>Paramètres Indulgence de course</h1>
 
-    <h2>Type de coureur</h2>
-    <select style="width: 100%; margin: 0px; max-width: 450px;" id="methode-user" onchange="" autocomplete="off">
-            <option value="occasionnel">Coureur·se occasionnel·le</option>
-            <option value="regulier">Coureur régulier·e</option>
-            <option value="athlete">Coureur confirmé·e</option>
+    <h2>Type de coureur·euse</h2>
+    <select style="width: 100%; margin: 0px; max-width: 450px;" id="type-coureur-user" onchange="typeRunner(value)" autocomplete="off">
+        <option value="occasionnel">Occasionnel·le</option>
+        <option value="regulier">Régulier·ère</option>
+        <option value="confirme">Confirmé·e</option>
     </select>
+    <br><br>
+    <ul class="list-information">
+        <li> 
+            Le type nommé : <strong>"Occasionnel·le"</strong> correspond à une personne qui court de manière très irrégulière, 
+            par exemple 1 à 2 fois par mois, ou qui a repris la course à pied récemment après une longue période d'inactivité. 
+        </li>
+        <li>
+            Le type nommé : <strong>"Régulier·ère"</strong> correspond à une personne qui court de manière régulière, par exemple 2 à 3 fois par 
+            semaine, mais qui n'est pas un athlète confirmé.
+        </li>
+        <li>
+            Le type nommé : <strong>"Confirmé·e"</strong> correspond à une personne qui court de manière très régulière et qui a une certaine 
+            expérience en course à pied, par exemple 4 fois ou plus par semaine.
+        </li>
+    </ul>
+
+    <h2>À quoi ça sert ?</h2>
+    <p class="text">
+        Cette fonctionnalité permet d'améliorer les recommandations de distance hebdomadaire car Sprintia sera désormais qu'elle type 
+        de coureur·euse vous êtes, ce qui lui permettra d'adapter ses recommandations en fonction de votre profil.
+    </p>
     
     <footer>
         <div class="conteneur-lien-footer">
@@ -117,6 +138,21 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script>
+        function typeRunner(value) {
+            // enregistrement du type de coureur
+            localStorage.setItem("typeCoureur", value)
+            return
+        }
+
+        window.onload = function() {
+            // Affichage du type de coureur enregistré
+            const typeCoureur = localStorage.getItem("typeCoureur")
+            if (typeCoureur) {
+                document.getElementById("type-coureur-user").value = typeCoureur
+            }
+        }
+    </script>
     
     <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>

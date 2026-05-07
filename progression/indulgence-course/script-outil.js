@@ -23,6 +23,23 @@ const InterpretationGoMuscu = {
     "3": "<strong>Tu progresses</strong>, parfait ! En plus de travailler tes muscles, tu travailles ton coeur, bien joué ! Pour continuer à progresser, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
     "4": "Tu cours <strong>bien plus que d'habitude</strong> ! Fais attention, si tu continues sur ce rythme tu risques de te <strong>blesser</strong> donc réduis ton volume kilométrique."
 }
+const dicoFouchetteIndulgence = { // pour les coefficients des tranches pr la distance hebdo conseillée
+    "occasionnel": [
+        // très prudent pour les occasionnels car les articulations et les tendons ne sont pas habitués
+        [1.05, 1.02, 1.00, 0.98, 0.95],
+        [1.20, 1.15, 1.10, 1.05, 1.02]
+    ],
+    "regulier": [
+        // régle des 10-15% pr les coureurs réguliers
+        [1.10, 1.08, 1.05, 1.02, 1.00], 
+        [1.25, 1.20, 1.15, 1.12, 1.10]
+    ],
+    "confirme": [
+        // bonne capacité de récup donc tranche plus large et plus ambitieuse
+        [1.15, 1.12, 1.10, 1.08, 1.05],
+        [1.30, 1.25, 1.20, 1.18, 1.15]
+    ],
+}
 
 async function RecupData() {
     // recup des datas d'entrainements
@@ -172,9 +189,12 @@ async function RecupData() {
 }
 
 async function CalculIndulgence() {
+    // recup du type de coureur
+    let typeCoureur = localStorage.getItem("typeCoureur") || "occasionnel" // si jamais il y a pas de type de coureur enregistré alors on met "occasionnel" par défaut
+    console.log("type coureur : ", typeCoureur)
     // Initialisation coefficient
-    const CoefFourchetteDebut = [1.16, 1.13, 1.10, 1.07, 1.04]
-    const CoefFourchetteFin = [1.25, 1.2, 1.15, 1.12, 1.1]
+    const CoefFourchetteDebut = dicoFouchetteIndulgence[typeCoureur][0]
+    const CoefFourchetteFin = dicoFouchetteIndulgence[typeCoureur][1]
 
     let IndulgenceDeCourseDebut = 0
     let IndulgenceDeCourseFin = 0

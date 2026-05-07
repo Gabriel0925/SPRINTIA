@@ -212,7 +212,7 @@ function afficherData(dataWorkout) {
     }
 
     if (dataWorkout.sport == "Sport de chambre") {logoDynamique("Quel athlète 😏")}
-    else if (sixSeven==true) {logoDynamique("SIX-SEVEN 😏")}
+    else if (sixSeven==true) {logoDynamique("SIX-SEVEN")}
 
     return
 }

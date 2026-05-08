@@ -122,7 +122,7 @@
     </section>
 
     <div class="container-center-marge">
-        <button id="button-supprimer" onclick="supprimerProfil()">Supprimer mon profil</button>
+        <button style="width: 240px;" id="button-supprimer" onclick="supprimerProfil()">Supprimer mon profil</button>
     </div>
 
     <h2>Comment calculer sa FC au repos ?</h2>
@@ -247,7 +247,18 @@
         async function supprimerProfil() {
             if (confirm("Êtes-vous sûr de vouloir supprimer votre profil ?")) {
                 await db.profil.clear() // suppression du profil dans indexed db
-                window.location.href = "profil.html" // redirection vers la page de profil pour voir que les champs sont vides
+                localStorage.removeItem("majAutoProfil")
+
+                document.getElementById("button-supprimer").textContent = "Suppression..."
+
+                setTimeout(() => {
+                    document.getElementById("button-supprimer").textContent = "Supprimé"
+                }, 650);
+            
+                setTimeout(() => {
+                    document.getElementById("button-supprimer").textContent = "Supprimer mon profil"
+                    window.location.href = "profil.html"
+                }, 1300);
             }
         }
 

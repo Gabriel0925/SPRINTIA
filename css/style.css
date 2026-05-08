@@ -760,6 +760,8 @@ div.carousel {
     display: flex;
     overflow-x: auto;
     height: fit-content;
+    scroll-snap-type: x mandatory; /* Force l'arrêt sur une carte */
+    scroll-behavior: smooth;
 }
 div.carousel.table {
     display: block;
@@ -768,6 +770,7 @@ div.carousel div.card-tool {
     background-color: var(--COLOR_BACKGROUND_CARD);
     margin: var(--SPACE_XS);
     padding: var(--SPACE_XS);
+    scroll-snap-align: center; /*la carte se centre dans le carousel*/
     border-radius: var(--BORDER_BIG);
     cursor: pointer;
 
@@ -1749,6 +1752,7 @@ div.carousel-content .card-releases {
     background-color: var(--COLOR_BACKGROUND_CARD);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
+    scroll-snap-align: center; /*la carte se centre dans le carousel*/
     margin: var(--SPACE_XS);
     transition: all ease-out var(--TIME_TRANSITION);
 }

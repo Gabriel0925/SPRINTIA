@@ -3,7 +3,7 @@
 <head>
     <title>Sprintia - Historique versions</title>
     <meta charset="utf-8">
-    <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../css/style.css">
@@ -93,13 +93,13 @@
         vous entraîner ou plutôt de vous reposer et de rester calme. Sprintia 4.3 apporte également une toute nouvelle page nommée 
         "Statistiques" qui vous permet d'avoir un résumé de vos 7, 30, 90, 365 derniers jours.
                     </p>
-                    <button>Découvrir la mise à jour</button>
+                    <button style="min-width: 238px;">Découvrir la mise à jour</button>
                 </div>
             </div>
         </a>
 
         <a href="nouveautes-versions/Sprintia 4.2.1.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>4.2.1</p>
                 </div>
@@ -108,7 +108,7 @@
             </div>
         </a>
         <a href="nouveautes-versions/Sprintia 4.2.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>4.2</p>
                 </div>
@@ -117,7 +117,7 @@
             </div>
         </a>
         <a href="nouveautes-versions/Sprintia 4.1.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>4.1</p>
                 </div>
@@ -126,7 +126,7 @@
             </div>
         </a>
         <a href="nouveautes-versions/Sprintia 4.0.3.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>4.0.3</p>
                 </div>
@@ -135,7 +135,7 @@
             </div>
         </a>
         <a href="nouveautes-versions/Sprintia 4.0.2.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>4.0.2</p>
                 </div>
@@ -144,7 +144,7 @@
             </div>
         </a>
         <a href="nouveautes-versions/Sprintia 4.0.1.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>4.0.1</p>
                 </div>
@@ -153,7 +153,7 @@
             </div>
         </a>
         <a href="nouveautes-versions/Sprintia 4.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>4</p>
                 </div>
@@ -163,7 +163,7 @@
         </a>
 
         <a href="nouveautes-versions/Sprintia 3.2.1.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>3.2.1</p>
                 </div>
@@ -173,7 +173,7 @@
         </a>
             
         <a href="nouveautes-versions/Sprintia 3.2.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>3.2</p>
                 </div>
@@ -182,7 +182,7 @@
             </div>
         </a>
         <a href="nouveautes-versions/Sprintia 3.1.5.html">
-            <div class="card-releases visible">
+            <div class="card-releases">
                 <div class="card-releases-image">
                     <p>Sprintia<br>3.1.5</p>
                 </div>
@@ -311,7 +311,7 @@
         </div>
            
         <div class="conteneur-lien-footer">             
-            <a class="a_title">Outils conseillés</a>
+            <a class="a_title">Algorithmes conseillés</a>
             <a class="a_footer" href="../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
             <a class="a_footer" href="../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
             <a class="a_footer" href="../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
@@ -319,7 +319,7 @@
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="../licence/licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../licence/licence.html">Licence</a>
             <a class="a_footer" href="../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
         </div>
     </footer>
@@ -330,6 +330,17 @@
         // Recup des elements html
         const CardNouveaute = document.querySelectorAll("div.card-releases")
         const ButtonAfficherPlus = document.getElementById("bouton") 
+
+        function init() {
+            let compteur = 0
+            CardNouveaute.forEach(element => {
+                if (compteur < 9) {
+                    element.classList.add("visible")
+                }
+
+                compteur += 1
+            });
+        }
 
         function RestaurationNbCard() {
             // Rafraichissement des datas des nbcardsave
@@ -346,6 +357,7 @@
         }
 
         window.addEventListener("DOMContentLoaded", () => {
+            init()
             RestaurationNbCard()
         })
     </script>

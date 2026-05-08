@@ -839,7 +839,6 @@ div.carousel div.card-tool p{
 section.container-workout-cards {
     display: block;
     margin: 0 auto;
-    max-width: 900px;
     margin-bottom: var(--SPACE_XL);
 }
 section.container-workout-cards div.cards-history-workout {
@@ -1182,16 +1181,14 @@ section.container-box {
 
 /* --- Zone pour le coach --- */
 div.zone-coach {
-    margin-top: var(--SPACE_S); 
     border-radius: var(--BORDER_BIG);
     z-index: 1;
     position: relative;
 
     flex-grow: 1;
-    max-width: 420px;
+    max-width: 450px;
     height: auto;
     min-height: 180px;
-    padding: var(--SPACE_XS) 0;
 }
 div.zone-coach::before {
     content: "";

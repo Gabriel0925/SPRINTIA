@@ -3,7 +3,7 @@
 <head>
     <title>Sprintia 4.3 - Patch Note</title>
     <meta charset="utf-8">
-    <meta name="description" content="Sprintia : Des outils gratuits pour analyser et optimiser vos entraînements.">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../../css/style.css">
@@ -114,16 +114,21 @@
             "Occasionnel·le", "Régulier·ère" ou "Confirmé·e". En fonction du type de coureur·euse que vous êtes, Sprintia pourra adapter ses recommandations
             de distance hebdomadaire.
         </li>
+        <li>
+            L'algorithme 'Récupération' peut interagir avec les données de votre profil si vous avez activé le bouton nommé 'Mise à jour auto.'
+            dans votre profil. Par exemple, si vous aviez configuré 50 bpm de FC repos lors de la configuration de votre profil et que Sprintia
+            observe que désormais c'est 47 bpm, il fera mettre à jour votre profil comme un grand.
+        </li>
     </ul>
 
     <h2>📊 Améliorations</h2>
     <ul class="list-information">
         <li>
-            Si vous avez config votre profil, Sprintia sera lancer direct le calcul de l'outil correspondant en plus de savoir depuis Sprintia
-            4.2 préremplir les champs.
+            Si vous avez configuré votre profil, Sprintia saura lancer directement le calcul de l'outil correspondant, en plus de savoir, depuis Sprintia
+            4.2, préremplir les champs.
         </li>
         <li>
-            La Navbar de Sprintia 4.3 a été modifié. L'onglet nommé précédemment "Accueil" a été renommé "Entraînement". Idem pour
+            La Navbar de Sprintia 4.3 a été modifiée. L'onglet nommé précédemment "Accueil" a été renommé "Entraînement". Idem pour
             l'onglet "Outils" qui a été renommé "Progression".
         </li>
         <li>
@@ -131,21 +136,27 @@
             Au fil des prochaines mises à jour, vous découvrirez une interface de plus en plus intuitive et organisée.
         </li>
         <li>
-            Le contenu de la page "Entraînement" anciennement appelé "Accueil" a été repensé pour devenir plus intuitif et plus transparent aux
+            Le contenu de la page "Entraînement" anciennement appelée "Accueil" a été repensé pour devenir plus intuitif et plus transparent aux
             yeux de l'utilisateur lors de la première utilisation de Sprintia.
         </li>
         <li>
             Nouvelle interface plus ergonomique pour le volume d'entraînement dans l'Indulgence de course.
         </li>
         <li>
-            Le bouton flottant 'Ajouter' dans la charge d'entraînement a été supprimé pour ne pas être contre-intuitif pour l'utilisateur
+            Le bouton flottant 'Ajouter' dans la charge d'entraînement a été supprimé pour ne pas être contre-intuitif pour l'utilisateur.
         </li>
         <li>
-            Désormais, les zones pour le JRM Coach s'accompagne non plus d'un fond de couleur mais d'un effet de lumière (Glow Effect). Ce changement
+            Désormais, les zones pour le JRM Coach s'accompagnent non plus d'un fond de couleur mais d'un effet de lumière (Glow Effect). Ce changement
             a été réalisé pour améliorer l'UX de Sprintia et également pour améliorer le design du JRM Coach.
         </li>
         <li>
-            Sur la page d'accueil, le JRM Coach peut désormais mettre du texte en gras ce qui était le cas dans l'outil Charge d'entraînement,...
+            Sur la page d'accueil, le JRM Coach peut désormais mettre du texte en gras, ce qui était déjà le cas dans l'outil Charge d'entraînement...
+        </li>
+        <li>
+            La politique de confidentialité a été légèrement revue pour adopter la nouvelle vision que j'ai de Sprintia. Sprintia doit être plus
+            intelligent et automatique. C'est pour cela que dans les futures mises à jour, les algorithmes qui demandent des informations
+            et qui répondent une fois que vous avez cliqué sur valider vont disparaître pour être remplacés par quelque chose de plus
+            proactif.
         </li>
     </ul>
 
@@ -164,11 +175,27 @@
             Correction de la plupart des erreurs que je faisais auparavant dans le nom de mes dossiers. Exemple : "Paramètres/" -> "parametres/".
         </li>
         <li>
-            Correction d'un bug qui mettait par défaut cette avatar "👨" quand l'utilisateur n'avait pas choisi d'avatar, alors qu'il devrait
+            Correction d'un bug qui mettait par défaut cet avatar "👨" quand l'utilisateur n'avait pas choisi d'avatar, alors qu'il devrait
             afficher "Rien".
         </li>
         <li>
             Correction d'un bug lors de la réinitialisation du thème.
+        </li>
+        <li>
+            Ajustement du design des cartes pour votre historique d'entraînement. Désormais, elles prennent toute la place disponible
+            alors qu'avant elles ne pouvaient pas dépasser 900px.
+        </li>
+        <li>
+            Correction de diverses formulations dans Sprintia pour préparer la transition vers la réorganisation de Sprintia.
+        </li>
+        <li>
+            Petit changement dans l'indulgence de course : désormais l'indulgence de course vous mettra en avant d'abord la distance réelle
+            que vous avez parcourue ces 7 derniers jours et ensuite il vous conseillera une distance hebdomadaire par rapport à vos
+            semaines passées d'entraînement. De plus, le graphique a été renommé pour être plus représentatif de son rôle.
+        </li>
+        <li>
+            Ajout d'une nouvelle fonction qui affiche les 9 dernières cartes dans l'historique des versions. Auparavant, je devais manuellement
+            ajouter la classe, désormais tout est automatisé.
         </li>
     </ul>
 
@@ -176,7 +203,7 @@
     <ul class="list-information">
         <li>
             La fonctionnalité de statut a été supprimée car les analyses restant basées sur votre historique global, 
-            ce statut n'avait aucun impact réel sur vos résultats à la reprise, il prenait en compte les semaines ou vous avez mis en pause.
+            ce statut n'avait aucun impact réel sur vos résultats à la reprise ; il prenait en compte les semaines où vous aviez mis en pause.
         </li>
     </ul>
         
@@ -199,9 +226,9 @@
             <a class="a_footer" href="../../historique-versions/historique-versions.html">Historique des versions</a>
             <a class="a_footer" href="../../themes/themes.html">Thèmes</a>
         </div>
-           
+            
         <div class="conteneur-lien-footer">             
-            <a class="a_title">Outils conseillés</a>
+            <a class="a_title">Algorithmes conseillés</a>
             <a class="a_footer" href="../../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
             <a class="a_footer" href="../../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
             <a class="a_footer" href="../../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
@@ -209,7 +236,7 @@
             
         <div class="conteneur-lien-footer">
             <a class="a_title">Autres</a>
-            <a class="a_footer" href="../../licence/licence.html">Licence (© 2026 Sprintia)</a>
+            <a class="a_footer" href="../../licence/licence.html">Licence</a>
             <a class="a_footer" href="../../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
         </div>
     </footer>

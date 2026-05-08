@@ -77,22 +77,38 @@
         </div>
     </header>
 
-    <h1>Sprintia 4.3 - Réorganisation</h1>
-    <h2>Information</h2>
-    <p class="text">
-        Date de sortie : 17 Mai 2026
-        <br>
-        Taille du site : 3,12 Mo
-        <br><br>
-        <strong>Anecdote :</strong> Il y a un an, je venais de commencer à écrire la toute première ligne de code pour Sprintia. Je n'aurais 
-        jamais imaginé qu'un an plus tard, Sprintia serait une PWA avec autant de fonctionnalités. De base, cela devait être un projet simple en console et, finalement, Sprintia est 
-        hébergé et accessible depuis n'importe quel appareil.
-        <br><br>
-        Sprintia 4.3 apporte le suivi de la récupération grâce à la FC au repos. Désormais, Sprintia pourrait vous suggérer d'aller 
-        vous entraîner ou plutôt de vous reposer et de rester calme. Sprintia 4.3 apporte également une toute nouvelle page nommée 
-        "Statistiques" qui vous permet d'avoir un résumé de vos 7, 30, 90, 365 derniers jours.
-    </p>
+    <div class="visuel-version">
+        <p class="visuel-version-title">Sprintia 4.3</p>
+        <p class="visuel-version-description">Réorganisation</p>
+    </div>
 
+    <section class="container-block" style="margin-bottom: var(--SPACE_M);"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Date</p>
+            <p class="container-block-data-data" id="fc-repos-today">17 Mai 2026</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Taille</p>
+            <p class="container-block-data-data" id="fc-repos-moyenne-30j">3,12 <small>Mo</small></p>
+        </div>
+
+    </section>
+
+    <div class="summary-version">
+        <p class="summary-version-title">Résumé</p>
+        <p class="summary-version-summary">
+            Sprintia 4.3 apporte le suivi de la récupération grâce à la FC au repos. Désormais, Sprintia pourrait vous suggérer d'aller 
+            vous entraîner ou plutôt de vous reposer et de rester calme. Sprintia 4.3 apporte également une toute nouvelle page nommée 
+            "Statistiques" qui vous permet d'avoir un résumé de vos 7, 30, 90, 365 derniers jours.
+            <br><br>
+            Il y a un an, je venais de commencer à écrire la toute première ligne de code pour Sprintia. Je n'aurais 
+            jamais imaginé qu'un an plus tard, Sprintia serait une PWA avec autant de fonctionnalités. De base, cela devait être un projet simple en console et, finalement, Sprintia est 
+            hébergé et accessible depuis n'importe quel appareil. 
+        </p>
+    </div>
+
+    <h1 style="margin-top: var(--SPACE_M);">Patch note</h1>
     <h2>🆕 Nouvelles fonctionnalités</h2>
     <ul class="list-information">
         <li>
@@ -158,6 +174,12 @@
             et qui répondent une fois que vous avez cliqué sur valider vont disparaître pour être remplacés par quelque chose de plus
             proactif.
         </li>
+        <li>
+            Une toute nouvelle interface fait son apparition dans le patch note de la dernière version de Sprintia. Une interface plus structurée
+            et plus 'grand public'. Désormais, même un novice peut voir les dernières nouveautés rapidement grâce à un résumé qui met en avant
+            les nouvelles fonctionnalités. Mais en descendant dans la page, le patch note complet est toujours présent pour les plus expérimentés
+            et ceux qui ne veulent manquer aucun nouveau changement.
+        </li>
     </ul>
 
     <h2>🐛 Correction des bugs et optimisations</h2>
@@ -198,25 +220,25 @@
             ajouter la classe, désormais tout est automatisé.
         </li>
         <li>
-            La première catégorie dans la page de 'Progression' s'apelle désormais 'Performance' et il contient les algorithmes de
+            La première catégorie dans la page de 'Progression' s'appelle désormais 'Performance' et elle contient les algorithmes de
             Charge d'entraînement, Indulgence de course et de Récupération.
         </li>
         <li>
             L'algorithme nommé 'Estimation du temps de récupération' a été déplacé dans la catégorie 'Autres'.
         </li>
         <li>
-            Correction d'un bug mineur dans l'animation du logo dynamique. Désormais si le message ne s'affiche pas, le logo dynamique
+            Correction d'un bug mineur dans l'animation du logo dynamique. Désormais, si le message ne s'affiche pas, le logo dynamique
             ne saute pas bizarrement, tout est fluide.
         </li>
         <li>
-            Correction d'un bug lors de la suppression de votre profil. Auparavant, aucunes informations n'étaient transmise à l'utilisateur.
+            Correction d'un bug lors de la suppression de votre profil. Auparavant, aucune information n'était transmise à l'utilisateur.
         </li>
         <li>
             Correction d'un bug d'affichage dans l'algorithme d'hydratation sur la version PC/Tablette.
         </li>
         <li>
-            Ajout d'un effet de scrool pour les carrousels. Un feedback a été ajouté pour ajouter un peu de vie à ces carrousels, on pourrait
-            qualifier cette effet de cran pour chaque scroll entre les cartes du carrousel.
+            Ajout d'un effet de scroll pour les carrousels. Un feedback a été ajouté pour donner un peu de vie à ces carrousels ; on pourrait
+            qualifier cet effet de cran pour chaque scroll entre les cartes du carrousel.
         </li>
     </ul>
 
@@ -263,8 +285,7 @@
     </footer>
     
     <script src="../../../assets/base-js/base.js"></script>
-
-    
     <script defer src="/_vercel/insights/script.js"></script>
+    
 </body>
 </html>

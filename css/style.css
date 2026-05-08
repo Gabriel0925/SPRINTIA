@@ -477,8 +477,8 @@ header div.navbar .logo a {
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
     width: 150px; /* width quand c'est écrit Sprintia */
-    max-width: 300px;
-    max-height: 55px; /* pour sécuriser l'animation */
+    max-width: 265px;
+    height: 55px; /* pour sécuriser l'animation */
     overflow: hidden; /* pour sécuriser l'animation */
     text-align: center;
     white-space: nowrap; /* empêcher le retour à la ligne (pr l'animation) */
@@ -502,7 +502,7 @@ header div.navbar .logo a {
 }
 header div.navbar .logo a.pin-message { /* pour le logo dynamique */
     background: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COLOR_ACCENT);
+    border: 2px solid var(--COLOR_ACCENT2);
     width: 100%;
     /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: dynamic_logo 0.6s forwards;
@@ -515,7 +515,7 @@ header div.navbar .logo a.pin-message { /* pour le logo dynamique */
 }
 header div.navbar .logo a.pin-message.return { /* pour le retour à l'état initial */
     width: 150px;
-    border: 1px solid var(--COLOR_ACCENT);
+    border: 1px solid var(--COLOR_ACCENT2);
     /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: reverse_dynamic_logo 0.6s forwards;
 }

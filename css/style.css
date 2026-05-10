@@ -840,17 +840,21 @@ div.carousel div.card-tool p{
 
 
 section.container-workout-cards {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: var(--SPACE_XL);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--SPACE_L);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 section.container-workout-cards div.cards-history-workout {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
-    height: fit-content;
+    min-height: 180px;
     overflow: hidden;
-
-    margin: var(--SPACE_L) 0;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    flex-grow: 1;
     padding: var(--SPACE_XS);
 
     transition: all ease-out var(--TIME_TRANSITION);
@@ -864,7 +868,11 @@ section.container-workout-cards div.cards-history-workout:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
-
+section.container-workout-cards div.cards-history-workout a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 section.container-workout-cards div.cards-history-workout div.data-workout-column{
     display: flex;
     flex-direction: column;
@@ -879,8 +887,8 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.sport-date-workout{
@@ -891,6 +899,11 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
 section.container-workout-cards div.cards-history-workout p.charge-workout strong{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COLOR_ACCENT2);
+}
+section.container-workout-cards div.cards-history-workout div.container-data-workout {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-paire{
     display: flex;
@@ -939,7 +952,7 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
 
     flex-grow: 1;
     margin: 4px;
-    padding: var(--SPACE_XS);
+    padding: 0.7rem;
 
     transition: all ease-out var(--TIME_TRANSITION);
 }
@@ -999,6 +1012,8 @@ section.container-block div.container-block-data p.container-block-data-data sma
 textarea {
     width: 100%;
     height: 125px;
+    min-height: 125px;
+    max-height: 700px;
     background-color: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_ACCENT2);
     border-radius: var(--BORDER_NORMAL);
@@ -1008,8 +1023,7 @@ textarea {
     line-height: var(--LINE_HEIGHT);
 
     border: none;
-    resize: none;
-    transition: all ease-out var(--TIME_TRANSITION);
+    resize: vertical;
 }
 textarea:focus {
     outline: none;
@@ -1017,6 +1031,15 @@ textarea:focus {
 }
 textarea::placeholder {
     color: var(--COLOR_TEXT_PRIMARY);
+}
+
+
+
+img.img-banniere-sprintia {
+    width: 100%;
+    height: auto;
+    margin-top: var(--SPACE_XS);
+    border-radius: var(--BORDER_NORMAL);
 }
 
 
@@ -1060,14 +1083,28 @@ div.toolbar i:active {
 }
 
 
+div.container-button-flottant {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--SPACE_XS);
+    pointer-events: none;
+
+    position: fixed;
+    bottom: var(--SPACE_S);
+    right: var(--SPACE_S);
+    padding: var(--SPACE_S);
+    width: 100%;
+    z-index: 1001;
+}
 div.button-flottant {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: var(--SPACE_XS);
-
     cursor: pointer;
-    position: fixed;
+    pointer-events: all;
+
     bottom: var(--SPACE_S);
     right: var(--SPACE_S);
     padding: var(--SPACE_S);
@@ -1091,6 +1128,19 @@ div.button-flottant:active {
     transform: scale(var(--SCALE_NORMAL));
 }
 @media (max-width: 600px) {
+    /* on le repasse en display block et width,... à 0 pour que le bouton se replace en bas a droite */
+    div.container-button-flottant {
+        display: block;
+        gap: 0;
+        pointer-events: none;
+
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: var(--SPACE_S);
+        width: fit-content;
+        z-index: 1001;
+    }
     div.button-flottant {
         bottom: var(--SPACE_S);
         right: var(--SPACE_S);
@@ -1327,7 +1377,7 @@ div.small-zone-result {
     margin: var(--SPACE_S);
     padding: var(--SPACE_S);
 
-    width: 200px;
+    width: 207px;
     height: 180px;
     transition: all ease-out var(--TIME_TRANSITION);
 }

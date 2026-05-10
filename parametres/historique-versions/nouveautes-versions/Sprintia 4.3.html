@@ -86,11 +86,11 @@
 
         <div class="container-block-data">
             <p class="container-block-data-header">Date</p>
-            <p class="container-block-data-data" id="fc-repos-today">17 Mai 2026</p>
+            <p class="container-block-data-data">17 Mai 2026</p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Taille</p>
-            <p class="container-block-data-data" id="fc-repos-moyenne-30j">3,12 <small>Mo</small></p>
+            <p class="container-block-data-data">3,12 <small>Mo</small></p>
         </div>
 
     </section>
@@ -118,7 +118,7 @@
             visualiser la distance parcourue sur la période que vous avez choisie.
         </li>
         <li>
-            Ajout d'une nouvelle fonctionnalité de suivi de la récupération grâce à la FC au repos. En fonction de votre FC au repos, Sprintia
+            Ajout d'une nouvelle fonctionnalité de suivi de la récupération grâce à la FC au repos. En fonction de votre FC au repos du jour, Sprintia
             pourrait vous suggérer d'aller vous entraîner ou plutôt de vous reposer.
         </li>
         <li>
@@ -133,7 +133,7 @@
         <li>
             L'algorithme 'Récupération' peut interagir avec les données de votre profil si vous avez activé le bouton nommé 'Mise à jour auto.'
             dans votre profil. Par exemple, si vous aviez configuré 50 bpm de FC repos lors de la configuration de votre profil et que Sprintia
-            observe que désormais c'est 47 bpm, il fera mettre à jour votre profil comme un grand.
+            observe que désormais c'est 47 bpm, il mettra à jour votre profil automatiquement.
         </li>
     </ul>
 
@@ -152,7 +152,7 @@
             Au fil des prochaines mises à jour, vous découvrirez une interface de plus en plus intuitive et organisée.
         </li>
         <li>
-            Le contenu de la page "Entraînement" anciennement appelée "Accueil" a été repensé pour devenir plus intuitif et plus transparent aux
+            Le contenu de la page "Entraînement", anciennement appelée "Accueil", a été repensé pour devenir plus intuitif et plus transparent aux
             yeux de l'utilisateur lors de la première utilisation de Sprintia.
         </li>
         <li>
@@ -163,7 +163,8 @@
         </li>
         <li>
             Désormais, les zones pour le JRM Coach s'accompagnent non plus d'un fond de couleur mais d'un effet de lumière (Glow Effect). Ce changement
-            a été réalisé pour améliorer l'UX de Sprintia et également pour améliorer le design du JRM Coach.
+            a été réalisé pour améliorer l'UX de Sprintia et également pour améliorer le design du JRM Coach. Ces effets de lumière sont également présents
+            dans d'autres endroits dans Sprintia.
         </li>
         <li>
             Sur la page d'accueil, le JRM Coach peut désormais mettre du texte en gras, ce qui était déjà le cas dans l'outil Charge d'entraînement...
@@ -177,8 +178,22 @@
         <li>
             Une toute nouvelle interface fait son apparition dans le patch note de la dernière version de Sprintia. Une interface plus structurée
             et plus 'grand public'. Désormais, même un novice peut voir les dernières nouveautés rapidement grâce à un résumé qui met en avant
-            les nouvelles fonctionnalités. Mais en descendant dans la page, le patch note complet est toujours présent pour les plus expérimentés
-            et ceux qui ne veulent manquer aucun nouveau changement.
+            les nouvelles fonctionnalités. Mais en descendant dans la page, le patch note complet est toujours présent pour les plus expérimentés.
+        </li>
+        <li>
+            L'interface 'Note d'entraînement' adopte une nouveauté : la box est désormais redimensionnable verticalement. Vous pouvez donc
+            l'agrandir pour faciliter la lecture de vos notes.
+        </li>
+        <li>
+            Dès qu'un formulaire est présent dans une page, appuyer sur la touche "Entrée" lancera l'algorithme ou la fonction. Plus besoin
+            de toujours cliquer sur "Valider", ce qui est très pratique sur ordinateur.
+        </li>
+        <li>
+            Une bannière Sprintia fait son apparition sur la page 'À propos & Contact', améliorant ainsi l'UI en évitant d'avoir une page composée
+            uniquement de texte.
+        </li>
+        <li>
+            Vos informations de profil ne sont désormais plus affichées sous forme de tableau, mais sous forme de petites cases (blocks de datas).
         </li>
     </ul>
 
@@ -188,65 +203,80 @@
             Correction d'un bug qui recharge désormais le tableau d'information de votre profil lors de la restauration de vos données.
         </li>
         <li>
-            Correction d'un léger bug d'interface dans le 'Profil' pour le 'Statut'. Ce bug était présent uniquement sur la version ordinateur.
+            Correction d'un léger bug d'interface dans le 'Profil' pour le 'Statut' (uniquement sur ordinateur).
         </li>
         <li>
             Grosse optimisation de l'arborescence du site de Sprintia.
         </li>
         <li>
-            Correction de la plupart des erreurs que je faisais auparavant dans le nom de mes dossiers. Exemple : "Paramètres/" -> "parametres/".
+            Correction de la plupart des erreurs de nommage des dossiers (ex: "parametres/" au lieu de "Paramètres/").
         </li>
         <li>
-            Correction d'un bug qui mettait par défaut cet avatar "👨" quand l'utilisateur n'avait pas choisi d'avatar, alors qu'il devrait
-            afficher "Rien".
+            Correction d'un bug qui mettait par défaut l'avatar "👨" au lieu de n'afficher "Rien" quand aucun choix n'était fait.
         </li>
         <li>
             Correction d'un bug lors de la réinitialisation du thème.
         </li>
         <li>
-            Ajustement du design des cartes pour votre historique d'entraînement. Désormais, elles prennent toute la place disponible
-            alors qu'avant elles ne pouvaient pas dépasser 900px.
+            Ajustement du design des cartes de l'historique : elles prennent désormais toute la place disponible (suppression de la limite de 900px).
         </li>
         <li>
-            Correction de diverses formulations dans Sprintia pour préparer la transition vers la réorganisation de Sprintia.
+            Correction de diverses formulations pour préparer la réorganisation de Sprintia.
         </li>
         <li>
-            Petit changement dans l'indulgence de course : désormais l'indulgence de course vous mettra en avant d'abord la distance réelle
-            que vous avez parcourue ces 7 derniers jours et ensuite il vous conseillera une distance hebdomadaire par rapport à vos
-            semaines passées d'entraînement. De plus, le graphique a été renommé pour être plus représentatif de son rôle.
+            Changement dans l'Indulgence de course : mise en avant de la distance réelle des 7 derniers jours avant de conseiller une distance hebdomadaire.
         </li>
         <li>
-            Ajout d'une nouvelle fonction qui affiche les 9 dernières cartes dans l'historique des versions. Auparavant, je devais manuellement
-            ajouter la classe, désormais tout est automatisé.
+            Automatisation de l'affichage des 9 dernières cartes dans l'historique des versions.
         </li>
         <li>
-            La première catégorie dans la page de 'Progression' s'appelle désormais 'Performance' et elle contient les algorithmes de
-            Charge d'entraînement, Indulgence de course et de Récupération.
+            La catégorie 'Performance' regroupe désormais la Charge d'entraînement, l'Indulgence de course et la Récupération.
         </li>
         <li>
-            L'algorithme nommé 'Estimation du temps de récupération' a été déplacé dans la catégorie 'Autres'.
+            L'algorithme 'Estimation du temps de récupération' a été déplacé dans la catégorie 'Autres'.
         </li>
         <li>
-            Correction d'un bug mineur dans l'animation du logo dynamique. Désormais, si le message ne s'affiche pas, le logo dynamique
-            ne saute pas bizarrement, tout est fluide.
+            Fluidification de l'animation du logo dynamique.
         </li>
         <li>
-            Correction d'un bug lors de la suppression de votre profil. Auparavant, aucune information n'était transmise à l'utilisateur.
+            Correction d'un bug lors de la suppression du profil (ajout d'un retour d'information pour l'utilisateur).
         </li>
         <li>
-            Correction d'un bug d'affichage dans l'algorithme d'hydratation sur la version PC/Tablette.
+            Correction d'un bug d'affichage de l'algorithme d'hydratation sur PC/Tablette.
         </li>
         <li>
-            Ajout d'un effet de scroll pour les carrousels. Un feedback a été ajouté pour donner un peu de vie à ces carrousels ; on pourrait
-            qualifier cet effet de cran pour chaque scroll entre les cartes du carrousel.
+            Ajout d'un effet de "cran" au scroll pour les carrousels afin de les rendre plus vivants.
+        </li>
+        <li>
+            Correction d'un bug visuel de background sur le bouton ajouté à l'accueil.
+        </li>
+        <li>
+            Optimisation responsive de la position des boutons flottants (Ajouter/Plus) sur PC.
+        </li>
+        <li>
+            Le titre d'un entraînement est désormais limité à 40 caractères (au lieu de 80) pour favoriser l'usage des nouvelles "Notes".
+        </li>
+        <li>
+            Doublement de la capacité des notes d'entraînements (500 caractères au lieu de 250).
+        </li>
+        <li>
+            Amélioration majeure du responsive de l'historique : affichage jusqu'à 3 cartes par ligne sur PC/Tablette.
+        </li>
+        <li>
+            Mise en avant visuelle du bouton "Détail de l'entraînement", particulièrement sur ordinateur.
+        </li>
+        <li>
+            Correction d'un bug de session storage lors de la restauration de compte.
+        </li>
+        <li>
+            Le bouton "Afficher plus" de l'historique disparaît désormais automatiquement dès qu'il n'y a plus de données à charger.
         </li>
     </ul>
 
     <h2>🗑️ Fonctionnalités supprimées</h2>
     <ul class="list-information">
         <li>
-            La fonctionnalité de statut a été supprimée car les analyses restant basées sur votre historique global, 
-            ce statut n'avait aucun impact réel sur vos résultats à la reprise ; il prenait en compte les semaines où vous aviez mis en pause.
+            La fonctionnalité de statut a été supprimée car elle n'avait aucun impact réel sur les analyses globales de récupération.
         </li>
     </ul>
         

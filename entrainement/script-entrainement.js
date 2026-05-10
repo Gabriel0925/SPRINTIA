@@ -197,7 +197,7 @@ function afficherData(dataWorkout) {
 
         <!-- Pour la note -->
         <h2>Note</h2>
-        <textarea id="note-entrainement" oninput="apparitionButton()" maxlength=250 placeholder="Note de l'entraînement"></textarea>
+        <textarea id="note-entrainement" oninput="apparitionButton()" maxlength=500 placeholder="Note de l'entraînement"></textarea>
         <button class="size-block" id="button-sauvegarder-note-workout" style="display: none;" onclick="saveDescription()">Sauvegarder la note</button>
     `
 

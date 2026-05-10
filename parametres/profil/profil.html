@@ -89,33 +89,32 @@
         <p>Mise à jour auto.</p>
         <input class="toggle" type="checkbox" onclick="toggleMajAuto(event)" id="toggle-banniere">
     </div>
-    <table id="tableau-historique">
+    <section class="container-block" style="margin: var(--SPACE_M) 0;"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Sexe</p>
+            <p class="container-block-data-data" id="sexe-place">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Âge</p>
+            <p class="container-block-data-data" id="age-place">--</p>
+        </div>
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Taille</p>
+            <p class="container-block-data-data" id="taille-place">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Poids</p>
+            <p class="container-block-data-data" id="poids-place">--</p>
+        </div>
         
-        <tbody>
-            <tr>
-                <td>Sexe</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Âge</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Taille</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Poids</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>FC repos</td>
-                <td>-</td>
-            </tr>
+        <div class="container-block-data">
+            <p class="container-block-data-header">FC repos</p>
+            <p class="container-block-data-data" id="fc-repos-place">--</p>
+        </div>
 
-        </tbody>
-
-    </table>
+    </section>
 
     <div class="container-center-marge">
         <button class="size-block" onclick="window.location.href = 'modification-profil.html'">Modifier mon profil</button>
@@ -185,47 +184,18 @@
 
     <!-- Pour le tableau -->
     <script>
-        const dicoCorrespondance = {
-            "sexe": "Sexe",
-            "age": "Âge",
-            "taille": "Taille",
-            "poids": "Poids",
-            "fc_repos": "FC Repos"
-        }
-        const dicoUnite = {
-            "sexe": "",
-            "age": " ans",
-            "taille": " cm",
-            "poids": " kg",
-            "fc_repos": " bpm"
-        }
-
-        async function remplirTableau() {
+        async function remplirPlaceProfil() {
             let data = await db.profil.toArray()
 
             if (data.length > 0) {
                 data = data[0] // on recup le dico des datas
 
-                // remplir les td
-                let td = document.querySelectorAll("td")
+                document.getElementById("sexe-place").innerHTML = data.sexe
+                document.getElementById("age-place").innerHTML = data.age + " <small>ans</small>"
+                document.getElementById("taille-place").innerHTML = data.taille + " <small>cm</small>"
+                document.getElementById("poids-place").innerHTML = data.poids.replace(".", ",") + " <small>kg</small>"
+                document.getElementById("fc-repos-place").innerHTML = data.fc_repos + " <small>bpm</small>"
 
-                // init
-                let compteur = 0
-
-                Object.entries(data).forEach(key => {
-                    if (key[0] == "id") { // si c'est l'id on s'en fous
-                        //pass
-                    } else {
-                        const dataName = dicoCorrespondance[key[0]] // recup du nom de la data ex : genre devient Genre
-                        
-                        // maintenant remplir le tableau
-                        td[compteur].textContent = dataName // ex: Genre
-                        td[compteur+1].textContent = key[1] + dicoUnite[key[0]] // ex: Homme
-
-                        compteur += 2 // incrémentation de +2 car on remplit 2 td à la fois
-                    }
-
-                });
             }
         }
 
@@ -253,7 +223,7 @@
             }
 
             // on remplit la tableau
-            remplirTableau()
+            remplirPlaceProfil()
         }
 
         window.addEventListener("DOMContentLoaded", init)

@@ -140,11 +140,6 @@ async function jrmCoach() {
         }
 
         if (historiqueData30J.length >= 7) {
-
-            // désignation d'une tranche pr l'interpretation
-            let trancheHaute = moyenne30J*1.04
-            let trancheBasse = moyenne30J*0.96
-
             // recup de la fc repos du jour
             let fcReposToday = await db.recuperation.where("date").aboveOrEqual(dateToday).toArray()
             if (fcReposToday.length > 0) {
@@ -158,11 +153,14 @@ async function jrmCoach() {
                     styleCoach = styleCoach[0].style
                 }
 
-                if (fcReposToday < trancheBasse) {
+                // calcul de l'écart
+                let ecartToday = parseInt(fcReposToday-moyenne30J)
+
+                if (ecartToday <= -3) { // inf ou egale à -3
                     interpretation = dicoInterpretation[styleCoach][1]
-                } else if (fcReposToday > trancheHaute) {
+                } else if (ecartToday >= 4) { // si ecart est entre ]-3;4] -> normale
                     interpretation = dicoInterpretation[styleCoach][3]
-                } else {
+                } else { // si plus grand que 4 alors fatigue ou surentrainement
                     interpretation = dicoInterpretation[styleCoach][2]
                 }
 

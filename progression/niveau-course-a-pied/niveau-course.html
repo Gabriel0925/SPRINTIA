@@ -173,6 +173,14 @@
 
         ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
         ChampDate.value = DateActuelle
+
+        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+        let formKeyEntry = document.querySelector(".form")
+        formKeyEntry.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                SauvegardeNiveauCourse()
+            }
+        })
     </script>
     
     <!-- Pour avoir les statistiques de visite du site -->

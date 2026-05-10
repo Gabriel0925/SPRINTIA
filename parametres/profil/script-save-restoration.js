@@ -84,6 +84,8 @@ async function ReadFile(event) {
             for (var key in DataFileLocalStorage) { // on enregistre les datas du localstorage
                 localStorage.setItem(key, DataFileLocalStorage[key])
             }
+            // !! impératif
+            sessionStorage.clear()
 
             const DataFileIndexedDB = DataFile.DataIndexedDB // dico des datas indexedDB uniquement
 
@@ -141,7 +143,10 @@ async function ReadFile(event) {
             BoutonRestoration.disabled = false // Réactivation du bouton
 
             // et remplit le tableau si il y a des datas
-            await remplirTableau()
+            await remplirPlaceProfil()
+            
+            // on replace le toggle dans la bonne position
+            init()
             
             logoDynamique("Vous revoilà 😇")
             // rechargement du theme
@@ -164,7 +169,6 @@ async function SupprimerDatas() {
        
         localStorage.clear()
         sessionStorage.clear()
-
         
         // (!!!--- Modifier si ajout de table ---!!!)
         // on vide chaque table de l'indexedDB avant d'ajouter les datas

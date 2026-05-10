@@ -80,13 +80,15 @@
         <h1>Entraînement</h1>
         <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
     </div>
-    
-    <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'">
-        <i class="fs-icon_add"></i>
-        <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+
+    <div class="container-button-flottant">
+        <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'">
+            <i class="fs-icon_add"></i>
+            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+        </div>
     </div>
 
-    <a id="configurer-sprintia" href="parametres/profil/modification-profil.html">
+    <a id="configurer-sprintia" style="display: none;" href="parametres/profil/modification-profil.html">
         <div class="config-profil">
             <i class="fs-icon_profil"></i>
             <p>Configurer Sprintia</p>
@@ -95,17 +97,12 @@
     </a>
 
     <h2>Analyse</h2>
-
-    <a href="entrainement/statistiques.html">
-        <div class="large-zone-coach clickable">
-            <p class="large-zone-coach-name">
-                JRM Coach :
-            </p>
-            <p class="large-zone-coach-interpretation">
-                Chargement...
-            </p>
-        </div>
-    </a>
+    <div class="zone-coach">
+        <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+        <p class="zone-coach-interpretation" id="reponse-coach">
+            Chargement...
+        </p> 
+    </div>
 
     <h2>Volume d'entraî. (4 sem.)</h2>
     <p class="text">
@@ -121,11 +118,6 @@
         Sprintia n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
         <a href="entrainement/ajouter-entrainement.html" class="lien">ajouter un entraînement</a>.
     </p> 
-
-    <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'">
-        <i class="fs-icon_add"></i>
-        <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
-    </div>
 
     <section class="container-workout-cards" id="liste-workouts"></section>
     <div class="container-center-marge">
@@ -172,8 +164,8 @@
         async function configSprintia() { // permet d'enlever le panneau de configuration une fois que le user a configurer
             const profilData = await db.profil.get(1)
 
-            if (profilData != undefined) {
-                document.getElementById("configurer-sprintia").style.display = "none"
+            if (profilData == undefined) {
+                document.getElementById("configurer-sprintia").style.display = "block"
             }
         }
 
@@ -206,7 +198,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.querySelector(".large-zone-coach-name").innerHTML =  AvatarCoach + " " + NomCoach + " :"
+                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + NomCoach + " :"
             }
 
             if (HistoriqueDB.length > 0) { // Si il y a des datas
@@ -355,12 +347,12 @@
                     Interpretation += "<br><br>Essaie de prendre le temps de faire une séance de sport, ton corps te remerciera plus tard. Si tu fais un entraînement, même léger, tu dormiras mieux ce soir !"
                 }
 
-                document.querySelector(".large-zone-coach-interpretation").innerHTML = Interpretation // affichage dans le champs
+                document.getElementById("reponse-coach").innerHTML = Interpretation // affichage dans le champs
 
             } else { // si il ny a pas de datas
                 let NotData = `Je n'ai <strong>pas encore assez de données</strong> pour analyser ta semaine d'entraînement. Continue tes efforts, j'ai hâte de voir tes <strong>premiers entraînements</strong> !`
 
-                document.querySelector(".large-zone-coach-interpretation").innerHTML = NotData
+                document.getElementById("reponse-coach").innerHTML = NotData
             }
 
             return
@@ -519,21 +511,23 @@
                         ${workout.sport} · ${DateEuropeen}
                     </p>
                 </div>
-                <div class="data-workout-paire">
-                    <p class="duree-workout">
-                        <strong>${dureeWorkout}</strong>
-                    </p>
-                    <p class="rpe-workout">
-                        RPE : <strong>${workout.rpe}</strong>
-                    </p>
-                </div>
-                <div class="data-workout-paire">
-                    <p class="charge-workout">
-                        Charge d'entraî. : <strong>${workout.charge_entrainement} CE</strong>
-                    </p>
-                </div>
-                <div class="action-button-card-workout">
-                    <button>Détail de l'entraînement</button>
+                <div class="container-data-workout">
+                    <div class="data-workout-paire">
+                        <p class="duree-workout">
+                            <strong>${dureeWorkout}</strong>
+                        </p>
+                        <p class="rpe-workout">
+                            RPE : <strong>${workout.rpe}</strong>
+                        </p>
+                    </div>
+                    <div class="data-workout-paire">
+                        <p class="charge-workout">
+                            Charge d'entraî. : <strong>${workout.charge_entrainement} CE</strong>
+                        </p>
+                    </div>
+                    <div class="action-button-card-workout">
+                        <button>Détail de l'entraînement</button>
+                    </div>
                 </div>
             </a>
             `
@@ -583,6 +577,11 @@
 
             // maj de la variable 
             NbCardsWorkoutAfficher = NbTotalCardsWorkoutAfficher
+
+            // si il n'y a plus de cartes a ajouter on fais disparaitre le bouton voir plus
+            if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
+                document.getElementById("button_afficher_plus").style.display = "none"
+            }
         }
 
         async function AfficherData() { // lors d'un clic sur le bouton afficher plus
@@ -620,6 +619,11 @@
 
             if (NbCardsWorkoutAfficher > 8) {
                 sessionStorage.setItem("NbCardHistoriqueSave", NbCardsWorkoutAfficher)
+            }
+
+            // si il n'y a plus de card a afficher alors on enleve le bouton
+            if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
+                document.getElementById("button_afficher_plus").style.display = "none"
             }
 
             return

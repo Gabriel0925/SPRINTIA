@@ -844,6 +844,7 @@ section.container-workout-cards {
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--SPACE_L);
+    margin-bottom: var(--SPACE_L);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 section.container-workout-cards div.cards-history-workout {
@@ -1156,7 +1157,7 @@ div.button-flottant:active {
 
 div.menu-many-action {
     background-color: var(--COLOR_BACKGROUND_CARD);
-    width: 200px;
+    width: 180px;
     position: absolute;
     right: 0;
     margin-top: var(--SPACE_S);
@@ -1165,8 +1166,8 @@ div.menu-many-action {
     border-radius: var(--BORDER_BIG);
 
     overflow: hidden;
-    opacity: 0;
-    transform: translate(83px, -100px) scale(0);
+    opacity: 1;
+    transform: translate(75px, -65px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {
@@ -1183,26 +1184,26 @@ div.menu-many-action li {
 }
 @keyframes rebond_icon_menu_open {
     0% { transform: translate(20px, -10px) scale(1)}
-    40% { transform: translate(-20px, 10px) scale(0.75)}
+    40% { transform: translate(-20px, 10px) scale(0.7)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
 div.menu-many-action.open li:nth-child(1) {
     animation: rebond_icon_menu_open 0.4s ease-out;
 }
 div.menu-many-action.open li:nth-child(2) {
-    animation: rebond_icon_menu_open 0.43s ease-out;
+    animation: rebond_icon_menu_open 0.5s ease-out;
 }
 div.menu-many-action.open li:nth-child(3) {
-    animation: rebond_icon_menu_open 0.47s ease-out;
-}
-div.menu-many-action.open li:nth-child(4) {
-    animation: rebond_icon_menu_open 0.51s ease-out;
-}
-div.menu-many-action.open li:nth-child(5) {
     animation: rebond_icon_menu_open 0.55s ease-out;
 }
+div.menu-many-action.open li:nth-child(4) {
+    animation: rebond_icon_menu_open 0.58s ease-out;
+}
+div.menu-many-action.open li:nth-child(5) {
+    animation: rebond_icon_menu_open 0.6s ease-out;
+}
 div.menu-many-action.open li:nth-child(6) {
-    animation: rebond_icon_menu_open 0.59s ease-out;
+    animation: rebond_icon_menu_open 0.62s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action li:hover {
@@ -1885,7 +1886,6 @@ div.carousel-content a:nth-child(1) .card-releases .card-releases-image p{
 div.carousel-content .card-releases p.description-maj {
     font-size: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
     padding: var(--SPACE_XXS);
     cursor: pointer;
 
@@ -2216,6 +2216,7 @@ ol li.option-color::before{
 /* celui selectionné */
 ol li.option-color.selected{
     color: var(--COLOR_BACKGROUND);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 ol li.option-color.selected::before{

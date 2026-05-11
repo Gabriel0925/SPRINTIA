@@ -474,7 +474,7 @@
     <script>
         // Init for function Afficher data
         let NbCardsWorkoutAfficher = 0
-        let NbTotalCardsWorkoutAfficher = parseInt(sessionStorage.getItem("NbCardHistoriqueSave")) || 8
+        let NbTotalCardsWorkoutAfficher = parseInt(sessionStorage.getItem("NbCardHistoriqueSave")) || 12
         let HistoriqueComplet = []
 
         async function Init() {
@@ -553,7 +553,7 @@
             if (HistoriqueComplet.length > 0) {
                 document.getElementById("text-informatif").style.display = "none"
             } 
-            if (HistoriqueComplet.length <= 8) {
+            if (HistoriqueComplet.length <= 12) {
                 document.getElementById("button_afficher_plus").style.display = "none"
             }
 
@@ -593,15 +593,15 @@
             if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
                 document.getElementById("button_afficher_plus").style.display = "none"
             }
-            if (HistoriqueComplet.length <= 8) {
+            if (HistoriqueComplet.length <= 12) {
                 document.getElementById("button_afficher_plus").style.display = "none"
             }
 
             const ConteneurCardsWorkout = document.getElementById("liste-workouts")
 
             // Coupage des datas pr le nb limite de cards
-            let HistoriqueNecessaire = HistoriqueComplet.slice(NbCardsWorkoutAfficher, NbCardsWorkoutAfficher+8)
-            NbCardsWorkoutAfficher += 8
+            let HistoriqueNecessaire = HistoriqueComplet.slice(NbCardsWorkoutAfficher, NbCardsWorkoutAfficher+12)
+            NbCardsWorkoutAfficher += 12
 
             // Creation structure HTML
             HistoriqueNecessaire.forEach(workout => {
@@ -617,7 +617,7 @@
                 ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
             }); 
 
-            if (NbCardsWorkoutAfficher > 8) {
+            if (NbCardsWorkoutAfficher > 12) {
                 sessionStorage.setItem("NbCardHistoriqueSave", NbCardsWorkoutAfficher)
             }
 

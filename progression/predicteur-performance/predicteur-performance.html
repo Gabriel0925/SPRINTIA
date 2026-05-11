@@ -81,10 +81,10 @@
     <section class="container-zone">
 
         <div class="form">
-            <select id="profil-user" onchange="AlgoPredicteur('select')" autocomplete="off">
-                <option value="Sprint">Votre profil : Sprinteur·se</option>
-                <option value="Equilibre">Votre profil : Équilibré·e</option>
-                <option value="Endurant">Votre profil : Endurant·e</option>
+            <select id="profil-user" onchange="forSelect()" autocomplete="off">
+                <option value="sprint">Votre profil : Sprinteur·se</option>
+                <option value="equilibre">Votre profil : Équilibré·e</option>
+                <option value="endurant">Votre profil : Endurant·e</option>
             </select>
                 
             <div class="side-by-side">
@@ -92,43 +92,62 @@
                     <input type="number" class="small" id="vma-user" placeholder="VMA (km/h)" autocomplete="off">
                     <div class="label-input">VMA (km/h)</div>
                 </div>
-                    
-                <div class="container-input">
-                    <input type="number" class="small" id="distance-user" placeholder="Distance (km)" autocomplete="off">
-                    <div class="label-input">Distance (km)</div>
-                </div>
             </div>
 
-            <button onclick="AlgoPredicteur('autre')">Estimer</button>
+            <button onclick="predictorTimeRunning()">Estimer</button>
         </div>
 
     </section>
 
-    <section class="container-zone">
 
-        <div class="large-zone-result">
-            <p class="large-zone-result-name">Temps estimé</p>
-            <p class="large-zone-result-result" id="reponse-algo-temps">
-                00 : 00 : 00
-            </p>
+    <section class="container-block" style="margin-top: var(--SPACE_L);"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">400 m</p>
+            <p class="container-block-data-data">--</p>
         </div>
-        <div class="large-zone-result">
-            <p class="large-zone-result-name">Allure (min/km)</p>
-            <p class="large-zone-result-result" id="reponse-algo-allure">00' 00" </p>
+        <div class="container-block-data">
+            <p class="container-block-data-header">800 m</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">1 km</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+
+    </section>
+
+    <section class="container-block" style="margin-bottom: var(--SPACE_L);"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">5 km</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">10 km</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Semi-marathon</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Marathon</p>
+            <p class="container-block-data-data">--</p>
         </div>
 
     </section>
 
     <h2>C'est quoi le Prédicteur de performance ?</h2>
     <p class="text">
-        Le Prédicteur de performance vous permet d'estimer votre temps de course sur une distance en fonction de votre VMA actuelle.
+        Le Prédicteur de performance vous permet d'estimer votre temps de course sur plusieurs distance clé grâce à votre VMA.
         C'est un outil pratique pour évaluer vos performances avant une course. Mais n'oubliez pas, cette prédiction est une
         estimation basée sur la théorie. Donc, cette prédiction peut varier le jour de la course en fonction de nombreux facteurs comme :
-        la météo, le dénivelé, votre forme physique,...
+        la météo, le dénivelé, votre forme physique, le vent,...
     </p>
     <h2>Comment s'en servir ?</h2>
     <p class="text">
-        Cette prédiction peut vous servir de base pour vous fixer des objectifs réalisables et structurer vos séances d'entraînement.
+        Cette prédiction peut vous servir de base pour vous fixer des objectifs réalisables et structurer vos entraînements.
         Par exemple, si la prédiction est trop éloignée de votre objectif, faites plus de fractionné pour améliorer votre vitesse et
         donc votre VMA.
         <br><br>
@@ -149,9 +168,9 @@
 
     <h2>Quel profil choisir ?</h2>
     <ul class="list-information">
-        <li>Sprint : Vous êtes rapide mais la fatigue arrive vite après quelques kilomètres.</li>
-        <li>Équilibre : Vous courez régulièrement, vous êtes ni sprinteur ni endurant.</li>
-        <li>Endurant : Vous êtes capable de maintenir une allure pendant très longtemps.</li>
+        <li>Sprinteur·se : Vous êtes rapide mais la fatigue arrive vite après quelques kilomètres.</li>
+        <li>Équilibré·e : Vous courez régulièrement, vous êtes ni sprinteur ni endurant.</li>
+        <li>Endurant·e : Vous êtes capable de maintenir une allure pendant très longtemps.</li>
     </ul>
     
     <footer>
@@ -186,7 +205,7 @@
         let formKeyEntry = document.querySelector(".form")
         formKeyEntry.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                AlgoPredicteur('autre')
+                predictorTimeRunning()
             }
         })
     </script>

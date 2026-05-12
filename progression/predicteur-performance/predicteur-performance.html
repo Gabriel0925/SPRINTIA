@@ -93,6 +93,15 @@
                     <div class="label-input">VMA (km/h)</div>
                 </div>
             </div>
+            
+            <div class="form-different-button" onclick="distancePersonnaliser()">
+                <p class="form-different-button-text" id="button-distance">Ajouter une distance</p>
+            </div>
+            
+            <div class="container-input" id="input-distance" style="display: none;">
+                <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off">
+                <div class="label-input">Distance (km)</div>
+            </div>
 
             <button onclick="predictorTimeRunning()">Estimer</button>
         </div>
@@ -133,6 +142,15 @@
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Marathon</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+
+    </section>
+    
+    <section class="container-block" id="block-distance-personnaliser" style="margin-bottom: var(--SPACE_L); display:none;"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Distance personnalisée</p>
             <p class="container-block-data-data">--</p>
         </div>
 

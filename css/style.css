@@ -545,7 +545,7 @@ header div.navbar div.burger-menu-button {
     margin-bottom: var(--SPACE_M);
     
     box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_TEXT_PRIMARY);
     cursor: pointer;
     display: none;
     transition: all ease-out var(--TIME_TRANSITION);
@@ -559,80 +559,112 @@ header div.navbar ul.links li a {
     font-size: var(--H3);
     width: 190px;
     cursor: pointer;
+    position: relative;
     margin: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
-    padding: 9px 0px;
+    padding: 10px var(--SPACE_XS);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     transition: all ease-out var(--TIME_TRANSITION);
     display: flex;
+    overflow: hidden;
     align-items: center;
     justify-content: center;
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 header div.navbar ul.links li a i {
     font-size: var(--H2);
     margin-right: var(--SPACE_XS);
+    margin-left: var(--SPACE_XXS);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     header div.navbar ul.links li a:hover {
-        color: var(--COLOR_ACCENT2);
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+    header div.navbar ul.links li a:hover::before {    
+        content: "";
+        position: absolute;
+        top: 9%;
+        left: 0;
+        bottom: 9%;
+        background-color: var(--COLOR_ACCENT);
+        width: 7px;
+        border-radius: var(--BORDER_BIG);
+        transition: all ease-out var(--TIME_TRANSITION);
     }
 }
 header div.navbar ul.links li a:active {
-    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
+header div.navbar ul.links li a:active::before {    
+    content: "";
+    position: absolute;
+    top: 9%;
+    left: 0;
+    bottom: 9%;
+    background-color: var(--COLOR_ACCENT);
+    width: 7px;
+    border-radius: var(--BORDER_BIG);
+    transition: all ease-out var(--TIME_TRANSITION);
+}
 header div.navbar ul.links li a.actif {
-    color: var(--COLOR_ACCENT2);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border-radius: var(--BORDER_NORMAL);
+}
+header div.navbar ul.links li a.actif::before {    
+    content: "";
+    position: absolute;
+    top: 9%;
+    left: 0;
+    bottom: 9%;
+    background-color: var(--COLOR_ACCENT);
+    width: 7px;
+    border-radius: var(--BORDER_BIG);
+    transition: all ease-out var(--TIME_TRANSITION);
 }
 
 
 
+@keyframes animation_menu_li {
+    0% { transform: translate(20px, -10px) scale(1)}
+    40% { transform: translate(-20px, 10px) scale(0.7)}
+    100% { transform: translate(0px, 0px) scale(1)}
+}
 header .burger-menu {
     display: none;
     position: absolute;
     right: 0;
-    width: 215px;
+    width: 230px;
     margin-right: var(--SPACE_XS);
-    max-height: 0px;    
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    max-height: 350px;
     border-radius: 1.25rem;
-    overflow: hidden; 
+    overflow: hidden;
+    opacity: 1;
 
-    transform: translateY(-20px) translateX(88px) scale(0.1, 0.4);
-    transition: all 0.15s ease-out;
+    transform: translate(100px, -97px) scale(0);
+    transition: all ease-out 0.15s;
 }
 header .burger-menu.open {
-    max-height: 350px;
-    transform: translate(0, 0) scale(1, 1); 
+    opacity: 1;
+    transform: translate(0, 0) scale(1); 
     background-color: var(--COLOR_BACKGROUND_CARD);
-
     box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
-    transition: all 0.18s ease-out;
+    transition: all ease-out 0.15s;
 }
 header .burger-menu li {
     color: var(--COLOR_BACKGROUND);
-}
-@keyframes rebond_icon_burger_open {
-    0% { transform: translate(22px, -22px) scale(1)}
-    40% { transform: translate(-22px, 22px) scale(0.7)}
-    100% { transform: translate(0px, 0px) scale(1)}
 }
 header .burger-menu.open li {
     color: var(--COLOR_TEXT_PRIMARY);
 }
 header .burger-menu.open li:nth-child(1) {
-    animation: rebond_icon_burger_open 0.36s ease-out;
+    animation: animation_menu_li 0.4s ease-out;
 }
 header .burger-menu.open li:nth-child(2) {
-    animation: rebond_icon_burger_open 0.4s ease-out;
+    animation: animation_menu_li 0.5s ease-out;
 }
 header .burger-menu.open li:nth-child(3) {
-    animation: rebond_icon_burger_open 0.50s ease-out;
+    animation: animation_menu_li 0.55s ease-out;
 }
 
 header .burger-menu li a {
@@ -641,6 +673,8 @@ header .burger-menu li a {
     min-width: 96%;
     display: block;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
     text-align: left;
     padding: var(--SPACE_XS);
     margin: var(--SPACE_XXS);
@@ -653,23 +687,40 @@ header .burger-menu li a {
 header .burger-menu li a i {
     font-size: var(--H2);
     margin-right: var(--SPACE_XS);
+    margin-left: var(--SPACE_XXS);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 header .burger-menu li a:active {
-    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+header .burger-menu li a:active::before {    
+    content: "";
+    position: absolute;
+    top: 9%;
+    left: 0;
+    bottom: 9%;
+    background-color: var(--COLOR_ACCENT);
+    width: 7px;
+    border-radius: var(--BORDER_BIG);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 header .burger-menu li a.actif-burger-menu {
-    color: var(--COLOR_ACCENT2);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-header .burger-menu li a.actif-burger-menu:active {
-    color: var(--COLOR_ACCENT2);
-    transform: scale(var(--SCALE_NORMAL));
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+header .burger-menu li a.actif-burger-menu::before {    
+    content: "";
+    position: absolute;
+    top: 9%;
+    left: 0;
+    bottom: 9%;
+    background-color: var(--COLOR_ACCENT);
+    width: 7px;
+    border-radius: var(--BORDER_BIG);
     transition: all ease-out var(--TIME_TRANSITION);
+}
+header .burger-menu li a.actif-burger-menu:active {
+    transform: scale(var(--SCALE_NORMAL));
 }
 
 
@@ -1012,8 +1063,8 @@ section.container-block div.container-block-data p.container-block-data-data sma
 }
 textarea {
     width: 100%;
-    height: 125px;
-    min-height: 125px;
+    height: 150px;
+    min-height: 150px;
     max-height: 700px;
     background-color: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_ACCENT2);
@@ -1096,7 +1147,7 @@ div.container-button-flottant {
     right: var(--SPACE_S);
     padding: var(--SPACE_S);
     width: 100%;
-    z-index: 1001;
+    z-index: 1500;
 }
 div.button-flottant {
     display: flex;
@@ -1115,7 +1166,7 @@ div.button-flottant {
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
     font-size: var(--H1);
-    z-index: 1002;
+    z-index: 1550;
 
     transition: all ease-out var(--TIME_TRANSITION);
 }
@@ -1140,7 +1191,7 @@ div.button-flottant:active {
         right: 0;
         padding: var(--SPACE_S);
         width: fit-content;
-        z-index: 1001;
+        z-index: 1500;
     }
     div.button-flottant {
         bottom: var(--SPACE_S);
@@ -1167,12 +1218,13 @@ div.menu-many-action {
 
     overflow: hidden;
     opacity: 1;
-    transform: translate(75px, -65px) scale(0);
+    transform: translate(75px, -63px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {
     transform: translate(0) scale(1);
     opacity:1;
+    z-index: 1200;
     transition: all ease-out 0.15s;
 }
 div.menu-many-action li {
@@ -1182,28 +1234,23 @@ div.menu-many-action li {
     transition: all ease-out 0.3s;
     cursor: pointer;
 }
-@keyframes rebond_icon_menu_open {
-    0% { transform: translate(20px, -10px) scale(1)}
-    40% { transform: translate(-20px, 10px) scale(0.7)}
-    100% { transform: translate(0px, 0px) scale(1)}
-}
 div.menu-many-action.open li:nth-child(1) {
-    animation: rebond_icon_menu_open 0.4s ease-out;
+    animation: animation_menu_li 0.4s ease-out;
 }
 div.menu-many-action.open li:nth-child(2) {
-    animation: rebond_icon_menu_open 0.5s ease-out;
+    animation: animation_menu_li 0.5s ease-out;
 }
 div.menu-many-action.open li:nth-child(3) {
-    animation: rebond_icon_menu_open 0.55s ease-out;
+    animation: animation_menu_li 0.55s ease-out;
 }
 div.menu-many-action.open li:nth-child(4) {
-    animation: rebond_icon_menu_open 0.58s ease-out;
+    animation: animation_menu_li 0.58s ease-out;
 }
 div.menu-many-action.open li:nth-child(5) {
-    animation: rebond_icon_menu_open 0.6s ease-out;
+    animation: animation_menu_li 0.6s ease-out;
 }
 div.menu-many-action.open li:nth-child(6) {
-    animation: rebond_icon_menu_open 0.62s ease-out;
+    animation: animation_menu_li 0.62s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action li:hover {
@@ -1479,7 +1526,7 @@ input[type="text"] {
     outline: none;
     -moz-appearance: textfield; /* desactive les styles de base de firefox */
     appearance: text-field;
-    z-index: 1111;
+    z-index: 800;
 
     transition: all ease-out var(--TIME_TRANSITION);
 }
@@ -1559,7 +1606,7 @@ input:not(:placeholder-shown) + .label-input {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_BIG);
     transform: translateY(-40px) scale(0.8);
-    z-index: 1111;
+    z-index: 800;
 }
 
 /* --- Style des sliders --- */
@@ -1580,7 +1627,7 @@ input:not(:placeholder-shown) + .label-input {
     -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
-    z-index: 99;
+    z-index: 100;
 }
 /* Le point de la track du slider */
 .slider input::-webkit-slider-thumb{
@@ -2472,14 +2519,6 @@ div.container-center-marge {
 }
 
 
-@media (max-width:890px) {
-    header div.navbar ul.links li a {
-        width: 180px;
-    }
-    header div.navbar ul.links li a i {
-        margin-right: var(--SPACE_XS);
-    }
-}
 @media (max-width: 830px) {
     header div.navbar ul.links {
         display: none;

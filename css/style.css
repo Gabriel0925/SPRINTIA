@@ -18,6 +18,7 @@
     --H3: 1.2rem;
     --P: 1rem;
     --P_SMALL: 0.9rem;
+    --TITLE_CARD: 1.75rem;
 
     --LINE_HEIGHT: 1.5;
     --FONT_FAMILY: "Zalando Sans SemiExpanded";
@@ -49,75 +50,28 @@
 
     /* Couleur pour le hover des pastilles des thèmes monochrome */
     --COLOR_MONOCHROMES_1: #42a5f5; 
-    --COLOR_MONOCHROMES_1_HOVER: #90caf9; 
+    --COLOR_MONOCHROMES_2: #FF5257;
 
-    --COLOR_MONOCHROMES_2: #FF5257; 
-    --COLOR_MONOCHROMES_2_HOVER: #FF8A8E; 
+    --COLOR_MONOCHROMES_3: #FA6BFA;
+    --COLOR_MONOCHROMES_4: #B266F9;
 
-    --COLOR_MONOCHROMES_3: #FA6BFA; 
-    --COLOR_MONOCHROMES_3_HOVER: #FFA8FF; 
+    --COLOR_MONOCHROMES_5: #0CBB5BFF;
+    --COLOR_MONOCHROMES_6: #0ac3a7;
 
-    --COLOR_MONOCHROMES_4: #B266F9; 
-    --COLOR_MONOCHROMES_4_HOVER: #D7A8FF; 
+    --COLOR_MONOCHROMES_7: #6aabd3;
+    --COLOR_MONOCHROMES_8: #f14d84;
 
-    --COLOR_MONOCHROMES_5: #0CBB5BFF; 
-    --COLOR_MONOCHROMES_5_HOVER: #76E082; 
+    --COLOR_MONOCHROMES_9: #FFF700;
+    --COLOR_MONOCHROMES_10: #FF9A9E; 
 
-    --COLOR_MONOCHROMES_6: #0ac3a7; 
-    --COLOR_MONOCHROMES_6_HOVER: #76e8d6; 
-    
-    --COLOR_MONOCHROMES_7: #6aabd3;  
-    --COLOR_MONOCHROMES_7_HOVER: #acdefd;  
+    --COLOR_MONOCHROMES_11: #FF8559;
+    --COLOR_MONOCHROMES_12: #4683D8;
 
-    --COLOR_MONOCHROMES_8: #f14d84; 
-    --COLOR_MONOCHROMES_8_HOVER: #ff80ab; 
- 
-    --COLOR_MONOCHROMES_9: #FFF700;  
-    --COLOR_MONOCHROMES_9_HOVER: #fffb93;
- 
-    --COLOR_MONOCHROMES_10: #FF9A9E;  
-    --COLOR_MONOCHROMES_10_HOVER: #FAD0C4;  
- 
-    --COLOR_MONOCHROMES_11: #FF8559;  
-    --COLOR_MONOCHROMES_11_HOVER: #fdb195;  
+    --COLOR_MONOCHROMES_13: #ffd1ff;
+    --COLOR_MONOCHROMES_14: #ffb82b;
 
-
-    /* thèmes binomes */
-    --COLOR_BINOMES_1: #3a91ff;  
-    --COLOR_BINOMES_1_HOVER: #f782f0;  
-    
-    --COLOR_BINOMES_2: #1498e4;  
-    --COLOR_BINOMES_2_HOVER: #fcaf6b;  
-    
-    --COLOR_BINOMES_3: #a477fe;  
-    --COLOR_BINOMES_3_HOVER: #4ce58c; 
- 
-    --COLOR_BINOMES_4: #ffb82b;  
-    --COLOR_BINOMES_4_HOVER: #ff782f; 
- 
-    --COLOR_BINOMES_5: #2e9c0f;  
-    --COLOR_BINOMES_5_HOVER: #d2cccc;
- 
-    --COLOR_BINOMES_6: #4683D8;  
-    --COLOR_BINOMES_6_HOVER: #00D2FF;
- 
-    --COLOR_BINOMES_7: #00d4ff;  
-    --COLOR_BINOMES_7_HOVER: #E0FFFF;
- 
-    --COLOR_BINOMES_8: #269cbc;  
-    --COLOR_BINOMES_8_HOVER: #7ac18b;
- 
-    --COLOR_BINOMES_9: #FEADA6;  
-    --COLOR_BINOMES_9_HOVER: #F5EFEF;
-
-    --COLOR_BINOMES_10: #ffd1ff;  
-    --COLOR_BINOMES_10_HOVER: #FDFBFB;
-
-    --COLOR_BINOMES_11: #51a6d7;  
-    --COLOR_BINOMES_11_HOVER: #f8e622;
-
-    --COLOR_BINOMES_12: #749aee;  
-    --COLOR_BINOMES_12_HOVER: #fb8288;
+    --COLOR_MONOCHROMES_15: #6db586;
+    --COLOR_MONOCHROMES_16: #00d4ff;
 }
 /* Pour les icônes dans l'application */
 @font-face {
@@ -625,9 +579,9 @@ header div.navbar ul.links li a.actif::before {
 
 
 
-@keyframes animation_menu_li {
-    0% { transform: translate(20px, -10px) scale(1)}
-    40% { transform: translate(-20px, 10px) scale(0.7)}
+@keyframes animation_menu_burger_li {
+    0% { transform: translate(25px, -18px) scale(1)}
+    40% { transform: translate(-25px, 18px) scale(0.7)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
 header .burger-menu {
@@ -658,13 +612,13 @@ header .burger-menu.open li {
     color: var(--COLOR_TEXT_PRIMARY);
 }
 header .burger-menu.open li:nth-child(1) {
-    animation: animation_menu_li 0.4s ease-out;
+    animation: animation_menu_burger_li 0.38s ease-out;
 }
 header .burger-menu.open li:nth-child(2) {
-    animation: animation_menu_li 0.5s ease-out;
+    animation: animation_menu_burger_li 0.48s ease-out;
 }
 header .burger-menu.open li:nth-child(3) {
-    animation: animation_menu_li 0.55s ease-out;
+    animation: animation_menu_burger_li 0.53s ease-out;
 }
 
 header .burger-menu li a {
@@ -825,12 +779,12 @@ div.carousel div.card-tool {
     border-radius: var(--BORDER_BIG);
     cursor: pointer;
 
-    width: 235px;
+    width: 250px;
     height: fit-content;
     overflow: hidden;
     transition: all ease-out var(--TIME_TRANSITION);
 }
-div.carousel div.card-tool.first {
+div.carousel div.card-tool:nth-child(1) {
     margin-left: 0;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -846,19 +800,11 @@ div.carousel div.card-tool:active {
 div.carousel div.card-tool div.icone{
     display: flex;
     justify-content: center;
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT);
     padding: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
     width: 100%;
     position: relative;
-}
-div.carousel:nth-of-type(1) div.card-tool div.icone{
-    background-color: var(--COLOR_ACCENT);
-}
-div.carousel:nth-of-type(3) div.card-tool div.icone{
-    background-color: var(--COLOR_ACCENT);
-}div.carousel:nth-of-type(5) div.card-tool div.icone{
-    background-color: var(--COLOR_ACCENT);
 }
 div.carousel div.card-tool div.icone i{
     font-size: 5rem;    
@@ -1206,6 +1152,11 @@ div.button-flottant:active {
 }
 
 
+@keyframes animation_menu_li {
+    0% { transform: translate(20px, -10px) scale(1)}
+    40% { transform: translate(-20px, 10px) scale(0.7)}
+    100% { transform: translate(0px, 0px) scale(1)}
+}
 div.menu-many-action {
     background-color: var(--COLOR_BACKGROUND_CARD);
     width: 180px;
@@ -1893,8 +1844,8 @@ div.carousel-content {
 div.carousel-content.table {
     display: block;
 }
-div.carousel-content .card-releases {
-    width: 230px;
+div.card-releases {
+    width: 280px;
     background-color: var(--COLOR_BACKGROUND_CARD);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
@@ -1904,33 +1855,28 @@ div.carousel-content .card-releases {
 }
 div.carousel-content a:nth-child(1) .card-releases {
     margin-left: 0;
-    width: 280px;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.carousel-content .card-releases:hover {
+    div.card-releases:hover {
         transform: translateY(-5px);
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.carousel-content .card-releases:active {
+div.card-releases:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.carousel-content .card-releases-image p{
-    font-size: var(--H1);
+div.card-releases-image p{
+    font-size: var(--TITLE_CARD);
     text-align: left;
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT);
     font-weight: 1000;
-    padding: var(--SPACE_XXS);
+    padding: 1.25rem;
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
     margin-bottom: var(--SPACE_XS);
-    padding-left: var(--SPACE_S_SMALL);
 }
-div.carousel-content a:nth-child(1) .card-releases .card-releases-image p{
-    background-color: var(--COLOR_ACCENT);
-}
-div.carousel-content .card-releases p.description-maj {
+div.card-releases p.description-maj {
     font-size: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
     padding: var(--SPACE_XXS);
@@ -1938,11 +1884,11 @@ div.carousel-content .card-releases p.description-maj {
 
     display: -webkit-box;
     -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 2;
-    line-clamp: 2; 
+    -webkit-line-clamp: 3;
+    line-clamp: 3; 
     overflow: hidden;
 }
-div.carousel-content .card-releases div.date-maj {
+div.card-releases div.date-maj {
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P_SMALL);
     margin-top: var(--SPACE_XS);
@@ -1993,16 +1939,10 @@ div.action-list div.action-list-item p{
 
 
 
-section.container-version-history {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-section.container-version-history .box-last-maj{
+div.box-last-maj{
     background: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
-    max-width: 1150px;
-    margin: var(--SPACE_S);
+    max-width: 600px;
     padding: var(--SPACE_XS);
     transition: all var(--TIME_TRANSITION) ease-out;
 }
@@ -2011,46 +1951,39 @@ section.container-version-history .box-last-maj{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-section.container-version-history .box-last-maj:active{
+div.box-last-maj:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
-section.container-version-history .box-last-maj div.content1 .card-releases-image-last-maj {
-    font-size: var(--H1);
-    width: fit-content;
+div.box-last-maj div.content1 .card-releases-image-last-maj {
+    font-size: var(--TITLE_CARD);
     text-align: left;
     background-color: var(--COLOR_ACCENT);
     font-weight: 1000;
+    width: 100%;
     padding: var(--SPACE_XS) var(--SPACE_S);
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_NORMAL);
     margin-bottom: var(--SPACE_S);
 }
-section.container-version-history .box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
+div.box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
     font-size: var(--H3);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.container-version-history .box-last-maj div.content2 {
+div.box-last-maj div.content2 {
     display: block;
     margin-top: var(--SPACE_XS);
 }
-section.container-version-history .box-last-maj div.content2 .description{
+div.box-last-maj div.content2 .description{
     font-size: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
     cursor: pointer;
 }
-section.container-version-history .box-last-maj div.content2 button{
-    font-size: var(--P);
-    font: var(--FONT_FAMILY);
-    color: var(--COLOR_BACKGROUND);
-    cursor: pointer;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    padding: var(--SPACE_XS);
-    margin: 0;
-    margin-top: var(--SPACE_XS);
-    text-align: center;
-
-    border-color: transparent;
-    border: 0px transparent;
+div.box-last-maj div.content2 button{
+    width: 100%;
+    padding: 0.7rem;
+    margin: 0;    
+    margin-top: var(--SPACE_S_SMALL);
 
     border-radius: var(--BORDER_NORMAL);
     background-color: var(--COLOR_ACCENT);
@@ -2061,60 +1994,9 @@ section.container-version-history .box-last-maj div.content2 button{
         background-color: var(--COLOR_ACCENT2);
     }
 }
-section.container-version-history .box-last-maj div.content2 button:active{
+div.box-last-maj div.content2 button:active{
     background-color: var(--COLOR_ACCENT2);
     transform: scale(1); /* pour éviter que le bouton s'enfonce alors que la card fais deja un transform scale */
-}
-section.container-version-history .card-releases { /* Les cards sont invisible de base */
-    display: none;
-}
-section.container-version-history .card-releases.visible {
-    width: 370px;
-    flex-grow: 1;
-    display: block;
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_BIG);
-
-    margin: var(--SPACE_S_SMALL); /* !!! si changement de marge alors modifier dans le calcul pour le responsive à 640px */
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    section.container-version-history .card-releases.visible:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-section.container-version-history .card-releases.visible:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_NORMAL));
-}
-section.container-version-history .card-releases-image p {
-    font-size: var(--H1);
-    text-align: left;
-    background-color: var(--COLOR_ACCENT2);
-    font-weight: 1000;
-    padding: var(--SPACE_XXS);
-    color: var(--COLOR_BACKGROUND);
-    border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--SPACE_XS);
-    padding-left: var(--SPACE_S_SMALL);
-}
-section.container-version-history .card-releases p.description-maj {
-    font-size: var(--P);
-    color: var(--COLOR_TEXT_PRIMARY);
-    padding: var(--SPACE_XXS);
-    cursor: pointer;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 2;
-    line-clamp: 2; 
-    overflow: hidden; 
-}
-section.container-version-history .card-releases div.date-maj {
-    color: var(--COLOR_TEXT_SECONDARY);
-    font-size: var(--P_SMALL);
-    margin-top: var(--SPACE_S);
 }
 
 
@@ -2267,81 +2149,58 @@ ol li.option-color.selected{
     transition: all ease-out var(--TIME_TRANSITION);
 }
 ol li.option-color.selected::before{
-    width: 100%; 
+    width: 100%;
     transition: all ease-out 0.3s;
 }
 /* Couleur individuelle en fonction du thème du li */
 /* --- Monochromes --- */
 ol li.option-color.option-color#monochromes-1::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_1) 50%, var(--COLOR_MONOCHROMES_1_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_1);
 }
 ol li.option-color.option-color#monochromes-2::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_2) 50%, var(--COLOR_MONOCHROMES_2_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_2);
 }
 ol li.option-color.option-color#monochromes-3::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_3) 50%, var(--COLOR_MONOCHROMES_3_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_3);
 }
 ol li.option-color.option-color#monochromes-4::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_4) 50%, var(--COLOR_MONOCHROMES_4_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_4);
 }
 ol li.option-color.option-color#monochromes-5::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_5) 50%, var(--COLOR_MONOCHROMES_5_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_5);
 }
 ol li.option-color.option-color#monochromes-6::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_6) 50%, var(--COLOR_MONOCHROMES_6_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_6);
 }
 ol li.option-color.option-color#monochromes-7::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_7) 50%, var(--COLOR_MONOCHROMES_7_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_7);
 }
 ol li.option-color.option-color#monochromes-8::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_8) 50%, var(--COLOR_MONOCHROMES_8_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_8);
 }
 ol li.option-color.option-color#monochromes-9::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_9) 50%, var(--COLOR_MONOCHROMES_9_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_9);
 }
 ol li.option-color.option-color#monochromes-10::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_10) 50%, var(--COLOR_MONOCHROMES_10_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_10);
 }
 ol li.option-color.option-color#monochromes-11::before{ 
-    background: linear-gradient(130deg, var(--COLOR_MONOCHROMES_11) 50%, var(--COLOR_MONOCHROMES_11_HOVER) 50%);
+    background: var(--COLOR_MONOCHROMES_11);
 }
-
-/* --- Binomes --- */
-ol li.option-color.option-color#binomes-1::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_1) 50%, var(--COLOR_BINOMES_1_HOVER) 50%);
+ol li.option-color.option-color#monochromes-12::before{ 
+    background: var(--COLOR_MONOCHROMES_12);
 }
-ol li.option-color.option-color#binomes-2::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_2) 50%, var(--COLOR_BINOMES_2_HOVER) 50%);
+ol li.option-color.option-color#monochromes-13::before{ 
+    background: var(--COLOR_MONOCHROMES_13);
 }
-ol li.option-color.option-color#binomes-3::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_3) 50%, var(--COLOR_BINOMES_3_HOVER) 50%);
+ol li.option-color.option-color#monochromes-14::before{ 
+    background: var(--COLOR_MONOCHROMES_14);
 }
-ol li.option-color.option-color#binomes-4::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_4) 50%, var(--COLOR_BINOMES_4_HOVER) 50%);
+ol li.option-color.option-color#monochromes-15::before{ 
+    background: var(--COLOR_MONOCHROMES_15);
 }
-ol li.option-color.option-color#binomes-5::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_5) 50%, var(--COLOR_BINOMES_5_HOVER) 50%);
-}
-ol li.option-color.option-color#binomes-6::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_6) 50%, var(--COLOR_BINOMES_6_HOVER) 50%);
-}
-ol li.option-color.option-color#binomes-7::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_7) 50%, var(--COLOR_BINOMES_7_HOVER) 50%);
-}
-ol li.option-color.option-color#binomes-8::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_8) 50%, var(--COLOR_BINOMES_8_HOVER) 50%);
-}
-ol li.option-color.option-color#binomes-9::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_9) 50%, var(--COLOR_BINOMES_9_HOVER) 50%);
-}
-ol li.option-color.option-color#binomes-10::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_10) 50%, var(--COLOR_BINOMES_10_HOVER) 50%);
-}
-ol li.option-color.option-color#binomes-11::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_11) 50%, var(--COLOR_BINOMES_11_HOVER) 50%);
-}
-ol li.option-color.option-color#binomes-12::before{ 
-    background: linear-gradient(130deg, var(--COLOR_BINOMES_12) 50%, var(--COLOR_BINOMES_12_HOVER) 50%);
+ol li.option-color.option-color#monochromes-16::before{ 
+    background: var(--COLOR_MONOCHROMES_16);
 }
 
 

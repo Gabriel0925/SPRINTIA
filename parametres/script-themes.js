@@ -1,24 +1,35 @@
 // Initialisation de la configuration de chaque thème
 const ThemeConfig = {
-    "theme_carmin": ["#FF5257", "#FF8A8E"],
-    "theme_fuchsia": ["#FA6BFA", "#FFA8FF"],
-    "theme_lavande": ["#B266F9", "#D7A8FF"],
-    "theme_vegetation": ["#0CBB5BFF", "#76E082"],
-    "theme_menthe": ["#0ac3a7", "#76e8d6"],
-    "theme_pierre_lune": ["#6aabd3", "#acdefd"], 
-    "theme_framboise": ["#f14d84", "#ff80ab"],
-    "Citron": ["#FFF700", "#fffb93"],
-    "theme_peche": ["#FF9A9E", "#FAD0C4"],
-    "theme_corail": ["#FF8559", "#fdb195"],
+    "carmin": ["#FF5257", "#FFB3B5"],
 
-    "theme_feu": ["#ffb82b", "#ff782f"],
-    "theme_foudre": ["#4683D8", "#00D2FF"],
-    "theme_glacier": ["#00d4ff", "#E0FFFF"],
-    "theme_amazonie": ["#269cbc", "#7ac18b"],
-    "theme_guimauve": ["#ffd1ff", "#FDFBFB"],
+    "fuchsia": ["#FA6BFA", "#fec4fe"],
+    "lavande": ["#B266F9", "#DAB8F9"],
+
+    "vegetation": ["#0acd62", "#acffd1"],
+    "menthe": ["#07d3b5", "#adf9ee"],
+
+    "lune": ["#72a8ca", "#c7ddeb"],
+    "framboise": ["#f26997", "#ffcdde"],
+
+    "citron": ["#faf43a", "#fffdc4"],
+    "peche": ["#FF9A9E", "#FFD6D8"],
+
+    "corail": ["#FF8559", "#ffc4af"],
+    "ocean": ["#227eff", "#A3C8FF"],
+
+    "guimauve": ["#e4abe4", "#ffe6ff"],
+    "feu": ["#ffa51e", "#ffd493"],
+
+    "sapin": ["#78b67d", "#CAE2CB"],
+    "glacier": ["#1fc9eb", "#b6f3ff"],
+
+    "pomme": ["#A4DE02", "#E9FEAF"],
+    "lilas": ["#B19CD9", "#E8E3F3"],
+
+    "nuage": ["#F5F5F5", "#ffffff"],
 }
 // init variable
-let theme = "theme_azur"
+let theme = "azur"
 
 function SelectedElement(idElement) {
     if (idElement) {
@@ -28,7 +39,7 @@ function SelectedElement(idElement) {
 }
 
 function colorTheme(theme, idElement) {
-    if (theme == "theme_azur") { // si c'est le thème de base alors on réinitialise les variables
+    if (theme == "azur") { // si c'est le thème de base alors on réinitialise les variables
         document.documentElement.style.removeProperty("--COLOR_ACCENT")
         document.documentElement.style.removeProperty("--COLOR_ACCENT2")
     } else {
@@ -54,22 +65,22 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
         Button.textContent = "Réinitialisation..."
         
         // maj des valeurs dans la base de données
-        localStorage.setItem("ColorActuelleUse", "theme_azur");
+        localStorage.setItem("ColorActuelleUse", "azur")
 
-        // Légère pause
-        await new Promise(r => setTimeout(r, 650))
+        // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
+        colorTheme("azur", "monochromes-1")
 
-        // confirmation sauvegarde
-        Button.textContent = "Réinitialisé"
+        setTimeout(() => {
+            // confirmation sauvegarde
+            Button.textContent = "Réinitialisé"
+        }, 650);
 
-        colorTheme("theme_azur", "monochromes-1") // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
+        setTimeout(() => {
+            // Desactivation du button
+            Button.disabled = false
+            Button.textContent = "Réinitialiser le thème"
+        }, 1300);
 
-        // Pause
-        await new Promise(r => setTimeout(r, 650))
-        
-        // Desactivation du button
-        Button.disabled = false
-        Button.textContent = "Réinitialiser le thème"
     }
     return
 }
@@ -81,7 +92,7 @@ function Preference() {
     if (ColorUser) {
         colorTheme(ColorUser, null) // on met l'id du li du thème en null pour pas que la fonction SelectedElement mettent à jour le li du thème en buggant
     } else {
-        colorTheme("theme_azur", null)
+        colorTheme("azur", null)
     }
 }
 

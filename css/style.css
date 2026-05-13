@@ -2,7 +2,7 @@
 :root {
     /* Couleur de l'interface de Sprintia */
     --COLOR_ACCENT: #42a5f5; 
-    --COLOR_ACCENT2: #90caf9; 
+    --COLOR_ACCENT2: #A4D3F9; 
     
     --COLOR_BACKGROUND: #000000;
     --COLOR_BACKGROUND_CARD: #232222;
@@ -11,6 +11,9 @@
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
+    --BLUR: 30px;
+    --BRIGTHNESS: 0.7;
+
     /* Tailles & Configuration de la font */
     --H0: 2.5rem; 
     --H1: 2rem;
@@ -18,7 +21,6 @@
     --H3: 1.2rem;
     --P: 1rem;
     --P_SMALL: 0.9rem;
-    --TITLE_CARD: 1.75rem;
 
     --LINE_HEIGHT: 1.5;
     --FONT_FAMILY: "Zalando Sans SemiExpanded";
@@ -55,23 +57,28 @@
     --COLOR_MONOCHROMES_3: #FA6BFA;
     --COLOR_MONOCHROMES_4: #B266F9;
 
-    --COLOR_MONOCHROMES_5: #0CBB5BFF;
-    --COLOR_MONOCHROMES_6: #0ac3a7;
+    --COLOR_MONOCHROMES_5: #0acd62;
+    --COLOR_MONOCHROMES_6: #07d3b5;
 
-    --COLOR_MONOCHROMES_7: #6aabd3;
-    --COLOR_MONOCHROMES_8: #f14d84;
+    --COLOR_MONOCHROMES_7: #72a8ca;
+    --COLOR_MONOCHROMES_8: #f26997;
 
-    --COLOR_MONOCHROMES_9: #FFF700;
+    --COLOR_MONOCHROMES_9: #ebe540;
     --COLOR_MONOCHROMES_10: #FF9A9E; 
 
     --COLOR_MONOCHROMES_11: #FF8559;
-    --COLOR_MONOCHROMES_12: #4683D8;
+    --COLOR_MONOCHROMES_12: #227eff;
 
-    --COLOR_MONOCHROMES_13: #ffd1ff;
-    --COLOR_MONOCHROMES_14: #ffb82b;
+    --COLOR_MONOCHROMES_13: #e4abe4;
+    --COLOR_MONOCHROMES_14: #ffa51e;
 
-    --COLOR_MONOCHROMES_15: #6db586;
-    --COLOR_MONOCHROMES_16: #00d4ff;
+    --COLOR_MONOCHROMES_15: #78b67d;
+    --COLOR_MONOCHROMES_16: #1fc9eb;
+
+    --COLOR_MONOCHROMES_17: #A4DE02;
+    --COLOR_MONOCHROMES_18: #B19CD9;
+
+    --COLOR_MONOCHROMES_19: #F5F5F5;
 }
 /* Pour les icônes dans l'application */
 @font-face {
@@ -580,8 +587,8 @@ header div.navbar ul.links li a.actif::before {
 
 
 @keyframes animation_menu_burger_li {
-    0% { transform: translate(25px, -18px) scale(1)}
-    40% { transform: translate(-25px, 18px) scale(0.7)}
+    0% { transform: translate(30px, -15px) scale(1)}
+    50% { transform: translate(-30px, 15px) scale(0.7)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
 header .burger-menu {
@@ -603,7 +610,7 @@ header .burger-menu.open {
     transform: translate(0, 0) scale(1); 
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: 0px 5px 20px var(--COLOR_BACKGROUND);
-    transition: all ease-out 0.15s;
+    transition: all ease-out 0.21s;
 }
 header .burger-menu li {
     color: var(--COLOR_BACKGROUND);
@@ -612,13 +619,13 @@ header .burger-menu.open li {
     color: var(--COLOR_TEXT_PRIMARY);
 }
 header .burger-menu.open li:nth-child(1) {
-    animation: animation_menu_burger_li 0.38s ease-out;
+    animation: animation_menu_burger_li 0.37s ease-out;
 }
 header .burger-menu.open li:nth-child(2) {
-    animation: animation_menu_burger_li 0.48s ease-out;
+    animation: animation_menu_burger_li 0.47s ease-out;
 }
 header .burger-menu.open li:nth-child(3) {
-    animation: animation_menu_burger_li 0.53s ease-out;
+    animation: animation_menu_burger_li 0.52s ease-out;
 }
 
 header .burger-menu li a {
@@ -779,7 +786,7 @@ div.carousel div.card-tool {
     border-radius: var(--BORDER_BIG);
     cursor: pointer;
 
-    width: 250px;
+    width: 240px;
     height: fit-content;
     overflow: hidden;
     transition: all ease-out var(--TIME_TRANSITION);
@@ -1154,7 +1161,7 @@ div.button-flottant:active {
 
 @keyframes animation_menu_li {
     0% { transform: translate(20px, -10px) scale(1)}
-    40% { transform: translate(-20px, 10px) scale(0.7)}
+    50% { transform: translate(-20px, 10px) scale(0.7)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
 div.menu-many-action {
@@ -1176,32 +1183,32 @@ div.menu-many-action.open {
     transform: translate(0) scale(1);
     opacity:1;
     z-index: 1200;
-    transition: all ease-out 0.15s;
+    transition: all ease-out 0.21s;
 }
 div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
     padding: var(--SPACE_XS);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    transition: all ease-out 0.3s;
+    transition: all ease-out var(--TIME_TRANSITION);
     cursor: pointer;
 }
 div.menu-many-action.open li:nth-child(1) {
-    animation: animation_menu_li 0.4s ease-out;
+    animation: animation_menu_li 0.37s ease-out;
 }
 div.menu-many-action.open li:nth-child(2) {
-    animation: animation_menu_li 0.5s ease-out;
+    animation: animation_menu_li 0.47s ease-out;
 }
 div.menu-many-action.open li:nth-child(3) {
-    animation: animation_menu_li 0.55s ease-out;
+    animation: animation_menu_li 0.52s ease-out;
 }
 div.menu-many-action.open li:nth-child(4) {
-    animation: animation_menu_li 0.58s ease-out;
+    animation: animation_menu_li 0.55s ease-out;
 }
 div.menu-many-action.open li:nth-child(5) {
-    animation: animation_menu_li 0.6s ease-out;
+    animation: animation_menu_li 0.57s ease-out;
 }
 div.menu-many-action.open li:nth-child(6) {
-    animation: animation_menu_li 0.62s ease-out;
+    animation: animation_menu_li 0.6s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action li:hover {
@@ -1250,7 +1257,7 @@ div.zone-coach::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(30px) brightness(0.7); 
+    filter: blur(var(--BLUR)) brightness(var(--BRIGTHNESS)); 
     z-index: -1;
 }
 div.zone-coach.clickable:active {
@@ -1287,7 +1294,7 @@ div.large-zone-coach::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(30px) brightness(0.7);
+    filter: blur(var(--BLUR)) brightness(var(--BRIGTHNESS));
     z-index: -1;
 }
 div.large-zone-coach.clickable:active {
@@ -1803,7 +1810,7 @@ div.visuel-version::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(30px) brightness(0.7); 
+    filter: blur(var(--BLUR)) brightness(var(--BRIGTHNESS)); 
     z-index: -1;
 }
 div.visuel-version p.visuel-version-title{
@@ -1866,19 +1873,25 @@ div.card-releases:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.card-releases-image p{
-    font-size: var(--TITLE_CARD);
+div.card-releases-image {
+    font-size: var(--H2);
     text-align: left;
-    background-color: var(--COLOR_ACCENT);
+    border-bottom: 2px solid var(--COLOR_ACCENT);
     font-weight: 1000;
-    padding: 1.25rem;
-    color: var(--COLOR_BACKGROUND);
-    border-radius: var(--BORDER_NORMAL);
+    padding-bottom: var(--SPACE_XS);
+    padding-top: var(--SPACE_XXS);
+    padding-left: var(--SPACE_XXS);
+    color: var(--COLOR_TEXT_PRIMARY);
     margin-bottom: var(--SPACE_XS);
+}
+div.card-releases-image p.date{
+    font-size: var(--P);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    margin-top: var(--SPACE_XXS);
 }
 div.card-releases p.description-maj {
     font-size: var(--P);
-    color: var(--COLOR_TEXT_PRIMARY);
+    color: var(--COLOR_TEXT_SECONDARY);
     padding: var(--SPACE_XXS);
     cursor: pointer;
 
@@ -1887,11 +1900,6 @@ div.card-releases p.description-maj {
     -webkit-line-clamp: 3;
     line-clamp: 3; 
     overflow: hidden;
-}
-div.card-releases div.date-maj {
-    color: var(--COLOR_TEXT_SECONDARY);
-    font-size: var(--P_SMALL);
-    margin-top: var(--SPACE_XS);
 }
 
 
@@ -1956,19 +1964,21 @@ div.box-last-maj:active{
     transform: scale(var(--SCALE_SMALL));
 }
 div.box-last-maj div.content1 .card-releases-image-last-maj {
-    font-size: var(--TITLE_CARD);
+    font-size: var(--H2);
     text-align: left;
-    background-color: var(--COLOR_ACCENT);
     font-weight: 1000;
     width: 100%;
-    padding: var(--SPACE_XS) var(--SPACE_S);
-    color: var(--COLOR_BACKGROUND);
-    border-radius: var(--BORDER_NORMAL);
-    margin-bottom: var(--SPACE_S);
+    border-bottom: 2px solid var(--COLOR_ACCENT);
+    padding-bottom: var(--SPACE_XS);
+    padding-top: var(--SPACE_XXS);
+    padding-left: var(--SPACE_XXS);
+    color: var(--COLOR_TEXT_PRIMARY);
+    margin-bottom: var(--SPACE_XS);
 }
 div.box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
-    font-size: var(--H3);
+    font-size: var(--P);
     font-weight: var(--FONT_WEIGHT_BUTTON);
+    margin-top: var(--SPACE_XXS);
 }
 div.box-last-maj div.content2 {
     display: block;
@@ -1976,7 +1986,8 @@ div.box-last-maj div.content2 {
 }
 div.box-last-maj div.content2 .description{
     font-size: var(--P);
-    color: var(--COLOR_TEXT_PRIMARY);
+    padding: var(--SPACE_XXS);
+    color: var(--COLOR_TEXT_SECONDARY);
     cursor: pointer;
 }
 div.box-last-maj div.content2 button{
@@ -2098,8 +2109,6 @@ ol.container-color-accentuation{
     justify-content: center;
     width: 100%;
     gap: var(--SPACE_M);
-    max-width: 900px;
-    margin: var(--SPACE_L) auto;
 }
 li.option-color {
     width: 40%;
@@ -2201,6 +2210,15 @@ ol li.option-color.option-color#monochromes-15::before{
 }
 ol li.option-color.option-color#monochromes-16::before{ 
     background: var(--COLOR_MONOCHROMES_16);
+}
+ol li.option-color.option-color#monochromes-17::before{ 
+    background: var(--COLOR_MONOCHROMES_17);
+}
+ol li.option-color.option-color#monochromes-18::before{ 
+    background: var(--COLOR_MONOCHROMES_18);
+}
+ol li.option-color.option-color#monochromes-19::before{ 
+    background: var(--COLOR_MONOCHROMES_19);
 }
 
 

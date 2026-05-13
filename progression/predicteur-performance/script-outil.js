@@ -69,20 +69,20 @@ function predictorTimeRunning() {
     if (userAddDistance==true) {
         let distanceUser = parseFloat(document.getElementById("distance-user").value)
         
-        if (isNaN(distanceUser)) {
-            alert("Erreur de saisie : le champ Distance doit être remplis.");
-            return
+        if (!isNaN(distanceUser)) {
+            if (distanceUser <= 0) {
+                alert("Valeur non valide, la distance doit être supérieur à 0.")
+                return
+            }
+            if (distanceUser >= 50) {
+                alert("Valeur non valide, la distance doit être inférieur à 50.")
+                return
+            }
+            
+            tableauResultTime = estimateTime(vmaUser, profilUser, distanceUser)
+        } else {
+            tableauResultTime = estimateTime(vmaUser, profilUser, undefined)
         }
-        if (distanceUser <= 0) {
-            alert("Valeur non valide, la distance doit être supérieur à 0.")
-            return
-        }
-        if (distanceUser >= 50) {
-            alert("Valeur non valide, la distance doit être inférieur à 50.")
-            return
-        }
-        
-        tableauResultTime = estimateTime(vmaUser, profilUser, distanceUser)
     } else {
         tableauResultTime = estimateTime(vmaUser, profilUser, undefined)
     }

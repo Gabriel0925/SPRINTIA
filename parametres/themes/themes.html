@@ -82,38 +82,38 @@
     <h2>Froids</h2>
     <ol class="container-color-accentuation">
 
-        <li class="option-color selected" onclick="colorTheme('azur', id)" id="monochromes-1">
+        <li class="option-color selected" onclick="colorTheme('azur', id)" id="azur">
             Azur
         </li>
-        <li class="option-color" onclick="colorTheme('ocean', id)"  id="monochromes-12">
+        <li class="option-color" onclick="colorTheme('ocean', id)"  id="ocean">
             Océan
         </li>
 
-        <li class="option-color" onclick="colorTheme('lune', id)" id="monochromes-7">
+        <li class="option-color" onclick="colorTheme('lune', id)" id="lune">
             Lune
         </li>
-        <li class="option-color" onclick="colorTheme('glacier', id)"  id="monochromes-16">
+        <li class="option-color" onclick="colorTheme('glacier', id)"  id="glacier">
             Glacier
         </li>
         
-        <li class="option-color" onclick="colorTheme('pomme', id)"  id="monochromes-17">
+        <li class="option-color" onclick="colorTheme('pomme', id)"  id="pomme">
             Pomme
         </li>
-        <li class="option-color" onclick="colorTheme('vegetation', id)" id="monochromes-5">
+        <li class="option-color" onclick="colorTheme('vegetation', id)" id="vegetation">
             Végétation
         </li>
 
-        <li class="option-color" onclick="colorTheme('sapin', id)"  id="monochromes-15">
+        <li class="option-color" onclick="colorTheme('sapin', id)"  id="sapin">
             Sapin
         </li>
-        <li class="option-color" onclick="colorTheme('menthe', id)" id="monochromes-6">
+        <li class="option-color" onclick="colorTheme('menthe', id)" id="menthe">
             Menthe
         </li>
 
-        <li class="option-color" onclick="colorTheme('lavande', id)" id="monochromes-4">
+        <li class="option-color" onclick="colorTheme('lavande', id)" id="lavande">
             Lavande
         </li>
-        <li class="option-color" onclick="colorTheme('lilas', id)"  id="monochromes-18">
+        <li class="option-color" onclick="colorTheme('lilas', id)"  id="lilas">
             Lilas
         </li>
 
@@ -122,31 +122,31 @@
     <h2>Chauds</h2>
     <ol class="container-color-accentuation">
 
-        <li class="option-color" onclick="colorTheme('feu', id)"  id="monochromes-14">
+        <li class="option-color" onclick="colorTheme('feu', id)"  id="feu">
             Feu
         </li>
-        <li class="option-color" onclick="colorTheme('corail', id)"  id="monochromes-11">
+        <li class="option-color" onclick="colorTheme('corail', id)"  id="corail">
             Corail
         </li>
 
-        <li class="option-color" onclick="colorTheme('carmin', id)"  id="monochromes-2">
+        <li class="option-color" onclick="colorTheme('carmin', id)"  id="carmin">
             Carmin
         </li>
-        <li class="option-color" onclick="colorTheme('peche', id)"  id="monochromes-10">
+        <li class="option-color" onclick="colorTheme('peche', id)"  id="peche">
             Pêche
         </li>
         
-        <li class="option-color" onclick="colorTheme('citron', id)"  id="monochromes-9">
+        <li class="option-color" onclick="colorTheme('citron', id)"  id="citron">
             Citron
         </li>
-        <li class="option-color" onclick="colorTheme('framboise', id)" id="monochromes-8">
+        <li class="option-color" onclick="colorTheme('framboise', id)" id="framboise">
             Framboise
         </li>
-        
-        <li class="option-color" onclick="colorTheme('fuchsia', id)"  id="monochromes-3">
+
+        <li class="option-color" onclick="colorTheme('fuchsia', id)"  id="fuchsia">
             Fuchsia
         </li>
-        <li class="option-color" onclick="colorTheme('guimauve', id)"  id="monochromes-13">
+        <li class="option-color" onclick="colorTheme('guimauve', id)"  id="guimauve">
             Guimauve
         </li>
 
@@ -155,7 +155,7 @@
     <h2>Neutre</h2>
     <ol class="container-color-accentuation">
 
-        <li class="option-color" onclick="colorTheme('nuage', id)"  id="monochromes-19">
+        <li class="option-color" onclick="colorTheme('nuage', id)"  id="nuage">
             Nuage
         </li>
 
@@ -193,44 +193,13 @@
     <script src="../../assets/base-js/base.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Pr restaure le selected du li
-            let idElementTheme = {
-                "azur": "monochromes-1",
-                "carmin": "monochromes-2",
 
-                "fuchsia": "monochromes-3",
-                "lavande": "monochromes-4",
-
-                "vegetation": "monochromes-5",
-                "menthe": "monochromes-6",
-
-                "lune": "monochromes-7",
-                "framboise": "monochromes-8",
-
-                "citron": "monochromes-9",
-                "peche": "monochromes-10",
-                
-                "corail": "monochromes-11",
-                "ocean": "monochromes-12",
-
-                "guimauve": "monochromes-13",
-                "feu": "monochromes-14",
-
-                "sapin": "monochromes-15",
-                "glacier": "monochromes-16",
-
-                "pomme": "monochromes-17",
-                "lilas": "monochromes-18",
-
-                "nuage": "monochromes-19"
-            }
-
-            let themeUse = localStorage.getItem("ColorActuelleUse")
+            let themeUse = localStorage.getItem("themeUser")
             if (themeUse == null) {
                 themeUse = "azur"
             }
             // on cherche l'id du li du thème correspondant dans le dico    
-            let idElement = idElementTheme[themeUse]
+            let idElement = themeUse
 
             if (idElement) {
                 SelectedElement(idElement)

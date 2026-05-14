@@ -7,7 +7,7 @@ async function DownloadDatas() {
 
     // Initialisation
     let ClefLocalStorage = "" // prepa pr la boucle
-    let DicoDataLocalStorage = {} // ex structure dico : ColorActuelleUse: "theme_azur",...
+    let DicoDataLocalStorage = {} // ex structure dico : themeUser: "theme_azur",...
 
     for (let i=0; i < localStorage.length; i++) { // on parcour la longueur du localstorage
         ClefLocalStorage = localStorage.key(i) // on recupere la clé de elt du local storage, ça marche de la meme meniere qu'une liste avec les index par exemple ça renvoie : "ToggleThemeComplet"

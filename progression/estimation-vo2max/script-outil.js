@@ -148,8 +148,8 @@ function CalculVO2max() {
         alert("Erreur de saisie : tous les champs doivent être remplis.")
         return
     }
-    if (AgeUser < 13 || AgeUser >= 150) {
-        alert("Valeur non valide, la valeur de l'âge doit être compris entre 13 et 149 ans.")
+    if (AgeUser < 13 || AgeUser > 120) {
+        alert("Valeur non valide, la valeur de l'âge doit être compris entre 13 et 120 ans.")
         return
     }
     if (VmaUser <= 0) {

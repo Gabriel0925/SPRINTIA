@@ -40,30 +40,28 @@ function Zone(ScoreCourse) {
 function StartNiveau() {
     // Recup datas
     let DistanceUser = parseFloat(document.getElementById("distance-user").value.trim().replace(",", "."))
-    let ChampsErreur = document.querySelector(".indication")
-
-    // on vide le champs erreur au moins si le user change 7 pour 4 bah ça enleve l'erreur
-    ChampsErreur.textContent = ""
+    let champsErreur = document.querySelector(".indication")
 
     // Vérification
     if (isNaN(DistanceUser)) {
         return
     }
     if (DistanceUser <= 0) {
-        ChampsErreur.classList.add("visible")
-        ChampsErreur.textContent = "La distance doit être supérieure à 0."
+        champsErreur.classList.add("visible")
+        champsErreur.textContent = "Distance positive requise !"
         // remise à zéro
         document.querySelector(".large-zone-result-result").textContent = 0
         document.querySelector(".large-zone-result-name").textContent = "Niveau :"
         return
-    }
-    if (DistanceUser >= 7) {
-        ChampsErreur.classList.add("visible")
-        ChampsErreur.textContent = "La distance doit être inférieure à 7."
+    } else if (DistanceUser >= 7) {
+        champsErreur.classList.add("visible")
+        champsErreur.textContent = "Distance inférieure à 7 requise !"
         // remise à zéro
         document.querySelector(".large-zone-result-result").textContent = 0
         document.querySelector(".large-zone-result-name").textContent = "Niveau :"
         return
+    } else {
+        champsErreur.classList.remove("visible")
     }
 
     // Calcul

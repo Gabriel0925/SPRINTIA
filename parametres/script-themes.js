@@ -1,31 +1,36 @@
 // Initialisation de la configuration de chaque thème
 const ThemeConfig = {
-    "carmin": ["#FF5257", "#FFB3B5"],
-
-    "fuchsia": ["#FA6BFA", "#fec4fe"],
-    "lavande": ["#B266F9", "#DAB8F9"],
-
-    "vegetation": ["#0acd62", "#acffd1"],
-    "menthe": ["#07d3b5", "#adf9ee"],
-
-    "lune": ["#72a8ca", "#c7ddeb"],
-    "framboise": ["#f26997", "#ffcdde"],
-
-    "citron": ["#faf43a", "#fffdc4"],
-    "peche": ["#FF9A9E", "#FFD6D8"],
-
-    "corail": ["#FF8559", "#ffc4af"],
+    // --- Thèmes Froids ---
     "ocean": ["#227eff", "#A3C8FF"],
 
-    "guimauve": ["#e4abe4", "#ffe6ff"],
-    "feu": ["#ffa51e", "#ffd493"],
-
-    "sapin": ["#78b67d", "#CAE2CB"],
+    "lune": ["#72a8ca", "#c7ddeb"],
     "glacier": ["#1fc9eb", "#b6f3ff"],
 
     "pomme": ["#A4DE02", "#E9FEAF"],
+    "vegetation": ["#0acd62", "#acffd1"],
+
+    "sapin": ["#78b67d", "#CAE2CB"],
+    "menthe": ["#07d3b5", "#adf9ee"],
+
+    "lavande": ["#B266F9", "#DAB8F9"],
     "lilas": ["#B19CD9", "#E8E3F3"],
 
+
+    // --- Thèmes Chauds ---
+    "feu": ["#ffa51e", "#ffd493"],
+    "corail": ["#FF8559", "#ffc4af"],
+
+    "carmin": ["#FF5257", "#FFB3B5"],
+    "peche": ["#FF9A9E", "#FFD6D8"],
+
+    "citron": ["#faf43a", "#fffdc4"],
+    "framboise": ["#f26997", "#ffcdde"],
+
+    "fuchsia": ["#FA6BFA", "#fec4fe"],
+    "guimauve": ["#e4abe4", "#ffe6ff"],
+
+    
+    // --- Thèmes Neutres ---
     "nuage": ["#F5F5F5", "#ffffff"],
 }
 // init variable
@@ -49,7 +54,7 @@ function colorTheme(theme, idElement) {
         document.documentElement.style.setProperty("--COLOR_ACCENT2", tableauTheme[1])
     }
     // maj dans la "BDD"
-    localStorage.setItem("ColorActuelleUse", theme) 
+    localStorage.setItem("themeUser", theme) 
 
     // maj de l'élément séléctionné
     SelectedElement(idElement)
@@ -65,7 +70,7 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
         Button.textContent = "Réinitialisation..."
         
         // maj des valeurs dans la base de données
-        localStorage.setItem("ColorActuelleUse", "azur")
+        localStorage.setItem("themeUser", "azur")
 
         // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
         colorTheme("azur", "monochromes-1")
@@ -88,8 +93,8 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
 // !!! Si chamgement de nom de fonction préférence ne pas oublier de modifier le nom de fonction dans script_save_restoration et autre par, utilise la recherche global
 function Preference() {
     // Chercher les valeur dans la bdd
-    const ColorUser = localStorage.getItem("ColorActuelleUse")
-    if (ColorUser) {
+    const ColorUser = localStorage.getItem("themeUser") || undefined
+    if (ColorUser != undefined) {
         colorTheme(ColorUser, null) // on met l'id du li du thème en null pour pas que la fonction SelectedElement mettent à jour le li du thème en buggant
     } else {
         colorTheme("azur", null)

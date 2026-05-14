@@ -306,6 +306,46 @@ function majLocalStorage(versionStockee) {
 
         localStorage.setItem("VersionLocalStorage", "4.3")
         versionStockee = "4.3" // maj de la variable pour enchaine avec les futures if de nouvelle version
+
+        // maj des thèmes avec les nouveaux nom,...
+        const dicoNewName = {
+            "theme_azur": "azur",
+            "theme_carmin": "carmin",
+            "theme_fuchsia": "fuchsia",
+            "theme_lavande": "lavande",
+            "theme_vegetation": "vegetation",
+            "theme_menthe": "menthe",
+            "theme_pierre_lune": "lune",
+            "theme_framboise": "framboise",
+            "Citron": "citron",
+            "theme_peche": "peche",
+            "theme_corail": "corail",
+
+            "Hortensia": "azur",
+            "theme_plage": "azur",
+            "Aurore": "lavande",
+            "theme_feu": "feu",
+            "Muguet": "vegetation",
+            "theme_foudre": "ocean",
+
+            "theme_glacier": "glacier",
+
+            "theme_amazonie": "sapin",
+            "theme_quartz_rose": "peche",
+            
+            "theme_guimauve": "guimauve",
+            
+            "theme_cssf": "azur",
+            "theme_baies": "azur",
+        }
+
+        let themeUser = localStorage.getItem("ColorActuelleUse") || undefined
+        if (themeUser != undefined) {
+            // passage des anciens noms des thèmes aux nouveaux
+            localStorage.setItem("themeUser", dicoNewName[themeUser])
+        }
+        // on supprime l'ancienne clé
+        localStorage.removeItem("ColorActuelleUse")
     }
 
     return
@@ -313,7 +353,6 @@ function majLocalStorage(versionStockee) {
 
 const versionActuelle = "4.3"
 let versionStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
-
 if (versionStockee != versionActuelle) {
     majLocalStorage(versionStockee)
 }

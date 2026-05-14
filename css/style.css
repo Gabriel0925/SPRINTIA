@@ -50,35 +50,39 @@
     /* URL flèche vers le bas pour les combobox */
     --URL_FLECHE_ICON: url("../assets/icons/icon-fleche.svg");
 
-    /* Couleur pour le hover des pastilles des thèmes monochrome */
-    --COLOR_MONOCHROMES_1: #42a5f5; 
-    --COLOR_MONOCHROMES_2: #FF5257;
+    /* --- Thèmes Froids --- */
+    --COLOR_AZUR: #42a5f5;
+    --COLOR_OCEAN: #227eff;
 
-    --COLOR_MONOCHROMES_3: #FA6BFA;
-    --COLOR_MONOCHROMES_4: #B266F9;
+    --COLOR_LUNE: #72a8ca;
+    --COLOR_GLACIER: #1fc9eb;
 
-    --COLOR_MONOCHROMES_5: #0acd62;
-    --COLOR_MONOCHROMES_6: #07d3b5;
+    --COLOR_POMME: #A4DE02;
+    --COLOR_VEGETATION: #0acd62;
 
-    --COLOR_MONOCHROMES_7: #72a8ca;
-    --COLOR_MONOCHROMES_8: #f26997;
+    --COLOR_SAPIN: #78b67d;
+    --COLOR_MENTHE: #07d3b5;
 
-    --COLOR_MONOCHROMES_9: #ebe540;
-    --COLOR_MONOCHROMES_10: #FF9A9E; 
+    --COLOR_LAVANDE: #B266F9;
+    --COLOR_LILAS: #B19CD9;
 
-    --COLOR_MONOCHROMES_11: #FF8559;
-    --COLOR_MONOCHROMES_12: #227eff;
 
-    --COLOR_MONOCHROMES_13: #e4abe4;
-    --COLOR_MONOCHROMES_14: #ffa51e;
+    /* --- Thèmes Chauds --- */
+    --COLOR_FEU: #ffa51e;
+    --COLOR_CORAIL: #FF8559;
 
-    --COLOR_MONOCHROMES_15: #78b67d;
-    --COLOR_MONOCHROMES_16: #1fc9eb;
+    --COLOR_CARMIN: #FF5257;
+    --COLOR_PECHE: #FF9A9E;
 
-    --COLOR_MONOCHROMES_17: #A4DE02;
-    --COLOR_MONOCHROMES_18: #B19CD9;
+    --COLOR_CITRON: #ebe540;
+    --COLOR_FRAMBOISE: #f26997;
 
-    --COLOR_MONOCHROMES_19: #F5F5F5;
+    --COLOR_FUCHSIA: #FA6BFA;
+    --COLOR_GUIMAUVE: #e4abe4;
+
+    
+    /* --- Thèmes Neutres --- */
+    --COLOR_NUAGE: #F5F5F5;
 }
 /* Pour les icônes dans l'application */
 @font-face {
@@ -1440,18 +1444,29 @@ div.form {
     display: flex;
     flex-direction: column;
     padding: var(--SPACE_XXS);
+    transition: all ease-out var(--TIME_TRANSITION);
 
     width: 420px;
 }
 /* Pour les messages intégré au formulaire */
+@keyframes animation_pop_rebond {
+    0% {transform: translateY(-20px) scale(0)}
+    50% {transform: translateY(5px) scale(1.1)}
+    100% {transform: translateY(0) scale(1)}
+}
 div.form p.indication {
     display: none;
-    color: var(--COLOR_ACCENT);
+    color: var(--COLOR_ACCENT2);
     text-align: center;
-    margin: var(--SPACE_XXS);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    margin: var(--SPACE_XXS) var(--SPACE_S_SMALL);
+    transform: translateY(-20px) scale(0);
+    transition: all ease-out 0.2s;
 }
 div.form p.indication.visible{
     display: block;
+    transform: translateY(0) scale(1);
+    animation: animation_pop_rebond 0.35s ease-out;
 }
 div.form div.side-by-side {
     display: flex;
@@ -2159,64 +2174,68 @@ ol li.option-color.selected::before{
     width: 100%;
     transition: all ease-out 0.3s;
 }
-/* Couleur individuelle en fonction du thème du li */
-/* --- Monochromes --- */
-ol li.option-color.option-color#monochromes-1::before{ 
-    background: var(--COLOR_MONOCHROMES_1);
+
+/* --- Thèmes Froids --- */
+ol li.option-color.option-color#azur::before{ 
+    background: var(--COLOR_AZUR);
 }
-ol li.option-color.option-color#monochromes-2::before{ 
-    background: var(--COLOR_MONOCHROMES_2);
+ol li.option-color.option-color#ocean::before{ 
+    background: var(--COLOR_OCEAN);
 }
-ol li.option-color.option-color#monochromes-3::before{ 
-    background: var(--COLOR_MONOCHROMES_3);
+ol li.option-color.option-color#lune::before{ 
+    background: var(--COLOR_LUNE);
 }
-ol li.option-color.option-color#monochromes-4::before{ 
-    background: var(--COLOR_MONOCHROMES_4);
+ol li.option-color.option-color#glacier::before{ 
+    background: var(--COLOR_GLACIER);
 }
-ol li.option-color.option-color#monochromes-5::before{ 
-    background: var(--COLOR_MONOCHROMES_5);
+ol li.option-color.option-color#pomme::before{ 
+    background: var(--COLOR_POMME);
 }
-ol li.option-color.option-color#monochromes-6::before{ 
-    background: var(--COLOR_MONOCHROMES_6);
+ol li.option-color.option-color#vegetation::before{ 
+    background: var(--COLOR_VEGETATION);
 }
-ol li.option-color.option-color#monochromes-7::before{ 
-    background: var(--COLOR_MONOCHROMES_7);
+ol li.option-color.option-color#sapin::before{ 
+    background: var(--COLOR_SAPIN);
 }
-ol li.option-color.option-color#monochromes-8::before{ 
-    background: var(--COLOR_MONOCHROMES_8);
+ol li.option-color.option-color#menthe::before{ 
+    background: var(--COLOR_MENTHE);
 }
-ol li.option-color.option-color#monochromes-9::before{ 
-    background: var(--COLOR_MONOCHROMES_9);
+ol li.option-color.option-color#lavande::before{ 
+    background: var(--COLOR_LAVANDE);
 }
-ol li.option-color.option-color#monochromes-10::before{ 
-    background: var(--COLOR_MONOCHROMES_10);
+ol li.option-color.option-color#lilas::before{ 
+    background: var(--COLOR_LILAS);
 }
-ol li.option-color.option-color#monochromes-11::before{ 
-    background: var(--COLOR_MONOCHROMES_11);
+
+/* --- Thèmes Chauds --- */
+ol li.option-color.option-color#feu::before{ 
+    background: var(--COLOR_FEU);
 }
-ol li.option-color.option-color#monochromes-12::before{ 
-    background: var(--COLOR_MONOCHROMES_12);
+ol li.option-color.option-color#corail::before{ 
+    background: var(--COLOR_CORAIL);
 }
-ol li.option-color.option-color#monochromes-13::before{ 
-    background: var(--COLOR_MONOCHROMES_13);
+ol li.option-color.option-color#carmin::before{ 
+    background: var(--COLOR_CARMIN);
 }
-ol li.option-color.option-color#monochromes-14::before{ 
-    background: var(--COLOR_MONOCHROMES_14);
+ol li.option-color.option-color#peche::before{ 
+    background: var(--COLOR_PECHE);
 }
-ol li.option-color.option-color#monochromes-15::before{ 
-    background: var(--COLOR_MONOCHROMES_15);
+ol li.option-color.option-color#citron::before{ 
+    background: var(--COLOR_CITRON);
 }
-ol li.option-color.option-color#monochromes-16::before{ 
-    background: var(--COLOR_MONOCHROMES_16);
+ol li.option-color.option-color#framboise::before{ 
+    background: var(--COLOR_FRAMBOISE);
 }
-ol li.option-color.option-color#monochromes-17::before{ 
-    background: var(--COLOR_MONOCHROMES_17);
+ol li.option-color.option-color#fuchsia::before{ 
+    background: var(--COLOR_FUCHSIA);
 }
-ol li.option-color.option-color#monochromes-18::before{ 
-    background: var(--COLOR_MONOCHROMES_18);
+ol li.option-color.option-color#guimauve::before{ 
+    background: var(--COLOR_GUIMAUVE);
 }
-ol li.option-color.option-color#monochromes-19::before{ 
-    background: var(--COLOR_MONOCHROMES_19);
+
+/* --- Thèmes neutres --- */
+ol li.option-color.option-color#nuage::before{ 
+    background: var(--COLOR_NUAGE);
 }
 
 

@@ -56,7 +56,8 @@ async function VerificationParam() {
 
             if (WorkoutDB) { // on vérifie si il y a des données au cas ou le user a supprimer son workout
                 // on commence par changer le H1 de la page
-                document.getElementById("title-page").textContent = "Modification de l'entraînement"
+                document.getElementById("title-page").textContent = "Modification de l'entraînement"
+
                 document.querySelector(".fs-icon_import_file").style.display = "none"
 
                 // Remettre les champs adaptée au sport
@@ -176,16 +177,13 @@ async function VerificationParam() {
 
             } else {  // si il y a rien dans la bdd par rapport à l'id correspond alors on demarre le mode normal 
                 dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
-                await JrmCoach()
             }
 
         } else {
             dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
-            await JrmCoach()
         }
     } else {        
         dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
-        await JrmCoach()
     }
 
     return

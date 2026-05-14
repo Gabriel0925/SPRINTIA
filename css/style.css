@@ -444,7 +444,6 @@ header div.navbar .logo a {
     width: 150px; /* width quand c'est écrit Sprintia */
     max-width: 300px;
     height: 55px; /* pour sécuriser l'animation */
-    overflow: hidden; /* pour sécuriser l'animation */
     text-align: center;
     white-space: nowrap; /* empêcher le retour à la ligne (pr l'animation) */
     margin-top: var(--SPACE_XS);
@@ -457,30 +456,30 @@ header div.navbar .logo a {
     align-items: center;
     justify-content: center;
     border-radius: var(--BORDER_NORMAL);
-    transition: all ease-out 0.3s;
+    transition: all ease-out 0.36s;
 }
 @keyframes dynamic_logo {
-    0% {transform: scale(1);} 
-    25% {transform: scale(1.15);} 
-    50% {transform: scale(0.85);} 
-    100% {transform: scale(1);} 
+    0% {transform: scale(1, 1.5);}
+    25% {transform: scale(1.15, 1.1);}
+    50% {transform: scale(0.85, 0.75);}
+    100% {transform: scale(1);}
 }
 header div.navbar .logo a.pin-message { /* pour le logo dynamique */
     background: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COLOR_ACCENT2);
+    border: 1px solid var(--COLOR_ACCENT);
     width: 100%;
     /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: dynamic_logo 0.6s forwards;
 }
 @keyframes reverse_dynamic_logo {
-    0% {transform: scale(1);} 
-    25% {transform: scale(0.85);} 
-    50% {transform: scale(1.15);} 
-    100% { transform: scale(1);} 
+    0% {transform: scale(1);}
+    33% {transform: scale(0.85, 0.75);}
+    66% {transform: scale(1.15, 1.1);}
+    100% { transform: scale(1);}
 }
 header div.navbar .logo a.pin-message.return { /* pour le retour à l'état initial */
     width: 150px;
-    border: 1px solid var(--COLOR_ACCENT2);
+    border: 0.2px solid var(--COLOR_ACCENT);
     /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: reverse_dynamic_logo 0.6s forwards;
 }
@@ -595,6 +594,12 @@ header div.navbar ul.links li a.actif::before {
     50% { transform: translate(-30px, 15px) scale(0.7)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
+/* @keyframes animation_menu_burger_li_V2 { // c'était juste un test mais je sais pas quoi en penser
+    0% {transform: translate(0) scale(1.3, 1.6)}
+    35% {transform: translate(-15px, 20px) scale(0.85, 0.7)}
+    65% {transform: translate(0) scale(1.1)}
+    100% {transform: translate(0) scale(1)}
+} durée li : 0.55/0.65/0.7*/ 
 header .burger-menu {
     display: none;
     position: absolute;
@@ -1047,6 +1052,7 @@ img.img-banniere-sprintia {
     height: auto;
     margin-top: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
+    background-color: var(--COLOR_ACCENT);
 }
 
 
@@ -1733,6 +1739,7 @@ div.form-different-button {
     border-radius: var(--BORDER_NORMAL);
     border: 2px solid var(--COLOR_ACCENT);
     padding: var(--SPACE_XS);
+    color: var(--COLOR_ACCENT);
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -1740,14 +1747,14 @@ div.form-different-button {
 }
 @media (hover: hover) and (pointer: fine) {
     div.form-different-button:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        border: 2px solid var(--COLOR_ACCENT2);
+        color: var(--COLOR_ACCENT2);
     }
 }
 div.form-different-button:active {
+    border: 2px solid var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT2);
     transform: scale(var(--SCALE_NORMAL));
-}
-div.form-different-button p.form-different-button-text{
-    color: var(--COLOR_ACCENT);
 }
 
 
@@ -2036,22 +2043,37 @@ ul.list-information li {
 
 div.gallery-version {
     display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: var(--SPACE_L);
     flex-wrap: wrap;
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    border-radius: 1.9rem;
-    padding: var(--SPACE_S_SMALL);
 }
-div.gallery-version#img-smartphone{
-    display: none;
-}
-div.gallery-version img{    
+div.gallery-version img{
     width: 100%;
+    max-width: 360px;
     border-radius: var(--BORDER_NORMAL);
-    margin-top: var(--SPACE_S_SMALL);
-}    
-div.gallery-version img:nth-child(1){    
-    margin: 0;
-}    
+    transition: all ease-out var(--TIME_TRANSITION);
+}
+@media (max-width: 785px) {
+    div.gallery-version img{
+        max-width: 325px;
+    }
+}
+@media (max-width: 720px) {
+    div.gallery-version img{
+        max-width: 280px;
+    }
+}
+@media (max-width: 630px) {
+    div.gallery-version img{
+        max-width: 240px;
+    }
+}
+@media (max-width: 580px) {
+    div.gallery-version img{
+        max-width: 100%;
+    }
+}
 
 
 
@@ -2324,25 +2346,7 @@ div.container-center-marge {
     }
 }
 
-@media (max-width: 630px) {
-    div.gallery-version {
-        border: none;
-        background-color: transparent;
-        padding: 0;
-    }
-    div.gallery-version img:nth-child(1){
-        margin: var(--SPACE_XS) 0;
-    }
-    div.gallery-version img{
-        margin: var(--SPACE_XS) 0;
-    }
-    div.gallery-version#img-ordi{
-        display: none;
-    }
-    div.gallery-version#img-smartphone{
-        display: block;
-    }
-}
+
 @media (max-width: 540px) {
     section.container-version-history .box-last-maj div.content2 .description{
         display: -webkit-box;

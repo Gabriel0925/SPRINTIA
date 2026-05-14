@@ -538,7 +538,6 @@ header div.navbar ul.links li a {
 header div.navbar ul.links li a i {
     font-size: var(--H2);
     margin-right: var(--SPACE_XS);
-    margin-left: var(--SPACE_XXS);
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -548,11 +547,11 @@ header div.navbar ul.links li a i {
     header div.navbar ul.links li a:hover::before {    
         content: "";
         position: absolute;
-        top: 9%;
-        left: 0;
-        bottom: 9%;
+        top: 100;
+        bottom: 0;
         background-color: var(--COLOR_ACCENT);
-        width: 7px;
+        width: 100%;
+        height: 4px;
         border-radius: var(--BORDER_BIG);
         transition: all ease-out var(--TIME_TRANSITION);
     }
@@ -564,11 +563,11 @@ header div.navbar ul.links li a:active {
 header div.navbar ul.links li a:active::before {    
     content: "";
     position: absolute;
-    top: 9%;
-    left: 0;
-    bottom: 9%;
+    top: 100;
+    bottom: 0;
     background-color: var(--COLOR_ACCENT);
-    width: 7px;
+    width: 100%;
+    height: 4px;
     border-radius: var(--BORDER_BIG);
     transition: all ease-out var(--TIME_TRANSITION);
 }
@@ -578,11 +577,11 @@ header div.navbar ul.links li a.actif {
 header div.navbar ul.links li a.actif::before {    
     content: "";
     position: absolute;
-    top: 9%;
-    left: 0;
-    bottom: 9%;
+    top: 100;
+    bottom: 0;
     background-color: var(--COLOR_ACCENT);
-    width: 7px;
+    width: 100%;
+    height: 4px;
     border-radius: var(--BORDER_BIG);
     transition: all ease-out var(--TIME_TRANSITION);
 }
@@ -594,12 +593,6 @@ header div.navbar ul.links li a.actif::before {
     50% { transform: translate(-30px, 15px) scale(0.7)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
-/* @keyframes animation_menu_burger_li_V2 { // c'était juste un test mais je sais pas quoi en penser
-    0% {transform: translate(0) scale(1.3, 1.6)}
-    35% {transform: translate(-15px, 20px) scale(0.85, 0.7)}
-    65% {transform: translate(0) scale(1.1)}
-    100% {transform: translate(0) scale(1)}
-} durée li : 0.55/0.65/0.7*/ 
 header .burger-menu {
     display: none;
     position: absolute;
@@ -818,18 +811,15 @@ div.carousel div.card-tool div.icone{
     padding: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
     width: 100%;
-    position: relative;
-}
-div.carousel div.card-tool div.icone i{
-    font-size: 5rem;    
+    font-size: 4.2rem;    
     color: var(--COLOR_BACKGROUND);
-    margin: 0 auto;
 }
 div.carousel div.card-tool h1{
     font-size: var(--H3);
     margin-top: var(--SPACE_XS);
     color: var(--COLOR_TEXT_PRIMARY);
     min-height: 60px;
+    font-weight: var(--FONT_WEIGHT_BUTTON);
     
     display: -webkit-box;
     -webkit-box-orient: vertical; 

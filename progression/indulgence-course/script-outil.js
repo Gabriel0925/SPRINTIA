@@ -191,7 +191,7 @@ async function RecupData() {
 async function CalculIndulgence() {
     // recup du type de coureur
     let typeCoureur = localStorage.getItem("typeCoureur") || "occasionnel" // si jamais il y a pas de type de coureur enregistré alors on met "occasionnel" par défaut
-    console.log("type coureur : ", typeCoureur)
+    
     // Initialisation coefficient
     const CoefFourchetteDebut = dicoFouchetteIndulgence[typeCoureur][0]
     const CoefFourchetteFin = dicoFouchetteIndulgence[typeCoureur][1]
@@ -278,4 +278,11 @@ async function Initialisation() {
 
 window.addEventListener("DOMContentLoaded", () => {
     Initialisation()
-}) 
+})
+
+// Pour recharger le graphique si c'est dans le BFCache
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
+        Initialisation()
+    }
+})

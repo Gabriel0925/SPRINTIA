@@ -113,7 +113,7 @@ async function SauvegardeNiveauCourse() {
  
     BoutonLimite1Clic.disabled = true // Pour empeche que le user clique 2 fois
     // signe d'enregistrement pr le user
-    BoutonLimite1Clic.textContent = "Sauvegarde..."
+    BoutonLimite1Clic.textContent = "Sauvegarde..." 
 
     // Ajout datas
     await db.niveau_course.add({
@@ -122,11 +122,15 @@ async function SauvegardeNiveauCourse() {
         date: DateNiveauUser
     })
 
-    // Pause
-    await new Promise(r => setTimeout(r, 650))
-    // remise etat normal
-    BoutonLimite1Clic.textContent = "Sauvegarder"
-    BoutonLimite1Clic.disabled = false // Réactivation du bouton
+    setTimeout(() => {
+        BoutonLimite1Clic.textContent = "Sauvegardé" // transimission de l'info au user
+    }, 650);
+
+    setTimeout(() => {
+        // remise etat normal
+        BoutonLimite1Clic.textContent = "Sauvegarder"
+        BoutonLimite1Clic.disabled = false // Réactivation du bouton
+    }, 1300);
 
     graph()
     

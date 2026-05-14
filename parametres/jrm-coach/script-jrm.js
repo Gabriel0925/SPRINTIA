@@ -27,7 +27,6 @@ async function SauvegardePreference() {
     BoutonSauvegarde.disabled = true
     BoutonSauvegarde.textContent = "Sauvegarde..."
 
-
     // Nettoyage des données
     if (!NameCoach) {
         NameCoach = "JRM Coach"

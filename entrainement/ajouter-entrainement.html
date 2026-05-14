@@ -383,24 +383,6 @@
     <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-ajout-entrainement.js"></script> 
 
-    <!-- Pour le JRM Coach -->
-    <script>
-        async function JRMCoachUser() {
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("nom-coach").textContent = AvatarCoach + " " + NomCoach + " :"
-            }
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            JRMCoachUser()
-        })
-    </script>
-
     <!-- Pour le RPE -->
     <script>
         let Slider = document.querySelector(".slider input")

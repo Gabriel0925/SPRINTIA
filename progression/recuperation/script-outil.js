@@ -317,3 +317,10 @@ async function init(role) {
 window.addEventListener("DOMContentLoaded", () => {
     init("init")
 })
+
+// Pour recharger le graphique si c'est dans le BFCache
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
+        init("init")
+    }
+})

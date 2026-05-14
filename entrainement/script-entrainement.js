@@ -268,6 +268,7 @@ function GenererNbAleatoire() {
 async function JrmCoach() {
     // Recup du champs coach
     let SectionCoach = document.getElementById("reponse-coach")
+    let SectionNomCoach = document.getElementById("nom-coach")
 
     // Phrase JRM
     const CoachBienveillant = {
@@ -308,7 +309,6 @@ async function JrmCoach() {
             "Les progrès ça se construit séance après séance et aujourd'hui tu viens d'en ajouter une de plus à ton parcours ! Félicitations !"
         ]
     }
-
     const CoachStrictMotivant = {
         0: [
             "Enfin, tu as terminé ta séance ! J'espère que tu en es satisfait.",
@@ -347,7 +347,6 @@ async function JrmCoach() {
             "Rappelle-toi toujours où tu es et regarde où tu veux aller."
         ]
     }
-
     const CoachCopain = {
         0: [
             "Tu t'es bien entraîné·e ?",
@@ -386,7 +385,6 @@ async function JrmCoach() {
             "Laisse du temps à ton corps pour récupérer, ça lui fera du bien et tu seras moins fatigué·e."
         ]
     }
-
     const CoachGoMuscu = {
         0: [
             "Tu as senti une douleur quelque part ? Si oui, parle-en à un médecin, ça sert à rien de forcer comme un·e bourrin·ne.",
@@ -431,6 +429,7 @@ async function JrmCoach() {
     let StyleCoachUser = CoachBienveillant // attribution du style de coach a utilisé
     if (CoachUserDB.length > 0) {  // si le user a enregistré qqch alors on met le style du coach qu'il a choisis
         let TableauStyleCoach = CoachUserDB.map(elementDB => elementDB.style) // recup du style
+
         // On check le style de coach que le user a choisi et on attribue le dico correspondant
         if (TableauStyleCoach[0] == "Bienveillant") {
             StyleCoachUser = CoachBienveillant
@@ -440,6 +439,15 @@ async function JrmCoach() {
             StyleCoachUser = CoachCopain
         } else {
             StyleCoachUser = CoachGoMuscu
+        }
+
+        let TableauNomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+        let TableauAvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+        // on affiche le nom du coach choisi par le user
+        if (TableauNomCoach[0].length > 0) {
+            if (TableauAvatarCoach[0].length > 0) { // si il y a un avatar alors on met le nom du coach à coté de l'avatar
+                SectionNomCoach.textContent = TableauAvatarCoach[0] + " " + TableauNomCoach[0]
+            }
         }
     }
 

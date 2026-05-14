@@ -185,6 +185,10 @@
                 alert("Valeur non valide, les champs doivent être un nombre supérieur à 0.")
                 return
             }
+            if (ageUser >= 120) {
+                alert("Valeur non valide, l'âge doit être un nombre inférieur à 120.")
+                return
+            }
             if (tailleUser >= 350) {
                 alert("Valeur non valide, la taille doit être un nombre inférieur à 350.")
                 return

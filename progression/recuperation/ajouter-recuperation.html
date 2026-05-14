@@ -231,11 +231,15 @@
             BoutonSauvegarde.textContent = "Sauvegarde..."
 
             setTimeout(() => {
+                BoutonSauvegarde.textContent = "Sauvegardé"
+            }, 650)
+
+            setTimeout(() => {
                 BoutonSauvegarde.textContent = "Sauvegarder"
                 BoutonSauvegarde.disabled = false
 
                 window.location.href = `recuperation.html`
-            }, 800)
+            }, 1300)
 
             return
         }

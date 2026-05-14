@@ -117,7 +117,7 @@
     </section>
 
     <div class="container-center-marge">
-        <button class="size-block" onclick="window.location.href = 'modification-profil.html'">Modifier mon profil</button>
+        <button class="size-block" id="modifier-profil" onclick="window.location.href = 'modification-profil.html'">Modifier mon profil</button>
     </div>
 
     <h2>Sauvegarde</h2>
@@ -195,7 +195,8 @@
                 document.getElementById("taille-place").innerHTML = data.taille + " <small>cm</small>"
                 document.getElementById("poids-place").innerHTML = data.poids.replace(".", ",") + " <small>kg</small>"
                 document.getElementById("fc-repos-place").innerHTML = data.fc_repos + " <small>bpm</small>"
-
+            } else {
+                document.getElementById("modifier-profil").textContent = "Configurer mon profil"
             }
         }
 
@@ -204,7 +205,7 @@
             let dataProfil = await db.profil.get(1) // on recup les données du profil
             // si il y a pas de datas on ne laisse pas la possiblité d'activer le toggle
             if (!dataProfil) {
-                alert("Pour pouvoir activer ce paramètre vous devez d'abord configurer votre profil en cliquant sur 'Modifier mon profil'.")
+                alert("Pour pouvoir activer ce paramètre vous devez d'abord configurer votre profil.")
                 toggle.checked = true // on desactive le toggle
                 return
             }

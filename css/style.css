@@ -466,7 +466,7 @@ header div.navbar .logo a {
 }
 header div.navbar .logo a.pin-message { /* pour le logo dynamique */
     background: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 1px solid var(--COLOR_ACCENT);
+    border: 2px solid var(--COLOR_ACCENT);
     width: 100%;
     /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: dynamic_logo 0.6s forwards;
@@ -479,7 +479,7 @@ header div.navbar .logo a.pin-message { /* pour le logo dynamique */
 }
 header div.navbar .logo a.pin-message.return { /* pour le retour à l'état initial */
     width: 150px;
-    border: 0.2px solid var(--COLOR_ACCENT);
+    border: 1px solid var(--COLOR_ACCENT);
     /* forcards permet de forcer de garder l'état de l'élement à la fin de l'animation */
     animation: reverse_dynamic_logo 0.6s forwards;
 }

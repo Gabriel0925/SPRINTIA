@@ -284,8 +284,8 @@
                 // si le sport dans la BDD est égale aux sport de la navbar stats par sport
                 if (element.sport == sportDemandee) {
                     // si il y a une durée et qu'elle est utilisable alors on ajoute
-                    if (element.duree != undefined && !isNaN(element.duree)) {
-                        compteurDuree += element.duree
+                    if (element.duree != undefined && !isNaN(Number(element.duree))) {
+                        compteurDuree += Number(element.duree)
                         
                         // si la distance n'est pas en undefined ou autre alors on l'ajoute
                         if (element.distance != undefined && !isNaN(element.distance)) {

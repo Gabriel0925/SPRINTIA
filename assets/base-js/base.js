@@ -346,6 +346,9 @@ function majLocalStorage(versionStockee) {
         }
         // on supprime l'ancienne clé
         localStorage.removeItem("ColorActuelleUse")
+
+        // on lance la fonction pour éviter un décalage
+        Preference()
     }
 
     return

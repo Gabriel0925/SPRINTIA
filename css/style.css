@@ -1961,11 +1961,12 @@ div.box-last-maj{
     background: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
     max-width: 600px;
+    cursor: pointer;
     padding: var(--SPACE_XS);
     transition: all var(--TIME_TRANSITION) ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
-    section.container-version-history .box-last-maj:hover{
+    div.box-last-maj:hover{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
@@ -2011,7 +2012,7 @@ div.box-last-maj div.content2 button{
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    section.container-version-history .box-last-maj div.content2 button:hover {
+    div.box-last-maj div.content2 button:hover {
         background-color: var(--COLOR_ACCENT2);
     }
 }
@@ -2274,89 +2275,6 @@ div.container-center-marge {
     }
 }
 
-@media (max-width: 1245px) {
-    section.container-version-history .card-releases.visible{
-        width: 360px;
-    }
-}
-@media (max-width: 1205px) {
-    section.container-version-history .card-releases.visible{
-        width: 340px;
-    }
-}
-@media (max-width: 1140px) {
-    section.container-version-history .card-releases.visible{
-        width: 320px;
-    }
-}
-@media (max-width: 1080px) {
-    section.container-version-history .card-releases.visible{
-        width: 430px;
-    }
-}
-@media (max-width: 975px) {
-    section.container-version-history .card-releases.visible{
-        width: 400px;
-    }
-}
-@media (max-width: 905px) {
-    section.container-version-history .card-releases.visible{
-        width: 370px;
-    }
-}
-@media (max-width: 845px) {
-    section.container-version-history .card-releases.visible{
-        width: 340px;
-    }
-}
-@media (max-width: 790px) {
-    section.container-version-history .card-releases.visible{
-        width: 320px;
-    }
-}
-@media (max-width: 742px) {
-    section.container-version-history .card-releases.visible{
-        width: 300px;
-    }
-}
-@media (max-width: 690px) {
-    section.container-version-history .card-releases.visible{
-        width: 270px;
-    }
-}
-@media (max-width: 640px) {
-    section.container-version-history .card-releases.visible{
-        width: calc(100% - (var(--SPACE_S_SMALL) * 2));
-    }
-}
-@media (max-width: 510px) {
-    section.container-version-history .card-releases.visible {
-        width: 100%;
-        margin: var(--SPACE_S) 0px;
-    }
-}
-
-
-@media (max-width: 540px) {
-    section.container-version-history .box-last-maj div.content2 .description{
-        display: -webkit-box;
-        -webkit-box-orient: vertical; 
-        -webkit-line-clamp: 12;
-        line-clamp: 12; 
-        overflow: hidden; 
-    }
-}
-@media (max-width: 480px) {
-    section.container-version-history .box-last-maj div.content2 button {
-        width: 100%;
-    }
-}
-
-@media (max-width: 510px) {
-    section.container-version-history .box-last-maj {
-        margin: var(--SPACE_S) 0px;
-    }
-}
 
 @media (max-width: 490px) {
     div.form div.side-by-side {

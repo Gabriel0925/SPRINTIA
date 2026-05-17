@@ -56,28 +56,12 @@ async function RecupData() {
     let TableauDistance = HistoriqueWorkoutDB.map(elementDB => elementDB.distance)
 
     // setting date
-    const DateActuelle = new Date()
+    const dateActuelle = new Date()
 
-    let DateMoins7J = new Date()
-    DateMoins7J = DateMoins7J.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-    DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-    // On prend que ce qui nous interesse donc la premiere partie
-    DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
-
-    let DateMoins14J = new Date() // voir commentaire au dessus pr explication
-    DateMoins14J = DateMoins14J.setDate(DateActuelle.getDate() - 14) 
-    DateMoins14J = new Date(DateMoins14J).toISOString()
-    DateMoins14J = DateMoins14J.split("T")[0] 
-
-    let DateMoins21J = new Date() // voir commentaire au dessus pr explication
-    DateMoins21J = DateMoins21J.setDate(DateActuelle.getDate() - 21) 
-    DateMoins21J = new Date(DateMoins21J).toISOString()
-    DateMoins21J = DateMoins21J.split("T")[0] 
-
-    let DateMoins28J = new Date() // voir commentaire au dessus pr explication
-    DateMoins28J = DateMoins28J.setDate(DateActuelle.getDate() - 28) 
-    DateMoins28J = new Date(DateMoins28J).toISOString()
-    DateMoins28J = DateMoins28J.split("T")[0] 
+    let dateMoins7J = createObjetDate(7)
+    let dateMoins14J = createObjetDate(14)
+    let dateMoins21J = createObjetDate(21)
+    let dateMoins28J = createObjetDate(28)
 
     // Initialisation pour la boucle
     let compteur = 0
@@ -100,7 +84,7 @@ async function RecupData() {
         }
         // ---- Fin ----
 
-        if (elementDate >= DateMoins7J) {
+        if (elementDate >= dateMoins7J) {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
@@ -108,7 +92,7 @@ async function RecupData() {
                     }
                 }
             }
-        } else if (elementDate >= DateMoins14J) {
+        } else if (elementDate >= dateMoins14J) {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
@@ -116,7 +100,7 @@ async function RecupData() {
                     }
                 }
             }
-        } else if (elementDate >= DateMoins21J) {
+        } else if (elementDate >= dateMoins21J) {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
@@ -124,7 +108,7 @@ async function RecupData() {
                     }
                 }
             }
-        } else if (elementDate >= DateMoins28J) {
+        } else if (elementDate >= dateMoins28J) {
             if (TableauSport[compteur] == "Course") {
                 if (DistanceWorkout != null || DistanceWorkout != undefined) {
                     if (!isNaN(Number(DistanceWorkout))) {
@@ -144,7 +128,7 @@ async function RecupData() {
     if (fisrtWorkoutRunning) {
         let dateFirstRunning = new Date(fisrtWorkoutRunning) // on créer un object date pour avoir les millisecondes
 
-        let differenceMillisecondes = DateActuelle-dateFirstRunning
+        let differenceMillisecondes = dateActuelle-dateFirstRunning
         // conversion des millisecondes en jours
         let differenceJ = Math.floor(differenceMillisecondes/(1000*60*60*24))
 

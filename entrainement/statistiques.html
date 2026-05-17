@@ -98,7 +98,7 @@
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('mois').classList.add('actif')
 
-            init(DateMoins30J)
+            init(dateMoins30J)
         ">
             <p>30J</p>
         </div>
@@ -106,7 +106,7 @@
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('trois-mois').classList.add('actif')
 
-            init(DateMoins90J)
+            init(dateMoins90J)
         ">
             <p>90J</p>
         </div>
@@ -114,7 +114,7 @@
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('annee').classList.add('actif')
 
-            init(DateMoins365J)
+            init(dateMoins365J)
         ">
             <p>365J</p>
         </div>
@@ -238,34 +238,13 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script>
-        const DateActuelle = new Date()
-
-        let DateMoins7J = new Date()
-        DateMoins7J = DateMoins7J.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-        DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-        // On prend que ce qui nous interesse donc la premiere partie
-        DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
-
-        let DateMoins30J = new Date()
-        DateMoins30J = DateMoins30J.setDate(DateActuelle.getDate() - 30) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-        DateMoins30J = new Date(DateMoins30J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
-        // On prend que ce qui nous interesse donc la premiere partie
-        DateMoins30J = DateMoins30J.split('T')[0] // on obtient '2026-01-21'
-
-        let DateMoins90J = new Date()
-        DateMoins90J = DateMoins90J.setDate(DateActuelle.getDate() - 90) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-        DateMoins90J = new Date(DateMoins90J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
-        // On prend que ce qui nous interesse donc la premiere partie
-        DateMoins90J = DateMoins90J.split('T')[0] // on obtient '2026-01-21'
-
-        let DateMoins365J = new Date()
-        DateMoins365J = DateMoins365J.setDate(DateActuelle.getDate() - 365) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-        DateMoins365J = new Date(DateMoins365J).toISOString() // permet de recup '2026-01-21T17:13:53.151Z'
-        // On prend que ce qui nous interesse donc la premiere partie
-        DateMoins365J = DateMoins365J.split('T')[0] // on obtient '2026-01-21'
+        let dateMoins7J = createObjetDate(7)
+        let dateMoins30J = createObjetDate(30)
+        let dateMoins90J = createObjetDate(90)
+        let dateMoins365J = createObjetDate(365)
 
         // var globale pour la date et le sport
-        let dateDemandee = DateMoins7J
+        let dateDemandee = dateMoins7J
         let sportDemandee = "Course"
 
         async function statistiquesParSport(sportForFunction) {
@@ -390,7 +369,7 @@
             return
         }
 
-        window.addEventListener("DOMContentLoaded", init(DateMoins7J))
+        window.addEventListener("DOMContentLoaded", init(dateMoins7J))
     </script>
 
     

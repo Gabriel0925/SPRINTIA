@@ -1,10 +1,5 @@
 const dateActuelle = new Date()
-
-let dateMoins28J = new Date()
-dateMoins28J = dateMoins28J.setDate(dateActuelle.getDate() - 28) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-dateMoins28J = new Date(dateMoins28J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-// On prend que ce qui nous interesse donc la premiere partie
-dateMoins28J = dateMoins28J.split("T")[0] // on obtient "2026-01-21"
+let dateMoins28J = createObjetDate(28)
 
 function ReturnDate(DateWorkout) {
     let DateEuropeen = ""
@@ -20,26 +15,10 @@ async function RecupValueGraphique() {
     const valeurDB = await db.entrainement.where("date").aboveOrEqual(dateMoins28J).toArray()
     valeurDB.reverse() // pour trier de la plus récente à la plus ancienne
 
-    let DateMoins7J = new Date()
-    DateMoins7J = DateMoins7J.setDate(dateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-    DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-    // On prend que ce qui nous interesse donc la premiere partie
-    DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
-
-    let DateMoins14J = new Date() // voir commentaire au dessus pr explication
-    DateMoins14J = DateMoins14J.setDate(dateActuelle.getDate() - 14) 
-    DateMoins14J = new Date(DateMoins14J).toISOString()
-    DateMoins14J = DateMoins14J.split("T")[0] 
-
-    let DateMoins21J = new Date() // voir commentaire au dessus pr explication
-    DateMoins21J = DateMoins21J.setDate(dateActuelle.getDate() - 21) 
-    DateMoins21J = new Date(DateMoins21J).toISOString()
-    DateMoins21J = DateMoins21J.split("T")[0] 
-
-    let DateMoins28J = new Date() // voir commentaire au dessus pr explication
-    DateMoins28J = DateMoins28J.setDate(dateActuelle.getDate() - 28) 
-    DateMoins28J = new Date(DateMoins28J).toISOString()
-    DateMoins28J = DateMoins28J.split("T")[0] 
+    let DateMoins7J = createObjetDate(7)
+    let DateMoins14J = createObjetDate(14)
+    let DateMoins21J = createObjetDate(21)
+    let DateMoins28J = createObjetDate(28)
 
     // init pour la boucle
     let tableau7J = []
@@ -152,18 +131,8 @@ async function CalculCharge() {
     let DateCharge = []
 
     // Date recup
-    const DateActuelle = new Date()
-
-    let DateMoins7J = new Date()
-    DateMoins7J = DateMoins7J.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-    DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-    // On prend que ce qui nous interesse donc la premiere partie
-    DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
-
-    let DateMoins28J = new Date() // voir commentaire au dessus pr explication
-    DateMoins28J = DateMoins28J.setDate(DateActuelle.getDate() - 28) 
-    DateMoins28J = new Date(DateMoins28J).toISOString()
-    DateMoins28J = DateMoins28J.split("T")[0]
+    let DateMoins7J = createObjetDate(7)
+    let DateMoins28J = createObjetDate(28)
 
     // initialisation avt boucle
     let DateBoucle = ""
@@ -188,7 +157,7 @@ async function CalculCharge() {
         let dateFirstObject = new Date(dateFirstWorkout) // on crée un object date avec la date du premier entrainement pour pouvoir faire la différence ensuite
     
         // calcul de la différence en milliseconde
-        const differenceMillisecondes = DateActuelle - dateFirstObject
+        const differenceMillisecondes = dateActuelle - dateFirstObject
         // conversion en jours
         jourEcouler = Math.floor(differenceMillisecondes/(1000*60*60*24)) // dans 1 secondes il y a 1000 ms, dans 1min il y a 60sec, dans 1heure il y a 60m et dans une journée il y a 24h
         // ---- algorithme de lissage ----

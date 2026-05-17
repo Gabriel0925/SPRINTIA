@@ -324,8 +324,6 @@ async function saveWorkout() {
         rpe: ValueRpeUser,
         fc_moy: FcMoyUser,
         fc_max: FcMaxUser,
-        transpiration_estimee: TranspirationEstimee,
-        hydratation_estimee: HydratationEstimee,
         charge_entrainement: chargeWorkout
     }
 
@@ -506,10 +504,15 @@ async function saveWorkout() {
     // variable pour gérer vers ou renvoyer
     let modificationEntrainement = false
 
+    // ajout des 2 stats moins importante mais présente
+    workoutData["transpiration_estimee"] = TranspirationEstimee
+    workoutData["hydratation_estimee"] = HydratationEstimee
+
     // enregistrement ou modification
     if (IdEditWorkout && IdEditWorkout != null) {
         workoutData["id"] = IdEditWorkout
         workoutData["note"] = noteEntrainement
+
         await db.entrainement.put(workoutData)
         // mise sur true pour renvoyer vers lentrainement directement
         modificationEntrainement = true

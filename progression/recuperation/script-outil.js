@@ -52,22 +52,9 @@ listeIndex7derniersJours.forEach(element => {
     thisWeekForGraphic.push(week[element])
 });
 
-const dateActuelle = new Date()
-let dateToday = new Date(dateActuelle).toISOString()
-// On prend que ce qui nous interesse donc la premiere partie
-dateToday = dateToday.split("T")[0] // on obtient "2026-01-21"
-
-let dateMoins7J = new Date()
-dateMoins7J = dateMoins7J.setDate(dateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-dateMoins7J = new Date(dateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-// On prend que ce qui nous interesse donc la premiere partie
-dateMoins7J = dateMoins7J.split("T")[0] // on obtient "2026-01-21"
-
-let dateMoins30J = new Date()
-dateMoins30J = dateMoins30J.setDate(dateActuelle.getDate() - 30) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-dateMoins30J = new Date(dateMoins30J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-// On prend que ce qui nous interesse donc la premiere partie
-dateMoins30J = dateMoins30J.split("T")[0] // on obtient "2026-01-21"
+let dateToday = createObjetDate(0)
+let dateMoins7J =createObjetDate(7)
+let dateMoins30J = createObjetDate(30)
 
 function returnDate(dateRecup) {
     let DateEuropeen = ""
@@ -178,7 +165,8 @@ async function jrmCoach() {
 async function remplissageTableau() {
     // recup du tableau et de toutes les datas dans l'ordre pour remplir le tableau
     let tableauHistorique = document.getElementById("tableau-historique")
-    const historiqueDataUser = await db.recuperation.orderBy("date").toArray()
+    let dateMoins7J = createObjetDate(7) // appelle à la fonction
+    const historiqueDataUser = await db.recuperation.where("date").above(dateMoins7J).toArray()
 
     historiqueDataUser.reverse() // on inverse pour que ça soit du plus récent au plus ancien
 
@@ -187,6 +175,7 @@ async function remplissageTableau() {
         tableauHistorique.style.display = "none"
         // on fais apparaitre le message comme quoi sprintia n'a pas encore assez de données
         document.getElementById("text-informatif").style.display = "block"
+        document.getElementById("button_plus").style.display = "none"
         return
     }
 

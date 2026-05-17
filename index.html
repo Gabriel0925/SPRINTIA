@@ -204,15 +204,7 @@
             if (HistoriqueDB.length > 0) { // Si il y a des datas
                 // Initialisation
                 let DureeTotale = 0
-
-                // Date moins 7 jours
-                let DateActuelle = new Date()
-                let DateMoins7J = new Date()
-
-                DateMoins7J = DateMoins7J.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-                DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-                // On prend que ce qui nous interesse donc la premiere partie
-                DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
+                let dateMoins7J = createObjetDate(7)
 
                 // Recup du temps
                 let TableauDate = HistoriqueDB.map(elementDB => elementDB.date)
@@ -249,7 +241,7 @@
                     DeniveleElement = Number(TableauDenivele[compteur])
                     SportElement = TableauSport[compteur]
 
-                    if (DateElement >= DateMoins7J) { // Si la date est plus lointaine que 7J on prend pas
+                    if (DateElement >= dateMoins7J) { // Si la date est plus lointaine que 7J on prend pas
                         DureeTotale += element // Ajout de la durée qui est entrain d'être parcourue
                         NbWorkout += 1 // Ajout de 1 pour calculer le nombre d'entraînement
 
@@ -375,28 +367,10 @@
             let DureeTotalSemaine4 = 0
     
             // Date recup
-            const DateActuelle = new Date()
-
-            let DateMoins7J = new Date()
-            DateMoins7J = DateMoins7J.setDate(DateActuelle.getDate() - 7) // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
-            DateMoins7J = new Date(DateMoins7J).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
-            // On prend que ce qui nous interesse donc la premiere partie
-            DateMoins7J = DateMoins7J.split("T")[0] // on obtient "2026-01-21"
-
-            let DateMoins14J = new Date() // voir commentaire au dessus pr explication
-            DateMoins14J = DateMoins14J.setDate(DateActuelle.getDate() - 14) 
-            DateMoins14J = new Date(DateMoins14J).toISOString()
-            DateMoins14J = DateMoins14J.split("T")[0] 
-
-            let DateMoins21J = new Date() // voir commentaire au dessus pr explication
-            DateMoins21J = DateMoins21J.setDate(DateActuelle.getDate() - 21) 
-            DateMoins21J = new Date(DateMoins21J).toISOString()
-            DateMoins21J = DateMoins21J.split("T")[0] 
-
-            let DateMoins28J = new Date() // voir commentaire au dessus pr explication
-            DateMoins28J = DateMoins28J.setDate(DateActuelle.getDate() - 28) 
-            DateMoins28J = new Date(DateMoins28J).toISOString()
-            DateMoins28J = DateMoins28J.split("T")[0] 
+            let dateMoins7J = createObjetDate(7)
+            let dateMoins14J = createObjetDate(14)
+            let dateMoins21J = createObjetDate(21)
+            let dateMoins28J = createObjetDate(28)
 
             // Recup data in BDD
             const HistoriqueDB = await db.entrainement.toArray()
@@ -419,13 +393,13 @@
             let compteur = 0
 
             DateDataSemaine.forEach(element => { // Parcours des dates
-                if (element >= DateMoins7J) {
+                if (element >= dateMoins7J) {
                     TableauDureeSemaine.push(DureeDataSemaine[compteur]) // tableau pour la durée des 7 derniers jours
-                } else if (element >= DateMoins14J) {
+                } else if (element >= dateMoins14J) {
                     TableauDureeSemaine2.push(DureeDataSemaine[compteur]) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
-                } else if (element >= DateMoins21J) {
+                } else if (element >= dateMoins21J) {
                     TableauDureeSemaine3.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
-                } else if (element >= DateMoins28J) {
+                } else if (element >= dateMoins28J) {
                     TableauDureeSemaine4.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
                 }
                 

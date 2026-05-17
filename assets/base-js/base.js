@@ -502,3 +502,18 @@ function conversionMinutes(DureeWorkoutUser) {
 
 }
 // --- Fin du passage de la durée (hh:mm:ss ou mm:ss) au format min ---
+
+
+// --- Création d'un objet Date avec par exemple dateMoins7J ---
+function createObjetDate(nbJourEnMoins) {
+    const dateDay = new Date()
+
+    let ObjDate = new Date()
+    // pour le calcul des dates il faut les mettre en timestamp enleve le nb de j ici, ça renvoie ex: 1769014250809
+    ObjDate = ObjDate.setDate(dateDay.getDate() - nbJourEnMoins)
+    ObjDate = new Date(ObjDate).toISOString() // permet de recup "2026-01-21T17:13:53.151Z"
+    // On prend que ce qui nous interesse donc la premiere partie
+    ObjDate = ObjDate.split("T")[0] // on obtient "2026-01-21"
+
+    return ObjDate
+}

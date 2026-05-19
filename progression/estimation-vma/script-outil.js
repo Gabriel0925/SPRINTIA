@@ -61,67 +61,42 @@ function EstimationVMA() {
     return
 }
 
-function RemplirChamps() {
-    // Recup datas des champs
-    let TestUsers = document.getElementById("test-user").value 
-    let ZonePourResult = document.querySelector(".large-zone-result-result")
+function remplirChamps(value) {
+    // recup des inputs pour pouvoir changer leurs valeurs par la suite
+    let inputDistance = document.getElementById("distance-user")
+    let inputDuree = document.getElementById("duree-user")
 
-    // Maj des champs en fonction du test choisi
-    if (TestUsers === "demi-cooper") {
-        let ChampsDistance = document.getElementById("distance-user")
-        ChampsDistance.value = ""
-        ChampsDistance.readOnly = false // Pour désactiver la modification
-
-
-        let ChampsDuree = document.getElementById("duree-user")
-        ChampsDuree.value = "0:6:0"
-        ChampsDuree.readOnly = true 
-
-        // Remise à 0 de la vma pr eviter la confusion aux yeux du user
-        ZonePourResult.textContent = "0 km/h"
-
-    } else if (TestUsers === "cooper") {
-        let ChampsDistance = document.getElementById("distance-user")
-        ChampsDistance.value = ""
-        ChampsDistance.readOnly = false // Pour désactiver la modification
-
-        let ChampsDuree = document.getElementById("duree-user")
-        ChampsDuree.value = "0:12:0"
-        ChampsDuree.readOnly = true
-
-        // Remise à 0 de la vma pr eviter la confusion aux yeux du user
-        ZonePourResult.textContent = "0 km/h"
-
-    } else if (TestUsers === "luc-leger") {
-        let ChampsDistance = document.getElementById("distance-user")
-        ChampsDistance.value = 2
-        ChampsDistance.readOnly = true
-        
-        let ChampsDuree = document.getElementById("duree-user")
-        ChampsDuree.value = ""
-        ChampsDuree.readOnly = false
-
-        // Remise à 0 de la vma pr eviter la confusion aux yeux du user
-        ZonePourResult.textContent = "0 km/h"
-
-    } else {
-        let ChampsDistance = document.getElementById("distance-user")
-        ChampsDistance.value = ""
-        ChampsDistance.readOnly = false
-        
-        let ChampsDuree = document.getElementById("duree-user")
-        ChampsDuree.value = ""
-        ChampsDuree.readOnly = false
-
-        // Remise à 0 de la vma pr eviter la confusion aux yeux du user
-        ZonePourResult.textContent = "0 km/h"
-        
+    // recup de la zone de résultat
+    let zoneResult = document.querySelector(".large-zone-result-result")
+    const dicoValueInput = { // dico contenant ce qu'il faut mettre dans les input en fonction du test choisi par l'utilisateur
+        "demi-cooper": {
+            "inputDistance":["", false], // false pour dire que le input ne peut pas que etre lu on peut écrire dans le input
+            "inputDuree":["0:6:0", true], // true pour qu'on puisse uniquement lire le contenu du input et pas le modifier
+        },
+        "cooper": {
+            "inputDistance":["", false],
+            "inputDuree":["0:12:0", true],
+        },
+        "luc-leger": {
+            "inputDistance":["2", true],
+            "inputDuree":["", false],
+        },
+        "libre": {
+            "inputDistance":["", false],
+            "inputDuree":["", false],
+        }
     }
+
+    // maj du contenu des input en fonction du test choisi
+    inputDistance.value = dicoValueInput[value]["inputDistance"][0]
+    inputDistance.readOnly = dicoValueInput[value]["inputDistance"][1]
+    inputDuree.value = dicoValueInput[value]["inputDuree"][0]
+    inputDuree.readOnly = dicoValueInput[value]["inputDuree"][1]
 
     return
 }
 
-// Initialisation du champs de base lors du chargement de la page
-let ChampsDuree = document.getElementById("duree-user")
-ChampsDuree.value = "0:6:0"
-ChampsDuree.readOnly = true 
+// Initialisation des inputs
+window.addEventListener("DOMContentLoaded", () => {
+    remplirChamps(document.getElementById("test-user").value) // recup de la valeur par défaut lors du chargement de la page et lancement de la fonction
+})

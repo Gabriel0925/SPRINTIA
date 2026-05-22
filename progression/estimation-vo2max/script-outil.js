@@ -1,10 +1,13 @@
-function InterpretationVO2max(ResultVO2max, GenreUser, AgeUser){
+function interpretationVO2max(ResultVO2max, GenreUser, AgeUser){
     let Interpretation = [
         "<strong>Zone supérieure :</strong><br>Votre VO₂max est supérieur à la moyenne pour votre tranche d'âge, ce qui indique une excellente capacité cardiovasculaire.",
         "<strong>Zone excellente :</strong><br>Vous avez une VO₂max excellente pour votre âge, signe d'un très bon niveau de forme physique.",
         "<strong>Zone bonne :</strong><br>Votre VO₂max est bonne pour votre âge, témoignant d'une condition physique solide.",
         "<strong>Zone moyenne :</strong><br>Votre VO₂max se situe dans la moyenne pour votre tranche d'âge. Il y a de la marge pour progresser.",
         "<strong>Zone faible :</strong><br>Votre VO₂max est faible pour votre âge. Essayez d'être moins sédentaire au quotidien."
+    ]
+    const palierInterpretationHomme = [
+        {"vo2maxMax":60}
     ]
 
     if (GenreUser == "Homme") {
@@ -135,51 +138,45 @@ function InterpretationVO2max(ResultVO2max, GenreUser, AgeUser){
 
     return Interpretation
 }
-function CalculVO2max() {
-    // Récupérer la valeur des champs
-    let SexeUser = document.getElementById("sexe-user").value;
-    let AgeUser = parseInt(document.getElementById("age-user").value
-        .trim().replace(",", "."));
-    let VmaUser = parseFloat(document.getElementById("vma-user").value
-        .trim().replace(",", "."));
+function calculVO2max() {
+    // recup la valeur des champs
+    let sexeUser = document.getElementById("sexe-user").value;
+    let ageUser = parseInt(document.getElementById("age-user").value)
+    let vmaUser = parseFloat(document.getElementById("vma-user").value)
 
     // Vérification des champs
-    if (isNaN(AgeUser) || isNaN(VmaUser)) {
+    if (isNaN(ageUser) || isNaN(vmaUser)) {
         alert("Erreur de saisie : tous les champs doivent être remplis.")
         return
     }
-    if (AgeUser < 13 || AgeUser > 120) {
+    if (ageUser < 13 || ageUser > 120) {
         alert("Valeur non valide, la valeur de l'âge doit être compris entre 13 et 120 ans.")
         return
     }
-    if (VmaUser <= 0) {
+    if (vmaUser <= 0) {
         alert("Valeur non valide, la vma doit être supérieur à 0.")
         return
     }
-    if (VmaUser >= 50) {
+    if (vmaUser >= 50) {
         alert("Valeur non valide, la vma doit être inférieur à 50.")
         return
     }
 
     // Calcul
-    let ResultVO2max = VmaUser*3.5
-    let VO2maxEstime = "VO₂max estimé : " + "<strong>" + ResultVO2max.toFixed(1).replace(".", ",") + "</strong>"
+    let resultVO2max = vmaUser*3.5
+    let vo2maxEstimee = "VO₂max estimé : " + "<strong>" + resultVO2max.toFixed(1).replace(".", ",") + "</strong>"
 
     // Affichage
-    document.querySelector(".zone-result-name-result").innerHTML = VO2maxEstime
+    document.querySelector(".zone-result-name-result").innerHTML = vo2maxEstimee
 
-    let ZoneInterpretationVO2max = InterpretationVO2max(ResultVO2max, SexeUser, AgeUser)
-    document.querySelector(".zone-result-interpretation").innerHTML = ZoneInterpretationVO2max
+    let zoneInterpretationVO2max = interpretationVO2max(resultVO2max, sexeUser, ageUser)
+    document.querySelector(".zone-result-interpretation").innerHTML = zoneInterpretationVO2max
     return
 }
 
-function ComboBoxVO2max() {
-    let AgeUser = parseInt(document.getElementById("age-user").value
-        .trim().replace(",", "."));
-    let VmaUser = parseFloat(document.getElementById("vma-user").value
-        .trim().replace(",", "."));
+function comboBox() {
+    let ageUser = parseInt(document.getElementById("age-user").value)
+    let vmaUser = parseFloat(document.getElementById("vma-user").value)
 
-    if (AgeUser || VmaUser) {
-        CalculVO2max()
-    }
+    if (!isNaN(ageUser) || !isNaN(vmaUser)) {calculVO2max()}
 }

@@ -118,6 +118,12 @@
             Désormais dans l'algorithme de Récupération vous avez accès uniquement à votre historique des 7 derniers jours. Pour avoir accès 
             à votre historique complet il faudra désormais cliquer sur le bouton "Tout voir" qui vous ammènera à une page dédiée pour ça.
         </li>
+        <li>
+            L'algorithme d'estimation VMA ne peut pas prédire une VMA avec une course libre supérieur à 20 km, auparavant c'était 30 km
+            or on n'estime pas une VMA sur de si longue distance. Déjà 20 km étant énorme pour estimer une VMA ! Je vous conseille de
+            privéligiez les autres options des tests VMA comme le demi-cooper ou le cooper ou le luc léger. Le mode libre est conçue
+            si vous n'avez pas fais de test vous pouvez l'estimer mais attention vous perdez grandement en précision.
+        </li>
     </ul>
 
     <h2>Correction des bugs et optimisations</h2>
@@ -133,6 +139,23 @@
         <li>
             Optimisation du calcul des dates : il y a désormais une nouvelle fonction que je peux appeller sur n'importe quelle page.
             Cette fonction centralise la logique pour trouver une date par exemple pour trouver J-7, J-31,...
+        </li>
+        <li>
+            Correction d'un bug majeur du logo dynamique dans le détail d'un entraînement avec une datas spécifique ce qui bloquait la page.
+            L'utilisateur ne pouvait donc plus modifier son entrainement, plus le supprimer,...
+        </li>
+        <li>
+            Optimisation du code de l'algorithme d'estimation VMA : la fonction qui gère le test VMA que vous avez choisi a été optimisé passant
+            d'une longue structure if/else à l'usage de dico. Il y a de nombreuses autres optimisations, en globalité le code de cette algorithme
+            passe de 127 à 104 lignes pour les mêmes fonctionnalités.
+        </li>
+        <li>
+            Optimisation du code de l'algorithme de temps de récupération, le code est désormais plus maintenable et optimisé. Passage
+            de 59 lignes à 44 ce qui est toujours ça de pris.
+        </li>
+        <li>
+            Ajout d'un fonction global pour les messages d'erreur dans l'algorithme de Niveau de course. Ce changement a été réalisé pour
+            les futures fonctionnalités qui sera disponible dans les futures versions.
         </li>
     </ul>
     

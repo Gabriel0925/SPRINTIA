@@ -47,15 +47,13 @@ function StartNiveau() {
         return
     }
     if (DistanceUser <= 0) {
-        champsErreur.classList.add("visible")
-        champsErreur.textContent = "Distance positive requise !"
+        errorInput("Distance positive requise !")
         // remise à zéro
         document.querySelector(".large-zone-result-result").textContent = 0
         document.querySelector(".large-zone-result-name").textContent = "Niveau :"
         return
     } else if (DistanceUser >= 7) {
-        champsErreur.classList.add("visible")
-        champsErreur.textContent = "Distance inférieure à 7 requise !"
+        errorInput("Distance inférieure à 7 requise !")
         // remise à zéro
         document.querySelector(".large-zone-result-result").textContent = 0
         document.querySelector(".large-zone-result-name").textContent = "Niveau :"

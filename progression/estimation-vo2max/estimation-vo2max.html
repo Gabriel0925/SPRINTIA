@@ -80,7 +80,7 @@
     <section class="container-zone">
 
         <div class="form">
-            <select id="sexe-user" onchange="ComboBoxVO2max()" autocomplete="off">
+            <select id="sexe-user" onchange="comboBox()" autocomplete="off">
                     <option value="Homme">Sexe : Homme</option>
                     <option value="Femme">Sexe : Femme</option>
             </select>
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <button onclick="CalculVO2max()">Estimer</button>
+            <button onclick="calculVO2max()">Estimer</button>
         </div>
 
         <div class="zone-result">
@@ -158,10 +158,10 @@
         let formKeyEntry = document.querySelector(".form")
         formKeyEntry.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                CalculVO2max()
+                calculVO2max()
             }
         })
-    </script>
+    </script> 
 
     
     <!-- Pour avoir les statistiques de visite du site -->

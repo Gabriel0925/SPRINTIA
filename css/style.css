@@ -1452,7 +1452,7 @@ div.form {
 }
 div.form p.indication {
     display: none;
-    color: var(--COLOR_ACCENT2);
+    color: #ff6b6b;
     text-align: center;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     margin: var(--SPACE_XXS) var(--SPACE_S_SMALL);

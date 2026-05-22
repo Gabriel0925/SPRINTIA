@@ -79,8 +79,8 @@
     <h1>Estimation du temps de récupération</h1>
     <section class="container-zone">
 
-        <div class="form">
-            <select id="methode-user" onchange="ComboBox()" autocomplete="off">
+        <div class="form"> 
+            <select id="methode-user" onchange="comboBox()" autocomplete="off">
                 <option value="occasionnel">Sportif·ve occasionnel·le</option>
                 <option value="regulier">Sportif·ve régulier·e</option>
                 <option value="athlete">Athlète confirmé·e</option>
@@ -100,7 +100,7 @@
                 </div>
             </div>
 
-            <button onclick="EstimationTempsRecuperation()">Estimer</button>
+            <button onclick="estimationTempsRecuperation()">Estimer</button>
         </div>
 
         <div class="large-zone-result">
@@ -180,7 +180,7 @@
         let formKeyEntry = document.querySelector(".form")
         formKeyEntry.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                EstimationTempsRecuperation()
+                estimationTempsRecuperation()
             }
         })
     </script>

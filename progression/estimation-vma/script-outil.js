@@ -1,63 +1,62 @@
-function EstimationVMA() {
+function estimationVMA() {
     // Recup datas des champs
-    let TestUsers = document.getElementById("test-user").value
-    let DistanceUser = parseFloat(document.getElementById("distance-user").value.replace(",", ".").trim())
-    let DureeUser = document.getElementById("duree-user").value.trim()
+    let testUsers = document.getElementById("test-user").value
+    let distanceUser = parseFloat(document.getElementById("distance-user").value.replace(",", ".").trim())
+    let dureeUser = document.getElementById("duree-user").value.trim()
 
-    DureeUser = conversionMinutes(DureeUser)
-    if (DureeUser == null) {
-        return
-    }
+    dureeUser = conversionMinutes(dureeUser) // la fonction renvoie null si problème
+    if (dureeUser == null) {return} // donc si la fonction renvoie null alors on arrete la fonction
 
     // Vérifications des champs
-    if (isNaN(DistanceUser) || isNaN(DureeUser)) {
+    if (isNaN(distanceUser) || isNaN(dureeUser)) {
         alert("Erreur de saisie : tous les champs doivent être remplis.")
         return
     }
-    if (DistanceUser <= 0 || DureeUser <= 0) {
+    if (distanceUser <= 0 || dureeUser <= 0) {
         alert("Valeur non valide, la distance et la durée doivent être supérieur à 0.")
         return
     }
-    if (DistanceUser >= 30) {
-        alert("L'estimation VMA ne peut pas prédire une VMA avec une distance supérieur à 30 km.'")
+    if (distanceUser >= 20) {
+        alert("L'estimation VMA ne peut pas prédire une VMA avec une distance supérieur à 20 km.'")
         return
     }
 
     // Initialisation
-    let Coefficient = [0.95, 0.92, 0.89, 0.82, 0.77]
-    let DistanceM = 0
-    let VmaEstimee = 0
-    let VitesseMoyenne = 0
+    let distanceM = 0
+    let vmaEstimee = 0
+    let vitesseMoyenne = 0
+
+    const palierCoefLibre = [
+        {"distanceMax":3.5, "coefficient":0.95},
+        {"distanceMax":6, "coefficient":0.92},
+        {"distanceMax":12, "coefficient":0.89},
+        {"distanceMax":20, "coefficient":0.82}
+    ]
 
     // Calcul en fonction du test choisis
-    if (TestUsers === "demi-cooper") {
-        DistanceM = DistanceUser*1000
-        VmaEstimee = DistanceM/100
-    } else if (TestUsers === "cooper") {
-        DistanceM = DistanceUser*1000
-        VmaEstimee = DistanceM/200
-    } else if (TestUsers === "luc-leger") {
-        VmaEstimee = DistanceUser/(DureeUser/60)
+    if (testUsers === "demi-cooper") {
+        distanceM = distanceUser*1000
+        vmaEstimee = distanceM/100
+    } else if (testUsers === "cooper") {
+        distanceM = distanceUser*1000
+        vmaEstimee = distanceM/200
+    } else if (testUsers === "luc-leger") {
+        vmaEstimee = distanceUser/(dureeUser/60)
     } else {
-        VitesseMoyenne = DistanceUser/(DureeUser/60) // Vitesse moyenne en km/h
-        if (DistanceUser <= 3.5) {
-            Coefficient = Coefficient[0]
-        } else if (DistanceUser <= 6) {
-            Coefficient = Coefficient[1]
-        } else if (DistanceUser <= 12) {
-            Coefficient = Coefficient[2]
-        } else if (DistanceUser <= 22) {
-            Coefficient = Coefficient[3]
-        } else {
-            Coefficient = Coefficient[4]
+        vitesseMoyenne = distanceUser/(dureeUser/60) // Vitesse moyenne en km/h
+
+        for (const palier of palierCoefLibre) { // of pour chaque element de la liste
+            if (distanceUser <= palier["distanceMax"]) { // si la distance entrée par le user est inférieure au palier on calcule la vmaEstimee
+                vmaEstimee = vitesseMoyenne/palier["coefficient"]
+                break
+            }
         }
-        VmaEstimee = VitesseMoyenne/Coefficient
     }
 
-    // Arrondi
-    VmaEstimee = VmaEstimee.toFixed(1).replace(".", ",") + " km/h"
+    // Prépa des données + affichage
+    vmaEstimee = vmaEstimee.toFixed(1).replace(".", ",") + " km/h"
+    document.querySelector(".large-zone-result-result").textContent = vmaEstimee
 
-    document.querySelector(".large-zone-result-result").textContent = VmaEstimee
     return
 }
 
@@ -66,32 +65,34 @@ function remplirChamps(value) {
     let inputDistance = document.getElementById("distance-user")
     let inputDuree = document.getElementById("duree-user")
 
-    // recup de la zone de résultat
-    let zoneResult = document.querySelector(".large-zone-result-result")
     const dicoValueInput = { // dico contenant ce qu'il faut mettre dans les input en fonction du test choisi par l'utilisateur
         "demi-cooper": {
-            "inputDistance":["", false], // false pour dire que le input ne peut pas que etre lu on peut écrire dans le input
-            "inputDuree":["0:6:0", true], // true pour qu'on puisse uniquement lire le contenu du input et pas le modifier
+            // true pr bloquer l'écriture et false pour autoriser à écrire dans le input
+            "inputDistance":{"valeur":"", "ecriture":false},
+            "inputDuree":{"valeur":"0:6:0", "ecriture":true}
         },
         "cooper": {
-            "inputDistance":["", false],
-            "inputDuree":["0:12:0", true],
+            "inputDistance":{"valeur":"", "ecriture":false},
+            "inputDuree":{"valeur":"0:12:0", "ecriture":true }
         },
         "luc-leger": {
-            "inputDistance":["2", true],
-            "inputDuree":["", false],
+            "inputDistance":{"valeur":"2", "ecriture":true},  
+            "inputDuree":{"valeur":"", "ecriture":false}
         },
         "libre": {
-            "inputDistance":["", false],
-            "inputDuree":["", false],
+            "inputDistance":{"valeur":"", "ecriture":false},
+            "inputDuree":{"valeur":"", "ecriture":false}
         }
     }
 
     // maj du contenu des input en fonction du test choisi
-    inputDistance.value = dicoValueInput[value]["inputDistance"][0]
-    inputDistance.readOnly = dicoValueInput[value]["inputDistance"][1]
-    inputDuree.value = dicoValueInput[value]["inputDuree"][0]
-    inputDuree.readOnly = dicoValueInput[value]["inputDuree"][1]
+    inputDistance.value = dicoValueInput[value]["inputDistance"]["valeur"]
+    inputDistance.readOnly = dicoValueInput[value]["inputDistance"]["ecriture"]
+    inputDuree.value = dicoValueInput[value]["inputDuree"]["valeur"]
+    inputDuree.readOnly = dicoValueInput[value]["inputDuree"]["ecriture"]
+
+    // pour remettre à 0 le résultat
+    document.querySelector(".large-zone-result-result").textContent = "0 km/h"
 
     return
 }

@@ -517,3 +517,14 @@ function createObjetDate(nbJourEnMoins) {
 
     return ObjDate
 }
+// --- Fin création d'un objet Date avec par exemple dateMoins7J ---
+
+
+
+// ---  ---
+function errorInput(messageError) {
+    let zoneError = document.getElementById("zone-error")
+    
+    zoneError.classList.add("visible")
+    zoneError.innerHTML = messageError 
+}

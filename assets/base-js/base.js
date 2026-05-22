@@ -521,10 +521,12 @@ function createObjetDate(nbJourEnMoins) {
 
 
 
-// ---  ---
+// --- Pour déclencher une animation pour une erreur ---
 function errorInput(messageError) {
     let zoneError = document.getElementById("zone-error")
     
     zoneError.classList.add("visible")
     zoneError.innerHTML = messageError 
 }
+// --- fin de pou déclencher une animation pour une erreur ---
+

@@ -154,8 +154,24 @@
             de 59 lignes à 44 ce qui est toujours ça de pris.
         </li>
         <li>
+            Optimisation du code de l'algorithme de l'estimation VO₂max, le code est désormais bien plus maintenable et optimisé. Auparavant,
+            en Janvier je faisais une succession de plus de 5 if/else if/else (pour trouver dans quelle zone le user se trouvait par
+            rapport à sa tranche d'âge et à l'estimation de son VO₂max) ce qui est illisible, inmaintenable,... Cette algorithme
+            faisait auparavant 185 lignes, désormais il fait 94 lignes !
+        </li>
+        <li>
+            Dans l'estimation du VO₂max, si les inputs était vide et que vous changiez de Sexe l'algorithme se lançait
+            et vous disais que vous n'avez pas remplis les champs or l'algorithme n'est pas censé se lancer si les inputs sont vidés,
+            désormais ce bug est résolu.
+        </li>
+        <li>
             Ajout d'un fonction global pour les messages d'erreur dans l'algorithme de Niveau de course. Ce changement a été réalisé pour
             les futures fonctionnalités qui sera disponible dans les futures versions.
+        </li>
+        <li>
+            Lors d'une erreur dans l'algorithme de Niveau de course une erreur s'affiche dans le formulaire. Désormais, l'erreur
+            s'affiche en rouge. Auparavant, c'était de la couleur du thème choisi or en UX/UI c'est pas très bien de faire ça, c'est
+            pour ça que c'est corrigé dans Sprintia 4.3.1.
         </li>
     </ul>
     

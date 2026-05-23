@@ -112,11 +112,11 @@ function zoneAllure() {
             let secondesZone = minutesSecondesZone[1]
 
             if (!isNaN(vitesseMaxUser) && vitesseMaxUser > 0) {                
-                const resultClean = memoireLastLap + ":" + memoire2LastLap.toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
+                const resultClean = memoireLastLap + ":" + (memoire2LastLap+1).toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
                 baliseTranche[compteur].textContent = resultClean // affichage
 
             } else {                
-                const resultClean = "> " + memoireLastLap + ":" + memoire2LastLap.toString().padStart(2, "0") // mise en forme différente
+                const resultClean = "> " + memoireLastLap + ":" + (memoire2LastLap+1).toString().padStart(2, "0") // mise en forme différente
                 baliseTranche[compteur].textContent = resultClean // affichage
             }
 
@@ -130,7 +130,7 @@ function zoneAllure() {
         let secondesZone = minutesSecondesZone[1]
 
         // préparation d'un résultat clean pour l'afficher par la suite
-        const resultClean = memoireLastLap + ":" + memoire2LastLap.toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
+        const resultClean = memoireLastLap + ":" + (memoire2LastLap+1).toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
         baliseTranche[compteur].textContent = resultClean // affichage 
 
         memoireLastLap = minutesZone // mise en mémoire de ce tour pour le tour suivant

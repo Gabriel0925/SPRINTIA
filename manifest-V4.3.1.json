@@ -1,0 +1,52 @@
+{
+    "id": "/",
+    "name": "Sprintia",
+    "short_name": "Sprintia",
+    "description": "Sprintia est conçue pour vous aider avant et après un entraînement grâce à des algorithmes 100% gratuit.",
+    "lang": "fr",
+
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "orientation": "any",
+
+    "icons": [
+        {
+            "src": "/assets/icons-sprintia/icon-192-V4.3.1.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/assets/icons-sprintia/icon-512-V4.3.1.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+
+    "shortcuts": [
+        {
+            "name": "Charge d'entraînement (CE)",
+            "short_name":"Charge d'entraînement",
+            "description":"Accéder directement à l'algorithme de charge d'entraînement",
+            "url":"/progression/charge-entrainement/charge-entrainement.html",
+            "icons": [{
+                "src": "/assets/icons-shortcuts-manifest/icon-ce.png",
+                "sizes": "192x192"
+            }]
+        },
+        {
+            "name": "Ajouter un entraînement",
+            "short_name":"Ajouter entraînement",
+            "description":"Accéder rapidement à la page d'ajout d'entraînement",
+            "url":"/entrainement/ajouter-entrainement.html",
+            "icons": [{
+                "src": "/assets/icons-shortcuts-manifest/icon-add.png",
+                "sizes": "192x192"
+            }]
+        }
+    ]
+}

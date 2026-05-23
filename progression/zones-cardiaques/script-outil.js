@@ -5,7 +5,7 @@ function calculZone(methodeCalcul, baliseTranche, ageUser, fcMaxUser, fcMax, fcR
     }
 
     // init des variables pr la boucle
-    const tableauCoef = [0.5, 0.6, 0.7, 0.8, 0.9] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 5 = 190-200bpm/zone 7 = > 200bpm)
+    const tableauCoef = [0.6, 0.7, 0.8, 0.9, 0.9 ] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 5 = 190-200bpm/zone 7 = > 200bpm)
     let memoireLastLap = 0 // pour garder en mémoire le resultat du tour d'avant de la boucle for
     let compteur = 0 // pour chercher dans le tableau de balise tranche et mettre le resultat au bon endroit
 

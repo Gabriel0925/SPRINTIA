@@ -168,6 +168,9 @@ async function remplissageTableau() {
     let dateMoins7J = createObjetDate(7) // appelle à la fonction
     const historiqueDataUser = await db.recuperation.where("date").above(dateMoins7J).toArray()
 
+    // Pr vider toutes les lignes du tableau (sauf lentete)
+    tableauHistorique.querySelector("tbody").innerHTML = ""
+
     historiqueDataUser.reverse() // on inverse pour que ça soit du plus récent au plus ancien
 
     if (historiqueDataUser.length <= 0) {

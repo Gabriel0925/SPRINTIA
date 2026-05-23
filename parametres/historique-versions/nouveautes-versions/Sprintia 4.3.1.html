@@ -96,81 +96,93 @@
     <div class="summary-version">
         <p class="summary-version-title">Résumé</p>
         <p class="summary-version-summary">
-            Sprintia 4.3.1 apporte de nombreuses optimisations ce qui permet à Sprintia de devenir plus rapide, plus fiable et moins
-            exposé à des bugs qui pourraient gâcher l'expérience.
+            Sprintia 4.3.1 apporte de nombreuses optimisations pour les algorithmes intégrés à la page de progression,
+            ce qui permet à Sprintia de devenir plus performant et plus stable que jamais.
             <br><br>
-            De plus, Sprintia 4.3.1 intègre un tout nouveau footer permettant d'accéder à certaines pages clés en un clic, au lieu 
-            de 3 ou 4 auparavant.
+            Du point de vue de l'utilisateur très peu de changement mais, du point de vue code j'ai optimisé tous les algorithmes que
+            j'ai faits courant Janvier 2026 car j'ai progressé et également parce qu'avoir un code qui enchaîne les if/else if/else c'est
+            juste immaintenable et illisible du point de vue du développeur.
         </p>
     </div>
 
     <h1 style="margin-top: var(--SPACE_M);">Patch note</h1>
-    <h2>Nouvelles fonctionnalités</h2>
-    <ul class="list-information">
-        <li>
-
-        </li>
-    </ul>
 
     <h2>Améliorations</h2>
     <ul class="list-information">
         <li>
-            Désormais dans l'algorithme de Récupération vous avez accès uniquement à votre historique des 7 derniers jours. Pour avoir accès 
-            à votre historique complet il faudra désormais cliquer sur le bouton "Tout voir" qui vous ammènera à une page dédiée pour ça.
+            J'ai ajouté un paragraphe dans la <strong>politique de confidentialité</strong> pour vous expliquer l'API Vercel qui me permet d'avoir
+            des statistiques de navigation. Or, ces statistiques je les ai depuis la version 4 de Sprintia, donc ce n'est pas nouveau.
+            En réfléchissant, je me suis aperçu que je ne citais pas ces stats car en réalité je ne les regarde jamais 
+            (car j'ai toujours développé Sprintia avant tout pour moi) mais je préfère les citer désormais.
         </li>
         <li>
-            L'algorithme d'estimation VMA ne peut pas prédire une VMA avec une course libre supérieur à 20 km, auparavant c'était 30 km
-            or on n'estime pas une VMA sur de si longue distance. Déjà 20 km étant énorme pour estimer une VMA ! Je vous conseille de
-            privéligiez les autres options des tests VMA comme le demi-cooper ou le cooper ou le luc léger. Le mode libre est conçue
-            si vous n'avez pas fais de test vous pouvez l'estimer mais attention vous perdez grandement en précision.
+            Désormais, dans l'algorithme de Récupération, vous avez accès uniquement à votre historique des 7 derniers jours. Pour avoir accès 
+            à votre historique complet, il faudra désormais cliquer sur le bouton "Tout voir" qui vous amènera à une page dédiée pour ça.
+        </li>
+        <li>
+            L'algorithme d'estimation VMA ne peut pas prédire une VMA avec une course libre supérieure à 20 km, auparavant c'était 30 km
+            or on n'estime pas une VMA sur de si longues distances. Déjà 20 km étant énorme pour estimer une VMA ! Je vous conseille de
+            privilégier les autres options des tests VMA comme le demi-cooper ou le cooper ou le luc léger. Le mode libre est conçu
+            si vous n'avez pas fait de test, vous pouvez l'estimer, mais attention vous perdez grandement en précision.
+        </li>
+        <li>
+            Dans le calculateur des zones de puissances en course à pied, la zone 1 commence désormais à 1 W, auparavant ça commençait à
+            0 W. Idem pour les zones cardiaques ainsi que les zones d'allure.
         </li>
     </ul>
 
     <h2>Correction des bugs et optimisations</h2>
     <ul class="list-information">
         <li>
-            Optimisation du CSS pour le responsive de la page nommé "Historique des versions".
+            Optimisation du CSS pour le responsive de la page nommée "Historique des versions".
         </li>
         <li>
-            Correction d'un bug lors de la modification d'un entraînement les données de transpiration estimée et d'hydratation estimée pouvait
-            être enregistré avant des données comme la distance,... Or la distance était censé se sauvegardé avant pour qu'elle apparaisse avant
+            Correction d'un bug lors de la modification d'un entraînement : les données de transpiration estimée et d'hydratation estimée pouvaient
+            être enregistrées avant des données comme la distance... Or la distance était censée se sauvegarder avant pour qu'elle apparaisse avant
             lors de la consultation du détail de votre entraînement.
         </li>
         <li>
-            Optimisation du calcul des dates : il y a désormais une nouvelle fonction que je peux appeller sur n'importe quelle page.
-            Cette fonction centralise la logique pour trouver une date par exemple pour trouver J-7, J-31,...
+            Optimisation du calcul des dates : il y a désormais une nouvelle fonction que je peux appeler sur n'importe quelle page.
+            Cette fonction centralise la logique pour trouver une date, par exemple pour trouver J-7, J-31...
         </li>
         <li>
-            Correction d'un bug majeur du logo dynamique dans le détail d'un entraînement avec une datas spécifique ce qui bloquait la page.
-            L'utilisateur ne pouvait donc plus modifier son entrainement, plus le supprimer,...
+            Correction d'un bug majeur du logo dynamique dans le détail d'un entraînement avec une data spécifique, ce qui bloquait la page.
+            L'utilisateur ne pouvait donc plus modifier son entraînement, plus le supprimer...
         </li>
         <li>
-            Optimisation du code de l'algorithme d'estimation VMA : la fonction qui gère le test VMA que vous avez choisi a été optimisé passant
-            d'une longue structure if/else à l'usage de dico. Il y a de nombreuses autres optimisations, en globalité le code de cette algorithme
+            Optimisation du code de l'algorithme d'estimation VMA : la fonction qui gère le test VMA que vous avez choisi a été optimisée, passant
+            d'une longue structure if/else à l'usage de dicos. Il y a de nombreuses autres optimisations, en globalité le code de cet algorithme
             passe de 127 à 104 lignes pour les mêmes fonctionnalités.
         </li>
         <li>
             Optimisation du code de l'algorithme de temps de récupération, le code est désormais plus maintenable et optimisé. Passage
-            de 59 lignes à 44 ce qui est toujours ça de pris.
+            de 59 lignes à 44, ce qui est toujours ça de pris.
         </li>
         <li>
-            Optimisation du code de l'algorithme de l'estimation VO₂max, le code est désormais bien plus maintenable et optimisé. Auparavant,
-            en Janvier je faisais une succession de plus de 5 if/else if/else (pour trouver dans quelle zone le user se trouvait par
-            rapport à sa tranche d'âge et à l'estimation de son VO₂max) ce qui est illisible, inmaintenable,... Cette algorithme
-            faisait auparavant 185 lignes, désormais il fait 94 lignes !
+            Optimisation du code de l'algorithme nommé "Protéines quotidiennes". Passage de 54 lignes à 36.
         </li>
         <li>
-            Dans l'estimation du VO₂max, si les inputs était vide et que vous changiez de Sexe l'algorithme se lançait
-            et vous disais que vous n'avez pas remplis les champs or l'algorithme n'est pas censé se lancer si les inputs sont vidés,
+            Refonte de la logique du code pour le calculateur d'IMC, en revanche d'un point de vue utilisateur aucun changement, aucunes
+            nouveautés.
+        </li>
+        <li>
+            Refonte de la logique du code pour les algorithmes de "Zones cardiaques", "Zones de puissance" et "Zones de vitesse". Même optimisation
+            apportée à ces algorithmes car ils sont conçus de la même manière. Utilisation d'une boucle au lieu d'une liste d'instructions,
+            ce qui rend le code bien plus maintenable et optimisé. En comptant tous ces algorithmes, on passe de 458 à 288 lignes pour 
+            les mêmes fonctionnalités.
+        </li>
+        <li>
+            Dans l'estimation du VO₂max, si les inputs étaient vides et que vous changiez de Sexe, l'algorithme se lançait
+            et vous disait que vous n'aviez pas rempli les champs, or l'algorithme n'est pas censé se lancer si les inputs sont vides,
             désormais ce bug est résolu.
         </li>
         <li>
-            Ajout d'un fonction global pour les messages d'erreur dans l'algorithme de Niveau de course. Ce changement a été réalisé pour
-            les futures fonctionnalités qui sera disponible dans les futures versions.
+            Ajout d'une fonction globale pour les messages d'erreur dans l'algorithme de Niveau de course. Ce changement a été réalisé pour
+            les futures fonctionnalités qui seront disponibles dans les futures versions.
         </li>
         <li>
-            Lors d'une erreur dans l'algorithme de Niveau de course une erreur s'affiche dans le formulaire. Désormais, l'erreur
-            s'affiche en rouge. Auparavant, c'était de la couleur du thème choisi or en UX/UI c'est pas très bien de faire ça, c'est
+            Lors d'une erreur dans l'algorithme de Niveau de course, une erreur s'affiche dans le formulaire. Désormais, l'erreur
+            s'affiche en rouge. Auparavant, c'était la couleur du thème choisi, or en UX/UI ce n'est pas très bien de faire ça, c'est
             pour ça que c'est corrigé dans Sprintia 4.3.1.
         </li>
     </ul>

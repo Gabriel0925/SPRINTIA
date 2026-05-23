@@ -746,21 +746,17 @@ section.segmented-button div.segmented-button-button {
 @media (hover:hover) and (pointer: fine) {
     section.segmented-button div.segmented-button-button:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        color: var(--COLOR_ACCENT2);
     }
 }
 section.segmented-button div.segmented-button-button:active {
     transform: scale(var(--SCALE_NORMAL));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    color: var(--COLOR_ACCENT2);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COLOR_ACCENT2);
 }
 
 

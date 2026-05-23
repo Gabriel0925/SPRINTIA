@@ -1,6 +1,6 @@
 function zonePuissance() {
     //recup value champs
-    let rFTPwUser = parseFloat(document.getElementById("rFTPw-user").value.trim().replace(",", "."))
+    let rFTPwUser = parseFloat(document.getElementById("rFTPw-user").value)
 
     // Vérification
     if (isNaN(rFTPwUser)) {
@@ -12,39 +12,28 @@ function zonePuissance() {
         return
     }
 
-    
-    // Calcul 
-    let DebutZone1 = 0
-    let FinZone1 = Math.round(rFTPwUser*0.8)
+    // recupération de toutes les box de résultats
+    const baliseTranche = document.querySelectorAll(".small-zone-result-result")
 
-    let FinZone2 = Math.round(rFTPwUser*0.88)
+    // init des variables pr la boucle
+    const tableauCoef = [0.8, 0.88, 0.95, 1.05, 1.15, 1.28, 1.28] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 6 = 346-384W/zone 7 = > 348W)
+    let memoireLastLap = 0 // pour garder en mémoire le resultat du tour d'avant de la boucle for
+    let compteur = 0 // pour chercher dans le tableau de balise tranche et mettre le resultat au bon endroit
 
-    let FinZone3 = Math.round(rFTPwUser*0.95)
+    for (const elt of tableauCoef) { // parcour du tableau
+        if (compteur == tableauCoef.length-1) { // pr le dernier on affiche diféremment
+            const resultClean = "> " + memoireLastLap // mise en forme différente
+            baliseTranche[compteur].textContent = resultClean // affichage
+            break // on arrete la boucle car c'était le dernier coef
+        }
 
-    let FinZone4 = Math.round(rFTPwUser*1.05)
+        const resultFinZone = Math.round(rFTPwUser*elt) // calcul de la fin de la zone concernée grâce au tableau
+        const resultClean = (memoireLastLap+1) + " - " + resultFinZone // préparation d'un résultat clean pour l'afficher par la suite
+        baliseTranche[compteur].textContent = resultClean // affichage 
 
-    let FinZone5 = Math.round(rFTPwUser*1.15)
-
-    let FinZone6 = Math.round(rFTPwUser*1.28)
-
-    // mise en variable de l'affichage
-    ResultAlgoBox1 = DebutZone1 + " - " + FinZone1
-    ResultAlgoBox2 = (FinZone1+1) + " - " + FinZone2
-    ResultAlgoBox3 = (FinZone2+1) + " - " + FinZone3
-    ResultAlgoBox4 = (FinZone3+1) + " - " + FinZone4
-    ResultAlgoBox5 = (FinZone4+1) + " - " + FinZone5
-    ResultAlgoBox6 = (FinZone5+1) + " - " + FinZone6
-    ResultAlgoBox7 = "> " + FinZone6
-
-    // affichage
-    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
-    BaliseTranche[0].textContent = ResultAlgoBox1
-    BaliseTranche[1].textContent = ResultAlgoBox2
-    BaliseTranche[2].textContent = ResultAlgoBox3
-    BaliseTranche[3].textContent = ResultAlgoBox4
-    BaliseTranche[4].textContent = ResultAlgoBox5
-    BaliseTranche[5].textContent = ResultAlgoBox6
-    BaliseTranche[6].textContent = ResultAlgoBox7
+        memoireLastLap = resultFinZone // mise en mémoire de ce tour pour le tour suivant
+        compteur+=1 // incrémentation
+    }
 
     return
 }

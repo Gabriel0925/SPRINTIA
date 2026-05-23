@@ -91,7 +91,7 @@
                 <div class="label-input">Poids (kg)</div>
             </div>
 
-            <button id="button-calcul-imc" onclick="CalculIMC()">Calculer</button>
+            <button id="button-calcul-imc" onclick="calculIMC()">Calculer</button>
         </div>
 
         <div class="zone-result">
@@ -157,7 +157,7 @@
         let formKeyEntry = document.querySelector(".form")
         formKeyEntry.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                CalculIMC()
+                calculIMC()
             }
         })
     </script>

@@ -1,202 +1,142 @@
-function ZoneVitesse() {
-    // Récupérer la valeur des champs
-    let VmaUser = parseFloat(document.getElementById("vma-user").value
-        .trim().replace(",", "."));
-    let VitesseMaxUser = parseFloat(document.getElementById("vitesse-max-user").value
-        .trim().replace(",", "."));
+function conversionAllure(zone){    
+    // extraction des minutes, secondes
+    let minutes = Math.floor(zone)
+    let secondes = Math.round((zone-minutes)*60)
+    if (secondes === 60) {secondes = 0; minutes += 1}
 
-    // Initialisation des variables
-    let DebutZone1 = 0
-    let FinZone1 = 0
-    let FinZone2 = 0
-    let FinZone3 = 0
-    let FinZone4 = 0
-
-    let VitesseMax = 0
-    
-    let ResultAlgoBox1 = ""
-    let ResultAlgoBox2 = ""
-    let ResultAlgoBox3 = ""
-    let ResultAlgoBox4 = ""
-    let ResultAlgoBox5 = ""
-    let Coefficent = []
-
-    // Vérification des champs
-    if (isNaN(VmaUser)) {
-        alert("Erreur de saisie : le champ 'vma' doit être rempli.");
-        return
-    }
-    if (VmaUser <= 0 || VmaUser >= 50) {
-        alert("Valeur non valide, la VMA doit être compris entre 0 et 50.");
-        return
-    }
-
-    Coefficent = [0.65, 0.75, 0.85, 0.95]
-    if (!isNaN(VitesseMaxUser) && VitesseMaxUser > 0) {VitesseMax = VitesseMaxUser}
-    else {VitesseMax = Math.round(VmaUser*1.30)}
-    
-    // Calcul
-    DebutZone1 = "0,0"
-    FinZone1 = VmaUser*Coefficent[0]
-    FinZone2 = VmaUser*Coefficent[1]
-    FinZone3 = VmaUser*Coefficent[2]
-    FinZone4 = VmaUser*Coefficent[3]
-
-    ResultAlgoBox1 =  DebutZone1 + " - " + FinZone1.toFixed(1).replace(".", ",") 
-    ResultAlgoBox2 =  (FinZone1+0.1).toFixed(1).replace(".", ",") + " - " + FinZone2.toFixed(1).replace(".", ",")
-    ResultAlgoBox3 =  (FinZone2+0.1).toFixed(1).replace(".", ",") + " - " + FinZone3.toFixed(1).replace(".", ",")
-    ResultAlgoBox4 =  (FinZone3+0.1).toFixed(1).replace(".", ",") + " - " + FinZone4.toFixed(1).replace(".", ",")
-
-    if (!isNaN(VitesseMaxUser) && VitesseMaxUser > 0) {
-        ResultAlgoBox5 = (FinZone4+0.1).toFixed(1).replace(".", ",") + " - " + VitesseMax.toFixed(1).replace(".", ",")
-    } else {
-        ResultAlgoBox5 = "> " + FinZone4.toFixed(1).replace(".", ",")
-    }
-
-    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
-    BaliseTranche[0].innerHTML = ResultAlgoBox1;
-    BaliseTranche[1].innerHTML = ResultAlgoBox2;
-    BaliseTranche[2].innerHTML = ResultAlgoBox3;
-    BaliseTranche[3].innerHTML = ResultAlgoBox4;
-    BaliseTranche[4].innerHTML = ResultAlgoBox5;
-
+    return [minutes, secondes]
+}
+function majComponentAndUnit(unit, textInButton, functionInButton) {
     // Maj de l'unité au cas ou le user aura fais conversion puis re-valider
-    const UnitTranche = document.querySelectorAll(".small-zone-result-unit")
-    UnitTranche[0].textContent = "km/h";
-    UnitTranche[1].textContent = "km/h";
-    UnitTranche[2].textContent = "km/h";
-    UnitTranche[3].textContent = "km/h";
-    UnitTranche[4].textContent = "km/h";
-
-    // Changement bouton 
-    let ButtonConversion = document.getElementById("conversion")
-    ButtonConversion.textContent = "Convertir en allure"
-
-    ButtonConversion.onclick = ZoneAllure
-
-    return
-}
-
-function ConversionAllure(Zone){    
-    // Extraction des minutes, secondes
-    let Minutes = Math.floor(Zone)
-    let Secondes = Math.round((Zone-Minutes)*60)
-
-    if (Secondes === 60) {
-        Secondes = 0
-        Minutes += 1
+    const unitTranche = document.querySelectorAll(".small-zone-result-unit")
+    for (const elt of unitTranche) {
+        elt.textContent = unit
     }
-    return [Minutes, Secondes]
+    
+    // Changement de onclick et de contenu du bouton de conversion
+    let buttonConversion = document.getElementById("conversion")
+    buttonConversion.textContent = textInButton
+    buttonConversion.onclick = functionInButton
 }
 
-function ZoneAllure() {
+
+function zoneVitesse() {
     // Récupérer la valeur des champs
-    let VmaUser = parseFloat(document.getElementById("vma-user").value
-        .trim().replace(",", "."));
-    let VitesseMaxUser = parseFloat(document.getElementById("vitesse-max-user").value
-        .trim().replace(",", "."));
-
-    // Initialisation des variables
-    let DebutZone1 = 0
-    let FinZone1 = 0
-    let FinZone2 = 0
-    let FinZone3 = 0
-    let FinZone4 = 0
-
-    let VitesseMax = 0
-    
-    let ResultAlgoBox1 = ""
-    let ResultAlgoBox2 = ""
-    let ResultAlgoBox3 = ""
-    let ResultAlgoBox4 = ""
-    let ResultAlgoBox5 = ""
-    let Coefficent = []
+    let vmaUser = parseFloat(document.getElementById("vma-user").value)
+    let vitesseMaxUser = parseFloat(document.getElementById("vitesse-max-user").value)
 
     // Vérification des champs
-    if (isNaN(VmaUser)) {
+    if (isNaN(vmaUser)) {
         alert("Erreur de saisie : le champ 'vma' doit être rempli.");
         return
     }
-    if (VmaUser <= 0 || VmaUser >= 50) {
+    if (vmaUser <= 0 || vmaUser >= 50) {
         alert("Valeur non valide, la VMA doit être compris entre 0 et 50.");
         return
     }
 
-    Coefficent = [0.65, 0.75, 0.85, 0.95]
-    if (!isNaN(VitesseMaxUser) && VitesseMaxUser > 0) {VitesseMax = VitesseMaxUser}
-    else {VitesseMax = Math.round(VmaUser*1.30)}
+    // calcul de la vitesse max
+    let vitesseMax = 0
+    if (!isNaN(vitesseMaxUser) && vitesseMaxUser > 0) {vitesseMax = vitesseMaxUser}
+    else {vitesseMax = Math.round(vmaUser*1.30)}
 
-    // Calcul (avec la remise en allure)
-    DebutZone1 = "0:00"
-    FinZone1 = 60/(VmaUser*Coefficent[0])
-    // Conversion
-    let MinutesSecondesZone1 = ConversionAllure(FinZone1)
-    // Recup des datas qui sont dans une liste
-    let MinutesZone1 = MinutesSecondesZone1[0]
-    let SecondesZone1 = MinutesSecondesZone1[1]
+    // recupération de toutes les box de résultats
+    const baliseTranche = document.querySelectorAll(".small-zone-result-result")
 
-    FinZone2 = 60/(VmaUser*Coefficent[1])
-    // Conversion
-    let MinutesSecondesZone2 = ConversionAllure(FinZone2)
-    // Recup des datas qui sont dans une liste
-    let MinutesZone2 = MinutesSecondesZone2[0]
-    let SecondesZone2 = MinutesSecondesZone2[1]
+    // init des variables pr la boucle
+    const tableauCoef = [0.65, 0.75, 0.85, 0.95, 0.95] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 6 = 346-384W/zone 7 = > 348W)
+    let memoireLastLap = 0 // pour garder en mémoire le resultat du tour d'avant de la boucle for
+    let compteur = 0 // pour chercher dans le tableau de balise tranche et mettre le resultat au bon endroit
 
-    FinZone3 = 60/(VmaUser*Coefficent[2])
-    // Conversion
-    let MinutesSecondesZone3 = ConversionAllure(FinZone3)
-    // Recup des datas qui sont dans une liste
-    let MinutesZone3 = MinutesSecondesZone3[0]
-    let SecondesZone3 = MinutesSecondesZone3[1]
+    for (const elt of tableauCoef) { // parcour du tableau
+        if (compteur == tableauCoef.length-1) { // pr le dernier on affiche diféremment
 
-    FinZone4 = 60/(VmaUser*Coefficent[3])
-    // Conversion
-    let MinutesSecondesZone4 = ConversionAllure(FinZone4)
-    // Recup des datas qui sont dans une liste
-    let MinutesZone4 = MinutesSecondesZone4[0]
-    let SecondesZone4 = MinutesSecondesZone4[1]
+            if (!isNaN(vitesseMaxUser) && vitesseMaxUser > 0) {                
+                const resultClean = memoireLastLap.toFixed(1).replace(".", ",")  + " - " + vitesseMax.toFixed(1).replace(".", ",")
+                baliseTranche[compteur].textContent = resultClean // affichage
 
-    let FinZone5 = 60/(VmaUser)
-    // Conversion
-    let MinutesSecondesZone5 = ConversionAllure(FinZone5)
-    // Recup des datas qui sont dans une liste
-    let MinutesZone5 = MinutesSecondesZone5[0]
-    let SecondesZone5 = MinutesSecondesZone5[1]
+            } else {                
+                const resultClean = "> " + memoireLastLap.toFixed(1).replace(".", ",") // mise en forme différente
+                baliseTranche[compteur].textContent = resultClean // affichage
+            }
 
-    // Resultat ds des variable plus conversion en string + padstart pr qu'a chaque fois on est 2 chiffres et eviter davoir 5:5 mais uniquement pr les secondes
-    ResultAlgoBox1 =  DebutZone1 + " - " + MinutesZone1 + ":" + SecondesZone1.toString().padStart(2, "0")
-    ResultAlgoBox2 =  MinutesZone1 + ":" + SecondesZone1.toString().padStart(2, "0") + " - " + MinutesZone2 + ":" + SecondesZone2.toString().padStart(2, "0")
-    ResultAlgoBox3 =  MinutesZone2 + ":" + SecondesZone2.toString().padStart(2, "0") + " - " + MinutesZone3 + ":" + SecondesZone3.toString().padStart(2, "0")
-    ResultAlgoBox4 =  MinutesZone3 + ":" + SecondesZone3.toString().padStart(2, "0") + " - " + MinutesZone4 + ":" + SecondesZone4.toString().padStart(2, "0")
-    ResultAlgoBox5 =  MinutesZone4 + ":" + SecondesZone4.toString().padStart(2, "0") + " - " + MinutesZone5 + ":" + SecondesZone5.toString().padStart(2, "0")
+            break // on arrete la boucle car c'était le dernier coef
+        }
 
-    if (!isNaN(VitesseMaxUser) && VitesseMaxUser > 0) {
-        ResultAlgoBox5 =  MinutesZone4 + ":" + SecondesZone4.toString().padStart(2, "0") + " - " + MinutesZone5 + ":" + SecondesZone5.toString().padStart(2, "0")
-    } else {
-        ResultAlgoBox5 =   "> " + MinutesZone4 + ":" + SecondesZone4.toString().padStart(2, "0")
+        const resultFinZone = vmaUser*elt // calcul de la fin de la zone concernée grâce au tableau
+        const resultClean = (memoireLastLap+0.1).toFixed(1).replace(".", ",") + " - " + resultFinZone.toFixed(1).replace(".", ",") // préparation d'un résultat clean pour l'afficher par la suite
+        baliseTranche[compteur].textContent = resultClean // affichage 
+
+        memoireLastLap = resultFinZone // mise en mémoire de ce tour pour le tour suivant
+        compteur+=1 // incrémentation
     }
 
-    // On affiche les resultats
-    const BaliseTranche = document.querySelectorAll(".small-zone-result-result")
-    BaliseTranche[0].innerHTML = ResultAlgoBox1;
-    BaliseTranche[1].innerHTML = ResultAlgoBox2;
-    BaliseTranche[2].innerHTML = ResultAlgoBox3;
-    BaliseTranche[3].innerHTML = ResultAlgoBox4;
-    BaliseTranche[4].innerHTML = ResultAlgoBox5;
+    majComponentAndUnit("km/h", "Convertir en allure", zoneAllure)
+}
 
-    // Maj de l'unité
-    const UnitTranche = document.querySelectorAll(".small-zone-result-unit")
-    UnitTranche[0].textContent = "/km";
-    UnitTranche[1].textContent = "/km";
-    UnitTranche[2].textContent = "/km";
-    UnitTranche[3].textContent = "/km";
-    UnitTranche[4].textContent = "/km";
+function zoneAllure() {
+    // Récupérer la valeur des champs
+    let vmaUser = parseFloat(document.getElementById("vma-user").value)
+    let vitesseMaxUser = parseFloat(document.getElementById("vitesse-max-user").value)
 
-    // Changement bouton 
-    let ButtonConversion = document.getElementById("conversion")
-    ButtonConversion.textContent = "Convertir en vitesse"
+    // Vérification des champs
+    if (isNaN(vmaUser)) {
+        alert("Erreur de saisie : le champ 'vma' doit être rempli.");
+        return
+    }
+    if (vmaUser <= 0 || vmaUser >= 50) {
+        alert("Valeur non valide, la VMA doit être compris entre 0 et 50.");
+        return
+    }
 
-    ButtonConversion.onclick = ZoneVitesse
+    // calcul de la vitesse max
+    let vitesseMax = 0
+    if (!isNaN(vitesseMaxUser) && vitesseMaxUser > 0) {vitesseMax = vitesseMaxUser}
+    else {vitesseMax = Math.round(vmaUser*1.30)}
 
-    return
+    // recupération de toutes les box de résultats
+    const baliseTranche = document.querySelectorAll(".small-zone-result-result")
+
+    // init des variables pr la boucle
+    const tableauCoef = [0.65, 0.75, 0.85, 0.95, 0.95] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 6 = 346-384W/zone 7 = > 348W)
+    let memoireLastLap = 0 // pour garder en mémoire le resultat du tour d'avant de la boucle for
+    let memoire2LastLap = 0
+    let compteur = 0 // pour chercher dans le tableau de balise tranche et mettre le resultat au bon endroit
+
+    for (const elt of tableauCoef) { // parcour du tableau
+        if (compteur == tableauCoef.length-1) { // pr le dernier on affiche diféremment
+            const resultFinZone = 60/(vmaUser*elt) // calcul de la fin de la zone concernée grâce au tableau
+            let minutesSecondesZone = conversionAllure(resultFinZone)
+            // Recup des datas qui sont dans une liste
+            let minutesZone = minutesSecondesZone[0]
+            let secondesZone = minutesSecondesZone[1]
+
+            if (!isNaN(vitesseMaxUser) && vitesseMaxUser > 0) {                
+                const resultClean = memoireLastLap + ":" + memoire2LastLap.toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
+                baliseTranche[compteur].textContent = resultClean // affichage
+
+            } else {                
+                const resultClean = "> " + memoireLastLap + ":" + memoire2LastLap.toString().padStart(2, "0") // mise en forme différente
+                baliseTranche[compteur].textContent = resultClean // affichage
+            }
+
+            break // on arrete la boucle car c'était le dernier coef
+        }
+
+        const resultFinZone = 60/(vmaUser*elt) // calcul de la fin de la zone concernée grâce au tableau
+        let minutesSecondesZone = conversionAllure(resultFinZone)
+        // Recup des datas qui sont dans une liste
+        let minutesZone = minutesSecondesZone[0]
+        let secondesZone = minutesSecondesZone[1]
+
+        // préparation d'un résultat clean pour l'afficher par la suite
+        const resultClean = memoireLastLap + ":" + memoire2LastLap.toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
+        baliseTranche[compteur].textContent = resultClean // affichage 
+
+        memoireLastLap = minutesZone // mise en mémoire de ce tour pour le tour suivant
+        memoire2LastLap = secondesZone // mise en mémoire 2 de ce tour pour le tour suivant
+        compteur+=1 // incrémentation
+    }
+
+    majComponentAndUnit("/km", "Convertir en vitesse", zoneVitesse)
 }

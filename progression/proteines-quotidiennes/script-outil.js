@@ -1,54 +1,36 @@
-function EstimationProteines() {
+function estimationProteines() {
     // Recupération des datas des champs
-    let ObjectifUser = document.getElementById("objectif-user").value
-    let PoidsUser = parseFloat(document.getElementById("poids-user").value.trim().replace(",", "."))
+    let objectifUser = document.getElementById("objectif-user").value
+    let poidsUser = parseFloat(document.getElementById("poids-user").value)
 
     // Vérification des champs
-    if (isNaN(PoidsUser)) {
-        alert("Erreur de saisie : le champ 'Poids' doit être rempli.");
+    if (isNaN(poidsUser)) {
+        alert("Erreur de saisie : le champ nommé 'Poids' doit être rempli.")
         return
     }
-    if (PoidsUser <= 0) {
-        alert("Valeur non valide, le poids doit être un nombre supérieur à 0.")
-        return
-    }
-    if (PoidsUser >= 1000) {
-        alert("Valeur non valide, le poids doit être un nombre inférieur à 1000.")
+    if (poidsUser <= 0 || poidsUser >= 1000) {
+        alert("Valeur non valide, le poids doit être un nombre compris entre 1 et 999.")
         return
     }
 
-    // Initialisation
-    let Coefficient = 0
-
-    // Attribution des coefficients
-    if (ObjectifUser === "Meilleure") {
-        Coefficient = 1
-    } else if (ObjectifUser === "Maintien") {
-        Coefficient = 1.7
-    } else if (ObjectifUser === "Minimum") {
-        Coefficient = 0.8
-    } else if (ObjectifUser === "Perte-poids") {
-        Coefficient = 2
-    } else {
-        // Objectif : Prise de masse
-        Coefficient = 2
+    // Initialisation pour le coef en fonction de l'objectif du user
+    const dicoCoef = {
+        "meilleure":1,
+        "maintien":1.7,
+        "minimum":0.8,
+        "perte-poids":2,
+        "prise":2
     }
 
-    // Calcul
-    let ResultProteines = PoidsUser*Coefficient
+    // Calcul et affichage en même temps
+    document.querySelector(".large-zone-result-result").textContent = Math.floor(poidsUser*dicoCoef[objectifUser]) + " g/jour"
 
-    let Result = Math.floor(ResultProteines) + " g/jour"
-
-    document.querySelector(".large-zone-result-result").textContent = Result
     return
 }
 
-function ComboBox() {
-    let PoidsUser = document.getElementById("poids-user").value
+function comboBox() {
+    let poidsUser = document.getElementById("poids-user").value
 
-    if (!PoidsUser) {
-        return
-    }
-    EstimationProteines()
+    if (!isNaN(poidsUser)) {estimationProteines()}
     return
 }

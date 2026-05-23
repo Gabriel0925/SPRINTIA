@@ -81,7 +81,7 @@
 
         <div class="form">
 
-            <select id="methode-user" onchange="MethodeChoisie()" autocomplete="off">
+            <select id="methode-user" onchange="comboBox(value)" autocomplete="off">
                 <option value="Reserve">Méthode : RFC (recommandé)</option>
                 <option value="Max">Méthode : FC max</option>
             </select>
@@ -101,7 +101,7 @@
                 <div class="label-input">FC max (optionnelle)</div>
             </div>
 
-            <button id="button-calcul" onclick="ChoixFonction()">Calculer</button>
+            <button id="button-calcul" onclick="verificationInputBase()">Calculer</button>
 
         </div>
 
@@ -264,7 +264,7 @@
         let formKeyEntry = document.querySelector(".form")
         formKeyEntry.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                ChoixFonction()
+                verificationInputBase()
             }
         })
     </script>

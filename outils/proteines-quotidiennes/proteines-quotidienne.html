@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - Protéines quotidiennes</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="assets/icons-sprintia/icon-512-V4.3.1.png">
+    
+    <script src="../../autres/script-themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../../index.html">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../../plus/plus.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../../plus/plus.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+    <h1>Protéines quotidiennes</h1>
+    <section class="container-zone">
+
+        <div class="form">
+            <select id="objectif-user" onchange="comboBox()" autocomplete="off">
+                <option value="perte-poids">Objectif : Perte de poids</option>
+                <option value="minimum">Objectif : Minimum vital</option>
+                <option value="meilleure">Objectif : Meilleure santé</option>
+                <option value="maintien">Objectif : Maintien de la masse</option>
+                <option value="prise">Objectif : Prise de masse</option>
+            </select>
+                
+            <div class="container-input">
+                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                <div class="label-input">Poids (kg)</div>
+            </div>
+
+            <button onclick="estimationProteines()">Calculer</button>
+        </div>
+
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Protéines recommandées</p>
+            <p class="large-zone-result-result">
+                0 g/jour
+            </p>
+        </div>
+        
+    </section>
+
+    <h2>Qu'est-ce que l'outil Protéines quotidiennes ?</h2>
+    <p class="text">
+        L'outil Protéines quotidiennes vous indique la quantité optimale de protéines à consommer chaque jour, en fonction de votre poids et 
+        de votre objectif. Il vous aide à adapter votre alimentation pour préserver votre masse musculaire, améliorer votre récupération,...
+    </p>
+
+    <h2>Aliments protéinés</h2>
+    <ul class="list-information">
+        <li>
+            Des oeufs
+        </li>
+        <li>
+            De la viande, du poisson
+        </li>
+        <li>
+            Des noix, des amandes, des flocons d'avoine (le top au petit-déjeuner)
+        </li>
+        <li>
+            Des produits laitiers faibles en gras
+        </li>
+        <li>
+            Des boissons
+        </li>
+        <li>
+            De la Whey protéine
+        </li>
+    </ul>
+
+    <h2>Quand est-ce qu'un produit est considéré comme protéiné ?</h2>
+    <p class="text">
+        Pour commencer, il faut poser les bases, voici les tranches pour des aliments de 100g.
+    </p>
+    <ul class="list-information">
+        <li>
+            Un aliment avec moins de 5 grammes est considéré comme <strong>faible</strong>.
+        </li>
+        <li>
+            Un aliment qui possède entre 5 et 12 grammes c'est la tranche <strong>moyenne</strong>. 
+        </li>
+        <li>
+            Un aliment qui possède entre 13 et 20 grammes de protéines est considéré comme <strong>élevé</strong>.
+        </li>
+        <li>
+            Un aliment avec plus de 20 grammes est considéré comme <strong>très élevé</strong>.
+        </li>
+    </ul>
+
+    <h2>Les protéines font-elles maigrir ?</h2>
+    <p class="text">
+        Oui, en agissant comme un coupe-faim. Un apport plus élevé en protéines augmente 
+        les niveaux des hormones de satiété, tout en réduisant vos niveaux de ghréline, l'hormone de la faim.
+    </p>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../index.html">Entraînement</a>
+            <a class="a_footer" href="../progression.html">Progression</a>
+            <a class="a_footer" href="../../plus/plus.html">Paramètres</a>
+            <a class="a_footer" href="../../autres/historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../autres/themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../autres/licence/licence.html">Licence</a>
+            <a class="a_footer" href="../../autres/politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+
+    <!-- Pour le burger menu -->
+    <script src="../../assets/base-js/base.js"></script>
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="script-outil.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", remplissageChamps(["poids-user"]))
+        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+        let formKeyEntry = document.querySelector(".form")
+        formKeyEntry.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                estimationProteines()
+            }
+        })
+    </script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

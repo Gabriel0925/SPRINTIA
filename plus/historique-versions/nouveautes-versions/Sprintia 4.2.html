@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia 4.2 - Patch Note</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+    
+    <!-- Pour les thèmes -->
+    <script src="../../script-themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../../../index.html">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../../autres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../../autres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <h1>Sprintia 4.2</h1>
+    <h2>Information</h2>
+    <p class="text">
+        Date de sortie : 12 Avril 2026
+        <br>
+        Taille du site : 2,92 Mo
+        <br><br>
+        Sprintia 4.2 apporte la possibilité d'importer vos données d'entraînement depuis Coros, Garmin, Strava et plus encore. Tout ça
+        grâce à un fichier (.TCX) ce qui est beaucoup plus fiable qu'avant et qui permet d'importer plus de données. De plus, Sprintia Labs
+        fait son apparition pour entraîner mes algorithmes futurs ainsi que pour tester toutes mes idées.
+    </p>
+
+    <h2>🆕 Nouvelles fonctionnalités</h2>
+    <ul class="list-information">
+        <li>
+            Vous pouvez enfin importer vos données d'entraînement depuis n'importe quelle plateforme grâce à un fichier (.TCX). De plus,
+            au lieu d'avoir à saisir l'entraînement que vous venez de faire, grâce à cette fonctionnalité vous pouvez désormais importer
+            le fichier de votre séance dans Sprintia pour l'importer avec toutes vos données (FC, Distance,...) ce qui va vous faire gagner
+            du temps.
+        </li>
+        <li>
+            C'est l'arrivée de Sprintia Labs, un espace dans les paramètres qui me permet de tester mes idées pour les futurs 
+            algorithmes de Sprintia. De plus, c'est également dans cet espace que je vais entraîner mes algorithmes à être le plus
+            précis grâce à votre utilisation de ce dernier. Par conséquent, plus vous utilisez Sprintia Labs, 
+            plus mes futurs algorithmes seront précis. Attention, s'il y a de nouveaux outils dans Sprintia Labs ça ne sera pas écrit dans le
+            patch note de la version. Donc, si vous voulez être au courant il faut aller checker de temps en temps.
+        </li>
+        <li>
+            Une nouvelle fonctionnalité dans la charge d'entraînement fait son apparition, l'outil "Charge d'entraînement" vous conseille
+            désormais une charge cible pour vos 7 derniers jours d'entraînement. Si vous respectez cette cible votre statut sera 
+            productif.
+        </li>
+        <li>
+            Sprintia 4.2 apporte de grosses modifications au statut d'analyse qui peut désormais seulement switcher entre "Actif·ve" et "Pause".
+            De plus, vous pouvez changer de statut en un clic, c'est pour cela qu'il n'y a plus de page dédiée au statut d'analyse.
+        </li>
+        <li>
+            L'indulgence de course fait le plein de nouveautés. Premièrement, l'indulgence de course va afficher un graphique pour vous montrer
+            votre volume d'entraînement sur les 4 dernières semaines. Deuxièmement, l'outil vous affichera le nombre de kilomètres parcourus
+            sur les 28 derniers jours. Pour finir, l'outil vous affiche le nombre de kilomètres que vous effectuez par semaine en moyenne.
+        </li>
+        <li>
+            Un onglet nommé "Profil" fait son apparition dans les paramètres. Il permet d'enregistrer en local vos données comme
+            le sexe, l'âge, la taille, le poids et la FC repos. Grâce à ça, Sprintia vous fera gagner du temps en pré-remplissant automatiquement
+            les champs correspondants dans les outils.
+        </li>
+        <li>
+            Si vous avez complété votre profil, Sprintia 4.2 sait désormais estimer la transpiration de votre entraînement ainsi que
+            l'hydratation post-entraînement conseillée.
+        </li>
+        <li>
+            Si vous avez configuré votre profil, Sprintia remplira automatiquement les champs (dans les outils) par les valeurs que vous avez enregistrées dans
+            votre profil. Sprintia peut remplir les champs suivants automatiquement : le sexe, l'âge, le poids, la taille et la FC repos.
+        </li>
+    </ul>
+
+    <h2>📊 Améliorations</h2>
+    <ul class="list-information">
+        <li>
+            Le responsive de tous les écrans a été retravaillé pour l'optimiser, le rendre plus pertinent peu importe l'appareil mais également 
+            réduire la quantité de code qui était immaintenable.
+        </li>
+        <li>
+            Une nouvelle interface fait son apparition dans les paramètres, tout est mieux trié et rangé.
+        </li>
+        <li>
+            Ajout d'un raccourci lors de l'ajout d'un entraînement qui permet d'importer un fichier (.TCX) de votre entraînement pour l'ajouter
+            rapidement dans Sprintia.
+        </li>
+        <li>
+            L'import via TrainingPeaks refait surface, donc vous pouvez importer votre historique d'entraînement grâce à un fichier (.CSV)
+            que vous pouvez télécharger depuis TrainingPeaks. En plus de ce retour, 
+            l'import via TrainingPeaks a été amélioré pour être plus fiable et pour importer plus de données que l'ancien import comme
+            la cadence moyenne, la FC moy., la FC max., la description de vos entraînements et de nouveaux sports sont importables comme :
+            le ski, le rameur d'intérieur et la randonnée.
+        </li>
+        <li>
+            Désormais, une fois que vous avez importé votre entraînement ou votre historique d'entraînement, ça vous envoie
+            directement sur la page d'historique d'entraînement.
+        </li>
+        <li>
+            Le bouton 'ajouter un entraînement' flotte en bas à droite de l'interface pour être plus facilement accessible. 
+            De plus, il est plus gros pour montrer son importance. Il est désormais présent dans l'historique d'entraînement et dans la charge d'entraînement.
+        </li>
+        <li>
+            Les icônes pour les action-list sont désormais moins grandes, elles sont plus adaptées à la taille du texte.
+        </li>
+        <li>
+            Sur la page d'accueil, le graphique de volume d'entraînement affiche désormais les 4 dernières semaines contre 3 sur Sprintia 4.1.
+        </li>
+        <li>
+            Ajustement du design des outils épinglés.
+        </li>
+        <li>
+            L'outil nommé "Hydratation post-séance" a été renommé "Hydratation". Désormais, il n'a plus les mêmes fonctionnalités qu'auparavant,
+            car ses fonctionnalités ont été intégrées au résumé de votre entraînement.
+        </li>
+        <li>
+            Ajout de catégories pour les avatars de votre coach.
+        </li>
+        <li>
+            De nouveaux avatars sont disponibles pour votre coach : 😎, 😈, 🏃‍♀️, 🚴‍♀️, 🏋‍♀️, 🎅, 🎃, 👽, 🐰, 🐼, 🦊, 🐶, 🦁, 🦉, 🦥, 🐴,
+            🐬, 🐢, 🐞, 🐝, 🐍, 🦩, 🏊, 🏊‍♀️, 😇, 🧠, 💪 et ⏱️.
+        </li>
+        <li>
+            Désormais, les thèmes sont triés en fonction de leur combinaison de couleurs.
+        </li>
+        <li>
+            Ajout de 6 nouveaux thèmes : Pêche, Foudre, Glacier, Amazonie, Quartz rose et Guimauve.
+        </li>
+        <li>
+            Le calcul des zones de vitesse a été bien amélioré, il est désormais enfin précis. L'outil est enfin cohérent quand l'utilisateur
+            saisit sa vitesse max.
+        </li>
+        <li>
+            Le input du RPE a été retravaillé pour afficher directement la zone ou vous vous situez : "Facile", "Modéré", "Difficile",...
+        </li>
+    </ul>
+
+    <h2>🐛 Correction des bugs et optimisations</h2>
+    <ul class="list-information">
+        <li>
+            Ajout de plusieurs cursor pointer dans toute la PWA de Sprintia.
+        </li>
+        <li>
+            Grosse optimisation des classes CSS. De plus, la maintenabilité du fichier CSS a été grandement améliorée.
+        </li>
+        <li>
+            Amélioration de la gestion des erreurs dans l'outil nommé "Niveau de course".
+        </li>
+        <li>
+            Ajout d'une ombre portée ainsi que de nouvelles couleurs d'écriture pour les notes d'entraînement pour plus coller au 
+            design des inputs dans Sprintia.
+        </li>
+        <li>
+            Optimisation majeure de la page 'Thèmes' ainsi que de la page historique des versions.
+        </li>
+        <li>
+            Correction de plusieurs erreurs d'orthographe.
+        </li>
+        <li>
+            Correction d'un bug : la vitesse maximum n'était pas arrondie lors de l'affichage.
+        </li>
+        <li>
+            Le code du JRM Coach sur la page d'accueil est beaucoup plus sécurisé. Par conséquent, le risque de plantage est fortement réduit.
+        </li>
+        <li>
+            Une nouvelle fonction globale fait son apparition ce qui permet de générer un graphique. Ça évite la répétition de code et améliore
+            la maintenabilité.
+        </li>
+        <li>
+            La fonctionnalité de restauration est désormais bien plus sécurisée, de plus le code risque de moins planter car 
+            il y a désormais plus de vérifications.
+        </li>
+        <li>
+            L'import de votre historique d'entraînement depuis un fichier (.CSV) Garmin est désormais plus fiable et 
+            plus sécurisé.
+        </li>
+        <li>
+            Amélioration du responsive du header et ajustement de l'animation du logo dynamique.
+        </li>
+        <li>
+            L'animation de l'épingle dans les outils a été revue pour être plus proche de la réalité.
+        </li>
+        <li>
+            Dans l'ancienne version si vous cliquiez sur la carte d'un outil 1 fois sur 2 ça ne fonctionnait pas. La carte s'enfonçait mais ça n'emmenait pas à la page de l'outil
+            désormais Sprintia 4.2 corrige ce bug.
+        </li>
+        <li>
+            Désormais, les inputs du genre ont été remplacés par le sexe pour être plus précis.
+        </li>
+        <li>
+            Amélioration de la robustesse de l'enregistrement d'entraînement et d'import d'entraînement.
+        </li>
+    </ul>
+        
+    <h2>🖼️ Quelques images</h2>
+    <div class="gallery-version">
+        <img src="../Images versions 4.2/Page d'accueil mobile.jpg" alt="Page d'accueil de Sprintia 4.2">
+        <img src="../Images versions 4.2/Paramètres mobile.jpg" alt="Interface des paramètres de Sprintia 4.2">
+        <img src="../Images versions 4.2/Thèmes mobile.jpg" alt="Interface des thèmes de Sprintia 4.2">
+        <img src="../Images versions 4.2/Import de données mobile.jpg" alt="Interface de l'import de données via des fichiers de Sprintia 4.2">
+    </div>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="/index.html">Entraînement</a>
+            <a class="a_footer" href="../../../progression/progression.html">Progression</a>
+            <a class="a_footer" href="../../autres.html">Paramètres</a>
+            <a class="a_footer" href="../../historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../licence/licence.html">Licence</a>
+            <a class="a_footer" href="../../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <script src="../../../assets/base-js/base.js"></script>
+
+    
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia 4.0.2 - Patch Note</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+
+    <!-- Pour les thèmes -->
+    <script src="../../script-themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../../../index.html">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../../autres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../../autres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <h1>Sprintia 4.0.2 : Corrections majeures</h1>
+    <h2>Information</h2>
+    <p class="text">
+        Type : Patch majeur
+        <br>
+        Date de sortie : 07 Mars 2026
+        <br>
+        Taille du site : 2,44 Mo
+        <br><br>
+        Sprintia 4.0.2 apporte de nombreuses optimisations et corrections de bugs ce qui améliore la stabilité de Sprintia.
+        De plus, Sprintia 4.0.2 vous offre la possibilité d'importer votre historique d'entraînement depuis
+        un fichier CSV qui provient de Garmin Connect (Web), TrainingPeaks ou encore Runkeeper.
+    </p>
+
+    <h2>🆕 Nouvelles fonctionnalités</h2>
+    <ul class="list-information">
+        <li>
+            Vous pouvez désormais importer la totalité de votre historique d'entraînement depuis un fichier csv sur le site de Garmin,
+            TrainingPeaks ou encore Runkeeper.
+        </li>
+        <li>
+            Optimisation de l'analyse de la charge d'entraînement et de l'indulgence de course : 
+            Intégration d'un algorithme de calibrage progressif qui permet d'avoir une bonne fiabilité dès la première semaine d'entraînement.
+        </li>
+    </ul>
+
+    <h2>📊 Améliorations</h2>
+    <ul class="list-information">
+        <li>
+            Changement de design pour les listes à puce.
+        </li>
+        <li>
+            L'indulgence de course conseille désormais une plus grande fourchette par exemple sur Sprintia 4.0.1 => 28,5 - 29,3 km, désormais sur Sprintia 4.0.2 => 28,0 - 29,3 km.
+        </li>
+        <li>
+            2 nouveaux avatars de coach sont disponibles : "🏃", "🚴".
+        </li>
+        <li>
+            Nouvelle interface dans la page d'accueil, avec un bouton "ajouter" repensé et un statut plus mis en avant.
+        </li>
+        <li>
+            Il y a de nouveau l'effet de rebond lors du clic sur une carte.
+        </li>
+        <li>
+            Une nouvelle licence fais son apparition ce qui protège mon code pour éviter que quelqu'un utilise mon code à but commercial ou pour
+            créer une société. De plus, un utilisateur n'a pas le droit de prendre mon code, de changer le logo, et de le remettre en ligne sous son propre nom (même gratuitement).
+        </li>
+        <li>
+            Désormais, l'ensemble des outils de Sprintia se base sur des études scientifiques.
+        </li>
+        <li>
+            Le menu de navigation (=burger-menu) se referme automatiquement lors d'un scroll sur la page web.
+        </li>
+        <li>
+            Ajout d'un raccourci pour aller rapidement à son historique d'entraînement, désormais vous pouvez cliquer sur l'interprétation JRM de votre
+            semaine d'entraînement (sur la page d'accueil), ça vous ammenera à votre historique d'entraînement.
+        </li>
+        <li>
+            Ajout d'une ombre sur l'icone de Sprintia.
+        </li>
+    </ul>
+
+    <h2>🐛 Correction des bugs et optimisations</h2>
+    <ul class="list-information">
+        <li>
+            Correction d'un bug qui empêchait le calcul de vos Zones cardiaques avec la méthode FC max.
+        </li> 
+        <li>
+            Correction d'un bug qui empêchait l'affichage de certaines icônes dans les cartes des outils.
+        </li>
+        <li>
+            Correction d'un bug qui permettait d'afficher 24.00330033030 min dans le JRM Coach sur la page d'accueil.
+        </li>
+        <li>
+            La distance est désormais arrondie dans l'historique d'entraînement pour éviter de se retrouver avec 2,677777777 km.
+        </li>
+        <li>
+            Correction d'un bug de la charge d'entraînement qui bloquait les analyses si vous n'aviez pas rentré d'entraînement depuis 7 jours.
+        </li>
+        <li>
+            La cohérence des textes à l'intérieur des boutons quand une action se lance a été améliorée.
+        </li>
+        <li>
+            Correction d'un bug très mineur dans l'outil : "Niveau de course".
+        </li>
+        <li>
+            Les coins sont moins arrondis et désormais ils respectent la loi d'UI de continuité des bordures pour l'ensemble des éléments d'interface
+            de Sprintia.
+        </li>
+        <li>
+            Le code couleur des messages d'erreur dans l'outil Niveau de Course respecte désormais le code couleur imposé par la mise à jour
+            Sprintia 4.0.1.
+        </li>
+        <li>
+            Grosse optimisation du code CSS avec de meilleurs noms de class,...
+        </li>
+        <li>
+            Le rythme des animations a été ajusté pour être plus lent au début de l'animation puis plus rapide à la fin de l'animation.
+        </li>
+        <li>
+            Correction d'un bug dans le JRM coach qui affichait : "JRM Coach ::".
+        </li>
+        <li>
+            Correction d'un bug lors de la modification d'un entraînement avec 0 m de dénivelé.
+        </li>
+        <li>
+            L'effet "tap highlight color" a été supprimé de l'entièreté de Sprintia.
+        </li>
+        <li>
+            Votre temps total d'entraînement sur le graphique nommé "Entraînement récent (3 sem.)" est désormais arrondi pour éviter de se retrouver avec
+            185,25 min.
+        </li>
+        <li>
+            Correction d'un bug dans l'historique d'entraînement qui déclenchait le logo dynamique lors d'un clic sur le bouton "Afficher plus".
+        </li>
+        <li>
+            Correction d'un bug qui empêchait d'enregistrer un entraînement de 23h59m59s.
+        </li>
+    </ul>
+
+    <h2>🗑️ Fonctionnalités supprimées</h2>
+    <ul class="list-information">
+        <li>
+            Les outils : "Estimation puissance moy. en ski" et "Estimation puissance max. en course" ont été supprimés car il y avait aucune étude
+            scientifique sur les méthodes de calcul que j'utilisais.
+        </li> 
+        <li>
+            La bannière "Sprintia est conçue pour vous aider avant et après..." a été supprimée de la page d'accueil.
+        </li>
+        <li>
+            La fonctionnalité nommé "Harmonie" pour les thèmes a été supprimée.
+        </li>
+    </ul>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../../index.html">Entraînement</a>
+            <a class="a_footer" href="../../../progression/progression.html">Progression</a>
+            <a class="a_footer" href="../../autres.html">Paramètres</a>
+            <a class="a_footer" href="../../historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../licence/licence.html">Licence</a>
+            <a class="a_footer" href="../../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <!-- Pour le burger menu -->
+    <script src="../../../assets/base-js/base.js"></script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

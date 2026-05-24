@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia 4.3.1 - Patch Note</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" type="image/png" href="../../../assets/icons-sprintia/icon-512-V4.3.1.png">
+    <link rel="manifest" href="../../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+    
+    <!-- Pour les thèmes -->
+    <script src="../../script-themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../../../index.html">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../../autres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a href="../../../progression/progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../../autres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="visuel-version">
+        <p class="visuel-version-title">Sprintia 4.3.1</p>
+        <p class="visuel-version-description">Optimisation</p>
+    </div> 
+
+    <section class="container-block" style="margin-bottom: var(--SPACE_M);">
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Date</p>
+            <p class="container-block-data-data">24 Mai 2026</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Taille</p>
+            <p class="container-block-data-data">3,10 <small>Mo</small></p>
+        </div>
+
+    </section>
+
+    <div class="summary-version">
+        <p class="summary-version-title">Résumé</p>
+        <p class="summary-version-summary" style="border-bottom: 0px;">
+            Sprintia 4.3.1 apporte de nombreuses optimisations pour les algorithmes intégrés à la page de progression,
+            ce qui permet à Sprintia de devenir plus performant et plus stable que jamais.
+            <br><br>
+            Du point de vue de l'utilisateur, les changements sont discrets, invisible, mais du point de vue code j'ai optimisé tous les algorithmes que
+            j'ai fais courant Janvier 2026 car j'ai progressé et également parce qu'avoir un code qui enchaîne les if/else if/else c'est
+            juste inmaintenable et illisible du point de vue du développeur.
+        </p>
+    </div>
+    <div class="summary-version" style="margin-top: var(--SPACE_M);">
+        <p class="summary-version-title">Information</p>
+        <p class="summary-version-summary">
+            Il n'y aura plus de mise à jour pendant un bon mois tout simplement parce que je vais passer le bac de français et de mathématiques
+            et je sais que j'aurai très peu de temps pour coder. Mais je prévois de grosses mises à jour cet été.
+        </p>
+    </div>
+
+    <h1 style="margin-top: var(--SPACE_M);">Patch note</h1>
+
+    <h2>Améliorations</h2>
+    <ul class="list-information">
+        <li>
+            Désormais, dans l'algorithme de Récupération, vous avez accès uniquement à votre historique des 7 derniers jours. Pour avoir accès 
+            à votre historique complet, il faudra désormais cliquer sur le bouton "Tout voir" qui vous amènera à une page dédiée pour ça.
+        </li>
+        <li>
+            L'algorithme d'estimation VMA ne peut pas prédire une VMA avec une course libre supérieure à 20 km, auparavant c'était 30 km
+            or on n'estime pas une VMA sur de si longues distances. Déjà 20 km étant énorme pour estimer une VMA ! Je vous conseille de
+            privilégier les autres options des tests VMA comme le demi-cooper ou le cooper ou le luc léger. Le mode libre est conçu
+            si vous n'avez pas fait de test, vous pouvez l'estimer, mais attention vous perdez grandement en précision.
+        </li>
+        <li>
+            Dans le calculateur des zones de puissances en course à pied, la zone 1 commence désormais à 1 W, auparavant ça commençait à
+            0 W. Idem pour les zones cardiaques ainsi que les zones d'allure.
+        </li>
+        <li>
+            Légère mise à jour de la bannière de Sprintia. De plus, pour l'icône de la PWA je propose désormais une nouvelle taille pour
+            le système d'exploitation 192x192 et j'ai enlevé la taille 1024x1024 car elle est totalement inutile.
+        </li>
+        <li>
+            Désormais, des shorcuts sont disponible en appuyant longtemps sur l'icône de Sprintia sur votre écran d'accueil. Les 2 raccourcis
+            sont : "Charge d'entraînement" et "Ajouter un entraînement".
+        </li>
+        <li>
+            J'ai ajouté un paragraphe dans la politique de confidentialité pour vous expliquer l'API Vercel qui me permet d'avoir
+            des statistiques de navigation. Or, ces statistiques je les ai depuis la version 4 de Sprintia, donc ce n'est pas nouveau.
+            En réfléchissant, je me suis aperçu que je ne citais pas ces stats car en réalité je ne les regarde jamais 
+            (car j'ai toujours développé Sprintia avant tout pour moi) mais je préfère les citer désormais.
+        </li>
+    </ul>
+
+    <h2>Correction des bugs et optimisations</h2>
+    <ul class="list-information">
+        <li>
+            Optimisation du CSS pour le responsive de la page nommée "Historique des versions".
+        </li>
+        <li>
+            Correction d'un bug lors de la modification d'un entraînement : les données de transpiration estimée et d'hydratation estimée pouvaient
+            être enregistrées avant des données comme la distance... Or la distance était censée se sauvegarder avant pour qu'elle apparaisse avant
+            lors de la consultation du détail de votre entraînement.
+        </li>
+        <li>
+            Optimisation du calcul des dates : il y a désormais une nouvelle fonction que je peux appeler sur n'importe quelle page.
+            Cette fonction centralise la logique pour trouver une date, par exemple pour trouver J-7, J-31...
+        </li>
+        <li>
+            Correction d'un bug majeur du logo dynamique dans le détail d'un entraînement avec une data spécifique, ce qui bloquait la page.
+            L'utilisateur ne pouvait donc plus modifier son entraînement, plus le supprimer...
+        </li>
+        <li>
+            Optimisation du code de l'algorithme d'estimation VMA : la fonction qui gère le test VMA que vous avez choisi a été optimisée, passant
+            d'une longue structure if/else à l'usage de dicos. Il y a de nombreuses autres optimisations, en globalité le code de cet algorithme
+            passe de 127 à 104 lignes pour les mêmes fonctionnalités.
+        </li>
+        <li>
+            Optimisation du code de l'algorithme de temps de récupération, le code est désormais plus maintenable et optimisé. Passage
+            de 59 lignes à 44, ce qui est toujours ça de pris.
+        </li>
+        <li>
+            Optimisation du code de l'algorithme nommé "Protéines quotidiennes". Passage de 54 lignes à 36.
+        </li>
+        <li>
+            Refonte de la logique du code pour le calculateur d'IMC, en revanche d'un point de vue utilisateur aucun changement, aucunes
+            nouveautés.
+        </li>
+        <li>
+            Refonte de la logique du code pour les algorithmes de "Zones cardiaques", "Zones de puissance" et "Zones de vitesse". Même optimisation
+            apportée à ces algorithmes car ils sont conçus de la même manière. Utilisation d'une boucle au lieu d'une liste d'instructions,
+            ce qui rend le code bien plus maintenable et optimisé. En comptant tous ces algorithmes, on passe de 458 à 288 lignes pour 
+            les mêmes fonctionnalités.
+        </li>
+        <li>
+            Dans l'estimation du VO₂max, si les inputs étaient vides et que vous changiez de Sexe, l'algorithme se lançait
+            et vous disait que vous n'aviez pas rempli les champs, or l'algorithme n'est pas censé se lancer si les inputs sont vides,
+            désormais ce bug est résolu.
+        </li>
+        <li>
+            Ajout d'une fonction globale pour les messages d'erreur dans l'algorithme de Niveau de course. Ce changement a été réalisé pour
+            les futures fonctionnalités qui seront disponibles dans les futures versions.
+        </li>
+        <li>
+            Lors d'une erreur dans l'algorithme de Niveau de course, une erreur s'affiche dans le formulaire. Désormais, l'erreur
+            s'affiche en rouge. Auparavant, c'était la couleur du thème choisi, or en UX/UI ce n'est pas très bien de faire ça, c'est
+            pour ça que c'est corrigé dans Sprintia 4.3.1.
+        </li>
+    </ul>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="/index.html">Entraînement</a>
+            <a class="a_footer" href="../../../progression/progression.html">Progression</a>
+            <a class="a_footer" href="../../autres.html">Paramètres</a>
+            <a class="a_footer" href="../../historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../themes/themes.html">Thèmes</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../licence/licence.html">Licence</a>
+            <a class="a_footer" href="../../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <script src="../../../assets/base-js/base.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    
+</body>
+</html>

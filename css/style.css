@@ -36,7 +36,7 @@
     --SCALE_NORMAL: 0.95;
 
     /* Marges  */
-    --SPACE_XXS: 0.25rem;
+    --SPACE_XXS: 0.3rem;
     --SPACE_XS: 0.5rem;
     --SPACE_S_SMALL: 0.9rem;
     --SPACE_S: 1rem;
@@ -765,6 +765,7 @@ section.segmented-button div.segmented-button-button:active {
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -2354,12 +2355,11 @@ div.container-center-marge {
 
 
 
-/* --- Header beta --- */
+/* --- Header --- */
 section.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: var(--SPACE_XS);
     margin-bottom: 0;
     position: sticky;
     pointer-events: none;
@@ -2373,8 +2373,12 @@ section.header a {
     max-width: 300px;
 }
 section.header div.logo-dynamique {
-    background-color: var(--COLOR_BACKGROUND_CARD);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.15);
     padding: 0.75rem;
+    margin: var(--SPACE_XS) 0;
     border-radius: var(--BORDER_NORMAL);
     font-weight: 1000;
     font-size: var(--H3);
@@ -2395,9 +2399,13 @@ section.header ul.header-container-items {
     pointer-events: all;
 
     padding: var(--SPACE_XXS);
+    margin: var(--SPACE_XS) 0;
     gap: var(--SPACE_XXS);
 
-    background-color: var(--COLOR_BACKGROUND_CARD);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.15);
     border-radius: 1.25rem;
     overflow: hidden;
 }
@@ -2416,40 +2424,41 @@ section.header ul.header-container-items li.header-items{
     padding: var(--SPACE_XS);
 
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.header ul.header-container-items li.header-items.selected{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    color: var(--COLOR_ACCENT_TEXT);
-}
-section.header ul.header-container-items:has(li.header-items:hover) li.header-items.selected{
-    background-color: transparent;
-    color: var(--COLOR_TEXT_PRIMARY);
-}
-section.header ul.header-container-items:has(li.header-items:hover) li.header-items.selected:hover{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: var(--COLOR_ACCENT_TEXT);
 }
 section.header ul.header-container-items li.header-items:hover{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: var(--COLOR_ACCENT_TEXT);
 }
 section.header ul.header-container-items li.header-items:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     transform: scale(var(--SCALE_NORMAL));
 }
 
 
-/* --- Tab bars beta --- */
+/* --- Tab bars --- */
 section.tab-bars {
     display: none;
     align-items: center;
     justify-content: center;
     
     position: fixed;
+    
     pointer-events: none;
     bottom: 0;
     left: 0;
@@ -2462,7 +2471,10 @@ section.tab-bars ul.tab-bars-container-items{
     height: 63px;
     flex-grow: 1;
 
-    background-color: var(--COLOR_BACKGROUND_CARD);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.15);
     max-width: 625px;
     border-radius: 1.75rem;
     padding: var(--SPACE_XXS);
@@ -2470,6 +2482,7 @@ section.tab-bars ul.tab-bars-container-items{
     margin-bottom: var(--SPACE_L);
     gap: var(--SPACE_XXS);
     pointer-events: all;
+    z-index: 11000;
 }
 section.tab-bars ul.tab-bars-container-items a {
     display: flex;
@@ -2488,26 +2501,24 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     min-width: 80px;
     flex-grow: 1;
     gap: var(--SPACE_XXS);
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(var(--SCALE_NORMAL));
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    color: var(--COLOR_ACCENT_TEXT);
-}
-section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:active) li.tab-bars-items.selected{
-    background-color: transparent;
-    color: var(--COLOR_TEXT_PRIMARY);
-}
-section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:active) li.tab-bars-items.selected:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: rgba(29, 29, 31, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: var(--COLOR_ACCENT_TEXT);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{

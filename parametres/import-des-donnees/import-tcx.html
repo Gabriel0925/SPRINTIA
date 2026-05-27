@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - Import TCX</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+
+    <!-- Pour les thèmes -->
+    <script src="../script-themes.js"></script>
+</head>
+
+<body>
+    <section class="header">
+
+        <a href="/index.html">
+            <div class="logo-dynamique">SPRINTIA</div>
+        </a>
+        
+        <ul class="header-container-items">
+
+            <a href="/index.html">
+                <li class="header-items">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="header-items">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="header-items">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="header-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    Paramètres
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <a href="/index.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="tab-bars-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    <p class="tab-bars-items-name">Paramètres</p>
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+    
+    <h1>Importer un fichier TCX</h1>
+    <p class="text">
+        Vous voulez importer les datas d'un entraînement depuis un autre service comme Garmin, Coros, Strava,... Vous êtes au bon endroit.
+        Pour importer vos données, <strong>veuillez télécharger le fichier (.TCX)</strong> de votre historique d'entraînement depuis n'importe qu'elle plateforme.
+    </p>
+    <ul class="list-information">
+        <li>
+            Le format requis est (.TCX). Si le service que vous utilisez ne propose pas ce format, téléchargez vos données au format (.FIT)
+            puis utilisez un convertisseur de fichier FIT vers TCX. Je vous recommande 
+            <a href="https://www.fitfiletools.com/convert" target="_blank" class="lien">FitFileTools</a>.
+        </li>
+        <li>
+            Le format TCX prend en compte les sports suivants : Course, Vélo et Autre. Si le sport de votre entraînement n'est pas pris en compte,
+            Sprintia l'importera en tant que sport "Libre".
+        </li>
+    </ul>
+
+    <div class="container-center-marge">
+        <!-- On n' affiche pas le input file -->
+        <input type="file" id="file-input-tcx" accept=".tcx" style="display: none;" onchange="uploadFileTCX(event)">
+        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+        <button class="size-block" onclick="document.getElementById('file-input-tcx').click()" id="button-import-tcx">Importer TCX</button>
+    </div> 
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../index.html">Entraînement</a>
+            <a class="a_footer" href="../../progression/progression.html">Progression</a>
+            <a class="a_footer" href="../autres.html">Paramètres</a>
+            <a class="a_footer" href="../historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../licence/licence.html">Licence</a>
+            <a class="a_footer" href="../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <!-- Pour le burger menu -->
+    <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
+    <script src="script-import-seance.js"></script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

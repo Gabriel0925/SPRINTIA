@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - Sprintia Labs</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+
+    <!-- Pour les thèmes -->
+    <script src="../script-themes.js"></script>
+</head>
+
+<body>
+    <section class="header">
+
+        <a href="/index.html">
+            <div class="logo-dynamique">SPRINTIA</div>
+        </a>
+        
+        <ul class="header-container-items">
+
+            <a href="/index.html">
+                <li class="header-items">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="header-items">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="header-items">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="header-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    Paramètres
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <a href="/index.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="tab-bars-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    <p class="tab-bars-items-name">Paramètres</p>
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+    
+    <div class="toolbar">
+        <h1>Sprintia Labs</h1>
+        <i class="fs-icon_a_propos" onclick="window.location.href='sprintia-labs-info.html'"></i>
+    </div>
+
+    <p class="text">
+        <strong style="color: var(--COLOR_TEXT_PRIMARY);">Attention si vous n'êtes pas un utilisateur avancé</strong>, je vous déconseille d'utiliser Sprintia Labs.
+    </p>
+
+    <div class="bande-annonce" style="
+        background-color: var(--COLOR_ACCENT); 
+        border-radius: var(--BORDER_NORMAL);
+        padding: var(--SPACE_S);
+        margin: var(--SPACE_M) auto;
+    ">
+        <p style="
+            color: var(--COLOR_BACKGROUND);
+            font-weight: 1000;
+            font-size: var(--H2);
+        ">
+            · Expérimenter<br>· Découvrez
+        </p>
+    </div>
+
+    <h2>Algorithmes sans bases scientifiques</h2>
+    <div class="outil" style="
+        background-color: var(--COLOR_BACKGROUND_CARD);
+        border-radius: var(--BORDER_NORMAL);
+        padding: var(--SPACE_S);
+        margin: var(--SPACE_M) auto;
+        cursor: pointer;
+    " onclick="window.location.href='algorithmes-sans-bases-scientifiques/estimation-puissance-max-course.html'">
+        <p style="
+            color: var(--COLOR_TEXT_PRIMARY);
+            font-weight: 1000;
+            font-size: var(--H3);
+        ">
+            Estimation puissance max. en course
+        </p>        
+        <p style="
+            color: var(--COLOR_TEXT_SECONDARY);
+            font-size: var(--P);
+            margin-top: var(--SPACE_XS);
+        ">
+        Estimez votre puissance max. en course (en watts) grâce à votre vitesse maximale sur une distance.
+        </p>
+    </div>
+
+    
+    <div class="outil" style="
+        background-color: var(--COLOR_BACKGROUND_CARD);
+        border-radius: var(--BORDER_NORMAL);
+        padding: var(--SPACE_S);
+        margin: var(--SPACE_M) auto;
+        cursor: pointer;
+    " onclick="window.location.href='algorithmes-sans-bases-scientifiques/estimation-puissance-moy-en-ski.html'">
+        <p style="
+            color: var(--COLOR_TEXT_PRIMARY);
+            font-weight: 1000;
+            font-size: var(--H3);
+        ">
+            Estimation puissance moy. en ski
+        </p>        
+        <p style="
+            color: var(--COLOR_TEXT_SECONDARY);
+            font-size: var(--P);
+            margin-top: var(--SPACE_XS);
+        ">
+        Estimez votre puissance moyenne en ski (en watts) sur une descente.
+        </p>
+    </div>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../index.html">Entraînement</a>
+            <a class="a_footer" href="../../progression/progression.html">Progression</a>
+            <a class="a_footer" href="../autres.html">Paramètres</a>
+            <a class="a_footer" href="../historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="licence.html">Licence</a>
+            <a class="a_footer" href="../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <!-- Pour le burger menu -->
+    <script src="../../assets/base-js/base.js"></script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

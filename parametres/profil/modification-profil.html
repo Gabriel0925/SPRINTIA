@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - Modification profil</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+
+    <!-- Pour les thèmes -->
+    <script src="../script-themes.js"></script>
+</head>
+
+<body>
+    <section class="header">
+
+        <a href="/index.html">
+            <div class="logo-dynamique">SPRINTIA</div>
+        </a>
+        
+        <ul class="header-container-items">
+
+            <a href="/index.html">
+                <li class="header-items">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="header-items">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="header-items">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="header-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    Paramètres
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <a href="/index.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="tab-bars-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    <p class="tab-bars-items-name">Paramètres</p>
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+    
+    <h1>Modification profil</h1>
+    <p class="text">
+        <strong>Vos données personnelles reste en local sur votre appareil. </strong>
+        <br><br>
+        En enregistrant vos données, Sprintia vous fera
+        gagner du temps lors de l'utilisation des algorithmes, en pré-remplissant automatiquement les champs correspondants. De plus,
+        elles permettent de débloquer des fonctionnalités comme l'estimation de la transpiration de votre entraînement,...
+    </p>
+
+    <section class="container-zone">
+        <div class="form">
+
+            <select id="sexe-user" autocomplete="off">
+                <option value="Homme">Sexe : Homme</option>
+                <option value="Femme">Sexe : Femme</option>
+            </select>
+
+            <div class="container-input">
+                <input type="number" id="age-user" placeholder="Âge" autocomplete="off">
+                <div class="label-input">Âge</div>
+            </div>
+
+            <div class="side-by-side">
+                <div class="container-input">
+                    <input class="small" type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
+                    <div class="label-input">Taille (cm)</div>
+                </div>
+
+                <div class="container-input">
+                    <input class="small" type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                    <div class="label-input">Poids (kg)</div>
+                </div>
+            </div>
+
+            <div class="container-input">
+                <input type="number" id="fc-repos-user" placeholder="FC repos (bpm)" autocomplete="off">
+                <div class="label-input">FC repos (bpm)</div>
+            </div>
+
+            <button id="button-save" onclick="saveProfil()">Sauvegarder</button>
+
+        </div>
+    </section>
+
+    <div class="container-center-marge">
+        <button style="width: 240px;" id="button-supprimer" onclick="supprimerProfil()">Supprimer mon profil</button>
+    </div>
+
+    <h2>Comment calculer sa FC au repos ?</h2>
+    <p class="text">
+        Il y a plusieurs solutions, la première vous avez une montre connectée/sportive qui vous donne votre FC au repos. La seconde,
+        prenez votre pouls au poignet ou au cou (le matin au réveil) et comptez le nombre de pulsation sur 30 secondes. Multipliez ensuite ce nombre par 2 pour 
+        avoir la fréquence cardiaque par minute. Le résultat de ce calcul sera votre FC au repos.
+    </p>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../index.html">Entraînement</a>
+            <a class="a_footer" href="../../progression/progression.html">Progression</a>
+            <a class="a_footer" href="../autres.html">Paramètres</a>
+            <a class="a_footer" href="../historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../licence/licence.html">Licence</a>
+            <a class="a_footer" href="../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <!-- Pour le burger menu -->
+    <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="script-save-restoration.js"></script>
+
+    <script>
+        async function saveProfil() {
+            let button = document.getElementById("button-save")
+
+            // recup des champs
+            let sexeUser = document.getElementById("sexe-user").value
+            let ageUser = parseInt(document.getElementById("age-user").value)
+            let tailleUser = parseInt(document.getElementById("taille-user").value)
+            let poidsUser = Number(document.getElementById("poids-user").value)
+            let fcReposUser = parseInt(document.getElementById("fc-repos-user").value)
+
+            // vérification des champs pour voir si ils sont vides 
+            if (isNaN(ageUser) || isNaN(tailleUser) || isNaN(poidsUser) || isNaN(fcReposUser)) {
+                alert("Erreur de saisie : tous les champs doivent être remplis.")
+                return
+            }
+            // vérif des valeurs saisies
+            if (ageUser <= 0 || tailleUser <= 0 || poidsUser <= 0 || fcReposUser <= 0) {
+                alert("Valeur non valide, les champs doivent être un nombre supérieur à 0.")
+                return
+            }
+            if (ageUser >= 120) {
+                alert("Valeur non valide, l'âge doit être un nombre inférieur à 120.")
+                return
+            }
+            if (tailleUser >= 350) {
+                alert("Valeur non valide, la taille doit être un nombre inférieur à 350.")
+                return
+            }
+            if (poidsUser >= 1000) {
+                alert("Valeur non valide, le poids doit être un nombre inférieur à 1000.")
+                return
+            }
+            if (fcReposUser < 20 || fcReposUser > 140) {
+                alert("Valeur non valide, la fréquence cardiaque de repos doit être un nombre compris entre 20 et 140 bpm.")
+                return
+            }
+
+            // conversion
+            poidsUser = Number(poidsUser).toFixed(1)
+
+            // desactivation
+            button.textContent = "Sauvegarde..."
+            button.disabled = true
+
+            // sauvegarde dans indexed db
+            await db.profil.put({
+                id: 1,
+                sexe: sexeUser,
+                age: ageUser,
+                taille: tailleUser,
+                poids: poidsUser,
+                fc_repos: fcReposUser
+            })
+
+            let majAutoUser = localStorage.getItem("majAutoProfil")
+            if (majAutoUser != "False") {
+                // sauvegarde local storage pour la maj auto du profil
+                localStorage.setItem("majAutoProfil", "True")
+            }
+
+            setTimeout(() => {
+                button.textContent = "Sauvegardé"
+            }, 650);
+
+            setTimeout(() => {
+                button.textContent = "Sauvegarder"
+                button.disabled = false
+                window.location.href = "profil.html"
+            }, 1300);
+
+            return
+        }
+
+        async function remplirChamps() {
+            // recup des datas
+            let profil = await db.profil.toArray()
+
+            if (profil.length > 0) {
+                profil = profil[0] // Prendre le premier element donc profil est un dico désormais
+                document.getElementById("sexe-user").value = profil.sexe
+                document.getElementById("age-user").value = profil.age
+                document.getElementById("taille-user").value = profil.taille
+                document.getElementById("poids-user").value = profil.poids
+                document.getElementById("fc-repos-user").value = profil.fc_repos
+            }
+        }
+
+        async function supprimerProfil() {
+            if (confirm("Êtes-vous sûr de vouloir supprimer votre profil ?")) {
+                await db.profil.clear() // suppression du profil dans indexed db
+                localStorage.removeItem("majAutoProfil")
+
+                document.getElementById("button-supprimer").textContent = "Suppression..."
+
+                setTimeout(() => {
+                    document.getElementById("button-supprimer").textContent = "Supprimé"
+                }, 650);
+            
+                setTimeout(() => {
+                    document.getElementById("button-supprimer").textContent = "Supprimer mon profil"
+                    window.location.href = "profil.html"
+                }, 1300);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            remplirChamps()
+        })
+        
+        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+        let formKeyEntry = document.querySelector(".form")
+        formKeyEntry.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                saveProfil()
+            }
+        })
+    
+    </script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

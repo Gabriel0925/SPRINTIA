@@ -2362,6 +2362,7 @@ section.header {
     margin: var(--SPACE_XS);
     margin-bottom: 0;
     position: sticky;
+    pointer-events: none;
     top: 0;
     overflow: hidden;
     z-index: 10000;
@@ -2377,6 +2378,7 @@ section.header div.logo-dynamique {
     border-radius: var(--BORDER_NORMAL);
     font-weight: 1000;
     font-size: var(--H3);
+    pointer-events: all;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -2390,6 +2392,7 @@ section.header div.logo-dynamique:active {
 section.header ul.header-container-items {
     display: flex;
     align-items: center;
+    pointer-events: all;
 
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
@@ -2447,9 +2450,11 @@ section.tab-bars {
     justify-content: center;
     
     position: fixed;
+    pointer-events: none;
     bottom: 0;
     left: 0;
     width: 100%;
+    z-index: 10000;
 }
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
@@ -2464,6 +2469,7 @@ section.tab-bars ul.tab-bars-container-items{
     margin: 0 var(--SPACE_S);
     margin-bottom: var(--SPACE_L);
     gap: var(--SPACE_XXS);
+    pointer-events: all;
 }
 section.tab-bars ul.tab-bars-container-items a {
     display: flex;

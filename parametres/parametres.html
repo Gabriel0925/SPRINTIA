@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - Paramètres</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+
+    <!-- Pour les thèmes -->
+    <script src="script-themes.js"></script>
+</head>
+
+<body>
+    <section class="header">
+
+        <a href="/index.html">
+            <div class="logo-dynamique">SPRINTIA</div>
+        </a>
+        
+        <ul class="header-container-items">
+
+            <a href="/index.html">
+                <li class="header-items">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="header-items">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="header-items">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="header-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    Paramètres
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <a href="/index.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="tab-bars-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    <p class="tab-bars-items-name">Paramètres</p>
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+    
+    <h1>Paramètres</h1>
+    <h2 style="margin-bottom: var(--SPACE_S);">Dernières nouveautés</h2>
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <a href="historique-versions/nouveautes-versions/Sprintia 4.4.html">
+                <div class="card-releases">
+                    <div class="card-releases-image">
+                        <p class="version">Sprintia 4.4</p>
+                        <p class="date">21 Juin 2026</p>
+                    </div>
+                    <p class="description-maj">
+                        Refonte de la structure de Sprintia pour vous préparer à la version 5 qui arrivera au cours de l'été.
+                    </p>
+                </div>
+            </a>
+
+            <a href="historique-versions/nouveautes-versions/Sprintia 4.3.1.html">
+                <div class="card-releases">
+                    <div class="card-releases-image">
+                        <p class="version">Sprintia 4.3.1</p>
+                        <p class="date">24 Mai 2026</p>
+                    </div>
+                    <p class="description-maj">
+                        Cette mise à jour apporte de nombreuses optimisations pour les algorithmes intégrés à la page de progression.
+                    </p>
+                </div>
+            </a>
+              
+            <a href="historique-versions/nouveautes-versions/Sprintia 4.3.html">
+                <div class="card-releases">
+                    <div class="card-releases-image">
+                        <p class="version">Sprintia 4.3</p>
+                        <p class="date">17 Mai 2026</p>
+                    </div>
+                    <p class="description-maj">Plus personnalisé grâce à la prise en compte du suivi de la récupération.</p>
+                </div>
+            </a>
+    
+            <button style="
+    scroll-snap-align: center; /*le button se centre dans le carousel*/
+    margin-left: var(--SPACE_M);" onclick="location.href='historique-versions/historique-versions.html'">
+                Tout voir
+            </button>
+
+        </div>
+    </div>
+
+    <div class="action-list">  
+        <a href="profil/profil.html">
+            <div class="action-list-item">
+                <i class="fs-icon_profil"></i>
+                <p class="text-param">Profil</p>
+            </div>
+        </a> 
+        <a href="themes/themes.html">
+            <div class="action-list-item">
+                <i class="fs-icon_themes"></i>
+                <p class="text-param">Thèmes</p>
+            </div>
+        </a>   
+        <a href="jrm-coach/jrm-coach.html">
+            <div class="action-list-item">
+                <i class="fs-icon_coach"></i>
+                <p class="text-param" id="nom-coach">JRM Coach</p>
+            </div>
+        </a>  
+        <a href="import-des-donnees/importer-donnees.html">
+            <div class="action-list-item">
+                <i class="fs-icon_import_file"></i>
+                <p class="text-param">Importer des données</p>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="action-list">
+
+        <a href="sprintia-labs/sprintia-labs.html">
+            <div class="action-list-item">
+                <i class="fs-icon_labs"></i>
+                <p class="text-param">Sprintia Labs</p>
+            </div>
+        </a>
+        <a href="a-propos/a-propos.html">
+            <div class="action-list-item">
+                <i class="fs-icon_a_propos"></i>
+                <p class="text-param">À propos & Contact</p>
+            </div>
+        </a>
+
+    </div>
+
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../index.html">Entraînement</a>
+            <a class="a_footer" href="../progression/progression.html">Progression</a>
+            <a class="a_footer" href="parametres.html">Paramètres</a>
+            <a class="a_footer" href="historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="licence/licence.html">Licence</a>
+            <a class="a_footer" href="politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <!-- Pour le burger menu -->
+    <script src="../assets/base-js/base.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script>
+        async function NomCoachInit() {
+            // Recup datas
+            let CoachUserDB = await db.JRM_Coach.toArray()
+
+            if (CoachUserDB.length > 0) { // Si il y a des datas
+                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+                document.getElementById("nom-coach").textContent = NomCoach
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            NomCoachInit()
+        })
+    </script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

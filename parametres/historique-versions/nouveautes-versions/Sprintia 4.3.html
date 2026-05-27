@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia 4.3 - Patch Note</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+    
+    <!-- Pour les thèmes -->
+    <script src="../../script-themes.js"></script>
+</head>
+
+<body>
+    <section class="header">
+
+        <a href="/index.html">
+            <div class="logo-dynamique">SPRINTIA</div>
+        </a>
+        
+        <ul class="header-container-items">
+
+            <a href="/index.html">
+                <li class="header-items">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="header-items">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="header-items">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="header-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    Paramètres
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <a href="/index.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+            </a>
+            <a href="/progression/progression.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+            </a>
+            <a href="/outils/outils.html">
+                <li class="tab-bars-items">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+            </a>
+            <a href="/parametres/parametres.html">
+                <li class="tab-bars-items selected">
+                    <i class="fs-icon_parametres"></i>
+                    <p class="tab-bars-items-name">Paramètres</p>
+                </li>
+            </a>
+
+        </ul>
+
+    </section>
+
+    <div class="visuel-version">
+        <p class="visuel-version-title">Sprintia 4.3</p>
+        <p class="visuel-version-description">Réorganisation</p>
+    </div> 
+
+    <section class="container-block" style="margin-bottom: var(--SPACE_M);"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Date</p>
+            <p class="container-block-data-data">17 Mai 2026</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Taille</p>
+            <p class="container-block-data-data">2,88 <small>Mo</small></p>
+        </div>
+
+    </section>
+
+    <div class="summary-version">
+        <p class="summary-version-title">Résumé</p>
+        <p class="summary-version-summary" style="border-bottom: 0px;">
+            Sprintia 4.3 apporte le suivi de la récupération grâce à votre FC au repos et surtout à son évolution au cours du temps. 
+            Grâce à cet algorithme, Sprintia peut désormais vous suggérer d'aller vous entraîner ou plutôt de vous reposer.
+            <br><br>
+            Sprintia 4.3 apporte également une toute nouvelle page nommée "Statistiques" (accessible depuis la page "Entraînement").
+            Cette page vous informe sur votre durée totale d'entraînement, le nombre d'entraînements, la charge totale ainsi que la 
+            répartition de vos sports les plus pratiqués sur une période donnée (7J, 30J, 90J ou 365J).
+            <br><br>
+            Pour finir, Sprintia 4.3 apporte une réorganisation de l'interface pour une meilleure expérience utilisateur. Cette
+            réorganisation est accompagnée d'un nouveau design nommé "Glow Effect" qui apporte une touche de modernité à Sprintia.
+        </p>
+    </div>
+
+    <div class="summary-version" style="margin-top: var(--SPACE_M);">
+        <p class="summary-version-title">Anecdote</p>
+        <p class="summary-version-summary">
+            Il y a un an, je venais de commencer à écrire la toute première ligne de code de Sprintia. Je n'aurais 
+            jamais imaginé qu'un an plus tard, Sprintia serait une PWA avec autant de fonctionnalités. À l'origine, 
+            cela devait être un projet simple en console et, finalement Sprintia est hébergé et accessible depuis n'importe quel appareil.
+            <br><br>
+            J'ai hâte de voir ce que sera Sprintia dans un an !
+        </p>
+    </div>
+
+    <h1 style="margin-top: var(--SPACE_M);">Patch note</h1>
+    <h2>Nouvelles fonctionnalités</h2>
+    <ul class="list-information">
+        <li>
+            Ajout d'une page de "Statistiques" dans l'historique d'entraînement. Elle présente des indicateurs tels que : la durée, 
+            le nombre d'entraînements, la charge totale ou encore la répartition de vos sports les plus pratiqués sur une période donnée 
+            (7J, 30 J, 90 J ou 365 J). De plus, des statistiques spécifiques à certains sports comme la course, le vélo et la natation permettent de 
+            visualiser la distance parcourue, le temps effectué dans cette activité ainsi que le nombre d'entraînements sur la période choisie.
+        </li>
+        <li>
+            Ajout d'une nouvelle fonctionnalité de suivi de la récupération grâce à votre FC au repos et surtout à son évolution au cours du temps. 
+            En fonction de votre FC au repos du jour, Sprintia
+            pourrait vous suggérer d'aller vous entraîner ou plutôt de vous reposer.
+        </li>
+        <li>
+            Désormais, dans la charge d'entraînement, le graphique affichera votre volume de charge d'entraînement au cours des 4 dernières
+            semaines.
+        </li>
+        <li>
+            Ajout d'une nouvelle fonctionnalité dans l'indulgence de course qui vous permet de choisir votre profil de coureur·euse : 
+            "Occasionnel·le", "Régulier·ère" ou "Confirmé·e". En fonction de ce choix, Sprintia pourra adapter ses recommandations
+            de distance hebdomadaire.
+        </li>
+        <li>
+            L'algorithme "Récupération" peut interagir avec les données de votre profil si vous avez activé le paramètre "Mise à jour auto."
+            Par exemple, si vous aviez configuré 50 bpm de FC au repos et que Sprintia
+            observe que vous êtes désormais à 47 bpm (en moyenne sur les 30 derniers jours), il mettra à jour votre profil automatiquement.
+        </li>
+        <li>
+            Sprintia 4.3 adopte un tout nouveau logo, un grand "S" pour Sprintia mais également pour représenter légèrement
+            une piste d'athlétisme.
+        </li>
+    </ul>
+
+    <h2>Améliorations</h2>
+    <ul class="list-information">
+        <li>
+            Si vous avez configuré votre profil, Sprintia saura lancer directement le calcul de l'outil correspondant, en plus de savoir préremplir les champs depuis Sprintia 4.2.
+        </li>
+        <li>
+            La barre de navigation de Sprintia 4.3 a été modifiée. L'onglet précédemment nommé "Accueil" devient "Entraînement". Idem pour
+            l'onglet "Outils" qui est renommé "Progression".
+        </li>
+        <li>
+            Sprintia est en cours de réorganisation. Pour une transition en douceur, je procède étape par étape. 
+            Au fil des prochaines mises à jour, vous découvrirez une interface de plus en plus intuitive. En revanche,
+            certaines de vos habitudes seront peut-être bousculées.
+        </li>
+        <li>
+            Le contenu de la page "Entraînement" a été repensé pour être plus intuitif dès la première utilisation.
+        </li>
+        <li>
+            Nouvelle interface plus ergonomique dans l'indulgence de course. Premièrement, l'interface et l'ordre
+            des informations ont été repensés. De plus, le graphique a été renommé "Suivi de la distance (4 sem.)" 
+            pour éviter toute confusion.
+        </li>
+        <li>
+            Désormais, l'affichage du JRM Coach (de votre coach) s'accompagne d'un effet de lumière appelé "glow effect" plutôt que 
+            d'un fond coloré.
+            Ce changement améliore l'UX de l'application et le glow effect est également présent dans d'autres sections de l'application.
+        </li>
+        <li>
+            Sur la page d'accueil, le JRM Coach peut désormais mettre du texte en gras ce qui harmonise l'affichage avec l'outil de 
+            charge d'entraînement,...
+        </li>
+        <li>
+            La politique de confidentialité a été revue pour s'adapter à la nouvelle vision de Sprintia : une application plus intelligente et proactive. 
+            À l'avenir, les algorithmes statiques laisseront place à des fonctionnalités automatisées.
+        </li>
+        <li>
+            Nouvelle interface pour le patch note : plus structurée et accessible. Un résumé met en avant les nouveautés pour les utilisateurs lambdas, 
+            tandis que le patch note complet reste disponible pour les plus geeks d'entre vous.
+        </li>
+        <li>
+            La boîte "Note d'entraînement" est désormais redimensionnable verticalement pour faciliter la relecture.
+        </li>
+        <li>
+            Dans les formulaires, appuyer sur la touche "Entrée" lance désormais l'algorithme ou la fonction automatiquement (disponible
+            uniquement sur ordinateur).
+        </li>
+        <li>
+            Une bannière Sprintia a été ajoutée sur la page "À propos & Contact" pour améliorer l'aspect visuel de cette page.
+        </li>
+        <li>
+            Les informations de profil sont désormais présentées sous forme de blocs de données plutôt que dans un tableau ce qui
+            améliore la lisibilité.
+        </li>
+        <li>
+            Refonte du prédicteur de performance : il estime désormais simultanément vos temps sur 400 m, 800 m, 1 km, 5 km, 10 km, semi-marathon et marathon. 
+            L'interface a été repensée et permet toujours une saisie de distance personnalisée si vous le souhaitez.
+        </li>
+        <li>
+            Le JRM Coach lors de l'ajout d'un entraînement a été déplacé dans le détail de l'entraînement ce qui est plus logique.
+        </li>
+        <li>
+            Nouveau design pour le menu de navigation sur smartphone ainsi que sur tablette et ordinateur. C'est désormais
+            plus épuré.
+        </li>
+        <li>
+            La page d'historique des versions a été revue : elle est maintenant triée par génération, ce qui est plus intuitif et 
+            mieux organisé.
+        </li>
+        <li>
+            L'entièreté des menus et des cartes a été recalibrée : certains éléments ont été agrandis ou réduits pour un meilleur équilibre visuel.
+        </li>
+        <li>
+            Les menus de Sprintia ne sont plus bicolores. L'interface utilise désormais une seule couleur d'accentuation pour plus de
+            cohérence et également pour que votre cerveau associe la couleur à quelque chose de cliquable (ce changement n'est pas
+            encore appliqué dans toutes les pages pour ne pas vous perturber mais au fil des mises à jour, il sera progressivement déployé).
+        </li>
+        <li>
+            Les thèmes de Sprinita font peau neuve et s'accordent avec le "glow effect". Certains thèmes obsolètes 
+            ont été supprimés (pour voir quel thème a été supprimé allez dans "Fonctionnalités supprimées") et 
+            de nouveaux font leur apparition : "Océan", "Pomme", "Sapin", "Lilas" et "Nuage". Si le thème que vous
+            utilisiez a été supprimé, je suis désolé pour vous, lors de la mise à jour, Sprintia
+            appliquera un thème similaire (si il y a un thème similaire disponible) à celui que vous aviez auparavant.
+        </li>
+    </ul>
+
+    <h2>Correction des bugs et optimisations</h2>
+    <ul class="list-information">
+        <li>
+            Correction d'un bug : le tableau d'information du profil se recharge désormais correctement lors de la restauration des données.
+        </li>
+        <li>
+            Optimisation majeure de l'arborescence du site ainsi que les noms de fichiers html,... Par exemple,
+            on passe de "sprintia/Outils/Niveau de course à pied/niveau_course.html" à "progression/niveau-course-a-pied/niveau-course.html".
+        </li>
+        <li>
+            Correction d'un bug qui affichait l'avatar "👨" par défaut au lieu d'afficher l'option "Rien".
+        </li>
+        <li>
+            Optimisation du responsive pour les grands écrans (tablette et ordinateur). Par exemple,
+            sur une même ligne dans votre historique d'entraînement, vous pouvez désormais voir 3 entraînements au lieu de 1 auparavant.
+        </li>
+        <li>
+            La catégorie "Performance" regroupe maintenant la charge d'entraînement, l'indulgence de course et la récupération.
+        </li>
+        <li>
+            L'algorithme "Estimation du temps de récupération" a été déplacé dans la catégorie "Autres".
+        </li>
+        <li>
+            Correction d'un bug d'affichage de l'algorithme d'hydratation sur PC et tablette.
+        </li>
+        <li>
+            Ajout d'un effet de "cran" au défilement des carrousels pour une navigation plus interactive.
+        </li>
+        <li>
+            Le titre d'un entraînement est désormais limité à 40 caractères pour encourager l'utilisation des "Notes".
+        </li>
+        <li>
+            Doublement de la capacité des notes d'entraînement (500 caractères).
+        </li>
+        <li>
+            Grosse optimisation du code du prédicteur de performance, passant de 150 à 130 lignes en ajoutant des fonctionnalités.
+        </li>
+        <li>
+            Fluidification de l'animation du menu burger sur smartphone.
+        </li>
+        <li>
+            Correction d'un bug sur le bouton "Réinitialiser le thème" lors de la réinitialisation du thème.
+        </li>
+        <li>
+            Correction d'un oubli, désormais quand vous cliquerez sur le bouton de sauvegarde dans le "Niveau de course à pied"
+            il affichera "Sauvegarde..." puis "Sauvegardé" puis "Sauvegarder" alors qu'auparavant ça affichait "Sauvegarde..." 
+            puis directement "Sauvegarder".
+        </li>
+        <li>
+            Ajout d'une limite d'âge lors de la configuration de votre profil. Auparavant, vous pouviez avoir 1250 ans, désormais
+            il y a une limite fixée à 120 ans.
+        </li>
+        <li>
+            Correction de plusieurs bugs causés par le BFC Cache. Désormais, ces bugs ont été corrigés, les graphiques mettent
+            à jour leur couleur si vous mettez à jour votre thème. Alors qu'avant il fallait recharger la page pour que les
+            changements s'appliquent.
+        </li>
+        <li>
+            Correction d'un bug sur le bouton "Ajouter" sur la page entraînement, charge d'entraînement et récupération. Auparavant,
+            sur les très grands écrans, le bouton "Ajouter" était décalé vers la droite, désormais il est centré.
+        </li>
+        <li>
+            Ajout d'une animation expressive lorsqu'une erreur de saisie est détéctée dans le niveau de course à pied.
+        </li>
+        <li>
+            L'animation du logo dynamique a été retravaillé pour avoir encore plus de détail,...
+        </li>
+        <li>
+            Grosse optimisation de la taille de Sprintia. La version 4.2.1 pesait 3,25 Mo tandis que version 4.3 pèse 2,88 Mo.
+        </li>
+    </ul>
+
+    <h2>Fonctionnalités supprimées</h2>
+    <ul class="list-information">
+        <li>
+            La fonctionnalité de statut a été supprimée car elle n'avait pas d'impact réel sur les analyses des algorithmes.
+        </li>
+        <li>
+            Les thèmes suivants ont été supprimés : "Hortensia", "Plage", "Aurore", "Muguet", "Foudre", "Amazonie", "Quartz rose",
+            "CSSF" et "Baies"
+            Ils ont été supprimés car ils ne s'accordaient pas avec le nouveau design de Sprintia.
+        </li>
+    </ul>
+        
+    <h2>Quelques images</h2>
+    <div class="gallery-version">
+        <img src="../Images versions 4.3/interface-patch-note.png" alt="Page du patch note de Sprintia 4.3">
+        <img src="../Images versions 4.3/interface-statistiques.png" alt="Page de statistiques de Sprintia 4.3">
+        <img src="../Images versions 4.3/interface-recuperation.png" alt="Page de la récupération de Sprintia 4.3">
+    </div>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="/index.html">Entraînement</a>
+            <a class="a_footer" href="../../../progression/progression.html">Progression</a>
+            <a class="a_footer" href="../../autres.html">Paramètres</a>
+            <a class="a_footer" href="../../historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../themes/themes.html">Thèmes</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../licence/licence.html">Licence</a>
+            <a class="a_footer" href="../../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+    
+    <script src="../../../assets/base-js/base.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    
+</body>
+</html>

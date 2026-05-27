@@ -1,8 +1,9 @@
 /* Initialisation des variables CSS */
 :root {
     /* Couleur de l'interface de Sprintia */
-    --COLOR_ACCENT: #42a5f5; 
-    --COLOR_ACCENT2: #A4D3F9; 
+    --COLOR_ACCENT: #229AFC; 
+    --COLOR_ACCENT_HOVER: #41A9FD; 
+    --COLOR_ACCENT_TEXT: #A4D3F9;
     
     --COLOR_BACKGROUND: #000000;
     --COLOR_BACKGROUND_CARD: #232222;
@@ -44,8 +45,9 @@
     --SPACE_XL: 3rem;
     
     /* Autres variables */
-    --MAX_WIDTH: 1250px;
+    --MAX_WIDTH: 1500px;
     --TIME_TRANSITION: 0.2s;
+    --TIME_TRANSITION_FAST: 0.1s;
 
     /* URL flèche vers le bas pour les combobox */
     --URL_FLECHE_ICON: url("../assets/icons/icon-fleche.svg");
@@ -2352,82 +2354,167 @@ div.container-center-marge {
 
 
 
-/* --- Sidebars beta --- */
-body {
+/* --- Header beta --- */
+section.header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--SPACE_XS);
+    margin-bottom: 0;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    z-index: 10000;
 }
 
-
-
-section.sidebars {
+section.header a {
     display: flex;
-    flex-direction: column;
-
+    max-width: 300px;
+}
+section.header div.logo-dynamique {
     background-color: var(--COLOR_BACKGROUND_CARD);
-    border-radius: var(--BORDER_BIG);
-
-    width: 225px;
-    height: 100%;
-    padding: var(--SPACE_XS);
-    margin-right: var(--SPACE_M);
-    gap: var(--SPACE_XS);
-}
-
-section.sidebars p.sidebars-title{
+    padding: 0.75rem;
+    border-radius: var(--BORDER_NORMAL);
     font-weight: 1000;
-    font-size: var(--H2);
-    text-align: center;
-    color: var(--COLOR_TEXT_PRIMARY);
-    margin-top: var(--SPACE_XXS);
-    margin-bottom: var(--SPACE_M);
+    font-size: var(--H3);
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+section.header div.logo-dynamique:hover {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+section.header div.logo-dynamique:active {
+    transform: scale(var(--SCALE_NORMAL));
 }
 
-section.sidebars li.sidebars-item{
+section.header ul.header-container-items {
     display: flex;
     align-items: center;
 
-    border-radius: var(--BORDER_NORMAL);
-
-    padding: var(--SPACE_XS);
+    padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
 
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+section.header ul.header-container-items li.header-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--SPACE_XS);
+
+    background-color: transparent;
+    color: var(--COLOR_TEXT_PRIMARY);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-size: var(--H3);
+    border-radius: var(--BORDER_NORMAL);
+    width: 180px;
+    padding: var(--SPACE_XS);
+
     cursor: pointer;
-    transition: all ease-out var(--TIME_TRANSITION);
+    user-select: none;
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
-section.sidebars li.sidebars-item.selected{
+section.header ul.header-container-items li.header-items.selected{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
 }
-section.sidebars li.sidebars-item:active{
+section.header ul.header-container-items:has(li.header-items:hover) li.header-items.selected{
+    background-color: transparent;
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+section.header ul.header-container-items:has(li.header-items:hover) li.header-items.selected:hover{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
+}
+section.header ul.header-container-items li.header-items:hover{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
+}
+section.header ul.header-container-items li.header-items:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-section.sidebars li.sidebars-item i{
-    font-size: var(--H2);
+
+
+/* --- Tab bars beta --- */
+section.tab-bars {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+section.tab-bars ul.tab-bars-container-items{
+    display: flex;
+    overflow: hidden;
+    height: 63px;
+    flex-grow: 1;
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    max-width: 625px;
+    border-radius: 1.75rem;
     padding: var(--SPACE_XXS);
+    margin: 0 var(--SPACE_S);
+    margin-bottom: var(--SPACE_L);
+    gap: var(--SPACE_XXS);
+}
+section.tab-bars ul.tab-bars-container-items a {
+    display: flex;
+    flex-grow: 1;
+}
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--BORDER_BIG);
     color: var(--COLOR_TEXT_PRIMARY);
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-section.sidebars li.sidebars-item.selected i{
-    color: var(--COLOR_ACCENT2);
-}
-section.sidebars li.sidebars-item i:active{
-    color: var(--COLOR_ACCENT2);
-}
-section.sidebars li.sidebars-item p.sidebars-item-name{
-    font-size: var(--P);
+    font-size: 0.56rem;
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    padding: var(--SPACE_XXS) 0;
+    overflow: hidden;
+    min-width: 80px;
+    flex-grow: 1;
+    gap: var(--SPACE_XXS);
+    user-select: none;
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
+    transform: scale(var(--SCALE_NORMAL));
+}
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
+}
+section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:active) li.tab-bars-items.selected{
+    background-color: transparent;
     color: var(--COLOR_TEXT_PRIMARY);
 }
-section.sidebars li.sidebars-item.selected p.sidebars-item-name{
-    color: var(--COLOR_ACCENT2);
+section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:active) li.tab-bars-items.selected:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
 }
-section.sidebars li.sidebars-item p.sidebars-item-name:active{
-    color: var(--COLOR_ACCENT2);
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
+    font-size: var(--H2);
 }
 
 
-
-section.content {
-    background-color: transparent;
+/* --- Gérer l'affichage du header/tab-bars en fonction de l'appareil --- */
+@media (max-width: 1120px) {
+    section.header {
+        display: none;
+    }
+    section.tab-bars {
+        display: flex;
+    }
 }

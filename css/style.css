@@ -324,11 +324,11 @@ button{
 }
 @media (hover: hover) and (pointer: fine) {
     button:hover{
-        background-color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
 button:active{
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 /* Pour les boutons dans un tableau */
@@ -354,11 +354,11 @@ button.table {
 }
 @media (hover: hover) and (pointer: fine) {
     button.table:hover{
-        color: var(--COLOR_ACCENT2);
+        color: var(--COLOR_ACCENT_HOVER);
     }
 }
 button.table:active{
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 /* Pour les boutons dynamique */
@@ -369,7 +369,7 @@ button.size-block {
 
 /* Pour des liens vers une adresse */
 a.lien {
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_TEXT);
     cursor: pointer;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     text-decoration: underline;
@@ -416,12 +416,12 @@ footer a.a_footer{
 @media (hover: hover) and (pointer: fine) {
     footer a.a_footer:hover{
         background-color: var(--COLOR_BACKGROUND_CARD);
-        color: var(--COLOR_ACCENT2);
+        color: var(--COLOR_ACCENT_TEXT);
     }
 }
 footer a.a_footer:active{
     background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_TEXT);
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -718,11 +718,11 @@ div.config-profil {
 }
 @media (hover: hover) and (pointer: fine) {
     div.config-profil:hover {
-        background-color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
 div.config-profil:active {
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT_HOVER);
     transform: scale(var(--SCALE_SMALL));
 }
 div.config-profil i{
@@ -907,7 +907,7 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
 }
 section.container-workout-cards div.cards-history-workout p.charge-workout strong{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_TEXT);
 }
 section.container-workout-cards div.cards-history-workout div.container-data-workout {
     display: flex;
@@ -967,11 +967,11 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:hover{
-        background-color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
 section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:active{
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT_HOVER);
     transform: scale(1);
 }
 section.container-workout-cards div.cards-history-workout div.action-button-card-workout button i{
@@ -1024,7 +1024,7 @@ textarea {
     min-height: 150px;
     max-height: 700px;
     background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
     padding: var(--SPACE_S);
     font-size: var(--P);
@@ -1036,7 +1036,7 @@ textarea {
 }
 textarea:focus {
     outline: none;
-    box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
+    box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
 }
 textarea::placeholder {
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1130,11 +1130,11 @@ div.button-flottant {
 }
 @media (hover: hover) and (pointer: fine) {
     div.button-flottant:hover {
-        background-color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
 div.button-flottant:active {
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 @media (max-width: 600px) {
@@ -1487,7 +1487,7 @@ input[type="text"]::-webkit-inner-spin-button {
 input[type="number"],
 input[type="text"] {
     border-radius: var(--BORDER_NORMAL);
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_HOVER);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border: 0;
 
@@ -1512,19 +1512,19 @@ input[type="text"].small {
     input[type="number"]:hover,
     input[type="text"]:hover,
     input[type="date"]:hover  {
-        box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
+        box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
     }
 }
 input[type="number"]:focus,
 input[type="text"]:focus,
 input[type="date"]:focus {
-    box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
+    box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
 }
 /* Pour les inputs date */
 input[type="date"]{
     width: calc(100% - (var(--SPACE_XS) * 2));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
 
     border: none;
@@ -1570,11 +1570,11 @@ div.label-input {
 }
 input:focus,
 input:valid {
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_TEXT);
 }
 input:focus + .label-input,
 input:not(:placeholder-shown) + .label-input {
-    color: var(--COLOR_ACCENT2);
+    color: var(--COLOR_ACCENT_TEXT);
     margin-left: 0;
     padding: var(--SPACE_XXS);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -1610,7 +1610,7 @@ input:not(:placeholder-shown) + .label-input {
     width: 37px;
     height: 27px;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COLOR_ACCENT2);
+    border: 2px solid var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     transform: scale(1.15);
@@ -1618,16 +1618,16 @@ input:not(:placeholder-shown) + .label-input {
 }
 @media (hover: hover) and (pointer: fine) {
     .slider input::-webkit-slider-thumb:hover{
-        background-color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.25);
-        border: 2px solid var(--COLOR_ACCENT2);
+        border: 2px solid var(--COLOR_ACCENT_TEXT);
         transition: all ease-out var(--TIME_TRANSITION);
     }
 } 
 .slider input::-webkit-slider-thumb:active{
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.25);
-    border: 2px solid var(--COLOR_ACCENT2);
+    border: 2px solid var(--COLOR_ACCENT_TEXT);
     transition: all ease-out 0.05s;
 }
 .slider progress {
@@ -1643,7 +1643,7 @@ input:not(:placeholder-shown) + .label-input {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);  
 }
 .slider progress::-webkit-progress-value {
-    background-color: var(--COLOR_ACCENT2); 
+    background-color: var(--COLOR_ACCENT_TEXT); 
     border-radius: var(--BORDER_NORMAL);
     border: 0px;
 }
@@ -1654,7 +1654,7 @@ input:not(:placeholder-shown) + .label-input {
     width: 37px;
     height: 27px;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COLOR_ACCENT2);
+    border: 2px solid var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     transform: scale(1.15);
@@ -1662,7 +1662,7 @@ input:not(:placeholder-shown) + .label-input {
 }
 @media (hover: hover) and (pointer: fine) {
     .slider input::-moz-range-thumb:hover{
-        background-color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.25);
         transition: all ease-out var(--TIME_TRANSITION);
     }
@@ -1677,7 +1677,7 @@ input:not(:placeholder-shown) + .label-input {
     border: none;
 }
 .slider progress::-moz-progress-bar{
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
 }
 /* le nom du slider */
@@ -1718,7 +1718,7 @@ select {
 }
 @media (hover: hover) and (pointer: fine) {
     select:hover {
-        box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
+        box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
         transition: all ease-out var(--TIME_TRANSITION);
     }
 }
@@ -1727,7 +1727,7 @@ select:focus {
     outline: none;
     border: none;
     /* Style */
-    box-shadow: 0px 0px 5px var(--COLOR_ACCENT2);
+    box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
 }
 
 /* --- Pour le bouton plus de données dans ajouter un entraînement --- */
@@ -1744,13 +1744,13 @@ div.form-different-button {
 }
 @media (hover: hover) and (pointer: fine) {
     div.form-different-button:hover {
-        border: 2px solid var(--COLOR_ACCENT2);
-        color: var(--COLOR_ACCENT2);
+        border: 2px solid var(--COLOR_ACCENT_HOVER);
+        color: var(--COLOR_ACCENT_HOVER);
     }
 }
 div.form-different-button:active {
-    border: 2px solid var(--COLOR_ACCENT2);
-    color: var(--COLOR_ACCENT2);
+    border: 2px solid var(--COLOR_ACCENT_HOVER);
+    color: var(--COLOR_ACCENT_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -2020,11 +2020,11 @@ div.box-last-maj div.content2 button{
 }
 @media (hover: hover) and (pointer: fine) {
     div.box-last-maj div.content2 button:hover {
-        background-color: var(--COLOR_ACCENT2);
+        background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
 div.box-last-maj div.content2 button:active{
-    background-color: var(--COLOR_ACCENT2);
+    background-color: var(--COLOR_ACCENT_HOVER);
     transform: scale(1); /* pour éviter que le bouton s'enfonce alors que la card fais deja un transform scale */
 }
 

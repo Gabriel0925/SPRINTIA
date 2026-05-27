@@ -1,54 +1,3 @@
-// --- Burger menu ---
-// Pour gérer l'ouverture/fermeture du menu hamburger
-const burgerMenuButton = document.querySelector('.burger-menu-button')
-const burgerMenuButtonIcon = document.querySelector('.burger-menu-button i')
-const burgerMenu = document.querySelector('.burger-menu')
-
-burgerMenuButton.onclick = function () {
-    burgerMenu.classList.toggle('open')
-    const isOpen = burgerMenu.classList.contains('open')
-    burgerMenuButtonIcon.classList = isOpen ? 'fs-icon_fermer' : 'fs-icon_menu'
-}
-
-window.onclick = function (event) { // on track les clicks sur la page complète
-    let TrackClickBurgerMenuButton = burgerMenuButton.contains(event.target) // pour tracker si il y a un click sur le bouton si oui = true sinon = false
-    let TrackClickBurgerMenuOpen = burgerMenu.contains(event.target)
-    let TrackClickButtonMore = document.getElementById("button-group-button")
-    let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus
-     
-    // si dans la page il y a le bouton plus alors on regarde si c'est sur lui qu'on a cliqué
-    if (TrackClickButtonMore && TrackClickButtonInMenuMore) {
-        TrackClickButtonMore = TrackClickButtonMore.contains(event.target)
-        TrackClickButtonInMenuMore = TrackClickButtonInMenuMore.contains(event.target)
-    } else { // sinon on met la variable sur false pour pas que ça plante la fermeture du burger menu dans le if suivant
-        TrackClickButtonMore = false
-        TrackClickButtonInMenuMore = false
-    }
-    
-    // si tu as cliqué autre part que ses 4 conditions alors on referme le menu burger et le menu plus 
-    if (TrackClickBurgerMenuButton == false && TrackClickBurgerMenuOpen == false && TrackClickButtonMore == false && TrackClickButtonInMenuMore == false) { 
-        // on referme le burgermenu
-        burgerMenu.classList.remove("open")
-        burgerMenuButtonIcon.classList.add("fs-icon_menu")
-        // pour le menu plus
-        const menuButtonMore = document.querySelector(".menu-many-action")
-        if (menuButtonMore) {
-            // on referme le menu plus
-            menuButtonMore.classList.remove("open")
-            // pour remettre l'icone plus
-            document.getElementById("button-group-button").classList.add("fs-icon_plus")
-        }
-    }
-}
-window.addEventListener("scroll", () => {
-    // on referme le burgermenu
-    burgerMenu.classList.remove("open")
-    burgerMenuButtonIcon.classList.add("fs-icon_menu")  
-})
-// --- Fin burger menu ---
-
-
-
 // --- Menu plus ---
 const menuButtonMore = document.querySelector(".menu-many-action")
 window.addEventListener("click", (event) => {
@@ -124,7 +73,7 @@ async function genererGraphiqueLine(listeX, listeY) {
     let StyleCSS = getComputedStyle(RootCSS)
     // Recup variable css
     let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
-    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
+    let CouleurAccentText = StyleCSS.getPropertyValue("--COLOR_ACCENT_TEXT")
     let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
     const barCanvas = document.getElementById("barCanvas")
@@ -140,7 +89,7 @@ async function genererGraphiqueLine(listeX, listeY) {
                 datasets: [{
                     data: listeY,
                     borderColor : CouleurAccent, // Ligne des niveau couleur
-                    backgroundColor: CouleurAccent2,
+                    backgroundColor: CouleurAccentText,
                     fill: true, // Pour remplir le graphique de la couleur background
                     pointRadius: 8, // Taille du point
                     pointHoverRadius: 10,

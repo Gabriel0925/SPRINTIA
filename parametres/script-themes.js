@@ -3,89 +3,89 @@ const configurationThemes = {
     // --- Thèmes Froids ---
     "ocean": {
         "COLOR_ACCENT": "#227eff",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#4696ff",
         "COLOR_ACCENT_TEXT": "#A3C8FF"
     },
     "lune": {
         "COLOR_ACCENT": "#72a8ca",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#8eb9d6",
         "COLOR_ACCENT_TEXT": "#c7ddeb"
     },
     "glacier": {
         "COLOR_ACCENT": "#1fc9eb",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#45d5f0",
         "COLOR_ACCENT_TEXT": "#b6f3ff"
     }, 
     "pomme": {
         "COLOR_ACCENT": "#A4DE02",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#b8e630",
         "COLOR_ACCENT_TEXT": "#E9FEAF"
     },
     "vegetation": {
         "COLOR_ACCENT": "#0acd62",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#2fe17f",
         "COLOR_ACCENT_TEXT": "#acffd1"
     },
     "sapin": {
         "COLOR_ACCENT": "#78b67d",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#92c797",
         "COLOR_ACCENT_TEXT": "#CAE2CB"
     },
     "menthe": {
         "COLOR_ACCENT": "#07d3b5",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#2fe1ca",
         "COLOR_ACCENT_TEXT": "#adf9ee"
     },
     "lavande": {
         "COLOR_ACCENT": "#B266F9",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#c283fa",
         "COLOR_ACCENT_TEXT": "#DAB8F9"
     },
     "lilas": {
         "COLOR_ACCENT": "#B19CD9",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#c3b2e3",
         "COLOR_ACCENT_TEXT": "#E8E3F3"
     },
 
     // --- Thèmes Chauds ---
     "feu": {
         "COLOR_ACCENT": "#ffa51e",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#ffb847",
         "COLOR_ACCENT_TEXT": "#ffd493"
     },
     "corail": {
         "COLOR_ACCENT": "#FF8559",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#ff9d79",
         "COLOR_ACCENT_TEXT": "#ffc4af"
     },
     "carmin": {
         "COLOR_ACCENT": "#FF5257",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#ff7074",
         "COLOR_ACCENT_TEXT": "#FFB3B5"
     },
     "peche": {
         "COLOR_ACCENT": "#FF9A9E",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#ffb0b3",
         "COLOR_ACCENT_TEXT": "#FFD6D8"
     },
     "citron": {
         "COLOR_ACCENT": "#faf43a",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#fbf65f",
         "COLOR_ACCENT_TEXT": "#fffdc4"
     },
     "framboise": {
         "COLOR_ACCENT": "#f26997",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#f585aa",
         "COLOR_ACCENT_TEXT": "#ffcdde"
     },
     "fuchsia": {
         "COLOR_ACCENT": "#FA6BFA",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#fb87fb",
         "COLOR_ACCENT_TEXT": "#fec4fe"
     },
     "guimauve": {
         "COLOR_ACCENT": "#e4abe4",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
+        "COLOR_ACCENT_HOVER": "#ecbdec",
         "COLOR_ACCENT_TEXT": "#ffe6ff"
     },
 
@@ -109,7 +109,8 @@ function SelectedElement(idElement) {
 function colorTheme(theme, idElement) {
     if (theme == "azur") { // si c'est le thème de base alors on réinitialise les variables
         document.documentElement.style.removeProperty("--COLOR_ACCENT")
-        document.documentElement.style.removeProperty("--COLOR_ACCENT2")
+        document.documentElement.style.removeProperty("--COLOR_ACCENT_HOVER")
+        document.documentElement.style.removeProperty("--COLOR_ACCENT_TEXT")
     } else {
         // on met à jour les variables
         document.documentElement.style.setProperty("--COLOR_ACCENT", configurationThemes[theme]["--COLOR_ACCENT"])

@@ -99,9 +99,9 @@ const configurationThemes = {
 // init variable
 let theme = "azur"
 
-function SelectedElement(idElement) {
-    if (idElement) {
-        document.querySelector(".selected").classList.remove("selected")
+function selectedElement(idElement) {
+    if (idElement) { 
+        document.querySelector(".option-color.selected").classList.remove("selected")
         document.getElementById(idElement).classList.add("selected")
     }
 }
@@ -113,15 +113,18 @@ function colorTheme(theme, idElement) {
         document.documentElement.style.removeProperty("--COLOR_ACCENT_TEXT")
     } else {
         // on met à jour les variables
-        document.documentElement.style.setProperty("--COLOR_ACCENT", configurationThemes[theme]["--COLOR_ACCENT"])
-        document.documentElement.style.setProperty("--COLOR_ACCENT_HOVER", configurationThemes[theme]["--COLOR_ACCENT_HOVER"])
-        document.documentElement.style.setProperty("--COLOR_ACCENT_TEXT", configurationThemes[theme]["--COLOR_ACCENT_TEXT"])
+        document.documentElement.style.setProperty("--COLOR_ACCENT", configurationThemes[theme]["COLOR_ACCENT"])
+        document.documentElement.style.setProperty("--COLOR_ACCENT_HOVER", configurationThemes[theme]["COLOR_ACCENT_HOVER"])
+        document.documentElement.style.setProperty("--COLOR_ACCENT_TEXT", configurationThemes[theme]["COLOR_ACCENT_TEXT"])
     }
     // maj dans la "BDD"
     localStorage.setItem("themeUser", theme) 
 
     // maj de l'élément séléctionné
-    SelectedElement(idElement)
+    if (idElement && idElement != null) {
+        selectedElement(idElement)
+    }
+
     return
 }
 
@@ -155,15 +158,15 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
 }
 
 // !!! Si chamgement de nom de fonction préférence ne pas oublier de modifier le nom de fonction dans script_save_restoration et autre par, utilise la recherche global
-function Preference() {
+function preferenceUser() {
     // Chercher les valeur dans la bdd
-    const ColorUser = localStorage.getItem("themeUser") || undefined
-    if (ColorUser != undefined) {
-        colorTheme(ColorUser, null) // on met l'id du li du thème en null pour pas que la fonction SelectedElement mettent à jour le li du thème en buggant
+    const themeUserChoose = localStorage.getItem("themeUser") || undefined
+    if (themeUserChoose != undefined) {
+        colorTheme(themeUserChoose, null) // on met l'id du li du thème en null pour pas que la fonction selectedElement mettent à jour le li du thème en buggant
     } else {
         colorTheme("azur", null)
     }
 }
 
 // ne pas mettre en addevenlister sinon on perd en perf
-Preference() // on change les couleurs de la page web ou le user navigue
+preferenceUser() // on change les couleurs de la page web ou le user navigue

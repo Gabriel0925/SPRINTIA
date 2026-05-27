@@ -279,7 +279,7 @@ body {
     color: var(--COLOR_TEXT_PRIMARY);
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_S_SMALL);
     /* Pour désactiver le highlight bleu lors d'un clic sur les balises a majoritairement */
     -webkit-tap-highlight-color: transparent;
 }

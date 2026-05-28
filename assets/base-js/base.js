@@ -37,29 +37,29 @@ window.addEventListener("pageshow", (event) => {
 let Timer1 = 0
 let Timer2 = 0
 function logoDynamique(message) {
-    clearTimeout(Timer1)
-    clearTimeout(Timer2)
-    // Recup du logo dynamique
-    let elementLogoDynamique = document.getElementById("logo-dynamique")
+    // clearTimeout(Timer1)
+    // clearTimeout(Timer2)
+    // // Recup du logo dynamique
+    // let elementLogoDynamique = document.getElementById("logo-dynamique")
 
-    // Initialisation (Remise à 0)
-    elementLogoDynamique.classList.remove("return", "pin-message")
+    // // Initialisation (Remise à 0)
+    // elementLogoDynamique.classList.remove("return", "pin-message")
 
-    // Déclenchement de l'animation pour afficher le message au user
-    elementLogoDynamique.classList.add("pin-message")
-    // Affichage message au user
-    elementLogoDynamique.textContent = message;
+    // // Déclenchement de l'animation pour afficher le message au user
+    // elementLogoDynamique.classList.add("pin-message")
+    // // Affichage message au user
+    // elementLogoDynamique.textContent = message;
 
-    Timer1 = setTimeout(() => { 
-        elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
-        elementLogoDynamique.textContent = "Sprintia"; // on ré-affiche 'Sprintia' dans le logo dynamique
-    }, 2500);
+    // Timer1 = setTimeout(() => { 
+    //     elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
+    //     elementLogoDynamique.textContent = "Sprintia"; // on ré-affiche 'Sprintia' dans le logo dynamique
+    // }, 2500);
 
-    Timer2 = setTimeout(() => {
-        // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
-        elementLogoDynamique.classList.remove("return")
-        elementLogoDynamique.classList.remove("pin-message")
-    }, 3100)
+    // Timer2 = setTimeout(() => {
+    //     // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
+    //     elementLogoDynamique.classList.remove("return")
+    //     elementLogoDynamique.classList.remove("pin-message")
+    // }, 3100)
 }
 
 

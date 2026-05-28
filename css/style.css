@@ -39,6 +39,7 @@
     /* Valeur d'enfoncement d'un élément lors d'un clic (pour les ':active') */
     --SCALE_SMALL: 0.98;
     --SCALE_NORMAL: 0.95;
+    --SCALE_SUP: 1.05;
 
     /* Marges  */
     --SPACE_XXS: 0.3rem;
@@ -1016,16 +1017,24 @@ div.button-flottant {
     border-radius: var(--BORDER_BIG);
     font-size: var(--H1);
     z-index: 1550;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.button-flottant:hover {
-        background-color: var(--COLOR_ACCENT_HOVER);
+        background-color: var(--COLOR_GLASSMORPHISM);
+        -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
+        backdrop-filter: blur(var(--GLASSMORPHISM));
+        transform: scale(var(--SCALE_SUP));
     }
 }
 div.button-flottant:active {
-    background-color: var(--COLOR_ACCENT_HOVER);
+    background-color: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
+    backdrop-filter: blur(var(--GLASSMORPHISM));
     transform: scale(var(--SCALE_NORMAL));
 }
 @media (max-width: 600px) {

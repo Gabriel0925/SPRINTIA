@@ -1388,7 +1388,7 @@ input[type="text"]::-webkit-inner-spin-button {
 input[type="number"],
 input[type="text"] {
     border-radius: var(--BORDER_NORMAL);
-    color: var(--COLOR_ACCENT_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border: 0;
 

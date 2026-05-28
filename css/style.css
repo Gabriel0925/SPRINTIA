@@ -1,7 +1,7 @@
 :root {
     /* Palette de couleur */
-    --COLOR_ACCENT: #229AFC; 
-    --COLOR_ACCENT_HOVER: #41A9FD; 
+    --COLOR_ACCENT: #42a5f5;
+    --COLOR_ACCENT_HOVER: #64b8fc;
     --COLOR_ACCENT_TEXT: #A4D3F9;
     
     --COLOR_BACKGROUND: #000000;
@@ -641,6 +641,10 @@ section.segmented-button div.segmented-button-button {
     cursor: pointer;
     width: 60px;
     text-align: center;
+    
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     transition: all ease-out var(--TIME_TRANSITION);
 }
 @media (hover:hover) and (pointer: fine) {

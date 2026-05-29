@@ -397,7 +397,7 @@ section.header a {
     display: flex;
     max-width: 300px;
 }
-section.header div.logo-dynamique {
+section.header div.logo {
     background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
@@ -411,10 +411,10 @@ section.header div.logo-dynamique {
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
-section.header div.logo-dynamique:hover {
+section.header div.logo:hover {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.header div.logo-dynamique:active {
+section.header div.logo:active {
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -572,6 +572,55 @@ section.tab-bars li.tab-bars-shorcut:active {
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
     transform: scale(var(--SCALE_NORMAL));
+}
+
+
+
+/* --- Logo Dynamique --- */
+div.container-logo-dynamique {
+    display: flex;
+    justify-content: center;
+
+    width: calc(100% - (var(--SPACE_S_SMALL) * 2));
+    height: 150px;
+
+    pointer-events: none;
+    position: absolute;
+    z-index: 18000;
+}
+div.container-logo-dynamique div.logo-dynamique {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    font-size: var(--H1);
+    font-weight: 1000;
+
+    max-width: 600px;
+    flex-grow: 1;
+    height: 100px;
+    border-radius: var(--BORDER_BIG);    
+    
+    background-color: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
+    backdrop-filter: blur(var(--GLASSMORPHISM));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_GLASSMORPHISM);
+
+    pointer-events: none;
+    z-index: 20000;
+
+    transition: transform ease-out 0.3s;
+}
+@keyframes animation_logo_dynamique {
+    0% {transform: scale(0) translateY(-700px)}
+    40% {transform: scale(0.2) translateY(80px)}
+    100% {transform: scale(1) translateY(0)}
+}
+div.container-logo-dynamique div.logo-dynamique.message {
+    display: flex;
+    transform: scale(1) translateY(0);
+    animation: animation_logo_dynamique 0.3s ease-out forwards;
 }
 
 

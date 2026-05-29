@@ -1,5 +1,29 @@
 // --- Menu plus ---
-const menuButtonMore = document.querySelector(".menu-many-action")
+window.onclick = function (event) { // on track les clicks sur la page complète
+    let TrackClickButtonMore = document.getElementById("button-group-button")
+    let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus
+     
+    // si dans la page il y a le bouton plus alors on regarde si c'est sur lui qu'on a cliqué
+    if (TrackClickButtonMore && TrackClickButtonInMenuMore) {
+        TrackClickButtonMore = TrackClickButtonMore.contains(event.target)
+        TrackClickButtonInMenuMore = TrackClickButtonInMenuMore.contains(event.target)
+    } else { // sinon on met la variable sur false pour pas que ça plante la fermeture du burger menu dans le if suivant
+        TrackClickButtonMore = false
+        TrackClickButtonInMenuMore = false
+    }
+    
+    // si tu as cliqué autre part que ses 4 conditions alors on referme le menu burger et le menu plus 
+    if (TrackClickButtonMore == false && TrackClickButtonInMenuMore == false) { 
+        // pour le menu plus
+        const menuButtonMore = document.querySelector(".menu-many-action")
+        if (menuButtonMore) {
+            // on referme le menu plus
+            menuButtonMore.classList.remove("open")
+            // pour remettre l'icone plus
+            document.getElementById("button-group-button").classList.add("fs-icon_plus")
+        }
+    }
+}
 window.addEventListener("click", (event) => {
     if (event.target.id == "button-group-button") {
         const menuButtonMore = document.querySelector(".menu-many-action")
@@ -34,31 +58,31 @@ window.addEventListener("pageshow", (event) => {
 
 
 // --- Pour le logo dynamique ---
-let Timer1 = 0
-let Timer2 = 0
+let timer1 = 0
+let timer2 = 0
 function logoDynamique(message) {
-    // clearTimeout(Timer1)
-    // clearTimeout(Timer2)
+    clearTimeout(timer1)
+    clearTimeout(timer2)
     // // Recup du logo dynamique
-    // let elementLogoDynamique = document.getElementById("logo-dynamique")
+    let elementLogoDynamique = document.querySelector(".logo-dynamique")
 
-    // // Initialisation (Remise à 0)
-    // elementLogoDynamique.classList.remove("return", "pin-message")
+    // Initialisation (Remise à 0)
+    elementLogoDynamique.classList.remove("return", "message")
 
-    // // Déclenchement de l'animation pour afficher le message au user
-    // elementLogoDynamique.classList.add("pin-message")
-    // // Affichage message au user
-    // elementLogoDynamique.textContent = message;
+    // Déclenchement de l'animation pour afficher le message au user
+    elementLogoDynamique.classList.add("message")
+    // Affichage message au user
+    elementLogoDynamique.textContent = message;
 
-    // Timer1 = setTimeout(() => { 
+    // timer1 = setTimeout(() => { 
     //     elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
     //     elementLogoDynamique.textContent = "Sprintia"; // on ré-affiche 'Sprintia' dans le logo dynamique
     // }, 2500);
 
-    // Timer2 = setTimeout(() => {
+    // timer2 = setTimeout(() => {
     //     // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
     //     elementLogoDynamique.classList.remove("return")
-    //     elementLogoDynamique.classList.remove("pin-message")
+    //     elementLogoDynamique.classList.remove("message")
     // }, 3100)
 }
 

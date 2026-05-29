@@ -58,7 +58,7 @@ async function VerificationParam() {
                 // on commence par changer le H1 de la page
                 document.getElementById("title-page").textContent = "Modification de l'entraînement"
 
-                document.querySelector(".fs-icon_import_file").style.display = "none"
+                document.querySelector(".tab-bars-shorcut").style.display = "none"
 
                 // Remettre les champs adaptée au sport
                 dataSpecifique(WorkoutDB.sport, false)  

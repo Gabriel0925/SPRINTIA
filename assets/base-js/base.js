@@ -74,16 +74,15 @@ function logoDynamique(message) {
     // Affichage message au user
     elementLogoDynamique.textContent = message;
 
-    // timer1 = setTimeout(() => { 
-    //     elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
-    //     elementLogoDynamique.textContent = "Sprintia"; // on ré-affiche 'Sprintia' dans le logo dynamique
-    // }, 2500);
+    timer1 = setTimeout(() => { 
+        elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
+    }, 2500);
 
-    // timer2 = setTimeout(() => {
-    //     // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
-    //     elementLogoDynamique.classList.remove("return")
-    //     elementLogoDynamique.classList.remove("message")
-    // }, 3100)
+    timer2 = setTimeout(() => {
+        // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
+        elementLogoDynamique.classList.remove("return")
+        elementLogoDynamique.classList.remove("message")
+    }, 3100)
 }
 
 

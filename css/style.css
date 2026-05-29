@@ -623,6 +623,17 @@ div.container-logo-dynamique div.logo-dynamique.message {
     transform: scale(1) translateY(0);
     animation: animation_logo_dynamique 0.45s ease-out forwards;
 }
+@keyframes animation_logo_dynamique_return {
+    0% {transform: scale(1) translateY(0)}
+    40% {transform: scale(0.7) translateY(80px)}
+    60% {transform: scale(0.4) translateY(80px)}
+    100% {transform: scale(0.2) translateY(-400px)}
+}
+div.container-logo-dynamique div.logo-dynamique.message.return {
+    display: flex;
+    transform: scale(1) translateY(0);
+    animation: animation_logo_dynamique_return 0.45s ease-out forwards;
+}
 
 
 

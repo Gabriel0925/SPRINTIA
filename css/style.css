@@ -610,17 +610,18 @@ div.container-logo-dynamique div.logo-dynamique {
     pointer-events: none;
     z-index: 20000;
 
-    transition: transform ease-out 0.3s;
+    transition: transform ease-out 0.45s;
 }
 @keyframes animation_logo_dynamique {
-    0% {transform: scale(0) translateY(-700px)}
-    40% {transform: scale(0.2) translateY(80px)}
+    0% {transform: scale(0.2) translateY(-400px)}
+    40% {transform: scale(0.4) translateY(80px)}
+    60% {transform: scale(0.7) translateY(80px)}
     100% {transform: scale(1) translateY(0)}
 }
 div.container-logo-dynamique div.logo-dynamique.message {
     display: flex;
     transform: scale(1) translateY(0);
-    animation: animation_logo_dynamique 0.3s ease-out forwards;
+    animation: animation_logo_dynamique 0.45s ease-out forwards;
 }
 
 

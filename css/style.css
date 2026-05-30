@@ -547,33 +547,6 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
     font-size: 1.3rem;
 }
 
-section.tab-bars li.tab-bars-shorcut{
-    background-color: var(--COLOR_GLASSMORPHISM);
-    -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
-    backdrop-filter: blur(var(--GLASSMORPHISM));
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_GLASSMORPHISM);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    min-width: 50px;
-    border-radius: 50%;
-    padding: var(--SPACE_S);
-    font-size: var(--H1);
-    pointer-events: all;
-    z-index: 11000;
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
-}
-section.tab-bars li.tab-bars-shorcut:active {
-    background-color: var(--COLOR_GLASSMORPHISM);
-    -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
-    backdrop-filter: blur(var(--GLASSMORPHISM));
-    transform: scale(var(--SCALE_NORMAL));
-}
-
 
 
 /* --- Logo Dynamique --- */
@@ -634,7 +607,6 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
     transform: scale(1) translateY(0);
     animation: animation_logo_dynamique_return 0.45s ease-out forwards;
 }
-
 
 
 
@@ -1102,7 +1074,27 @@ div.button-flottant p{
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
 @media (max-width: 1120px) {
+    /* on le repasse en display block et width,... à 0 pour que le bouton se replace en bas a droite */
     div.container-button-flottant {
+        display: block;
+        gap: 0;
+        pointer-events: none;
+
+        position: fixed;
+        bottom: 6rem;
+        right: 0;
+        padding: var(--SPACE_S);
+        width: fit-content;
+        z-index: 1500;
+    }
+    div.button-flottant {
+        bottom: var(--SPACE_S);
+        right: var(--SPACE_S);
+        padding: var(--SPACE_S);
+        border-radius: 50%;
+        font-size: var(--H0);
+    }
+    div.button-flottant p {
         display: none;
     }
 }

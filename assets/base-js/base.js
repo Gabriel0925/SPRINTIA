@@ -1,3 +1,42 @@
+// --- Navigation pour la tab-bar ---
+const dicoUrl = {
+    "racine": {
+        "Entraînement":  "index.html",
+        "Progression":   "progression/progression.html",
+        "Outils":        "outils/outils.html",
+        "Paramètres":    "parametres/parametres.html"
+    },
+    "profondeur1": {
+        "Entraînement":  "../index.html",
+        "Progression":   "../progression/progression.html",
+        "Outils":        "../outils/outils.html",
+        "Paramètres":    "../parametres/parametres.html"
+    },
+    "profondeur2": {
+        "Entraînement":  "../../index.html",
+        "Progression":   "../../progression/progression.html",
+        "Outils":        "../../outils/outils.html",
+        "Paramètres":    "../../parametres/parametres.html"
+    },
+    "profondeur3": {
+        "Entraînement":  "../../../index.html",
+        "Progression":   "../../../progression/progression.html",
+        "Outils":        "../../../outils/outils.html",
+        "Paramètres":    "../../../parametres/parametres.html"
+    },
+}
+function navigationTabBar(elt, profondeur, onglet) {
+    // on change la tab bar sélectionné en enlevant la class "selected" à l'ancien et en l'ajoutant à celui sur lequel on a cliqué
+    const eltSelected = document.querySelector(".tab-bars-items.selected")
+    eltSelected.classList.remove("selected")
+    elt.classList.add("selected")
+
+    // on renvoie vers la nouvelle url pour changer de page de tab bar
+    window.location.href = dicoUrl[profondeur][onglet]
+}
+
+
+
 // --- Menu plus ---
 window.onclick = function (event) { // on track les clicks sur la page complète
     let TrackClickButtonMore = document.getElementById("button-group-button")

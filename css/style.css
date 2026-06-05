@@ -508,7 +508,7 @@ section.tab-bars ul.tab-bars-container-items{
     gap: var(--SPACE_XXS);
     pointer-events: all;
     z-index: 11000;
-    transition: transform ease-out var(--TIME_TRANSITION);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.tab-bars ul.tab-bars-container-items:active{
     transform: scale(1.025);
@@ -531,7 +531,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     user-select: none;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+                transform ease-out var(--TIME_TRANSITION);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
     background-color: var(--COLOR_GLASSMORPHISM);
@@ -545,6 +545,12 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
     color: var(--COLOR_ACCENT_TEXT);
+}
+section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected):active) li.tab-bars-items.selected{
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
     font-size: 1.3rem;

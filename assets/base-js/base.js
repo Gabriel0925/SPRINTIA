@@ -25,9 +25,12 @@ const dicoUrl = {
         "Paramètres":    "../../../parametres/parametres.html"
     },
 }
-function navigationTabBar(elt, profondeur, onglet) {
-    // on change la tab bar sélectionné en enlevant la class "selected" à l'ancien et en l'ajoutant à celui sur lequel on a cliqué
-    const eltSelected = document.querySelector(".tab-bars-items.selected")
+function navigationLinks(elt, component, profondeur, onglet) {
+    let classComponent = undefined
+    if (component == "tab-bar") {classComponent = ".tab-bars-items.selected"} else {classComponent = ".header-items.selected"}
+
+    // on change la tab bar/header sélectionné en enlevant la class "selected" à l'ancien et en l'ajoutant à celui sur lequel on a cliqué
+    const eltSelected = document.querySelector(classComponent)
     eltSelected.classList.remove("selected")
     elt.classList.add("selected")
 

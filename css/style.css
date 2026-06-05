@@ -462,6 +462,12 @@ section.header ul.header-container-items li.header-items.selected{
     backdrop-filter: blur(var(--GLASSMORPHISM));
     color: var(--COLOR_ACCENT_TEXT);
 }
+section.header ul.header-container-items:has(li.header-items:not(.selected):hover) li.header-items.selected{
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    color: var(--COLOR_TEXT_PRIMARY);
+}
 section.header ul.header-container-items li.header-items:hover{
     background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));

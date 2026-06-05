@@ -389,7 +389,6 @@ section.header {
     position: sticky;
     pointer-events: none;
     top: 0;
-    overflow: hidden;
     z-index: 10000;
 }
 
@@ -408,11 +407,14 @@ section.header div.logo {
     font-weight: 1000;
     font-size: var(--H3);
     pointer-events: all;
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.header div.logo:hover {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    transform: scale(var(--SCALE_SUP));
 }
 section.header div.logo:active {
     transform: scale(var(--SCALE_NORMAL));
@@ -432,7 +434,14 @@ section.header ul.header-container-items {
     backdrop-filter: blur(var(--GLASSMORPHISM));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_GLASSMORPHISM);
     border-radius: 1.25rem;
-    overflow: hidden;
+
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+}
+section.header ul.header-container-items:hover {
+    transform: scale(1.015);
+}
+section.header ul.header-container-items:active {
+    transform: scale(1.015);
 }
 section.header ul.header-container-items li.header-items{
     display: flex;
@@ -454,7 +463,7 @@ section.header ul.header-container-items li.header-items{
     user-select: none;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+                transform ease-out var(--TIME_TRANSITION);
 }
 section.header ul.header-container-items li.header-items.selected{
     background-color: var(--COLOR_GLASSMORPHISM);
@@ -473,6 +482,7 @@ section.header ul.header-container-items li.header-items:hover{
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
     color: var(--COLOR_ACCENT_TEXT);
+    transform: scale(1.02);
 }
 section.header ul.header-container-items li.header-items:active{
     background-color: var(--COLOR_GLASSMORPHISM);

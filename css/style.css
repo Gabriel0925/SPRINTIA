@@ -283,6 +283,7 @@ h1{
     font-size: var(--H2);
     color: var(--COLOR_TEXT_PRIMARY);
     margin-bottom: var(--SPACE_S);
+    margin-top: var(--SPACE_XS);
 }
 h2{
     font-size: var(--H3);
@@ -438,10 +439,10 @@ section.header ul.header-container-items {
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.header ul.header-container-items:hover {
-    transform: scale(1.015);
+    transform: scale(1.008);
 }
 section.header ul.header-container-items:active {
-    transform: scale(1.015);
+    transform: scale(1.008);
 }
 section.header ul.header-container-items li.header-items{
     display: flex;
@@ -482,7 +483,7 @@ section.header ul.header-container-items li.header-items:hover{
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
     color: var(--COLOR_ACCENT_TEXT);
-    transform: scale(1.02);
+    transform: scale(1.015);
 }
 section.header ul.header-container-items li.header-items:active{
     background-color: var(--COLOR_GLASSMORPHISM);
@@ -511,9 +512,8 @@ section.tab-bars {
 }
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
-    height: 63px;
+    height: 70px;
     flex-grow: 1;
-    max-width: 625px;
 
     background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
@@ -527,7 +527,7 @@ section.tab-bars ul.tab-bars-container-items{
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.tab-bars ul.tab-bars-container-items:active{
-    transform: scale(1.025);
+    transform: scale(1.015);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     display: flex;
@@ -536,7 +536,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     text-align: center;
     border-radius: var(--BORDER_BIG);
     color: var(--COLOR_TEXT_PRIMARY);
-    font-size: 0.45rem;
+    font-size: 0.8rem;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     overflow: hidden;
     width: 60px;
@@ -554,7 +554,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
     color: var(--COLOR_ACCENT_TEXT);
-    transform: scale(1.06);
+    transform: scale(1.025);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
     background-color: var(--COLOR_GLASSMORPHISM);
@@ -569,7 +569,24 @@ section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected
     color: var(--COLOR_TEXT_PRIMARY);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
-    font-size: 1.3rem;
+    font-size: 1.7rem;
+}
+@media (max-width: 625px) {
+    section.tab-bars ul.tab-bars-container-items{
+        height: 63px;
+    }
+    section.tab-bars ul.tab-bars-container-items:active{
+        transform: scale(1.025);
+    }
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
+        font-size: 0.45rem;
+    }
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
+        transform: scale(1.06);
+    }
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
+        font-size: 1.3rem;
+    }
 }
 
 
@@ -698,10 +715,14 @@ section.segmented-button div.segmented-button-button {
 @media (hover:hover) and (pointer: fine) {
     section.segmented-button div.segmented-button-button:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        color: var(--COLOR_ACCENT_TEXT);
+        font-weight: var(--FONT_WEIGHT_BUTTON);
     }
 }
 section.segmented-button div.segmented-button-button:active {
     transform: scale(var(--SCALE_NORMAL));
+    color: var(--COLOR_ACCENT_TEXT);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.segmented-button div.segmented-button-button.actif {
@@ -710,6 +731,10 @@ section.segmented-button div.segmented-button-button.actif {
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.segmented-button:has(div.segmented-button-button:not(.actif):hover) div.segmented-button-button.actif{
+    background-color: transparent;
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
@@ -1019,6 +1044,7 @@ div.toolbar i {
     margin-left: auto;
     background-color: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_TEXT_PRIMARY);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_GLASSMORPHISM);
     padding: var(--SPACE_XS);
     cursor: pointer;
     border-radius: 50%;
@@ -1078,7 +1104,7 @@ div.button-flottant {
     -moz-user-select: none;
     -webkit-user-select: none;
 
-    transition: all ease-out var(--TIME_TRANSITION);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     div.button-flottant:hover {
@@ -1098,7 +1124,7 @@ div.button-flottant p{
     font-size: var(--H3);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-@media (max-width: 1120px) {
+@media (max-width: 980px) {
     /* on le repasse en display block et width,... à 0 pour que le bouton se replace en bas a droite */
     div.container-button-flottant {
         display: block;
@@ -1113,14 +1139,21 @@ div.button-flottant p{
         z-index: 1500;
     }
     div.button-flottant {
+        margin-bottom: var(--SPACE_S);
         bottom: var(--SPACE_S);
         right: var(--SPACE_S);
         padding: var(--SPACE_S);
         border-radius: 50%;
-        font-size: var(--H0);
+        font-size: 3rem;
     }
     div.button-flottant p {
         display: none;
+    }
+}
+@media (max-width: 625px) {
+    div.button-flottant {
+        margin-bottom: 0;
+        font-size: var(--H0);
     }
 }
 
@@ -1130,11 +1163,14 @@ div.button-flottant p{
     50% { transform: translate(-20px, 10px) scale(0.7)}
     100% { transform: translate(0px, 0px) scale(1)}
 }
-div.menu-many-action {
-    background-color: var(--COLOR_BACKGROUND_CARD);
+div.menu-many-action {    
+    background-color: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
+    backdrop-filter: blur(var(--GLASSMORPHISM));
     width: 180px;
     position: absolute;
     right: 0;
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_GLASSMORPHISM);
     margin-top: var(--SPACE_S);
     margin-right: var(--SPACE_M);
     padding: var(--SPACE_XS);
@@ -1237,43 +1273,6 @@ div.zone-coach p.zone-coach-name {
     margin-bottom: var(--SPACE_S_SMALL);
 }
 div.zone-coach p.zone-coach-interpretation {
-    color: var(--COLOR_TEXT_PRIMARY);
-}
-
-
-/* --- Zone pour le coach qui prend tout l'espace dispo --- */
-div.large-zone-coach {
-    border-radius: var(--BORDER_BIG);
-    position: relative;
-
-    flex-grow: 1;
-    height: auto;
-
-    padding: var(--SPACE_XS) 0;
-    transition: all ease-out var(--TIME_TRANSITION);
-}
-div.large-zone-coach::before {
-    content: "";
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(var(--GLOW_EFFECT_BLUR)) brightness(var(--GLOW_EFFECT_BRIGHTNESS));
-    z-index: -1;
-}
-div.large-zone-coach.clickable:active {
-    transform: scale(var(--SCALE_SMALL));
-}
-div.large-zone-coach p.large-zone-coach-name {
-    color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    font-size: var(--H3);
-
-    margin-bottom: var(--SPACE_XS);
-}
-div.large-zone-coach p.large-zone-coach-interpretation {
     color: var(--COLOR_TEXT_PRIMARY);
 }
 
@@ -2295,7 +2294,7 @@ div.container-center-marge {
 
 
 /* --- Gérer l'affichage du header/tab-bars en fonction de l'appareil --- */
-@media (max-width: 1120px) {
+@media (max-width: 980px) {
     section.header {
         display: none;
     }

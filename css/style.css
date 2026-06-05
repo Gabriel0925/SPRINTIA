@@ -12,8 +12,8 @@
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
     /* Intensité du glassmorphism pour les composents flottant */
-    --GLASSMORPHISM: 10px;
-    --COLOR_GLASSMORPHISM: rgba(29, 29, 31, 0.5);
+    --GLASSMORPHISM: 25px;
+    --COLOR_GLASSMORPHISM: rgba(80, 80, 80, 0.4);
     --COLOR_BORDER_GLASSMORPHISM: rgba(255, 255, 255, 0.15);
 
     /* Intensité du blur pour le Glow Effect */
@@ -495,7 +495,6 @@ section.tab-bars {
 }
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
-    overflow: hidden;
     height: 63px;
     flex-grow: 1;
     max-width: 625px;
@@ -509,6 +508,10 @@ section.tab-bars ul.tab-bars-container-items{
     gap: var(--SPACE_XXS);
     pointer-events: all;
     z-index: 11000;
+    transition: transform ease-out var(--TIME_TRANSITION);
+}
+section.tab-bars ul.tab-bars-container-items:active{
+    transform: scale(1.025);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     display: flex;
@@ -535,7 +538,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
     color: var(--COLOR_ACCENT_TEXT);
-    transform: scale(var(--SCALE_NORMAL));
+    transform: scale(1.06);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
     background-color: var(--COLOR_GLASSMORPHISM);

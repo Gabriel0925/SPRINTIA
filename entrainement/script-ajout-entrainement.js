@@ -49,7 +49,7 @@ async function VerificationParam() {
         const ID = parseInt(TableauSeparation[1])
 
         // Recup des datas du workout
-        if (ID) { 
+        if (ID) {
             // on change la variable globale
             IdEditWorkout = ID
             const WorkoutDB = await db.entrainement.get(ID) // la méthode .get permet de recup direct les datas de l'id coresspondant

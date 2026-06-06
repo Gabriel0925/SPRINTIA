@@ -20,58 +20,59 @@
 </head>
 
 <body>
-     <section class="header">
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a id="logo-dynamique" href="../../index.html">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../../parametres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
 
-        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
-
-        
-        <ul class="header-container-items">
-
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                Entraînement
-            </li>
-            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                Progression
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                Outils
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Paramètres')">
-                <i class="fs-icon_parametres"></i>
-                Paramètres
-            </li>
-
-        </ul>
-
-    </section>
-
-    <section class="tab-bars">
-
-        <ul class="tab-bars-container-items">
-
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                <p class="tab-bars-items-name">Entraînement</p>
-            </li>
-            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                <p class="tab-bars-items-name">Progression</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                <p class="tab-bars-items-name">Outils</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Paramètres')">
-                <i class="fs-icon_parametres"></i>
-                <p class="tab-bars-items-name">Paramètres</p>
-            </li>
-
-        </ul>
-
-    </section>
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../../parametres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
     
     <h1>Historique de récupération</h1>
 
@@ -102,6 +103,30 @@
         </div>
     </div>
 
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../index.html">Entraînement</a>
+            <a class="a_footer" href="../progression.html">Progression</a>
+            <a class="a_footer" href="../../parametres/parametres.html">Paramètres</a>
+            <a class="a_footer" href="../../parametres/historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../parametres/themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../parametres/licence/licence.html">Licence</a>
+            <a class="a_footer" href="../../parametres/politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>

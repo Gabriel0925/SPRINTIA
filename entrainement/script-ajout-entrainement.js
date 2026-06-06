@@ -49,7 +49,7 @@ async function VerificationParam() {
         const ID = parseInt(TableauSeparation[1])
 
         // Recup des datas du workout
-        if (ID) {
+        if (ID) { 
             // on change la variable globale
             IdEditWorkout = ID
             const WorkoutDB = await db.entrainement.get(ID) // la méthode .get permet de recup direct les datas de l'id coresspondant
@@ -58,7 +58,7 @@ async function VerificationParam() {
                 // on commence par changer le H1 de la page
                 document.getElementById("title-page").textContent = "Modification de l'entraînement"
 
-                document.querySelector(".container-button-flottant").style.display = "none"
+                document.querySelector(".fs-icon_import_file").style.display = "none"
 
                 // Remettre les champs adaptée au sport
                 dataSpecifique(WorkoutDB.sport, false)  

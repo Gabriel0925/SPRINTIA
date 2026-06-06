@@ -22,60 +22,63 @@
 </head>
 
 <body>
-    <section class="header">
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../index.html" id="logo-dynamique">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../parametres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
 
-        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur1', 'Entraînement')">SPRINTIA</div>
-
-        
-        <ul class="header-container-items">
-
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                Entraînement
-            </li>
-            <li class="header-items selected">
-                <i class="fs-icon_progression"></i>
-                Progression
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                Outils
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Paramètres')">
-                <i class="fs-icon_parametres"></i>
-                Paramètres
-            </li>
-
-        </ul>
-
-    </section>
-
-    <section class="tab-bars">
-
-        <ul class="tab-bars-container-items">
-
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                <p class="tab-bars-items-name">Entraînement</p>
-            </li>
-            <li class="tab-bars-items selected">
-                <i class="fs-icon_progression"></i>
-                <p class="tab-bars-items-name">Progression</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                <p class="tab-bars-items-name">Outils</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Paramètres')">
-                <i class="fs-icon_parametres"></i>
-                <p class="tab-bars-items-name">Paramètres</p>
-            </li>
-
-        </ul>
-
-    </section>
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../parametres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
 
     <h1>Progression</h1>
+
+    <h2>Performance</h2>
 
     <div class="carousel">
         <div class="carousel-content">
@@ -94,23 +97,165 @@
                 <h1>Récupération</h1>
                 <p>Suivez l'évolution de votre récupération et découvrez votre capacité à fournir un effort physique aujourd'hui.</p>
             </div>
-            <div class="card-tool first"  onclick="window.location.href = 'niveau-course-a-pied/niveau-course.html'">
-                <div class="icone">
-                    <i class="fs-icon_niveau_course"></i>
-                </div>
-                <h1>Niveau course à pied</h1>
-                <p>Évaluez votre niveau de course grâce à un test puis obtenez un score ainsi qu'une zone pour suivre vos progrès.</p>
-            </div>
             <div class="card-tool" onclick="window.location.href = 'indulgence-course/indulgence-course.html'">
                 <div class="icone">
                     <i class="fs-icon_indulgence_course"></i>
                 </div>
                 <h1>Indulgence de course</h1>
                 <p>Découvrez une fourchette de distance hebdomadaire conseillé en fonction de vos dernières semaines de course.</p>
+            </div> 
+
+        </div>
+    </div>
+
+    <h2>Santé & Musculation</h2>
+
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <div class="card-tool first"  onclick="window.location.href = 'zones-cardiaques/zones-cardiaques.html'">
+                <div class="icone">
+                    <i class="fs-icon_zones_cardiaques"></i>
+                </div>
+                <h1>Zones cardiaques</h1>
+                <p>Découvrez vos zones de fréquence cardiaque pour adapter l’intensité de vos entraînements.</p>
+            </div>         
+            <div class="card-tool" onclick="window.location.href = 'proteines-quotidiennes/proteines-quotidienne.html'">
+                <div class="icone">
+                    <i class="fs-icon_proteines"></i>
+                </div>  
+                <h1>Protéines quotidiennes</h1>
+                <p>Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.</p>
+            </div>    
+            <div class="card-tool" onclick="window.location.href = 'estimation-1rm/estimation-1RM.html'">
+                <div class="icone">
+                    <i class="fs-icon_1RM"></i>
+                </div> 
+                <h1>Estimation 1RM</h1>
+                <p>Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.</p>
+            </div> 
+                   
+            <div class="card-tool" onclick="window.location.href = 'calculateur-imc/calculateur-imc.html'">
+                <div class="icone">
+                    <i class="fs-icon_IMC"></i>
+                </div>
+                <h1>Calculateur IMC</h1>
+                <p>Calculez votre IMC et obtenez une interprétation de votre IMC. Parce que les chiffres, c’est bien, mais ça ne veut pas tout dire !</p>
             </div>
 
         </div>
     </div>
+
+
+    <h2>Course à pied</h2>
+
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <div class="card-tool first"  onclick="window.location.href = 'niveau-course-a-pied/niveau-course.html'">
+                <div class="icone">
+                    <i class="fs-icon_niveau_course"></i>
+                </div>
+                <h1>Niveau course à pied</h1>
+                <p>Évaluez votre niveau de course grâce à un test puis obtenez un score ainsi qu'une zone pour suivre vos progrès.</p>
+            </div>     
+            <div class="card-tool" onclick="window.location.href = 'predicteur-performance/predicteur-performance.html'">
+                <div class="icone">
+                    <i class="fs-icon_predicteur_performance"></i>
+                </div>
+                <h1>Prédicteur de performance</h1>
+                <p>Découvrez votre temps au 5 km, 10 km, semi-marathon, marathon,... Tout ça grâce à votre VMA.</p>
+            </div>    
+            <div class="card-tool" onclick="window.location.href = 'estimation-vma/estimation-vma.html'">
+                <div class="icone">
+                    <i class="fs-icon_VMA"></i>
+                </div>
+                <h1>Estimation VMA</h1>
+                <p>Estimez votre VMA et identifiez vos zones d’allure idéales pour structurer vos séances de fractionné,...</p>
+            </div> 
+
+            <div class="card-tool" onclick="window.location.href = 'estimation-vo2max/estimation-vo2max.html'">
+                <div class="icone">
+                    <i class="fs-icon_VO2MAX"></i>
+                </div>   
+                <h1>Estimation VO₂max</h1>
+                <p>Estimez votre VO₂max et obtenez une analyse avec des zones adaptées à votre âge, le tout grâce à votre VMA.</p>
+            </div>  
+            <div class="card-tool" onclick="window.location.href = 'zones-vitesse/zones-vitesse.html'">
+                <div class="icone">
+                    <i class="fs-icon_zones_vitesse"></i>
+                </div>  
+                <h1>Zones de vitesse</h1>
+                <p>Découvrez vos zones de vitesse grâce à votre VMA pour optimiser vos entraînements.</p>
+            </div>     
+            <div class="card-tool" onclick="window.location.href = 'zones-puissance/zones-puissance.html'">
+                <div class="icone">
+                    <i class="fs-icon_zones_puissance"></i>
+                </div> 
+                <h1>Zones de puissance</h1>
+                <p>Découvrez vos zones de puissance grâce à votre rFTPw.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <h2>Autres</h2>
+
+    <div class="carousel">
+        <div class="carousel-content">
+    
+            <div class="card-tool first" onclick="window.location.href = 'estimation-temps-recuperation/estimation-temps-recuperation.html'">
+                <div class="icone">
+                    <i class="fs-icon_temps_recup"></i>
+                </div>
+                <h1>Estimation du temps de récupération</h1>
+                <p>Découvrez le temps de récupération optimal pour récupérer de votre dernier entraînement.</p>
+            </div>
+            <div class="card-tool"  onclick="window.location.href = 'hydratation/hydratation.html'">
+                <div class="icone">
+                    <i class="fs-icon_besoin_hydratation"></i>
+                </div> 
+                <h1>Hydratation</h1>
+                <p>
+                    Calculez la quantité d'eau dont votre corps a besoin au quotidien.
+                </p>
+            </div>  
+
+            <div class="card-tool" onclick="window.location.href = 'convertisseur-miles-km/convertisseur-miles-km.html'">
+                <div class="icone">
+                    <i class="fs-icon_miles_km"></i>
+                </div>  
+                <h1>Convertisseur km/miles</h1>
+                <p>Convertissez une distance des kilomètres en miles ou inversement.</p>
+            </div> 
+
+        </div>
+    </div>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../index.html">Entraînement</a>
+            <a class="a_footer" href="progression.html">Progression</a>
+            <a class="a_footer" href="../parametres/parametres.html">Paramètres</a>
+            <a class="a_footer" href="../parametres/historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../parametres/themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../parametres/licence/licence.html">Licence</a>
+            <a class="a_footer" href="../parametres/politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
 
     <!-- Pour le burger menu -->
     <script src="../assets/base-js/base.js"></script>

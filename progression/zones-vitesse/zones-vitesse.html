@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Sprintia - Zones de vitesse</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../assets/icons-sprintia/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sprintia">
+    <link rel="apple-touch-icon" href="../../assets/icons-sprintia/icon-ios.png">
+    
+    <script src="../../parametres/script-themes.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../../index.html">Sprintia</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif" href="../progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../../parametres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="burger-menu-button">
+                <i class="fs-icon_menu"></i>
+            </div>
+        </div>
+
+        <div class="burger-menu">
+            <ul class="links">
+                <li>
+                    <a href="../../index.html">
+                        <i class="fs-icon_entrainement"></i>
+                        Entraînement
+                    </a>
+                </li>
+                <li>
+                    <a class="actif-burger-menu" href="../progression.html">
+                        <i class="fs-icon_progression"></i>
+                        Progression
+                    </a>
+                </li>
+                <li>
+                    <a href="../../parametres/parametres.html">
+                        <i class="fs-icon_parametres"></i>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+    <h1>Zones de vitesse</h1>
+
+    <section class="container-zone">
+        <div class="form">
+                
+            <div class="container-input">
+                <input type="number" id="vma-user" placeholder="VMA (km/h)" autocomplete="off">
+                <div class="label-input">VMA (km/h)</div>
+            </div>
+                    
+            <div class="container-input">
+                <input type="number" id="vitesse-max-user" placeholder="Vitesse max (optionnelle)" autocomplete="off">
+                <div class="label-input">Vitesse max (optionnelle)</div>
+            </div>
+
+            <button onclick="zoneVitesse()">Calculer</button>
+        </div>
+    </section>
+
+
+
+    <section class="container-box">
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 1</p>
+            <p class="small-zone-result-indication">Footing</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-unit">km/h</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 2</p>
+            <p class="small-zone-result-indication">Endurance fondamentale</p>
+
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-unit">km/h</p>
+            </div>
+        </div>
+
+       <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 3</p>
+                <p class="small-zone-result-indication">Endurance active</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-unit">km/h</p>
+            </div>
+        </div>
+            
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 4</p>
+                <p class="small-zone-result-indication">Tempo</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-unit">km/h</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 5</p>
+                <p class="small-zone-result-indication">Fractionné court</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">0 - 0</p>
+                <p class="small-zone-result-unit">km/h</p>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="container-center-marge">
+        <button class="size-block" onclick="ZoneAllure()" id="conversion">Convertir en allure</button>
+    </div>
+
+    <h2>Quand les utiliser ?</h2>
+    <ul class="list-information">
+        <li>
+            Zone 1 : Vous pouvez l'utiliser lors d'un effort très léger, d'un échauffement.
+        </li>
+        <li>
+            Zone 2 : C'est la zone d'endurance, elle est à utiliser lors de vos sorties longues. Si vous êtes dans cette zone vous pouvez tenir une 
+            conversation sans être essouflé·e.
+       </li>
+        <li>
+            Zone 3 : Cette zone est utile pour travailler votre endurance active. C'est de l'endurance mais avec plus d'effort.
+        </li>
+        <li>
+            Zone 4 : Cette zone est utile pour faire progresser votre vitesse, elle améliore votre cardio. Utilisez-là lors de vos séances
+            de fractionné.
+        </li>
+        <li>
+            Zone 5 : Cette zone doit être utilisée pour les sprints, le fractionné court ou en compétition. Elle challenge votre
+            organisme.
+        </li>
+    </ul>
+
+    <h2>Les Zones de vitesse c'est quoi ?</h2>
+    <p class="text">
+        Les zones de vitesse sont essentielles en sport. Elles permettent d'adapter l'intensité de vos entraînements
+        en fonction de vos objectifs. Ces zones sont très utiles lors de fractionnés car la vitesse est quasiment instantanée, quand vous accélérez
+        votre vitesse monte aussi vite que vous alors que votre cardio, lui, va réagir à votre sprint mais au bout de 10 à 15 secondes ce qui n'est pas
+        optimal pour du fractionné. Cet outil est destiné à la course à pied car en vélo vous n'aurez pas la même vitesse,...
+   </p>
+    <h2>Comment avoir la meilleure précision ?</h2>
+    <p class="text">
+        Pour avoir la meilleure précision sur vos zones de vitesse, le mieux serait de saisir votre vitesse maximale. Si vous ne la saisissez pas,
+        l'outil calculera automatiquement votre vitesse maximale à l'aide d'une formule : VMA*1.35, donc, la précision dépend de votre profil.
+    </p>
+    
+    <footer>
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Catégories</a>
+            <a class="a_footer" href="../../index.html">Entraînement</a>
+            <a class="a_footer" href="../progression.html">Progression</a>
+            <a class="a_footer" href="../../parametres/parametres.html">Paramètres</a>
+            <a class="a_footer" href="../../parametres/historique-versions/historique-versions.html">Historique des versions</a>
+            <a class="a_footer" href="../../parametres/themes/themes.html">Thèmes</a>
+        </div>
+           
+        <div class="conteneur-lien-footer">             
+            <a class="a_title">Algorithmes conseillés</a>
+            <a class="a_footer" href="../charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
+            <a class="a_footer" href="../estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
+            <a class="a_footer" href="../niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
+        </div>
+            
+        <div class="conteneur-lien-footer">
+            <a class="a_title">Autres</a>
+            <a class="a_footer" href="../../parametres/licence/licence.html">Licence</a>
+            <a class="a_footer" href="../../parametres/politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
+        </div>
+    </footer>
+
+    <!-- Pour le burger menu -->
+    <script src="../../assets/base-js/base.js"></script>
+    <script src="script-outil.js"></script>
+    <script>
+        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+        let formKeyEntry = document.querySelector(".form")
+        formKeyEntry.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                zoneVitesse()
+            }
+        })
+    </script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

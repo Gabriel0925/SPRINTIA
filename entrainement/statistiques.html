@@ -89,7 +89,7 @@
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('semaine').classList.add('actif')
 
-            init(DateMoins7J)
+            init(dateMoins7J)
         ">
             <p>7J</p>
         </div>
@@ -278,7 +278,26 @@
                 document.querySelector(".sports-pratiques").style.display = "none"
                 document.getElementById("message-not-datas").style.display = "block"
                 document.getElementById("message-tips-graph").style.display = "none"
+
+                // remise à 0 des champs pr éviter d'avoir des anciennes datas lors d'une autre période
+                document.getElementById("duree").textContent = "00:00"
+                document.getElementById("charge-entrainement").textContent = "0 CE"
+                document.getElementById("nb-entrainement").textContent = "0"
+
+                // pareil pour les datas dans les sports spé
+                document.getElementById("duree-sport").textContent = "00:00"
+                document.getElementById("nb-entrainement-sport").textContent = "0"
+                document.getElementById("distance-sport").textContent = "0 km"
+
+                document.getElementById("barCanvas").style.display = "none"
                 return
+            } else { 
+                // si le user n'a pas de datas sur les 7 derniers jours et qu'il veut afficher les stats des 30j 
+                // il faut remettre le graph et le message visible sinon le graph ne sera pas là
+                document.querySelector(".sports-pratiques").style.display = "block"
+                document.getElementById("message-not-datas").style.display = "none"
+                document.getElementById("message-tips-graph").style.display = "block"
+                document.getElementById("barCanvas").style.display = "block"
             }
 
             // Tableau des entraînements en fonction de ce qu'a choisis le user comme date (7J, 30J, 365J)

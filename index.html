@@ -373,7 +373,7 @@
             let dateMoins28J = createObjetDate(28)
 
             // Recup data in BDD
-            const HistoriqueDB = await db.entrainement.toArray()
+            const HistoriqueDB = await db.entrainement.where("date").aboveOrEqual(dateMoins28J).toArray()
 
             // Trier par date 
             HistoriqueDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths

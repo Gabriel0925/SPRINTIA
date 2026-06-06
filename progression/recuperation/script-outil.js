@@ -178,7 +178,6 @@ async function remplissageTableau() {
         tableauHistorique.style.display = "none"
         // on fais apparaitre le message comme quoi sprintia n'a pas encore assez de données
         document.getElementById("text-informatif").style.display = "block"
-        document.getElementById("button_plus").style.display = "none"
         return
     }
 

@@ -61,7 +61,7 @@ function colorTheme(theme, idElement) {
     return
 }
 
-async function reinitialiserTheme() { // remmettre le thème par défaut
+async function reinitialiserTheme(idElementThemeParDefaut) { // remmettre le thème par défaut
     // Demande de confirmation avant
     if (confirm("Êtes-vous sur de vouloir réinitialiser le thème ?")) {
         let Button = document.getElementById("reinitialiser") // Recup du bouton
@@ -73,7 +73,7 @@ async function reinitialiserTheme() { // remmettre le thème par défaut
         localStorage.setItem("themeUser", "azur")
 
         // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
-        colorTheme("azur", "monochromes-1")
+        colorTheme("azur", idElementThemeParDefaut) 
 
         setTimeout(() => {
             // confirmation sauvegarde

@@ -294,7 +294,7 @@
         async function init(dateChoisie) {
             // recup data des derniers jours en fonction de la date
             const historiqueDB = await db.entrainement.where("date").aboveOrEqual(dateChoisie).toArray() // la var dateChoisie change en fonction du selected dans l'interface
-
+            console.log(historiqueDB)
             // maj de la var global
             dateDemandee = dateChoisie
 
@@ -304,6 +304,12 @@
                 document.getElementById("message-not-datas").style.display = "block"
                 document.getElementById("message-tips-graph").style.display = "none"
                 return
+            } else { 
+                // si le user n'a pas de datas sur les 7 derniers jours et qu'il veut afficher les stats des 30j 
+                // il faut remettre le graph et le message visible sinon le graph ne sera pas là
+                document.querySelector(".sports-pratiques").style.display = "block"
+                document.getElementById("message-not-datas").style.display = "none"
+                document.getElementById("message-tips-graph").style.display = "block"
             }
 
             // Tableau des entraînements en fonction de ce qu'a choisis le user comme date (7J, 30J, 365J)

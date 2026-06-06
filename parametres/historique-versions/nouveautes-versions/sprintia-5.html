@@ -158,7 +158,11 @@
     <h2>Correction des bugs et optimisations</h2>
     <ul class="list-information">
         <li>
-            Optimisation des animations CSS pour gagner en performance et éviter de consommé des ressources inutilement.
+            Optimisation des animations CSS pour gagner en performance et éviter de consommé des ressources inutilement : passage de "all" à
+            par exemple "transform".
+        </li>
+        <li>
+            Désormais, dans de nombreux boutons il est désormais impossible de séléctionner le texte à l'intérieur du bouton.
         </li>
         <li>
             Optimisation des liens pour les différents étages de l'arborecence de Sprintia, désormais au lieu de glisser des liens sur chaque
@@ -168,12 +172,19 @@
             Optimisation de nombreuses interfaces pour devenir intuitif peut importe la taille de l'écran.
         </li>
         <li>
+            Une nouvelle variable de temps pour les transitions fait son apparition, elle est utilisé lors du moment active c'est à dire lorsque
+            l'utilisateur clique sur un élément de l'interface, ce qui donne un rendu plus réactif car l'animation est désormais 2x plus rapide.
+        </li>
+        <li>
             Correction d'un bug d'affichage dans la page de statistiques qui pouvait laisser des anciennes datas lors du changement de période.
         </li>
         <li>
             Correction d'un bug du graphique dans la page de statisitiques : lorsque l'utilisateur n'avait pas de données sur les 7 derniers
             jours, puis qu'il allait sur les 30 derniers jours, le graphique apparaissait donc, sauf que lorsque l'utilisateur revient
             sur les 7 derniers jours, le graphique restait affiché alors qu'il n'y avait pas de données, c'est désormais résolu.
+        </li>
+        <li>
+            La licence et la politique de confidentialité sont désormais accessible depuis les paramètres étant donné que le footer a été supprimé.
         </li>
     </ul>
         

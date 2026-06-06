@@ -60,9 +60,9 @@ function afficherData(dataWorkout) {
             <li id="button-supprimer">Supprimer</li>
         </div>
     
-        <div class="large-zone-coach" id="coach-ajoute-entrainement" style="margin: var(--SPACE_M) 0;">
-            <p class="large-zone-coach-name" id="nom-coach">JRM Coach :</p>
-            <p class="large-zone-coach-interpretation" id="reponse-coach">
+        <div class="zone-coach" id="coach-ajoute-entrainement" style="margin: var(--SPACE_M) 0;">
+            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="zone-coach-interpretation" id="reponse-coach">
                 Chargement...
             </p> 
         </div>

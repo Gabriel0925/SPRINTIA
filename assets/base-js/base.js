@@ -1,18 +1,47 @@
-// --- Burger menu ---
-// Pour gérer l'ouverture/fermeture du menu hamburger
-const burgerMenuButton = document.querySelector('.burger-menu-button')
-const burgerMenuButtonIcon = document.querySelector('.burger-menu-button i')
-const burgerMenu = document.querySelector('.burger-menu')
+// --- Navigation pour la tab-bar ---
+const dicoUrl = {
+    "racine": {
+        "Entraînement":  "index.html",
+        "Progression":   "progression/progression.html",
+        "Outils":        "outils/outils.html",
+        "Paramètres":    "parametres/parametres.html"
+    },
+    "profondeur1": {
+        "Entraînement":  "../index.html",
+        "Progression":   "../progression/progression.html",
+        "Outils":        "../outils/outils.html",
+        "Paramètres":    "../parametres/parametres.html"
+    },
+    "profondeur2": {
+        "Entraînement":  "../../index.html",
+        "Progression":   "../../progression/progression.html",
+        "Outils":        "../../outils/outils.html",
+        "Paramètres":    "../../parametres/parametres.html"
+    },
+    "profondeur3": {
+        "Entraînement":  "../../../index.html",
+        "Progression":   "../../../progression/progression.html",
+        "Outils":        "../../../outils/outils.html",
+        "Paramètres":    "../../../parametres/parametres.html"
+    },
+}
+function navigationLinks(elt, component, profondeur, onglet) {
+    let classComponent = undefined
+    if (component == "tab-bar") {classComponent = ".tab-bars-items.selected"} else {classComponent = ".header-items.selected"}
 
-burgerMenuButton.onclick = function () {
-    burgerMenu.classList.toggle('open')
-    const isOpen = burgerMenu.classList.contains('open')
-    burgerMenuButtonIcon.classList = isOpen ? 'fs-icon_fermer' : 'fs-icon_menu'
+    // on change la tab bar/header sélectionné en enlevant la class "selected" à l'ancien et en l'ajoutant à celui sur lequel on a cliqué
+    const eltSelected = document.querySelector(classComponent)
+    eltSelected.classList.remove("selected")
+    elt.classList.add("selected")
+
+    // on renvoie vers la nouvelle url pour changer de page de tab bar
+    window.location.href = dicoUrl[profondeur][onglet]
 }
 
+
+
+// --- Menu plus ---
 window.onclick = function (event) { // on track les clicks sur la page complète
-    let TrackClickBurgerMenuButton = burgerMenuButton.contains(event.target) // pour tracker si il y a un click sur le bouton si oui = true sinon = false
-    let TrackClickBurgerMenuOpen = burgerMenu.contains(event.target)
     let TrackClickButtonMore = document.getElementById("button-group-button")
     let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus
      
@@ -26,10 +55,7 @@ window.onclick = function (event) { // on track les clicks sur la page complète
     }
     
     // si tu as cliqué autre part que ses 4 conditions alors on referme le menu burger et le menu plus 
-    if (TrackClickBurgerMenuButton == false && TrackClickBurgerMenuOpen == false && TrackClickButtonMore == false && TrackClickButtonInMenuMore == false) { 
-        // on referme le burgermenu
-        burgerMenu.classList.remove("open")
-        burgerMenuButtonIcon.classList.add("fs-icon_menu")
+    if (TrackClickButtonMore == false && TrackClickButtonInMenuMore == false) { 
         // pour le menu plus
         const menuButtonMore = document.querySelector(".menu-many-action")
         if (menuButtonMore) {
@@ -40,17 +66,6 @@ window.onclick = function (event) { // on track les clicks sur la page complète
         }
     }
 }
-window.addEventListener("scroll", () => {
-    // on referme le burgermenu
-    burgerMenu.classList.remove("open")
-    burgerMenuButtonIcon.classList.add("fs-icon_menu")  
-})
-// --- Fin burger menu ---
-
-
-
-// --- Menu plus ---
-const menuButtonMore = document.querySelector(".menu-many-action")
 window.addEventListener("click", (event) => {
     if (event.target.id == "button-group-button") {
         const menuButtonMore = document.querySelector(".menu-many-action")
@@ -78,38 +93,37 @@ window.addEventListener("pageshow", (event) => {
     // Pour contrer le BFCache parce qu'il mettait en cache mes anciennes pages pour éviter de les recharger mais ça causait probleme pour les thèmes
     if (event.persisted) { // event.persisted = quand la page est dans le cache
         // forcer de lancer la fonction qui charge le thème quand on fait un retour donc quand la page viens du BFCache
-        Preference()
+        preferenceUser()
     }
 });
 
 
 
 // --- Pour le logo dynamique ---
-let Timer1 = 0
-let Timer2 = 0
+let timer1 = 0
+let timer2 = 0
 function logoDynamique(message) {
-    clearTimeout(Timer1)
-    clearTimeout(Timer2)
-    // Recup du logo dynamique
-    let elementLogoDynamique = document.getElementById("logo-dynamique")
+    clearTimeout(timer1)
+    clearTimeout(timer2)
+    // // Recup du logo dynamique
+    let elementLogoDynamique = document.querySelector(".logo-dynamique")
 
     // Initialisation (Remise à 0)
-    elementLogoDynamique.classList.remove("return", "pin-message")
+    elementLogoDynamique.classList.remove("return", "message")
 
     // Déclenchement de l'animation pour afficher le message au user
-    elementLogoDynamique.classList.add("pin-message")
+    elementLogoDynamique.classList.add("message")
     // Affichage message au user
     elementLogoDynamique.textContent = message;
 
-    Timer1 = setTimeout(() => { 
+    timer1 = setTimeout(() => { 
         elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
-        elementLogoDynamique.textContent = "Sprintia"; // on ré-affiche 'Sprintia' dans le logo dynamique
     }, 2500);
 
-    Timer2 = setTimeout(() => {
+    timer2 = setTimeout(() => {
         // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
         elementLogoDynamique.classList.remove("return")
-        elementLogoDynamique.classList.remove("pin-message")
+        elementLogoDynamique.classList.remove("message")
     }, 3100)
 }
 
@@ -124,7 +138,7 @@ async function genererGraphiqueLine(listeX, listeY) {
     let StyleCSS = getComputedStyle(RootCSS)
     // Recup variable css
     let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
-    let CouleurAccent2 = StyleCSS.getPropertyValue("--COLOR_ACCENT2")
+    let CouleurAccentText = StyleCSS.getPropertyValue("--COLOR_ACCENT_TEXT")
     let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
     const barCanvas = document.getElementById("barCanvas")
@@ -140,7 +154,7 @@ async function genererGraphiqueLine(listeX, listeY) {
                 datasets: [{
                     data: listeY,
                     borderColor : CouleurAccent, // Ligne des niveau couleur
-                    backgroundColor: CouleurAccent2,
+                    backgroundColor: CouleurAccentText,
                     fill: true, // Pour remplir le graphique de la couleur background
                     pointRadius: 8, // Taille du point
                     pointHoverRadius: 10,
@@ -348,7 +362,7 @@ function majLocalStorage(versionStockee) {
         localStorage.removeItem("ColorActuelleUse")
 
         // on lance la fonction pour éviter un décalage
-        Preference()
+        preferenceUser()
     }
 
     return

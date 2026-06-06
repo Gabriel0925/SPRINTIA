@@ -22,67 +22,66 @@
 </head>  
 
 <body>
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <a href="../index.html">Sprintia</a>
-            </div>
-            <ul class="links">
-                <li>
-                    <a class="actif" href="../index.html">
-                        <i class="fs-icon_entrainement"></i>
-                        Entraînement
-                    </a>
-                </li>
-                <li>
-                    <a href="../progression/progression.html">
-                        <i class="fs-icon_progression"></i>
-                        Progression
-                    </a>
-                </li>
-                <li>
-                    <a href="../parametres/parametres.html">
-                        <i class="fs-icon_parametres"></i>
-                        Paramètres
-                    </a>
-                </li>
-            </ul>
-            <div class="burger-menu-button">
-                <i class="fs-icon_menu"></i>
-            </div>
-        </div>
+    <section class="header">
 
-        <div class="burger-menu">
-            <ul class="links">
-                <li>
-                    <a class="actif-burger-menu" href="../index.html">
-                        <i class="fs-icon_entrainement"></i>
-                        Entraînement
-                    </a>
-                </li>
-                <li>
-                    <a href="../progression/progression.html">
-                        <i class="fs-icon_progression"></i>
-                        Progression
-                    </a>
-                </li>
-                <li>
-                    <a href="../parametres/parametres.html">
-                        <i class="fs-icon_parametres"></i>
-                        Paramètres
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </header>
+        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur1', 'Entraînement')">SPRINTIA</div>
 
-    <h1>Statistiques</h1>
+        
+        <ul class="header-container-items">
+
+            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur1', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Paramètres')">
+                <i class="fs-icon_parametres"></i>
+                Paramètres
+            </li>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Paramètres')">
+                <i class="fs-icon_parametres"></i>
+                <p class="tab-bars-items-name">Paramètres</p>
+            </li>
+
+        </ul>
+
+    </section>
     <div class="container-button-flottant">
         <div class="button-flottant" onclick="window.location.href = 'ajouter-entrainement.html'">
             <i class="fs-icon_add"></i>
-            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+            <p>Ajouter</p>
         </div>
     </div>
+
+    <h1>Statistiques</h1>
 
     <section class="segmented-button duree">
 
@@ -204,30 +203,6 @@
             <p class="container-block-data-data" id="distance-sport">0 km</p>
         </div>
     </section>
-    
-    <footer>
-        <div class="conteneur-lien-footer">
-            <a class="a_title">Catégories</a>
-            <a class="a_footer" href="../index.html">Entraînement</a>
-            <a class="a_footer" href="../progression/progression.html">Progression</a>
-            <a class="a_footer" href="../parametres/parametres.html">Paramètres</a>
-            <a class="a_footer" href="../parametres/historique-versions/historique-versions.html">Historique des versions</a>
-            <a class="a_footer" href="../parametres/themes/themes.html">Thèmes</a>
-        </div>
-           
-        <div class="conteneur-lien-footer">             
-            <a class="a_title">Algorithmes conseillés</a>
-            <a class="a_footer" href="../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
-        </div>
-            
-        <div class="conteneur-lien-footer">
-            <a class="a_title">Autres</a>
-            <a class="a_footer" href="../parametres/licence/licence.html">Licence</a>
-            <a class="a_footer" href="../parametres/politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
-        </div>
-    </footer>
 
     <!-- Pour le burger menu -->
     <script src="../assets/base-js/base.js"></script>
@@ -294,7 +269,7 @@
         async function init(dateChoisie) {
             // recup data des derniers jours en fonction de la date
             const historiqueDB = await db.entrainement.where("date").aboveOrEqual(dateChoisie).toArray() // la var dateChoisie change en fonction du selected dans l'interface
-            console.log(historiqueDB)
+
             // maj de la var global
             dateDemandee = dateChoisie
 
@@ -304,12 +279,6 @@
                 document.getElementById("message-not-datas").style.display = "block"
                 document.getElementById("message-tips-graph").style.display = "none"
                 return
-            } else { 
-                // si le user n'a pas de datas sur les 7 derniers jours et qu'il veut afficher les stats des 30j 
-                // il faut remettre le graph et le message visible sinon le graph ne sera pas là
-                document.querySelector(".sports-pratiques").style.display = "block"
-                document.getElementById("message-not-datas").style.display = "none"
-                document.getElementById("message-tips-graph").style.display = "block"
             }
 
             // Tableau des entraînements en fonction de ce qu'a choisis le user comme date (7J, 30J, 365J)

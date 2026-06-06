@@ -23,74 +23,74 @@
 </head>
 
 <body>
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <a href="../../index.html">Sprintia</a>
-            </div>
-            <ul class="links">
-                <li>
-                    <a href="../../index.html">
-                        <i class="fs-icon_entrainement"></i>
-                        Entraînement
-                    </a>
-                </li>
-                <li>
-                    <a href="../../progression/progression.html">
-                        <i class="fs-icon_progression"></i>
-                        Progression
-                    </a>
-                </li>
-                <li>
-                    <a class="actif" href="../parametres.html">
-                        <i class="fs-icon_parametres"></i>
-                        Paramètres
-                    </a>
-                </li>
-            </ul>
-            <div class="burger-menu-button">
-                <i class="fs-icon_menu"></i>
-            </div>
-        </div>
+    <section class="header">
 
-        <div class="burger-menu">
-            <ul class="links">
-                <li>
-                    <a href="../../index.html">
-                        <i class="fs-icon_entrainement"></i>
-                        Entraînement
-                    </a>
-                </li>
-                <li>
-                    <a href="../../progression/progression.html">
-                        <i class="fs-icon_progression"></i>
-                        Progression
-                    </a>
-                </li>
-                <li>
-                    <a class="actif-burger-menu" href="../parametres.html">
-                        <i class="fs-icon_parametres"></i>
-                        Paramètres
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </header>
+        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
+
+        
+        <ul class="header-container-items">
+
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Paramètres')">
+                <i class="fs-icon_parametres"></i>
+                Paramètres
+            </li>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Paramètres')">
+                <i class="fs-icon_parametres"></i>
+                <p class="tab-bars-items-name">Paramètres</p>
+            </li>
+
+        </ul>
+
+    </section>
 
     <h1>Historique des versions</h1>
         
     <h2>Dernière version</h2>
-    <div class="box-last-maj" onclick="location.href = 'nouveautes-versions/sprintia-4.3.2.html'">
+    <div class="box-last-maj" onclick="location.href = 'nouveautes-versions/Sprintia 5.html'">
         <div class="content1">
             <div class="card-releases-image-last-maj">
-                <p>Sprintia 4.3.2</p>
-                <p class="date-last-maj">06 Juin 2026</p>
+                <p>Sprintia 5</p>
+                <p class="date-last-maj">21 Juin 2026</p>
             </div>
         </div>
         <div class="content2">
             <p class="description">
-            Sprintia 4.3.2 apporte de nombreuses corrections de bugs majeurs qui sont liés à la dernière mise à jour qui avait
-            pour but d'optimiser et de corriger les bugs ce qui est un peu ironique car au final cette mise à jour a apporté des bugs majeurs.
+                Sprintia 5 est une refonte majeure, l'application est désormais organisée et structurée ce qui améliore grandement l'expérience 
+                utilisateur. De plus, Sprintia 5 adopte enfin une tab-bar pour mobile, ainsi que du Glassmorphism pour accompagner
+                le Glow Effect qui a été intégré dans Sprintia 4.3.
             </p>
             <button style="min-width: 238px;">Découvrir la mise à jour</button>
         </div>
@@ -340,30 +340,6 @@
 
         </div>
     </div>
-     
-    <footer>
-        <div class="conteneur-lien-footer">
-            <a class="a_title">Catégories</a>
-            <a class="a_footer" href="../../index.html">Entraînement</a>
-            <a class="a_footer" href="../../progression/progression.html">Progression</a>
-            <a class="a_footer" href="../parametres.html">Paramètres</a>
-            <a class="a_footer" href="historique-versions.html">Historique des versions</a>
-            <a class="a_footer" href="../themes/themes.html">Thèmes</a>
-        </div>
-           
-        <div class="conteneur-lien-footer">             
-            <a class="a_title">Algorithmes conseillés</a>
-            <a class="a_footer" href="../../progression/charge-entrainement/charge-entrainement.html">Charge d'entraînement</a>
-            <a class="a_footer" href="../../progression/estimation-vo2max/estimation-vo2max.html">Estimation VO₂max</a>
-            <a class="a_footer" href="../../progression/niveau-course-a-pied/niveau-course.html">Niveau de course à pied</a>
-        </div>
-            
-        <div class="conteneur-lien-footer">
-            <a class="a_title">Autres</a>
-            <a class="a_footer" href="../licence/licence.html">Licence</a>
-            <a class="a_footer" href="../politique-de-confidentialite/politique-confidentialite.html">Politique de confidentialité</a>
-        </div>
-    </footer>
     
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>

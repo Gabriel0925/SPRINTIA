@@ -604,10 +604,10 @@ div.container-logo-dynamique {
     justify-content: center;
 
     width: calc(100% - (var(--SPACE_S_SMALL) * 2));
-    height: 150px;
+    height: 100px;
 
     pointer-events: none;
-    position: absolute;
+    position: fixed;
     z-index: 18000;
 }
 div.container-logo-dynamique div.logo-dynamique {
@@ -616,13 +616,13 @@ div.container-logo-dynamique div.logo-dynamique {
     align-items: center;
 
     text-align: center;
-    font-size: var(--H1);
+    font-size: var(--H2);
     font-weight: 1000;
 
     max-width: 600px;
     flex-grow: 1;
-    height: 100px;
-    border-radius: var(--BORDER_BIG);    
+    height: 65px;
+    border-radius: var(--BORDER_BIG);   
     
     background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
@@ -632,29 +632,27 @@ div.container-logo-dynamique div.logo-dynamique {
     pointer-events: none;
     z-index: 20000;
 
-    transition: transform ease-out 0.45s;
+    transition: transform ease-out 0.6s;
 }
 @keyframes animation_logo_dynamique {
-    0% {transform: scale(0.2) translateY(-400px)}
-    40% {transform: scale(0.4) translateY(80px)}
-    60% {transform: scale(0.7) translateY(80px)}
-    100% {transform: scale(1) translateY(0)}
+    0% {transform: scale(0) translateY(-300px);}
+    60% {transform: scale(1.1, 0.92) translateY(10px);}
+    85% {transform: scale(0.95, 1.04) translateY(-5px);}
+    100% {transform: scale(1) translateY(0);}
 }
 div.container-logo-dynamique div.logo-dynamique.message {
     display: flex;
     transform: scale(1) translateY(0);
-    animation: animation_logo_dynamique 0.45s ease-out forwards;
+    animation: animation_logo_dynamique ease-out 0.6s forwards;
 }
 @keyframes animation_logo_dynamique_return {
-    0% {transform: scale(1) translateY(0)}
-    40% {transform: scale(0.7) translateY(80px)}
-    60% {transform: scale(0.4) translateY(80px)}
-    100% {transform: scale(0.2) translateY(-400px)}
+    0% {transform: scale(1); opacity: 1;}
+    100% {transform: scale(1.4, 1.4); opacity: 0;}
 }
 div.container-logo-dynamique div.logo-dynamique.message.return {
     display: flex;
     transform: scale(1) translateY(0);
-    animation: animation_logo_dynamique_return 0.45s ease-out forwards;
+    animation: animation_logo_dynamique_return ease-out 0.3s forwards;
 }
 
 
@@ -2136,6 +2134,9 @@ ol.container-color-accentuation{
 }
 li.option-color {
     width: 40%;
+    height: 50px;
+    display: flex;
+    align-items: center;
     flex-grow: 1;
     overflow: hidden;
     cursor: pointer;
@@ -2144,9 +2145,9 @@ li.option-color {
     font-size: var(--H3);
     color: var(--COLOR_TEXT_PRIMARY);
     background-color: var(--COLOR_BACKGROUND_CARD);
-    padding: var(--SPACE_XS) var(--SPACE_S);
+    padding: var(--SPACE_XS) var(--SPACE_M);
     border-radius: var(--BORDER_NORMAL);
-    transition: all ease-out var(--TIME_TRANSITION);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     li.option-color:hover{
@@ -2164,22 +2165,21 @@ ol li.option-color::before{
     height: 100%;
     background-color: var(--COLOR_ACCENT);
     width: 10px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-top-right-radius: var(--BORDER_NORMAL);
+    border-bottom-right-radius: var(--BORDER_NORMAL);
     z-index: -1;
-    transition: all ease-out 0.3s;
+    transition: width ease-out 0.4s;
 }
 @media (hover: hover) and (pointer: fine) {
     ol li.option-color:hover::before{ 
         width: 100%;
-        transition: all ease-out var(--TIME_TRANSITION);
     }
 }
 /* celui selectionné */
 ol li.option-color.selected{
     color: var(--COLOR_BACKGROUND);
+    border-radius: var(--BORDER_BIG);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    transition: all ease-out var(--TIME_TRANSITION);
 }
 ol li.option-color.selected::before{
     width: 100%;

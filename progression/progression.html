@@ -28,7 +28,7 @@
 
         
         <ul class="header-container-items">
-
+ 
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Entraînement')">
                 <i class="fs-icon_entrainement"></i>
                 Entraînement
@@ -77,36 +77,38 @@
 
     <h1>Progression</h1>
 
+    <div class="action-list">
+
+        <a href="charge-entrainement/charge-entrainement.html">
+            <div class="action-list-item">
+                <i class="fs-icon_charge_entrainement"></i>
+                <p class="text-param">Charge d'entraînement</p>
+            </div>
+        </a>
+        <a href="recuperation/recuperation.html">
+            <div class="action-list-item">
+                <i class="fs-icon_recuperation"></i>
+                <p class="text-param">Récupération</p>
+            </div>
+        </a>
+        <a href="indulgence-course/indulgence-course.html">
+            <div class="action-list-item">
+                <i class="fs-icon_indulgence_course"></i>
+                <p class="text-param">Indulgence de course</p>
+            </div>
+        </a>
+
+    </div>
+
     <div class="carousel">
         <div class="carousel-content">
 
-            <div class="card-tool first" onclick="window.location.href = 'charge-entrainement/charge-entrainement.html'">
-                <div class="icone">
-                    <i class="fs-icon_charge_entrainement"></i>
-                </div>
-                <h1>Charge d'entraînement</h1>
-                <p>Découvrez la quantité de stress physique que vous imposez à votre corps de part vos entraînements.</p>
-            </div>
-            <div class="card-tool" onclick="window.location.href = 'recuperation/recuperation.html'">
-                <div class="icone">
-                    <i class="fs-icon_recuperation"></i>
-                </div>
-                <h1>Récupération</h1>
-                <p>Suivez l'évolution de votre récupération et découvrez votre capacité à fournir un effort physique aujourd'hui.</p>
-            </div>
             <div class="card-tool first"  onclick="window.location.href = 'niveau-course-a-pied/niveau-course.html'">
                 <div class="icone">
                     <i class="fs-icon_niveau_course"></i>
+                    <p class="title">Niveau course à pied</p>
                 </div>
-                <h1>Niveau course à pied</h1>
                 <p>Évaluez votre niveau de course grâce à un test puis obtenez un score ainsi qu'une zone pour suivre vos progrès.</p>
-            </div>
-            <div class="card-tool" onclick="window.location.href = 'indulgence-course/indulgence-course.html'">
-                <div class="icone">
-                    <i class="fs-icon_indulgence_course"></i>
-                </div>
-                <h1>Indulgence de course</h1>
-                <p>Découvrez une fourchette de distance hebdomadaire conseillé en fonction de vos dernières semaines de course.</p>
             </div>
 
         </div>

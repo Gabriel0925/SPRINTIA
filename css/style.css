@@ -18,7 +18,7 @@
 
     /* Intensité du blur pour le Glow Effect */
     --GLOW_EFFECT_BLUR: 20px;
-    --GLOW_EFFECT_BRIGHTNESS: 0.7;
+    --GLOW_EFFECT_BRIGHTNESS: 0.8;
 
     /* Tailles & Configuration de la font */
     --H0: 2.5rem; 
@@ -371,7 +371,7 @@ button.size-block {
 
 /* Pour des liens vers une adresse */
 a.lien {
-    color: var(--COLOR_ACCENT_TEXT);
+    color: var(--COLOR_ACCENT);
     cursor: pointer;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     text-decoration: underline;
@@ -764,6 +764,7 @@ div.carousel div.card-tool {
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
     border-radius: var(--BORDER_BIG);
     cursor: pointer;
+    min-height: 180px;
 
     width: 240px;
     height: fit-content;
@@ -786,20 +787,27 @@ div.carousel div.card-tool:active {
 }
 div.carousel div.card-tool div.icone{
     display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: var(--SPACE_S_SMALL);
+}
+div.carousel div.card-tool div.icone i{
+    display: flex;
     justify-content: center;
+    align-items: center;
+
     background-color: var(--COLOR_ACCENT);
-    padding: var(--SPACE_XXS);
     border-radius: var(--BORDER_NORMAL);
-    width: 100%;
-    font-size: 4.2rem;    
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 2.25rem;
     color: var(--COLOR_BACKGROUND);
 }
-div.carousel div.card-tool h1{
-    font-size: var(--H3);
-    margin-top: var(--SPACE_XS);
+div.carousel div.card-tool div.icone p.title{
+    margin: auto 0;
     color: var(--COLOR_TEXT_PRIMARY);
-    min-height: 60px;
     font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-size: 1.1rem;
     
     display: -webkit-box;
     -webkit-box-orient: vertical; 
@@ -809,13 +817,13 @@ div.carousel div.card-tool h1{
 }
 div.carousel div.card-tool p{
     font-size: var(--P_SMALL);
-    margin-top: var(--SPACE_XXS);
+    margin-top: 0.75rem;
     color: var(--COLOR_TEXT_SECONDARY);
 
     display: -webkit-box;
     -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 3; 
-    line-clamp: 3;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     overflow: hidden; 
 }
 
@@ -839,7 +847,8 @@ section.container-workout-cards div.cards-history-workout {
     flex-grow: 1;
     padding: var(--SPACE_XS);
 
-    transition: all ease-out var(--TIME_TRANSITION);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST),
+                background-color ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-workout-cards div.cards-history-workout:hover {
@@ -1294,7 +1303,8 @@ div.zone-coach p.zone-coach-interpretation {
 /* --- Zone pour le résultat et l'interprétation --- */
 div.zone-result {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COLOR_ACCENT);
+    border: 2px solid var(--COLOR_ACCENT);
+    color: var(--COLOR_TEXT_PRIMARY);
 
     flex-grow: 1;
     max-width: 420px;
@@ -1306,21 +1316,20 @@ div.zone-result {
     overflow: hidden;
 }
 div.zone-result p.zone-result-name-result{
-    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
     margin-bottom: var(--SPACE_XS);
 }
 div.zone-result p.zone-result-interpretation{
-    color: var(--COLOR_BACKGROUND);
     max-height: 160px;
 }
 
 /* --- Zone pour mettre en avant le résultat --- */
 div.large-zone-result {
     border-radius: var(--BORDER_BIG);
-    background-color: var(--COLOR_ACCENT);
+    border: 2px solid var(--COLOR_ACCENT);
+    color: var(--COLOR_TEXT_PRIMARY);
 
     flex-grow: 1;
     max-width: 420px;
@@ -1332,12 +1341,10 @@ div.large-zone-result {
     overflow: hidden;
 }
 div.large-zone-result p.large-zone-result-name {
-    color: var(--COLOR_BACKGROUND);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 }
 div.large-zone-result p.large-zone-result-result {
-    color: var(--COLOR_BACKGROUND);
     font-weight: 1000;
     font-size: var(--H1);
 
@@ -1352,8 +1359,8 @@ div.large-zone-result p.large-zone-result-result {
 /* --- Zone des petites boxs --- */
 div.small-zone-result {
     border-radius: var(--BORDER_BIG);
-    color: var(--COLOR_BACKGROUND);
-    background-color: var(--COLOR_ACCENT);
+    border: 2px solid var(--COLOR_ACCENT);
+    color: var(--COLOR_TEXT_PRIMARY);
     overflow: hidden;
     position: relative;
 
@@ -1367,25 +1374,25 @@ div.small-zone-result {
     transition: all ease-out var(--TIME_TRANSITION);
 }
 div.small-zone-result.color-zone:nth-child(1) {
-    background-color: #3dbaf9;
+    border: solid 2px #3dbaf9;
 }
 div.small-zone-result.color-zone:nth-child(2) {
-    background-color: #1fff80;
+    border: solid 2px #1fff80;
 }
 div.small-zone-result.color-zone:nth-child(3) {
-    background-color: #e7e625;
+    border: solid 2px #e7e625;
 }
 div.small-zone-result.color-zone:nth-child(4) {
-    background-color: #ff781e;
+    border: solid 2px #ff781e;
 }
 div.small-zone-result.color-zone:nth-child(5) {
-    background-color: #ff4b4c;
+    border: solid 2px #ff4b4c;
 }
 div.small-zone-result.color-zone:nth-child(6) {
-    background-color: #d672ff;
+    border: solid 2px #d672ff;
 }
 div.small-zone-result.color-zone:nth-child(7) {
-    background-color: #7b68ee;
+    border: solid 2px #7b68ee;
 }
 div.small-zone-result p.small-zone-result-name {
     font-size: var(--H2);
@@ -1394,6 +1401,7 @@ div.small-zone-result p.small-zone-result-name {
 div.small-zone-result p.small-zone-result-indication {
     font-size: var(--P);
     margin: var(--SPACE_XS) 0;
+    color: var(--COLOR_TEXT_SECONDARY);
 }
 div.small-zone-result div.container-result {
     display: flex;
@@ -1877,7 +1885,7 @@ div.card-releases-image {
     font-size: var(--H2);
     text-align: left;
     border-bottom: 2px solid var(--COLOR_ACCENT);
-    font-weight: 1000;
+    font-weight: var(--FONT_WEIGHT_BUTTON);
     padding-bottom: var(--SPACE_XS);
     padding-top: var(--SPACE_XXS);
     padding-left: var(--SPACE_XXS);
@@ -1886,7 +1894,7 @@ div.card-releases-image {
 }
 div.card-releases-image p.date{
     font-size: var(--P);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: normal;
     margin-top: var(--SPACE_XXS);
 }
 div.card-releases p.description-maj {
@@ -1970,7 +1978,7 @@ div.box-last-maj:active{
 div.box-last-maj div.content1 .card-releases-image-last-maj {
     font-size: var(--H2);
     text-align: left;
-    font-weight: 1000;
+    font-weight: var(--FONT_WEIGHT_BUTTON);
     width: 100%;
     border-bottom: 2px solid var(--COLOR_ACCENT);
     padding-bottom: var(--SPACE_XS);
@@ -1981,7 +1989,7 @@ div.box-last-maj div.content1 .card-releases-image-last-maj {
 }
 div.box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
     font-size: var(--P);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: normal;
     margin-top: var(--SPACE_XXS);
 }
 div.box-last-maj div.content2 {
@@ -2261,12 +2269,6 @@ div.container-center-marge {
 
 
 /* ----- RESPONSIVE ----- */
-@media (max-width: 1025px) {
-    footer {
-        display: block;
-    }
-}
-
 @media (max-width : 480px) {
     section.container-tools-pin div.tools-pin {
         margin: var(--SPACE_XS) 0;

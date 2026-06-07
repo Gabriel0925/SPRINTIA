@@ -12,7 +12,7 @@
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
     /* Intensité du glassmorphism pour les composents flottant */
-    --GLASSMORPHISM: 25px;
+    --GLASSMORPHISM: 14px;
     --COLOR_GLASSMORPHISM: rgba(80, 80, 80, 0.4);
     --COLOR_BORDER_GLASSMORPHISM: rgba(255, 255, 255, 0.15);
 
@@ -2144,18 +2144,21 @@ li.option-color {
     width: 40%;
     height: 50px;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-grow: 1;
     overflow: hidden;
     cursor: pointer;
-    position: relative;
     z-index: 1;
     font-size: var(--H3);
     color: var(--COLOR_TEXT_PRIMARY);
-    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_BACKGROUND);
     padding: var(--SPACE_XS) var(--SPACE_M);
-    border-radius: var(--BORDER_NORMAL);
-    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+    border-radius: 0.6rem;
+    transition: transform ease-out var(--TIME_TRANSITION_FAST),
+                border-radius ease-out var(--TIME_TRANSITION),
+                outline ease-out var(--TIME_TRANSITION),
+                font-weight ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     li.option-color:hover{
@@ -2165,96 +2168,75 @@ li.option-color {
 ol li.option-color:active{
     transform: scale(var(--SCALE_NORMAL));
 }
-ol li.option-color::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: var(--COLOR_ACCENT);
-    width: 10px;
-    border-top-right-radius: var(--BORDER_NORMAL);
-    border-bottom-right-radius: var(--BORDER_NORMAL);
-    z-index: -1;
-    transition: width ease-out 0.4s;
-}
-@media (hover: hover) and (pointer: fine) {
-    ol li.option-color:hover::before{ 
-        width: 100%;
-    }
-}
 /* celui selectionné */
 ol li.option-color.selected{
-    color: var(--COLOR_BACKGROUND);
+    outline: 2px solid var(--COLOR_ACCENT_TEXT);
+    transform: scale(0.9);
     border-radius: var(--BORDER_BIG);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-ol li.option-color.selected::before{
-    width: 100%;
-    transition: all ease-out 0.3s;
-}
 
 /* --- Thèmes Froids --- */
-ol li.option-color.option-color#azur::before{ 
-    background: var(--COLOR_AZUR);
+ol li.option-color.option-color#azur{ 
+    background-color: var(--COLOR_AZUR);
 }
-ol li.option-color.option-color#ocean::before{ 
-    background: var(--COLOR_OCEAN);
+ol li.option-color.option-color#ocean{ 
+    background-color: var(--COLOR_OCEAN);
 }
-ol li.option-color.option-color#lune::before{ 
-    background: var(--COLOR_LUNE);
+ol li.option-color.option-color#lune{ 
+    background-color: var(--COLOR_LUNE);
 }
-ol li.option-color.option-color#glacier::before{ 
-    background: var(--COLOR_GLACIER);
+ol li.option-color.option-color#glacier{ 
+    background-color: var(--COLOR_GLACIER);
 }
-ol li.option-color.option-color#pomme::before{ 
-    background: var(--COLOR_POMME);
+ol li.option-color.option-color#pomme{ 
+    background-color: var(--COLOR_POMME);
 }
-ol li.option-color.option-color#vegetation::before{ 
-    background: var(--COLOR_VEGETATION);
+ol li.option-color.option-color#vegetation{ 
+    background-color: var(--COLOR_VEGETATION);
 }
-ol li.option-color.option-color#sapin::before{ 
-    background: var(--COLOR_SAPIN);
+ol li.option-color.option-color#sapin{ 
+    background-color: var(--COLOR_SAPIN);
 }
-ol li.option-color.option-color#menthe::before{ 
-    background: var(--COLOR_MENTHE);
+ol li.option-color.option-color#menthe{ 
+    background-color: var(--COLOR_MENTHE);
 }
-ol li.option-color.option-color#lavande::before{ 
-    background: var(--COLOR_LAVANDE);
+ol li.option-color.option-color#lavande{ 
+    background-color: var(--COLOR_LAVANDE);
 }
-ol li.option-color.option-color#lilas::before{ 
-    background: var(--COLOR_LILAS);
+ol li.option-color.option-color#lilas{ 
+    background-color: var(--COLOR_LILAS);
 }
 
 /* --- Thèmes Chauds --- */
-ol li.option-color.option-color#feu::before{ 
-    background: var(--COLOR_FEU);
+ol li.option-color.option-color#feu{ 
+    background-color: var(--COLOR_FEU);
 }
-ol li.option-color.option-color#corail::before{ 
-    background: var(--COLOR_CORAIL);
+ol li.option-color.option-color#corail{ 
+    background-color: var(--COLOR_CORAIL);
 }
-ol li.option-color.option-color#carmin::before{ 
-    background: var(--COLOR_CARMIN);
+ol li.option-color.option-color#carmin{ 
+    background-color: var(--COLOR_CARMIN);
 }
-ol li.option-color.option-color#peche::before{ 
-    background: var(--COLOR_PECHE);
+ol li.option-color.option-color#peche{ 
+    background-color: var(--COLOR_PECHE);
 }
-ol li.option-color.option-color#citron::before{ 
-    background: var(--COLOR_CITRON);
+ol li.option-color.option-color#citron{ 
+    background-color: var(--COLOR_CITRON);
 }
-ol li.option-color.option-color#framboise::before{ 
-    background: var(--COLOR_FRAMBOISE);
+ol li.option-color.option-color#framboise{ 
+    background-color: var(--COLOR_FRAMBOISE);
 }
-ol li.option-color.option-color#fuchsia::before{ 
-    background: var(--COLOR_FUCHSIA);
+ol li.option-color.option-color#fuchsia{ 
+    background-color: var(--COLOR_FUCHSIA);
 }
-ol li.option-color.option-color#guimauve::before{ 
-    background: var(--COLOR_GUIMAUVE);
+ol li.option-color.option-color#guimauve{ 
+    background-color: var(--COLOR_GUIMAUVE);
 }
 
 /* --- Thèmes neutres --- */
-ol li.option-color.option-color#nuage::before{ 
-    background: var(--COLOR_NUAGE);
+ol li.option-color.option-color#nuage{ 
+    background-color: var(--COLOR_NUAGE);
 }
 
 

@@ -77,11 +77,11 @@
 /* Pour les icônes dans l'application */
 @font-face {
     font-family: 'Font-SPRINTIA';
-    src:  url('../assets/icons/font-SPRINTIA-V4.4.eot?7gygna');
-    src:  url('../assets/icons/font-SPRINTIA-V4.4.eot?7gygna#iefix') format('embedded-opentype'),
-        url('../assets/icons/font-SPRINTIA-V4.4.ttf?7gygna') format('truetype'),
-        url('../assets/icons/font-SPRINTIA-V4.4.woff?7gygna') format('woff'),
-        url('../assets/icons/font-SPRINTIA-V4.4.svg?7gygna#Font-SPRINTIA') format('svg');
+    src:  url('../assets/icons/font-Sprintia-V4.4.eot?7gygna');
+    src:  url('../assets/icons/font-Sprintia-V4.4.eot?7gygna#iefix') format('embedded-opentype'),
+        url('../assets/icons/font-Sprintia-V4.4.ttf?7gygna') format('truetype'),
+        url('../assets/icons/font-Sprintia-V4.4.woff?7gygna') format('woff'),
+        url('../assets/icons/font-Sprintia-V4.4.svg?7gygna#Font-Sprintia') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;

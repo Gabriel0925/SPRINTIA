@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
     
-    <link rel="icon" type="image/png" href="../assets/icons-SPRINTIA/icon-512-V4.3.1.png">
+    <link rel="icon" type="image/png" href="../assets/icons-sprintia/icon-512-V4.3.1.png">
 
     <link rel="manifest" href="../manifest-V4.3.1.json">
 
@@ -16,7 +16,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="/assets/icons-SPRINTIA/icon-192-V4.3.1.png">
+    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
     
     <script src="../parametres/script-themes.js"></script>
 </head>
@@ -77,14 +77,20 @@
 
     <h1>Progression</h1>
 
+    <section class="widjet-charge-entrainement" onclick="window.location.href = 'charge-entrainement/charge-entrainement.html'">
+
+        <div class="widjet-charge-entrainement-header">
+            <p class="widjet-charge-entrainement-header-title">Charge d'entraînement</p>
+            <i class="fs-icon_fleche-droite"></i>
+        </div>
+
+        <p class="widjet-charge-entrainement-score">459 <small>CE</small></p>
+        <p class="widjet-charge-entrainement-statut">Désentraînement</p>
+
+    </section>
+
     <div class="action-list">
 
-        <a href="charge-entrainement/charge-entrainement.html">
-            <div class="action-list-item">
-                <i class="fs-icon_charge_entrainement"></i>
-                <p class="text-param">Charge d'entraînement</p>
-            </div>
-        </a>
         <a href="recuperation/recuperation.html">
             <div class="action-list-item">
                 <i class="fs-icon_recuperation"></i>
@@ -100,19 +106,17 @@
 
     </div>
 
-    <div class="carousel">
-        <div class="carousel-content">
+    <section class="widjet-charge-entrainement" onclick="window.location.href = 'niveau-course-a-pied/niveau-course-v2.html'">
 
-            <div class="card-tool first"  onclick="window.location.href = 'niveau-course-a-pied/niveau-course.html'">
-                <div class="icone">
-                    <i class="fs-icon_niveau_course"></i>
-                    <p class="title">Niveau course à pied</p>
-                </div>
-                <p>Évaluez votre niveau de course grâce à un test puis obtenez un score ainsi qu'une zone pour suivre vos progrès.</p>
-            </div>
-
+        <div class="widjet-charge-entrainement-header">
+            <p class="widjet-charge-entrainement-header-title">Niveau de course à pied</p>
+            <i class="fs-icon_fleche-droite"></i>
         </div>
-    </div>
+
+        <p class="widjet-charge-entrainement-score">72</p>
+        <p class="widjet-charge-entrainement-statut">Intermédiaire</p>
+
+    </section>
 
     <!-- Pour le burger menu -->
     <script src="../assets/base-js/base.js"></script>

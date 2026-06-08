@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Hydratation</title>
+    <title>SPRINTIA - Ajout niveau course</title>
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,11 @@
 </head>
 
 <body>
-    <section class="header">
+    <div class="container-logo-dynamique">
+        <div class="logo-dynamique"></div>
+    </div>
+    
+     <section class="header">
 
         <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
 
@@ -33,11 +37,11 @@
                 <i class="fs-icon_entrainement"></i>
                 Entraînement
             </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
                 <i class="fs-icon_progression"></i>
                 Progression
             </li>
-            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
                 <i class="fs-icon_outils"></i>
                 Outils
             </li>
@@ -58,11 +62,11 @@
                 <i class="fs-icon_entrainement"></i>
                 <p class="tab-bars-items-name">Entraînement</p>
             </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
                 <i class="fs-icon_progression"></i>
                 <p class="tab-bars-items-name">Progression</p>
             </li>
-            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
                 <i class="fs-icon_outils"></i>
                 <p class="tab-bars-items-name">Outils</p>
             </li>
@@ -74,63 +78,40 @@
         </ul>
 
     </section>
-    
-    <h1>Hydratation</h1>
-    <section class="container-zone">
 
-        <div class="form" style="height: fit-content;">
-                
-            <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                <div class="label-input">Poids (kg)</div>
-            </div>
+    <h1>Ajout niveau course</h1>
 
-            <button id="button-estimer" onclick="CalculGeneral()">Estimer</button>
-        </div>
-
-        <div class="zone-result">
-            <p class="zone-result-name-result">Hydratation du jour : <strong>0 mL</strong></p>
-            <p class="zone-result-interpretation">
-                Veuillez rentrer votre poids pour avoir une interprétation.
-            </p>
-        </div>
-
-    </section>
-
-    <h2>Utilité de l'outil</h2>
-    <p class="text">
-        Cet outil est conçu pour vous donner une idée de la quantité d'eau à boire par jour.
-        En revanche, il faut être régulier au cours de la journée, il faut mieux boire par petites gorgées que de grandes quantités d'un coup.
-    </p>
-    <h2>Petite information</h2>
-    <p class="text">
-        SPRINTIA enlève 20% de l'estimation de l'hydratation du jour car environ 20 % de cette eau provient de vos repas (fruits, légumes,...).
-    </p>
 
     <!-- Pour le burger menu -->
     <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>    
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-outil.js"></script>
+    
+    <script src="script-outil.js" defer></script> <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
+    
+    <!-- Remplissage du input date a la date now -->
     <script>
-        window.addEventListener("DOMContentLoaded", async () => {
-            await remplissageChamps(["poids-user"])
+        let ChampDate = document.getElementById("date-niveau-course")
+        let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"
+        // Enlever la partie qui nous interrese pas
+        DateActuelle = DateActuelle.split("T") // ['2026-01-24', '13:57:55.505Z']
+        DateActuelle = DateActuelle[0] // '2026-01-24'
 
-            if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
-                document.getElementById("button-estimer").click()
-            }
-        })
+        ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
+        ChampDate.value = DateActuelle
 
         // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
         let formKeyEntry = document.querySelector(".form")
         formKeyEntry.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                CalculGeneral()
+                SauvegardeNiveauCourse()
             }
         })
     </script>
-
     
     <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>

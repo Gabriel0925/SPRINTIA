@@ -48,7 +48,7 @@ async function DownloadDatas() {
     let LienURL = document.createElement("a") // on créer la balise a dans le html
 
     LienURL.href = UrlBlob // on créer le lien a href
-    LienURL.download = "Sauvegarde-Sprintia.json" // pour enregistrer le fichier dans l'appareil d'un user
+    LienURL.download = "Sauvegarde-SPRINTIA.json" // pour enregistrer le fichier dans l'appareil d'un user
     LienURL.click() // on simmule le click pour lancer le download
 
     setTimeout(() => {
@@ -121,14 +121,14 @@ async function ReadFile(event) {
                     await db.JRM_Coach.add(element)
                 }
             }
-            // vérification si la table profil existe parce que cette table a été ajouté avec Sprintia 4.2 
+            // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA 4.2 
             if (TableProfil != undefined && TableProfil.length > 0) {     
                 for (let element of TableProfil) { // on recupere les datas ligne par ligne de la table correspondante
                     // on le met à l'id 1 car il y a que cette ligne dans la bdd
                     await db.profil.put(element, 1) 
                 }
             }
-            // vérification si la table profil existe parce que cette table a été ajouté avec Sprintia 4.2 
+            // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA 4.2 
             if (TableRecuperation != undefined && TableRecuperation.length > 0) {     
                 for (let element of TableRecuperation) { // on recupere les datas ligne par ligne de la table correspondante
                     // on le met à l'id 1 car il y a que cette ligne dans la bdd
@@ -163,7 +163,7 @@ async function ReadFile(event) {
 async function SupprimerDatas() {
     // Demande de confirmation avant de continuer
     if (confirm("Êtes-vous sur de vouloir supprimer toutes vos données ?")) {
-        let ButtonReinitialiser = document.getElementById("reinitialiser-sprintia")
+        let ButtonReinitialiser = document.getElementById("reinitialiser-SPRINTIA")
         ButtonReinitialiser.textContent = "Réinitialisation..."
         ButtonReinitialiser.disabled = true // désactivation du bouton
        
@@ -185,7 +185,7 @@ async function SupprimerDatas() {
 
         setTimeout(() => {
             // remise etat normal
-            ButtonReinitialiser.textContent = "Réinitialiser Sprintia"
+            ButtonReinitialiser.textContent = "Réinitialiser SPRINTIA"
             ButtonReinitialiser.disabled = false // Réactivation du bouton
             window.location.href = "../../index.html"
         }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout

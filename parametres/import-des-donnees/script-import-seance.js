@@ -141,7 +141,7 @@ async function uploadGarmin(event) {
                         if (fcMoyWorkout < 1 || fcMoyWorkout > 220) {fcMoyWorkout = undefined}
                         if (fcMaxWorkout < 1 || fcMaxWorkout > 220) {fcMaxWorkout = undefined}
 
-                        // on remet les bon nom de sport pour que Sprintia mettre les bonnes cartes dans l'historique d'entraînement
+                        // on remet les bon nom de sport pour que SPRINTIA mettre les bonnes cartes dans l'historique d'entraînement
                         if (langueEnglish == false) { // le csv est en anglais
                             if (sportWorkout == "Course à pied") {
                                 sportWorkout="Course"
@@ -456,7 +456,7 @@ async function uploadTrainingPeaks(event) {
                     if (dureeWorkout == "" || dureeWorkout == undefined || dureeWorkout == 0) {
                         // pas de datas donc on enregistre pas
                     } else {
-                        // on remet les bon nom de sport pour que Sprintia mettre les bonnes cartes dans l'historique d'entraînement
+                        // on remet les bon nom de sport pour que SPRINTIA mettre les bonnes cartes dans l'historique d'entraînement
                         if (sportWorkout == "Run") {
                             sportWorkout="Course"
                         } else if (sportWorkout == "Bike") {

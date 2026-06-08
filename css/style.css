@@ -76,12 +76,12 @@
 }
 /* Pour les icônes dans l'application */
 @font-face {
-    font-family: 'Font-Sprintia';
-    src:  url('../assets/icons/font-sprintia-V4.4.eot?7gygna');
-    src:  url('../assets/icons/font-sprintia-V4.4.eot?7gygna#iefix') format('embedded-opentype'),
-        url('../assets/icons/font-sprintia-V4.4.ttf?7gygna') format('truetype'),
-        url('../assets/icons/font-sprintia-V4.4.woff?7gygna') format('woff'),
-        url('../assets/icons/font-sprintia-V4.4.svg?7gygna#Font-Sprintia') format('svg');
+    font-family: 'Font-SPRINTIA';
+    src:  url('../assets/icons/font-SPRINTIA-V4.4.eot?7gygna');
+    src:  url('../assets/icons/font-SPRINTIA-V4.4.eot?7gygna#iefix') format('embedded-opentype'),
+        url('../assets/icons/font-SPRINTIA-V4.4.ttf?7gygna') format('truetype'),
+        url('../assets/icons/font-SPRINTIA-V4.4.woff?7gygna') format('woff'),
+        url('../assets/icons/font-SPRINTIA-V4.4.svg?7gygna#Font-SPRINTIA') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -112,7 +112,7 @@
 }
 /* Configuration des icônes de l'application */
 i {
-    font-family: 'Font-Sprintia' !important;
+    font-family: 'Font-SPRINTIA' !important;
     /*speak: never;*/
     font-style: normal;
     font-weight: normal;
@@ -1026,7 +1026,7 @@ textarea::placeholder {
 
 
 
-img.img-banniere-sprintia {
+img.img-banniere-SPRINTIA {
     width: 100%;
     height: auto;
     margin-top: var(--SPACE_XS);
@@ -1334,26 +1334,34 @@ div.large-zone-result {
     flex-grow: 1;
     max-width: 420px;
     min-width: 300px;
-    min-height: 160px;
 
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_S_SMALL);
     position: relative;
     overflow: hidden;
 }
 div.large-zone-result p.large-zone-result-name {
     font-weight: var(--FONT_WEIGHT_BUTTON);
+    color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--H3);
 }
 div.large-zone-result p.large-zone-result-result {
     font-weight: 1000;
     font-size: var(--H1);
+    padding: 0;
+    margin: auto 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: 92%;
+    height: 100%;
     width: 100%;
+}
+@media (max-width: 780px) {
+    div.large-zone-result p.large-zone-result-result {
+        padding: var(--SPACE_S);
+        height: auto;
+    }
 }
 
 /* --- Zone des petites boxs --- */

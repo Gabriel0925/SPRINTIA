@@ -176,7 +176,7 @@ async function remplissageTableau() {
     if (historiqueDataUser.length <= 0) {
         // on cache le tableau
         tableauHistorique.style.display = "none"
-        // on fais apparaitre le message comme quoi sprintia n'a pas encore assez de données
+        // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
         document.getElementById("text-informatif").style.display = "block"
         return
     }
@@ -222,7 +222,7 @@ async function remplissageTableau() {
                 if (dataTableau.length <= 0) {
                     // On cache tout
                     tableau.style.display = "none"
-                    // on fais apparaitre le message comme quoi sprintia n'a pas encore assez de données
+                    // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
                     document.getElementById("text-informatif").style.display = "block"
                 } 
 

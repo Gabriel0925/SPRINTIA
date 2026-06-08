@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Protéines quotidiennes</title>
+    <title>SPRINTIA - Protéines quotidiennes</title>
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../css/style.css">
     
-    <link rel="icon" type="image/png" href="../../assets/icons-sprintia/icon-512-V4.3.1.png">
+    <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-512-V4.3.1.png">
 
     <link rel="manifest" href="../../manifest-V4.3.1.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Sprintia">
-    <link rel="apple-touch-icon" href="assets/icons-sprintia/icon-512-V4.3.1.png">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="assets/icons-SPRINTIA/icon-512-V4.3.1.png">
     
     <script src="../../parametres/script-themes.js"></script>
 </head>
@@ -79,7 +79,9 @@
     <section class="container-zone">
 
         <div class="form">
-            <select id="objectif-user" onchange="comboBox()" autocomplete="off">
+            <p id="zone-error" class="indication"></p>
+
+            <select id="objectif-user" onchange="estimationProteines()" autocomplete="off">
                 <option value="perte-poids">Objectif : Perte de poids</option>
                 <option value="minimum">Objectif : Minimum vital</option>
                 <option value="meilleure">Objectif : Meilleure santé</option>
@@ -88,11 +90,11 @@
             </select>
                 
             <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off" 
+                oninput="estimationProteines()">
                 <div class="label-input">Poids (kg)</div>
             </div>
 
-            <button onclick="estimationProteines()">Calculer</button>
         </div>
 
         <div class="large-zone-result">
@@ -163,7 +165,15 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-outil.js"></script>
-    <script>
+    <script>        
+        window.addEventListener("DOMContentLoaded", async () => {
+            await remplissageChamps(["poids-user"])
+
+            if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
+                estimationProteines()
+            }
+        })
+
         window.addEventListener("DOMContentLoaded", remplissageChamps(["poids-user"]))
         // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
         let formKeyEntry = document.querySelector(".form")

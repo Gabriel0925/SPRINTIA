@@ -100,7 +100,7 @@ async function RemplirTableau() {
                 if (DataTableau.length <= 0) {
                     // On cache tout
                     Tableau.style.display = "none"
-                    // on fais apparaitre le message comme quoi sprintia n'a pas encore assez de données
+                    // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
                     document.getElementById("text-informatif").style.display = "block"
                 } 
                 

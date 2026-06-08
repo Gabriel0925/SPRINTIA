@@ -146,7 +146,7 @@ async function CalculCharge() {
         if (element1.date > element2.date) return 1
     })
 
-    // on regarde c'était quand le premier entrainement du user enregistré sur Sprintia
+    // on regarde c'était quand le premier entrainement du user enregistré sur SPRINTIA
     let fistWorkout = HistoriqueDB[0]
 
     // initialisation avant le if
@@ -161,8 +161,8 @@ async function CalculCharge() {
         // conversion en jours
         jourEcouler = Math.floor(differenceMillisecondes/(1000*60*60*24)) // dans 1 secondes il y a 1000 ms, dans 1min il y a 60sec, dans 1heure il y a 60m et dans une journée il y a 24h
         // ---- algorithme de lissage ----
-        // si le user a moins de 28 jours de datas sur Sprintia alors au lieu de diviser par 4 la charge chronique on divise par le nombre de semaine ou le user a de la datas
-        // exemple : le premier entrainement du user est il y a 21 jours, 21j = 3 semaines donc charge_chronique/3 ou lieu de charge_chronique/4 ce qui permet d'avoir une bonne fiabilité si le user a tres peu de data dans Sprintia
+        // si le user a moins de 28 jours de datas sur SPRINTIA alors au lieu de diviser par 4 la charge chronique on divise par le nombre de semaine ou le user a de la datas
+        // exemple : le premier entrainement du user est il y a 21 jours, 21j = 3 semaines donc charge_chronique/3 ou lieu de charge_chronique/4 ce qui permet d'avoir une bonne fiabilité si le user a tres peu de data dans SPRINTIA
     }
     let nbSemaine = Math.ceil(jourEcouler/7)
     if (nbSemaine<1) { // petite sécurité pour que le nombre de semaine ne soit pas inférieur à 1 semaine
@@ -187,7 +187,7 @@ async function CalculCharge() {
         compteur += 1 // maj compteur pr l'index
     });
     
-    // ajout d'une condition pour éviter que Sprintia analyse la charge alors que l'utilisateur n'a pas assez d'entraînement sur les 28 derniers j
+    // ajout d'une condition pour éviter que SPRINTIA analyse la charge alors que l'utilisateur n'a pas assez d'entraînement sur les 28 derniers j
     // donc prepa de variable pour la fonction l'interpretationJRM()
     let AnalysePossible = true // initialisation
     if (Charge.length<3) { // si il y a moins de 3 entrainements sur les 28 derniers jours, on analyse pas

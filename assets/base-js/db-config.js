@@ -1,5 +1,5 @@
 // Creation du store d'objet de l'indexed BDD
-const db = new Dexie("SprintiaDB")
+const db = new Dexie("SPRINTIADB")
 
 // Creation de la structure
 db.version(9).stores({ // ++ pour autoincrement

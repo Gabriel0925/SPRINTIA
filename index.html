@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Sprintia - Entraînement</title>
+    <title>SPRINTIA - Entraînement</title>
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="assets/icons-sprintia/icon-512-V4.3.1.png">
+    <link rel="icon" type="image/png" href="assets/icons-SPRINTIA/icon-512-V4.3.1.png">
 
     <link rel="manifest" href="manifest-V4.3.1.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Sprintia">
-    <link rel="apple-touch-icon" href="/assets/icons-sprintia/icon-192-V4.3.1.png">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="/assets/icons-SPRINTIA/icon-192-V4.3.1.png">
 
     <!-- Pour les thèmes -->
     <script src="parametres/script-themes.js"></script>
@@ -90,11 +90,11 @@
         <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
     </div>
 
-    <a id="configurer-sprintia" style="display: none;" href="parametres/profil/modification-profil.html">
+    <a id="configurer-SPRINTIA" style="display: none;" href="parametres/profil/modification-profil.html">
         <div class="config-profil">
             <i class="fs-icon_profil"></i>
-            <p>Configurer Sprintia</p>
-            <p class="description">Pour débloquer toutes les fonctionnalités de Sprintia, veuillez configurer votre profil.</p>
+            <p>Configurer SPRINTIA</p>
+            <p class="description">Pour débloquer toutes les fonctionnalités de SPRINTIA, veuillez configurer votre profil.</p>
         </div>
     </a>
 
@@ -117,7 +117,7 @@
 
     <h2>Historique d'entraînement</h2>
     <p class="text" id="text-informatif">
-        Sprintia n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
+        SPRINTIA n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
         <a href="entrainement/ajouter-entrainement.html" class="lien">ajouter un entraînement</a>.
     </p> 
 
@@ -137,17 +137,17 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
 
-    <!-- Configuration Sprintia -->
+    <!-- Configuration SPRINTIA -->
     <script>
-        async function configSprintia() { // permet d'enlever le panneau de configuration une fois que le user a configurer
+        async function configSPRINTIA() { // permet d'enlever le panneau de configuration une fois que le user a configurer
             const profilData = await db.profil.get(1)
 
             if (profilData == undefined) {
-                document.getElementById("configurer-sprintia").style.display = "block"
+                document.getElementById("configurer-SPRINTIA").style.display = "block"
             }
         }
 
-        window.addEventListener("DOMContentLoaded", configSprintia())
+        window.addEventListener("DOMContentLoaded", configSPRINTIA())
     </script>
 
     <!-- Pour le JRM Coach -->

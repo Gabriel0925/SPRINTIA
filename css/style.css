@@ -77,11 +77,11 @@
 /* Pour les icônes dans l'application */
 @font-face {
     font-family: 'Font-SPRINTIA';
-    src:  url('../assets/icons/font-SPRINTIA-V4.4.eot?7gygna');
-    src:  url('../assets/icons/font-SPRINTIA-V4.4.eot?7gygna#iefix') format('embedded-opentype'),
-        url('../assets/icons/font-SPRINTIA-V4.4.ttf?7gygna') format('truetype'),
-        url('../assets/icons/font-SPRINTIA-V4.4.woff?7gygna') format('woff'),
-        url('../assets/icons/font-SPRINTIA-V4.4.svg?7gygna#Font-SPRINTIA') format('svg');
+    src:  url('../assets/icons/font-SPRINTIA-V5.eot?7gygna');
+    src:  url('../assets/icons/font-SPRINTIA-V5.eot?7gygna#iefix') format('embedded-opentype'),
+        url('../assets/icons/font-SPRINTIA-V5.ttf?7gygna') format('truetype'),
+        url('../assets/icons/font-SPRINTIA-V5.woff?7gygna') format('woff'),
+        url('../assets/icons/font-SPRINTIA-V5.svg?7gygna#Font-SPRINTIA') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -132,119 +132,116 @@ i {
 .fs-icon_add:before {
   content: "\e902";
 }
-.fs-icon_besoin_hydratation:before {
+.fs-icon_charge_entrainement:before {
   content: "\e903";
 }
-.fs-icon_charge_entrainement:before {
+.fs-icon_coach:before {
   content: "\e904";
 }
-.fs-icon_coach:before {
+.fs-icon_confidentialite:before {
   content: "\e905";
 }
-.fs-icon_confidentialite:before {
+.fs-icon_entrainement:before {
   content: "\e906";
 }
-.fs-icon_entrainement:before {
+.fs-icon_fermer:before {
   content: "\e907";
 }
-.fs-icon_epingler:before {
+.fs-icon_file:before {
   content: "\e908";
 }
-.fs-icon_fermer:before {
+.fs-icon_file_csv:before {
   content: "\e909";
 }
-.fs-icon_file:before {
+.fs-icon_fleche_droite:before {
   content: "\e90a";
 }
-.fs-icon_file_csv:before {
+.fs-icon_historique:before {
   content: "\e90b";
 }
-.fs-icon_fleche-droite:before {
+.fs-icon_hydratation:before {
   content: "\e90c";
 }
-.fs-icon_historique:before {
+.fs-icon_IMC:before {
   content: "\e90d";
 }
-.fs-icon_IMC:before {
+.fs-icon_indulgence_course:before {
   content: "\e90e";
 }
-.fs-icon_indulgence_course:before {
+.fs-icon_licence:before {
   content: "\e90f";
 }
-.fs-icon_licence:before {
+.fs-icon_miles_km:before {
   content: "\e910";
 }
-.fs-icon_menu:before {
+.fs-icon_modifier:before {
   content: "\e911";
 }
-.fs-icon_miles_km:before {
+.fs-icon_niveau_course:before {
   content: "\e912";
 }
-.fs-icon_modifier:before {
+.fs-icon_outils:before {
   content: "\e913";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_parametres:before {
   content: "\e914";
 }
-.fs-icon_outils:before {
+.fs-icon_partager:before {
   content: "\e915";
 }
-.fs-icon_parametres:before {
+.fs-icon_pause:before {
   content: "\e916";
 }
-.fs-icon_partager:before {
+.fs-icon_plus:before {
   content: "\e917";
 }
-.fs-icon_pause:before {
+.fs-icon_plus_horizontal:before {
   content: "\e918";
 }
-.fs-icon_plus:before {
+.fs-icon_predicteur_performance:before {
   content: "\e919";
 }
-.fs-icon_plus_horizontal:before {
+.fs-icon_profil:before {
   content: "\e91a";
 }
-.fs-icon_predicteur_performance:before {
+.fs-icon_progression:before {
   content: "\e91b";
 }
-.fs-icon_profil:before {
+.fs-icon_proteines:before {
   content: "\e91c";
 }
-.fs-icon_progression:before {
+.fs-icon_recuperation:before {
   content: "\e91d";
 }
-.fs-icon_proteines:before {
+.fs-icon_statistiques:before {
   content: "\e91e";
 }
-.fs-icon_recuperation:before {
+.fs-icon_supprimer:before {
   content: "\e91f";
 }
-.fs-icon_statistiques:before {
+.fs-icon_temps_recup:before {
   content: "\e920";
 }
-.fs-icon_supprimer:before {
+.fs-icon_themes:before {
   content: "\e921";
 }
-.fs-icon_temps_recup:before {
+.fs-icon_to_day:before {
   content: "\e922";
 }
-.fs-icon_themes:before {
+.fs-icon_VMA:before {
   content: "\e923";
 }
-.fs-icon_VMA:before {
+.fs-icon_VO2MAX:before {
   content: "\e924";
 }
-.fs-icon_VO2MAX:before {
+.fs-icon_zones_cardiaques:before {
   content: "\e925";
 }
-.fs-icon_zones_cardiaques:before {
+.fs-icon_zones_puissance:before {
   content: "\e926";
 }
-.fs-icon_zones_puissance:before {
-  content: "\e927";
-}
 .fs-icon_zones_vitesse:before {
-  content: "\e928";
+  content: "\e927";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */

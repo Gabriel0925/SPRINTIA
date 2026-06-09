@@ -121,14 +121,14 @@ async function ReadFile(event) {
                     await db.JRM_Coach.add(element)
                 }
             }
-            // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA 4.2 
+            // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA-4.2 
             if (TableProfil != undefined && TableProfil.length > 0) {     
                 for (let element of TableProfil) { // on recupere les datas ligne par ligne de la table correspondante
                     // on le met à l'id 1 car il y a que cette ligne dans la bdd
                     await db.profil.put(element, 1) 
                 }
             }
-            // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA 4.2 
+            // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA-4.2 
             if (TableRecuperation != undefined && TableRecuperation.length > 0) {     
                 for (let element of TableRecuperation) { // on recupere les datas ligne par ligne de la table correspondante
                     // on le met à l'id 1 car il y a que cette ligne dans la bdd

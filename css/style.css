@@ -132,116 +132,131 @@ i {
 .fs-icon_add:before {
   content: "\e902";
 }
-.fs-icon_charge_entrainement:before {
+.fs-icon_agenda:before {
   content: "\e903";
 }
-.fs-icon_coach:before {
+.fs-icon_analyse_athlete:before {
   content: "\e904";
 }
-.fs-icon_confidentialite:before {
+.fs-icon_charge_entrainement:before {
   content: "\e905";
 }
-.fs-icon_entrainement:before {
+.fs-icon_coach:before {
   content: "\e906";
 }
-.fs-icon_fermer:before {
+.fs-icon_confidentialite:before {
   content: "\e907";
 }
-.fs-icon_file:before {
+.fs-icon_entrainement:before {
   content: "\e908";
 }
-.fs-icon_file_csv:before {
+.fs-icon_fermer:before {
   content: "\e909";
 }
-.fs-icon_fleche_droite:before {
+.fs-icon_file:before {
   content: "\e90a";
 }
-.fs-icon_historique:before {
+.fs-icon_file_csv:before {
   content: "\e90b";
 }
-.fs-icon_hydratation:before {
+.fs-icon_fleche_droite:before {
   content: "\e90c";
 }
-.fs-icon_IMC:before {
+.fs-icon_glycogene:before {
   content: "\e90d";
 }
-.fs-icon_indulgence_course:before {
+.fs-icon_historique:before {
   content: "\e90e";
 }
-.fs-icon_licence:before {
+.fs-icon_hydratation:before {
   content: "\e90f";
 }
-.fs-icon_miles_km:before {
+.fs-icon_IMC:before {
   content: "\e910";
 }
-.fs-icon_modifier:before {
+.fs-icon_indulgence_course:before {
   content: "\e911";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_licence:before {
   content: "\e912";
 }
-.fs-icon_outils:before {
+.fs-icon_metabolisme_base:before {
   content: "\e913";
 }
-.fs-icon_parametres:before {
+.fs-icon_miles_km:before {
   content: "\e914";
 }
-.fs-icon_partager:before {
+.fs-icon_modifier:before {
   content: "\e915";
 }
-.fs-icon_pause:before {
+.fs-icon_niveau_course:before {
   content: "\e916";
 }
-.fs-icon_plus:before {
+.fs-icon_outils:before {
   content: "\e917";
 }
-.fs-icon_plus_horizontal:before {
+.fs-icon_parametres:before {
   content: "\e918";
 }
-.fs-icon_predicteur_performance:before {
+.fs-icon_partager:before {
   content: "\e919";
 }
-.fs-icon_profil:before {
+.fs-icon_pause:before {
   content: "\e91a";
 }
-.fs-icon_progression:before {
+.fs-icon_plus:before {
   content: "\e91b";
 }
-.fs-icon_proteines:before {
+.fs-icon_plus_horizontal:before {
   content: "\e91c";
 }
-.fs-icon_recuperation:before {
+.fs-icon_predicteur_performance:before {
   content: "\e91d";
 }
-.fs-icon_statistiques:before {
+.fs-icon_profil:before {
   content: "\e91e";
 }
-.fs-icon_supprimer:before {
+.fs-icon_progression:before {
   content: "\e91f";
 }
-.fs-icon_temps_recup:before {
+.fs-icon_proteines:before {
   content: "\e920";
 }
-.fs-icon_themes:before {
+.fs-icon_recuperation:before {
   content: "\e921";
 }
-.fs-icon_to_day:before {
+.fs-icon_statistiques:before {
   content: "\e922";
 }
-.fs-icon_VMA:before {
+.fs-icon_strategie_allure:before {
   content: "\e923";
 }
-.fs-icon_VO2MAX:before {
+.fs-icon_supprimer:before {
   content: "\e924";
 }
-.fs-icon_zones_cardiaques:before {
+.fs-icon_temps_recup:before {
   content: "\e925";
 }
-.fs-icon_zones_puissance:before {
+.fs-icon_themes:before {
   content: "\e926";
 }
-.fs-icon_zones_vitesse:before {
+.fs-icon_to_day:before {
   content: "\e927";
+}
+.fs-icon_VMA:before {
+  content: "\e928";
+}
+.fs-icon_VO2MAX:before {
+  content: "\e929";
+}
+.fs-icon_zones_cardiaques:before {
+  content: "\e92a";
+}
+.fs-icon_zones_puissance:before {
+  content: "\e92b";
+}
+.fs-icon_zones_vitesse:before {
+  content: "\e92c";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */
@@ -1249,9 +1264,9 @@ div.button-flottant p{
 
 
 @keyframes animation_menu_li {
-    0% { transform: translate(20px, -10px) scale(1)}
-    50% { transform: translate(-20px, 10px) scale(0.7)}
-    100% { transform: translate(0px, 0px) scale(1)}
+    0% {transform: translate(20px, -10px) scale(1)}
+    50% {transform: translate(-20px, 10px) scale(0.7)}
+    100% {transform: translate(0px, 0px) scale(1)}
 }
 div.menu-many-action {
     background-color: var(--COLOR_GLASSMORPHISM);
@@ -1268,7 +1283,7 @@ div.menu-many-action {
 
     overflow: hidden;
     opacity: 1;
-    transform: translate(75px, -63px) scale(0);
+    transform: translate(75px, -82px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {
@@ -1319,6 +1334,9 @@ div.menu-many-action li:active{
     -webkit-backdrop-filter: blur(var(--GLASSMORPHISM));
     backdrop-filter: blur(var(--GLASSMORPHISM));
     transform: scale(var(--SCALE_NORMAL));
+}
+div.menu-many-action li i{
+    margin-right: var(--SPACE_XXS);
 }
 
 

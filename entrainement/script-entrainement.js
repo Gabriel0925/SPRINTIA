@@ -56,8 +56,18 @@ function afficherData(dataWorkout) {
         </div>
 
         <div class="menu-many-action">
-            <li id="button-modifier">Modifier</li>
-            <li id="button-supprimer">Supprimer</li>
+            <li id="button-partager">
+                <i class="fs-icon_partager"></i>
+                Partager
+            </li>
+            <li id="button-modifier">
+                <i class="fs-icon_modifier"></i>
+                Modifier
+            </li>
+            <li id="button-supprimer">
+                <i class="fs-icon_supprimer"></i>
+                Supprimer
+            </li>
         </div>
     
         <div class="zone-coach" id="coach-ajoute-entrainement" style="margin: var(--SPACE_M) 0;">

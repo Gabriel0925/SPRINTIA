@@ -1,8 +1,8 @@
 {
     "id": "/",
-    "name": "Sprintia",
-    "short_name": "Sprintia",
-    "description": "Sprintia est conçue pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuit.",
+    "name": "SPRINTIA",
+    "short_name": "SPRINTIA",
+    "description": "SPRINTIA est conçue pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuit.",
     "lang": "fr",
 
     "start_url": "/",
@@ -14,13 +14,13 @@
 
     "icons": [
         {
-            "src": "/assets/icons-sprintia/icon-192-V4.3.1.png",
+            "src": "/assets/icons-SPRINTIA/icon-192-V4.3.1.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
-            "src": "/assets/icons-sprintia/icon-512-V4.3.1.png",
+            "src": "/assets/icons-SPRINTIA/icon-512-V4.3.1.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"

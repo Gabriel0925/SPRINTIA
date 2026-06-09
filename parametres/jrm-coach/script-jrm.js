@@ -6,8 +6,8 @@ const DicoPhraseExemple = {
     "Strict-Motivant": `Je suis un coach sévère, juste, mais surtout motivant. Je suis là pour te pousser à te dépasser. Comme on dit, c'est quand on est dans le dur
                     qu'on progresse réellement ! Je te challengerai au quotidien. Avec moi, tu peux être sûr·e que 
                     je te dirai les choses telles qu'elles sont ! Alors, tu es prêt·e à progresser ?`,
-    "Copain": `Alors, je dois te prévenir tout de suite : mon but, c'est d'être ton pote ! Et franchement, j’ai l’impression qu’on va super bien s’entendre.
-                Je m’adapte peu importe ton niveau. Mon but ? Te motiver, te dire les choses clairement et te faire voir que tu peux toujours aller un peu plus loin mais sans te
+    "Copain": `Alors, je dois te prévenir tout de suite : mon but, c'est d'être ton pote ! Et franchement, j'ai l'impression qu'on va super bien s'entendre.
+                Je m'adapte peu importe ton niveau. Mon but ? Te motiver, te dire les choses clairement et te faire voir que tu peux toujours aller un peu plus loin mais sans te
                 prendre la tête, promis. Alors, prêt·e à me choisir ?!`,
     "Go-muscu": `Que tu sois là pour devenir énorme et sec·he ou juste pour ne plus avoir le souffle coupé en montant de simples escaliers. 
                 Avec moi, tu vas apprendre des choses sur la muscu ! Je suis ton coach qui a toujours de l'énergie sache que

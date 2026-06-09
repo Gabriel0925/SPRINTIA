@@ -12,8 +12,8 @@
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
     /* Intensité du glassmorphism pour les composents flottant */
-    --GLASSMORPHISM: 14px;
-    --COLOR_GLASSMORPHISM: rgba(80, 80, 80, 0.4);
+    --GLASSMORPHISM: 25px; /* ou 14px */
+    --COLOR_GLASSMORPHISM: rgba(68, 68, 68, 0.4); /* ou rgba(80, 80, 80, 0.4) */
     --COLOR_BORDER_GLASSMORPHISM: rgba(255, 255, 255, 0.15);
 
     /* Intensité du blur pour le Glow Effect */
@@ -1356,10 +1356,16 @@ div.zone-coach {
 div.zone-coach::before {
     content: "";
     position: absolute;
-    left: 0%;
-    top: 0%;
+    
+    /* aligne le coin du before sur l'élément parent mais du coup c'est pas centré donc on le translate ce qui met le centre au centre */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
     width: 100%;
+    max-width: 500px;
     height: 100%;
+
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
     filter: blur(var(--GLOW_EFFECT_BLUR)) brightness(var(--GLOW_EFFECT_BRIGHTNESS)); 
     z-index: -1;
@@ -1895,18 +1901,28 @@ table tr td button{
 
 
 div.visuel-version {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
     padding: var(--SPACE_XL) 0;
     margin: var(--SPACE_L) 0;
-    position: relative;
     z-index: 1;
 }
 div.visuel-version::before {
     content: "";
     position: absolute;
-    left: 0%;
-    top: 0%;
+    
+    /* aligne le coin du before sur l'élément parent mais du coup c'est pas centré donc on le translate ce qui met le centre au centre */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
     width: 100%;
+    max-width: 500px;
     height: 100%;
+
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
     filter: blur(var(--GLOW_EFFECT_BLUR)) brightness(var(--GLOW_EFFECT_BRIGHTNESS)); 
     z-index: -1;

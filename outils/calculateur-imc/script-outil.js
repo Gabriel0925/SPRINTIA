@@ -30,8 +30,8 @@ function calculIMC() {
         {"imcMax":25, "interpretation":"<strong>Zone de corpulence normale :</strong><br>Parfait, d'après l'IMC vous êtes équilibré·e, continuez comme ça !"},
         {"imcMax":30, "interpretation":"<strong>Zone de surpoids :</strong><br>D'après l'IMC vous êtes en surpoids mais je suis sûr que vous avez juste trop de muscles et ça l'IMC ne peut pas le savoir !"},
         {"imcMax":35, "interpretation":"<strong>Zone obésité modérée :</strong><br> Un petit changement d'habitude aujourd'hui fera une grande différence demain ! Si vous vous sentez mal le mieux serait de consulter un médecin !"},
-        {"imcMax":40, "interpretation":"<strong>Zone d’obésité sévère :</strong><br>Si vous vous sentez bien c'est le plus important, ne vous comparez pas aux autres comparez-vous à la personne que vous étiez hier !"},
-        {"imcMax":Infinity, "interpretation":"<strong>Zone d’obésité morbide :</strong><br>Vous vous améliorez de jour en jour mais si vous vous sentez mal le mieux serait de consulter un médecin !"}
+        {"imcMax":40, "interpretation":"<strong>Zone d'obésité sévère :</strong><br>Si vous vous sentez bien c'est le plus important, ne vous comparez pas aux autres comparez-vous à la personne que vous étiez hier !"},
+        {"imcMax":Infinity, "interpretation":"<strong>Zone d'obésité morbide :</strong><br>Vous vous améliorez de jour en jour mais si vous vous sentez mal le mieux serait de consulter un médecin !"}
     ]
 
     // parcours du tableau de dico

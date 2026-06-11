@@ -60,6 +60,10 @@ function afficherData(dataWorkout) {
                 <i class="fs-icon_partager"></i>
                 Partager
             </li>
+            <li id="button-partager">
+                <i class="fs-icon_file_json"></i>
+                Exporter
+            </li>
             <li id="button-modifier">
                 <i class="fs-icon_modifier"></i>
                 Modifier

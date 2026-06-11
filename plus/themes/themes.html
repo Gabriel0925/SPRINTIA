@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SPRINTIA - Thèmes</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-512-V4.3.1.png">
+
+    <link rel="manifest" href="../../manifest-V4.3.1.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="/assets/icons-SPRINTIA/icon-192-V4.3.1.png">
+
+    <!-- Pour les thèmes -->
+    <script src="../script-themes.js"></script>
+</head>
+
+<body>
+    <section class="header">
+
+        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
+
+        
+        <ul class="header-container-items">
+
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Paramètres')">
+                <i class="fs-icon_plus_horizontal"></i>
+                Plus
+            </li>
+
+        </ul>
+
+    </section>
+
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Paramètres')">
+                <i class="fs-icon_plus_horizontal"></i>
+                <p class="tab-bars-items-name">Plus</p>
+            </li>
+
+        </ul>
+
+    </section>
+
+    <div class="container-button-flottant">
+        <div class="button-flottant" onclick="window.location.href = ''">
+            <i class="fs-icon_add"></i>
+            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+        </div>
+    </div>
+
+    <h1>Thèmes</h1>
+    
+    <div class="container-center-marge">
+        <button class="size-block">Mode clair</button>
+    </div>
+    <h2>Froids</h2>
+    <ol class="container-color-accentuation">
+
+        <li class="option-color selected" onclick="colorTheme('azur', id)" id="azur">
+            Azur
+        </li>
+        <li class="option-color" onclick="colorTheme('ocean', id)"  id="ocean">
+            Océan
+        </li>
+
+        <li class="option-color" onclick="colorTheme('lune', id)" id="lune">
+            Lune
+        </li>
+        <li class="option-color" onclick="colorTheme('glacier', id)"  id="glacier">
+            Glacier
+        </li>
+        
+        <li class="option-color" onclick="colorTheme('pomme', id)"  id="pomme">
+            Pomme
+        </li>
+        <li class="option-color" onclick="colorTheme('vegetation', id)" id="vegetation">
+            Végétation
+        </li>
+
+        <li class="option-color" onclick="colorTheme('sapin', id)"  id="sapin">
+            Sapin
+        </li>
+        <li class="option-color" onclick="colorTheme('menthe', id)" id="menthe">
+            Menthe
+        </li>
+
+        <li class="option-color" onclick="colorTheme('lavande', id)" id="lavande">
+            Lavande
+        </li>
+        <li class="option-color" onclick="colorTheme('lilas', id)"  id="lilas">
+            Lilas
+        </li>
+
+    </ol>
+
+    <h2>Chauds</h2>
+    <ol class="container-color-accentuation">
+
+        <li class="option-color" onclick="colorTheme('feu', id)"  id="feu">
+            Feu
+        </li>
+        <li class="option-color" onclick="colorTheme('corail', id)"  id="corail">
+            Corail
+        </li>
+
+        <li class="option-color" onclick="colorTheme('carmin', id)"  id="carmin">
+            Carmin
+        </li>
+        <li class="option-color" onclick="colorTheme('peche', id)"  id="peche">
+            Pêche
+        </li>
+        
+        <li class="option-color" onclick="colorTheme('citron', id)"  id="citron">
+            Citron
+        </li>
+        <li class="option-color" onclick="colorTheme('framboise', id)" id="framboise">
+            Framboise
+        </li>
+
+        <li class="option-color" onclick="colorTheme('fuchsia', id)"  id="fuchsia">
+            Fuchsia
+        </li>
+        <li class="option-color" onclick="colorTheme('guimauve', id)"  id="guimauve">
+            Guimauve
+        </li>
+
+    </ol>
+
+    <h2>Neutre</h2>
+    <ol class="container-color-accentuation">
+
+        <li class="option-color" onclick="colorTheme('nuage', id)"  id="nuage">
+            Nuage
+        </li>
+
+    </ol>
+
+    <h2>Réglage du flou</h2>
+    <p class="text">
+        Coming soon
+    </p>
+
+    <div class="container-center-marge" style="margin-top: var(--SPACE_XL);">
+        <button class="size-block" id="reinitialiser" onclick="reinitialiserTheme('azur')">Réinitialiser le thème</button>
+    </div>
+    
+    <script src="../../assets/base-js/base.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            let themeUse = localStorage.getItem("themeUser")
+            if (themeUse == null) {
+                themeUse = "azur"
+            }
+            // on cherche l'id du li du thème correspondant dans le dico    
+            let idElement = themeUse
+
+            if (idElement) {
+                selectedElement(idElement)
+            }
+        })
+    </script>
+
+    
+    <!-- Pour avoir les statistiques de visite du site -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

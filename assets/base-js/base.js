@@ -4,25 +4,25 @@ const dicoUrl = {
         "Entraînement":  "index.html",
         "Progression":   "progression/progression.html",
         "Outils":        "outils/outils.html",
-        "Paramètres":    "parametres/parametres.html"
+        "Paramètres":    "plus/plus.html"
     },
     "profondeur1": {
         "Entraînement":  "../index.html",
         "Progression":   "../progression/progression.html",
         "Outils":        "../outils/outils.html",
-        "Paramètres":    "../parametres/parametres.html"
+        "Paramètres":    "../plus/plus.html"
     },
     "profondeur2": {
         "Entraînement":  "../../index.html",
         "Progression":   "../../progression/progression.html",
         "Outils":        "../../outils/outils.html",
-        "Paramètres":    "../../parametres/parametres.html"
+        "Paramètres":    "../../plus/plus.html"
     },
     "profondeur3": {
         "Entraînement":  "../../../index.html",
         "Progression":   "../../../progression/progression.html",
         "Outils":        "../../../outils/outils.html",
-        "Paramètres":    "../../../parametres/parametres.html"
+        "Paramètres":    "../../../plus/plus.html"
     },
 }
 function navigationLinks(elt, component, profondeur, onglet) {

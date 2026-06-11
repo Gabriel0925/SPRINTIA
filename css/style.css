@@ -159,104 +159,113 @@ i {
 .fs-icon_file_csv:before {
   content: "\e90b";
 }
-.fs-icon_fleche_droite:before {
+.fs-icon_file_json:before {
   content: "\e90c";
 }
-.fs-icon_glycogene:before {
+.fs-icon_fleche_droite:before {
   content: "\e90d";
 }
-.fs-icon_historique:before {
+.fs-icon_glycogene:before {
   content: "\e90e";
 }
-.fs-icon_hydratation:before {
+.fs-icon_historique:before {
   content: "\e90f";
 }
-.fs-icon_IMC:before {
+.fs-icon_hydratation:before {
   content: "\e910";
 }
-.fs-icon_indulgence_course:before {
+.fs-icon_IMC:before {
   content: "\e911";
 }
-.fs-icon_licence:before {
+.fs-icon_indulgence_course:before {
   content: "\e912";
 }
-.fs-icon_metabolisme_base:before {
+.fs-icon_licence:before {
   content: "\e913";
 }
-.fs-icon_miles_km:before {
+.fs-icon_mail:before {
   content: "\e914";
 }
-.fs-icon_modifier:before {
+.fs-icon_message:before {
   content: "\e915";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_metabolisme_base:before {
   content: "\e916";
 }
-.fs-icon_outils:before {
+.fs-icon_miles_km:before {
   content: "\e917";
 }
-.fs-icon_parametres:before {
+.fs-icon_modifier:before {
   content: "\e918";
 }
-.fs-icon_partager:before {
+.fs-icon_niveau_course:before {
   content: "\e919";
 }
-.fs-icon_pause:before {
+.fs-icon_outils:before {
   content: "\e91a";
 }
-.fs-icon_plus:before {
+.fs-icon_parametres:before {
   content: "\e91b";
 }
-.fs-icon_plus_horizontal:before {
+.fs-icon_partager:before {
   content: "\e91c";
 }
-.fs-icon_predicteur_performance:before {
+.fs-icon_pause:before {
   content: "\e91d";
 }
-.fs-icon_profil:before {
+.fs-icon_plus:before {
   content: "\e91e";
 }
-.fs-icon_progression:before {
+.fs-icon_plus_horizontal:before {
   content: "\e91f";
 }
-.fs-icon_proteines:before {
+.fs-icon_predicteur_performance:before {
   content: "\e920";
 }
-.fs-icon_recuperation:before {
+.fs-icon_profil:before {
   content: "\e921";
 }
-.fs-icon_statistiques:before {
+.fs-icon_progression:before {
   content: "\e922";
 }
-.fs-icon_strategie_allure:before {
+.fs-icon_proteines:before {
   content: "\e923";
 }
-.fs-icon_supprimer:before {
+.fs-icon_recuperation:before {
   content: "\e924";
 }
-.fs-icon_temps_recup:before {
+.fs-icon_statistiques:before {
   content: "\e925";
 }
-.fs-icon_themes:before {
+.fs-icon_strategie_allure:before {
   content: "\e926";
 }
-.fs-icon_to_day:before {
+.fs-icon_supprimer:before {
   content: "\e927";
 }
-.fs-icon_VMA:before {
+.fs-icon_temps_recup:before {
   content: "\e928";
 }
-.fs-icon_VO2MAX:before {
+.fs-icon_themes:before {
   content: "\e929";
 }
-.fs-icon_zones_cardiaques:before {
+.fs-icon_to_day:before {
   content: "\e92a";
 }
-.fs-icon_zones_puissance:before {
+.fs-icon_VMA:before {
   content: "\e92b";
 }
-.fs-icon_zones_vitesse:before {
+.fs-icon_VO2MAX:before {
   content: "\e92c";
+}
+.fs-icon_zones_cardiaques:before {
+  content: "\e92d";
+}
+.fs-icon_zones_puissance:before {
+  content: "\e92e";
+}
+.fs-icon_zones_vitesse:before {
+  content: "\e92f";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */
@@ -1178,9 +1187,13 @@ div.container-button-flottant {
     gap: var(--SPACE_XS);
     pointer-events: none;
 
+    max-width: var(--MAX_WIDTH);
+    margin: 0 auto;
+
     position: fixed;
     bottom: var(--SPACE_S);
     right: var(--SPACE_S);
+    left: 0;
     padding: var(--SPACE_S);
     width: 100%;
     z-index: 1500;
@@ -1242,6 +1255,7 @@ div.button-flottant p{
         padding: var(--SPACE_S);
         width: fit-content;
         z-index: 1500;
+        left: auto;
     }
     div.button-flottant {
         margin-bottom: var(--SPACE_S);
@@ -2041,7 +2055,6 @@ div.action-list {
 div.action-list div.action-list-item {
     display: flex; 
     align-items: center;
-    margin: var(--SPACE_XXS) 0px;
     padding: var(--SPACE_XS);
     background-color: var(--COLOR_BACKGROUND_CARD);
 

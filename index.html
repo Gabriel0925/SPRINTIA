@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" href="/assets/icons-SPRINTIA/icon-192-V4.3.1.png">
 
     <!-- Pour les thèmes -->
-    <script src="parametres/script-themes.js"></script>
+    <script src="plus/script-themes.js"></script>
 </head>
 
 <body>
@@ -45,8 +45,8 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'racine', 'Paramètres')">
-                <i class="fs-icon_parametres"></i>
-                Paramètres
+                <i class="fs-icon_plus_horizontal"></i>
+                Plus
             </li>
 
         </ul>
@@ -70,8 +70,8 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'racine', 'Paramètres')">
-                <i class="fs-icon_parametres"></i>
-                <p class="tab-bars-items-name">Paramètres</p>
+                <i class="fs-icon_plus_horizontal"></i>
+                <p class="tab-bars-items-name">Plus</p>
             </li>
 
         </ul>
@@ -90,7 +90,7 @@
         <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
     </div>
 
-    <a id="configurer-SPRINTIA" style="display: none;" href="parametres/profil/modification-profil.html">
+    <a id="configurer-SPRINTIA" style="display: none;" href="plus/profil/modification-profil.html">
         <div class="config-profil">
             <i class="fs-icon_profil"></i>
             <p>Configurer SPRINTIA</p>
@@ -101,8 +101,11 @@
     <h2>Analyse</h2>
     <div class="zone-coach">
         <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
-        <p class="zone-coach-interpretation" id="reponse-coach">
-            Chargement...
+        <p class="zone-coach-interpretation"> <!--id="reponse-coach"-->
+            <strong>(beta)</strong><br>
+            Bien joué ! Tu as fait 30 min de sport de plus que la semaine derniere, continue sur cette lancée manifestfais attention à
+            ne pas tomber dans le surentraînement.
+            ça représente environ +20% en durée.
         </p> 
     </div>
 

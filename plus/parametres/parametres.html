@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-512-V4.3.1.png">
-    <link rel="manifest" href="../manifest-V4.3.1.json">
+    <link rel="manifest" href="../../manifest-V4.3.1.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
@@ -74,6 +74,7 @@
     <h1>Paramètres</h1>
 
     <div class="action-list">
+
         <a href="themes/themes.html">
             <div class="action-list-item">
                 <i class="fs-icon_themes"></i>
@@ -90,7 +91,8 @@
     </div>
 
     <div class="action-list">
-        <a>
+
+        <a href="suggerer-fonction/suggerer-fonction.html">
             <div class="action-list-item">
                 <i class="fs-icon_mail"></i>
                 <p class="text-param">Suggérer une fonction</p>
@@ -121,7 +123,7 @@
 
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script>
         async function NomCoachInit() {
             // Recup datas
@@ -142,8 +144,7 @@
         })
     </script>
 
-    
-    <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>

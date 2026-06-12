@@ -76,7 +76,7 @@
 
     </section>
     
-    <h1>Paramètres</h1>
+    <h1>Plus</h1>
 
     <h2>Dernières nouveautés</h2>
     <div class="carousel">
@@ -136,25 +136,14 @@
             </div>
         </a>
 
-    </div>
+    </div>    
+    
+    <div class="action-list">
 
-    <div class="action-list">  
         <a href="profil/profil.html">
             <div class="action-list-item">
                 <i class="fs-icon_profil"></i>
                 <p class="text-param">Profil</p>
-            </div>
-        </a>
-        <a href="themes/themes.html">
-            <div class="action-list-item">
-                <i class="fs-icon_themes"></i>
-                <p class="text-param">Thèmes</p>
-            </div>
-        </a>
-        <a href="jrm-coach/jrm-coach.html">
-            <div class="action-list-item">
-                <i class="fs-icon_coach"></i>
-                <p class="text-param" id="nom-coach">JRM Coach</p>
             </div>
         </a>
         <a href="import-des-donnees/importer-donnees.html">
@@ -168,60 +157,18 @@
 
     <div class="action-list">
 
-        <a href="">
+
+        <a href="parametres/parametres.html">
             <div class="action-list-item">
-                <i class="fs-icon_mail"></i>
-                <p class="text-param">Suggérer une fonction</p>
-            </div>
-        </a>
-        <a href="confidentialite/confidentialite.html">
-            <div class="action-list-item">
-                <i class="fs-icon_confidentialite"></i>
-                <p class="text-param">Confidentialité</p>
-            </div>
-        </a>
-        <a href="licence/licence.html">
-            <div class="action-list-item">
-                <i class="fs-icon_licence"></i>
-                <p class="text-param">Licence</p>
-            </div>
-        </a>
-        <a href="a-propos/a-propos.html">
-            <div class="action-list-item">
-                <i class="fs-icon_a_propos"></i>
-                <p class="text-param">À propos & Contact</p>
+                <i class="fs-icon_parametres"></i>
+                <p class="text-param">Paramètres</p>
             </div>
         </a>
 
     </div>
     
     <script src="../assets/base-js/base.js"></script>
-
-    <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script>
-        async function NomCoachInit() {
-            // Recup datas
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("nom-coach").textContent = NomCoach
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            NomCoachInit()
-        })
-    </script>
-
-    
-    <!-- Pour avoir les statistiques de visite du site -->
     <script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>

@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Importer des données</title>
+    <title>SPRINTIA - Paramètres</title>
     <meta charset="utf-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../css/style.css">
-    
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-512-V4.3.1.png">
-
-    <link rel="manifest" href="../../manifest-V4.3.1.json">
+    <link rel="manifest" href="../manifest-V4.3.1.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="/assets/icons-SPRINTIA/icon-192-V4.3.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V4.3.1.png">
 
-    <!-- Pour les thèmes -->
-    <script src="../../assets/base-js/"></script>
+    <script src="../../assets/base-js/themes.js"></script>
 </head>
 
 <body>
@@ -50,7 +46,6 @@
         </ul>
 
     </section>
-
     <section class="tab-bars">
 
         <ul class="tab-bars-container-items">
@@ -76,53 +71,76 @@
 
     </section>
     
-    <h1>Importer des données</h1>
+    <h1>Paramètres</h1>
 
-    <h2>Importer un entraînement</h2>
     <div class="action-list">
-
-        <a href="import-tcx.html">
+        <a href="themes/themes.html">
             <div class="action-list-item">
-                <i class="fs-icon_file"></i>
-                <p class="text-param">Fichier <strong>TCX</strong> (universelle)</p>
+                <i class="fs-icon_themes"></i>
+                <p class="text-param">Thèmes</p>
             </div>
         </a>
-        <a href="">
+        <a href="jrm-coach/jrm-coach.html">
             <div class="action-list-item">
-                <i class="fs-icon_file_json"></i>
-                <p class="text-param">Fichier <strong>SPRINTIA</strong></p>
-            </div>
-        </a>
- 
-    </div>
-
-    <h2>Importer un historique d'entraînement</h2>
-    <div class="action-list">    
-        <a href="import-garmin-csv.html">
-            <div class="action-list-item">
-                <i class="fs-icon_file_csv"></i>
-                <p class="text-param">Fichier <strong>Garmin</strong></p>
-            </div>
-        </a>
-        <a href="import-trainingpeaks-csv.html">
-            <div class="action-list-item">
-                <i class="fs-icon_file_csv"></i>
-                <p class="text-param">Fichier <strong>TrainingPeaks</strong></p>
+                <i class="fs-icon_coach"></i>
+                <p class="text-param" id="nom-coach">JRM Coach</p>
             </div>
         </a>
 
     </div>
 
+    <div class="action-list">
+        <a>
+            <div class="action-list-item">
+                <i class="fs-icon_mail"></i>
+                <p class="text-param">Suggérer une fonction</p>
+            </div>
+        </a>
+        <a href="confidentialite/confidentialite.html">
+            <div class="action-list-item">
+                <i class="fs-icon_confidentialite"></i>
+                <p class="text-param">Confidentialité</p>
+            </div>
+        </a>
+        <a href="licence/licence.html">
+            <div class="action-list-item">
+                <i class="fs-icon_licence"></i>
+                <p class="text-param">Licence</p>
+            </div>
+        </a>
+        <a href="a-propos/a-propos.html">
+            <div class="action-list-item">
+                <i class="fs-icon_a_propos"></i>
+                <p class="text-param">À propos</p>
+            </div>
+        </a>
 
+    </div>
     
     <script src="../../assets/base-js/base.js"></script>
 
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="script-import-seance.js"></script>
+    <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script>
+        async function NomCoachInit() {
+            // Recup datas
+            let CoachUserDB = await db.JRM_Coach.toArray()
+
+            if (CoachUserDB.length > 0) { // Si il y a des datas
+                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+                document.getElementById("nom-coach").textContent = NomCoach
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            NomCoachInit()
+        })
+    </script>
 
     
     <!-- Pour avoir les statistiques de visite du site -->

@@ -1163,7 +1163,7 @@ div.toolbar i {
     }
 }
 div.toolbar i:active {
-    transform: scale(var(--SCALE_NORMAL));
+    transform: scale(var(--SCALE_SUP));
 }
 
 
@@ -1217,7 +1217,7 @@ div.button-flottant {
     }
 }
 div.button-flottant:active {
-    transform: scale(var(--SCALE_NORMAL));
+    transform: scale(var(--SCALE_SUP));
 }
 div.button-flottant p{
     font-size: var(--H3);
@@ -1288,6 +1288,9 @@ div.menu-many-action.open {
     opacity:1;
     transition: all ease-out 0.21s;
 }
+div.menu-many-action.open:active {
+    transform: scale(1.025);
+}
 div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
     padding: var(--SPACE_XS);
@@ -1297,36 +1300,42 @@ div.menu-many-action li {
     font-weight: var(--FONT_WEIGHT_BUTTON);
     cursor: pointer;
     transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+                transform ease-out var(--TIME_TRANSITION);
 }
 div.menu-many-action.open li:nth-child(1) {
-    animation: animation_menu_li 0.33s ease-out;
+    animation: animation_menu_li 0.36s ease-out;
 }
 div.menu-many-action.open li:nth-child(2) {
-    animation: animation_menu_li 0.43s ease-out;
+    animation: animation_menu_li 0.46s ease-out;
 }
 div.menu-many-action.open li:nth-child(3) {
-    animation: animation_menu_li 0.48s ease-out;
-}
-div.menu-many-action.open li:nth-child(4) {
     animation: animation_menu_li 0.51s ease-out;
 }
+div.menu-many-action.open li:nth-child(4) {
+    animation: animation_menu_li 0.54s ease-out;
+}
 div.menu-many-action.open li:nth-child(5) {
-    animation: animation_menu_li 0.53s ease-out;
+    animation: animation_menu_li 0.57s ease-out;
 }
 div.menu-many-action.open li:nth-child(6) {
-    animation: animation_menu_li 0.56s ease-out;
+    animation: animation_menu_li 0.59s ease-out;
 }
 @media (hover: hover) and (pointer: fine) {
+    div.menu-many-action.open:hover {
+        transform: scale(1.025);
+    }
     div.menu-many-action li:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
         box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+        color: var(--COLOR_ACCENT_TEXT);
+        transform: scale(1.06);
     }
 }
 div.menu-many-action li:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
-    transform: scale(var(--SCALE_NORMAL));
+    color: var(--COLOR_ACCENT_TEXT);
+    transform: scale(1.06);
 }
 div.menu-many-action li i{
     margin-right: var(--SPACE_XXS);
@@ -1583,11 +1592,6 @@ input[type="text"].small {
     input[type="date"]:hover  {
         box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
     }
-}
-input[type="number"]:focus,
-input[type="text"]:focus,
-input[type="date"]:focus {
-    box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
 }
 /* Pour les inputs date */
 input[type="date"]{

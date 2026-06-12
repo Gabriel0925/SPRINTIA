@@ -84,12 +84,6 @@
 
     <h1>Thèmes</h1>
     
-    <div class="banner-toggle">
-        <i class="fs-icon_mode_affichage"></i>
-        <p>Mode Sombre</p>
-        <input class="toggle" type="checkbox">
-    </div>
-    
     <h2>Froids</h2>
     <ol class="container-color-accentuation">
 
@@ -163,22 +157,40 @@
 
     </ol>
 
-    <h2>Réglage du flou</h2>
-    <div class="slider-cont">
-        <div class="slider-name">RPE : <span class="RPE">1</span>Facile</div>
-            <div class="slider">
-                <input type="range" min="1" max="10" value="1" autocomplete="off">
-                <progress min="1" max="10" value="1"></progress>
-            </div>
-        </div>
-    </div>
-
     <div class="container-center-marge" style="margin-top: var(--SPACE_XL);">
         <button class="size-block" id="reinitialiser" onclick="reinitialiserTheme('azur')">Réinitialiser le thème</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>
     <script>
+        function reinitialiserTheme(idElementThemeParDefaut) { // remmettre le thème par défaut
+            // Demande de confirmation avant
+            if (confirm("Êtes-vous sur de vouloir réinitialiser le thème ?")) {
+                let Button = document.getElementById("reinitialiser") // Recup du bouton
+                // Desactivation du button
+                Button.disabled = true
+                Button.textContent = "Réinitialisation..."
+                
+                // maj des valeurs dans la base de données
+                localStorage.setItem("themeUser", "azur")
+
+                // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
+                colorTheme("azur", idElementThemeParDefaut, 0)
+
+                setTimeout(() => {
+                    // confirmation sauvegarde
+                    Button.textContent = "Réinitialisé"
+                }, 650);
+
+                setTimeout(() => {
+                    // Desactivation du button
+                    Button.disabled = false
+                    Button.textContent = "Réinitialiser le thème"
+                }, 1300);
+
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
 
             let themeUse = localStorage.getItem("themeUser")

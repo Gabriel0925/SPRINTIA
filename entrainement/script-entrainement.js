@@ -514,7 +514,7 @@ async function initialisation() {
                 let connectCSS = document.documentElement
                 let recupVar = getComputedStyle(connectCSS)
                 // on donne une couleur au bouton supprimer
-                buttonSupprimer.style.color = recupVar.getPropertyValue("--COLOR_ACCENT")
+                buttonSupprimer.style.color = recupVar.getPropertyValue("--COLOR_ACCENT_TEXT")
 
                 buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
                     // Demande de confirmation avant

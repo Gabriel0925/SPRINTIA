@@ -9,7 +9,7 @@ const configurationThemes = {
     "lune": {
         "COLOR_ACCENT": "#72a8ca",
         "COLOR_ACCENT_HOVER": "#8eb9d6",
-        "COLOR_ACCENT_TEXT": "#c7ddeb"
+        "COLOR_ACCENT_TEXT": "#d4eeff"
     },
     "glacier": {
         "COLOR_ACCENT": "#1fc9eb",
@@ -19,7 +19,7 @@ const configurationThemes = {
     "pomme": {
         "COLOR_ACCENT": "#A4DE02",
         "COLOR_ACCENT_HOVER": "#b8e630",
-        "COLOR_ACCENT_TEXT": "#E9FEAF"
+        "COLOR_ACCENT_TEXT": "#e7ff9d"
     },
     "vegetation": {
         "COLOR_ACCENT": "#0acd62",
@@ -44,7 +44,7 @@ const configurationThemes = {
     "lilas": {
         "COLOR_ACCENT": "#B19CD9",
         "COLOR_ACCENT_HOVER": "#c3b2e3",
-        "COLOR_ACCENT_TEXT": "#E8E3F3"
+        "COLOR_ACCENT_TEXT": "#e4d6ff"
     },
 
     // --- Thèmes Chauds ---
@@ -66,7 +66,7 @@ const configurationThemes = {
     "peche": {
         "COLOR_ACCENT": "#FF9A9E",
         "COLOR_ACCENT_HOVER": "#ffb0b3",
-        "COLOR_ACCENT_TEXT": "#FFD6D8"
+        "COLOR_ACCENT_TEXT": "#ffd4d6"
     },
     "citron": {
         "COLOR_ACCENT": "#faf43a",
@@ -76,7 +76,7 @@ const configurationThemes = {
     "framboise": {
         "COLOR_ACCENT": "#f26997",
         "COLOR_ACCENT_HOVER": "#f585aa",
-        "COLOR_ACCENT_TEXT": "#ffcdde"
+        "COLOR_ACCENT_TEXT": "#ffb2cc"
     },
     "fuchsia": {
         "COLOR_ACCENT": "#FA6BFA",
@@ -86,7 +86,7 @@ const configurationThemes = {
     "guimauve": {
         "COLOR_ACCENT": "#e4abe4",
         "COLOR_ACCENT_HOVER": "#ecbdec",
-        "COLOR_ACCENT_TEXT": "#ffe6ff"
+        "COLOR_ACCENT_TEXT": "#ffe0ff"
     }
 }
 // init variable

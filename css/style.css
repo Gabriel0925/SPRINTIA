@@ -16,10 +16,6 @@
     --COLOR_GLASSMORPHISM: rgba(68, 68, 68, 0.4); /* ou rgba(80, 80, 80, 0.4) */
     --COLOR_BORDER_GLASSMORPHISM: rgba(255, 255, 255, 0.15);
 
-    /* Intensité du blur pour le Glow Effect */
-    --GLOW_EFFECT_BLUR: 20px;
-    --GLOW_EFFECT_BRIGHTNESS: 0.8;
-
     /* Tailles & Configuration de la font */
     --H0: 2.5rem; 
     --H1: 2rem;
@@ -195,77 +191,80 @@ i {
 .fs-icon_miles_km:before {
   content: "\e917";
 }
-.fs-icon_modifier:before {
+.fs-icon_mode_affichage:before {
   content: "\e918";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_modifier:before {
   content: "\e919";
 }
-.fs-icon_outils:before {
+.fs-icon_niveau_course:before {
   content: "\e91a";
 }
-.fs-icon_parametres:before {
+.fs-icon_outils:before {
   content: "\e91b";
 }
-.fs-icon_partager:before {
+.fs-icon_parametres:before {
   content: "\e91c";
 }
-.fs-icon_pause:before {
+.fs-icon_partager:before {
   content: "\e91d";
 }
-.fs-icon_plus:before {
+.fs-icon_pause:before {
   content: "\e91e";
 }
-.fs-icon_plus_horizontal:before {
+.fs-icon_plus:before {
   content: "\e91f";
 }
-.fs-icon_predicteur_performance:before {
+.fs-icon_plus_horizontal:before {
   content: "\e920";
 }
-.fs-icon_profil:before {
+.fs-icon_predicteur_performance:before {
   content: "\e921";
 }
-.fs-icon_progression:before {
+.fs-icon_profil:before {
   content: "\e922";
 }
-.fs-icon_proteines:before {
+.fs-icon_progression:before {
   content: "\e923";
 }
-.fs-icon_recuperation:before {
+.fs-icon_proteines:before {
   content: "\e924";
 }
-.fs-icon_statistiques:before {
+.fs-icon_recuperation:before {
   content: "\e925";
 }
-.fs-icon_strategie_allure:before {
+.fs-icon_statistiques:before {
   content: "\e926";
 }
-.fs-icon_supprimer:before {
+.fs-icon_strategie_allure:before {
   content: "\e927";
 }
-.fs-icon_temps_recup:before {
+.fs-icon_supprimer:before {
   content: "\e928";
 }
-.fs-icon_themes:before {
+.fs-icon_temps_recup:before {
   content: "\e929";
 }
-.fs-icon_to_day:before {
+.fs-icon_themes:before {
   content: "\e92a";
 }
-.fs-icon_VMA:before {
+.fs-icon_to_day:before {
   content: "\e92b";
 }
-.fs-icon_VO2MAX:before {
+.fs-icon_VMA:before {
   content: "\e92c";
 }
-.fs-icon_zones_cardiaques:before {
+.fs-icon_VO2MAX:before {
   content: "\e92d";
 }
-.fs-icon_zones_puissance:before {
+.fs-icon_zones_cardiaques:before {
   content: "\e92e";
 }
-.fs-icon_zones_vitesse:before {
+.fs-icon_zones_puissance:before {
   content: "\e92f";
+}
+.fs-icon_zones_vitesse:before {
+  content: "\e930";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */
@@ -1376,41 +1375,23 @@ div.zone-coach {
     border-radius: var(--BORDER_BIG);
     z-index: 1;
     position: relative;
+    background: linear-gradient(130deg, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
+    color: var(--COLOR_BACKGROUND);
+    padding: var(--SPACE_S_SMALL);
 
     flex-grow: 1;
     max-width: 450px;
     height: auto;
     min-height: 180px;
 }
-div.zone-coach::before {
-    content: "";
-    position: absolute;
-    
-    /* aligne le coin du before sur l'élément parent mais du coup c'est pas centré donc on le translate ce qui met le centre au centre */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
-    width: 100%;
-    max-width: 500px;
-    height: 100%;
-
-    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(var(--GLOW_EFFECT_BLUR)) brightness(var(--GLOW_EFFECT_BRIGHTNESS)); 
-    z-index: -1;
-}
 div.zone-coach.clickable:active {
     transform: scale(var(--SCALE_SMALL));
 }
 div.zone-coach p.zone-coach-name {
-    color: var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--H3);
 
     margin-bottom: var(--SPACE_S_SMALL);
-}
-div.zone-coach p.zone-coach-interpretation {
-    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
@@ -1939,29 +1920,15 @@ div.visuel-version {
     margin: var(--SPACE_L) 0;
     z-index: 1;
 }
-div.visuel-version::before {
-    content: "";
-    position: absolute;
-    
-    /* aligne le coin du before sur l'élément parent mais du coup c'est pas centré donc on le translate ce qui met le centre au centre */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
-    width: 100%;
-    max-width: 500px;
-    height: 100%;
-
-    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(var(--GLOW_EFFECT_BLUR)) brightness(var(--GLOW_EFFECT_BRIGHTNESS)); 
-    z-index: -1;
-}
 div.visuel-version p.visuel-version-title{
     font-size: var(--H0);
     text-align: center;
     font-weight: 1000;
     margin-bottom: var(--SPACE_M);
-    color: var(--COLOR_TEXT_PRIMARY);
+    
+    background-image: linear-gradient(to right, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
+    background-clip: text;
+    color: transparent;
 }
 div.visuel-version p.visuel-version-description{
     font-size: var(--H2);
@@ -2217,7 +2184,7 @@ div.banner-toggle {
     transition: all ease-out var(--TIME_TRANSITION);
 }
 div.banner-toggle i{
-    font-size: var(--H0);
+    font-size: 2.25rem;
     color: var(--COLOR_TEXT_PRIMARY);
 }
 div.banner-toggle p {

@@ -87,13 +87,6 @@ const configurationThemes = {
         "COLOR_ACCENT": "#e4abe4",
         "COLOR_ACCENT_HOVER": "#ecbdec",
         "COLOR_ACCENT_TEXT": "#ffe6ff"
-    },
-
-    // --- Thèmes Neutres ---
-    "nuage": {
-        "COLOR_ACCENT": "#F5F5F5",
-        "COLOR_ACCENT_HOVER": "#FFFFFF",
-        "COLOR_ACCENT_TEXT": "#ffffff"
     }
 }
 // init variable

@@ -1921,7 +1921,7 @@ div.visuel-version {
     z-index: 1;
 }
 div.visuel-version p.visuel-version-title{
-    font-size: var(--H0);
+    font-size: 2.3rem;
     text-align: center;
     font-weight: 1000;
     margin-bottom: var(--SPACE_M);

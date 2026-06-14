@@ -110,7 +110,7 @@
             <p class="small-zone-result-indication">Intermédiaire</p>
 
             <div class="container-result">
-                <p class="small-zone-result-result">70</p>
+                <p class="small-zone-result-result" id="last-level-run">--</p>
                 <p class="small-zone-result-unit">/100</p>
             </div>
         </div>
@@ -122,43 +122,60 @@
 
         <div class="container-block-data">
             <p class="container-block-data-header">VMA</p>
-            <p class="container-block-data-data">--  <small>km/h</small></p>
+            <p class="container-block-data-data"id="vma-estimee">--  <small>km/h</small></p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">VO₂max</p>
-            <p class="container-block-data-data">--</p>
+            <p class="container-block-data-data" id="vo2max-estimee">--</p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Allure au seuil</p>
-            <p class="container-block-data-data">--'--" <small> /km</small></p>
+            <p class="container-block-data-data" id="allure-seuil-estimee">--:-- <small> /km</small></p>
         </div>
 
     </section>
 
     <h2>Prédicteur de course</h2>
-    <section class="container-block" style="margin-bottom: var(--SPACE_XL);"> 
+    <section class="container-block"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">400 m</p>
+            <p class="container-block-data-data" id="time-400m">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">800 m</p>
+            <p class="container-block-data-data" id="time-800m">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">1 km</p>
+            <p class="container-block-data-data" id="time-1km">--</p>
+        </div>
+
+    </section>
+    <section class="container-block"> 
 
         <div class="container-block-data">
             <p class="container-block-data-header">5 km</p>
-            <p class="container-block-data-data">--</p>
+            <p class="container-block-data-data" id="time-5km">--</p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">10 km</p>
-            <p class="container-block-data-data">--</p>
+            <p class="container-block-data-data" id="time-10km">--</p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Semi-marathon</p>
-            <p class="container-block-data-data">--</p>
+            <p class="container-block-data-data" id="time-semi-marathon">--</p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Marathon</p>
-            <p class="container-block-data-data">--</p>
+            <p class="container-block-data-data" id="time-marathon">--</p>
         </div>
 
     </section>
 
     <h2>Zones d'allure</h2>
-    <section class="container-box">
+    <section class="container-box zone-allure"><!-- la class zone allure en plus permet juste au JS pour la boucle for de ne pas prendre
+                                                    en compte la box pour le dernier niveau de course -->
 
         <div class="small-zone-result color-zone">
             <p class="small-zone-result-name">Zone 1</p>
@@ -221,13 +238,10 @@
 
     <script src="../../assets/base-js/base.js"></script>
 
-    <!-- Import de la bibliothèque pr le graphique -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>    
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    
-    <script src="script-outil.js" defer></script> <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
+    <script src="script-niveau-course-analyse.js"></script>
     
     <script defer src="/_vercel/insights/script.js"></script>
 

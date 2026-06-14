@@ -237,4 +237,4 @@ async function displayOnScreen() {
     document.getElementById("charge-7j").innerHTML = parseInt(chargeTotale7j)
     document.getElementById("charge-28j").innerHTML = parseInt(chargeTotale28j)
 
-}
+};

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SPRINTIA - Niveau de course</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-512-V4.3.1.png">
+    <link rel="manifest" href="../../manifest-V5.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V4.3.1.png">
+
+    <script src="../../assets/base-js/themes.js"></script>
+</head>
+
+<body>
+    <div class="container-logo-dynamique">
+        <div class="logo-dynamique"></div>
+    </div>
+    
+     <section class="header">
+
+        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
+
+        
+        <ul class="header-container-items">
+
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
+                <i class="fs-icon_plus_horizontal"></i>
+                Plus
+            </li>
+
+        </ul>
+
+    </section>
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
+                <i class="fs-icon_plus_horizontal"></i>
+                <p class="tab-bars-items-name">Plus</p>
+            </li>
+
+        </ul>
+
+    </section>
+
+    <div class="container-button-flottant">
+        <div class="button-flottant" onclick="window.location.href = 'ajouter-niveau-course.html'">
+            <i class="fs-icon_add"></i>
+            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+        </div>
+    </div>
+
+    <h1>Niveau de course</h1>
+
+    <section class="container-zone">
+
+        <div class="zone-coach">
+            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="zone-coach-interpretation">
+                Chargement...
+            </p> 
+        </div>
+
+    </section>
+    
+    <section class="container-box">
+
+        <div class="small-zone-result">
+            <p class="small-zone-result-name">Niveau de course</p>
+            <p class="small-zone-result-indication">Intermédiaire</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">70</p>
+                <p class="small-zone-result-unit">/100</p>
+            </div>
+        </div>
+
+    </section>
+
+    <h2>Évolution de votre niveau</h2>
+    <div class="chart-container" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
+
+    <h2>Historique des derniers tests</h2>
+    <div class="carousel table">
+        <div class="carousel-content table">
+            <table id="tableau-historique">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Niveau</th>
+                        <th>Distance</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody><!-- Remplis en js --></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container-center-marge">
+        <button>
+            Voir l'historique complet
+        </button>
+    </div>
+
+    <h2>Métriques de base</h2>
+    <section class="container-block"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">VMA</p>
+            <p class="container-block-data-data">--  <small>km/h</small></p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">VO₂max</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Allure au seuil</p>
+            <p class="container-block-data-data">--'--" <small> /km</small></p>
+        </div>
+
+    </section>
+
+    <h2>Prédicteur de course</h2>
+    <section class="container-block" style="margin-bottom: var(--SPACE_XL);"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">5 km</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">10 km</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Semi-marathon</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">Marathon</p>
+            <p class="container-block-data-data">--</p>
+        </div>
+
+    </section>
+
+    <h2>Zones d'allure</h2>
+    <section class="container-box">
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 1</p>
+            <p class="small-zone-result-indication">Footing</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-:-- - -:--</p>
+                <p class="small-zone-result-unit">/km</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 2</p>
+            <p class="small-zone-result-indication">Endurance fondamentale</p>
+
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-:-- - -:--</p>
+                <p class="small-zone-result-unit">/km</p>
+            </div>
+        </div>
+
+       <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 3</p>
+                <p class="small-zone-result-indication">Endurance active</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-:-- - -:--</p>
+                <p class="small-zone-result-unit">/km</p>
+            </div>
+        </div>
+            
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 4</p>
+                <p class="small-zone-result-indication">Tempo</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-:-- - -:--</p>
+                <p class="small-zone-result-unit">/km</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 5</p>
+                <p class="small-zone-result-indication">Fractionné court</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-:-- - -:--</p>
+                <p class="small-zone-result-unit">/km</p>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>    
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    
+    <script src="script-outil.js" defer></script> <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
+    
+    <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

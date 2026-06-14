@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Historique Niveau course</title>
+    <title>SPRINTIA - Historique niveau de course</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,21 +74,15 @@
         </ul>
 
     </section>
-    
-    <h1>Historique Niveau course</h1>
 
-    <h2>Graphique</h2>
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    <div class="container-button-flottant">
+        <div class="button-flottant" onclick="window.location.href = 'ajouter-niveau-course.html'">
+            <i class="fs-icon_add"></i>
+            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+        </div>
     </div>
 
-    <h2>Votre historique</h2>
-    <p class="text" id="text-informatif">
-        SPRINTIA n'a pas encore assez de données pour afficher votre historique de niveau de course. Pour ajouter des données, vous devez sauvegarder
-        votre niveau de course. <a href="niveau-course.html" class="lien">Déterminer mon niveau de course</a>.
-    </p>
-    
+    <h1>Historique niveau de course</h1>
     <div class="carousel table">
         <div class="carousel-content table">
             <table id="tableau-historique">
@@ -114,11 +108,9 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     
-    <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
-    <script src="script-outil.js" defer></script> 
-    <script src="script-historique.js"></script>
-
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="script-outil.js" defer></script> <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
     
+    <script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>

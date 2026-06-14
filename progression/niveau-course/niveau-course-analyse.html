@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Niveau de course</title>
+    <title>SPRINTIA - Niveau de course (Analyse)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -84,6 +84,14 @@
 
     <h1>Niveau de course</h1>
 
+    <section class="segmented-button duree">
+
+        <div class="segmented-button-button actif" style="width: 90px;">Analyse</div>
+        <div class="segmented-button-button" style="width: 90px;"
+        onclick="window.location.href = 'niveau-course-evolution.html'">Évolution</div>
+
+    </section>
+
     <section class="container-zone">
 
         <div class="zone-coach">
@@ -108,35 +116,6 @@
         </div>
 
     </section>
-
-    <h2>Évolution de votre niveau</h2>
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-    </div>
-
-    <h2>Historique des derniers tests</h2>
-    <div class="carousel table">
-        <div class="carousel-content table">
-            <table id="tableau-historique">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Niveau</th>
-                        <th>Distance</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-
-                <tbody><!-- Remplis en js --></tbody>
-            </table>
-        </div>
-    </div>
-    <div class="container-center-marge">
-        <button>
-            Voir l'historique complet
-        </button>
-    </div>
 
     <h2>Métriques de base</h2>
     <section class="container-block"> 

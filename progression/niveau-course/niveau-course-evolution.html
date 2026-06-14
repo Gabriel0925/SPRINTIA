@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Niveau course à pied</title>
+    <title>SPRINTIA - Niveau de course (Évolution)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,57 +74,66 @@
         </ul>
 
     </section>
-    
-    <div class="toolbar">
-        <h1>Niveau course à pied</h1>
-        <a href="historique-niveau-course.html"><i class="fs-icon_historique"></i></a>
-    </div>
- 
-    <h2>Test de course</h2>
-    <p class="text">
-        Déterminez votre niveau de course actuel en<strong> courant la plus longue distance possible en 12 minutes.</strong>
-        Pour des mesures précises, ce test doit être effectué sur un terrain plat sans aucun obstacle (le mieux c'est une piste d'athlétisme).
-        Ne négligez pas l'échauffement : faîtes des gammes pendant 10 à 15 min et ensuite faîtes le test, ça améliorera votre performance.
-    </p>
 
-
-    <section class="container-zone">    
-        
-        <div class="form">
-            <p id="zone-error" class="indication"></p>
-                
-            <div class="container-input">
-                <input type="date" id="date-niveau-course" autocomplete="off">
-                <div class="label-input">Date</div>
-            </div>
-            <div class="container-input">
-                <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="StartNiveau()">
-                <div class="label-input">Distance (km)</div>
-            </div>
-
-            <button onclick="SauvegardeNiveauCourse()" id="button-sauvegarde-niveau">Sauvegarder</button>
+    <div class="container-button-flottant">
+        <div class="button-flottant" onclick="window.location.href = 'ajouter-niveau-course.html'">
+            <i class="fs-icon_add"></i>
+            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
         </div>
+    </div>
 
-        <div class="large-zone-result" id="niveau-course">
-            <p class="large-zone-result-name">Niveau</p>
-            <p class="large-zone-result-result">
-                0
-            </p>
+    <h1>Niveau de course</h1>
+
+    <section class="segmented-button duree">
+
+        <div class="segmented-button-button" style="width: 90px;"
+        onclick="window.location.href = 'niveau-course-analyse.html'">Analyse</div>
+        <div class="segmented-button-button actif" style="width: 90px;">Évolution</div>
+
+    </section>
+    
+    <section class="container-box">
+
+        <div class="small-zone-result">
+            <p class="small-zone-result-name">Niveau de course</p>
+            <p class="small-zone-result-indication">Intermédiaire</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">70</p>
+                <p class="small-zone-result-unit">/100</p>
+            </div>
         </div>
 
     </section>
 
+    <h2>Évolution de votre niveau</h2>
     <div class="chart-container" id="conteneur-graphique">
         <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
         <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
     </div>
- 
-    <h2>Comment s'en servir ?</h2>
-    <p class="text">
-        Ce score peut vous permettre de suivre votre progression, le mieux c'est de refaire ce test tous les 2 mois pour constatez si vos entraînements
-        portent leurs fruits ou si vous perdez du niveau. Vous pouvez gamifier un peu l'outil par exemple en 
-        comparant les résultats avec vos potes, votre famille,...
-    </p>
+
+    <h2>Historique des derniers tests</h2>
+    <div class="carousel table">
+        <div class="carousel-content table">
+            <table id="tableau-historique">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Niveau</th>
+                        <th>Distance</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody><!-- Remplis en js --></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container-center-marge">
+        <button onclick="window.location.href = 'historique-niveau-course.html'">
+            Voir l'historique complet
+        </button>
+    </div>
 
     <script src="../../assets/base-js/base.js"></script>
 
@@ -135,26 +144,6 @@
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     
     <script src="script-outil.js" defer></script> <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
-    
-    <!-- Remplissage du input date a la date now -->
-    <script>
-        let ChampDate = document.getElementById("date-niveau-course")
-        let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"
-        // Enlever la partie qui nous interrese pas
-        DateActuelle = DateActuelle.split("T") // ['2026-01-24', '13:57:55.505Z']
-        DateActuelle = DateActuelle[0] // '2026-01-24'
-
-        ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
-        ChampDate.value = DateActuelle
-
-        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-        let formKeyEntry = document.querySelector(".form")
-        formKeyEntry.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                SauvegardeNiveauCourse()
-            }
-        })
-    </script>
     
     <script defer src="/_vercel/insights/script.js"></script>
 

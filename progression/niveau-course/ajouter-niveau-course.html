@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Ajout niveau course</title>
+    <title>SPRINTIA - Ajouter un niveau de course</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -75,7 +75,43 @@
 
     </section>
 
-    <h1>Ajout niveau course</h1>
+    <h1>Ajouter un niveau de course</h1>
+    <h2>Test de course</h2>
+    <p class="text">
+        Déterminez votre niveau de course actuel en<strong> courant la plus longue distance possible en 12 minutes.</strong>
+        Pour des mesures précises, ce test doit être effectué sur un terrain plat sans aucun obstacle (le mieux c'est une piste d'athlétisme).
+        Ne négligez pas l'échauffement : faîtes des gammes pendant 10 à 15 min et ensuite faîtes le test, ça améliorera votre performance.
+    </p>
+
+    <section class="container-zone">    
+        
+        <div class="form">
+            <p id="zone-error" class="indication"></p>
+                
+            <div class="container-input">
+                <input type="date" id="date-niveau-course" autocomplete="off">
+                <div class="label-input">Date</div>
+            </div>
+            <div class="container-input">
+                <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="StartNiveau()">
+                <div class="label-input">Distance (km)</div>
+            </div>
+        </div>
+
+        <div class="large-zone-result" id="niveau-course">
+            <p class="large-zone-result-name">Niveau</p>
+            <p class="large-zone-result-result">
+                0
+            </p>
+        </div>
+
+    </section>
+    <div class="container-center-marge">
+        <button class="size-block">
+            Sauvegarder
+        </button>
+    </div>
+
 
     <script src="../../assets/base-js/base.js"></script>
 

@@ -14,9 +14,13 @@ function calculLevelRun(distanceUser) {
     }
 }
 function calculDistanceLevel(levelRun) {
-    // on sait que : 20+((distanceM-distanceMin)/(distanceMax-distanceMin))*80 = levelRun
-    // on veut la var nommé distanceM donc on isole cette variable dans l'équation et on trouve
-    return Math.floor(distanceMin+((levelRun-20)/80)*(distanceMax-distanceMin)) // la distance est en metres pr info
+    if (levelRun == "--") { // quand il n'y a pas de datas
+        return "--"
+    } else {
+        // on sait que : 20+((distanceM-distanceMin)/(distanceMax-distanceMin))*80 = levelRun
+        // on veut la var nommé distanceM donc on isole cette variable dans l'équation et on trouve
+        return Math.floor(distanceMin+((levelRun-20)/80)*(distanceMax-distanceMin)) // la distance est en metres pr info
+    }
 }
 
 async function lastLevel() {
@@ -26,17 +30,41 @@ async function lastLevel() {
         .limit(1) // on limite à 1 pour récup le dernier level
         .toArray()
 
-    return tableauLastLevel[0].niveau_course_user // on return que le niveau de course
+    if (tableauLastLevel.length >= 1) {
+        return tableauLastLevel[0].niveau_course_user // on return que le niveau de course
+    } else {
+        return "--"
+    }
+}
+function zoneLevel(lastLevelUser) {
+    const dicoZone = {36:"Débutant·e", 52:"Intermédiaire", 68:"Avancé·e", 84:"Supérieur·e", 100:"Expert·e"}
+
+    if (lastLevelUser != "--") {
+        for (const [key, value] of Object.entries(dicoZone)) {
+            if (lastLevelUser <= key) {
+                return value
+            }
+        }
+    } else { // quand il n'y a pas de données de dernier niveau
+        return "Pas assez de données"
+    }
 }
 
 function estimateVMA(distancelastLeverUser) {
-    // on part de la vitesse moy et on ajoute un facteur de 90% car le user ne peut pas maintenir sa VMA à 100% sur 12 min
-    return Number(((distancelastLeverUser/200)/0.9).toFixed(1)) // on prend un chiffre apres la virgule et on remet en nombre pour les calculs suivants
+    if (distancelastLeverUser != "--") {
+        // on part de la vitesse moy et on ajoute un facteur de 90% car le user ne peut pas maintenir sa VMA à 100% sur 12 min
+        return Number(((distancelastLeverUser/200)/0.9).toFixed(1)) // on prend un chiffre apres la virgule et on remet en nombre pour les calculs suivants
+    } else { // quand il n'y a pas de datas
+        return "--"
+    }
 }
 function estimateVO2max(vmaEstimee) {
-    return Number((vmaEstimee*3.5).toFixed(1))
+    if (vmaEstimee != "--") {return Number((vmaEstimee*3.5).toFixed(1))} // calcul que si il y a des datas
+    else {return "--"}
 }
 function estimateAllureSeuil(vmaEstimee) {
+    if (vmaEstimee == "--") {return "--:--"} // quand il n'y a pas de datas on return la valeur de base du HTML
+
     // on prend 85% de la VMA estimée (c'est le standart dans les plans d'entrainement)
     const vitesseSeuil = vmaEstimee*0.85 // en km/h
     const tempsDecimal = 60/vitesseSeuil
@@ -50,6 +78,7 @@ function estimateAllureSeuil(vmaEstimee) {
 }
 
 function predicteurCourse(vmaEstimee) {
+    if (vmaEstimee == "--") {return ["--", "--", "--", "--", "--", "--", "--"]} // quand il n'y a pas de datas on return la valeur de base du HTML on return 7x "--" car il y a 7 prédictions
     const coef = [0.97, 0.84, 0.80, 0.74, 0.68] // coef pour un coureur équillibré
     
     // estimation des temps de course
@@ -81,6 +110,8 @@ function conversionAllure(zone){
     return [minutes, secondes]
 }
 function zonesAllure(vmaEstimee) {
+    if (vmaEstimee == "--") {return} // quand il n'y a pas de datas on return rien car ça laisse la base qu'il y avait dans le HTML
+
     // recupération de toutes les box de résultats
     // on prend également ".container-box.zone-allure" pour ne pas prendre en compte la premiere box du dernier niveau de course
     const baliseTranche = document.querySelectorAll(".container-box.zone-allure .small-zone-result-result")
@@ -124,6 +155,7 @@ function zonesAllure(vmaEstimee) {
 async function manageAnalyse() {
     // calcul du niveau et de la distance du dernier niveau de course sur user
     const lastLevelUser = await lastLevel()
+    const zoneLevelUser = zoneLevel(lastLevelUser)
     const distancelastLeverUser = calculDistanceLevel(lastLevelUser)
 
     // calcul de la VMA, VO2max et allure seuil estimée
@@ -138,17 +170,18 @@ async function manageAnalyse() {
     // calcul et affichage des zones d'allure pour gagner en perf et éviter de refaire une boucle for par la suite
     zonesAllure(vmaEstimee)
 
-    return [lastLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, allureSeuilEstimee, 
+    return [lastLevelUser, zoneLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, allureSeuilEstimee, 
         temps400m, temps800m, temps1km, temps5km, temps10km, tempsSemiMarathon, tempsMarathon]
 }
 
 async function displayOnScreen() {
     // recup des datas
-    const [lastLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, allureSeuilEstimee, 
+    const [lastLevelUser, zoneLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, allureSeuilEstimee, 
         temps400m, temps800m, temps1km, temps5km, temps10km, tempsSemiMarathon, tempsMarathon] = await manageAnalyse()
 
-    // affichage du dernier niveau de course
+    // affichage du dernier niveau de course et de la zone
     document.getElementById("last-level-run").innerHTML = lastLevelUser.toString().replace(".", ",")
+    document.getElementById("zone-last-level-run").innerHTML = zoneLevelUser
 
     // affichage des métriques de base
     document.getElementById("vma-estimee").innerHTML = vmaEstimee.toString().replace(".", ",") + "  <small>km/h</small>"

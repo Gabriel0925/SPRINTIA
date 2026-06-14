@@ -114,7 +114,7 @@
         </div>
 
         <p class="widjet-charge-entrainement-score" id="dernier-niveau-course">-- <small>/100</small></p>
-        <p class="widjet-charge-entrainement-statut">chargement...</p>
+        <p class="widjet-charge-entrainement-statut" id="zone-dernier-niveau-course">chargement...</p>
 
     </section>
 
@@ -151,7 +151,9 @@
 
             // --- Niveau de course ---
             const lastLevelUser = await lastLevel()
+            const zoneLevelUser = zoneLevel(lastLevelUser)
             document.getElementById("dernier-niveau-course").innerHTML = lastLevelUser.toString().replace(".", ",") + " <small>/100</small>"
+            document.getElementById("zone-dernier-niveau-course").innerHTML = zoneLevelUser
 
         })
     </script>

@@ -107,7 +107,7 @@
 
         <div class="small-zone-result">
             <p class="small-zone-result-name">Niveau de course</p>
-            <p class="small-zone-result-indication">Intermédiaire</p>
+            <p class="small-zone-result-indication">chargement...</p>
 
             <div class="container-result">
                 <p class="small-zone-result-result" id="last-level-run">--</p>
@@ -242,6 +242,12 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-niveau-course-analyse.js"></script>
+    <!-- On y lance dans le fichier HTML car le fichier progression.html est liés au script du niveau de course mais il n'a pas les meme composants -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            displayOnScreen()
+        })
+    </script>
     
     <script defer src="/_vercel/insights/script.js"></script>
 

@@ -113,7 +113,7 @@
             <i class="fs-icon_fleche_droite"></i>
         </div>
 
-        <p class="widjet-charge-entrainement-score">-- <small>/100</small></p>
+        <p class="widjet-charge-entrainement-score" id="dernier-niveau-course">-- <small>/100</small></p>
         <p class="widjet-charge-entrainement-statut">chargement...</p>
 
     </section>
@@ -136,8 +136,11 @@
 
     <!-- connexion au fichier de charge d'entrainement pr avoir accès au fonction -->
     <script src="charge-entrainement/script-charge-entrainement.js"></script>
+    <!-- connexion au fichier du niveau de course pr avoir accès au fonction -->
+    <script src="niveau-course/script-niveau-course-analyse.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", async () => {
+            // --- Charge d'entrainement ---
             // recup des valeurs grâce au fichier "script-charge-entrainement.js"
             const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
         ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul()
@@ -145,6 +148,11 @@
             // affichage des valeurs
             document.getElementById("charge-7j").innerHTML = chargeTotale7j + " <small>CE</small>"
             document.getElementById("statut-charge-entrainement").innerHTML = statutUser
+
+            // --- Niveau de course ---
+            const lastLevelUser = await lastLevel()
+            document.getElementById("dernier-niveau-course").innerHTML = lastLevelUser.toString().replace(".", ",") + " <small>/100</small>"
+
         })
     </script>
 

@@ -159,11 +159,9 @@ async function displayOnScreen() {
     document.getElementById("time-400m").innerHTML = temps400m
     document.getElementById("time-800m").innerHTML = temps800m
     document.getElementById("time-1km").innerHTML = temps1km
-
     document.getElementById("time-5km").innerHTML = temps5km
     document.getElementById("time-10km").innerHTML = temps10km
     document.getElementById("time-semi-marathon").innerHTML = tempsSemiMarathon
     document.getElementById("time-marathon").innerHTML = tempsMarathon
 
 }
-displayOnScreen()

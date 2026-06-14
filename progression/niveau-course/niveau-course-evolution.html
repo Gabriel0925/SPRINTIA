@@ -112,7 +112,11 @@
         <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
     </div>
 
-    <h2>Historique des derniers tests</h2>
+    <h2>Historique</h2>
+    <p class="text" id="text-informatif">
+        Sprintia n'a pas encore assez de données pour afficher votre historique de niveau de course. Pour ajouter des données, vous devez sauvegarder
+        votre niveau de course. <a href="niveau-course.html" class="lien">Déterminer mon niveau de course</a>.
+    </p>
     <div class="carousel table">
         <div class="carousel-content table">
             <table id="tableau-historique">
@@ -128,11 +132,6 @@
                 <tbody><!-- Remplis en js --></tbody>
             </table>
         </div>
-    </div>
-    <div class="container-center-marge">
-        <button onclick="window.location.href = 'historique-niveau-course.html'">
-            Voir l'historique complet
-        </button>
     </div>
 
     <script src="../../assets/base-js/base.js"></script>
@@ -163,7 +162,8 @@
             document.getElementById("last-level-run").innerHTML = lastLevelUser.toString().replace(".", ",")
             document.getElementById("zone-last-level-run").innerHTML = zoneLevelUser
 
-            graph() // on remplit le graph
+            graph()
+            RemplirTableau()
         })
     </script>
     

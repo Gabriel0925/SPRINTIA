@@ -194,18 +194,18 @@ async function remplissageTableau() {
         colonneDate.textContent = returnDate(elt.date)
         colonneFcRepos.textContent = elt.fc_repos
 
+        let btnModifier = document.createElement("button")
+        btnModifier.textContent = "Modifier"
+        colonneAction.appendChild(btnModifier)
+        // Ajout de la class
+        btnModifier.classList.add("table")
+
         // ajout d'un bouton supprimer et modifier
         let btnSupprimer = document.createElement("button")
         btnSupprimer.textContent = "Supprimer"
         colonneAction.appendChild(btnSupprimer)
         // Ajout de la class
         btnSupprimer.classList.add("table")
-
-        let btnModifier = document.createElement("button")
-        btnModifier.textContent = "Modifier"
-        colonneAction.appendChild(btnModifier)
-        // Ajout de la class
-        btnModifier.classList.add("table")
 
         // on lie les boutons à des actions
         btnSupprimer.addEventListener("click", async () => {

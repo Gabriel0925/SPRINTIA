@@ -96,10 +96,10 @@
 
         <div class="small-zone-result">
             <p class="small-zone-result-name">Niveau de course</p>
-            <p class="small-zone-result-indication">Intermédiaire</p>
+            <p class="small-zone-result-indication" id="zone-last-level-run">chargement...</p>
 
             <div class="container-result">
-                <p class="small-zone-result-result">70</p>
+                <p class="small-zone-result-result" id="last-level-run">--</p>
                 <p class="small-zone-result-unit">/100</p>
             </div>
         </div>
@@ -143,10 +143,27 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     
-    <script src="script-outil.js"></script>
+    <script src="script-niveau-course-analyse.js"></script>
+    <script src="script-historique-niveau-course.js"></script>
     <script>
-        window.addEventListener("DOMContentLoaded", () => {
+        // Pour recharger le graphique si c'est dans le BFCache
+        window.addEventListener("pageshow", (event) => {
+            if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
+                graph()
+            }
+        })
+        window.addEventListener("DOMContentLoaded", async () => {
             verificationURL() // pour lancer le logo dynamique quand le user a enregistré un niveau de course
+
+            // on recup les datas et on les affiche pour la zone pour le dernier niveau de course
+            const lastLevelUser = await lastLevel()
+            const zoneLevelUser = zoneLevel(lastLevelUser)
+
+            // affichage du dernier niveau de course et de la zone
+            document.getElementById("last-level-run").innerHTML = lastLevelUser.toString().replace(".", ",")
+            document.getElementById("zone-last-level-run").innerHTML = zoneLevelUser
+
+            graph() // on remplit le graph
         })
     </script>
     

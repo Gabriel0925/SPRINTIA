@@ -10,7 +10,7 @@ function calculLevelRun(distanceUser) {
     } else if (distanceM >= distanceMax) {
         return 100
     } else {
-        return 20+((distanceM-distanceMin)/(distanceMax-distanceMin))*80
+        return Number((20+((distanceM-distanceMin)/(distanceMax-distanceMin))*80).toFixed(1))
     }
 }
 function calculDistanceLevel(levelRun) {
@@ -36,12 +36,12 @@ async function lastLevel() {
         return "--"
     }
 }
-function zoneLevel(lastLevelUser) {
+function zoneLevel(LevelUser) {
     const dicoZone = {36:"Débutant·e", 52:"Intermédiaire", 68:"Avancé·e", 84:"Supérieur·e", 100:"Expert·e"}
 
-    if (lastLevelUser != "--") {
+    if (LevelUser != "--") {
         for (const [key, value] of Object.entries(dicoZone)) {
-            if (lastLevelUser <= key) {
+            if (LevelUser <= key) {
                 return value
             }
         }

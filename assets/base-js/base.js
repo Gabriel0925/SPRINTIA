@@ -544,3 +544,19 @@ function errorInput(messageError) {
 }
 // --- fin de pou déclencher une animation pour une erreur ---
 
+
+// --- Déclenchement du logo dynamique quand ya qqch de caché dans l'URL ---
+function verificationURL() {
+    const parametreInURL = window.location.search
+    const separation = parametreInURL.split("?")
+    const dicoParamUrlMessage = {
+        "workoutregister":"Bien joué 🔥",
+        "workoutimport":"Bien reçu 😋",
+        "levelrunregister": "Impressionnant ⚡"
+    }
+    
+    if (separation.length > 1) {
+        logoDynamique(dicoParamUrlMessage[separation[1]])
+    }
+}
+// --- Fin du déclenchement du logo dynamique quand ya qqch de caché dans l'URL ---

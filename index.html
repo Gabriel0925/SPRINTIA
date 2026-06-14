@@ -436,14 +436,7 @@
             })
 
             // animation du dynamic logo pour féliciter le user
-            const ParamURL = window.location.search
-            const TableauSeparation = ParamURL.split("?")
-            
-            if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutregister") {
-                logoDynamique("Bien joué 🔥")
-            } else if (TableauSeparation.length > 1 && TableauSeparation[1] == "workoutimport") {
-                logoDynamique("Bien reçu 😋")
-            }
+            verificationURL() // fonction dans base JS
 
             SauvegardeHistorique(HistoriqueDB)
             return

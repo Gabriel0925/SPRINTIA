@@ -93,7 +93,7 @@
                 <div class="label-input">Date</div>
             </div>
             <div class="container-input">
-                <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="StartNiveau()">
+                <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="liveResultViaInput()">
                 <div class="label-input">Distance (km)</div>
             </div>
         </div>
@@ -101,13 +101,13 @@
         <div class="large-zone-result" id="niveau-course">
             <p class="large-zone-result-name">Niveau</p>
             <p class="large-zone-result-result">
-                0
+                --
             </p>
         </div>
 
     </section>
     <div class="container-center-marge">
-        <button class="size-block">
+        <button class="size-block" id="button-sauvegarde-niveau" onclick="saveNiveauCourse()">
             Sauvegarder
         </button>
     </div>
@@ -121,7 +121,8 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     
-    <script src="script-outil.js" defer></script> <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
+    <script src="script-niveau-course-analyse.js"></script>
+    <script src="script-sauvegarder-niveau.js"></script>
     
     <!-- Remplissage du input date a la date now -->
     <script>
@@ -138,7 +139,7 @@
         let formKeyEntry = document.querySelector(".form")
         formKeyEntry.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                SauvegardeNiveauCourse()
+                SauvegardeNiveauCourse() 
             }
         })
     </script>

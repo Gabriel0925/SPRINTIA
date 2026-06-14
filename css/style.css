@@ -718,14 +718,18 @@ div.config-profil p.description{
 
 section.segmented-button {
     background-color: var(--COLOR_BACKGROUND_CARD);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     width: fit-content;
+
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
     gap: var(--SPACE_XS);
+    transition:  transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.segmented-button div.segmented-button-button {
     padding: var(--SPACE_XS);
@@ -737,30 +741,49 @@ section.segmented-button div.segmented-button-button {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-    transition: all ease-out var(--TIME_TRANSITION);
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                color ease-out var(--TIME_TRANSITION),
+                font-weight ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION);
 }
-@media (hover:hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
+    section.segmented-button:has(div.segmented-button-button:not(.actif):hover) div.segmented-button-button.actif{
+        background-color: transparent;
+        box-shadow: none;
+        color: var(--COLOR_TEXT_PRIMARY);
+    }
+    section.segmented-button:hover {
+        transform: scale(1.014);
+    }
     section.segmented-button div.segmented-button-button:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
         color: var(--COLOR_ACCENT_TEXT);
         font-weight: var(--FONT_WEIGHT_BUTTON);
+        transform: scale(var(--SCALE_SUP));
     }
 }
+section.segmented-button:active {
+    transform: scale(1.014);
+}
 section.segmented-button div.segmented-button-button:active {
-    transform: scale(var(--SCALE_NORMAL));
+    transform: scale(var(--SCALE_SUP));
     color: var(--COLOR_ACCENT_TEXT);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.segmented-button:has(div.segmented-button-button:not(.actif):hover) div.segmented-button-button.actif{
+section.segmented-button:has(div.segmented-button-button:not(.actif):active) div.segmented-button-button.actif{
     background-color: transparent;
+    box-shadow: none;
     color: var(--COLOR_TEXT_PRIMARY);
 }
 

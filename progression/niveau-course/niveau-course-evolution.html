@@ -143,7 +143,12 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     
-    <script src="script-outil.js" defer></script> <!-- defer permet d'obliger que le html sexecute completement et seulement ensuite il lance le script c'est pour le telechargement de la bibliotheque -->
+    <script src="script-outil.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            verificationURL() // pour lancer le logo dynamique quand le user a enregistré un niveau de course
+        })
+    </script>
     
     <script defer src="/_vercel/insights/script.js"></script>
 

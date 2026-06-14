@@ -78,7 +78,7 @@
     
     <div class="visuel-version">
         <p class="visuel-version-title">SPRINTIA 5</p>
-        <p class="visuel-version-description">beta - 13J263</p>
+        <p class="visuel-version-description">beta - 14J263</p>
     </div> 
 
     <section class="container-block" style="margin-bottom: var(--SPACE_M);">
@@ -104,159 +104,165 @@
         </p>
     </div>
 
-    <!-- <h1 style="margin-top: var(--SPACE_M);">Patch note</h1>
+    <h1 style="margin-top: var(--SPACE_M);">Patch note</h1>
+
     <h2>Nouvelles fonctionnalités</h2>
     <ul class="list-information">
+
         <li>
-            Ajout d'une tab-bar pour la version mobile ainsi que certaine tablette. Cette tab-bar réinvente totalement
-            la navigation dans l'application, aux yeux de l'utilisateur ça améliore l'expérience car les boutons de navigation
-            sont accessibles en permanence sans aucun clique contrairement au menu burger de l'ancienne version.
+            Ajout d'une tab-bar pour naviguer dans l'application sur mobile.
         </li>
         <li>
-            La structure de l'application a été totalement revue ! Le header ainsi que la tab-bar propose désormais 4 onglets :
-            Entraînement, Progression, Outils et Paramètres. Tout est enfin ranger à sa place, ce qui est nettement mieux pour les
-            utilisateurs ainsi que pour mon côté maniaque.
+            L'application est désormais organisée en 4 onglets : Entraînement, Progression, Outils et Plus ce qui permet 
+            à l'app d'être réellement intuitive.
         </li>
-        <li>
-            Le logo dynamique bien que plus présent de première abord est toujours présent, il est juste cacher, il intervient quand il le faut
-            avec une toute nouvelle animation plus expressive et plus optimisé que l'ancienne.
-        </li>
-        <li>
-            ⌛ La page de Progression a subi une grosse refonte
-        </li>
-        <li>
-            ⌛ Fonctionnalités de partage de résumé d'entrainement pour les story
-        </li>
-        <li>
-            ⌛ To Day
-        </li>
-        <li>
-            ⌛ Analyse Athlète (jornet)
-        </li>
-        <li>
-            ⌛ Calculateur de Glycogène
-        </li>
-        <li>
-            ⌛ Réorganisation de la page Outils
-        </li>
-        <li>
-            ⌛ Programme d'entrainement
-        </li>
-        <li>
-            ⌛ Stratégie d'allure
-        </li>
+
     </ul>
 
     <h2>Améliorations</h2>
     <ul class="list-information">
+
         <li>
-            Les boutons flottants s'accompagnent désormais du glassmorphism pour laisser transparaître le contenu en dessous tout en
-            gardant une excellente lisibilité.
+            Thème Nuage légèrement adapté pour améliorer la hiérarchisation des éléments.
         </li>
         <li>
-            Désormais, SPRINTIA a été enfin optimisé pour les grands écrans, ce qui évite d'avoir des grosses bandes noires sur
-            les côtés lors de la navigation.
+            Le logo dynamique bien que de prime abord absent est toujours là, mais désormais il pop un peu comme une notification. L'animation a donc été totalement revue.
         </li>
         <li>
-            La structure du header a été totalement revue, plus compact, plus joli grâce au glassmorphism. De nouvelles animations
-            font leurs apparitions également.
+            Des icônes ont été ajoutés dans la page d'import de données pour rendre l'interface plus joli.
         </li>
         <li>
-            Dans les paramètres, il y a désormais un bouton qui permet d'accéder directement à la page d'historique des versions de SPRINTIA.
-            Ce changement a été réalisé car auparavant il fallait aller au bout du carrousel pour accéder à cette page, ce qui était un peu
-            caché et pas très intuitif pour les utilisateurs.
+            Les thèmes arborent une toute nouvelle interface, plus expressive et adaptée à n'importe quelle écran. L'interface est désormais responsive ce qui 
+            permet d'avoir plus de contenu sur les grands écrans comme sur les petits.
         </li>
         <li>
-            Ajout d'icônes dans la page d'import de données ce qui est vachement plus joli.
+            Le design des zones de résultats dans les outils ou autre a été revu pour éviter d'avoir un gros bloc de couleur ce qui n'est pas bon en UX/UI surtout 
+            que les zones ne sont pas cliquable.
         </li>
         <li>
-            L'interface dans les thèmes a très légèrement changé, surtout sur le thème qui est séléctionné.
+            Le bouton "Calculer" dans l'outil nommé "Protéines quotidiennes" a été supprimé, désormais l'outil calcule tout en temps réel.
         </li>
         <li>
-            Nouveau design de la page "Outils" pour améliorer l'UX et éviter de surcharger l'interface.
+            Le menu plus dans le détail de votre entraînement possède désormais des icônes pour rendre le menu un peu moins fade.
         </li>
         <li>
-            Nouveau design pour les blocs de résultats dans les outils car auparavant c'était des blocs de couleurs alors que ce n'était pas cliquable
-            ce qui pouvait porter à confusion, c'est pour cela qu'ils adoptent désormais un nouveau design.
+            Les paramètres sont accessible depuis l'onglet qui se nomme "Plus".
+        </li>
+        <li>
+            Une toute nouvelle interface fais son apparition pour les cartes dans la page des outils.
+        </li>
+        <li>
+            Les catégories dans la page des outils a été revues pour que les outils soit mieux triées qu'avant surtout à cause/grâce à l'arrivée de nouveaux outils.
+        </li>
+        <li>
+            Une nouvelle catégorie dans la page d'outils fais son apparition, elle est nommé "Génération intelligente" : elle regroupe tous les outils considéré 
+            comme "intelligent" qui peuvent générer quelque chose.
+        </li>
+        <li>
+            Une toute nouvelle interface fais son apparition dans la page de progression. Cet interface est axée sur l'information en un coup d'oeil ce qui évite de tout 
+            le temps ouvrir la page de charge d'entraînement alors que l'utilisateur veut juste savoir si il est en surentraînement,...
+        </li>
+        <li>
+            Les dégradés sont de retour avec la version 5, ils seront utilisés uniquement pour le coach de l'application pour mettre en avant le plus important.
+        </li>
+
+    </ul>
+
+    <h2>Correction des bugs et optimisations</h2>
+    <ul class="list-information">
+
+        <li>
+            Optimisation du code de la charge d'entraînement (clean code, séparation en plusieurs fonctions et optimisation des requêtes à la base de données).
+        </li>
+        <li>
+            Optimisation de l'arborescence des patch notes, triée désormais par génération plutôt qu'en fouillis.
+        </li>
+        <li>
+            Optimisation des URL pour les patch notes des anciennes versions.
+        </li>
+        <li>
+            Certaines images dans les patch notes des anciennes versions ont été supprimé car je les ai jugée comme inutile.
+        </li>
+        <li>
+            Refonte complète du HTML de la structure du header.
+        </li>
+        <li>
+            Ajout d'une bordure sur les éléments flottant de l'interface pour leur donner une effet 3D.
+        </li>
+        <li>
+            L'interface de SPRINTIA a été optimisé pour être plus cohérente sur les grands écrans ce qui permet d'effacer les grandes bandes noires sur les côtés 
+            lors de la navigation.
+        </li>
+        <li>
+            Les animations des éléments flottant ont été revu pour être cohérente entre elle.
+        </li>
+        <li>
+            Désormais pour le header et la tab-bar, si l'utilisateur passe la souris ou clique sur un autre onglet sans relâcher la pression, l'onglet séléctionné se 
+            déséléctionne pour séléctionner celui que vous avez sous le doigt/souris.
         </li>
         <li>
             L'outils nommé "Estimation du temps de récupération" a été renommé "Temps de récupération".
         </li>
         <li>
-            Désormais, SPRINTIA ne s'écrit plus comme ça "SPRINTIA" mais comme ça "SPRINTIA", l'objectif est de rendre le nom de l'app un
-            peu plus expressif.
+            Le nom du projet passe de caractères simples a des caractères en majuscule : Sprintia -> SPRINTIA.
         </li>
         <li>
-            La page des thèmes bénéficie enfin d'un vraie responsible, ce qui permet d'avoir une interface conçue pour le format smartphone,
-            tablette, ordinateur,...
+            Les animations CSS ont été optimisées pour gagner légèrement en performance et éviter de consommer des ressources inutilement : passage de "all" 
+            aux propriétés qui sont utilisée pour les hover et les actives.
         </li>
         <li>
-            Le bouton "Calculer" dans l'outil "Protéines quotidiennes" a été supprimé, désormais l'outil calcule tout en temps réel.
+            Une fonction JS fait son apparition, son but est de gérer les liens en fonction de la profondeur de la page dans l'arborescence pour le header et la tab-bar, 
+            ce qui améliore la maintenabilité du code si un jour il me prend l'envie de modifier les liens.
         </li>
         <li>
-            Meilleure gestion du Glow Effect pour la version tablette et ordinateur.
+            De nombreuses interfaces ont été optimisée pour être vraiment plus cohérente sur les grands écrans
         </li>
+        <li>
+            Les animations sont 2x plus rapide qu'avant lors d'un hover ou d'un clic.
+        </li>
+        <li>
+            Correction des plusieurs bugs majeurs dans la page de statistiques : graphique, refresh de données, changements de période,...
+        </li>
+        <li>
+            La page de licence et de confidentialité sont désormais accessible depuis les paramètres car le footer de l'app a été supprimée.
+        </li>
+        <li>
+            L'icône qui correspondait à la page d'import de donnée a été modifié pour être plus représentative de la page en question.
+        </li>
+        <li>
+            Le code l'outil nommé "Protéines quotidiennes" a été revue pour être un peu plus optimisé qu'auparavant.
+        </li>
+        <li>
+            Correction d'un bug présent depuis la version 4 : si un bouton était entre le logo dynamique et le header, l'utilisateur le voyait mais en cliquant dessus rien ne se 
+            passait, désormais c'est corrigé grâce à la refonte de la structure du header.
+        </li>
+        <li>
+            Renforcement de la cohérence du head dans toutes les pages.
+        </li>
+        <li>
+            Correction d'un bug d'interface sur les écrans qui étaient plus grand que 1250px : le bouton flottant ajouté n'était pas centré, ce bug est enfin résolu.
+        </li>
+        <li>
+            Le versionning des bêtas de SPRINTIA a été totalement revu par exemple nous pouvons de retrouver avec : SPRINTIA 5 | beta - 13J263. En sachant que chaque chiffres/lettres 
+            a une signification, rien n'est fait au hasard.
+        </li>
+        
     </ul>
-
-    <h2>Correction des bugs et optimisations</h2>
-    <ul class="list-information">
-        <li>
-            Optimisation des animations CSS pour gagner en performance et éviter de consommé des ressources inutilement : passage de "all" à
-            par exemple "transform".
-        </li>
-        <li>
-            Désormais, dans de nombreux boutons il est désormais impossible de séléctionner le texte à l'intérieur du bouton.
-        </li>
-        <li>
-            Optimisation des liens pour les différents étages de l'arborecence de SPRINTIA, désormais au lieu de glisser des liens sur chaque
-            page, j'ai mis en place une fonction JS qui permet de gérér les liens en fonction de la profondeur de la page.
-        </li>
-        <li>
-            Optimisation de nombreuses interfaces pour devenir intuitif peut importe la taille de l'écran.
-        </li>
-        <li>
-            Une nouvelle variable de temps pour les transitions fait son apparition, elle est utilisé lors du moment active c'est à dire lorsque
-            l'utilisateur clique sur un élément de l'interface, ce qui donne un rendu plus réactif car l'animation est désormais 2x plus rapide.
-        </li>
-        <li>
-            Correction d'un bug d'affichage dans la page de statistiques qui pouvait laisser des anciennes datas lors du changement de période.
-        </li>
-        <li>
-            Correction d'un bug du graphique dans la page de statisitiques : lorsque l'utilisateur n'avait pas de données sur les 7 derniers
-            jours, puis qu'il allait sur les 30 derniers jours, le graphique apparaissait donc, sauf que lorsque l'utilisateur revient
-            sur les 7 derniers jours, le graphique restait affiché alors qu'il n'y avait pas de données, c'est désormais résolu.
-        </li>
-        <li>
-            La licence et la politique de confidentialité sont désormais accessible depuis les paramètres étant donné que le footer a été supprimé.
-        </li>
-        <li>
-            Changement de l'icone "Importer des données" pour plus de clarté aux yeux de l'utilisateur.
-        </li>
-        <li>
-            Optimisation du code de l'outil nommé "Protéines quotidiennes".
-        </li>
-        <li>
-            Ajout de plusieurs icônes dans les menus flottants comme par exemple dans le menu plus dans la page de détail de votre entrainement.
-        </li>
-        <li>
-            Correction d'un bug qui empêchait de pouvoir cliquer sur le contenu qui défilait entre le logo dynamique et les boutons de
-            navigation ou du bouton burger-menu.
-        </li>
-        <li>
-            Correction d'un bug d'interface sur ordinateur, ce bug est connu depuis longtemps, il est désormais réglé : le bouton flottant
-            n'était pas centrer quand votre écran était supérieur à 1250px, désormais il est bien centré.
-        </li>
-    </ul>    
     
     <h2>Fonctionnalités supprimées</h2>
     <ul class="list-information">
 
         <li>
-            Le SPRINTIA Labs a été supprimé car je pensais m'en servir mais finalement je ne m'en suis pas servi en plus d'un mois, j'ai
-            donc pris la descision de le supprimer.
+            Le footer a été supprimé.
+        </li>
+        <li>
+            Le Sprintia Labs a été supprimé car au bout de 2 mois je n'ai rien publié dessus donc aucune utilité.
+        </li>
+        <li>
+            Le Glow Effect qui est arrivé dans la version 4.3 a été retiré car il assombrissait trop les couleurs des thèmes à mon goût.
         </li>
 
-    </ul> -->
+    </ul>
         
     <!-- <h2>Quelques images</h2>
     <div class="gallery-version">

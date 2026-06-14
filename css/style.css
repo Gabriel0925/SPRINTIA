@@ -65,7 +65,7 @@
     --COLOR_FUCHSIA: #FA6BFA; --COLOR_GUIMAUVE: #e4abe4;
 
     /* Thèmes Neutres */
-    --COLOR_NUAGE: #F5F5F5;
+    --COLOR_NUAGE: #ffffd3;
 }
 /* Pour les icônes dans l'application */
 @font-face {

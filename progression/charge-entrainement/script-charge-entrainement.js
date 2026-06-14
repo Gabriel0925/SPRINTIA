@@ -1,4 +1,4 @@
-const statutAvailable = ["Désentraînement", "Productif", "Surentraînement"]
+const statutAvailable = ["Désentraînement", "Productif", "Surentraînement", "Pas de statut"]
 const dicoAnalyse = {
     "Bienveillant": {
         "Désentraînement": "Ta condition physique semble décliner ! Essaie d'augmenter l'intensité de tes entraînements pour basculer en statut productif et améliorer tes performances.",
@@ -98,7 +98,7 @@ async function sommeCharge28j() {
     let chargeTotale28j = 0;
     for (const chargeLap of tableauCharge28j) {chargeTotale28j += chargeLap}; // somme de toutes les charges
 
-    return Math.floor(chargeTotale28j);
+    return [Math.floor(chargeTotale28j), tableauCharge28j.length];
 };
 async function algorithmeLissageWeek() {
     const requeteFirstWorkout = await db.entrainement
@@ -143,8 +143,11 @@ function ratio(chargeTotale7j, chargeTotale28j, nombreWeekLissage) {
     return chargeTotale7j/(chargeTotale28j/nombreWeekLissage) // nombreWeekLissage c'est le nombre de semaine
 };
 
-function statut(ratioChargeUser) {
+function statut(ratioChargeUser, nbEntrainement28j) {
     let statutUser = undefined;
+
+    // si il y a moins de 3 entrainements on ne détermine pas de statut
+    if (nbEntrainement28j < 3) {return statutAvailable[3]}
 
     if (ratioChargeUser <= 0.8) { 
         statutUser = statutAvailable[0]; // désentrainement
@@ -152,19 +155,16 @@ function statut(ratioChargeUser) {
         statutUser = statutAvailable[1]; // productif
     } else if (ratioChargeUser >= 1.35) {
         statutUser = statutAvailable[2]; // surentrainement
-    };
+    } else {
+        statutUser = statutAvailable[3]
+    }
 
     return statutUser;
 };
-async function interpretation(statutUser, nbEntrainement28j) {
+async function interpretation(statutUser) {
     // initialisation si il n'y a pas de données
     let analyse = `Je n'ai <strong>pas assez de données</strong> pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
                     <strong>3 entraînements sur les 28 derniers jours</strong>. J'attends avec impatience tes premiers entraînements.`;
-
-    if (nbEntrainement28j <= 3) {; // si il y a moins de 3 entrainements sur les 28 derniers jours, on analyse pas
-        document.getElementById("cible-charge-7j").textContent = "Charge aiguë";
-        return analyse; // on return l'analyse par défaut quand ya pas assez d'entraînement
-    };
 
     // pour la partie gestion de la personnalité du coach de l'utilisateur
     let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
@@ -179,7 +179,7 @@ async function interpretation(statutUser, nbEntrainement28j) {
         avatarCoach = coachUserDB.avatar;
     };
 
-    if (statutUser != undefined) {analyse = dicoAnalyse[styleCoachUser][statutUser]};
+    if (statutUser != statutAvailable[3]) {analyse = dicoAnalyse[styleCoachUser][statutUser]};
  
     return [analyse, nameCoach, avatarCoach]; // on return aussi le nom/avatar du coach pour l'afficher ensuite
 };
@@ -191,7 +191,7 @@ async function manageCalcul(graphique) {
     const periodeChargeTotale14j = await periodeSommeCharge14j();
     const periodeChargeTotale21j = await periodeSommeCharge21j();
     const periodeChargeTotale28j = await periodeSommeCharge28j();
-    const chargeTotale28j = await sommeCharge28j();
+    const [chargeTotale28j, nbEntrainement28j] = await sommeCharge28j();
 
     // partie pour les calculs grace aux résults des charges des différentes semaines
     const nombreWeekLissage = await algorithmeLissageWeek(); // algo de lissage pour améliorer la progression de l'algo quand le user a peu de données
@@ -199,7 +199,7 @@ async function manageCalcul(graphique) {
     const ratioChargeUser = ratio(chargeTotale7j, chargeTotale28j, nombreWeekLissage);
 
     // partie francais avec le statut et l'interpretation
-    const statutUser = statut(ratioChargeUser);
+    const statutUser = statut(ratioChargeUser, nbEntrainement28j);
     const [analyse, nameCoach, avatarCoach] = await interpretation(statutUser);
 
     if (graphique == true) {
@@ -207,22 +207,34 @@ async function manageCalcul(graphique) {
         genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [periodeChargeTotale28j, periodeChargeTotale21j, periodeChargeTotale14j, chargeTotale7j])
     }
     
-    return [chargeTotale7j, chargeTotale28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach];
+    return [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach];
 };
 
 
 async function displayOnScreen() {
     // recup de toutes les données
-    const [chargeTotale7j, chargeTotale28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
+    const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
+        ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
 
     // affichage du nom et de l'avatar du coach
     document.getElementById("nom-coach").textContent = avatarCoach + " " + nameCoach + " :"
 
-    // affichage + mise en forme de l'analyse
-    document.getElementById("reponse-coach-indulgence").innerHTML =  `Statut : <strong>${statutUser}</strong><br>${analyse}`
 
-    // affichage ensuite de la cible et de la charge 7j et 28j
-    document.getElementById("cible-charge-7j").innerHTML = "Cible : " + parseInt(cibleUserMin) + " - " + parseInt(cibleUserMax)
+    if (nbEntrainement28j < 3) {
+        // affichage + mise en forme de l'analyse
+        document.getElementById("reponse-coach-indulgence").innerHTML =  `Je n'ai <strong>pas assez de données</strong> pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
+                    <strong>3 entraînements sur les 28 derniers jours</strong>. J'attends avec impatience tes premiers entraînements.`
+
+    } else {
+        // affichage + mise en forme de l'analyse
+        document.getElementById("reponse-coach-indulgence").innerHTML =  `Statut : <strong>${statutUser}</strong><br>${analyse}`
+
+        // affichage de la cible et de la charge 7j et 28j
+        document.getElementById("cible-charge-7j").innerHTML = "Cible : " + parseInt(cibleUserMin) + " - " + parseInt(cibleUserMax)
+    }
+    
+    // affichage de la charge 7j et 28j
     document.getElementById("charge-7j").innerHTML = parseInt(chargeTotale7j)
     document.getElementById("charge-28j").innerHTML = parseInt(chargeTotale28j)
+
 }

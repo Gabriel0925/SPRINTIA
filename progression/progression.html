@@ -139,11 +139,11 @@
     <script>
         window.addEventListener("DOMContentLoaded", async () => {
             // recup des valeurs grâce au fichier "script-charge-entrainement.js"
-            const [chargeTotale7j, chargeTotale28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, 
-                    analyse, nameCoach, avatarCoach] = await manageCalcul()
+            const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
+        ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul()
 
             // affichage des valeurs
-            document.getElementById("charge-7j").innerHTML = chargeTotale7j
+            document.getElementById("charge-7j").innerHTML = chargeTotale7j + " <small>CE</small>"
             document.getElementById("statut-charge-entrainement").innerHTML = statutUser
         })
     </script>

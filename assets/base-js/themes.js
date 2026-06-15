@@ -11,6 +11,11 @@ const configurationThemes = {
         "COLOR_ACCENT_HOVER": "#8eb9d6",
         "COLOR_ACCENT_TEXT": "#d4eeff"
     },
+    "polaire": {
+        "COLOR_ACCENT": "#baf0ff",
+        "COLOR_ACCENT_HOVER": "#d4f5ff",
+        "COLOR_ACCENT_TEXT": "#e4f9ff"
+    },
     "glacier": {
         "COLOR_ACCENT": "#1fc9eb",
         "COLOR_ACCENT_HOVER": "#45d5f0",
@@ -36,6 +41,11 @@ const configurationThemes = {
         "COLOR_ACCENT_HOVER": "#2fe1ca",
         "COLOR_ACCENT_TEXT": "#adf9ee"
     },
+    "indigo": {
+        "COLOR_ACCENT": "#837dfc",
+        "COLOR_ACCENT_HOVER": "#8e88ff",
+        "COLOR_ACCENT_TEXT": "#bab8e5"
+    },
     "lavande": {
         "COLOR_ACCENT": "#B266F9",
         "COLOR_ACCENT_HOVER": "#c283fa",
@@ -48,6 +58,11 @@ const configurationThemes = {
     },
 
     // --- Thèmes Chauds ---
+    "ambre": {
+        "COLOR_ACCENT": "#ff7b00",
+        "COLOR_ACCENT_HOVER": "#ff8e25",
+        "COLOR_ACCENT_TEXT": "#ffbd7f"
+    },
     "feu": {
         "COLOR_ACCENT": "#ffa51e",
         "COLOR_ACCENT_HOVER": "#ffb847",
@@ -125,35 +140,6 @@ function colorTheme(theme, idElement) {
         selectedElement(idElement)
     }
 
-    return
-}
-
-async function reinitialiserTheme(idElementThemeParDefaut) { // remmettre le thème par défaut
-    // Demande de confirmation avant
-    if (confirm("Êtes-vous sur de vouloir réinitialiser le thème ?")) {
-        let Button = document.getElementById("reinitialiser") // Recup du bouton
-        // Desactivation du button
-        Button.disabled = true
-        Button.textContent = "Réinitialisation..."
-        
-        // maj des valeurs dans la base de données
-        localStorage.setItem("themeUser", "azur")
-
-        // lancement de la fonction pour remttre les couleurs de base et également le li correspondant en position selected (li : Azur)
-        colorTheme("azur", idElementThemeParDefaut)
-
-        setTimeout(() => {
-            // confirmation sauvegarde
-            Button.textContent = "Réinitialisé"
-        }, 650);
-
-        setTimeout(() => {
-            // Desactivation du button
-            Button.disabled = false
-            Button.textContent = "Réinitialiser le thème"
-        }, 1300);
-
-    }
     return
 }
 

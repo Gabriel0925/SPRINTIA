@@ -53,12 +53,15 @@
 
     /* Thèmes Froids */
     --COLOR_AZUR: #42a5f5; --COLOR_OCEAN: #227eff;
-    --COLOR_LUNE: #72a8ca; --COLOR_GLACIER: #1fc9eb;
+    --COLOR_LUNE: #72a8ca; --COLOR_POLAIRE: #baf0ff;
+    --COLOR_GLACIER: #1fc9eb;
     --COLOR_POMME: #A4DE02; --COLOR_VEGETATION: #0acd62;
     --COLOR_SAPIN: #78b67d; --COLOR_MENTHE: #07d3b5;
+    --COLOR_INDIGO: #837dfc;
     --COLOR_LAVANDE: #B266F9; --COLOR_LILAS: #B19CD9;
 
     /* Thèmes Chauds */
+    --COLOR_AMBRE: #ff7b00;
     --COLOR_FEU: #ffa51e; --COLOR_CORAIL: #FF8559;
     --COLOR_CARMIN: #FF5257; --COLOR_PECHE: #FF9A9E;
     --COLOR_CITRON: #ebe540; --COLOR_FRAMBOISE: #f26997;
@@ -2322,6 +2325,9 @@ ol li.option-color.option-color#lune{
 ol li.option-color.option-color#glacier{ 
     background-color: var(--COLOR_GLACIER);
 }
+ol li.option-color.option-color#polaire{ 
+    background-color: var(--COLOR_POLAIRE);
+}
 ol li.option-color.option-color#pomme{ 
     background-color: var(--COLOR_POMME);
 }
@@ -2334,6 +2340,9 @@ ol li.option-color.option-color#sapin{
 ol li.option-color.option-color#menthe{ 
     background-color: var(--COLOR_MENTHE);
 }
+ol li.option-color.option-color#indigo{ 
+    background-color: var(--COLOR_INDIGO);
+}
 ol li.option-color.option-color#lavande{ 
     background-color: var(--COLOR_LAVANDE);
 }
@@ -2342,6 +2351,9 @@ ol li.option-color.option-color#lilas{
 }
 
 /* --- Thèmes Chauds --- */
+ol li.option-color.option-color#ambre{ 
+    background-color: var(--COLOR_AMBRE);
+}
 ol li.option-color.option-color#feu{ 
     background-color: var(--COLOR_FEU);
 }

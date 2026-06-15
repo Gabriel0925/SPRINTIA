@@ -44,7 +44,7 @@ const configurationThemes = {
     "indigo": {
         "COLOR_ACCENT": "#837dfc",
         "COLOR_ACCENT_HOVER": "#8e88ff",
-        "COLOR_ACCENT_TEXT": "#bab8e5"
+        "COLOR_ACCENT_TEXT": "#9f9ce3"
     },
     "lavande": {
         "COLOR_ACCENT": "#B266F9",

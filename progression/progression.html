@@ -77,45 +77,49 @@
 
     <h1>Progression</h1>
 
-    <section class="widjet-charge-entrainement" onclick="window.location.href = 'charge-entrainement/charge-entrainement.html'">
+    <section class="container-widget-progression">
+        <section class="widget-charge-entrainement" onclick="window.location.href = 'charge-entrainement/charge-entrainement.html'">
 
-        <div class="widjet-charge-entrainement-header">
-            <p class="widjet-charge-entrainement-header-title">Charge d'entraînement</p>
-            <i class="fs-icon_fleche_droite"></i>
-        </div>
+            <div class="widget-charge-entrainement-header">
+                <p class="widget-charge-entrainement-header-title">Charge d'entraînement</p>
+                <i class="fs-icon_fleche_droite"></i>
+            </div>
 
-        <p class="widjet-charge-entrainement-score" id="charge-7j">-- <small>CE</small></p>
-        <p class="widjet-charge-entrainement-statut" id="statut-charge-entrainement">chargement...</p>
+            <p class="widget-charge-entrainement-score" id="charge-7j">-- <small>CE</small></p>
+            <p class="widget-charge-entrainement-statut" id="statut-charge-entrainement">chargement...</p>
 
+        </section>
     </section>
 
-    <div class="action-list">
+    <section class="container-small-widget-progression">
+        
+        <section class="small-widget" onclick="window.location.href = 'recuperation/recuperation.html'">
+            <p class="small-widget-title">Récupération</p>
 
-        <a href="recuperation/recuperation.html">
-            <div class="action-list-item">
-                <i class="fs-icon_recuperation"></i>
-                <p class="text-param">Récupération</p>
+            <p class="small-widget-data">-- <small>bpm</small></p>
+            <p class="small-widget-indicator">Pas assez de données</p>
+        </section>
+        <section class="small-widget" onclick="window.location.href = 'indulgence-course/indulgence-course.html'">
+            <p class="small-widget-title">Indulgence de course</p>
+
+            <p class="small-widget-data">0 <small>km</small></p>
+            <p class="small-widget-indicator">Pas assez de données</p>
+        </section>
+
+    </section>
+    
+    <section class="container-widget-progression">
+        <section class="widget-charge-entrainement" onclick="window.location.href = 'niveau-course/niveau-course-analyse.html'">
+
+            <div class="widget-charge-entrainement-header">
+                <p class="widget-charge-entrainement-header-title">Niveau de course</p>
+                <i class="fs-icon_fleche_droite"></i>
             </div>
-        </a>
-        <a href="indulgence-course/indulgence-course.html">
-            <div class="action-list-item">
-                <i class="fs-icon_indulgence_course"></i>
-                <p class="text-param">Indulgence de course</p>
-            </div>
-        </a>
 
-    </div>
+            <p class="widget-charge-entrainement-score" id="dernier-niveau-course">-- <small>/100</small></p>
+            <p class="widget-charge-entrainement-statut" id="zone-dernier-niveau-course">chargement...</p>
 
-    <section class="widjet-charge-entrainement" onclick="window.location.href = 'niveau-course/niveau-course-analyse.html'">
-
-        <div class="widjet-charge-entrainement-header">
-            <p class="widjet-charge-entrainement-header-title">Niveau de course</p>
-            <i class="fs-icon_fleche_droite"></i>
-        </div>
-
-        <p class="widjet-charge-entrainement-score" id="dernier-niveau-course">-- <small>/100</small></p>
-        <p class="widjet-charge-entrainement-statut" id="zone-dernier-niveau-course">chargement...</p>
-
+        </section>
     </section>
 
     <div class="action-list">

@@ -136,8 +136,10 @@ function zonesAllure(vmaEstimee) {
         // renvoie ça si il ya des datas : '16 km/h' si ya pas de datas (et donc que le user n'a pas config son profil) "--"
         vmaEstimee = document.getElementById("vma-estimee").textContent // '16 km/h'
 
-        if (vmaEstimee != "--") {
+        if (vmaEstimee != "--  km/h") {
             vmaEstimee = Number(vmaEstimee.split(" ")[0].replace(",", ".")) // 16 en number
+        } else {
+            return
         }
     }
 
@@ -198,7 +200,7 @@ function zonesPuissance(rFTPwEstimee) {
         if (rFTPwEstimee != "--  W") {
             rFTPwEstimee = Number(rFTPwEstimee.split(" ")[0].replace(",", ".")) // 255.6 en number
         } else {
-            alert("Pour accéder à vos zones de puissance, veuillez configuer votre profil. Allez dans l'onglet plus puis profil puis configurer mon profil.")
+            alert("Pour accéder à vos zones de puissance, veuillez configuer votre profil ou ajouter des données dans le niveau de course.")
             // remise à 0 de cette partie de la page pour pas que le user accede au zone de puissance alors qu'il n'a pas config son profil
             containerBaliseTranchePuissance.style.display = "none"
             containerBaliseTrancheAllure.style.display = "flex"

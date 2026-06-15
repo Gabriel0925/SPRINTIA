@@ -1683,8 +1683,15 @@ input[type="text"].small {
     input[type="number"]:hover,
     input[type="text"]:hover,
     input[type="date"]:hover  {
-        box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
+        border-radius: 4rem;
+        border: 3px solid var(--COLOR_ACCENT_TEXT);
     }
+}
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="date"]:focus  {
+    border-radius: 4rem;
+    border: 3px solid var(--COLOR_ACCENT_TEXT);
 }
 /* Pour les inputs date */
 input[type="date"]{
@@ -1882,20 +1889,24 @@ select {
     background-position: right var(--SPACE_XS) center; /* On met l'icône à droite */
     background-size: var(--H3);
 
-    transition: all ease-out var(--TIME_TRANSITION);
+    transition: border ease-out var(--TIME_TRANSITION),
+                border-radius ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     select:hover {
-        box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
-        transition: all ease-out var(--TIME_TRANSITION);
+        border-radius: 4rem;
+        border: 3px solid var(--COLOR_ACCENT_TEXT);
     }
+}
+select:active {
+    border-radius: 4rem;
+    border: 3px solid var(--COLOR_ACCENT_TEXT);
 }
 select:focus {
     /* Pour enlever une barre de base */
     outline: none;
-    border: none;
-    /* Style */
-    box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
+    border-radius: 4rem;
+    border: 2.5px solid var(--COLOR_ACCENT_TEXT);
 }
 
 /* --- Pour le bouton plus de données dans ajouter un entraînement --- */

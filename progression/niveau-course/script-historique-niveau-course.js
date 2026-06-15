@@ -72,6 +72,7 @@ function ReturnDate(DateNiveauCourse) {
 async function remplirTableau() {
     // recup des datas 
     const dataDB = await db.niveau_course.orderBy("date").toArray()
+    dataDB.reverse() // pour remmetre la datas la plus récente en haut du tableau
         
     let tableauHistorique = document.getElementById("tableau-historique") // Recup du tableau
 

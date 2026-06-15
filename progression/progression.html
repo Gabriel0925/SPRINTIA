@@ -85,7 +85,7 @@
                 <i class="fs-icon_fleche_droite"></i>
             </div>
 
-            <p class="widget-charge-entrainement-score" id="charge-7j">-- <small>CE</small></p>
+            <p class="widget-charge-entrainement-score" id="charge-7j">0 <small>CE</small></p>
             <p class="widget-charge-entrainement-statut" id="statut-charge-entrainement">chargement...</p>
 
         </section>
@@ -96,14 +96,12 @@
         <section class="small-widget" onclick="window.location.href = 'recuperation/recuperation.html'">
             <p class="small-widget-title">Récupération</p>
 
-            <p class="small-widget-data">-- <small>bpm</small></p>
-            <p class="small-widget-indicator">Pas assez de données</p>
+            <p class="small-widget-data" id="data-recuperation">-- <small>bpm</small></p>
         </section>
         <section class="small-widget" onclick="window.location.href = 'indulgence-course/indulgence-course.html'">
             <p class="small-widget-title">Indulgence de course</p>
 
-            <p class="small-widget-data">0 <small>km</small></p>
-            <p class="small-widget-indicator">Pas assez de données</p>
+            <p class="small-widget-data" id="data-dist-7j">0,00 <small>km</small></p>
         </section>
 
     </section>
@@ -148,10 +146,29 @@
             // recup des valeurs grâce au fichier "script-charge-entrainement.js"
             const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
         ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul()
-
             // affichage des valeurs
             document.getElementById("charge-7j").innerHTML = chargeTotale7j + " <small>CE</small>"
             document.getElementById("statut-charge-entrainement").innerHTML = statutUser
+
+            // --- Récupération ---
+            const tableauLastRecuperation = await db.recuperation.orderBy("date").reverse().limit(1).toArray()
+            let lastRecuperation = "--"
+            if (tableauLastRecuperation.length > 0) {lastRecuperation = tableauLastRecuperation[0].fc_repos}
+            document.getElementById("data-recuperation").innerHTML = lastRecuperation + " <small>bpm</small>"
+
+
+            // --- Indulgence de course ---
+            const data7jCourse = await db.entrainement
+                    .where("date")
+                    .aboveOrEqual(dateMoins7j) // la var "dateMoins7j" est créer dans le script-charge-entrainement.js
+                    .toArray()
+            let sommeDist7j = 0
+            for (const elt of data7jCourse) {
+                if (elt.sport == "Course") {
+                    sommeDist7j+=Number(elt.distance)
+                }
+            }
+            document.getElementById("data-dist-7j").innerHTML = sommeDist7j.toFixed(2).replace(".", ",") + " <small>km</small>"
 
             // --- Niveau de course ---
             const lastLevelUser = await lastLevel()

@@ -1149,6 +1149,7 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
+    align-items: baseline;
 }
 
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut{
@@ -1185,13 +1186,14 @@ section.container-small-widget-progression section.small-widget:active {
 section.container-small-widget-progression section.small-widget p.small-widget-title{
     display: -webkit-box;
     -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 1;
-    line-clamp: 1; 
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
 
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
+    min-height: 48px;
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data{
     margin-top: var(--SPACE_XS);
@@ -1202,12 +1204,7 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
     font-weight: var(--FONT_WEIGHT_BUTTON);
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
-}
-section.container-small-widget-progression section.small-widget p.small-widget-indicator{
-    font-size: var(--P_SMALL);
-    color: var(--COLOR_ACCENT_TEXT);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin-top: var(--SPACE_XS);
+    align-items: baseline;
 }
 
 

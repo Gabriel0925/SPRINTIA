@@ -161,7 +161,6 @@ async function jrmCoach() {
 
     return
 }
-
 async function remplissageTableau() {
     // recup du tableau et de toutes les datas dans l'ordre pour remplir le tableau
     let tableauHistorique = document.getElementById("tableau-historique")
@@ -239,7 +238,6 @@ async function remplissageTableau() {
     
     return
 }
-
 async function init(role) {
     // recup des datas pour le graphique
     const historique = await db.recuperation.where("date").above(dateMoins7J).toArray()
@@ -304,14 +302,3 @@ async function init(role) {
 
     return
 }
-
-window.addEventListener("DOMContentLoaded", () => {
-    init("init")
-})
-
-// Pour recharger le graphique si c'est dans le BFCache
-window.addEventListener("pageshow", (event) => {
-    if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
-        init("bfcache")
-    }
-})

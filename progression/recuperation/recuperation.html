@@ -162,7 +162,18 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-outil.js"></script>
+    <script src="script-recuperation.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            init("init")
+        })
+        // Pour recharger le graphique si c'est dans le BFCache
+        window.addEventListener("pageshow", (event) => {
+            if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
+                init("bfcache")
+            }
+        })
+    </script>
 
     <script defer src="/_vercel/insights/script.js"></script>
 

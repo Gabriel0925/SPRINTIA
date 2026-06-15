@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Ajouter un niveau de course</title>
+    <title>SPRINTIA - À propos du niveau de course</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,7 +23,7 @@
         <div class="logo-dynamique"></div>
     </div>
     
-    <section class="header">
+     <section class="header">
 
         <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
 
@@ -75,75 +75,9 @@
 
     </section>
 
-    <h1 id="title-page">Ajouter un niveau de course</h1>
-    <h2>Test de course</h2>
-    <p class="text">
-        Déterminez votre niveau de course actuel en<strong> courant la plus longue distance possible en 12 minutes.</strong>
-        Pour des mesures précises, ce test doit être effectué sur un terrain plat sans aucun obstacle (le mieux c'est une piste d'athlétisme).
-        Ne négligez pas l'échauffement : faîtes des gammes pendant 10 à 15 min et ensuite faîtes le test, ça améliorera votre performance.
-    </p>
-
-    <section class="container-zone">    
-        
-        <div class="form">
-            <p id="zone-error" class="indication"></p>
-                
-            <div class="container-input">
-                <input type="date" id="date-niveau-course" autocomplete="off">
-                <div class="label-input">Date</div>
-            </div>
-            <div class="container-input">
-                <input type="number" id="distance-user" placeholder="Distance (km)" autocomplete="off" oninput="liveResultViaInput()">
-                <div class="label-input">Distance (km)</div>
-            </div>
-        </div>
-
-        <div class="large-zone-result" id="niveau-course">
-            <p class="large-zone-result-name">Niveau</p>
-            <p class="large-zone-result-result">
-                --
-            </p>
-        </div>
-
-    </section>
-    <div class="container-center-marge">
-        <button class="size-block" id="button-sauvegarde-niveau" onclick="saveNiveauCourse()">
-            Sauvegarder
-        </button>
-    </div>
-
+    <h1>À propos du niveau de course</h1>
 
     <script src="../../assets/base-js/base.js"></script>
- 
-    <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    
-    <script src="script-niveau-course-analyse.js"></script>
-    <script src="script-sauvegarder-niveau.js"></script>
-    
-    <!-- Remplissage du input date a la date now -->
-    <script> 
-        let ChampDate = document.getElementById("date-niveau-course")
-        let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"
-        // Enlever la partie qui nous interrese pas
-        DateActuelle = DateActuelle.split("T") // ['2026-01-24', '13:57:55.505Z']
-        DateActuelle = DateActuelle[0] // '2026-01-24'
-
-        ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
-        ChampDate.value = DateActuelle
-
-        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-        let formKeyEntry = document.querySelector(".form")
-        formKeyEntry.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                saveNiveauCourse() 
-            }
-        })
-
-        window.addEventListener("DOMContentLoaded", editNiveauCourse)
-    </script>
-    
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

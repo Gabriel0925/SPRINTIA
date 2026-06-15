@@ -436,14 +436,17 @@ section.header div.logo {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     section.header div.logo:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
 section.header div.logo:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -544,6 +547,7 @@ section.tab-bars {
 }
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
+    max-width: 525px;
     height: 70px;
     flex-grow: 1;
 
@@ -602,13 +606,14 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
 }
 @media (max-width: 625px) {
     section.tab-bars ul.tab-bars-container-items{
+        max-width: 500px;
         height: 63px;
     }
     section.tab-bars ul.tab-bars-container-items:active{
         transform: scale(1.025);
     }
     section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
-        font-size: 0.45rem;
+        font-size: 0.55rem;
     }
     section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
         transform: scale(1.06);
@@ -1178,14 +1183,17 @@ div.toolbar i {
     font-size: var(--H1);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     
-    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     div.toolbar i:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
 div.toolbar i:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SUP));
 }
 
@@ -1232,14 +1240,17 @@ div.button-flottant {
     -moz-user-select: none;
     -webkit-user-select: none;
 
-    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     div.button-flottant:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
 div.button-flottant:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_SUP));
 }
 div.button-flottant p{

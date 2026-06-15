@@ -1,3 +1,6 @@
+let modificationData = false // variable pour savoir si on est en train de modifier une data ou pas
+let idNiveauModif = undefined
+
 async function saveNiveauCourse() {
     // Recup bouton, inputs et de la valeur du niveau
     let boutonLimite1Clic = document.getElementById("button-sauvegarde-niveau")
@@ -30,12 +33,25 @@ async function saveNiveauCourse() {
     // signe d'enregistrement pr le user
     boutonLimite1Clic.textContent = "Sauvegarde..." 
 
-    // Ajout datas
-    await db.niveau_course.add({
-        niveau_course_user: niveauCourseUser,
-        distance: distanceUser,
-        date: dateNiveauUser
-    })
+    if (modificationData == true) {
+        // Modification de la data
+        if (idNiveauModif != undefined) {
+            await db.niveau_course.put({
+                id: idNiveauModif,
+                niveau_course_user: niveauCourseUser,
+                distance: distanceUser,
+                date: dateNiveauUser
+            })
+        }
+
+    } else {
+        // Ajout datas
+        await db.niveau_course.add({
+            niveau_course_user: niveauCourseUser,
+            distance: distanceUser,
+            date: dateNiveauUser
+        })
+    }
 
     setTimeout(() => {
         boutonLimite1Clic.textContent = "Sauvegardé" // transimission de l'info au user
@@ -84,4 +100,43 @@ function liveResultViaInput() {
     document.querySelector(".large-zone-result-result").textContent = levelRunUser.toString().replace(".", ",")
     document.querySelector(".large-zone-result-name").textContent = "Niveau : " + zoneLevelRunUser
     return
+}
+
+async function editNiveauCourse() {
+    const parametreURL = window.location.search // on recherche si il y a un param dans l'URL (ex : ?edit=7)
+    let tableauSeparation = parametreURL.split("=") // exemple ['?edit', '7']
+
+    if (tableauSeparation.length == 2) { // vérification si il y a bien 2 partie
+        // conversion de l'id en int
+        const ID = parseInt(tableauSeparation[1])
+
+        // Recup des datas du workout
+        if (ID) {
+            const dataNiveauCourse = await db.niveau_course.get(ID)
+
+            if (dataNiveauCourse) {
+                // remplissage du formulaire avec les datas
+                document.getElementById("date-niveau-course").value = dataNiveauCourse.date
+
+                if (dataNiveauCourse.distance) {
+                    document.getElementById("distance-user").value = dataNiveauCourse.distance
+                } else {
+                    // si ya pas de datas de distance dans la bdd alors on va la générer en fonction du niveau de course du user
+                    document.getElementById("distance-user").value = calculDistanceLevel(dataNiveauCourse.niveau_course_user)/1000 // on remet en km car c'est en metres
+                }
+                liveResultViaInput() // on lance le calcul du niveau de course pour l'afficher
+
+            } else {
+                window.location.href = `niveau-course-evolution.html` // si jamais il n'y a pas de data avec l'id dans l'URL on retourne à la page de liste des récupérations
+            }
+
+            // maj des textes de la page
+            document.getElementById("title-page").textContent = "Modifier un niveau de course"
+
+            // maj var
+            modificationData = true
+            idNiveauModif = dataNiveauCourse.id
+        }
+    }
+
 }

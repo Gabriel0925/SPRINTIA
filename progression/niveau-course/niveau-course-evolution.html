@@ -82,13 +82,21 @@
         </div>
     </div>
 
-    <h1>Niveau de course</h1>
+    <div class="toolbar" style="margin-bottom: var(--SPACE_M);">
+        <h1>Niveau de course</h1>
+        <i class="fs-icon_a_propos" onclick="window.location.href = 'niveau-course-info.html'"></i>
+    </div>
 
     <section class="segmented-button duree">
 
-        <div class="segmented-button-button" style="width: 90px;"
-        onclick="window.location.href = 'niveau-course-analyse.html'">Analyse</div>
-        <div class="segmented-button-button actif" style="width: 90px;">Évolution</div>
+        <div class="segmented-button-button" id="segmented-button-analyse" style="width: 90px;"
+        onclick="
+            document.getElementById('segmented-button-evolution').classList.remove('actif')
+            document.getElementById('segmented-button-analyse').classList.add('actif')
+            window.location.href = 'niveau-course-analyse.html'
+        "
+        >Analyse</div>
+        <div class="segmented-button-button actif" id="segmented-button-evolution" style="width: 90px;">Évolution</div>
 
     </section>
     
@@ -114,8 +122,7 @@
 
     <h2>Historique</h2>
     <p class="text" id="text-informatif">
-        Sprintia n'a pas encore assez de données pour afficher votre historique de niveau de course. Pour ajouter des données, vous devez sauvegarder
-        votre niveau de course. <a href="niveau-course.html" class="lien">Déterminer mon niveau de course</a>.
+        Sprintia n'a pas encore assez de données pour afficher votre historique de niveau de course.
     </p>
     <div class="carousel table">
         <div class="carousel-content table">
@@ -163,7 +170,7 @@
             document.getElementById("zone-last-level-run").innerHTML = zoneLevelUser
 
             graph()
-            RemplirTableau()
+            await remplirTableau()
         })
     </script>
     

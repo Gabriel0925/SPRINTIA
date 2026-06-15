@@ -82,13 +82,21 @@
         </div>
     </div>
 
-    <h1>Niveau de course</h1>
+    <div class="toolbar" style="margin-bottom: var(--SPACE_M);">
+        <h1>Niveau de course</h1>
+        <i class="fs-icon_a_propos" onclick="window.location.href = 'niveau-course-info.html'"></i>
+    </div>
 
     <section class="segmented-button duree">
 
-        <div class="segmented-button-button actif" style="width: 90px;">Analyse</div>
-        <div class="segmented-button-button" style="width: 90px;"
-        onclick="window.location.href = 'niveau-course-evolution.html'">Évolution</div>
+        <div class="segmented-button-button actif" id="segmented-button-analyse" style="width: 90px;">Analyse</div>
+        <div class="segmented-button-button" id="segmented-button-evolution" style="width: 90px;"
+        onclick="
+            document.getElementById('segmented-button-evolution').classList.add('actif')
+            document.getElementById('segmented-button-analyse').classList.remove('actif')
+            window.location.href = 'niveau-course-evolution.html'
+        "
+        >Évolution</div>
 
     </section>
 

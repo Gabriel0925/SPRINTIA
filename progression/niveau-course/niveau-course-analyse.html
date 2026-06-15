@@ -87,10 +87,10 @@
         <i class="fs-icon_a_propos" onclick="window.location.href = 'niveau-course-info.html'"></i>
     </div>
 
-    <section class="segmented-button duree">
+    <section class="segmented-button">
 
-        <div class="segmented-button-button actif" id="segmented-button-analyse" style="width: 90px;">Analyse</div>
-        <div class="segmented-button-button" id="segmented-button-evolution" style="width: 90px;"
+        <div class="segmented-button-button actif" id="segmented-button-analyse" style="width: 100px;">Analyse</div>
+        <div class="segmented-button-button" id="segmented-button-evolution" style="width: 100px;"
         onclick="
             document.getElementById('segmented-button-evolution').classList.add('actif')
             document.getElementById('segmented-button-analyse').classList.remove('actif')
@@ -99,17 +99,6 @@
         >Évolution</div>
 
     </section>
-
-    <!-- <section class="container-zone">
-
-        <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
-            <p class="zone-coach-interpretation">
-                Chargement...
-            </p> 
-        </div>
-
-    </section> -->
     
     <section class="container-box">
 
@@ -138,7 +127,11 @@
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Allure au seuil</p>
-            <p class="container-block-data-data" id="allure-seuil-estimee">--:-- <small> /km</small></p>
+            <p class="container-block-data-data" id="allure-seuil-estimee">--:-- <small>/km</small></p>
+        </div>
+        <div class="container-block-data">
+            <p class="container-block-data-header">rFTPw</p>
+            <p class="container-block-data-data" id="rFTPw-estimee">-- <small>W</small></p>
         </div>
 
     </section>
@@ -180,9 +173,26 @@
         </div>
 
     </section>
+  
+    <section class="segmented-button" style="margin-top: var(--SPACE_L);">
 
-    <h2>Zones d'allure</h2>
-    <section class="container-box zone-allure"><!-- la class zone allure en plus permet juste au JS pour la boucle for de ne pas prendre
+        <div class="segmented-button-button actif" id="segmented-button-allure" style="width: 110px;"
+        onclick="
+            document.getElementById('segmented-button-watts').classList.remove('actif')
+            document.getElementById('segmented-button-allure').classList.add('actif')
+            zonesAllure('--')
+        ">Allure</div>
+        <div class="segmented-button-button" id="segmented-button-watts" style="width: 110px;"
+        onclick="
+            document.getElementById('segmented-button-watts').classList.add('actif')
+            document.getElementById('segmented-button-allure').classList.remove('actif')
+            zonesPuissance('--')
+        "
+        >Puissance</div>
+
+    </section>
+
+    <section class="container-box zone-allure" style="display: none;"><!-- la class zone allure en plus permet juste au JS pour la boucle for de ne pas prendre
                                                     en compte la box pour le dernier niveau de course -->
 
         <div class="small-zone-result color-zone">
@@ -239,6 +249,92 @@
             <div class="container-result">
                 <p class="small-zone-result-result">--:-- - --:--</p>
                 <p class="small-zone-result-unit">/km</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="container-box zone-puissance"style="display: none;"><!-- la class zone puissance en plus permet juste au JS pour la boucle for de ne pas prendre
+                                                    en compte la box pour le dernier niveau de course -->
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 1</p>
+            <p class="small-zone-result-indication">Récupération</p>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-- - --</p>
+                <p class="small-zone-result-unit">W</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <p class="small-zone-result-name">Zone 2</p>
+            <p class="small-zone-result-indication">Endurance</p>
+
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-- - --</p>
+                <p class="small-zone-result-unit">W</p>
+            </div>
+        </div>
+
+       <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 3</p>
+                <p class="small-zone-result-indication">Tempo</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-- - --</p>
+                <p class="small-zone-result-unit">W</p>
+            </div>
+        </div>
+            
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 4</p>
+                <p class="small-zone-result-indication">Seuil</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-- - --</p>
+                <p class="small-zone-result-unit">W</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 5</p>
+                <p class="small-zone-result-indication">Haute intensité</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-- - --</p>
+                <p class="small-zone-result-unit">W</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 6</p>
+                <p class="small-zone-result-indication">VO2</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-- - --</p>
+                <p class="small-zone-result-unit">W</p>
+            </div>
+        </div>
+
+        <div class="small-zone-result color-zone">
+            <div class="ensemble-p">
+                <p class="small-zone-result-name">Zone 7</p>
+                <p class="small-zone-result-indication">Sprint</p>
+            </div>
+
+            <div class="container-result">
+                <p class="small-zone-result-result">-- - --</p>
+                <p class="small-zone-result-unit">W</p>
             </div>
         </div>
 

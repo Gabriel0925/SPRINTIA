@@ -62,6 +62,19 @@ function estimateVO2max(vmaEstimee) {
     if (vmaEstimee != "--") {return Number((vmaEstimee*3.5).toFixed(1))} // calcul que si il y a des datas
     else {return "--"}
 }
+async function estimateRFTPW(vo2maxEstimee) {
+    if (vo2maxEstimee != "--") { // calcul que si il y a des datas
+        let rFTPw = (vo2maxEstimee*0.82)/11.5 // formule de Stryd ou les équations de Daniels & Scardina
+        // détermination du poid du user
+        const dataProfilUser = await db.profil.toArray()
+        let poidsUser = 0
+        // si le user a configuré son profil alors on pourra calculer le rFTPw si il l'a pas config alors ça fera rFTPw*0 et si c'est égale à 0 on affiche "--"
+        if (dataProfilUser.length > 0) {poidsUser = Number(dataProfilUser[0].poids)}
+
+        rFTPw = Number((rFTPw*poidsUser).toFixed(1))
+        if (rFTPw == 0) {return "--"} else {return rFTPw}
+    } else {return "--"}
+}
 function estimateAllureSeuil(vmaEstimee) {
     if (vmaEstimee == "--") {return "--:--"} // quand il n'y a pas de datas on return la valeur de base du HTML
 
@@ -109,12 +122,26 @@ function conversionAllure(zone){
 
     return [minutes, secondes]
 }
-function zonesAllure(vmaEstimee) {
-    if (vmaEstimee == "--") {return} // quand il n'y a pas de datas on return rien car ça laisse la base qu'il y avait dans le HTML
 
-    // recupération de toutes les box de résultats
-    // on prend également ".container-box.zone-allure" pour ne pas prendre en compte la premiere box du dernier niveau de course
-    const baliseTranche = document.querySelectorAll(".container-box.zone-allure .small-zone-result-result")
+const containerBaliseTranchePuissance = document.querySelector(".container-box.zone-puissance")
+const baliseTranchePuissance = document.querySelectorAll(".container-box.zone-puissance .small-zone-result-result")
+
+const containerBaliseTrancheAllure = document.querySelector(".container-box.zone-allure")
+const baliseTrancheAllure = document.querySelectorAll(".container-box.zone-allure .small-zone-result-result")
+function zonesAllure(vmaEstimee) {
+    containerBaliseTranchePuissance.style.display = "none"
+    containerBaliseTrancheAllure.style.display = "flex"
+
+    if (vmaEstimee == "--") {
+        // renvoie ça si il ya des datas : '16 km/h' si ya pas de datas (et donc que le user n'a pas config son profil) "--"
+        vmaEstimee = document.getElementById("vma-estimee").textContent // '16 km/h'
+
+        if (vmaEstimee != "--") {
+            vmaEstimee = Number(vmaEstimee.split(" ")[0].replace(",", ".")) // 16 en number
+        }
+    }
+
+    if (vmaEstimee == "--") {return} // quand il n'y a pas de datas on return rien car ça laisse la base qu'il y avait dans le HTML
 
     // init des variables pr la boucle
     const tableauCoef = [0.65, 0.75, 0.85, 0.95, 0.95] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 6 = 346-384W/zone 7 = > 348W)
@@ -123,6 +150,11 @@ function zonesAllure(vmaEstimee) {
     let compteur = 0 // pour chercher dans le tableau de balise tranche et mettre le resultat au bon endroit
 
     for (const elt of tableauCoef) { // parcour du tableau
+        if (memoire2LastLap == -1) { // si on a les secondes qui sont egale à moins 1 exemple : 5:-1
+            memoireLastLap = memoireLastLap-1 // on eleve 1 au min ce qui donne 4:-1
+            memoire2LastLap = 59 // on remplace -1 par 59 donc -> 4:59
+        }
+
         if (compteur == tableauCoef.length-1) { // pr le dernier on affiche diféremment
             const resultFinZone = 60/(vmaEstimee*elt) // calcul de la fin de la zone concernée grâce au tableau
             let minutesSecondesZone = conversionAllure(resultFinZone)
@@ -130,8 +162,8 @@ function zonesAllure(vmaEstimee) {
             let minutesZone = minutesSecondesZone[0]
             let secondesZone = minutesSecondesZone[1]
               
-            const resultClean = "> " + memoireLastLap + ":" + (memoire2LastLap+1).toString().padStart(2, "0") // mise en forme différente
-            baliseTranche[compteur].textContent = resultClean // affichage
+            const resultClean = "< " + memoireLastLap + ":" + (memoire2LastLap+1).toString().padStart(2, "0") // mise en forme différente
+            baliseTrancheAllure[compteur].textContent = resultClean // affichage
 
             break // on arrete la boucle car c'était le dernier coef
         }
@@ -142,12 +174,56 @@ function zonesAllure(vmaEstimee) {
         let minutesZone = minutesSecondesZone[0]
         let secondesZone = minutesSecondesZone[1]
 
-        // préparation d'un résultat clean pour l'afficher par la suite
-        const resultClean = memoireLastLap + ":" + (memoire2LastLap+1).toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
-        baliseTranche[compteur].textContent = resultClean // affichage 
+        if (compteur == 0) {
+            baliseTrancheAllure[compteur].textContent = "> " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
+        } else {
+            // préparation d'un résultat clean pour l'afficher par la suite
+            const resultClean = memoireLastLap + ":" + memoire2LastLap.toString().padStart(2, "0") + " - " + minutesZone + ":" + secondesZone.toString().padStart(2, "0")
+            baliseTrancheAllure[compteur].textContent = resultClean // affichage 
+        }
 
         memoireLastLap = minutesZone // mise en mémoire de ce tour pour le tour suivant
-        memoire2LastLap = secondesZone // mise en mémoire 2 de ce tour pour le tour suivant
+        memoire2LastLap = secondesZone-1 // mise en mémoire 2 de ce tour pour le tour suivant
+        compteur+=1 // incrémentation
+    }
+}
+function zonesPuissance(rFTPwEstimee) {
+    containerBaliseTranchePuissance.style.display = "flex"
+    containerBaliseTrancheAllure.style.display = "none"
+
+    if (rFTPwEstimee == "--") {
+        // renvoie ça si il ya des datas : '255,6  W' si ya pas de datas (et donc que le user n'a pas config son profil) "--"
+        rFTPwEstimee = document.getElementById("rFTPw-estimee").textContent // '255,6  W'
+
+        if (rFTPwEstimee != "--  W") {
+            rFTPwEstimee = Number(rFTPwEstimee.split(" ")[0].replace(",", ".")) // 255.6 en number
+        } else {
+            alert("Pour accéder à vos zones de puissance, veuillez configuer votre profil. Allez dans l'onglet plus puis profil puis configurer mon profil.")
+            // remise à 0 de cette partie de la page pour pas que le user accede au zone de puissance alors qu'il n'a pas config son profil
+            containerBaliseTranchePuissance.style.display = "none"
+            containerBaliseTrancheAllure.style.display = "flex"
+            document.getElementById("segmented-button-allure").click()
+            return
+        }
+    }
+
+    // init des variables pr la boucle
+    const tableauCoef = [0.8, 0.88, 0.95, 1.05, 1.15, 1.28, 1.28] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 6 = 346-384W/zone 7 = > 348W)
+    let memoireLastLap = 0 // pour garder en mémoire le resultat du tour d'avant de la boucle for
+    let compteur = 0 // pour chercher dans le tableau de balise tranche et mettre le resultat au bon endroit
+
+    for (const elt of tableauCoef) { // parcour du tableau
+        if (compteur == tableauCoef.length-1) { // pr le dernier on affiche diféremment
+            const resultClean = "> " + memoireLastLap // mise en forme différente
+            baliseTranchePuissance[compteur].textContent = resultClean // affichage
+            break // on arrete la boucle car c'était le dernier coef
+        }
+
+        const resultFinZone = Math.round(rFTPwEstimee*elt) // calcul de la fin de la zone concernée grâce au tableau
+        const resultClean = (memoireLastLap+1) + " - " + resultFinZone // préparation d'un résultat clean pour l'afficher par la suite
+        baliseTranchePuissance[compteur].textContent = resultClean // affichage 
+
+        memoireLastLap = resultFinZone // mise en mémoire de ce tour pour le tour suivant
         compteur+=1 // incrémentation
     }
 }
@@ -161,6 +237,7 @@ async function manageAnalyse() {
     // calcul de la VMA, VO2max et allure seuil estimée
     const vmaEstimee = estimateVMA(distancelastLeverUser)
     const vo2maxEstimee = estimateVO2max(vmaEstimee)
+    const rFTPwEstimee = await estimateRFTPW(vo2maxEstimee)
     const allureSeuilEstimee = estimateAllureSeuil(vmaEstimee)
 
     // prédiction des temps de course de l'utilisateur pour le 5,10,21,42km
@@ -170,13 +247,13 @@ async function manageAnalyse() {
     // calcul et affichage des zones d'allure pour gagner en perf et éviter de refaire une boucle for par la suite
     zonesAllure(vmaEstimee)
 
-    return [lastLevelUser, zoneLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, allureSeuilEstimee, 
+    return [lastLevelUser, zoneLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, rFTPwEstimee, allureSeuilEstimee, 
         temps400m, temps800m, temps1km, temps5km, temps10km, tempsSemiMarathon, tempsMarathon]
 }
 
 async function displayOnScreen() {
     // recup des datas
-    const [lastLevelUser, zoneLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, allureSeuilEstimee, 
+    const [lastLevelUser, zoneLevelUser, distancelastLeverUser, vmaEstimee, vo2maxEstimee, rFTPwEstimee, allureSeuilEstimee, 
         temps400m, temps800m, temps1km, temps5km, temps10km, tempsSemiMarathon, tempsMarathon] = await manageAnalyse()
 
     // affichage du dernier niveau de course et de la zone
@@ -185,7 +262,8 @@ async function displayOnScreen() {
 
     // affichage des métriques de base
     document.getElementById("vma-estimee").innerHTML = vmaEstimee.toString().replace(".", ",") + "  <small>km/h</small>"
-    document.getElementById("vo2max-estimee").innerHTML = vo2maxEstimee.toString().replace(".", ",")   
+    document.getElementById("vo2max-estimee").innerHTML = vo2maxEstimee.toString().replace(".", ",") 
+    document.getElementById("rFTPw-estimee").innerHTML = rFTPwEstimee.toString().replace(".", ",") + "  <small>W</small>"
     document.getElementById("allure-seuil-estimee").innerHTML = allureSeuilEstimee + "  <small>/km</small>"
 
     // affichage des temps prédit pour les différentes distance

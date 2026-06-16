@@ -60,7 +60,7 @@ async function saveNiveauCourse() {
         // remise etat normal
         boutonLimite1Clic.textContent = "Sauvegarder"
         boutonLimite1Clic.disabled = false // Réactivation du bouton
-        window.location.href = "niveau-course-evolution.html?levelrunregister"
+        window.location.href = "niveau-course-analyse.html?levelrunregister"
     }, 1300);
 }
 

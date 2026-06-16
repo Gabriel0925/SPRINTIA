@@ -607,9 +607,13 @@ section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
     font-size: 1.7rem;
 }
+@media (max-width: 980px) {
+    section.tab-bars {
+        justify-content: right;
+    }
+}
 @media (max-width: 625px) {
     section.tab-bars ul.tab-bars-container-items{
-        max-width: 500px;
         height: 63px;
     }
     section.tab-bars ul.tab-bars-container-items:active{

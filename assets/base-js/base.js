@@ -37,6 +37,52 @@ function navigationLinks(elt, component, profondeur, onglet) {
     // on renvoie vers la nouvelle url pour changer de page de tab bar
     window.location.href = dicoUrl[profondeur][onglet]
 }
+function selectedBFCache(ongletName) {
+    const tabbarItems = document.querySelectorAll(".tab-bars-items")
+    for (const elt of tabbarItems) {
+        // elt.textContent renvoie "
+        //        
+        //        Entraînement
+        //    "
+        if (elt.textContent.includes(ongletName)) {elt.classList.add("selected")}
+    }
+
+    // idem mais pour le header
+    const headerItems = document.querySelectorAll(".header-items")
+    for (const elt of headerItems) {
+        if (headerItems.textContent.includes(ongletName)) {elt.classList.add("selected")}
+    }
+}
+
+
+
+// --- Pr gérer le BFCache ---
+window.addEventListener("pageshow", (event) => {
+    // Pour contrer le BFCache parce qu'il mettait en cache mes anciennes pages pour éviter de les recharger mais ça causait probleme pour les thèmes
+    if (event.persisted) { // event.persisted = quand la page est dans le cache
+        // forcer de lancer la fonction qui charge le thème quand on fait un retour donc quand la page viens du BFCache
+        preferenceUser()
+
+        // --- remettre le bon onglet selected dans la tab-bar ou le header ---
+        const itemSelectedTabBar = document.querySelectorAll(".tab-bars-items")
+        const itemSelectedHeader = document.querySelectorAll(".header-items")
+
+        let compteur = 0
+        for (const elt of itemSelectedTabBar) {
+            // on enleve la class selected (tab-bar, header) pour la remettre sur le bon onglet par la suite
+            elt.classList.remove("selected")
+            itemSelectedHeader[compteur].classList.remove("selected")
+
+            compteur+=1
+        }
+        const urlPage = window.location.pathname // ça renvoie par ex ça : /progression/progression.html
+
+        if (urlPage.includes("index.html")) {selectedBFCache("Entraînement")}
+        else if (urlPage.includes("progression.html")) {selectedBFCache("Progression")}
+        else if (urlPage.includes("outils.html")) {selectedBFCache("Outils")}
+        else {selectedBFCache("Plus")}
+    }
+});
 
 
 
@@ -85,17 +131,6 @@ window.addEventListener("scroll", () => {
     }
 })
 // --- Fin menu plus ---
-
-
-
-// --- Pr gérer le BFCache ---
-window.addEventListener("pageshow", (event) => {
-    // Pour contrer le BFCache parce qu'il mettait en cache mes anciennes pages pour éviter de les recharger mais ça causait probleme pour les thèmes
-    if (event.persisted) { // event.persisted = quand la page est dans le cache
-        // forcer de lancer la fonction qui charge le thème quand on fait un retour donc quand la page viens du BFCache
-        preferenceUser()
-    }
-});
 
 
 

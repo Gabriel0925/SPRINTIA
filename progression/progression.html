@@ -151,7 +151,10 @@
             document.getElementById("statut-charge-entrainement").innerHTML = statutUser
 
             // --- Récupération ---
-            const tableauLastRecuperation = await db.recuperation.orderBy("date").reverse().limit(1).toArray()
+            const tableauLastRecuperation = await db.recuperation
+                    .where("date")
+                    .aboveOrEqual(createObjetDate(0))
+                    .toArray()
             let lastRecuperation = "--"
             if (tableauLastRecuperation.length > 0) {lastRecuperation = tableauLastRecuperation[0].fc_repos}
             document.getElementById("data-recuperation").innerHTML = lastRecuperation + " <small>bpm</small>"

@@ -13,16 +13,16 @@ function estimationProteines() {
     if (poidsUser <= 0) {
         errorInput("Poids positif requis !")
         // remise à zéro
-        document.querySelector(".large-zone-result-result").textContent = 0 + " g/jour"
+        document.querySelector(".large-zone-result-result").textContent = "-- g/jour"
         return
     } else if (poidsUser >= 1000) {
         errorInput("Poids inférieur à 1000 requis !")
         // remise à zéro
-        document.querySelector(".large-zone-result-result").textContent = 0 + " g/jour"
+        document.querySelector(".large-zone-result-result").textContent = "-- g/jour"
         return
     } else if (isNaN(poidsUser)) {
         // remise à zéro
-        document.querySelector(".large-zone-result-result").textContent = 0 + " g/jour"
+        document.querySelector(".large-zone-result-result").textContent = "-- g/jour"
         return
     }
     else {

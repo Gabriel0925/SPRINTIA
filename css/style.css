@@ -797,11 +797,6 @@ section.segmented-button div.segmented-button-button.actif {
     border-radius: var(--BORDER_NORMAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.segmented-button:has(div.segmented-button-button:not(.actif):active) div.segmented-button-button.actif{
-    background-color: transparent;
-    box-shadow: none;
-    color: var(--COLOR_TEXT_PRIMARY);
-}
 
 
 

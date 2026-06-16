@@ -335,6 +335,10 @@ button{
     appearance: none;
     outline: none;
     -webkit-appearance: none;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);

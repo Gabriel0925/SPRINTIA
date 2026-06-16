@@ -61,7 +61,7 @@ async function DownloadDatas() {
         BoutonDownload.textContent = "Télécharger mes données"
         BoutonDownload.disabled = false // Réactivation du bouton
     }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout
-
+ 
     return
 }
 
@@ -135,12 +135,17 @@ async function ReadFile(event) {
                     await db.recuperation.put(element, 1) 
                 }
             }
-            
-            // Pause
-            await new Promise(r => setTimeout(r, 650))
-            // remise etat normal
-            BoutonRestoration.textContent = "Restaurer mes données"
-            BoutonRestoration.disabled = false // Réactivation du bouton
+    
+            setTimeout(() => {
+                // transimission du message
+                BoutonRestoration.textContent = "Restauré"
+            }, 650);
+
+            setTimeout(() => {
+                // remise etat normal
+                BoutonRestoration.textContent = "Restaurer mes données"
+                BoutonRestoration.disabled = false // Réactivation du bouton
+            }, 1300);
 
             // et remplit le tableau si il y a des datas
             await remplirPlaceProfil()

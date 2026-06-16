@@ -38,14 +38,18 @@ async function SauvegardePreference() {
         nom: NameCoach,
         style: StyleCoach,
         avatar: AvatarCoach
-    })
+    })    
+    
+    setTimeout(() => {
+        // transimission du message
+        BoutonSauvegarde.textContent = "Sauvegardé"
+    }, 650);
 
-    // Légère pause
-    await new Promise(r => setTimeout(r, 650))
-
-    // Remise à l'état normal
-    BoutonSauvegarde.disabled = false
-    BoutonSauvegarde.textContent = "Sauvegarder"
+    setTimeout(() => {
+        // remise etat normal
+        BoutonSauvegarde.textContent = "Sauvegarder"
+        BoutonSauvegarde.disabled = false // Réactivation du bouton
+    }, 1300);
 
     // Changement du titre du h1
     document.getElementById("title-h1").textContent = NameCoach

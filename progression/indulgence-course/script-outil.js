@@ -15,7 +15,7 @@ const InterpretationCopain = {
     "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
     "2": "Tu cours <strong>moins depuis 7 jours</strong>. Essaie de courir un peu plus, ne te relâche pas, sinon tu vas finir par perdre tout ton niveau et crois moi, tu vas t'en vouloir une fois qu'il sera trop tard.", 
     "3": "Bravo ! <strong>Tu progresses</strong> grâce à ton sérieux, ta concentration et ta détermination à toujours donner le meilleur de toi-même. Pour continuer à progresser, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
-    "4": "Attention, tu cours <strong>bien plus que d'habitude</strong> ! J'ai l'impression que tu aimes un peu trop courir en ce moment, c'est bien, mais attention : moins tu es progressif·ve, plus tu risques de te blesser."
+    "4": "Attention, tu cours <strong>bien plus que d'habitude</strong> ! J'ai l'impression que tu aimes un peu trop courir en ce moment, c'est bien, mais attention : sans progressivité, plus tu risques de te blesser."
 }
 const InterpretationGoMuscu = {
     "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 

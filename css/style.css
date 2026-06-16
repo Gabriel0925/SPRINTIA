@@ -30,7 +30,7 @@
     --BORDER_BIG: 1.5rem;
 
     /* Valeur d'enfoncement d'un élément lors d'un clic (pour les ':active') */
-    --SCALE_SMALL: 0.98;
+    --SCALE_SMALL: 0.975;
     --SCALE_NORMAL: 0.95;
     --SCALE_SUP: 1.05;
 
@@ -916,7 +916,7 @@ section.container-workout-cards div.cards-history-workout {
 }
 section.container-workout-cards div.cards-history-workout:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_SMALL));
+    transform: scale(var(--SCALE_NORMAL));
 }
 section.container-workout-cards div.cards-history-workout a {
     display: flex;
@@ -1121,7 +1121,6 @@ section.container-widget-progression section.widget-charge-entrainement {
 @media (hover: hover) and (pointer: fine) {
     section.container-widget-progression section.widget-charge-entrainement:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        transform: translateY(-5px);
     }
 }
 section.container-widget-progression section.widget-charge-entrainement:active {
@@ -1171,6 +1170,7 @@ section.container-small-widget-progression {
 section.container-small-widget-progression section.small-widget {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
+    cursor: pointer;
 
     overflow: hidden;
     padding: var(--SPACE_S_SMALL);
@@ -1181,6 +1181,11 @@ section.container-small-widget-progression section.small-widget {
 
     transition: transform ease-out var(--TIME_TRANSITION_FAST),
                 background-color ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-small-widget-progression section.small-widget:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
 }
 section.container-small-widget-progression section.small-widget:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -1468,9 +1473,6 @@ div.zone-coach {
     max-width: 450px;
     height: auto;
     min-height: 180px;
-}
-div.zone-coach.clickable:active {
-    transform: scale(var(--SCALE_SMALL));
 }
 div.zone-coach p.zone-coach-name {
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -2166,7 +2168,7 @@ div.box-last-maj{
 }
 div.box-last-maj:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_SMALL));
+    transform: scale(var(--SCALE_NORMAL));
 }
 div.box-last-maj div.content1 .card-releases-image-last-maj {
     font-size: var(--H2);

@@ -57,10 +57,6 @@ function afficherData(dataWorkout) {
 
         <div class="menu-many-action">
             <li id="button-partager">
-                <i class="fs-icon_partager"></i>
-                Partager
-            </li>
-            <li id="button-partager">
                 <i class="fs-icon_file_json"></i>
                 Exporter
             </li>

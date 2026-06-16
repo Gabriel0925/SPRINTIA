@@ -50,7 +50,7 @@ function selectedBFCache(ongletName) {
     // idem mais pour le header
     const headerItems = document.querySelectorAll(".header-items")
     for (const elt of headerItems) {
-        if (headerItems.textContent.includes(ongletName)) {elt.classList.add("selected")}
+        if (elt.textContent.includes(ongletName)) {elt.classList.add("selected")}
     }
 }
 
@@ -77,10 +77,14 @@ window.addEventListener("pageshow", (event) => {
         }
         const urlPage = window.location.pathname // ça renvoie par ex ça : /progression/progression.html
 
-        if (urlPage.includes("index.html")) {selectedBFCache("Entraînement")}
-        else if (urlPage.includes("progression.html")) {selectedBFCache("Progression")}
-        else if (urlPage.includes("outils.html")) {selectedBFCache("Outils")}
-        else {selectedBFCache("Plus")}
+        if (urlPage.includes("plus")) {selectedBFCache("Plus")}
+        else if (urlPage.includes("progression")) {selectedBFCache("Progression")}
+        else if (urlPage.includes("outils")) {selectedBFCache("Outils")}
+        else {
+            // bien mettre entrainement dans le else car dans la page index c'est index puis avec le dossier entrainement rien n'est cohérent donc si c'est ni plus ni progression
+            // ni outils alors c'est l'onglet entrainement
+            selectedBFCache("Entraînement")
+        }
     }
 });
 

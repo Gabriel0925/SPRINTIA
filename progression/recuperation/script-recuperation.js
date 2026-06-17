@@ -77,9 +77,8 @@ async function jrmCoach() {
     let CoachUserDB = await db.JRM_Coach.toArray()
     if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
         let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-        let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-        zoneNameCoach.innerHTML =  AvatarCoach + " " + NomCoach
+        zoneNameCoach.innerHTML =  NomCoach
     }
 
     // recup des 30 derniers jours de datas

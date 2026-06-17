@@ -76,8 +76,8 @@
     
     <h1 id="title-ia">Configuration <strong>JRM Coach</strong></h1>
     <p class="text">
-        Créez votre propre coach : choisissez son nom, son style et même son avatar. 
-        Votre coach, à votre image ! Votre coach vous tutoiera pour créer une meilleure proximité entre vous et le coach.
+        Créez votre propre coach : choisissez son nom et son style. 
+        Votre coach vous tutoiera pour créer une meilleure proximité entre vous et le coach.
     </p>
     <section class="container-zone">
         <div class="form">
@@ -91,81 +91,6 @@
                 <option value="Strict-Motivant">Style : Strict & Motivant</option>
                 <option value="Copain">Style : Copain</option>
                 <option value="Go-muscu">Style : Go muscu</option>
-            </select>
-            <select id="avatar-coach" onchange="ChangeAvatar(value)" autocomplete="off">
-
-                <optgroup label="Option">
-                    <option value="">Avatar : Rien</option>
-                </optgroup>
-                
-                <optgroup label="Personnages">
-                    <option value="👨">Avatar : 👨</option>
-                    <option value="👩">Avatar : 👩</option> 
-                    <option value="👴">Avatar : 👴</option>
-                    <option value="👵">Avatar : 👵</option>
-                </optgroup>
-
-                <optgroup label="Expressions">
-                    <option value="🤠">Avatar : 🤠</option>
-                    <option value="😎">Avatar : 😎</option>
-                    <option value="😇">Avatar : 😇</option>
-                    <option value="🥸">Avatar : 🥸</option>
-                </optgroup>
-
-                <optgroup label="Coach">
-                    <option value="🧠">Avatar : 🧠</option>
-                    <option value="💪">Avatar : 💪</option>
-                    <option value="⏱️">Avatar : ⏱️</option>
-                </optgroup>
-
-                <optgroup label="Sportifs·ves">
-                    <option value="🏃">Avatar : 🏃</option>
-                    <option value="🏃‍♀️">Avatar : 🏃‍♀️</option>
-                    <option value="🚴">Avatar : 🚴</option>
-                    <option value="🚴‍♀️">Avatar : 🚴‍♀️</option>
-                    <option value="🏊">Avatar : 🏊</option>
-                    <option value="🏊‍♀️">Avatar : 🏊‍♀️</option>
-                    <option value="🏋️">Avatar : 🏋️</option>
-                    <option value="🏋‍♀️">Avatar : 🏋‍♀️</option>
-                </optgroup>
-
-                <optgroup label="Fantaisie"> 
-                    <option value="🤡">Avatar : 🤡</option>
-                    <option value="😈">Avatar : 😈</option>
-                    <option value="🤖">Avatar : 🤖</option>
-                    <option value="🥷">Avatar : 🥷</option>
-                </optgroup>
-
-                <optgroup label="Événements">
-                    <option value="🎅">Avatar : 🎅</option>
-                    <option value="👻">Avatar : 👻</option>
-                    <option value="🎃">Avatar : 🎃</option>
-                    <option value="👽">Avatar : 👽</option>
-                </optgroup>
-
-                <optgroup label="Animaux">
-                    <option value="🦆">Avatar : 🦆</option>
-                    <option value="🦍">Avatar : 🦍</option>
-                    <option value="🦐">Avatar : 🦐</option>
-                    <option value="😺">Avatar : 😺</option>
-                    <option value="🐵">Avatar : 🐵</option>
-                    <option value="🐻">Avatar : 🐻</option>
-                    <option value="🐼">Avatar : 🐼</option>
-                    <option value="🦊">Avatar : 🦊</option>
-                    <option value="🐶">Avatar : 🐶</option>
-                    <option value="🦁">Avatar : 🦁</option>
-                    <option value="🦉">Avatar : 🦉</option>
-                    <option value="🦥">Avatar : 🦥</option>
-                    <option value="🐰">Avatar : 🐰</option>
-                    <option value="🐴">Avatar : 🐴</option>
-                    <option value="🐬">Avatar : 🐬</option>
-                    <option value="🐢">Avatar : 🐢</option>
-                    <option value="🐞">Avatar : 🐞</option>
-                    <option value="🐝">Avatar : 🐝</option>
-                    <option value="🐍">Avatar : 🐍</option>
-                    <option value="🦩">Avatar : 🦩</option>
-                </optgroup>
-
             </select>
 
             <button onclick="SauvegardePreference()" id="bouton-save">Sauvegarder</button>
@@ -196,7 +121,6 @@
 
             if (CoachUserDB.length > 0) { // Si il y a des datas
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
                 document.getElementById("title-ia").textContent = NomCoach
             }

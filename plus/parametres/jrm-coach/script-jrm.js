@@ -52,7 +52,7 @@ async function SauvegardePreference() {
     }, 1300);
 
     // Changement du titre du h1
-    document.getElementById("title-h1").textContent = NameCoach
+    document.getElementById("title-ia").textContent = NameCoach
 
     logoDynamique(`${AvatarCoach} C'est parti !`)
 
@@ -85,7 +85,7 @@ function ChangeAvatar(value) {
     }
 
     // maj de l'avatar dans la zone du coach
-    ZoneNameJRM.innerHTML = value + " " + NameJRM + " :"
+    ZoneNameJRM.innerHTML = value + " " + NameJRM
 
     return
 }
@@ -95,9 +95,9 @@ function MajName(value) {
     let AvatarCoach = document.getElementById("avatar-coach").value
 
     if (value == "" || value == " ") { // Si le champs est vide alors on met JRM coach dans la box JRM Coach
-        NameJRM.innerHTML = AvatarCoach + " " + "JRM Coach :"
+        NameJRM.innerHTML = AvatarCoach + " " + "JRM Coach"
     } else {
-        NameJRM.innerHTML = AvatarCoach + " " + value + " :"
+        NameJRM.innerHTML = AvatarCoach + " " + value
     } 
 
     return
@@ -133,7 +133,7 @@ async function Initialisation() {
         }
 
         // Remplissage des zones
-        ZoneNameBox.textContent = TableauAvatar[0] + " " + TableauName[0] + " :" // Le nom du coach
+        ZoneNameBox.textContent = TableauAvatar[0] + " " + TableauName[0] // Le nom du coach
         ZoneJRMBox.innerHTML = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
 
     } else {
@@ -158,11 +158,11 @@ async function Reinitialisation() {
         await new Promise(r => setTimeout(r, 650))
 
         // on remet tout de base sur la page premierement les input
-        document.getElementById("title-h1").textContent = "JRM Coach"
+        document.getElementById("title-ia").textContent = "JRM Coach"
         document.getElementById("nom-coach").value = ""
         document.getElementById("style-coach").value = "Bienveillant"
         document.getElementById("avatar-coach").value = ""
-        document.getElementById("NomCoach").innerHTML = "JRM Coach :"
+        document.getElementById("NomCoach").innerHTML = "JRM Coach"
         document.getElementById("JRM-coach").innerHTML = DicoPhraseExemple["Bienveillant"]
 
         // confirmation sauvegarde

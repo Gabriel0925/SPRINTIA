@@ -14,8 +14,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
     <link rel="apple-touch-icon" href="../../../assets/icons-SPRINTIA/icon-192-V4.3.1.png">
-
-    <script src="../../../assets/base-js/themes.js"></script>
+    
 </head>
 
 <body>
@@ -75,7 +74,7 @@
 
     </section>
     
-    <h1 id="title-h1">JRM Coach</h1>
+    <h1 id="title-ia">Configuration <strong>JRM Coach</strong></h1>
     <p class="text">
         Créez votre propre coach : choisissez son nom, son style et même son avatar. 
         Votre coach, à votre image ! Votre coach vous tutoiera pour créer une meilleure proximité entre vous et le coach.
@@ -173,7 +172,7 @@
         </div>
 
         <div class="zone-coach">
-            <p class="zone-coach-name" id="NomCoach">JRM Coach :</p>
+            <p class="zone-coach-name" id="NomCoach">JRM Coach</p>
             <p class="zone-coach-interpretation" id="JRM-coach">
                 Chargement...
             </p> 
@@ -199,7 +198,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("title-h1").textContent = NomCoach
+                document.getElementById("title-ia").textContent = NomCoach
             }
 
             return

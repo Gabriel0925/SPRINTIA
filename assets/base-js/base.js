@@ -58,11 +58,7 @@ function selectedBFCache(ongletName) {
 
 // --- Pr gérer le BFCache ---
 window.addEventListener("pageshow", (event) => {
-    // Pour contrer le BFCache parce qu'il mettait en cache mes anciennes pages pour éviter de les recharger mais ça causait probleme pour les thèmes
     if (event.persisted) { // event.persisted = quand la page est dans le cache
-        // forcer de lancer la fonction qui charge le thème quand on fait un retour donc quand la page viens du BFCache
-        preferenceUser()
-
         // --- remettre le bon onglet selected dans la tab-bar ou le header ---
         const itemSelectedTabBar = document.querySelectorAll(".tab-bars-items")
         const itemSelectedHeader = document.querySelectorAll(".header-items")

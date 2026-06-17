@@ -15,7 +15,6 @@
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
     <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V4.3.1.png">
 
-    <script src="../../assets/base-js/themes.js"></script>
 </head>
 
 <body>
@@ -83,7 +82,7 @@
     <section class="container-zone">
 
         <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="zone-coach-name" id="nom-coach">JRM Coach</p>
             <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
                 Chargement...
             </p> 
@@ -154,7 +153,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("nom-coach").textContent = AvatarCoach + " " + NomCoach + " :"
+                document.getElementById("nom-coach").textContent = AvatarCoach + " " + NomCoach
             }
         }
 

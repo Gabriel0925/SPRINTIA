@@ -17,7 +17,6 @@
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
     <link rel="apple-touch-icon" href="/assets/icons-SPRINTIA/icon-192-V4.3.1.png">
 
-    <script src="assets/base-js/themes.js"></script>
 </head>
 
 <body>
@@ -96,9 +95,9 @@
         </div>
     </a>
 
-    <h2>Analyse</h2>
+    <h2></h2>
     <div class="zone-coach">
-        <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+        <p class="zone-coach-name" id="nom-coach">JRM Coach</p>
         <p class="zone-coach-interpretation"> <!--id="reponse-coach"-->
             Dès la <strong>beta - 20J264</strong>, je pourrais analyser en profondeur et surtout comparer tes semaines d'entraînements !
         </p> 
@@ -173,7 +172,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + NomCoach + " :"
+                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + NomCoach
             }
 
             if (HistoriqueDB.length > 0) { // Si il y a des datas

@@ -1,15 +1,21 @@
 :root {
-    /* Palette de couleur */
-    --COLOR_ACCENT: #42a5f5;
-    --COLOR_ACCENT_HOVER: #64b8fc;
-    --COLOR_ACCENT_TEXT: #A4D3F9;
-    
+    /* Éléments de base */
     --COLOR_BACKGROUND: #000000;
     --COLOR_BACKGROUND_CARD: #232222;
-    --COLOR_BACKGROUND_CARD_HOVER: #373636; 
+    --COLOR_BACKGROUND_CARD_HOVER: #373636;
 
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
+
+    /* Accent classique */
+    --COLOR_ACCENT: #5A97F2;
+    --COLOR_ACCENT_HOVER: #75a7f0;
+    --COLOR_ACCENT_TEXT: #8eccff;
+
+    /* Le dégradé dédié pour le coach */
+    --COLOR_IA_START: #3a91ff;
+    --COLOR_IA_MIDDLE: #f782f0;
+    --COLOR_IA_END: #f782f0;
 
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.15);
 
@@ -50,25 +56,6 @@
 
     /* URL flèche vers le bas pour les combobox */
     --URL_FLECHE_ICON: url("../assets/icons/icon-fleche.svg");
-
-    /* Thèmes Froids */
-    --COLOR_AZUR: #42a5f5; --COLOR_OCEAN: #227eff;
-    --COLOR_LUNE: #72a8ca; --COLOR_POLAIRE: #baf0ff;
-    --COLOR_GLACIER: #1fc9eb;
-    --COLOR_POMME: #A4DE02; --COLOR_VEGETATION: #0acd62;
-    --COLOR_SAPIN: #78b67d; --COLOR_MENTHE: #07d3b5;
-    --COLOR_INDIGO: #837dfc;
-    --COLOR_LAVANDE: #B266F9; --COLOR_LILAS: #B19CD9;
-
-    /* Thèmes Chauds */
-    --COLOR_AMBRE: #ff7b00;
-    --COLOR_FEU: #ffa51e; --COLOR_CORAIL: #FF8559;
-    --COLOR_CARMIN: #FF5257; --COLOR_PECHE: #FF9A9E;
-    --COLOR_CITRON: #ebe540; --COLOR_FRAMBOISE: #f26997;
-    --COLOR_FUCHSIA: #FA6BFA; --COLOR_GUIMAUVE: #e4abe4;
-
-    /* Thèmes Neutres */
-    --COLOR_NUAGE: #ffffd3;
 }
 /* Pour les icônes dans l'application */
 @font-face {
@@ -305,6 +292,14 @@ h1{
     margin-bottom: var(--SPACE_S);
     margin-top: var(--SPACE_XS);
 }
+h1#title-ia strong{
+    background-image: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-left: 0.12rem;
+}
 h2{
     font-size: var(--H3);
     color: var(--COLOR_TEXT_PRIMARY);
@@ -371,9 +366,9 @@ button.table {
     outline: none;
     -webkit-appearance: none;
 
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
 
     transition: color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
@@ -440,9 +435,9 @@ section.header div.logo {
     font-size: var(--H3);
     pointer-events: all;
     cursor: pointer;
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -754,9 +749,9 @@ section.segmented-button div.segmented-button-button {
     width: 60px;
     text-align: center;
     
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 font-weight ease-out var(--TIME_TRANSITION),
@@ -821,9 +816,9 @@ div.carousel div.card-tool {
     border-radius: var(--BORDER_BIG);
     cursor: pointer;
     min-height: 180px;
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
 
     width: 240px;
     height: fit-content;
@@ -1107,9 +1102,9 @@ section.container-widget-progression section.widget-charge-entrainement {
     border-radius: var(--BORDER_BIG);
     padding: var(--SPACE_S_SMALL);
 
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
 
     max-width: 450px;
     flex-grow: 1;
@@ -1175,9 +1170,9 @@ section.container-small-widget-progression section.small-widget {
     overflow: hidden;
     padding: var(--SPACE_S_SMALL);
 
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
 
     transition: transform ease-out var(--TIME_TRANSITION_FAST),
                 background-color ease-out var(--TIME_TRANSITION_FAST);
@@ -1395,9 +1390,9 @@ div.menu-many-action.open:active {
 div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
     padding: var(--SPACE_XS);
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     cursor: pointer;
     transition: background-color ease-out var(--TIME_TRANSITION),
@@ -1462,23 +1457,24 @@ section.container-box {
 
 /* --- Zone pour le coach --- */
 div.zone-coach {
-    border-radius: var(--BORDER_BIG);
-    z-index: 1;
     position: relative;
-    background: linear-gradient(130deg, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
-    color: var(--COLOR_BACKGROUND);
-    padding: var(--SPACE_S_SMALL);
-
+    color: var(--COLOR_TEXT_SECONDARY);
     flex-grow: 1;
     max-width: 450px;
-    height: auto;
-    min-height: 180px;
+}
+div.zone-coach strong{
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 div.zone-coach p.zone-coach-name {
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    font-size: var(--H3);
+    background-image: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_MIDDLE), var(--COLOR_IA_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 
-    margin-bottom: var(--SPACE_S_SMALL);
+    font-weight: 1000;
+    font-size: var(--H3);
+    margin-bottom: var(--SPACE_XS);
 }
 
 
@@ -1706,8 +1702,8 @@ input[type="date"]{
     border-radius: var(--BORDER_NORMAL);
 
     border: none;
-    appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     outline: none;
     cursor: pointer;
 
@@ -1722,9 +1718,9 @@ input[type="date"].small{
     width: 190px;
 }
 /* Pour chrome, safari */
-input[type="date"]::-webkit-calendar-picker-indicator{ 
-    display: none;
+input[type="date"]::-webkit-calendar-picker-indicator{
     -webkit-appearance: none;
+    display: none;
 }
 
 /* Pour le label input */
@@ -1923,9 +1919,9 @@ div.form-different-button {
     color: var(--COLOR_ACCENT);
     display: flex;
     align-items: center;
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
     cursor: pointer;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 border ease-out var(--TIME_TRANSITION),
@@ -2020,7 +2016,9 @@ div.visuel-version p.visuel-version-title{
     margin-bottom: var(--SPACE_M);
     
     background-image: linear-gradient(to right, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
+    -webkit-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
 }
 div.visuel-version p.visuel-version-description{
@@ -2116,11 +2114,21 @@ div.action-list div.action-list-item {
     display: flex; 
     align-items: center;
     padding: var(--SPACE_XS);
+    color: var(--COLOR_TEXT_PRIMARY);
     background-color: var(--COLOR_BACKGROUND_CARD);
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 border-radius ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
+}
+div.action-list div.action-list-item.ia strong{
+    background-image: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 1000;
+    margin-left: 0.12rem;
 }
 div.action-list a:nth-child(1) div.action-list-item {
     border-top-left-radius: 1.5rem;
@@ -2141,13 +2149,11 @@ div.action-list div.action-list-item:active {
     transform: scale(var(--SCALE_SMALL));
 }
 div.action-list i{
-    color: var(--COLOR_TEXT_PRIMARY);
     font-size: 2.25rem;
 }
 div.action-list div.action-list-item p{
     margin-left: var(--SPACE_S);
     font-size: var(--H3);
-    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
@@ -2202,9 +2208,9 @@ div.box-last-maj div.content2 button{
     padding: 0.7rem;
     margin: 0;    
     margin-top: var(--SPACE_S_SMALL);
-    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    user-select: none;
 
     border-radius: var(--BORDER_NORMAL);
     background-color: var(--COLOR_ACCENT);
@@ -2324,136 +2330,6 @@ div.banner-toggle input[type="checkbox"].toggle:checked{
 /* Pour que le rond glisse */
 div.banner-toggle input[type="checkbox"].toggle:checked:after{
     left: 33%;
-}
-
-
-
-ol.container-color-accentuation{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
-    gap: 1.2rem;
-}
-li.option-color {
-    height: 50px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    cursor: pointer;
-    z-index: 1;
-    opacity: 0.75;
-
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    
-    font-size: var(--H3);
-    color: var(--COLOR_BACKGROUND);
-    padding: var(--SPACE_XS) var(--SPACE_M);
-    border-radius: 0.6rem;
-    
-    transition: transform ease-out var(--TIME_TRANSITION_FAST),
-                opacity ease-out var(--TIME_TRANSITION_FAST),
-                border-radius ease-out var(--TIME_TRANSITION),
-                outline ease-out var(--TIME_TRANSITION),
-                font-weight ease-out var(--TIME_TRANSITION);
-}
-@media (max-width: 650px) {
-    ol.container-color-accentuation{
-        grid-template-columns: repeat(3, 1fr);
-    }
-    li.option-color {
-        font-size: var(--P);
-    }
-}
-@media (hover: hover) and (pointer: fine) {
-    li.option-color:hover{
-        opacity: 1;
-    }
-}
-ol li.option-color:active{
-    transform: scale(var(--SCALE_NORMAL));
-}
-/* celui selectionné */
-ol li.option-color.selected{
-    outline: 3px solid var(--COLOR_ACCENT_TEXT);
-    opacity: 1;
-    border-radius: var(--BORDER_BIG);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-}
-
-/* --- Thèmes Froids --- */
-ol li.option-color.option-color#azur{ 
-    background-color: var(--COLOR_AZUR);
-}
-ol li.option-color.option-color#ocean{ 
-    background-color: var(--COLOR_OCEAN);
-}
-ol li.option-color.option-color#lune{ 
-    background-color: var(--COLOR_LUNE);
-}
-ol li.option-color.option-color#glacier{ 
-    background-color: var(--COLOR_GLACIER);
-}
-ol li.option-color.option-color#polaire{ 
-    background-color: var(--COLOR_POLAIRE);
-}
-ol li.option-color.option-color#pomme{ 
-    background-color: var(--COLOR_POMME);
-}
-ol li.option-color.option-color#vegetation{ 
-    background-color: var(--COLOR_VEGETATION);
-}
-ol li.option-color.option-color#sapin{ 
-    background-color: var(--COLOR_SAPIN);
-}
-ol li.option-color.option-color#menthe{ 
-    background-color: var(--COLOR_MENTHE);
-}
-ol li.option-color.option-color#indigo{ 
-    background-color: var(--COLOR_INDIGO);
-}
-ol li.option-color.option-color#lavande{ 
-    background-color: var(--COLOR_LAVANDE);
-}
-ol li.option-color.option-color#lilas{ 
-    background-color: var(--COLOR_LILAS);
-}
-
-/* --- Thèmes Chauds --- */
-ol li.option-color.option-color#ambre{ 
-    background-color: var(--COLOR_AMBRE);
-}
-ol li.option-color.option-color#feu{ 
-    background-color: var(--COLOR_FEU);
-}
-ol li.option-color.option-color#corail{ 
-    background-color: var(--COLOR_CORAIL);
-}
-ol li.option-color.option-color#carmin{ 
-    background-color: var(--COLOR_CARMIN);
-}
-ol li.option-color.option-color#peche{ 
-    background-color: var(--COLOR_PECHE);
-}
-ol li.option-color.option-color#citron{ 
-    background-color: var(--COLOR_CITRON);
-}
-ol li.option-color.option-color#framboise{ 
-    background-color: var(--COLOR_FRAMBOISE);
-}
-ol li.option-color.option-color#fuchsia{ 
-    background-color: var(--COLOR_FUCHSIA);
-}
-ol li.option-color.option-color#guimauve{ 
-    background-color: var(--COLOR_GUIMAUVE);
-}
-
-/* --- Thèmes neutres --- */
-ol li.option-color.option-color#nuage{ 
-    background-color: var(--COLOR_NUAGE);
 }
 
 

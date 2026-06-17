@@ -79,7 +79,7 @@ async function jrmCoach() {
         let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
         let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-        zoneNameCoach.innerHTML =  AvatarCoach + " " + NomCoach + " :"
+        zoneNameCoach.innerHTML =  AvatarCoach + " " + NomCoach
     }
 
     // recup des 30 derniers jours de datas

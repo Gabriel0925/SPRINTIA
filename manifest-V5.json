@@ -14,13 +14,13 @@
 
     "icons": [
         {
-            "src": "/assets/icons-SPRINTIA/icon-192-V4.3.1.png",
+            "src": "/assets/icons-SPRINTIA/icon-192-V5.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
-            "src": "/assets/icons-SPRINTIA/icon-512-V4.3.1.png",
+            "src": "/assets/icons-SPRINTIA/icon-512-V5.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"

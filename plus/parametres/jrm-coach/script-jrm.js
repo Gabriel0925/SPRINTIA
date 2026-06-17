@@ -50,7 +50,7 @@ async function SauvegardePreference() {
     }, 1300);
 
     // Changement du titre du h1
-    document.getElementById("title-ia").textContent = NameCoach
+    document.getElementById("title-ia").innerHTML = `Configuration <strong>${NameCoach}</strong>`
 
     logoDynamique(`C'est parti !`)
 
@@ -152,7 +152,7 @@ async function Reinitialisation() {
         await new Promise(r => setTimeout(r, 650))
 
         // on remet tout de base sur la page premierement les input
-        document.getElementById("title-ia").textContent = "JRM Coach"
+        document.getElementById("title-ia").innerHTML = `Configuration <strong>JRM Coach</strong>`
         document.getElementById("nom-coach").value = ""
         document.getElementById("style-coach").value = "Bienveillant"
         document.getElementById("NomCoach").innerHTML = "JRM Coach"

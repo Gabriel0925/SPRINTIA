@@ -130,7 +130,7 @@
         <a href="discuter-coach/discuter-coach.html">
             <div class="action-list-item ia">
                 <i class="fs-icon_message"></i>
-                <p class="text-param">Discuter avec le <strong>JRM Coach</strong></p>
+                <p class="text-param" id="nom-coach">Discuter avec <strong>JRM Coach</strong></p>
             </div>
         </a>
 
@@ -166,6 +166,30 @@
     </div>
     
     <script src="../assets/base-js/base.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="../../assets/bibliotheques/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script>
+        async function NomCoachInit() {
+            // Recup datas
+            let CoachUserDB = await db.JRM_Coach.toArray()
+
+            if (CoachUserDB.length > 0) { // Si il y a des datas
+                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+                document.getElementById("nom-coach").innerHTML = `Discuter avec <strong>${NomCoach}</strong>`
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            NomCoachInit()
+        })
+    </script>
+
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

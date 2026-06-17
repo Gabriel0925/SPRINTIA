@@ -282,7 +282,7 @@ async function genererGraphiqueDoughnut(label, listePourcentage) {
 
 
 // --- Mise à jour local storage ---
-function majLocalStorage(versionStockee) {
+async function majLocalStorage(versionStockee) {
     // migration de 4.0.0 à 4.0.1
     if (versionStockee == "4.0.0") {
         localStorage.removeItem("ThemeActuel") // car le choix de thème clair ou sombre a été nerf
@@ -395,15 +395,20 @@ function majLocalStorage(versionStockee) {
         }
         // on supprime l'ancienne clé
         localStorage.removeItem("ColorActuelleUse")
+    }
+    
+    // migration de 4.3 à 5
+    if (versionStockee == "4.3") {
+        localStorage.setItem("VersionLocalStorage", "5")
+        localStorage.removeItem("themeUser") // on supprime les thèmes
 
-        // on lance la fonction pour éviter un décalage
-        preferenceUser()
+        // puis on supprime l'avatar du coach depuis le fichier db.config
     }
 
     return
 }
 
-const versionActuelle = "4.3"
+const versionActuelle = "5"
 let versionStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
 if (versionStockee != versionActuelle) {
     majLocalStorage(versionStockee)

@@ -154,8 +154,6 @@ async function ReadFile(event) {
             init()
             
             logoDynamique("Vous revoilà 😇")
-            // rechargement du theme
-            preferenceUser()
 
         } catch {
             alert("Une erreur est survenue, veuillez réessayer !")

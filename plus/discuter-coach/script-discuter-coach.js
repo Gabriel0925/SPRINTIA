@@ -1,7 +1,7 @@
 import * as webLLM from "https://esm.run/@mlc-ai/web-llm" // import du moteur de WebLLM depuis un CDN
 
-// j'ai choisi le modèle nommé "Qwen1.5-0.5B-Chat-q4f16_1-MLC", ce modèle est crée par Alibaba, il possède 500 millions de param soit 0.5GB à télécharger pour le user
-const selectedModel = "Qwen1.5-0.5B-Chat-q4f16_1-MLC" // le nom exact pour qu'on puisse le télécharger par la suite
+// j'ai choisi le modèle nommé "Qwen2.5-0.5B-Instruct-q4f16_1-MLC", ce modèle est crée par Alibaba, il possède 500 millions de param soit 0.5GB à télécharger pour le user
+const selectedModel = "Qwen2.5-0.5B-Instruct-q4f16_1-MLC" // le nom exact pour qu'on puisse le télécharger par la suite
 
 let moteurLLM = null // init pr stocker par la suite "l'IA"
 
@@ -10,7 +10,7 @@ async function telechargementModele(progressionTelechargement) {
     if (moteurLLM != null) return moteurLLM // si le modele est déjà télécharger alors return pour pas le retélécharger
 
     // creer le moteur de l'IA (méthode imposée par la bibliothèque WebLLM)
-    moteurLLM = await webLLM.CreateEngine(selectedModel, {
+    moteurLLM = await  webLLM.CreateMLCEngine(selectedModel, {
         initProgressCallback: (report) => {
             if (progressionTelechargement) progressionTelechargement(report.text) // pour suivre le pourcentage de progression
         }
@@ -30,4 +30,36 @@ async function envoyerMessageAuCoach(prompt) { // pour que le LLM fournisse une 
     })
 
     return response.choices[0].message.content // return la réponse du LLM
+}
+
+let buttonDownload = document.getElementById("download-modele")
+let etape1 = false
+
+function majPourcentageProgression(etapeProgression) {
+    if (buttonDownload) {
+        // etapeProgression renvoie ça par ex : "Loading model from cache[2/8]: 97MB loaded. 36% completed, 1 secs elapsed."
+        // match sert à chercher un motif dans un str grâce à une expression régulière (regex)
+        // (\d+)% => d+ => d signifie "digit" donc en francais un chiffre (entre 0 et 9) et le + permet de récupérer 25% par exemple suivis d'un pourcentage
+        let pourcentage = etapeProgression.match(/(\d+)%/) // ça renvoie ['24%', '24', index: 44, input: 'Loading model from cache[1/8]: 65MB loaded. 24% completed, 1 secs elapsed.', groups: undefined]
+
+        if (pourcentage == null && etape1 == false) {pourcentage=["0%"]; etape1=true}
+        else if (pourcentage == null && etape1 == true) {pourcentage=["100%"]}
+
+        if (pourcentage[0] == "100%") {
+            buttonDownload.textContent = "Téléchargé"
+
+            setTimeout(() => {
+                buttonDownload.textContent = "Télécharger"            
+            }, 650);
+            return
+        }
+        buttonDownload.textContent = "Téléchargement : " + pourcentage[0]
+    }
+}
+// !!! Fonction pour désintaller le modèle à ajouter !!!
+
+if (buttonDownload) {
+    buttonDownload.addEventListener("click", async () => {
+        await telechargementModele(majPourcentageProgression) // passage de la fonction par référence
+    })
 }

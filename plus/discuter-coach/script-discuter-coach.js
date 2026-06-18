@@ -10,7 +10,7 @@ async function telechargementModele(progressionTelechargement) {
     if (moteurLLM != null) return moteurLLM // si le modele est déjà télécharger alors return pour pas le retélécharger
 
     // creer le moteur de l'IA (méthode imposée par la bibliothèque WebLLM)
-    moteurLLM = await  webLLM.CreateMLCEngine(selectedModel, {
+    moteurLLM = await webLLM.CreateMLCEngine(selectedModel, { // cette fonction gère le téléchargement et c'est lui qui va retrouver le modele dans le cache du navigateur
         initProgressCallback: (report) => {
             if (progressionTelechargement) progressionTelechargement(report.text) // pour suivre le pourcentage de progression
         }
@@ -19,9 +19,12 @@ async function telechargementModele(progressionTelechargement) {
     return moteurLLM
 }
 
+let inputPrompt = document.getElementById("prompt-user")
+let buttonEnvoyer = document.getElementById("button-envoyer")
+let reponseIA = document.getElementById("reponse-ia")
 async function envoyerMessageAuCoach(prompt) { // pour que le LLM fournisse une réponse
-    if (moteurLLM == null) { // si la user n'a pas téléchargé le modèle alors on stop
-        return false // si le modele n'est pas installé on return false
+    if (moteurLLM == null) { // si la user n'a pas téléchargé le modèle ou alors que le modele n'est pas chargé sur la page alors on renvoie vers la fonction
+        await telechargementModele()
     }
 
     // pr demander à l'IA de répondre au prompt
@@ -31,10 +34,20 @@ async function envoyerMessageAuCoach(prompt) { // pour que le LLM fournisse une 
 
     return response.choices[0].message.content // return la réponse du LLM
 }
+async function conversationWithIA(prompt) {
+    const reponse = await envoyerMessageAuCoach([{role: "user", content:prompt}])
+    reponseIA.textContent = reponse
+}
+if (buttonEnvoyer) {
+    buttonEnvoyer.addEventListener("click", async () => {
+        const prompt = inputPrompt.value
+        await conversationWithIA(prompt)
+    })
+}
+
 
 let buttonDownload = document.getElementById("download-modele")
 let etape1 = false
-
 function majPourcentageProgression(etapeProgression) {
     if (buttonDownload) {
         // etapeProgression renvoie ça par ex : "Loading model from cache[2/8]: 97MB loaded. 36% completed, 1 secs elapsed."

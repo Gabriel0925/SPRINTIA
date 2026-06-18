@@ -1,7 +1,7 @@
 import * as webLLM from "https://esm.run/@mlc-ai/web-llm" // import du moteur de WebLLM depuis un CDN
 
-// j'ai choisi le modèle nommé "Llama-3.2-1B-Instruct-q4f16_1-MLC", ce modèle est crée par Alibaba, il possède 500 millions de param soit 0.5GB à télécharger pour le user
-const modelSelectionner = "Llama-3.2-1B-Instruct-q4f16_1-MLC" // le nom exact pour qu'on puisse le télécharger par la suite
+// j'ai choisi le modèle nommé "Qwen2.5-1.5B-Instruct-q4f16_1-MLC", ce modèle est crée par Alibaba, il possède 500 millions de param soit 0.5GB à télécharger pour le user
+const modelSelectionner = "Qwen2.5-1.5B-Instruct-q4f16_1-MLC" // le nom exact pour qu'on puisse le télécharger par la suite
 
 let moteurLLM = null // init pr stocker par la suite "l'IA"
 

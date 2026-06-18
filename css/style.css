@@ -13,9 +13,8 @@
     --COLOR_ACCENT_TEXT: #8eccff;
 
     /* Le dégradé dédié pour le coach */
-    --COLOR_IA_START: #3a91ff;
-    --COLOR_IA_MIDDLE: #f782f0;
-    --COLOR_IA_END: #f782f0;
+    --COLOR_IA_START: #4689ef;
+    --COLOR_IA_END: #94b8ef;
 
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.15);
 
@@ -1455,18 +1454,53 @@ section.container-box {
 
 /* --- Zone pour le coach --- */
 div.zone-coach {
-    position: relative;
-    color: var(--COLOR_BACKGROUND);
-    background: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_MIDDLE), var(--COLOR_IA_END));
     border-radius: var(--BORDER_BIG);
-    padding: var(--SPACE_S_SMALL);
+    z-index: 1;
+    position: relative;
     flex-grow: 1;
     max-width: 450px;
+    height: auto;
+    min-height: 180px;
+}
+div.zone-coach::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    filter: blur(30px) brightness(0.7);
+    z-index: -1;
 }
 div.zone-coach p.zone-coach-name {
     font-weight: 1000;
     font-size: var(--H3);
     margin-bottom: var(--SPACE_XS);
+}
+div.zone-coach button {
+    margin: 0;
+    margin: var(--SPACE_S) 0;
+    border-radius: var(--BORDER_BIG);
+
+    color: var(--COLOR_BACKGROUND);
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+
+    width: 100%;
+}
+div.zone-coach button::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.5);
+    background: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    z-index: -1;
 }
 
 
@@ -2007,7 +2041,7 @@ div.visuel-version p.visuel-version-title{
     font-weight: 1000;
     margin-bottom: var(--SPACE_M);
     
-    background-image: linear-gradient(to right, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
+    background-image: linear-gradient(to right, var(--COLOR_IA_END), var(--COLOR_IA_START), var(--COLOR_IA_END));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

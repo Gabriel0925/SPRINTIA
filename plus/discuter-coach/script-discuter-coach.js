@@ -9,12 +9,17 @@ let moteurLLM = null // init pr stocker par la suite "l'IA"
 async function telechargementModele(progressionTelechargement) {
     if (moteurLLM != null) return moteurLLM // si le modele est déjà télécharger alors return pour pas le retélécharger
 
-    // creer le moteur de l'IA (méthode imposée par la bibliothèque WebLLM)
-    moteurLLM = await webLLM.CreateMLCEngine(modelSelectionner, { // cette fonction gère le téléchargement et c'est lui qui va retrouver le modele dans le cache du navigateur
-        initProgressCallback: (report) => {
-            if (progressionTelechargement) progressionTelechargement(report.text) // pour suivre le pourcentage de progression
-        }
-    })
+    try {
+        // creer le moteur de l'IA (méthode imposée par la bibliothèque WebLLM)
+        moteurLLM = await webLLM.CreateMLCEngine(modelSelectionner, { // cette fonction gère le téléchargement et c'est lui qui va retrouver le modele dans le cache du navigateur
+            initProgressCallback: (report) => {
+                if (progressionTelechargement) progressionTelechargement(report.text) // pour suivre le pourcentage de progression
+            }
+        }) 
+    } catch (erreur) {
+        // Ça va afficher la vraie erreur dans une alerte sur l'écran du Samsung !
+        alert("Erreur d'initialisation IA : " + erreur.message);
+    }
 
     return moteurLLM
 }

@@ -298,14 +298,6 @@ h1{
     margin-bottom: var(--SPACE_S);
     margin-top: var(--SPACE_XS);
 }
-h1#title-ia strong{
-    background-image: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    margin-left: 0.12rem;
-}
 h2{
     font-size: var(--H3);
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1464,20 +1456,14 @@ section.container-box {
 /* --- Zone pour le coach --- */
 div.zone-coach {
     position: relative;
-    color: var(--COLOR_TEXT_SECONDARY);
+    color: var(--COLOR_BACKGROUND);
+    background: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_MIDDLE), var(--COLOR_IA_END));
+    border-radius: var(--BORDER_BIG);
+    padding: var(--SPACE_S_SMALL);
     flex-grow: 1;
     max-width: 450px;
 }
-div.zone-coach strong{
-    color: var(--COLOR_TEXT_PRIMARY);
-}
 div.zone-coach p.zone-coach-name {
-    background-image: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_MIDDLE), var(--COLOR_IA_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-
     font-weight: 1000;
     font-size: var(--H3);
     margin-bottom: var(--SPACE_XS);
@@ -2126,15 +2112,6 @@ div.action-list div.action-list-item {
     transition: background-color ease-out var(--TIME_TRANSITION),
                 border-radius ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
-}
-div.action-list div.action-list-item.ia strong{
-    background-image: linear-gradient(to right, var(--COLOR_IA_START), var(--COLOR_IA_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    font-weight: 1000;
-    margin-left: 0.12rem;
 }
 div.action-list a:nth-child(1) div.action-list-item {
     border-top-left-radius: 1.5rem;

@@ -74,9 +74,36 @@
 
     </section>
     
-    <h1>Modèle </h1>
+    <h1>Modèle</h1>
+    <p class="text">
+        Pour débloquer les interprétations du coach de l'application (nommé par défaut : "JRM Coach") vous devez télécharger le modèle local
+        <strong>Qwen2.5-0.5B</strong> (par Alibaba). Ce modèle pèse environ <strong>500 Mo</strong>.
+    </p>
     <div class="container-center-marge">
-        <button id="download-modele" class="size-block">Télécharger</button>
+        <button id="download-modele" class="size-block">Télécharger (~ 500 Mo)</button>
+    </div>
+
+    <h2>C'est quoi un modèle local ?</h2>
+    <p class="text">
+        Un modèle local, c'est une IA en local ça veut dire que l'IA tourne sur votre appareil, elle ne parcourt pas les serveurs du
+        monde entier, c'est ce qu'on appelle : "On-Device-IA". Cette intégration est possible grâce à la bibliothèque Web-LLM ainsi qu'un modèle d'IA (que vous téléchargez
+        sur votre appareil).
+    </p>
+
+    <h2>Sécurité des données</h2>
+    <p class="text">
+        L'avantage d'une IA en local c'est qu'elle ne communique avec aucun serveur donc ça ne me coûte rien personnellement et surtout vos données
+        reste sur votre appareil ce qui est le plus important pour moi. Je n'avais aucune envie de partager les données utilisateurs
+        à l'API de Gemini ou autre. Vos données restent sur votre appareil en permanence, de l'enregistrement de données jusqu'au chat avec
+        l'IA. Donc moi même qui suis le developpeur de SPRINTIA je n'ai aucun accès à vos données ni à vos conversations avec l'IA.
+    </p>
+
+    <h2>Désinstallation du modèle</h2>
+    <p class="text">
+        En désintallant le modèle, le coach de l'application ne pourra plus interpréter les résultats des algorithmes.
+    </p>
+    <div class="container-center-marge">
+        <button id="desinstaller-modele" class="size-block">Désinstaller</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>

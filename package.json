@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/Gabriel0925/SPRINTIA#readme",
   "dependencies": {
-    "@google/generative-ai": "^0.24.1"
+    "@mlc-ai/web-llm": "^0.2.84"
   }
 }

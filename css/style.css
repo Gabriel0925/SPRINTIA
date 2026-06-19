@@ -168,95 +168,68 @@ i {
 .fs-icon_mail:before {
   content: "\e914";
 }
-.fs-icon_message:before {
+.fs-icon_metabolisme_base:before {
   content: "\e915";
 }
-.fs-icon_metabolisme_base:before {
+.fs-icon_miles_km:before {
   content: "\e916";
 }
-.fs-icon_miles_km:before {
+.fs-icon_modifier:before {
   content: "\e917";
 }
-.fs-icon_mode_affichage:before {
+.fs-icon_niveau_course:before {
   content: "\e918";
 }
-.fs-icon_modele_ia:before {
+.fs-icon_outils:before {
   content: "\e919";
 }
-.fs-icon_modifier:before {
+.fs-icon_parametres:before {
   content: "\e91a";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_partager:before {
   content: "\e91b";
 }
-.fs-icon_outils:before {
+.fs-icon_pause:before {
   content: "\e91c";
 }
-.fs-icon_parametres:before {
+.fs-icon_plus:before {
   content: "\e91d";
 }
-.fs-icon_partager:before {
+.fs-icon_plus_horizontal:before {
   content: "\e91e";
 }
-.fs-icon_pause:before {
+.fs-icon_profil:before {
   content: "\e91f";
 }
-.fs-icon_plus:before {
+.fs-icon_progression:before {
   content: "\e920";
 }
-.fs-icon_plus_horizontal:before {
+.fs-icon_proteines:before {
   content: "\e921";
 }
-.fs-icon_predicteur_performance:before {
+.fs-icon_recuperation:before {
   content: "\e922";
 }
-.fs-icon_profil:before {
+.fs-icon_statistiques:before {
   content: "\e923";
 }
-.fs-icon_progression:before {
+.fs-icon_strategie_allure:before {
   content: "\e924";
 }
-.fs-icon_proteines:before {
+.fs-icon_supprimer:before {
   content: "\e925";
 }
-.fs-icon_recuperation:before {
+.fs-icon_telechargement:before {
   content: "\e926";
 }
-.fs-icon_statistiques:before {
+.fs-icon_temps_recup:before {
   content: "\e927";
 }
-.fs-icon_strategie_allure:before {
+.fs-icon_to_day:before {
   content: "\e928";
 }
-.fs-icon_supprimer:before {
-  content: "\e929";
-}
-.fs-icon_telechargement:before {
-  content: "\e92a";
-}
-.fs-icon_temps_recup:before {
-  content: "\e92b";
-}
-.fs-icon_themes:before {
-  content: "\e92c";
-}
-.fs-icon_to_day:before {
-  content: "\e92d";
-}
-.fs-icon_VMA:before {
-  content: "\e92e";
-}
-.fs-icon_VO2MAX:before {
-  content: "\e92f";
-}
 .fs-icon_zones_cardiaques:before {
-  content: "\e930";
-}
-.fs-icon_zones_puissance:before {
-  content: "\e931";
-}
-.fs-icon_zones_vitesse:before {
-  content: "\e932";
+  content: "\e929";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */

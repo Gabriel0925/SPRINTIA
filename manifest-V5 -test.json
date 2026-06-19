@@ -30,7 +30,7 @@
     "shortcuts": [
         {
             "name": "Charge d'entraînement (CE)",
-            "short_name":"Charge d'entraînement",
+            "short_name":"Charge d'entraîement",
             "description":"Accéder directement à l'algorithme de charge d'entraînement",
             "url":"progression/charge-entrainement/charge-entrainement.html",
             "icons": [{
@@ -45,6 +45,16 @@
             "url":"entrainement/ajouter-entrainement.html",
             "icons": [{
                 "src": "assets/icons-shortcuts-manifest/icon-add.png",
+                "sizes": "192x192"
+            }]
+        },
+        {
+            "name": "Importer des données",
+            "short_name":"Import données",
+            "description":"Accéder rapidement à la page d'import de données",
+            "url":"plus/import-des-donnees/importer-donnees.html",
+            "icons": [{
+                "src": "assets/icons-shortcuts-manifest/icon-import-file.png",
                 "sizes": "192x192"
             }]
         }

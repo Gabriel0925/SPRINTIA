@@ -67,7 +67,7 @@ function afficherData(dataWorkout) {
         </div>
     
         <div class="zone-coach" id="coach-ajoute-entrainement" style="margin: var(--SPACE_M) 0;">
-            <p class="zone-coach-name" id="nom-coach">JRM Coach :</p>
+            <p class="zone-coach-name" id="nom-coach">JRM Coach</p>
             <p class="zone-coach-interpretation" id="reponse-coach">
                 Chargement...
             </p> 

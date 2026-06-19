@@ -18,6 +18,7 @@ async function SauvegardePreference() {
     // Recup datas
     let NameCoach = document.getElementById("nom-coach").value
     let StyleCoach = document.getElementById("style-coach").value
+    let AvatarCoach = document.getElementById("avatar-coach").value
 
     // recup bouton
     let BoutonSauvegarde = document.getElementById("bouton-save")
@@ -35,7 +36,8 @@ async function SauvegardePreference() {
     await db.JRM_Coach.put({
         id: 1,
         nom: NameCoach,
-        style: StyleCoach
+        style: StyleCoach,
+        avatar: AvatarCoach
     })    
     
     setTimeout(() => {
@@ -50,9 +52,9 @@ async function SauvegardePreference() {
     }, 1300);
 
     // Changement du titre du h1
-    document.getElementById("title-ia").innerHTML = `Configuration <strong>${NameCoach}</strong>`
+    document.getElementById("title-h1").textContent = NameCoach
 
-    logoDynamique(`C'est parti !`)
+    logoDynamique(`${AvatarCoach} C'est parti !`)
 
     return
 }
@@ -90,11 +92,12 @@ function ChangeAvatar(value) {
 
 function MajName(value) {
     let NameJRM = document.getElementById("NomCoach")
+    let AvatarCoach = document.getElementById("avatar-coach").value
 
     if (value == "" || value == " ") { // Si le champs est vide alors on met JRM coach dans la box JRM Coach
-        NameJRM.innerHTML = "JRM Coach"
+        NameJRM.innerHTML = AvatarCoach + " " + "JRM Coach"
     } else {
-        NameJRM.innerHTML = value
+        NameJRM.innerHTML = AvatarCoach + " " + value
     } 
 
     return
@@ -107,6 +110,7 @@ async function Initialisation() {
     // Input JRM Coach
     let InputName = document.getElementById("nom-coach")
     let InputStyle = document.getElementById("style-coach")
+    let InputAvatar = document.getElementById("avatar-coach")
 
     // Remise à l'ancien coach
     const JRMCoachDB = await db.JRM_Coach.toArray()
@@ -115,19 +119,16 @@ async function Initialisation() {
         // Recup des datas
         let TableauName = JRMCoachDB.map(elementDB => elementDB.nom)
         let TableauStyle = JRMCoachDB.map(elementDB => elementDB.style)
+        let TableauAvatar = JRMCoachDB.map(elementDB => elementDB.avatar)
  
         // Remplissage des inputs
         if (TableauName[0] == "JRM Coach") {InputName.value = ""} // si c'est la valeur de base alors on met rien dans le input
         else {InputName.value = TableauName[0]}
         InputStyle.value = TableauStyle[0]
-        
-        // vérification si c'est la valeur de base du coach alors on rajoute les ':' sinon dans la box du jrm ça affiche "JRM Coach" alors quil faudrait que ce soit écrit "JRM Coach :"
-        if (TableauName[0] == "JRM Coach") {
-            TableauName[0] = TableauName[0]
-        }
+        InputAvatar.value = TableauAvatar[0]
 
         // Remplissage des zones
-        ZoneNameBox.textContent = TableauName[0] // Le nom du coach
+        ZoneNameBox.textContent = TableauAvatar[0] + " " + TableauName[0] // Le nom du coach
         ZoneJRMBox.innerHTML = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
 
     } else {
@@ -152,9 +153,10 @@ async function Reinitialisation() {
         await new Promise(r => setTimeout(r, 650))
 
         // on remet tout de base sur la page premierement les input
-        document.getElementById("title-ia").innerHTML = `Configuration <strong>JRM Coach</strong>`
+        document.getElementById("title-h1").textContent = "JRM Coach"
         document.getElementById("nom-coach").value = ""
         document.getElementById("style-coach").value = "Bienveillant"
+        document.getElementById("avatar-coach").value = ""
         document.getElementById("NomCoach").innerHTML = "JRM Coach"
         document.getElementById("JRM-coach").innerHTML = DicoPhraseExemple["Bienveillant"]
 

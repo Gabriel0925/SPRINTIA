@@ -111,7 +111,7 @@
             <i class="fs-icon_indulgence_course"></i>
             <p class="small-widget-title">Indulgence de course</p>
 
-            <p class="small-widget-data" id="data-dist-7j">0,00 <small>km</small></p>
+            <p class="small-widget-data" id="data-dist-7j">0,0 <small>km</small></p>
         </section>
         <section class="small-widget" onclick="window.location.href = 'recuperation/recuperation.html'">
             <i class="fs-icon_recuperation"></i>
@@ -162,7 +162,7 @@
                     sommeDist7j+=Number(elt.distance)
                 }
             }
-            document.getElementById("data-dist-7j").innerHTML = sommeDist7j.toFixed(2).replace(".", ",") + " <small>km</small>"
+            document.getElementById("data-dist-7j").innerHTML = sommeDist7j.toFixed(1).replace(".", ",") + " <small>km</small>"
 
             // --- Niveau de course ---
             const lastLevelUser = await lastLevel()

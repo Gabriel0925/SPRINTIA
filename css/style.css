@@ -1176,6 +1176,7 @@ section.container-small-widget-progression section.small-widget p.small-widget-t
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
+    margin-top: var(--SPACE_XS);
     min-height: 48px;
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data{
@@ -1356,7 +1357,7 @@ div.menu-many-action {
     overflow: hidden;
     opacity: 1;
     z-index: 1200;
-    transform: translate(75px, -80px) scale(0);
+    transform: translate(75px, -63px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {

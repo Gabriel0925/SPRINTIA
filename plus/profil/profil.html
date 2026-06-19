@@ -94,21 +94,21 @@
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Âge</p>
-            <p class="container-block-data-data" id="age-place">--</p>
+            <p class="container-block-data-data" id="age-place">-- <small>ans</small></p>
         </div>
 
         <div class="container-block-data">
             <p class="container-block-data-header">Taille</p>
-            <p class="container-block-data-data" id="taille-place">--</p>
+            <p class="container-block-data-data" id="taille-place">-- <small>cm</small></p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Poids</p>
-            <p class="container-block-data-data" id="poids-place">--</p>
+            <p class="container-block-data-data" id="poids-place">-- <small>kg</small></p>
         </div>
         
         <div class="container-block-data">
             <p class="container-block-data-header">FC repos</p>
-            <p class="container-block-data-data" id="fc-repos-place">--</p>
+            <p class="container-block-data-data" id="fc-repos-place">-- <small>bpm</small></p>
         </div>
 
     </section>
@@ -167,11 +167,18 @@
                 document.getElementById("taille-place").innerHTML = data.taille + " <small>cm</small>"
                 document.getElementById("poids-place").innerHTML = data.poids.replace(".", ",") + " <small>kg</small>"
                 document.getElementById("fc-repos-place").innerHTML = data.fc_repos + " <small>bpm</small>"
-            } else {
+                document.getElementById("modifier-profil").textContent = "Modifier mon profil"
+            } else { // on réinitialise tout les champs au moins si le user restaure son compte ça met à jour le tableau
+
+                document.getElementById("sexe-place").innerHTML = "--"
+                document.getElementById("age-place").innerHTML = "-- <small>ans</small>"
+                document.getElementById("taille-place").innerHTML = "-- <small>cm</small>"
+                document.getElementById("poids-place").innerHTML = "-- <small>kg</small>"
+                document.getElementById("fc-repos-place").innerHTML = "-- <small>bpm</small>"
                 document.getElementById("modifier-profil").textContent = "Configurer mon profil"
             }
         }
-
+ 
         async function toggleMajAuto(event) {
             let toggle = event.target
             let dataProfil = await db.profil.get(1) // on recup les données du profil

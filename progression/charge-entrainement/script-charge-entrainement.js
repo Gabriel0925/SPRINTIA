@@ -169,17 +169,19 @@ async function interpretation(statutUser) {
     // pour la partie gestion de la personnalité du coach de l'utilisateur
     let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
     let styleCoachUser = "Bienveillant"; // on init sur Bienveillant si le user a laisser le choix de base
+    let avatarCoach = "";
     let nameCoach = "JRM Coach";
     if (coachUserDB != undefined) {
         styleCoachUser = coachUserDB.style; // attribution du coach choisi par le user à la variable nommé "styleCoachUser"
 
         // attribution du nom pour pouvoir l'afficher dans une autre fonction et éviter de faire une autre requete
         nameCoach = coachUserDB.nom;
+        avatarCoach = coachUserDB.avatar
     };
 
     if (statutUser != statutAvailable[3]) {analyse = dicoAnalyse[styleCoachUser][statutUser]};
  
-    return [analyse, nameCoach]; // on return aussi le nom/avatar du coach pour l'afficher ensuite
+    return [analyse, avatarCoach, nameCoach]; // on return aussi le nom/avatar du coach pour l'afficher ensuite
 };
 
 // c'est la fonction qui permet de récupérer toutes les datas nécéssaire pour l'affichage, c'est elle qui lance toutes les fonctions
@@ -198,24 +200,24 @@ async function manageCalcul(graphique) {
 
     // partie francais avec le statut et l'interpretation
     const statutUser = statut(ratioChargeUser, nbEntrainement28j);
-    const [analyse, nameCoach] = await interpretation(statutUser);
+    const [analyse, avatarCoach, nameCoach] = await interpretation(statutUser);
 
     if (graphique == true) {
         // on balance les valeurs dans le graphique
         genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [periodeChargeTotale28j, periodeChargeTotale21j, periodeChargeTotale14j, chargeTotale7j])
     }
     
-    return [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse, nameCoach];
+    return [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse, avatarCoach, nameCoach];
 };
 
 
 async function displayOnScreen() {
     // recup de toutes les données
     const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
-        ratioChargeUser, statutUser, analyse, nameCoach] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
+        ratioChargeUser, statutUser, analyse, avatarCoach, nameCoach] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
 
     // affichage du nom et de l'avatar du coach
-    document.getElementById("nom-coach").textContent = nameCoach
+    document.getElementById("nom-coach").textContent = avatarCoach + " " + nameCoach
 
 
     if (nbEntrainement28j < 3) {

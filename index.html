@@ -94,7 +94,7 @@
             <p class="description">Pour débloquer toutes les fonctionnalités de SPRINTIA, veuillez configurer votre profil.</p>
         </div>
     </a>
-<a href="/plus/import-des-donnees/importer-donnees.html"></a>
+
     <h2></h2> <!-- il faut le laisser pour la marges -->
     <div class="zone-coach">
         <p class="zone-coach-name" id="nom-coach">JRM Coach</p>
@@ -171,8 +171,9 @@
 
             if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("nom-coach").innerHTML =  NomCoach
+                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + NomCoach
             }
 
             if (HistoriqueDB.length > 0) { // Si il y a des datas

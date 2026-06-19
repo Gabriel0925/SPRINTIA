@@ -1123,7 +1123,7 @@ section.container-widget-progression section.widget-charge-entrainement:active {
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: var(--SPACE_XS);
 }
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header p.widget-charge-entrainement-header-title{
     font-size: var(--P);
@@ -1132,6 +1132,11 @@ section.container-widget-progression section.widget-charge-entrainement div.widg
 }
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header i{
     font-size: var(--H2);
+    margin-left: auto;
+}
+section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header i#icon-card{
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin-left: 0;
 }
 
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score{
@@ -1158,6 +1163,7 @@ section.container-small-widget-progression {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--SPACE_M);
     margin-top: var(--SPACE_M);
+    max-width: 923px;
 }
 section.container-small-widget-progression section.small-widget {
     background-color: var(--COLOR_BACKGROUND_CARD);
@@ -1172,7 +1178,7 @@ section.container-small-widget-progression section.small-widget {
     user-select: none;
 
     transition: transform ease-out var(--TIME_TRANSITION_FAST),
-                background-color ease-out var(--TIME_TRANSITION_FAST);
+                background-color ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-small-widget-progression section.small-widget:hover {
@@ -1182,6 +1188,10 @@ section.container-small-widget-progression section.small-widget {
 section.container-small-widget-progression section.small-widget:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
+}
+section.container-small-widget-progression section.small-widget i {
+    color: var(--COLOR_TEXT_SECONDARY);
+    font-size: var(--H2);
 }
 section.container-small-widget-progression section.small-widget p.small-widget-title{
     display: -webkit-box;

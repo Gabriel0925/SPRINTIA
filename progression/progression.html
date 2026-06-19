@@ -15,7 +15,6 @@
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
     <link rel="apple-touch-icon" href="../assets/icons-SPRINTIA/icon-192-V5.png">
     
-    
 </head>
 
 <body>
@@ -82,6 +81,7 @@
         <section class="widget-charge-entrainement" onclick="window.location.href = 'charge-entrainement/charge-entrainement.html'">
 
             <div class="widget-charge-entrainement-header">
+                <i class="fs-icon_charge_entrainement" id="icon-card"></i>
                 <p class="widget-charge-entrainement-header-title">Charge d'entraînement</p>
                 <i class="fs-icon_fleche_droite"></i>
             </div>
@@ -93,6 +93,7 @@
         <section class="widget-charge-entrainement" onclick="window.location.href = 'niveau-course/niveau-course-analyse.html'">
 
             <div class="widget-charge-entrainement-header">
+                <i class="fs-icon_niveau_course" id="icon-card"></i>
                 <p class="widget-charge-entrainement-header-title">Niveau de course</p>
                 <i class="fs-icon_fleche_droite"></i>
             </div>
@@ -107,28 +108,19 @@
     <section class="container-small-widget-progression">
         
         <section class="small-widget" onclick="window.location.href = 'indulgence-course/indulgence-course.html'">
+            <i class="fs-icon_indulgence_course"></i>
             <p class="small-widget-title">Indulgence de course</p>
 
             <p class="small-widget-data" id="data-dist-7j">0,00 <small>km</small></p>
         </section>
         <section class="small-widget" onclick="window.location.href = 'recuperation/recuperation.html'">
+            <i class="fs-icon_recuperation"></i>
             <p class="small-widget-title">Récupération</p>
 
             <p class="small-widget-data" id="data-recuperation">-- <small>bpm</small></p>
         </section>
 
     </section>
-
-    <div class="action-list">
-
-        <a href="programme-entrainement/programme-entrainement.html">
-            <div class="action-list-item">
-                <i class="fs-icon_agenda"></i>
-                <p class="text-param">Programme d'entraînement</p>
-            </div>
-        </a>
-
-    </div>
 
     <script src="../assets/base-js/base.js"></script>
     <!-- Import bibliothèque pour simplifier le code de indexed db -->

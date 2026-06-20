@@ -1,5 +1,5 @@
 
-    <title>SPRINTIA - Suggérer une fonctionnalité</title>
+    <title>SPRINTIA - Améliorer SPRINTIA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -72,9 +72,25 @@
 
     </section>
 
-    <h1>Suggérer une fonction</h1>
+    <h1>Améliorer SPRINTIA</h1>
+    <p class="text" style="margin-bottom:  var(--SPACE_M);">
+        <strong>Je vous remercie pour votre contribution à SPRINTIA.</strong>
+        Vous pouvez contribuer à améliorer SPRINTIA en signalant des bugs ou en suggérant
+        une nouvelle fonctionnalité. Pour que votre message soit pris en compte, veuillez bien le détailler pour que
+        je puisse comprendre comment reproduire le bug ou intégrer la fonctionnalité que vous souhaitez.
+        
+    </p>
+
+    <textarea id="description-user" style="height: 350px;" placeholder="Décrivez le bug que vous avez rencontré ou suggérer une fonctionnalités..."></textarea>
+    <div class="container-center-marge">
+        <button id="button-envoyer" onclick="sendEmail(document.getElementById('description-user').value.trim())" class="size-block">Envoyer</button>
+    </div>
 
     <script src="../../../assets/base-js/base.js"></script>
+    <!-- Pour l'envoie du mail -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script-feeback.js"></script>
+
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

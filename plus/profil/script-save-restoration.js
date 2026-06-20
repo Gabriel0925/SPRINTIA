@@ -136,9 +136,14 @@ async function ReadFile(event) {
                 }
             }
     
-            setTimeout(() => {
+            setTimeout(async () => { // async pour remplir le tableau
                 // transimission du message
                 BoutonRestoration.textContent = "Restauré"
+                // et remplit le tableau si il y a des datas
+                await remplirPlaceProfil()
+                // on replace le toggle dans la bonne position
+                init()
+                logoDynamique("Vous revoilà 😇")
             }, 650);
 
             setTimeout(() => {
@@ -146,14 +151,6 @@ async function ReadFile(event) {
                 BoutonRestoration.textContent = "Restaurer mes données"
                 BoutonRestoration.disabled = false // Réactivation du bouton
             }, 1300);
-
-            // et remplit le tableau si il y a des datas
-            await remplirPlaceProfil()
-            
-            // on replace le toggle dans la bonne position
-            init()
-            
-            logoDynamique("Vous revoilà 😇")
 
         } catch {
             alert("Une erreur est survenue, veuillez réessayer !")

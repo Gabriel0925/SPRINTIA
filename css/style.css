@@ -504,7 +504,7 @@ section.header ul.header-container-items li.header-items:active{
 section.tab-bars {
     display: none;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     
     position: fixed;
     gap: 0.75rem;
@@ -519,8 +519,8 @@ section.tab-bars {
 }
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
-    max-width: 525px;
-    height: 70px;
+    max-width: 475px;
+    height: 65px;
     flex-grow: 1;
 
     background-color: var(--COLOR_BACKGROUND_CARD);
@@ -535,7 +535,7 @@ section.tab-bars ul.tab-bars-container-items{
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.tab-bars ul.tab-bars-container-items:active{
-    transform: scale(1.015);
+    transform: scale(1.025);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     display: flex;
@@ -544,7 +544,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     text-align: center;
     border-radius: var(--BORDER_BIG);
     color: var(--COLOR_TEXT_PRIMARY);
-    font-size: 0.8rem;
+    font-size: 0.56rem;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     overflow: hidden;
     width: 60px;
@@ -561,7 +561,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
-    transform: scale(1.025);
+    transform: scale(1.06);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -574,29 +574,7 @@ section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected
     color: var(--COLOR_TEXT_PRIMARY);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
-    font-size: 1.7rem;
-}
-@media (max-width: 980px) {
-    section.tab-bars {
-        justify-content: right;
-    }
-}
-@media (max-width: 625px) {
-    section.tab-bars ul.tab-bars-container-items{
-        height: 63px;
-    }
-    section.tab-bars ul.tab-bars-container-items:active{
-        transform: scale(1.025);
-    }
-    section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
-        font-size: 0.55rem;
-    }
-    section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
-        transform: scale(1.06);
-    }
-    section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
-        font-size: 1.3rem;
-    }
+    font-size: 1.35rem;
 }
 
 
@@ -1037,12 +1015,20 @@ textarea {
     font-family: var(--FONT_FAMILY);
     line-height: var(--LINE_HEIGHT);
 
-    border: none;
+    border: 2px solid transparent;
     resize: vertical;
+    transition: border ease-out var(--TIME_TRANSITION_FAST),
+                background-color ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    textarea:hover{
+        border: 2px solid var(--COLOR_ACCENT_TEXT);
+    }
 }
 textarea:focus {
     outline: none;
-    box-shadow: 0px 0px 5px var(--COLOR_ACCENT_TEXT);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    border: 2px solid var(--COLOR_ACCENT_TEXT);
 }
 textarea::placeholder {
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1077,8 +1063,10 @@ section.container-widget-progression section.widget-charge-entrainement {
     user-select: none;
 
     max-width: 450px;
+    width: 295px;
     flex-grow: 1;
     cursor: pointer;
+    overflow: hidden;
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
@@ -1091,6 +1079,11 @@ section.container-widget-progression section.widget-charge-entrainement {
 section.container-widget-progression section.widget-charge-entrainement:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
+}
+@media (max-width: 643px) {
+    section.container-widget-progression section.widget-charge-entrainement {
+        max-width: none;
+    }
 }
 
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header{
@@ -1316,21 +1309,15 @@ div.button-flottant p{
         left: auto;
     }
     div.button-flottant {
-        margin-bottom: var(--SPACE_S);
+        margin-bottom: 0;
+        font-size: 2.6rem;
         bottom: var(--SPACE_S);
         right: var(--SPACE_S);
         padding: var(--SPACE_S);
         border-radius: 50%;
-        font-size: 3rem;
     }
     div.button-flottant p {
         display: none;
-    }
-}
-@media (max-width: 625px) {
-    div.button-flottant {
-        margin-bottom: 0;
-        font-size: var(--H0);
     }
 }
 
@@ -1671,7 +1658,7 @@ input[type="text"] {
     border-radius: var(--BORDER_NORMAL);
     color: var(--COLOR_ACCENT_TEXT);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 0;
+    border: 3px solid transparent; /* init des borders pour éviter les décalages quand on passe en hover/active */
 
     padding: var(--SPACE_S);
     margin: var(--SPACE_XS); /* !!! Attention la margin et le width sont liés !!! */
@@ -1684,7 +1671,8 @@ input[type="text"] {
     appearance: text-field;
     z-index: 800;
 
-    transition: all ease-out var(--TIME_TRANSITION);
+    transition: border ease-out var(--TIME_TRANSITION),
+                border-radius ease-out 0.3s;
 }
 input[type="number"].small,
 input[type="text"].small {
@@ -1711,7 +1699,7 @@ input[type="date"]{
     color: var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
 
-    border: none;
+    border: 3px solid transparent; /* init des borders pour éviter les décalages quand on passe en hover/active */
     -webkit-appearance: none;
     appearance: none;
     outline: none;
@@ -1721,8 +1709,9 @@ input[type="date"]{
     font-size: var(--P);
     padding: var(--SPACE_S);
     margin: var(--SPACE_XS);
-    
-    transition: all ease-out var(--TIME_TRANSITION);
+
+    transition: border ease-out var(--TIME_TRANSITION),
+                border-radius ease-out 0.3s;
 }
 input[type="date"].small{
     width: 190px;
@@ -1763,6 +1752,7 @@ input:not(:placeholder-shown) + .label-input {
     padding: var(--SPACE_XXS);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_BIG);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
     transform: translateY(-40px) scale(0.8);
     z-index: 800;
 }
@@ -1794,27 +1784,25 @@ input:not(:placeholder-shown) + .label-input {
     width: 37px;
     height: 27px;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COLOR_ACCENT_TEXT);
+    border: 3px solid var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
-    transform: scale(1.15);    
+    transform: scale(1.2); 
     transition: background-color ease-out var(--TIME_TRANSITION),
-                border ease-out var(--TIME_TRANSITION),
+                border-radius ease-out 0.3s,
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     .slider input::-webkit-slider-thumb:hover{
         background-color: var(--COLOR_ACCENT_TEXT);
-        transform: scale(1.25);
-        border: 2px solid var(--COLOR_ACCENT_TEXT);
-        transition: all ease-out var(--TIME_TRANSITION);
+        transform: scale(1.3);
+        border-radius: 0.5rem;
     }
 } 
 .slider input::-webkit-slider-thumb:active{
     background-color: var(--COLOR_ACCENT_TEXT);
-    transform: scale(1.25);
-    border: 2px solid var(--COLOR_ACCENT_TEXT);
-    transition: all ease-out 0.05s;
+    transform: scale(1.3);
+    border-radius: 0.5rem;
 }
 .slider progress {
     width: 100%;
@@ -1868,12 +1856,16 @@ input:not(:placeholder-shown) + .label-input {
 }
 /* le nom du slider */
 .slider-name {
-    margin-bottom: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_S);
     margin-right: var(--SPACE_S);
 }
+.slider-name strong{
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
 .slider-name span.RPE {
+    font-weight: 1000;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    padding: 0.15rem var(--SPACE_XS);
+    padding: 0.25rem var(--SPACE_S_SMALL);
     margin: 0 var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 }
@@ -1884,7 +1876,7 @@ select {
     color: var(--COLOR_TEXT_PRIMARY);
     margin: var(--SPACE_XS);
     padding: var(--SPACE_S);
-    border: 0px;
+    border: 3px solid transparent; /* init des borders pour éviter les décalages quand on passe en hover/active */
     border-radius: var(--BORDER_NORMAL);
     height: 55px;
     font-size: var(--P);
@@ -1901,7 +1893,7 @@ select {
     background-size: var(--H3);
 
     transition: border ease-out var(--TIME_TRANSITION),
-                border-radius ease-out var(--TIME_TRANSITION);
+                border-radius ease-out 0.3s;
 }
 @media (hover: hover) and (pointer: fine) {
     select:hover {
@@ -1923,29 +1915,39 @@ select:focus {
 /* --- Pour le bouton plus de données dans ajouter un entraînement --- */
 div.form-different-button {
     margin: var(--SPACE_XS);
+    padding: 0.65rem;
+
     border-radius: var(--BORDER_NORMAL);
-    border: 2px solid var(--COLOR_ACCENT);
-    padding: var(--SPACE_XS);
+    border: 3px solid var(--COLOR_ACCENT);
     color: var(--COLOR_ACCENT);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+
     display: flex;
     align-items: center;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
     cursor: pointer;
+
     transition: background-color ease-out var(--TIME_TRANSITION),
                 border ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
+                border-radius ease-out 0.3s,
+                letter-spacing ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     div.form-different-button:hover {
-        border: 2px solid var(--COLOR_ACCENT_HOVER);
+        letter-spacing: 0.6px;
+        border: 3px solid var(--COLOR_ACCENT_HOVER);
+        border-radius: 4rem;
         color: var(--COLOR_ACCENT_HOVER);
     }
 }
 div.form-different-button:active {
-    border: 2px solid var(--COLOR_ACCENT_HOVER);
+    letter-spacing: -1px;
+    border-radius: 4rem;
+    border: 5px solid var(--COLOR_ACCENT_HOVER);
     color: var(--COLOR_ACCENT_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }

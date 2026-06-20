@@ -164,7 +164,7 @@
             </div>
                 
             <div class="slider-cont">
-                <div class="slider-name">RPE : <span class="RPE">1</span>Facile</div>
+                <div class="slider-name">RPE : <span class="RPE">1</span><strong>Facile</strong></div>
                 <div class="slider">
                     <input type="range" min="1" max="10" value="1" autocomplete="off">
                     <progress min="1" max="10" value="1"></progress>
@@ -384,7 +384,7 @@
 
         Slider.addEventListener("input", function() {
             Progress.value = this.value
-            Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + ressentiRPE[this.value]
+            Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + "<strong>" + ressentiRPE[this.value] + "</strong>"
         })
 
         let ChampDate = document.getElementById("date-entrainement-user")

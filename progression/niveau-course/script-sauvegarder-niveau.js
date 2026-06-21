@@ -73,20 +73,20 @@ function liveResultViaInput() {
     if (isNaN(distanceUser)) {
         // remise à zéro
         document.querySelector(".large-zone-result-result").textContent = "--"
-        document.querySelector(".large-zone-result-name").textContent = "Niveau :"
+        document.querySelector(".large-zone-result-name").textContent = "Niveau"
         return
     }
     if (distanceUser <= 0) {
         errorInput("Distance positive requise !")
         // remise à zéro
         document.querySelector(".large-zone-result-result").textContent = "--"
-        document.querySelector(".large-zone-result-name").textContent = "Niveau :"
+        document.querySelector(".large-zone-result-name").textContent = "Niveau"
         return
     } else if (distanceUser >= 7) {
         errorInput("Distance inférieure à 7 requise !")
         // remise à zéro
         document.querySelector(".large-zone-result-result").textContent = "--"
-        document.querySelector(".large-zone-result-name").textContent = "Niveau :"
+        document.querySelector(".large-zone-result-name").textContent = "Niveau"
         return
     } else {
         champsErreur.classList.remove("visible")

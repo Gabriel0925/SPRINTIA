@@ -159,7 +159,9 @@
             let sommeDist7j = 0
             for (const elt of data7jCourse) {
                 if (elt.sport == "Course") {
-                    sommeDist7j+=Number(elt.distance)
+                    if (!isNaN(elt.distance)) {
+                        sommeDist7j+=Number(elt.distance)
+                    }
                 }
             }
             document.getElementById("data-dist-7j").innerHTML = sommeDist7j.toFixed(1).replace(".", ",") + " <small>km</small>"

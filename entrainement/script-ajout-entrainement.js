@@ -520,7 +520,10 @@ async function saveWorkout() {
         await db.entrainement.add(workoutData)
     }
 
-    // Pause
+    setTimeout(() => {
+        BoutonSauvegarde.textContent = "Sauvegardé"
+    }, 650);
+
     setTimeout(() => {
         // Remise bouton etat normal
         BoutonSauvegarde.textContent = "Sauvegarder"
@@ -533,7 +536,7 @@ async function saveWorkout() {
             // Renvoi vers la page entraînement
             window.location.href = "../index.html?workoutregister" // on met un param dans l'URL
         }
-    }, 800)
+    }, 1300) 
 
     return
 }

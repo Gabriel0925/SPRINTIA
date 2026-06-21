@@ -2,7 +2,7 @@
     "id": "/",
     "name": "SPRINTIA",
     "short_name": "SPRINTIA",
-    "description": "SPRINTIA est conçue pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuit.",
+    "description": "SPRINTIA est conçue pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits.",
     "lang": "fr",
 
     "start_url": "/",
@@ -30,12 +30,13 @@
     "shortcuts": [
         {
             "name": "Charge d'entraînement (CE)",
-            "short_name":"Charge d'entraîement",
+            "short_name":"Charge d'entraînement",
             "description":"Accéder directement à l'algorithme de charge d'entraînement",
             "url":"progression/charge-entrainement/charge-entrainement.html",
             "icons": [{
-                "src": "/assets/icons-shortcuts-manifest/icon-ce.png",
-                "sizes": "192x192"
+                "src": "/assets/icons-manifest/icon-ce.png",
+                "sizes": "192x192",
+                "type": "image/png"
             }]
         },
         {
@@ -44,8 +45,9 @@
             "description":"Accéder rapidement à la page d'ajout d'entraînement",
             "url":"entrainement/ajouter-entrainement.html",
             "icons": [{
-                "src": "assets/icons-shortcuts-manifest/icon-add.png",
-                "sizes": "192x192"
+                "src": "/assets/icons-manifest/icon-add.png",
+                "sizes": "192x192",
+                "type": "image/png"
             }]
         },
         {
@@ -54,8 +56,9 @@
             "description":"Accéder rapidement à la page d'import de données",
             "url":"plus/import-des-donnees/importer-donnees.html",
             "icons": [{
-                "src": "assets/icons-shortcuts-manifest/icon-import-file.png",
-                "sizes": "192x192"
+                "src": "/assets/icons-manifest/icon-import-file.png",
+                "sizes": "192x192",
+                "type": "image/png"
             }]
         }
     ]

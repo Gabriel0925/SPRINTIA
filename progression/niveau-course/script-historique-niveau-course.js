@@ -91,7 +91,7 @@ async function remplirTableau() {
         const colAction = newLine.insertCell(3)
 
         // Remplir ligne
-        colDate.textContent = data.date
+        colDate.textContent = ReturnDate(data.date)
         colNiveau.textContent = data.niveau_course_user.toString().replace(".", ",") // ne pas oublier de le mettre en str avant le replace
         if (data.distance != undefined) {
             colDistance.textContent = data.distance.toString().replace(".", ",")

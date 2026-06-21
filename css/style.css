@@ -1433,7 +1433,7 @@ section.container-box {
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--SPACE_L);
-    margin: var(--SPACE_L) 0px;
+    margin: var(--SPACE_M) 0px;
 }
 
 
@@ -1462,11 +1462,11 @@ div.zone-coach::before {
 div.zone-coach p.zone-coach-name {
     font-weight: 1000;
     font-size: var(--H3);
-    margin-bottom: var(--SPACE_XS);
+    margin-bottom: var(--SPACE_S_SMALL);
 }
 div.zone-coach button {
     margin: 0;
-    margin: var(--SPACE_S) 0;
+    margin-top: var(--SPACE_S);
     border-radius: var(--BORDER_BIG);
 
     color: var(--COLOR_BACKGROUND);
@@ -2390,11 +2390,7 @@ div.container-center-marge {
     }
 }
 @media (max-width: 541px) {
-    section.container-box {
-        gap: var(--SPACE_XS);
-    }
     div.small-zone-result {
-        margin: var(--SPACE_S) 0;
         width: 100%;
         height: fit-content;
         padding: var(--SPACE_S_SMALL);

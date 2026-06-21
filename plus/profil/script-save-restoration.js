@@ -36,7 +36,7 @@ async function DownloadDatas() {
     }
 
     // Transformation des objets (le dico avec toutes les datas) en txt JSON
-    let TxtDataUser = JSON.stringify(DataTelecharger)
+    let TxtDataUser = JSON.stringify(DataTelecharger, null, 2) // le 2 c'est pour l'indentation avec les "tab" et le null pour appliquer aucun filtre
 
     // création d'un blob
     // l'utilité du blod est de contourner le back-end en gros on créer une URL temporaire

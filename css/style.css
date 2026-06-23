@@ -534,6 +534,11 @@ section.tab-bars ul.tab-bars-container-items{
     z-index: 11000;
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
+@media (hover: hover) and (pointer: fine) {
+    section.tab-bars ul.tab-bars-container-items:hover{
+        transform: scale(1.025);
+    }
+}
 section.tab-bars ul.tab-bars-container-items:active{
     transform: scale(1.025);
 }
@@ -556,6 +561,19 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+        color: var(--COLOR_ACCENT_TEXT);
+        transform: scale(1.06);
+    }
+    section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected):hover) li.tab-bars-items.selected{
+        background-color: transparent;
+        box-shadow: none;
+        color: var(--COLOR_TEXT_PRIMARY);
+    }
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);

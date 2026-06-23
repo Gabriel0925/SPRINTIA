@@ -25,10 +25,8 @@
     <section class="header">
 
         <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
-
         
         <ul class="header-container-items">
-
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
                 <i class="fs-icon_entrainement"></i>
                 Entraînement
@@ -45,14 +43,12 @@
                 <i class="fs-icon_plus_horizontal"></i>
                 Plus
             </li>
-
         </ul>
 
     </section>
     <section class="tab-bars">
 
         <ul class="tab-bars-container-items">
-
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
                 <i class="fs-icon_entrainement"></i>
                 <p class="tab-bars-items-name">Entraînement</p>
@@ -69,15 +65,92 @@
                 <i class="fs-icon_plus_horizontal"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
-
         </ul>
 
     </section>
     
     <h1>Métabolisme de base</h1>
+    <section class="container-zone">
+
+        <div class="form">
+            <p id="zone-error" class="indication"></p>
+
+            <select id="sexe-user" onchange="" autocomplete="off">
+                <option value="Homme">Sexe : Homme</option>
+                <option value="Femme">Sexe : Femme</option>
+            </select>
+                
+            <div class="container-input">
+                <input type="number" id="age-user" placeholder="Âge" autocomplete="off">
+                <div class="label-input">Âge</div>
+            </div>
+            
+            <div class="side-by-side">
+
+                <div class="container-input">
+                    <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
+                    <div class="label-input">Taille (cm)</div>
+                </div>
+                <div class="container-input">
+                    <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
+                    <div class="label-input">Poids (kg)</div>
+                </div>
+
+            </div>
+
+            <button id="button-calcul-mb" onclick="runAnalyse()">Calculer</button>
+
+        </div>
+
+        <div class="large-zone-result">
+            <p class="large-zone-result-name">Métabolisme de base</p>
+            <p class="large-zone-result-result" id="resultat-mb">
+                -- kcal/j
+            </p>
+        </div>
+
+    </section>
+
+    <h2>C'est quoi le métabolisme de base (MB) ?</h2>
+    <p class="text">
+        Le métabolisme de base, c'est l'énergie que votre corps dépense quand vous dormez ou que vous restez sur votre canapé sans bouger. En gros,
+        c'est la quantité d'énergie dont votre corps a besoin pour vous maintenir en vie. En quelque sorte, 
+        c'est l'énergie que votre corps utilise en arrière-plan.
+    </p>
+
+    <h2>À quoi ça sert, le métabolisme de base ?</h2>
+    <p class="text">
+        Votre métabolisme de base est capital si vous voulez changer vos habitudes alimentaires pour perdre du poids...
+        Pour commencer, c'est la base dont votre corps a besoin, ça veut dire que si vous souhaitez perdre du poids, il ne faut pas
+        descendre en dessous de votre métabolisme de base, ça serait dangereux pour votre corps.
+        Deuxièmement, étant donné que c'est votre base, c'est donc le point de départ pour construire un plan nutritionnel pour
+        prendre du muscle ou autre.
+    </p>
 
     <script src="../../assets/base-js/base.js"></script>
+    <script src="../../assets/bibliotheques/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> 
+
     <script src="script-outil.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", async () => {
+            await remplissageChamps(["sexe-user", "age-user","taille-user", "poids-user"])
+
+            if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && 
+                    document.getElementById("age-user").value) {
+                document.getElementById("button-calcul-mb").click()
+            }
+        })
+        
+        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+        let formKeyEntry = document.querySelector(".form")
+        formKeyEntry.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                runAnalyse()
+            }
+        })
+    </script>
+
     <script defer src="/_vercel/insights/script.js"></script>
     
 </body>

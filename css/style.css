@@ -419,7 +419,7 @@ section.header div.logo {
 }
 section.header div.logo:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_NORMAL));
+    transform: scale(var(--SCALE_SUP));
 }
 
 section.header ul.header-container-items {

@@ -15,25 +15,25 @@ const dicoNumDay = {
 // dico pour les interpretations du coach en fonction du style de coach
 const dicoInterpretation = {
     "Bienveillant": [
-        "Pour analyser ta récupération, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Pour analyser ta récupération du jour, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
         "Ta FC repos du jour est <strong>inférieure à ta moyenne habituelle</strong>, c'est un très bon signe ! Ça signifie que tu es en forme et que tu es prêt·e à affronter un entraînement intense aujourd'hui si tu le souhaites.",
         "Ta FC repos du jour est dans la <strong>moyenne habituelle</strong>. Ça signifie que tu peux faire une séance aujourd'hui (si tu le souhaites) et que ton corps a bien récupéré de tes dernières séances d'entraînement. Garde cette <strong>régularité</strong> et tu verras que les résultats seront au rendez-vous !",
         "Ta FC repos du jour indique que ton corps <strong>n'a pas encore récupéré</strong> de tes dernières séances d'entraînement. Je te conseille donc de <strong>ne pas t'entraîner</strong> aujourd'hui pour que ton corps récupère et que tu puisses retourner au plus tôt t'entraîner."
     ],
     "Strict-Motivant": [
-        "Pour analyser ta récupération, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Pour analyser ta récupération du jour, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
         "Ta FC repos du jour est <strong>plus basse que d'habitude</strong>. C'est parfait, tu es en pleine forme ! Profite de ce <strong>pic de forme</strong> pour te dépasser et mettre un max d'intensité dans ta séance du jour.",
         "Ta FC repos du jour est <strong>stable</strong>. Ton corps a fait le job pour récupérer, c'est bien. Tu peux t'entraîner normalement, mais ne t'endors pas sur tes acquis, reste bien <strong>concentré·e sur tes objectifs</strong>.",
         "Ta FC repos est <strong>trop élevée</strong>. Ton corps est fatigué·e et tu n'es pas au top. Ne joue pas avec le feu, aujourd'hui c'est <strong>repos obligatoire</strong> pour ne pas risquer la blessure, ça serait bête."
     ],
     "Copain": [
-        "Pour analyser ta récupération, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Pour analyser ta récupération du jour, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
         "Ta FC repos du jour est <strong>bien basse</strong>, franchement c'est top ! Tu pètes la forme, c'est le moment idéal pour aller te donner à fond, rien ne peut t'arrêter aujourd'hui.",
         "Ta FC repos est dans la <strong>normale</strong>. C'est cool, ça veut dire que tu as bien récupéré de tes efforts passés. Tu peux aller t'entraîner sans problème si tu avez prévu une séance aujourd'hui.",
         "Ta FC repos du jour est <strong>un peu haute</strong>. Je pense que ton corps a besoin de repos. Prends une <strong>journée de repos</strong>, pour aider ton corps à se régénérer, c'est plus prudent et ça te permettra de revenir plus fort·e !"
     ],
     "Go-muscu": [
-        "Pour analyser ta récupération, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Pour analyser ta récupération du jour, j'ai besoin de <strong>7 données de récupération</strong> sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
         "Ta FC repos est <strong>super basse</strong> ! Ton cardio est au top et ton système nerveux est prêt·e à <strong>pousser lourd</strong>. C'est le moment de tout casser à la salle, profite de cette énergie pour aller à <strong>l'échec</strong> !",
         "Ta FC repos est <strong>stable</strong>, c'est carré ! Ton corps a bien récupéré, tu peux aller t'entraîner sereinement. N'oublie pas, la <strong>régularité</strong> c'est ce qui te permettra de prendre du muscle sur le long terme.",
         "Ta FC repos est <strong>un peu haute</strong> aujourd'hui. Ton corps galère à récupérer. N'oublie pas que le <strong>muscle se construit quand tu te reposes</strong> et aujourd'hui, ça semble être le jour parfait pour te reposer."

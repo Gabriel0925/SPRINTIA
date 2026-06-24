@@ -1,3 +1,14 @@
+// fonction générale
+function removeValueUndefined(dicoData) {
+    const cleanDico = {}
+    for (const key in dicoData) { // on parcourt les clé du dico
+        if (dicoData[key] != undefined) { // si la valeur n'est pas en undefined donc exploitable alors on l'ajoute au dico clean qui renvoie ensuite
+            cleanDico[key] = dicoData[key]
+        }
+    }
+    return cleanDico
+}
+
 // Pour l'import Garmin
 function extractionDate(dateWorkout) {
     if (dateWorkout == undefined) {return "jj:mm:aaaa"} // si pas de datas
@@ -326,7 +337,7 @@ async function uploadGarmin(event) {
                         }
 
                         if (sportWorkout != "Libre") { // si le sport est différent de Libre on enregistre toutes les datas
-                            await db.entrainement.add({
+                            const dicoData = {
                                 sport: sportWorkout,
                                 date: dateWorkout,
                                 nom: nomWorkout,
@@ -340,9 +351,12 @@ async function uploadGarmin(event) {
                                 charge_entrainement: chargeEntrainementWorkout,
                                 transpiration_estimee: TranspirationEstimee,
                                 hydratation_estimee:HydratationEstimee
-                            })
+                            }
+                            const dicoDataClean = removeValueUndefined(dicoData)
+                            await db.entrainement.add(dicoDataClean)
+
                         } else { // si le sport est libre
-                            await db.entrainement.add({
+                            const dicoData = {
                                 sport: sportWorkout,
                                 date: dateWorkout,
                                 nom: nomWorkout,
@@ -354,7 +368,9 @@ async function uploadGarmin(event) {
                                 charge_entrainement: chargeEntrainementWorkout,
                                 transpiration_estimee: TranspirationEstimee,
                                 hydratation_estimee:HydratationEstimee
-                            })
+                            }
+                            const dicoDataClean = removeValueUndefined(dicoData)
+                            await db.entrainement.add(dicoDataClean)
                         }
 
                     }
@@ -546,7 +562,7 @@ async function uploadTrainingPeaks(event) {
 
                         // enregistrement différent selon le sport
                         if (sportWorkout != "Libre") { // si le sport est différent de Libre on enregistre toutes les datas
-                            await db.entrainement.add({
+                            const dicoData = {
                                 sport: sportWorkout,
                                 date: dateWorkout,
                                 nom: nomWorkout,
@@ -560,9 +576,12 @@ async function uploadTrainingPeaks(event) {
                                 note: descriptionWorkout,
                                 transpiration_estimee: TranspirationEstimee,
                                 hydratation_estimee:HydratationEstimee
-                            })
+                            }
+                            const dicoDataClean = removeValueUndefined(dicoData)
+                            await db.entrainement.add(dicoDataClean)
+
                         } else { // si le sport est libre
-                            await db.entrainement.add({
+                            const dicoData = {
                                 sport: sportWorkout,
                                 date: dateWorkout,
                                 nom: nomWorkout,
@@ -575,7 +594,9 @@ async function uploadTrainingPeaks(event) {
                                 note: descriptionWorkout,
                                 transpiration_estimee: TranspirationEstimee,
                                 hydratation_estimee:HydratationEstimee
-                            })
+                            }
+                            const dicoDataClean = removeValueUndefined(dicoData)
+                            await db.entrainement.add(dicoDataClean)
                         }
 
                     } 
@@ -798,8 +819,8 @@ async function uploadFileTCX(event) {
             }
 
             // enregistrement des datas recup dans la BDD 
-            if (workoutSport != "Libre") { 
-                await db.entrainement.add({
+            if (workoutSport != "Libre") {
+                const dicoData = {
                     sport: workoutSport,
                     nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
                     date: workoutDate,
@@ -815,9 +836,13 @@ async function uploadFileTCX(event) {
                     charge_entrainement: chargeEntrainementWorkout,
                     transpiration_estimee: TranspirationEstimee,
                     hydratation_estimee: HydratationEstimee
-                });
+                }
+                const dicoDataClean = removeValueUndefined(dicoData) // toutes les valeurs en undefined sont enlever du dico
+
+                await db.entrainement.add(dicoDataClean);
+
             } else { // si le sport est libre on enregistre mais on limite le nombre de données on autorise de prendre que la distance comme datas spe
-                await db.entrainement.add({
+                const dicoData = {
                     sport: workoutSport,
                     nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
                     date: workoutDate,
@@ -829,7 +854,10 @@ async function uploadFileTCX(event) {
                     charge_entrainement: chargeEntrainementWorkout,
                     transpiration_estimee: TranspirationEstimee,
                     hydratation_estimee: HydratationEstimee
-                });
+                }
+                const dicoDataClean = removeValueUndefined(dicoData) // toutes les valeurs en undefined sont enlever du dico
+                
+                await db.entrainement.add(dicoDataClean);
             }
 
             // logo dynamique pour dire que c'est okk

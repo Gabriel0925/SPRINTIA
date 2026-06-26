@@ -101,7 +101,33 @@
         <p class="zone-coach-interpretation" id="reponse-coach">
             Chargement...
         </p>
+        <button id="button-SPRINTIA-briefing" onclick="windowsBriefing()">SPRINTIA Briefing</button>
     </div>
+    <!-- Fenetre flottante pour SPRINTIA Briefing -->
+    <section class="background-SPRINTIA-briefing">
+        
+        <div class="windows-SPRINTIA-briefing">
+
+            <div class="windows-SPRINTIA-briefing-head">
+                <p class="title">SPRINTIA Briefing</p>
+                <i class="fs-icon_fermer" onclick="croix()"></i>
+            </div>
+            <p class="explanation-briefing">
+                Une fois que vous aurez quitter l'application SPRINTIA, vos données ne seront plus en locale sur votre appareil
+                mais exposé à un LLM.
+            </p>
+            <div class="prompt-SPRINTIA-briefing">
+                <p class="title">Prompt</p>
+                <p class="prompt">Chargement...</p>
+            </div>
+            <div class="container-button-windows-SPRINTIA-briefing">
+                <button>Copier</button>
+                <button>Ouvrir Gemini</button>
+            </div>
+
+        </div>
+
+    </section> 
 
     <h2>Volume d'entraî. (4 sem.)</h2>
     <p class="text">
@@ -573,6 +599,14 @@
         window.addEventListener("DOMContentLoaded", async () => {
             await Init()
         })
+    </script>
+
+    <!-- SPRINTIA Briefing -->
+    <script>
+        function windowsBriefing() {
+            document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
+        }
+        function croix() {document.querySelector("section.background-SPRINTIA-briefing").style.display = "none"}
     </script>
     
     <script defer src="/_vercel/insights/script.js"></script>

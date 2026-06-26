@@ -1508,6 +1508,96 @@ div.zone-coach button::before {
 }
 
 
+/* --- Fenetre pour SPRITNIA Briefing --- */
+section.background-SPRINTIA-briefing {
+    background-color: rgba(0, 0, 0, 0.7);
+
+    display: none;
+    justify-content: center;
+    pointer-events: none;
+    position: fixed;
+
+    bottom: 0;
+    right: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 25000;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: var(--BORDER_BIG);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                0px 5px 20px var(--COLOR_BACKGROUND);
+
+    display: flex;
+    flex-direction: column;
+    margin: auto var(--SPACE_S);
+    padding: var(--SPACE_S);
+    
+    flex-grow: 1;
+    max-width: 500px;
+    height: fit-content;
+    overflow: hidden;
+    pointer-events: all;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head p.title{
+    font-size: var(--H3);
+    font-weight: 1000;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    font-size: var(--H2);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation-briefing {
+    font-size: var(--P_SMALL);
+    margin: var(--SPACE_XS) 0;
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.prompt-SPRINTIA-briefing {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    border-radius: var(--BORDER_NORMAL);
+    
+    padding: var(--SPACE_XS);
+    margin: var(--SPACE_XS) 0;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.prompt-SPRINTIA-briefing p.title {
+    font-size: var(--P);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    margin-bottom: var(--SPACE_XS);
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.prompt-SPRINTIA-briefing p.prompt {
+    font-size: var(--P_SMALL);
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--SPACE_S_SMALL);
+    margin-top: var(--SPACE_XS);
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button{
+    margin: 0;
+    padding: var(--SPACE_S_SMALL);
+}
+
+
+
 /* --- Zone pour le résultat et l'interprétation --- */
 div.zone-result {
     border-radius: var(--BORDER_BIG);

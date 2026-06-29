@@ -59,11 +59,11 @@
 /* Pour les icônes dans l'application */
 @font-face {
     font-family: 'Font-SPRINTIA';
-    src:  url('../assets/icons/Font-SPRINTIA-V5.eot');
-    src:  url('../assets/icons/Font-SPRINTIA-V5.eot') format('embedded-opentype'),
-        url('../assets/icons/Font-SPRINTIA-V5.ttf') format('truetype'),
-        url('../assets/icons/Font-SPRINTIA-V5.woff') format('woff'),
-        url('../assets/icons/Font-SPRINTIA-V5.svg') format('svg');
+    src:  url('../assets/icons/Font-SPRINTIA-V5.1.eot');
+    src:  url('../assets/icons/Font-SPRINTIA-V5.1.eot') format('embedded-opentype'),
+        url('../assets/icons/Font-SPRINTIA-V5.1.ttf') format('truetype'),
+        url('../assets/icons/Font-SPRINTIA-V5.1.woff') format('woff'),
+        url('../assets/icons/Font-SPRINTIA-V5.1.svg') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -129,107 +129,113 @@ i {
 .fs-icon_confidentialite:before {
   content: "\e907";
 }
-.fs-icon_entrainement:before {
+.fs-icon_copy:before {
   content: "\e908";
 }
-.fs-icon_fermer:before {
+.fs-icon_entrainement:before {
   content: "\e909";
 }
-.fs-icon_file:before {
+.fs-icon_fermer:before {
   content: "\e90a";
 }
-.fs-icon_file_csv:before {
+.fs-icon_file:before {
   content: "\e90b";
 }
-.fs-icon_file_json:before {
+.fs-icon_file_csv:before {
   content: "\e90c";
 }
-.fs-icon_fleche_droite:before {
+.fs-icon_file_json:before {
   content: "\e90d";
 }
-.fs-icon_glycogene:before {
+.fs-icon_fleche_droite:before {
   content: "\e90e";
 }
-.fs-icon_historique:before {
+.fs-icon_glycogene:before {
   content: "\e90f";
 }
-.fs-icon_hydratation:before {
+.fs-icon_historique:before {
   content: "\e910";
 }
-.fs-icon_IMC:before {
+.fs-icon_hydratation:before {
   content: "\e911";
 }
-.fs-icon_indulgence_course:before {
+.fs-icon_IA:before {
   content: "\e912";
 }
-.fs-icon_licence:before {
+.fs-icon_IMC:before {
   content: "\e913";
 }
-.fs-icon_mail:before {
+.fs-icon_indulgence_course:before {
   content: "\e914";
 }
-.fs-icon_metabolisme_base:before {
+.fs-icon_licence:before {
   content: "\e915";
 }
-.fs-icon_miles_km:before {
+.fs-icon_mail:before {
   content: "\e916";
 }
-.fs-icon_modifier:before {
+.fs-icon_metabolisme_base:before {
   content: "\e917";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_miles_km:before {
   content: "\e918";
 }
-.fs-icon_outils:before {
+.fs-icon_modifier:before {
   content: "\e919";
 }
-.fs-icon_parametres:before {
+.fs-icon_niveau_course:before {
   content: "\e91a";
 }
-.fs-icon_partager:before {
+.fs-icon_outils:before {
   content: "\e91b";
 }
-.fs-icon_pause:before {
+.fs-icon_parametres:before {
   content: "\e91c";
 }
-.fs-icon_plus:before {
+.fs-icon_partager:before {
   content: "\e91d";
 }
-.fs-icon_plus_horizontal:before {
+.fs-icon_pause:before {
   content: "\e91e";
 }
-.fs-icon_profil:before {
+.fs-icon_plus:before {
   content: "\e91f";
 }
-.fs-icon_progression:before {
+.fs-icon_plus_horizontal:before {
   content: "\e920";
 }
-.fs-icon_proteines:before {
+.fs-icon_profil:before {
   content: "\e921";
 }
-.fs-icon_recuperation:before {
+.fs-icon_progression:before {
   content: "\e922";
 }
-.fs-icon_statistiques:before {
+.fs-icon_proteines:before {
   content: "\e923";
 }
-.fs-icon_strategie_allure:before {
+.fs-icon_recuperation:before {
   content: "\e924";
 }
-.fs-icon_supprimer:before {
+.fs-icon_statistiques:before {
   content: "\e925";
 }
-.fs-icon_telechargement:before {
+.fs-icon_strategie_allure:before {
   content: "\e926";
 }
-.fs-icon_temps_recup:before {
+.fs-icon_supprimer:before {
   content: "\e927";
 }
-.fs-icon_to_day:before {
+.fs-icon_telechargement:before {
   content: "\e928";
 }
-.fs-icon_zones_cardiaques:before {
+.fs-icon_temps_recup:before {
   content: "\e929";
+}
+.fs-icon_to_day:before {
+  content: "\e92a";
+}
+.fs-icon_zones_cardiaques:before {
+  content: "\e92b";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */
@@ -665,7 +671,7 @@ div.container-logo-dynamique div.logo-dynamique.message {
 div.container-logo-dynamique div.logo-dynamique.message.return {
     display: flex;
     transform: scale(1) translateY(0);
-    animation: animation_logo_dynamique_return ease-out 0.3s forwards;
+    animation: animation_logo_dynamique_return ease-out 0.2s forwards;
 }
 
 
@@ -1510,11 +1516,12 @@ div.zone-coach button::before {
 
 /* --- Fenetre pour SPRITNIA Briefing --- */
 section.background-SPRINTIA-briefing {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
 
     display: none;
     justify-content: center;
-    pointer-events: none;
+    pointer-events: all;
     position: fixed;
 
     bottom: 0;
@@ -1525,13 +1532,17 @@ section.background-SPRINTIA-briefing {
 
     z-index: 25000;
 }
+body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
+}
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
                 0px 5px 20px var(--COLOR_BACKGROUND);
 
-    display: flex;
+    display: none;
     flex-direction: column;
     margin: auto var(--SPACE_S);
     padding: var(--SPACE_S);
@@ -1540,7 +1551,13 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
     max-width: 500px;
     height: fit-content;
     overflow: hidden;
-    pointer-events: all;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing.open {
+    display: flex;
+    animation: animation_logo_dynamique ease-out 0.5s forwards;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing.open.close {
+    animation: animation_logo_dynamique_return ease-out 0.15s forwards;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head {
     display: flex;
@@ -1562,6 +1579,17 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
     justify-content: center;
     height: 40px;
     width: 40px;
+    cursor: pointer;
+
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:hover{
+        transform: scale(var(--SCALE_SUP));
+    }
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:active{
+    transform: scale(var(--SCALE_SUP));
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation-briefing {
     font-size: var(--P_SMALL);
@@ -1586,14 +1614,106 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.prompt-SP
     color: var(--COLOR_TEXT_SECONDARY);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     gap: var(--SPACE_S_SMALL);
     margin-top: var(--SPACE_XS);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button{
     margin: 0;
     padding: var(--SPACE_S_SMALL);
+    flex-grow: 1;
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-copy{
+    width: fit-content;
+}
+
+
+/* --- Choisir son IA préférée --- */
+ol.container-list-choice{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    gap: var(--SPACE_M);
+    margin: var(--SPACE_M) auto;
+}
+ol.container-list-choice li.choice-item {
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0.75;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    
+    font-size: var(--H3);
+    padding: var(--SPACE_XS) var(--SPACE_M);
+    border-radius: 0.6rem;
+    
+    transition: transform ease-out var(--TIME_TRANSITION_FAST),
+                opacity ease-out var(--TIME_TRANSITION_FAST),
+                border-radius ease-out var(--TIME_TRANSITION),
+                outline ease-out var(--TIME_TRANSITION),
+                font-weight ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    ol.container-list-choice li.choice-item:hover{
+        opacity: 1;
+    }
+}
+ol.container-list-choice li.choice-item:active{
+    transform: scale(var(--SCALE_NORMAL));
+}
+ol.container-list-choice li.choice-item.selected{
+    outline: 3px solid var(--COLOR_TEXT_PRIMARY);
+    opacity: 1;
+    border-radius: var(--BORDER_BIG);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+@media (max-width : 900px) {
+    ol.container-list-choice{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width : 600px) {
+    ol.container-list-choice{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    ol.container-list-choice li.choice-item {
+        font-size: var(--P);
+    }
+}
+ol.container-list-choice li.choice-item#vibe{
+    background-color: #ff6c11;
+}
+ol.container-list-choice li.choice-item#gemini{
+    background-color: #247df9;
+}
+ol.container-list-choice li.choice-item#chat-gpt,
+ol.container-list-choice li.choice-item#grok{
+    background-color: #13ac8a;
+}
+ol.container-list-choice li.choice-item#claude{
+    background-color: #d77655;
+}
+ol.container-list-choice li.choice-item#grok{
+    background-color: #ffffff;
+    color: #000000;
+}
+ol.container-list-choice li.choice-item#meta-ai{
+    background-color: #bf54ff;
+}
+ol.container-list-choice li.choice-item#deepseek{
+    background-color: #4c6bfe;
+}
+ol.container-list-choice li.choice-item#copilot{
+    background-color: #f9f2ed;
+    color: #000000;
 }
 
 

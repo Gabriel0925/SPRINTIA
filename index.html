@@ -110,19 +110,18 @@
 
             <div class="windows-SPRINTIA-briefing-head">
                 <p class="title">SPRINTIA Briefing</p>
-                <i class="fs-icon_fermer" onclick="croix()"></i>
+                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
             </div>
             <p class="explanation-briefing">
-                Une fois que vous aurez quitter l'application SPRINTIA, vos données ne seront plus en locale sur votre appareil
-                mais exposé à un LLM.
+                Le prompt ci-dessous contient vos données de santé. Une fois que vous aurez ouvert votre IA préférée, vos données 
+                quitteront SPRINTIA et seront donc soumises aux conditions de celle-ci. Vous devenez responsable de vos données.
             </p>
             <div class="prompt-SPRINTIA-briefing">
                 <p class="title">Prompt</p>
                 <p class="prompt">Chargement...</p>
             </div>
             <div class="container-button-windows-SPRINTIA-briefing">
-                <button>Copier</button>
-                <button>Ouvrir Gemini</button>
+                <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
             </div>
 
         </div>
@@ -605,8 +604,48 @@
     <script>
         function windowsBriefing() {
             document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
+            document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
+            document.querySelector("body").classList.add("no-scroll")
         }
-        function croix() {document.querySelector("section.background-SPRINTIA-briefing").style.display = "none"}
+
+        function closeWindows() {
+            document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
+            document.querySelector("body").classList.remove("no-scroll")
+
+            setTimeout(() => {
+                document.querySelector("section.background-SPRINTIA-briefing").style.display = "none"
+
+                document.querySelector("div.windows-SPRINTIA-briefing").classList.remove("close")
+                document.querySelector("div.windows-SPRINTIA-briefing").classList.remove("open")
+            }, 150);
+        }
+
+        const dicoLienIA = {
+            "vibe":"https://chat.mistral.ai/", "gemini":"https://gemini.google.com/", 
+            "chat-gpt":"https://chatgpt.com/", "claude":"https://claude.ai/",
+            "grok":"https://grok.com/", "meta-ai":"https://www.meta.ai/", 
+            "deepseek":"https://chat.deepseek.com/", "copilot":"https://copilot.microsoft.com/"
+        }
+        function openIA(favoriteIA) {
+            window.open(dicoLienIA[favoriteIA], '_blank')
+        }
+
+        const dicoIA = {
+            "vibe":"Vibe", "gemini":"Gemini", "chat-gpt":"ChatGPT", "claude":"Claude",
+            "grok":"Grok", "meta-ai":"Meta AI", "deepseek":"DeepSeek", "copilot":"Copilot"
+        }
+        function nameFavoriteIA() {
+            let favoriteIA = localStorage.getItem("ia-favorite")
+
+            if (favoriteIA != null) { // si il y a des datas
+                document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
+                document.getElementById("button-open-ia").onclick = () => openIA(favoriteIA)
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            nameFavoriteIA()
+        })
     </script>
     
     <script defer src="/_vercel/insights/script.js"></script>

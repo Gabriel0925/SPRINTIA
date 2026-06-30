@@ -10,6 +10,13 @@
     <link rel="icon" type="image/png" href="assets/icons-SPRINTIA/icon-512-V5.png">
 
     <link rel="manifest" href="manifest-V5.json">
+    <script>
+        window.addEventListener("load", () => {
+            if ("serviceWorker" in navigator) { // si le navigateur prend en charge le service worker
+                navigator.serviceWorker.register("/sw.js")
+            }
+        })
+    </script>
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">

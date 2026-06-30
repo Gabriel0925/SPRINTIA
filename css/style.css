@@ -414,7 +414,7 @@ section.header div.logo {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+    transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -692,7 +692,8 @@ div.config-profil {
     padding: var(--SPACE_S);
     cursor: pointer;
     border-radius: var(--BORDER_BIG);
-    transition: all ease-out var(--TIME_TRANSITION);
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     div.config-profil:hover {

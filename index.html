@@ -602,12 +602,13 @@
 
     <!-- SPRINTIA Briefing -->
     <script>
-        function windowsBriefing() {
+        async function windowsBriefing() {
             document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
             document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
             document.querySelector("body").classList.add("no-scroll")
-        }
 
+            await createPrompt()
+        }
         function closeWindows() {
             document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
             document.querySelector("body").classList.remove("no-scroll")
@@ -641,6 +642,68 @@
                 document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
                 document.getElementById("button-open-ia").onclick = () => openIA(favoriteIA)
             }
+        }
+
+        async function coachUser() {
+            let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
+            let styleCoachUser = "Bienveillant"; // on init sur Bienveillant si le user a laisser le choix de base
+            let avatarCoach = "";
+            let nameCoach = "JRM Coach";
+
+            if (coachUserDB != undefined) {
+                styleCoachUser = coachUserDB.style; // attribution du coach choisi par le user à la variable nommé "styleCoachUser"
+
+                // attribution du nom pour pouvoir l'afficher dans une autre fonction et éviter de faire une autre requete
+                nameCoach = coachUserDB.nom;
+                avatarCoach = coachUserDB.avatar
+            };
+
+            return JSON.stringify({"nom_coach_user": nameCoach, "avatar_coach_user": avatarCoach, "style_coach_user": styleCoachUser}, null, 2)
+        }
+
+        async function createPrompt() {
+            // début du prompt
+            let prompt = `
+Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt et donne à l'utilisateur :
+et donne-lui :
+    1. 3 insights clés sur sa performance récente.
+    2. 1 conseil actionnable pour la prochaine séance.
+    3. Analyse l'évolution des statistiques en comparant la semaine actuelle (les 7 derniers jours) aux semaines précédentes.
+
+Données :
+            `
+
+            // récup des données entrainement de l'utilisateur
+            let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(21)).toArray()
+            let nbEntrainement = historiqueData.length
+
+            if (nbEntrainement < 5) {
+                historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(30)).toArray()
+            } else if (nbEntrainement > 10) {
+                historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+            }
+
+            // ajout des données au prompt
+            prompt += JSON.stringify(historiqueData, null, 2)
+
+            // ajout du coach de l'utilisateur
+            prompt += `
+
+Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :
+            `
+            prompt += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
+
+            // ajout des contraintes
+            prompt += `
+                       
+Contraintes :
+    - Reprend exactement le style du coach que l'utilisateur à configurer dans SPRINTIA
+    - Tutoie l'utilisateur et répond en français
+    - Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
+        toi (le coach de SPRINTIA) et l'utilisateur.
+            `
+
+            console.log(prompt)
         }
 
         window.addEventListener("DOMContentLoaded", () => {

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SPRINTIA - À propos de SPRINTIA Briefing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-512-V5.png">
+    <link rel="manifest" href="../../../manifest-V5.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="../../../assets/icons-SPRINTIA/icon-192-V5.png">
+
+</head>
+
+<body>
+    <div class="container-logo-dynamique">
+        <div class="logo-dynamique"></div>
+    </div>
+    
+    <section class="header">
+
+        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur3', 'Entraînement')">SPRINTIA</div>
+
+        
+        <ul class="header-container-items">
+
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur3', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur3', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur3', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur3', 'Plus')">
+                <i class="fs-icon_plus_horizontal"></i>
+                Plus
+            </li>
+
+        </ul>
+
+    </section>
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Plus')">
+                <i class="fs-icon_plus_horizontal"></i>
+                <p class="tab-bars-items-name">Plus</p>
+            </li>
+
+        </ul>
+
+    </section>
+    
+    <h1>À propos de SPRINTIA Briefing</h1>
+
+    <h2>Quelles données sont partagées ?</h2>
+    <p class="text">
+        SPRINTIA Briefing génère un prompt qui contient différentes données en fonction de l'endroit où SPRINTIA Briefing est présent.
+        Par exemple, dans la charge d'entraînement vos données d'entraînement sont envoyées mais dans l'indulgence de course c'est uniquement
+        vos données de course qui sont envoyées, ça dépend vraiment du but de l'algorithme.
+        <br><br>
+        Néanmoins, voici tout ce que SPRINTIA peut intégrer dans le prompt :
+    </p>
+    <ul class="list-information">
+
+        <li>
+            Vos données d'entraînement  (des 30 derniers jours maximum) : date, sport, distance, durée, RPE, charge d'entraînement,...
+        </li>
+        <li>
+            Vos données de récupération : FC Repos des 7 derniers jours.
+        </li>
+
+    </ul>
+
+    <h2>Comment les données sont transférées ?</h2>
+    <p class="text">
+        En cliquant sur le bouton "Copier & Ouvrir [votre IA préférée]" (par défaut Vibe), vos données ne sont pas envoyées à l'IA directement.
+        En réalité, le prompt est copié dans votre clavier et SPRINTIA Briefing vous dirige dans un nouvel onglet vers votre IA préférée.
+        Une fois sur l'application de votre IA, vous n'avez plus qu'à coller ce prompt et si vous appuyer sur le bouton "Envoyer" de votre IA
+        c'est à ce moment que l'IA va connaître vos données d'entraînement,...
+    </p>
+
+    <h2>Recommendations</h2>
+    <p class="text">
+        Je documente ce process car SPRINTIA stocke toutes vos données en local, ce qui permet d'avoir une excellente sécurité des données.
+        Mais SPRINTIA Briefing récupère vos données pour les mettre dans un prompt et une fois que vous les envoyez à votre IA préférée, vos
+        données ne sont plus en local sur votre appareil. Les IA vont sûrement s'entraîner sur vos données pour je cite "Améliorer leurs produits
+        au bien de tous". Pour pallier cette contrainte, j'ai plusieurs solutions :
+    </p>
+    <ul class="list-information">
+
+        <li>
+            Premièrement si vous êtes sur Android/IOS, vous pouvez télécharger l'application "Google AI Edge Gallery". Cette application
+            est géniale car elle permet de télécharger des modèles d'IA sur votre appareil ce qui signifie que vos données restent sur votre
+            appareil ! Je vous recommande d'installer le modèle nommé "Gemma-4-E2B-it".
+        </li>
+        <li>
+            Deuxièmement si vous êtes sur ordinateur, vous pouvez utiliser une application nommée "Ollama" pour télécharger des modèles d'IA
+            qui tournent en local sur votre ordinateur, ce qui permet de garder toutes vos données bien au chaud sur votre machine !
+        </li>
+
+    </ul>
+
+    <h2>Pourquoi l'IA par défaut de SPRINTIA Briefing est Vibe ?</h2>
+    <p class="text">
+        J'ai choisi de mettre Vibe (anciennement le chat de mistral) car c'est une excellente IA française pour analyser des données et étant
+        donné que SPRINTIA a été créé en France ça me tient à coeur d'utiliser des services qui sont Français ! Toutefois, si vous le souhaitez
+        vous pouvez choisir l'IA que vous utilisez au quotidien depuis <a href="SPRINTIA-briefing.html" class="lien">cette page</a>.
+    </p>
+    
+    <script src="../../../assets/base-js/base.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

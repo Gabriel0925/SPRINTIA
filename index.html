@@ -101,7 +101,7 @@
         <p class="zone-coach-interpretation" id="reponse-coach">
             Chargement...
         </p>
-        <button id="button-SPRINTIA-briefing" onclick="windowsBriefing()">SPRINTIA Briefing</button>
+        <button id="button-SPRINTIA-briefing" onclick="windowsBriefing()">Analyser mes tendances</button>
     </div>
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
     <section class="background-SPRINTIA-briefing">
@@ -113,13 +113,10 @@
                 <i class="fs-icon_fermer" onclick="closeWindows()"></i>
             </div>
             <p class="explanation-briefing">
-                Le prompt ci-dessous contient vos données de santé. Une fois que vous aurez ouvert votre IA préférée, vos données 
-                quitteront SPRINTIA et seront donc soumises aux conditions de celle-ci. Vous devenez responsable de vos données.
+                SPRINTIA a généré un prompt qui contient vos données d'entaînement. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                <a href="plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
             </p>
-            <div class="prompt-SPRINTIA-briefing">
-                <p class="title">Prompt</p>
-                <p class="prompt">Chargement...</p>
-            </div>
             <div class="container-button-windows-SPRINTIA-briefing">
                 <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
             </div>
@@ -602,12 +599,13 @@
 
     <!-- SPRINTIA Briefing -->
     <script>
+        let promptForIA = undefined
         async function windowsBriefing() {
             document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
             document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
             document.querySelector("body").classList.add("no-scroll")
 
-            await createPrompt()
+            promptForIA = await createPrompt()
         }
         function closeWindows() {
             document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
@@ -628,7 +626,19 @@
             "deepseek":"https://chat.deepseek.com/", "copilot":"https://copilot.microsoft.com/"
         }
         function openIA(favoriteIA) {
-            window.open(dicoLienIA[favoriteIA], '_blank')
+            if (promptForIA != undefined) {
+                navigator.clipboard.writeText(promptForIA)
+                .then(() => {
+                    window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
+                })
+                .catch(error => {
+                    alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.", error)
+                })
+
+            } else {
+                alert("Aucun prompt n'a été créé car SPRINTIA n'a pas assez de données pour en générer un !")
+                return
+            }
         }
 
         const dicoIA = {
@@ -639,6 +649,12 @@
             let favoriteIA = localStorage.getItem("ia-favorite")
 
             if (favoriteIA != null) { // si il y a des datas
+                // changement du nom de l'IA dans le texte explicatif
+                document.querySelector(".explanation-briefing").innerHTML = `
+                    SPRINTIA a généré un prompt qui contient vos données d'entaînement. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                    le transfert de vos données à ${dicoIA[favoriteIA]}</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de ${dicoIA[favoriteIA]}.
+                    <a href="plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                `
                 document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
                 document.getElementById("button-open-ia").onclick = () => openIA(favoriteIA)
             }
@@ -660,7 +676,7 @@
 
             return JSON.stringify({"nom_coach_user": nameCoach, "avatar_coach_user": avatarCoach, "style_coach_user": styleCoachUser}, null, 2)
         }
-
+        
         async function createPrompt() {
             // début du prompt
             let prompt = `
@@ -668,7 +684,9 @@ Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données qu
 et donne-lui :
     1. 3 insights clés sur sa performance récente.
     2. 1 conseil actionnable pour la prochaine séance.
-    3. Analyse l'évolution des statistiques en comparant la semaine actuelle (les 7 derniers jours) aux semaines précédentes.
+    3. Analyse l'évolution, les tendances des statistiques en comparant la semaine actuelle (les 7 derniers jours) aux semaines précédentes.
+
+Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
 
 Données :
             `
@@ -681,6 +699,12 @@ Données :
                 historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(30)).toArray()
             } else if (nbEntrainement > 10) {
                 historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+            }
+            
+            if (historiqueData.length <= 0) {
+                // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
+                // une IA alors qu'il n'y a pas de data
+                return undefined
             }
 
             // ajout des données au prompt
@@ -703,7 +727,7 @@ Contraintes :
         toi (le coach de SPRINTIA) et l'utilisateur.
             `
 
-            console.log(prompt)
+            return prompt
         }
 
         window.addEventListener("DOMContentLoaded", () => {

@@ -1596,23 +1596,6 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation
     margin: var(--SPACE_XS) 0;
     color: var(--COLOR_TEXT_SECONDARY);
 }
-section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.prompt-SPRINTIA-briefing {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
-    border-radius: var(--BORDER_NORMAL);
-    
-    padding: var(--SPACE_XS);
-    margin: var(--SPACE_XS) 0;
-}
-section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.prompt-SPRINTIA-briefing p.title {
-    font-size: var(--P);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    margin-bottom: var(--SPACE_XS);
-}
-section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.prompt-SPRINTIA-briefing p.prompt {
-    font-size: var(--P_SMALL);
-    color: var(--COLOR_TEXT_SECONDARY);
-}
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing {
     display: flex;
     gap: var(--SPACE_S_SMALL);

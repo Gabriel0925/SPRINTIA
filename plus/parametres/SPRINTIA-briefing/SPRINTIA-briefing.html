@@ -78,11 +78,12 @@
         <h1>SPRINTIA Briefing</h1>
         <i class="fs-icon_a_propos" onclick="window.location.href = 'SPRINTIA-briefing-info.html'"></i>
     </div>
+
+    <h2>IA favorite</h2>
     <p class="text">
         Choisissez l'IA que vous utilisez au quotidien, votre préférée ! Ce choix sera sauvegardé pour que SPRINTIA Briefing
         ouvre directement votre IA favorite pour pousser les analyses du coach de SPRINTIA (nommé par défaut : JRM Coach) encore plus loin.
     </p>
-
     <ol class="container-list-choice">
 
         <li class="choice-item" onclick="favoriteIA('vibe')" id="vibe">Vibe</li>
@@ -98,8 +99,43 @@
 
     </ol>
 
+    <h2>Personnalisation des prompts</h2>
+    <p class="text">
+        Par défaut, votre IA favorite va essayer de prendre la personnalité et le nom du coach que vous avez configuré dans les paramètres de SPRINTIA
+        mais si ça ne vous convient pas vous pouvez le désactiver.
+    </p>
+    <div class="banner-toggle">
+        <i class="fs-icon_coach"></i>
+        <p>Personnalité du coach</p>
+        <input class="toggle" type="checkbox" onclick="" id="toggle-personnalite-coach">
+    </div>
+
+    <h2>Niveaux d'analyse</h2>
+    <p class="text">
+        Adaptez le niveau d'analyse de ton IA préférée :
+    </p>
+    <ul class="list-information">
+
+        <li>
+            <strong>Essentiel</strong> : Utilisation de mots simples et vulgarisation des termes pour un aspect sans fioriture.
+        </li>
+        <li>
+            <strong>Modéré</strong> : Le juste milieu (par défaut).
+        </li>
+        <li>
+            <strong>Expert</strong> : Analyse poussée, utilisation de terme jargon scientifique autorisé
+        </li>
+
+    </ul>
+    <select style="width: 100%; margin: 0px; margin-top: var(--SPACE_S); max-width: 450px;" id="niveaux-analyse-user" onchange="localStorage.setItem('niveauAnalyseIA', value)" autocomplete="off">
+        <option value="essentiel">Essentiel</option>
+        <option value="modere">Modéré</option>
+        <option value="expert">Expert</option>
+    </select>
+
+
     <div class="container-center-marge">
-        <button class="size-block" onclick="reinitialiserFavoriteIA(this)">Restaurer l'IA par défaut</button>
+        <button class="size-block" onclick="reinitialiserBriefing(this)">Réinitialiser Briefing</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>

@@ -52,7 +52,7 @@ const dicoIA = {
     "grok":"Grok", "meta-ai":"Meta AI", "deepseek":"DeepSeek", "copilot":"Copilot"
 }
 function nameFavoriteIA() {
-    let favoriteIA = localStorage.getItem("ia-favorite")
+    let favoriteIA = localStorage.getItem("iaFavorite")
 
     if (favoriteIA != null) { // si il y a des datas
         // changement du nom de l'IA dans le texte explicatif

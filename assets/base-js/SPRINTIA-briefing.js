@@ -34,13 +34,18 @@ const dicoLienIA = {
     "vibe":"https://chat.mistral.ai/", "gemini":"https://gemini.google.com/", 
     "chat-gpt":"https://chatgpt.com/", "claude":"https://claude.ai/",
     "grok":"https://grok.com/", "meta-ai":"https://www.meta.ai/", 
-    "deepseek":"https://chat.deepseek.com/", "copilot":"https://copilot.microsoft.com/"
+    "deepseek":"https://chat.deepseek.com/", "copilot":"https://copilot.microsoft.com/",
+    "perplexity": "https://www.perplexity.ai/"
 }
 function openIA(favoriteIA) {
     if (promptForIA != undefined) {
         navigator.clipboard.writeText(promptForIA)
         .then(() => {
-            window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
+            if (favoriteIA == "ia-locale") {
+                logoDynamique("📋 Copié !")
+            } else {
+                window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
+            }
         })
         .catch(error => {
             alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.", error)
@@ -54,19 +59,33 @@ function openIA(favoriteIA) {
 
 const dicoIA = {
     "vibe":"Vibe", "gemini":"Gemini", "chat-gpt":"ChatGPT", "claude":"Claude",
-    "grok":"Grok", "meta-ai":"Meta AI", "deepseek":"DeepSeek", "copilot":"Copilot"
+    "grok":"Grok", "meta-ai":"Meta AI", "deepseek":"DeepSeek", "copilot":"Copilot",
+    "perplexity": "Perplexity", 
+    "ia-locale": "l'IA locale de votre choix" // on le met quand meme dans le dico pour : ".explanation-briefing"
 }
 function nameFavoriteIA() {
     let favoriteIA = localStorage.getItem("iaFavorite")
 
     if (favoriteIA != null) { // si il y a des datas
-        // changement du nom de l'IA dans le texte explicatif
-        document.querySelector(".explanation-briefing").innerHTML = `
-            SPRINTIA a généré un prompt qui contient vos données d'entaînement. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-            le transfert de vos données à ${dicoIA[favoriteIA]}</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de ${dicoIA[favoriteIA]}.
-            <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
-        `
-        document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
+        if (favoriteIA == "ia-locale") {
+            // pas exactement le meme texte pour l'IA locale car les données tournent en local sur l'appareil
+            document.querySelector(".explanation-briefing").innerHTML = `
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrés dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à ${dicoIA[favoriteIA]}</strong>.
+                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+            `
+            document.getElementById("button-open-ia").textContent = "Copier"
+
+        } else {
+            // changement du nom de l'IA dans le texte explicatif
+            document.querySelector(".explanation-briefing").innerHTML = `
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrés dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à ${dicoIA[favoriteIA]}</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de ${dicoIA[favoriteIA]}.
+                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+            `
+            document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
+
+        }
         document.getElementById("button-open-ia").onclick = () => openIA(favoriteIA)
 
         // le bouton dans discuter avec le coach

@@ -1559,7 +1559,7 @@ section.background-SPRINTIA-briefing {
     width: 100%;
     height: 100%;
 
-    z-index: 25000;
+    z-index: 17000;
 }
 body.no-scroll {
     overflow: hidden;
@@ -1706,8 +1706,7 @@ ol.container-list-choice li.choice-item#vibe{
 ol.container-list-choice li.choice-item#gemini{
     background-color: #247df9;
 }
-ol.container-list-choice li.choice-item#chat-gpt,
-ol.container-list-choice li.choice-item#grok{
+ol.container-list-choice li.choice-item#chat-gpt{
     background-color: #13ac8a;
 }
 ol.container-list-choice li.choice-item#claude{
@@ -1724,8 +1723,13 @@ ol.container-list-choice li.choice-item#deepseek{
     background-color: #4c6bfe;
 }
 ol.container-list-choice li.choice-item#copilot{
-    background-color: #f9f2ed;
-    color: #000000;
+    background-color: #8A50D8;
+}
+ol.container-list-choice li.choice-item#perplexity{
+    background-color: #1cb2c6;
+}
+ol.container-list-choice li.choice-item#ia-locale{
+    background-color: #4a4a4a;
 }
 
 

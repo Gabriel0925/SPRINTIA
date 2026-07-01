@@ -86,7 +86,29 @@
             <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
                 Chargement...
             </p>
+            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mon indulgence')">Analyser mon indulgence</button>
         </div>
+        <!-- Fenetre flottante pour SPRINTIA Briefing -->
+        <section class="background-SPRINTIA-briefing">
+            
+            <div class="windows-SPRINTIA-briefing">
+
+                <div class="windows-SPRINTIA-briefing-head">
+                    <p class="title">SPRINTIA Briefing</p>
+                    <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+                </div>
+                <p class="explanation-briefing">
+                    SPRINTIA a généré un prompt qui contient vos données d'entaînement. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                    le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                    <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                </p>
+                <div class="container-button-windows-SPRINTIA-briefing">
+                    <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+                </div>
+
+            </div>
+
+        </section> 
 
     </section>
 
@@ -163,6 +185,8 @@
             JRMCoachUser()
         })
     </script>
+    <!-- SPRINTIA Briefing -->
+    <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
     
     <script defer src="/_vercel/insights/script.js"></script>
     

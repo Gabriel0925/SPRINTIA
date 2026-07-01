@@ -222,12 +222,12 @@ async function displayOnScreen() {
 
     if (nbEntrainement28j < 3) {
         // affichage + mise en forme de l'analyse
-        document.getElementById("reponse-coach-indulgence").innerHTML =  `Je n'ai <strong>pas assez de données</strong> pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
+        document.getElementById("reponse-coach-indulgence").innerHTML =  `Je n'ai <strong id="statut-ce">pas assez de données</strong> pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
                     <strong>3 entraînements sur les 28 derniers jours</strong>. J'attends avec impatience tes premiers entraînements.`
 
     } else {
         // affichage + mise en forme de l'analyse
-        document.getElementById("reponse-coach-indulgence").innerHTML =  `Statut : <strong>${statutUser}</strong><br>${analyse}`
+        document.getElementById("reponse-coach-indulgence").innerHTML =  `Statut : <strong id="statut-ce">${statutUser}</strong><br>${analyse}`
 
         // affichage de la cible et de la charge 7j et 28j
         document.getElementById("cible-charge-7j").innerHTML = "Cible : " + parseInt(cibleUserMin) + " - " + parseInt(cibleUserMax)

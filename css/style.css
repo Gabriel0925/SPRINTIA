@@ -1075,6 +1075,31 @@ textarea:focus {
 textarea::placeholder {
     color: var(--COLOR_TEXT_PRIMARY);
 }
+div.container-discuter-coach button#button-SPRINTIA-briefing-ask {
+    margin: 0;
+    margin-top: var(--SPACE_XS);
+    border-radius: var(--BORDER_BIG);
+
+    color: var(--COLOR_BACKGROUND);
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+
+    width: 100%;
+    max-width: 450px;
+}
+div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.35);
+    background: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    z-index: -1;
+}
 
 
 

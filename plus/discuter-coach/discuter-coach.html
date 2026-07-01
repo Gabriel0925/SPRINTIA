@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SPRINTIA - Discuter avec JRM Coach</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-512-V5.png">
+    <link rel="manifest" href="../../manifest-V5.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.png">
+
+</head>
+
+<body>
+    <div class="container-logo-dynamique">
+        <div class="logo-dynamique"></div>
+    </div>
+    
+    <section class="header">
+
+        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
+
+        
+        <ul class="header-container-items">
+
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
+                <i class="fs-icon_plus_horizontal"></i>
+                Plus
+            </li>
+
+        </ul>
+
+    </section>
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                <i class="fs-icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                <i class="fs-icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                <i class="fs-icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
+                <i class="fs-icon_plus_horizontal"></i>
+                <p class="tab-bars-items-name">Plus</p>
+            </li>
+
+        </ul>
+
+    </section>
+    
+    <h1 id="nom-coach">Discuter avec JRM Coach</h1>
+
+    <div class="container-discuter-coach">
+        <textarea id="promt-user" style="min-height: 300px;" placeholder="Poser une question" maxlength="500"></textarea>
+        <button id="button-SPRINTIA-briefing-ask" onclick="
+                    if (!document.getElementById('promt-user').value) {
+                        alert('Veuillez ajouter votre demande dans la box de texte avant de vouloir demander à une IA.')
+                    } else {
+                        windowsBriefing('Demander à Vibe')
+                    }">
+        Demander à Vibe</button>
+    </div>
+    <!-- Fenetre flottante pour SPRINTIA Briefing -->
+    <section class="background-SPRINTIA-briefing">
+        
+        <div class="windows-SPRINTIA-briefing">
+
+            <div class="windows-SPRINTIA-briefing-head">
+                <p class="title">SPRINTIA Briefing</p>
+                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+            </div>
+            <p class="explanation-briefing">
+                SPRINTIA a généré un prompt qui contient vos données d'entaînement. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+            </p>
+            <div class="container-button-windows-SPRINTIA-briefing">
+                <button onclick="
+                    openIA('vibe')
+                    " id="button-open-ia">Copier & Ouvrir Vibe</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="../../assets/bibliotheques/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
+    <script>
+        async function NomCoachInit() {
+            // Recup datas
+            let CoachUserDB = await db.JRM_Coach.toArray()
+
+            if (CoachUserDB.length > 0) { // Si il y a des datas
+                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
+                
+                document.getElementById("nom-coach").innerHTML = `Discuter avec ${NomCoach}`
+            }
+
+            return
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            NomCoachInit()
+        })
+    </script>
+    
+    <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

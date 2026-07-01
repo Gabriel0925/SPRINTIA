@@ -4,7 +4,8 @@ const buttonFonction  = {
     "Analyser ma CE": promptCE,
     "Analyser mon indulgence": promptIndulgence,
     "Analyser ma récupération": promptRecuperation,
-    "Approfondir l'analyse": promptAnalyseEntrainement
+    "Approfondir l'analyse": promptAnalyseEntrainement,
+    "Demander à Vibe": promptDiscussion
 }
 
 async function windowsBriefing(textInButton) {
@@ -67,8 +68,15 @@ function nameFavoriteIA() {
         `
         document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
         document.getElementById("button-open-ia").onclick = () => openIA(favoriteIA)
+
+        // le bouton dans discuter avec le coach
+        let buttonEnDessousTextarea = document.getElementById("button-SPRINTIA-briefing-ask")
+        if (buttonEnDessousTextarea) {
+            buttonEnDessousTextarea.textContent = "Demander à " + dicoIA[favoriteIA]
+        }
     }
 }
+
 
 
 async function coachUser() {
@@ -87,8 +95,6 @@ async function coachUser() {
 
     return JSON.stringify({"nom_coach_user": nameCoach, "avatar_coach_user": avatarCoach, "style_coach_user": styleCoachUser}, null, 2)
 }
-
-
 async function addPromptContrainte(prompt) {
     // --- Recup personnalisation des prompts ---
     let personnaliteCoachBriefingUser = localStorage.getItem("personnaliteCoachBriefing")
@@ -110,7 +116,7 @@ async function addPromptContrainte(prompt) {
 Contraintes :
 - Reprend exactement le style du coach que l'utilisateur à configurer dans SPRINTIA
 - Tutoie l'utilisateur et répond en français
-- Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
+- N'hésite pas à lui poser une question pour continuer la discussion et renforcer le lien entre
     toi (le coach de SPRINTIA) et l'utilisateur.`
 
     } else {
@@ -132,6 +138,7 @@ Contraintes :
 
     return promptWithContrainte
 }
+
 async function promptTendances() {
     // début du prompt
     let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt et donne à l'utilisateur :
@@ -165,7 +172,6 @@ Données :
 
     return prompt
 }
-
 async function promptCE() {
     // début du prompt
     let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt et apporte une vraie plus-value à l'algorithme de SPRINTIA pour aider l'utilisateur :
@@ -200,7 +206,6 @@ Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textCont
 
     return prompt
 }
-
 async function promptIndulgence() {
     // début du prompt
     let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Indulgence de course" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à gérer sa tolérence mécanique en course à pied et apporte des conseils comportementaux exclusifs : 
@@ -242,7 +247,6 @@ Type de coureur·euse : ${typeCoureur}
 
     return prompt
 }
-
 async function promptRecuperation() {
     // début du prompt
     let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Récupération" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à comprendre s'il est en forme pour faire une séance d'entraînement, l'algorithme de récupération n'as accès que à la FC repos de l'utilisateur mais toi tu as accès à la FC repos et aux entraînements donc apporte un vraie plus
@@ -282,8 +286,42 @@ async function promptAnalyseEntrainement() {
     
 }
 
-async function promptAnalyseEntrainement() {
-    
+async function promptDiscussion() {
+    // début du prompt
+    let prompt = "Tu es le coach sportif expert de la PWA nommé SPRINTIA. L'utilisateur ouvre une discussion avec toi. Tu as accès à l'intégralité des données de son profil sur SPRINTIA.\nTon but ? Répondre à ses questions de manière fluide et précise en te basant sur toutes ses données.\nInformation temporelle : Nous sommes aujourd'hui le " + createObjetDate(0) + "."
+
+    // récup des données entrainement de l'utilisateur
+    let dataProfil = await db.profil.get(1)
+    let historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(30)).toArray()
+    let historiqueDataRecuperation = await db.recuperation.where("date").aboveOrEqual(createObjetDate(30)).toArray()
+
+    // on vérifie que l'historique d'entrainement car les datas de récupération c'est pas obligatoire
+    if (historiqueDataWorkout.length <= 0) {
+        // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
+        // une IA alors qu'il n'y a pas de data
+        return undefined
+    }
+
+    if (dataProfil != undefined) { // si le user à configurer son profil alors on ajoute ses datas dans le prompt
+        // le profil de l'utilisateur
+        prompt += "\nLe profil de l'utilisateur :\n"
+        prompt += JSON.stringify(dataProfil, null, 2)
+    }
+
+    // les datas des entrainements des users
+    prompt += "\nL'historique d'entrainement de l'utilisateur :\n"
+    prompt += JSON.stringify(historiqueDataWorkout, null, 2)
+
+    if (dataProfil != undefined) { // si le user à enregistré des données de récupération on ajoute ses datas dans le prompt
+        // le profil de l'utilisateur
+        prompt += "\nLes données de récupération de l'utilisateur :\n"
+        prompt += JSON.stringify(historiqueDataRecuperation, null, 2)
+    }
+
+    // ajout du prompt de l'utilisateur (pr info on a déjà vérifié si le textearea était vide dans le html)
+    prompt += `\nVoici la question que l'utilisateur à poser à SPRINTIA : '${document.getElementById("promt-user").value}'`
+
+    return prompt
 }
 
 window.addEventListener("DOMContentLoaded", () => {

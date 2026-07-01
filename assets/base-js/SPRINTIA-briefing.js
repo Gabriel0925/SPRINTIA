@@ -109,12 +109,12 @@ async function addPromptContrainte(prompt) {
     
     // --- Personnalisation des prompts ---
     if (personnaliteCoachBriefingUser == "true") { // si le user a activé le duplication du style du coach de SPRINTIA à son IA alors
-        promptWithContrainte += "Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :"
+        promptWithContrainte += "Voici le coach que l'utilisateur a configuré dans la PWA SPRINTIA :"
         promptWithContrainte += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
         
         promptWithContrainte += `
 Contraintes :
-- Reprend exactement le style du coach que l'utilisateur à configurer dans SPRINTIA
+- Reprend exactement le style du coach que l'utilisateur a configuré dans SPRINTIA
 - Tutoie l'utilisateur et répond en français
 - N'hésite pas à lui poser une question pour continuer la discussion et renforcer le lien entre
     toi (le coach de SPRINTIA) et l'utilisateur.`
@@ -312,14 +312,14 @@ async function promptDiscussion() {
     prompt += "\nL'historique d'entrainement de l'utilisateur :\n"
     prompt += JSON.stringify(historiqueDataWorkout, null, 2)
 
-    if (dataProfil != undefined) { // si le user à enregistré des données de récupération on ajoute ses datas dans le prompt
+    if (historiqueDataRecuperation.length > 0) { // si le user à enregistré des données de récupération on ajoute ses datas dans le prompt
         // le profil de l'utilisateur
         prompt += "\nLes données de récupération de l'utilisateur :\n"
         prompt += JSON.stringify(historiqueDataRecuperation, null, 2)
     }
 
     // ajout du prompt de l'utilisateur (pr info on a déjà vérifié si le textearea était vide dans le html)
-    prompt += `\nVoici la question que l'utilisateur à poser à SPRINTIA : '${document.getElementById("promt-user").value}'`
+    prompt += `\nVoici la question que l'utilisateur a posé à SPRINTIA : '${document.getElementById("promt-user").value}'`
 
     return prompt
 }

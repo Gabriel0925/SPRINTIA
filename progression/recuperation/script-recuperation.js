@@ -105,7 +105,7 @@ async function jrmCoach() {
             if (fcReposProfilUser != moyenne30J) {
                 let majAutoProfil = localStorage.getItem("majAutoProfil") || "True" // si pas de data alors on met undefined
 
-                // si la maj auto est activé alors on met à jour la fc repos du profil sinon on ne fait rien
+                // si la maj auto est activé alors on met à jour la FC repos du profil sinon on ne fait rien
                 if (majAutoProfil == "True") { // si le toggle maj auto profil est activé alors on met à jour
                     // avant de modifier il faut vérifier si l'id 1 a déja des datas si oui on update sinon on fais rien
                     let profilExists = await db.profil.get(1)
@@ -127,7 +127,7 @@ async function jrmCoach() {
         }
 
         if (historiqueData30J.length >= 7) {
-            // recup de la fc repos du jour
+            // recup de la FC repos du jour
             let fcReposToday = await db.recuperation.where("date").aboveOrEqual(dateToday).toArray()
             if (fcReposToday.length > 0) {
                 fcReposToday = fcReposToday[0].fc_repos
@@ -260,7 +260,7 @@ async function init(role) {
             // on garde en mémoire sa position
             let positionDay = thisWeekForGraphic.indexOf(day)
             // et on remplace dans notre nouveau tableau qui copie le "thisWeekForGraphic" exemple :
-            // on passe de ça ['D', 'L', 'M', 'M', 'J', 'V', 'S'] à ça ['D', 'L', 'M', 'M', 'J', 'V', 34] donc on remplace par la fc repos
+            // on passe de ça ['D', 'L', 'M', 'M', 'J', 'V', 'S'] à ça ['D', 'L', 'M', 'M', 'J', 'V', 34] donc on remplace par la FC repos
             tableauFcRepos[positionDay] = fcRepos
         }
     });
@@ -278,7 +278,7 @@ async function init(role) {
     });
     // en gros la boucle si dessus permet de passer de ça ['D', 'L', 'M', 'M', 'J', 'V', 34] à [0, 0, 0, 0, 0, 0, 34]
 
-    // mise à jour de la valeur de la fc repos du jour 
+    // mise à jour de la valeur de la FC repos du jour 
     let fcReposToday = await db.recuperation.where("date").aboveOrEqual(dateToday).toArray()
     if (fcReposToday.length > 0) {
         fcReposToday = fcReposToday[0].fc_repos

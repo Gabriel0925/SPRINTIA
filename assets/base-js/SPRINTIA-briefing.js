@@ -187,11 +187,112 @@ Contraintes :
 }
 
 async function promptIndulgence() {
+    // début du prompt
+    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Indulgence de course" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à gérer sa tolérence mécanique en course à pied et apporte des conseils comportementaux exclusifs : 
+    1. Interprète ce que SPRINTIA a analysé mais ne te contente pas de valider la distance cible calculée par SPRINTIA, explique lui comment diviser intelligemment ce volume. Bien entendu tu adapteras ton explication en fonction du type de coureur·euse. 
+    2. Explique à l'utilisateur comment ces séances influencent la fatigue musculaire globale de ses jambes, même si son kilométrage de course semble faible.
+    3. N'hésite pas à prendre en compte les autres sports que l'utilisateur a pratiqué mais reste focus un maximum sur la course à pied.
 
+Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+
+Données :
+            `
+    let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(28)).toArray()
+
+    if (historiqueData.length <= 0) {
+        // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
+        // une IA alors qu'il n'y a pas de data
+        return undefined
+    }
+
+    // ajout des données au prompt
+    prompt += JSON.stringify(historiqueData, null, 2)
+
+    // ajout de l'interpretation de SPRINTIA
+    const dicoTypeCoureur = {
+        "occasionnel": "Occasionnel·le",
+        "regulier": "Régulier·ère",
+        "confirme": "Confirmé·e",
+    }
+    let typeCoureur = dicoTypeCoureur[localStorage.getItem("typeCoureur")]
+    if (typeCoureur == null) {typeCoureur = "Occasionnel·le"}
+    prompt += `
+        
+Voici ce que SPRINTIA a interpreté :
+L'analyse du coach de SPRINTIA : ${document.getElementById("reponse-coach-indulgence").textContent}
+Distance réel sur 7J : ${document.getElementById("reponse-algo-allure").textContent}
+Distance hebdomadaire conseillée : ${document.getElementById("reponse-algo-indulgence").textContent}
+Type de coureur·euse : ${typeCoureur}
+    `
+
+    // ajout du coach de l'utilisateur
+    prompt += `
+
+Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :
+            `
+    prompt += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
+
+    // ajout des contraintes
+    prompt += `
+                       
+Contraintes :
+    - Reprend exactement le nom, le style du coach que l'utilisateur à configurer dans SPRINTIA
+    - Tutoie l'utilisateur et répond en français
+    - Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
+        toi (le coach de SPRINTIA) et l'utilisateur.`
+
+    return prompt
 }
 
 async function promptRecuperation() {
+    // début du prompt
+    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Récupération" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à comprendre s'il est en forme pour faire une séance d'entraînement, l'algorithme de récupération n'as accès que à la FC repos de l'utilisateur mais toi tu as accès à la FC repos et aux entraînements donc apporte un vraie plus
+    1. Interprète ce que SPRINTIA a analysé mais ne te contente pas de valider ce que l'algorithme analyse va chercher plus loin dans l'analyse étant donné que tu as accès à l'historique d'entraînement.
+    2. Suggére un entraînement que l'utilisateur pourrais faire en fonction des ses préférences et de sa récupération. N'hésites pas à lui conseiller du repos si il en a besoin.
 
+Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+
+Données :
+            `
+    let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+
+    if (historiqueData.length <= 0 || historiqueRecuperationData.length <= 0) {
+        // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
+        // une IA alors qu'il n'y a pas de data
+        return undefined
+    }
+
+    // ajout des données au prompt
+    prompt += JSON.stringify(historiqueData, null, 2)
+    prompt += JSON.stringify(historiqueRecuperationData, null, 2)
+
+    // ajout de l'interpretation de SPRINTIA
+    prompt += `
+        
+Voici ce que SPRINTIA a interpreté :
+L'analyse du coach de SPRINTIA : ${document.getElementById("reponse-coach").textContent}
+FC repos du jour : ${document.getElementById("fc-repos-today").textContent}
+Moyenne 30J : ${document.getElementById("fc-repos-moyenne-30j").textContent}
+    `
+
+    // ajout du coach de l'utilisateur
+    prompt += `
+
+Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :
+            `
+    prompt += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
+
+    // ajout des contraintes
+    prompt += `
+                       
+Contraintes :
+    - Reprend exactement le nom, le style du coach que l'utilisateur à configurer dans SPRINTIA
+    - Tutoie l'utilisateur et répond en français
+    - Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
+        toi (le coach de SPRINTIA) et l'utilisateur.`
+
+    return prompt
 }
 
 window.addEventListener("DOMContentLoaded", () => {

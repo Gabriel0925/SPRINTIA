@@ -2507,7 +2507,7 @@ div.banner-toggle {
     align-items: center;
     background-color: var(--COLOR_BACKGROUND_CARD);
     padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_NORMAL);
+    border-radius: 5.5rem;
     margin: var(--SPACE_M) 0;
     transition: all ease-out var(--TIME_TRANSITION);
 }

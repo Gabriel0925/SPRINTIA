@@ -21,8 +21,10 @@ function reinitialiserBriefing(btn) {
         localStorage.removeItem("iaFavorite") // on supprimer de la bdd
         favoriteIA("vibe") // on appelle la fonction comme si il y avait eu un click sur l'elt vibe
 
-        
+
         // --- Personnalisation des prompts ---
+        document.getElementById("toggle-personnalite-coach").checked = false
+        localStorage.removeItem("personnaliteCoachBriefing")
 
 
         // --- Niveaux d'analyse ---
@@ -41,6 +43,14 @@ function reinitialiserBriefing(btn) {
     }
 }
 
+function personnaliteCoach(event) {
+    if (event.target.checked) {
+        localStorage.setItem("personnaliteCoachBriefing", false)
+    } else {
+        localStorage.setItem("personnaliteCoachBriefing", true)
+    }
+}
+
 function restaureSettings() {
     // --- IA Favorite ---
     let iaFavoriteUser = localStorage.getItem("iaFavorite")
@@ -52,6 +62,12 @@ function restaureSettings() {
     }
 
     // --- Personnalisation des prompts ---
+    const personnaliteCoachUser = localStorage.getItem("personnaliteCoachBriefing")
+    if (personnaliteCoachUser == "false") { // si le user à désactiver la fonction
+        document.getElementById("toggle-personnalite-coach").checked = true
+    } else { // si il l'a activé
+        document.getElementById("toggle-personnalite-coach").checked = false
+    }
 
 
     // --- Niveaux d'analyse ---

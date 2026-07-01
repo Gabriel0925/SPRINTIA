@@ -11,7 +11,10 @@ async function windowsBriefing(textInButton) {
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
     document.querySelector("body").classList.add("no-scroll")
 
-    promptForIA = await buttonFonction[textInButton]()
+    promptForIA = await buttonFonction[textInButton]() // on créer le prompt
+    if (promptForIA != undefined) { // si le début de prompt a été généré
+        promptForIA += await addPromptContrainte(promptForIA) // on ajoute les contraintes
+    }
 }
 function closeWindows() {
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
@@ -84,7 +87,50 @@ async function coachUser() {
     return JSON.stringify({"nom_coach_user": nameCoach, "avatar_coach_user": avatarCoach, "style_coach_user": styleCoachUser}, null, 2)
 }
 
+
+async function addPromptContrainte(prompt) {
+    // --- Recup personnalisation des prompts ---
+    let personnaliteCoachBriefingUser = localStorage.getItem("personnaliteCoachBriefing")
+    if (personnaliteCoachBriefingUser == null) {personnaliteCoachBriefingUser="true"} // si pas de datas on autorise de base
+
+    // --- Recup niveaux d'analyse ---
+    let niveauAnalyseIaUser = localStorage.getItem("niveauAnalyseIA")
+    if (niveauAnalyseIaUser == null) {niveauAnalyseIaUser="modere"} // si pas de datas on met sur le niveau modéré
+
+    // --- commencement des contraintes pour l'IA ---
+    let promptWithContrainte = prompt
+    
+    // --- Personnalisation des prompts ---
+    if (personnaliteCoachBriefingUser == "true") { // si le user a activé le duplication du style du coach de SPRINTIA à son IA alors
+        promptWithContrainte += "Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :"
+        promptWithContrainte += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
         
+        promptWithContrainte += `
+Contraintes :
+- Reprend exactement le style du coach que l'utilisateur à configurer dans SPRINTIA
+- Tutoie l'utilisateur et répond en français
+- Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
+    toi (le coach de SPRINTIA) et l'utilisateur.`
+
+    } else {
+        promptWithContrainte += `
+Contraintes :
+- Adopte une posture de coach sportif neutre, factuelle et objective
+- Tutoie l'utilisateur et répond en français
+- Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
+    toi (le coach de SPRINTIA) et l'utilisateur.`
+    }
+
+    // --- Niveaux d'analyse ---
+    if (niveauAnalyseIaUser == "essentiel") {
+        promptWithContrainte += "\nExplique les concepts avec des mots simples, évite le jargon technique, privilégie la pédagogie."
+    } else if (niveauAnalyseIaUser == "expert") {
+        promptWithContrainte += "\nUtilise des termes techniques et physiologiques précis. L'utilisateur est un athlète expérimenté qui comprend les métriques de charge avancées."
+    }
+    // si le user a choisi modéré on ne change rien car les IA sont déjà dans une forme de neutralité
+
+    return promptWithContrainte
+}
 async function promptTendances() {
     // début du prompt
     let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt et donne à l'utilisateur :
@@ -115,22 +161,6 @@ Données :
 
     // ajout des données au prompt
     prompt += JSON.stringify(historiqueData, null, 2)
-
-    // ajout du coach de l'utilisateur
-    prompt += `
-
-Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :
-            `
-    prompt += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
-
-    // ajout des contraintes
-    prompt += `
-                       
-Contraintes :
-    - Reprend exactement le style du coach que l'utilisateur à configurer dans SPRINTIA
-    - Tutoie l'utilisateur et répond en français
-    - Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
-        toi (le coach de SPRINTIA) et l'utilisateur.`
 
     return prompt
 }
@@ -166,22 +196,6 @@ Charge aiguë (7J) : ${Number(document.getElementById("charge-7j").textContent)}
 Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}
 Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textContent)} CE
     `
-
-    // ajout du coach de l'utilisateur
-    prompt += `
-
-Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :
-            `
-    prompt += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
-
-    // ajout des contraintes
-    prompt += `
-                       
-Contraintes :
-    - Reprend exactement le nom, le style du coach que l'utilisateur à configurer dans SPRINTIA
-    - Tutoie l'utilisateur et répond en français
-    - Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
-        toi (le coach de SPRINTIA) et l'utilisateur.`
 
     return prompt
 }
@@ -225,22 +239,6 @@ Distance hebdomadaire conseillée : ${document.getElementById("reponse-algo-indu
 Type de coureur·euse : ${typeCoureur}
     `
 
-    // ajout du coach de l'utilisateur
-    prompt += `
-
-Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :
-            `
-    prompt += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
-
-    // ajout des contraintes
-    prompt += `
-                       
-Contraintes :
-    - Reprend exactement le nom, le style du coach que l'utilisateur à configurer dans SPRINTIA
-    - Tutoie l'utilisateur et répond en français
-    - Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
-        toi (le coach de SPRINTIA) et l'utilisateur.`
-
     return prompt
 }
 
@@ -275,22 +273,6 @@ L'analyse du coach de SPRINTIA : ${document.getElementById("reponse-coach").text
 FC repos du jour : ${document.getElementById("fc-repos-today").textContent}
 Moyenne 30J : ${document.getElementById("fc-repos-moyenne-30j").textContent}
     `
-
-    // ajout du coach de l'utilisateur
-    prompt += `
-
-Voici le coach que l'utilisateur à configurer dans la PWA SPRINTIA :
-            `
-    prompt += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
-
-    // ajout des contraintes
-    prompt += `
-                       
-Contraintes :
-    - Reprend exactement le nom, le style du coach que l'utilisateur à configurer dans SPRINTIA
-    - Tutoie l'utilisateur et répond en français
-    - Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
-        toi (le coach de SPRINTIA) et l'utilisateur.`
 
     return prompt
 }

@@ -70,8 +70,30 @@ function afficherData(dataWorkout) {
             <p class="zone-coach-name" id="nom-coach">JRM Coach</p>
             <p class="zone-coach-interpretation" id="reponse-coach">
                 Chargement...
-            </p> 
+            </p>
+            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
         </div>
+        <!-- Fenetre flottante pour SPRINTIA Briefing -->
+        <section class="background-SPRINTIA-briefing">
+            
+            <div class="windows-SPRINTIA-briefing">
+
+                <div class="windows-SPRINTIA-briefing-head">
+                    <p class="title">SPRINTIA Briefing</p>
+                    <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+                </div>
+                <p class="explanation-briefing">
+                    SPRINTIA a généré un prompt qui contient vos données d'entaînement. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                    le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                    <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                </p>
+                <div class="container-button-windows-SPRINTIA-briefing">
+                    <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+                </div>
+
+            </div>
+
+        </section>
 
         <section class="container-block"> 
 

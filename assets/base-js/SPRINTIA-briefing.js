@@ -3,7 +3,8 @@ const buttonFonction  = {
     "Analyser mes tendances": promptTendances,
     "Analyser ma CE": promptCE,
     "Analyser mon indulgence": promptIndulgence,
-    "Analyser ma récupération": promptRecuperation
+    "Analyser ma récupération": promptRecuperation,
+    "Approfondir l'analyse": promptAnalyseEntrainement
 }
 
 async function windowsBriefing(textInButton) {
@@ -275,6 +276,14 @@ Moyenne 30J : ${document.getElementById("fc-repos-moyenne-30j").textContent}
     `
 
     return prompt
+}
+
+async function promptAnalyseEntrainement() {
+    
+}
+
+async function promptAnalyseEntrainement() {
+    
 }
 
 window.addEventListener("DOMContentLoaded", () => {

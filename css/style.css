@@ -2346,7 +2346,7 @@ div.card-releases p.description-maj {
 
 div.action-list {
     max-width: var(--MAX_WIDTH);
-    margin: var(--SPACE_L) auto;
+    margin: var(--SPACE_M) auto;
 }
 div.action-list div.action-list-item {
     display: flex; 

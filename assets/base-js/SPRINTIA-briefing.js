@@ -4,7 +4,7 @@ const buttonFonction  = {
     "Analyser ma CE": promptCE,
     "Analyser mon indulgence": promptIndulgence,
     "Analyser ma récupération": promptRecuperation,
-    "Approfondir l'analyse": promptAnalyseEntrainement,
+    "Analyser mon entraînement": promptAnalyseEntrainement,
     "Demander à Vibe": promptDiscussion
 }
 
@@ -318,7 +318,45 @@ Moyenne 30J : ${document.getElementById("fc-repos-moyenne-30j").textContent}
 }
 
 async function promptAnalyseEntrainement() {
+    // récup de l'id de l'entraînement
+    const settingURL = window.location.search // recup des parametres de l'URL de la page 
 
+    if (settingURL) { // on vérifie qu'il y a un setting avant de faire un split
+        const tableauSeparation = settingURL.split("=") // ["?workout", "id"]
+        
+        if (tableauSeparation.length == 2) { // vérification pour éviter d'essayer de prendre l'index 1 alors qu'il y a que l'index 0 ou alors qu'il 5 index
+            idWorkout = parseInt(tableauSeparation[1]) // on recup l'id
+        } else {
+            return undefined // pour stoper le programme dans une autre fonction
+        }
+    } else {
+        return undefined // pour stoper le programme dans une autre fonction
+    }
+
+    // début du prompt
+    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Ton but ? Encourager et analyser les statistiques de l'entraînement de l'utilisateur tu devrais lui donner :
+    1. Une phrase de motivation
+    2. 1 insights clés sur son entraînement
+    3. Pose lui des questions sur cet entraînement
+
+Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+
+Données :
+            `
+
+    // récup des données entrainement de l'utilisateur
+    let historiqueData = await db.entrainement.get(idWorkout)
+
+    if (historiqueData == undefined) {
+        // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
+        // une IA alors qu'il n'y a pas de data
+        return undefined
+    }
+
+    // ajout des données au prompt
+    prompt += JSON.stringify(historiqueData, null, 2)
+
+    return prompt
 }
 
 async function promptDiscussion() {

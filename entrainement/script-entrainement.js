@@ -46,55 +46,12 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
 let idWorkout = undefined
 
 function afficherData(dataWorkout) {
+    // ajout des datas aux éléments existant
+    document.getElementById("nom-workout").textContent = dataWorkout.nom
+    document.querySelector(".text-toolbar").innerHTML = `<strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}`
+
     // Structure de base de la page entrainement
     let structureHTML = `
-        <h1>${dataWorkout.nom}</h1>
-
-        <div class="toolbar">
-            <p class="text-toolbar"><strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}</p>
-            <i class="fs-icon_plus" id="button-group-button"></i>
-        </div>
-
-        <div class="menu-many-action">
-            <li id="button-modifier">
-                <i class="fs-icon_modifier"></i>
-                Modifier
-            </li>
-            <li id="button-supprimer">
-                <i class="fs-icon_supprimer"></i>
-                Supprimer
-            </li>
-        </div>
-    
-        <div class="zone-coach" id="coach-ajoute-entrainement" style="margin: var(--SPACE_M) 0;">
-            <p class="zone-coach-name" id="nom-coach">JRM Coach</p>
-            <p class="zone-coach-interpretation" id="reponse-coach">
-                Chargement...
-            </p>
-            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
-        </div>
-        <!-- Fenetre flottante pour SPRINTIA Briefing -->
-        <section class="background-SPRINTIA-briefing">
-            
-            <div class="windows-SPRINTIA-briefing">
-
-                <div class="windows-SPRINTIA-briefing-head">
-                    <p class="title">SPRINTIA Briefing</p>
-                    <i class="fs-icon_fermer" onclick="closeWindows()"></i>
-                </div>
-                <p class="explanation-briefing">
-                    SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                    le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                    <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
-                </p>
-                <div class="container-button-windows-SPRINTIA-briefing">
-                    <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
-                </div>
-
-            </div>
-
-        </section>
-
         <section class="container-block"> 
 
             <div class="container-block-data">

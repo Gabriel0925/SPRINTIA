@@ -3,7 +3,7 @@ async function sendEmail(descriptionUser) {
     if (descriptionUser == "") {return alert("Veuillez remplir la zone de texte avant d'envoyer votre retour pour améliorer SPRINTIA.")}
 
     // message au user
-    buttonEnvoie.textContent = "Envoie..."
+    buttonEnvoie.textContent = "Envoi..."
     buttonEnvoie.disabled = true
 
     // prépa des datas à envoyer

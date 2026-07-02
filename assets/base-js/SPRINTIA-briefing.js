@@ -70,7 +70,7 @@ function nameFavoriteIA() {
         if (favoriteIA == "ia-locale") {
             // pas exactement le meme texte pour l'IA locale car les données tournent en local sur l'appareil
             document.querySelector(".explanation-briefing").innerHTML = `
-                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrés dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à ${dicoIA[favoriteIA]}</strong>.
                 <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
             `
@@ -79,7 +79,7 @@ function nameFavoriteIA() {
         } else {
             // changement du nom de l'IA dans le texte explicatif
             document.querySelector(".explanation-briefing").innerHTML = `
-                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrés dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à ${dicoIA[favoriteIA]}</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de ${dicoIA[favoriteIA]}.
                 <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
             `
@@ -138,6 +138,7 @@ async function addPromptContrainte(prompt) {
         promptWithContrainte += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
         
         promptWithContrainte += `
+
 Contraintes :
 - Reprend exactement le style du coach que l'utilisateur a configuré dans SPRINTIA
 - Tutoie l'utilisateur et répond en français
@@ -146,6 +147,7 @@ Contraintes :
 
     } else {
         promptWithContrainte += `
+
 Contraintes :
 - Adopte une posture de coach sportif neutre, factuelle et objective
 - Tutoie l'utilisateur et répond en français
@@ -155,9 +157,9 @@ Contraintes :
 
     // --- Niveaux d'analyse ---
     if (niveauAnalyseIaUser == "essentiel") {
-        promptWithContrainte += "\nExplique les concepts avec des mots simples, évite le jargon technique, privilégie la pédagogie."
+        promptWithContrainte += "\n\nExplique les concepts avec des mots simples, évite le jargon technique, privilégie la pédagogie."
     } else if (niveauAnalyseIaUser == "expert") {
-        promptWithContrainte += "\nUtilise des termes techniques et physiologiques précis. L'utilisateur est un athlète expérimenté qui comprend les métriques de charge avancées."
+        promptWithContrainte += "\n\nUtilise des termes techniques et physiologiques précis. L'utilisateur est un athlète expérimenté qui comprend les métriques de charge avancées."
     }
     // si le user a choisi modéré on ne change rien car les IA sont déjà dans une forme de neutralité
 
@@ -267,7 +269,7 @@ Voici ce que SPRINTIA a interpreté :
 L'analyse du coach de SPRINTIA : ${document.getElementById("reponse-coach-indulgence").textContent}
 Distance réel sur 7J : ${document.getElementById("reponse-algo-allure").textContent}
 Distance hebdomadaire conseillée : ${document.getElementById("reponse-algo-indulgence").textContent}
-Type de coureur·euse : ${typeCoureur}
+Type de coureur·euse (séléctionné par l'utilisateur dans les paramètres) : ${typeCoureur}
     `
 
     return prompt
@@ -284,6 +286,13 @@ Données :
             `
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(7)).toArray()
     let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(7)).toArray()
+
+    if (historiqueData.length < 2) {
+        historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    }
+    if (historiqueRecuperationData.length < 3) {
+        historiqueRecuperationData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    } 
 
     if (historiqueData.length <= 0 || historiqueRecuperationData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
@@ -309,7 +318,7 @@ Moyenne 30J : ${document.getElementById("fc-repos-moyenne-30j").textContent}
 }
 
 async function promptAnalyseEntrainement() {
-    
+
 }
 
 async function promptDiscussion() {
@@ -327,6 +336,10 @@ async function promptDiscussion() {
         historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(30)).toArray()
     } else if (historiqueDataWorkout.length > 10) {
         historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    }
+
+    if (historiqueDataRecuperation.length < 3) {
+        historiqueDataRecuperation = await db.recuperation.where("date").aboveOrEqual(createObjetDate(14)).toArray()
     }
 
     // on vérifie que l'historique d'entrainement car les datas de récupération c'est pas obligatoire

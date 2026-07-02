@@ -97,6 +97,12 @@ function nameFavoriteIA() {
 }
 
 
+function cleanRecuperationForIA(allRecuperation) {
+    return allRecuperation.map(elt => ({ // on garde que les datas essentielles car les ID par exemple on s'en fou
+        "date": elt.date,
+        "fc_repos": elt.fc_repos
+    }))
+}
 
 async function coachUser() {
     let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
@@ -276,8 +282,8 @@ Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
 
 Données :
             `
-    let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
-    let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(7)).toArray()
+    let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(7)).toArray()
 
     if (historiqueData.length <= 0 || historiqueRecuperationData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
@@ -287,6 +293,7 @@ Données :
 
     // ajout des données au prompt
     prompt += JSON.stringify(historiqueData, null, 2)
+    historiqueRecuperationData = cleanRecuperationForIA(historiqueRecuperationData)
     prompt += JSON.stringify(historiqueRecuperationData, null, 2)
 
     // ajout de l'interpretation de SPRINTIA
@@ -311,8 +318,16 @@ async function promptDiscussion() {
 
     // récup des données entrainement de l'utilisateur
     let dataProfil = await db.profil.get(1)
-    let historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(30)).toArray()
-    let historiqueDataRecuperation = await db.recuperation.where("date").aboveOrEqual(createObjetDate(30)).toArray()
+    let historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(21)).toArray()
+    let historiqueDataRecuperation = await db.recuperation.where("date").aboveOrEqual(createObjetDate(7)).toArray()
+    let historiqueDataRecuperation30J = await db.recuperation.where("date").aboveOrEqual(createObjetDate(30)).toArray() // on s'en sert pr calculer la baseline
+
+    // on adapte le nombre de donnée en fonction de si il y a trop ou pas assez de données
+    if (historiqueDataWorkout.length < 5) {
+        historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(30)).toArray()
+    } else if (historiqueDataWorkout.length > 10) {
+        historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    }
 
     // on vérifie que l'historique d'entrainement car les datas de récupération c'est pas obligatoire
     if (historiqueDataWorkout.length <= 0) {
@@ -328,17 +343,28 @@ async function promptDiscussion() {
     }
 
     // les datas des entrainements des users
-    prompt += "\nL'historique d'entrainement de l'utilisateur :\n"
+    prompt += "\n\nL'historique d'entrainement de l'utilisateur :\n"
     prompt += JSON.stringify(historiqueDataWorkout, null, 2)
 
     if (historiqueDataRecuperation.length > 0) { // si le user à enregistré des données de récupération on ajoute ses datas dans le prompt
         // le profil de l'utilisateur
-        prompt += "\nLes données de récupération de l'utilisateur :\n"
+        prompt += "\n\nLes données de récupération de l'utilisateur :\n"
+        historiqueDataRecuperation = cleanRecuperationForIA(historiqueDataRecuperation)
         prompt += JSON.stringify(historiqueDataRecuperation, null, 2)
+
+        // calcul de la baseline
+        let sommeFcRepos = 0
+        historiqueDataRecuperation30J.forEach(element => {
+            sommeFcRepos += element.fc_repos
+        });
+        let moyenne30J = Math.round(sommeFcRepos/historiqueDataRecuperation30J.length)
+
+        // ajout de la baseline
+        prompt += "\nMoyenne 30J : " + moyenne30J + " bpm"
     }
 
     // ajout du prompt de l'utilisateur (pr info on a déjà vérifié si le textearea était vide dans le html)
-    prompt += `\nVoici la question que l'utilisateur a posé à SPRINTIA : '${document.getElementById("promt-user").value}'`
+    prompt += `\n\nVoici la question que l'utilisateur a posé à SPRINTIA : '${document.getElementById("promt-user").value}'`
 
     return prompt
 }

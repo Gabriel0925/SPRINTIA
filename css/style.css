@@ -2316,7 +2316,7 @@ div.visuel-version p.visuel-version-title{
     font-weight: 1000;
     margin-bottom: var(--SPACE_M);
     
-    background-image: linear-gradient(to right, var(--COLOR_IA_END), var(--COLOR_IA_START), var(--COLOR_IA_END));
+    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

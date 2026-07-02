@@ -48,7 +48,7 @@ async function SauvegardePreference() {
     setTimeout(() => {
         // remise etat normal
         BoutonSauvegarde.textContent = "Sauvegarder"
-        BoutonSauvegarde.disabled = false // Réactivation du bouton
+        BoutonSauvegarde.disabled = false 
     }, 1300);
 
     // Changement du titre du h1
@@ -168,7 +168,7 @@ async function Reinitialisation() {
 
         // remise etat normal
         Button.textContent = "Réinitialiser votre coach"
-        Button.disabled = false // Réactivation du bouton
+        Button.disabled = false 
     }
 
     return

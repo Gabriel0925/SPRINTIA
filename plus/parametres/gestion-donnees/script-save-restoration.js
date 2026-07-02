@@ -1,104 +1,95 @@
 // bien faire attention au : "(!!!--- Modifier si ajout de table ---!!!)" c'est partout dans les tables
 
-async function DownloadDatas() {
-    let BoutonDownload = document.getElementById("download-button")
-    BoutonDownload.textContent = "Téléchargement..."
-    BoutonDownload.disabled = true // désactivation du bouton
+async function downloadDatas() {
+    let buttonDownload = document.getElementById("download-button")
+    buttonDownload.textContent = "Téléchargement..."
+    buttonDownload.disabled = true 
 
-    // Initialisation
-    let ClefLocalStorage = "" // prepa pr la boucle
-    let DicoDataLocalStorage = {} // ex structure dico : themeUser: "theme_azur",...
+    // init
+    let dicoDataLocalStorage = {} // ex structure dico : 'personnaliteCoachBriefing': 'true',...
 
-    for (let i=0; i < localStorage.length; i++) { // on parcour la longueur du localstorage
-        ClefLocalStorage = localStorage.key(i) // on recupere la clé de elt du local storage, ça marche de la meme meniere qu'une liste avec les index par exemple ça renvoie : "ToggleThemeComplet"
-        DicoDataLocalStorage[ClefLocalStorage] = localStorage.getItem(ClefLocalStorage) // ajout dans le dico
+    // boucle qui parcout tous ce qu'il y a d'enregistrer dans le local storage
+    for (let i=0; i < localStorage.length; i++) {
+        // on récup la clé de l'element du local storage et on l'ajoute au dico en recherchant la valeur de cette clé
+        dicoDataLocalStorage[localStorage.key(i)] = localStorage.getItem(localStorage.key(i))
     }
 
     // (!!!--- Modifier si ajout de table ---!!!)
     // recup des datas de chaque table de l'indexedDB 
-    let WorkoutDB = await db.entrainement.toArray()
-    let NiveauCourseDB = await db.niveau_course.toArray()
-    let JrmCoachDB = await db.JRM_Coach.toArray()
-    let ProfilDB = await db.profil.toArray()
+    let workoutDB = await db.entrainement.toArray()
+    let niveauCourseDB = await db.niveau_course.toArray()
+    let jrmCoachDB = await db.JRM_Coach.toArray()
+    let profilDB = await db.profil.toArray()
     let recupDB = await db.recuperation.toArray()
 
     // (!!!--- Modifier si ajout de table ---!!!)
-    // Dictionnaire avec les datas du local storage et les tables de l'indexed DB
-    const DataTelecharger = {
-        DataLocalStorage: DicoDataLocalStorage,
+    const dataTelecharger = {
+        DataLocalStorage: dicoDataLocalStorage,
+
         DataIndexedDB: {
-            entrainement: WorkoutDB,
-            niveau_course: NiveauCourseDB,
-            JRM_Coach: JrmCoachDB,
-            profil: ProfilDB,
+            entrainement: workoutDB,
+            niveau_course: niveauCourseDB,
+            JRM_Coach: jrmCoachDB,
+            profil: profilDB,
             recuperation:recupDB
         }
     }
 
-    // Transformation des objets (le dico avec toutes les datas) en txt JSON
-    let TxtDataUser = JSON.stringify(DataTelecharger, null, 2) // le 2 c'est pour l'indentation avec les "tab" et le null pour appliquer aucun filtre
+    // transformation du dico en txt JSON, avec 2 tab comme identation et null pr appliquer aucun filtre
+    let txtDataUser = JSON.stringify(dataTelecharger, null, 2)
 
-    // création d'un blob
-    // l'utilité du blod est de contourner le back-end en gros on créer une URL temporaire
-    // juste pour que lors du clic sur le bouton, au moins le navigateur c'est quoi aller chercher ici le fichiers JSON
-    const VarBlob = new Blob([TxtDataUser], {type: "application/json"})
+    // création d'un objet nommé blob (=en gros on créer une URL temporaire)
+    // au moins la navigateur c'est ou télécharger le "fichier"
+    let urlBlob = URL.createObjectURL(new Blob([txtDataUser], {type: "application/json"})) // par ex : 'blob:http://127.0.0.1:5500/414b2c61-e902-4b86-84fb-61ad6afea08c'
+    let baliseHTML = document.createElement("a")
 
-    // Création d'un lien pour le blob (c un objet)
-    let UrlBlob = URL.createObjectURL(VarBlob)
-    let LienURL = document.createElement("a") // on créer la balise a dans le html
-
-    LienURL.href = UrlBlob // on créer le lien a href
-    LienURL.download = "Sauvegarde-SPRINTIA.json" // pour enregistrer le fichier dans l'appareil d'un user
-    LienURL.click() // on simmule le click pour lancer le download
+    baliseHTML.href = urlBlob // on attribue l'URL du blob à la balise a
+    baliseHTML.download = "Sauvegarde-SPRINTIA.json" // nom du "fichier"
+    baliseHTML.click() // on simule un click pour download
 
     setTimeout(() => {
         // transimission du message
-        BoutonDownload.textContent = "Téléchargé"
+        buttonDownload.textContent = "Téléchargé"
     }, 650);
 
     setTimeout(() => {
         // remise etat normal
-        BoutonDownload.textContent = "Télécharger vos données"
-        BoutonDownload.disabled = false // Réactivation du bouton
-    }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout
- 
-    return
+        buttonDownload.textContent = "Télécharger vos données"
+        buttonDownload.disabled = false 
+    }, 1300);
 }
 
-async function ReadFile(event) {
-    const File = event.target.files[0]
+async function restaurationDatas(event) {
+    const file = event.target.files[0] // récup du fichier
 
-    if (File) {
-        let BoutonRestoration = document.getElementById("restoration-button")
-        BoutonRestoration.textContent = "Restauration..."
-        BoutonRestoration.disabled = true // désactivation du bouton
+    if (file) { // si ya un fichier on change l'état du bouton
+        let buttonRestoration = document.getElementById("restoration-button")
+        buttonRestoration.textContent = "Restauration..."
+        buttonRestoration.disabled = true
 
         try {
-            // ne pas utiliser fetch car fetch attend une url vers un serveur
-            const TextFile = await File.text() // on liis le contenu du fichier sous format text
-            const DataFile = JSON.parse(TextFile) // "conversion" en objet javascript
-            const DataFileLocalStorage = DataFile.DataLocalStorage // dico des datas localstorage uniquement
+            const textFile = await file.text() // on lis le contenu du fichier sous la forme d'un texte
+            const dataFile = JSON.parse(textFile) // conversion en objet js
+            const dataFileLocalStorage = dataFile.DataLocalStorage // recup du dico des datas du localstorage
 
-            // on vide le local storage avant d'entrer les datas du fichier user
-            localStorage.clear()
-            for (var key in DataFileLocalStorage) { // on enregistre les datas du localstorage
-                localStorage.setItem(key, DataFileLocalStorage[key])
+            localStorage.clear() // réinitialisation du localStorage
+            for (var key in dataFileLocalStorage) {
+                localStorage.setItem(key, dataFileLocalStorage[key]) // enregistrement
             }
-            // !! impératif
-            sessionStorage.clear()
+            sessionStorage.clear() // on clear le sessionStorage au passage
 
-            const DataFileIndexedDB = DataFile.DataIndexedDB // dico des datas indexedDB uniquement
-
-            // (!!!--- Modifier si ajout de table ---!!!)
-            // on isole les datas de chaque table
-            const TableEntrainement = DataFileIndexedDB.entrainement
-            const TableNiveauCOurse = DataFileIndexedDB.niveau_course
-            const TableJRMCoach = DataFileIndexedDB.JRM_Coach
-            const TableProfil = DataFileIndexedDB.profil
-            const TableRecuperation = DataFileIndexedDB.recuperation
+            const dataFileIndexedDB = dataFile.DataIndexedDB // recup du dico des datas de l'indexedDB
 
             // (!!!--- Modifier si ajout de table ---!!!)
-            // on vide chaque table de l'indexedDB avant d'ajouter les datas
+            // isolation des datas de chaque table
+            const tableEntrainement = dataFileIndexedDB.entrainement
+            const tableNiveauCOurse = dataFileIndexedDB.niveau_course
+            const tableJRMCoach = dataFileIndexedDB.JRM_Coach
+            const tableProfil = dataFileIndexedDB.profil
+            const tableRecuperation = dataFileIndexedDB.recuperation
+
+            // (!!!--- Modifier si ajout de table ---!!!)
+            // on vide chaque table de l'indexedDB avant d'ajouter les datas du fichier importer par le user
             await db.entrainement.clear()
             await db.niveau_course.clear()
             await db.JRM_Coach.clear()
@@ -106,72 +97,66 @@ async function ReadFile(event) {
             await db.recuperation.clear()
 
             // (!!!--- Modifier si ajout de table ---!!!)
-            if (TableEntrainement.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
-                for (let element of TableEntrainement) { // on recupere les datas ligne par ligne de la table correspondante
+            if (tableEntrainement.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
+                for (let element of tableEntrainement) { // on recupere les datas ligne par ligne de la table correspondante
                     await db.entrainement.add(element)
                 }
             }
-            if (TableNiveauCOurse.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
-                for (let element of TableNiveauCOurse) { // on recupere les datas ligne par ligne de la table correspondante
+            if (tableNiveauCOurse.length > 0) {
+                for (let element of tableNiveauCOurse) {
                     await db.niveau_course.add(element)
                 }
             }
-            if (TableJRMCoach.length > 0) { // on verifie que le tableau n'est pas vide sinon ça me met une erreur
-                for (let element of TableJRMCoach) { // on recupere les datas ligne par ligne de la table correspondante
+            if (tableJRMCoach.length > 0) {
+                for (let element of tableJRMCoach) {
                     await db.JRM_Coach.add(element)
                 }
             }
             // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA-4.2 
-            if (TableProfil != undefined && TableProfil.length > 0) {     
-                for (let element of TableProfil) { // on recupere les datas ligne par ligne de la table correspondante
+            if (tableProfil != undefined && tableProfil.length > 0) {     
+                for (let element of tableProfil) {
                     // on le met à l'id 1 car il y a que cette ligne dans la bdd
                     await db.profil.put(element, 1) 
                 }
             }
             // vérification si la table profil existe parce que cette table a été ajouté avec SPRINTIA-4.2 
-            if (TableRecuperation != undefined && TableRecuperation.length > 0) {     
-                for (let element of TableRecuperation) { // on recupere les datas ligne par ligne de la table correspondante
-                    // on le met à l'id 1 car il y a que cette ligne dans la bdd
-                    await db.recuperation.put(element, 1) 
+            if (tableRecuperation != undefined && tableRecuperation.length > 0) {     
+                for (let element of tableRecuperation) {
+                    await db.recuperation.add(element)
                 }
             }
     
-            setTimeout(async () => { // async pour remplir le tableau
+            setTimeout( () => {
                 // transimission du message
-                BoutonRestoration.textContent = "Restauré"
-                // et remplit le tableau si il y a des datas
-                await remplirPlaceProfil()
-                // on replace le toggle dans la bonne position
-                init()
-                logoDynamique("Vous revoilà 😇")
+                buttonRestoration.textContent = "Restauré"
+                logoDynamique("Vous revoilà 😇") // petite animation pour le user
             }, 650);
 
             setTimeout(() => {
                 // remise etat normal
-                BoutonRestoration.textContent = "Restaurer vos données"
-                BoutonRestoration.disabled = false // Réactivation du bouton
+                buttonRestoration.textContent = "Restaurer vos données"
+                buttonRestoration.disabled = false 
             }, 1300);
 
         } catch {
             alert("Une erreur est survenue, veuillez réessayer !")
+            buttonRestoration.textContent = "Restaurer vos données"
+            buttonRestoration.disabled = false 
+            return
         }
     }
-
-    return
 }
 
-async function SupprimerDatas() {
-    // Demande de confirmation avant de continuer
+async function reinitialiserSPRINTIA() {
     if (confirm("Êtes-vous sur de vouloir supprimer toutes vos données ?")) {
-        let ButtonReinitialiser = document.getElementById("reinitialiser-SPRINTIA")
-        ButtonReinitialiser.textContent = "Réinitialisation..."
-        ButtonReinitialiser.disabled = true // désactivation du bouton
+        let buttonReinitialiser = document.getElementById("reinitialiser-SPRINTIA")
+        buttonReinitialiser.textContent = "Réinitialisation..."
+        buttonReinitialiser.disabled = true
        
         localStorage.clear()
         sessionStorage.clear()
         
         // (!!!--- Modifier si ajout de table ---!!!)
-        // on vide chaque table de l'indexedDB avant d'ajouter les datas
         await db.entrainement.clear()
         await db.niveau_course.clear()
         await db.JRM_Coach.clear()
@@ -179,18 +164,14 @@ async function SupprimerDatas() {
         await db.recuperation.clear()
 
         setTimeout(() => {
-            // transimission du message
-            ButtonReinitialiser.textContent = "Réinitialisé"
+            buttonReinitialiser.textContent = "Réinitialisé"
         }, 650);
 
         setTimeout(() => {
             // remise etat normal
-            ButtonReinitialiser.textContent = "Réinitialiser SPRINTIA"
-            ButtonReinitialiser.disabled = false // Réactivation du bouton
+            buttonReinitialiser.textContent = "Réinitialiser SPRINTIA"
+            buttonReinitialiser.disabled = false 
             window.location.href = "../../../index.html"
-        }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout
-        
+        }, 1300);
     }
-
-    return
 }

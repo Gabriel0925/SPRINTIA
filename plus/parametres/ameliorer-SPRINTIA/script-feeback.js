@@ -23,7 +23,7 @@ async function sendEmail(descriptionUser) {
         }, 650);
         setTimeout(() => {
             buttonEnvoie.textContent = "Envoyer"
-            buttonEnvoie.disabled = false // Réactivation du bouton
+            buttonEnvoie.disabled = false 
         }, 1300);
     } catch(error) {
         alert("L'envoie a échoué, vérifie ta connexion à internet.")

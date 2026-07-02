@@ -59,7 +59,7 @@ async function saveNiveauCourse() {
     setTimeout(() => {
         // remise etat normal
         boutonLimite1Clic.textContent = "Sauvegarder"
-        boutonLimite1Clic.disabled = false // Réactivation du bouton
+        boutonLimite1Clic.disabled = false 
         window.location.href = "niveau-course-analyse.html?levelrunregister"
     }, 1300);
 }

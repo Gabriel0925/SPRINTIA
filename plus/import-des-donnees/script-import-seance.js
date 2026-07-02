@@ -632,19 +632,14 @@ async function uploadFileTCX(event) {
     let button = document.getElementById("button-import-tcx")
 
     if (fileTCX) {
+        button.disabled = true
+        button.textContent = "Importation..."
+
         try {
-            // transmet info au user
-            button.disabled = true
-            button.textContent = "Importation..."
-
-            // Lecture du fichier en texte
-            let textFile = await fileTCX.text()
+            let textFile = await fileTCX.text() // on récup le contenu du fichier en texte
             
-            // Création d'un objet pour transformer le texte en DOM
-            const parser = new DOMParser()
-
-            // transformation du texte en document XML c'est un langage équivalent à HTML
-            const xmlDoc = parser.parseFromString(textFile, "text/xml") // "parseFromString" pour convertir ce text en str
+            const parser = new DOMParser() // création d'un objet pr transformer le txt en DOM
+            const xmlDoc = parser.parseFromString(textFile, "text/xml") // transformation du texte en document XML c'est un langage équivalent à HTML
 
             //console.log(xmlDoc)
 
@@ -860,17 +855,17 @@ async function uploadFileTCX(event) {
                 await db.entrainement.add(dicoDataClean);
             }
 
-            // logo dynamique pour dire que c'est okk
-            setTimeout(() => {              
-                button.disabled = false
-                button.textContent = "Importer TCX"
-                window.location.href = "../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
-            }, 650)   
+            button.textContent = "Importé"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            window.location.href = "../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
 
         } catch {
-            alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX est valide et réessayez.")
-            button.disabled = false
+            console.log(error)
+            button.textContent = "Une erreur s'est produite"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        } finally {
             button.textContent = "Importer TCX"
+            button.disabled = false
         }
 
     } 

@@ -642,7 +642,6 @@ async function uploadFileTCX(event) {
             const xmlDoc = parser.parseFromString(textFile, "text/xml") // transformation du texte en document XML c'est un langage équivalent à HTML
 
             console.log(xmlDoc)
-            return
 
             const dataLap = xmlDoc.getElementsByTagName("Lap")
             const tableauDataLap = Array.from(dataLap) // transformation des balises en tableau js pr les laps
@@ -659,6 +658,9 @@ async function uploadFileTCX(event) {
             let workoutFcMoy = 0
             let workoutFcMax = 0
             let workoutMaximumSpeed = 0
+
+            let workoutDenivele = 0
+            let deniveleLastLap = undefined
 
             let lapFcMoy= []
             let lapFcMax = []
@@ -684,15 +686,32 @@ async function uploadFileTCX(event) {
                 if (maximumSpeedLap > workoutMaximumSpeed) {
                     workoutMaximumSpeed = maximumSpeedLap
                 }
+
+                // recup du dénivelé si il est présent
+                const pointsAltitudeLap = element.querySelectorAll("AltitudeMeters") // du lap actuel uniquement
+                pointsAltitudeLap.forEach(elt => {
+                    const altitudeNow = Number(elt?.textContent ?? 0)
+
+                    // si c'est le premier point on l'init
+                    if (deniveleLastLap == undefined) {deniveleLastLap=altitudeNow}
+
+                    if (altitudeNow > deniveleLastLap) { // si ça monte on ajoute la différence
+                        workoutDenivele = workoutDenivele+(altitudeNow-deniveleLastLap)
+                    }
+
+                    deniveleLastLap = altitudeNow
+                })
             });
 
             // nettoyage des datas
             if (workoutFcMax == 0) {workoutFcMax=undefined}
             if (workoutMaximumSpeed == 0) {workoutMaximumSpeed=undefined}
+            if (workoutDenivele == 0) {workoutDenivele=undefined} else {
+                workoutDenivele = Math.floor(workoutDenivele) // clean data
+            }
 
-            // boucle pour parcourir les FC moyenne de chaque lap et trouver la FC moyenne de l'entraînement
-            if (workoutFcMoy == 0) {workoutFcMoy = undefined}
-            else {
+            // derniere étape pour le calcul de la fc moyenne
+            if (workoutFcMoy == 0) {workoutFcMoy = undefined} else {
                 workoutFcMoy = Math.round(workoutFcMoy/workoutTime) // rappel de la formule : (FC moy du lap * durée du lap en secondes) / durée totale de l'entrainement en secondes
             }
 
@@ -703,28 +722,7 @@ async function uploadFileTCX(event) {
             if (workoutDistance != 0 && workoutDistance != undefined) {workoutDistance = Number(workoutDistance.toFixed(2))} else {workoutDistance = undefined}
             if (workoutMaximumSpeed != 0 && workoutMaximumSpeed != undefined) {workoutMaximumSpeed = Number(workoutMaximumSpeed.toFixed(2))} else {workoutMaximumSpeed = undefined}
 
-            // récup du dénivelé positif de l'entraînement 
-            const dataAltitude = xmlDoc.getElementsByTagName("AltitudeMeters")
-            // init pour la boucle
-            let workoutDenivele = 0
-            if (dataAltitude.length > 0) {
-                const tableauDataAltitude = Array.from(dataAltitude) // conversion du xml en tableau
-                let deniveleLastLap = Number(tableauDataAltitude[0].textContent)
-                tableauDataAltitude.forEach(element => {
-                    // formule pr calculer le denivele positif : si le denivele du lap actuel est supérieur au denivele du lap précédent alors on ajoute la différence au dénivelé total de l'entraînement
-                    if (Number(element.textContent) > deniveleLastLap) {
-                        workoutDenivele = workoutDenivele+(Number(element.textContent)-deniveleLastLap) 
-                    }
-
-                    deniveleLastLap = Number(element.textContent) // on met à jour le dénivelé du lap précédent pour la prochaine itération de la boucle
-                });
-
-                // arrondi des valeurs
-                workoutDenivele = Math.floor(workoutDenivele)
-
-            }
-            if (workoutDenivele == 0) {workoutDenivele = undefined}
-
+            // calcul de l'allure moyenne ou de la vitesse en fonction du sport
             let workoutAllureMoy = 0
             let workoutVitesseMoy = 0
             if (workoutSport != "Libre") {
@@ -746,6 +744,7 @@ async function uploadFileTCX(event) {
             if (workoutAllureMoy == 0) {workoutAllureMoy = undefined}
             if (workoutVitesseMoy == 0) {workoutVitesseMoy = undefined}
 
+// !!! à revoir !!!
             // calcul du RPE
             // formule ci dessous à améliorer parce qu'elle n'est pas prouvé scientifiquement
             let rpeWorkout = Math.round((workoutFcMoy/workoutFcMax)*10) || 1 // formule pour calculer le RPE : (FC moy / FC max) * 10
@@ -754,18 +753,12 @@ async function uploadFileTCX(event) {
             } else if (rpeWorkout > 10) { // si supérieur à 10 on le met sur la valeur max (=10)
                 rpeWorkout = 10
             }
-            let chargeEntrainementWorkout = Math.floor(rpeWorkout*workoutTime) 
+            let chargeEntrainementWorkout = Math.floor(rpeWorkout*workoutTime)
+// !!! fin de à revoir !!! 
 
-            // si la durée de l'entrainement est pas définie ou égale à 0 on enregsitre rien
-            if (workoutTime == 0 || workoutTime == undefined) {
+            // si la durée ou la date de l'entrainement n'est pas définie ou égale à 0 on enregistre rien
+            if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
                 alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient une durée d'entraînement valide.")
-                button.disabled = false
-                button.textContent = "Importer fichier"
-                return
-            }
-            // pareil mais pour la date
-            if (workoutDate == undefined || new Date(workoutDate) == "Invalid Date") {
-                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient une date d'entraînement valide.")
                 button.disabled = false
                 button.textContent = "Importer fichier"
                 return
@@ -773,80 +766,59 @@ async function uploadFileTCX(event) {
 
             // Calcul de la transpiration
             let profilDB = await db.profil.get(1)
-            let TranspirationEstimee = 0
+            let transpirationEstimee = 0
             let HydratationEstimee = 0
 
             if (profilDB != undefined) {
                 let poidsUser = Number(profilDB.poids)
                 let DureeHeure = workoutTime/60 // Conversion de la durée en heure
-                let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
+                let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
 
                 // Attribution de la valeur du RPE
-                if (rpeWorkout <= 3) {
-                    CoefficientRpe = CoefficientRpe[0]
-                } else if (rpeWorkout <= 6) {
-                    CoefficientRpe = CoefficientRpe[1]
-                } else if (rpeWorkout <= 8) {
-                    CoefficientRpe = CoefficientRpe[2]
-                } else {
-                    CoefficientRpe = CoefficientRpe[3]
-                }
+                if (rpeWorkout <= 3) {coefficientRpe = coefficientRpe[0]} 
+                else if (rpeWorkout <= 6) {coefficientRpe = coefficientRpe[1]}
+                else if (rpeWorkout <= 8) {coefficientRpe = coefficientRpe[2]}
+                else {coefficientRpe = coefficientRpe[3]}
 
                 // Calcul
-                TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
-                HydratationEstimee = Math.round(TranspirationEstimee*1.2)
+                transpirationEstimee = Math.round((DureeHeure*coefficientRpe*(poidsUser/70))*1000)
+                hydratationEstimee = Math.round(transpirationEstimee*1.2)
             } else {
-                TranspirationEstimee = undefined
-                HydratationEstimee = undefined
+                transpirationEstimee = undefined
+                hydratationEstimee = undefined
             }
 
             // enregistrement des datas recup dans la BDD 
-            if (workoutSport != "Libre") {
-                const dicoData = {
-                    sport: workoutSport,
-                    nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
-                    date: workoutDate,
-                    duree: workoutTime,     
-                    rpe: rpeWorkout,
-                    fc_moy: workoutFcMoy,
-                    fc_max: workoutFcMax,
-                    distance:workoutDistance,
-                    allure_moy: workoutAllureMoy,
-                    vitesse_moy: workoutVitesseMoy,
-                    vitesse_max: workoutMaximumSpeed,
-                    denivele: workoutDenivele,
-                    charge_entrainement: chargeEntrainementWorkout,
-                    transpiration_estimee: TranspirationEstimee,
-                    hydratation_estimee: HydratationEstimee
-                }
-                const dicoDataClean = removeValueUndefined(dicoData) // toutes les valeurs en undefined sont enlever du dico
-
-                await db.entrainement.add(dicoDataClean);
-
-            } else { // si le sport est libre on enregistre mais on limite le nombre de données on autorise de prendre que la distance comme datas spe
-                const dicoData = {
-                    sport: workoutSport,
-                    nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
-                    date: workoutDate,
-                    duree: workoutTime,     
-                    rpe: rpeWorkout,
-                    fc_moy: workoutFcMoy,
-                    fc_max: workoutFcMax,
-                    distance:workoutDistance,
-                    charge_entrainement: chargeEntrainementWorkout,
-                    transpiration_estimee: TranspirationEstimee,
-                    hydratation_estimee: HydratationEstimee
-                }
-                const dicoDataClean = removeValueUndefined(dicoData) // toutes les valeurs en undefined sont enlever du dico
+            let dicoDataBase = {                    
+                sport: workoutSport,
+                nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
+                date: workoutDate,
+                duree: workoutTime,     
+                rpe: rpeWorkout,
+                fc_moy: workoutFcMoy,
+                fc_max: workoutFcMax,
                 
-                await db.entrainement.add(dicoDataClean);
+                distance:workoutDistance,
+
+                charge_entrainement: chargeEntrainementWorkout,
+                transpiration_estimee: transpirationEstimee,
+                hydratation_estimee: hydratationEstimee
             }
+            if (workoutSport != "Libre") {
+                // ajout des datas spé à la couse et au vélo
+                dicoDataBase["allure_moy"] = workoutAllureMoy
+                dicoDataBase["vitesse_moy"] = workoutVitesseMoy
+                dicoDataBase["vitesse_max"] = workoutMaximumSpeed
+                dicoDataBase["denivele"] = workoutDenivele
+            }
+            const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
+            await db.entrainement.add(dicoDataClean);
 
             button.textContent = "Importé"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
             window.location.href = "../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
 
-        } catch {
+        } catch(error) {
             console.log(error)
             button.textContent = "Une erreur s'est produite"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
@@ -855,7 +827,5 @@ async function uploadFileTCX(event) {
             button.disabled = false
         }
 
-    } 
-
-    return
+    }
 }

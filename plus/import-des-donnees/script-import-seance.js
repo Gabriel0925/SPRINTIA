@@ -641,72 +641,59 @@ async function uploadFileTCX(event) {
             const parser = new DOMParser() // création d'un objet pr transformer le txt en DOM
             const xmlDoc = parser.parseFromString(textFile, "text/xml") // transformation du texte en document XML c'est un langage équivalent à HTML
 
-            //console.log(xmlDoc)
+            console.log(xmlDoc)
+            return
 
             const dataLap = xmlDoc.getElementsByTagName("Lap")
-            const tableauDataLap = Array.from(dataLap) // création d'un tableau pour les balises LAP
+            const tableauDataLap = Array.from(dataLap) // transformation des balises en tableau js pr les laps
 
             // Recup du sport et de la date
             const workoutSport = dicoNameSport[xmlDoc.querySelector("Activity").getAttribute("Sport")] || "Libre" // si le sport n'est pas dans le dico on le met en Libre
-            let XmlDate = xmlDoc.querySelector("Id").textContent // on obtient ça : 2026-03-28T08:08:56Z
-            let tableauXmlDate = XmlDate.split("T") // ["2026-03-28", "08:08:56Z"]
+            let xmlDate = xmlDoc.querySelector("Id").textContent // on obtient ça : 2026-03-28T08:08:56Z
+            let tableauXmlDate = xmlDate.split("T") // ["2026-03-28", "08:08:56Z"]
             const workoutDate = tableauXmlDate[0] // 2026-03-28
 
             // Init pour la boucle
             let workoutTime = 0
             let workoutDistance = 0
+            let workoutFcMoy = 0
+            let workoutFcMax = 0
+            let workoutMaximumSpeed = 0
+
             let lapFcMoy= []
             let lapFcMax = []
             let lapMaximumSpeed = []
 
             // Boucle qui parcoure tous les lap de l'entraînement et qui convertit par exemple des metres au km directement
             tableauDataLap.forEach(element => {
-                workoutTime += Number(element.querySelector("TotalTimeSeconds").textContent) // on ne convertit pas ici car lors du calcul de la FC moyenne on va diviser par le temps total de l'entrainement en secondes
-                workoutDistance += Number(element.querySelector("DistanceMeters").textContent)/1000 // conversion des m en km
+                // l'opérateur ?. permet de ne pas faire planter le code si la balise n'est pas présente dans le TCX et donc prendre 0 à la place
+                workoutTime += Number(element.querySelector("TotalTimeSeconds")?.textContent ?? 0) // on ne convertit pas ici car lors du calcul de la FC moyenne on va diviser par le temps total de l'entrainement en secondes
+                workoutDistance += Number(element.querySelector("DistanceMeters")?.textContent ?? 0)/1000 // conversion des m en km
 
                 // Récup des BPM moyen et max de l'entraînement
-                let fcMoy = element.querySelector("AverageHeartRateBpm Value")
                 // formule pr la fc moy d'un entrainement : (FC moy du lap * durée du lap en secondes) / durée totale de l'entrainement en secondes
-                if (fcMoy) {lapFcMoy.push(Number(fcMoy.textContent)*Number(element.querySelector("TotalTimeSeconds").textContent))} 
-                let fcMax = element.querySelector("MaximumHeartRateBpm Value")
-                if (fcMax) {lapFcMax.push(Number(fcMax.textContent))}
+                workoutFcMoy += Number(element.querySelector("AverageHeartRateBpm Value")?.textContent??0)*Number(element.querySelector("TotalTimeSeconds")?.textContent??0)
 
-                // recup de la vitesse max si cette donnée est présente
-                let maximumSpeed = element.querySelector("MaximumSpeed")
-                if (maximumSpeed) {lapMaximumSpeed.push(Number(maximumSpeed.textContent)*3.6)} // conversion des m/s en km/h
+                let fcMaxLap = Number(element.querySelector("MaximumHeartRateBpm Value")?.textContent ?? 0)
+                if (fcMaxLap > workoutFcMax) {
+                    workoutFcMax = fcMaxLap
+                }
 
+                // recup de la vitesse max si cette donnée est présente sinon ça vaut 0
+                let maximumSpeedLap = Number(element.querySelector("MaximumSpeed")?.textContent??0)*3.6 // conversion des m/s en km/h
+                if (maximumSpeedLap > workoutMaximumSpeed) {
+                    workoutMaximumSpeed = maximumSpeedLap
+                }
             });
 
-            // Boucle pour trouver la fc maxi du tableau qui contient la fc max de chaque tour
-            let workoutFcMax = lapFcMax[0] || undefined
-            if (lapFcMax.length > 0) {
-                lapFcMax.forEach(element => {
-                    if (element > workoutFcMax) {workoutFcMax=element}
-                });
-            } else {
-                workoutFcMax = undefined
-            }
+            // nettoyage des datas
+            if (workoutFcMax == 0) {workoutFcMax=undefined}
+            if (workoutMaximumSpeed == 0) {workoutMaximumSpeed=undefined}
 
             // boucle pour parcourir les FC moyenne de chaque lap et trouver la FC moyenne de l'entraînement
-            let workoutFcMoy = 0
-            if (lapFcMoy.length > 0) {
-                lapFcMoy.forEach(element => {
-                    workoutFcMoy += element
-                });
-                // On divise par le nombre de lap
+            if (workoutFcMoy == 0) {workoutFcMoy = undefined}
+            else {
                 workoutFcMoy = Math.round(workoutFcMoy/workoutTime) // rappel de la formule : (FC moy du lap * durée du lap en secondes) / durée totale de l'entrainement en secondes
-            } else {
-                workoutFcMoy = undefined
-            }
-
-            // Boucle pour trouver la vitesse max du tableau qui contient la vitesse max de chaque tour
-            let workoutMaximumSpeed = lapMaximumSpeed[0] || undefined
-            if (lapMaximumSpeed.length > 0) {
-                lapMaximumSpeed.forEach(element => {
-                    if (element > workoutMaximumSpeed) {workoutMaximumSpeed=element}
-                });
-            } else {
-                workoutMaximumSpeed = undefined
             }
 
             // conversion des secondes en minutes pour la durée de l'entrainement

@@ -187,7 +187,7 @@ async function SupprimerDatas() {
             // remise etat normal
             ButtonReinitialiser.textContent = "Réinitialiser SPRINTIA"
             ButtonReinitialiser.disabled = false // Réactivation du bouton
-            window.location.href = "../../index.html"
+            window.location.href = "../../../index.html"
         }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout
         
     }

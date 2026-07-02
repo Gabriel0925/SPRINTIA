@@ -694,37 +694,50 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
 div.container-center {
     display: flex;
     justify-content: center;
-}
+} 
 div.config-profil {
     display: flex;
     flex-direction: column;
     gap: var(--SPACE_XS);
-    background-color: var(--COLOR_ACCENT);
-    color: var(--COLOR_BACKGROUND);
-    font-size: 1.35rem;
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_TEXT_PRIMARY);
     margin-top: var(--SPACE_M);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_XS);
     cursor: pointer;
+    max-width: 620px;
     border-radius: var(--BORDER_BIG);
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
-@media (hover: hover) and (pointer: fine) {
-    div.config-profil:hover {
-        background-color: var(--COLOR_ACCENT_HOVER);
-    }
-}
-div.config-profil:active {
-    background-color: var(--COLOR_ACCENT_HOVER);
-    transform: scale(var(--SCALE_SMALL));
+div.config-profil div.config-profil-head {
+    display: flex;
+    align-items: center;
+    gap: var(--SPACE_XS);
+    margin: 4px;
 }
 div.config-profil i{
     font-size: var(--H1);
 }
+div.config-profil p{
+    font-size: var(--H3);
+}
 div.config-profil p.description{                
-    font-size: var(--P);
+    font-size: var(--P_SMALL);
     font-weight: normal;
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin: 13px 4px;
+}
+div.config-profil div.container-button-config-profil {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin: 4px;
+}
+div.config-profil div.container-button-config-profil button{
+    margin: 0;
+    padding: 0;
+    padding: 0.7rem;
 }
 
 

@@ -94,13 +94,19 @@
         <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
     </div>
 
-    <a id="configurer-SPRINTIA" style="display: none;" href="plus/profil/modification-profil.html">
-        <div class="config-profil">
+    <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
+        <div class="config-profil-head">
             <i class="fs-icon_profil"></i>
-            <p>Configurer SPRINTIA</p>
-            <p class="description">Pour débloquer toutes les fonctionnalités de SPRINTIA, veuillez configurer votre profil.</p>
+            <p>Configurer <strong>SPRINTIA</strong></p>
         </div>
-    </a>
+
+        <p class="description">Pour débloquer toutes les fonctionnalités de SPRINTIA, veuillez configurer votre profil.</p>
+            
+        <div class="container-button-config-profil">
+            <button onclick="ignoreConfigurationProfil()">Ignorer</button>
+            <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
+        </div>
+    </div>
 
     <h2></h2> <!-- il faut le laisser pour la marges -->
     <div class="zone-coach">
@@ -166,10 +172,16 @@
     <script>
         async function configSPRINTIA() { // permet d'enlever le panneau de configuration une fois que le user a configurer
             const profilData = await db.profil.get(1)
+            const choixUserLocalStorage = localStorage.getItem("configurationProfil")
 
-            if (profilData == undefined) {
+            if (profilData == undefined && choixUserLocalStorage != "ignorer") {
                 document.getElementById("configurer-SPRINTIA").style.display = "block"
             }
+        }
+
+        function ignoreConfigurationProfil() {
+            document.getElementById("configurer-SPRINTIA").style.display = "none"
+            localStorage.setItem("configurationProfil", "ignorer")
         }
 
         window.addEventListener("DOMContentLoaded", configSPRINTIA())

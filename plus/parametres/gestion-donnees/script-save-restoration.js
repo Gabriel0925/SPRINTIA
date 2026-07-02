@@ -110,6 +110,34 @@ async function restaurationDatas(event) {
     }
 }
 
+async function nettoyerDatas(conserverDatas) { // conserverDatas vaut soit 30J/90J/365J
+    if (confirm(`Êtes-vous sur de vouloir supprimer vos données qui sont plus vieilles que ${conserverDatas} jours ?`)) {
+        let buttonNettoyer = document.getElementById("button-nettoyer")
+        buttonNettoyer.textContent = "Nettoyage..."
+        buttonNettoyer.disabled = true
+        
+        try {
+            let dateMoinsJours = createObjetDate(conserverDatas)
+            for (const tableElt of db.tables) { // on parcourt chaque table de la bdd et on supprime
+                if (tableElt.name != "JRM_Coach" && tableElt.name != "profil") {
+                    await tableElt.where('date').below(dateMoinsJours).delete()
+                }
+            }
+            
+            buttonNettoyer.textContent = "Nettoyé"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            logoDynamique("🧹 Grand ménage !")
+        } catch(error) {
+            console.log(error)
+            buttonNettoyer.textContent = "Une erreur s'est produite"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        } finally {
+            buttonNettoyer.textContent = "Nettoyer"
+            buttonNettoyer.disabled = false
+        }
+    }
+}
+
 async function reinitialiserSPRINTIA() {
     if (confirm("Êtes-vous sur de vouloir supprimer toutes vos données ?")) {
         let buttonReinitialiser = document.getElementById("reinitialiser-SPRINTIA")

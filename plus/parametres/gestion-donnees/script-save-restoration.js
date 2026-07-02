@@ -58,7 +58,7 @@ async function DownloadDatas() {
 
     setTimeout(() => {
         // remise etat normal
-        BoutonDownload.textContent = "Télécharger mes données"
+        BoutonDownload.textContent = "Télécharger vos données"
         BoutonDownload.disabled = false // Réactivation du bouton
     }, 1300); // 1300 car si je met 650 logique mais ça le fais en meme temps que le précédent setTimeout
  
@@ -148,7 +148,7 @@ async function ReadFile(event) {
 
             setTimeout(() => {
                 // remise etat normal
-                BoutonRestoration.textContent = "Restaurer mes données"
+                BoutonRestoration.textContent = "Restaurer vos données"
                 BoutonRestoration.disabled = false // Réactivation du bouton
             }, 1300);
 

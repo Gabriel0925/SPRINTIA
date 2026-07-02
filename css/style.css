@@ -2434,7 +2434,7 @@ div.action-list div.action-list-item p{
     margin-left: var(--SPACE_S);
     font-size: var(--H3);
 }
-div.action-list div.action-list-item p strong{
+div.action-list div.action-list-item p strong.jrm-coach{
     background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
     -webkit-background-clip: text;
     background-clip: text;

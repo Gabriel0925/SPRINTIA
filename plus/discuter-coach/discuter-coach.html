@@ -74,10 +74,7 @@
 
     </section>
     
-    <div class="toolbar" style="margin-bottom: var(--SPACE_M);">
-        <h1 id="nom-coach">Discuter avec JRM Coach</h1>
-        <i class="fs-icon_parametres"></i>
-    </div>
+    <h1 id="jrm-coach-title">Discuter avec <strong>JRM Coach</strong></h1>
 
     <div class="container-discuter-coach">
         <textarea id="promt-user" style="min-height: 300px;" placeholder="Poser une question" maxlength="500"></textarea>
@@ -128,7 +125,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("nom-coach").innerHTML = `Discuter avec ${NomCoach}`
+                document.getElementById("jrm-coach-title").innerHTML = `Discuter avec <strong>${NomCoach}</strong>`
             }
 
             return

@@ -279,6 +279,15 @@ h1{
     margin-bottom: var(--SPACE_S);
     margin-top: var(--SPACE_XS);
 }
+h1#jrm-coach-title strong {
+    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 1000;
+    margin-left: 0.12rem;
+}
 h2{
     font-size: var(--H3);
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1513,9 +1522,15 @@ div.zone-coach::before {
     z-index: -1;
 }
 div.zone-coach p.zone-coach-name {
-    font-weight: 1000;
     font-size: var(--H3);
     margin-bottom: var(--SPACE_S_SMALL);
+    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 1000;
+    margin-left: 0.12rem;
 }
 div.zone-coach button {
     margin: 0;
@@ -2415,6 +2430,15 @@ div.action-list i{
 div.action-list div.action-list-item p{
     margin-left: var(--SPACE_S);
     font-size: var(--H3);
+}
+div.action-list div.action-list-item p strong{
+    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 1000;
+    margin-left: 0.12rem;
 }
 
 

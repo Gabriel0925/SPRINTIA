@@ -65,11 +65,11 @@ async function uploadFileGPX(event) {
             let workoutFcMax = 0
             let compteur = 0
 
-            tracks.point.forEach(element => {
-                let fcDuPoint = Number(element?.textContent??undefined)
+            tracks.points.forEach(element => {
+                let fcDuPoint = Number(element.extensions?.hr??undefined)
 
                 // controle de la qualité des datas
-                if (fcDuPoint != undefined) {
+                if (!isNaN(fcDuPoint)) { // !!! atention undefined en number -> NaN
                     if (fcDuPoint > workoutFcMax) { // pr trouver la fc max
                         workoutFcMax = fcDuPoint
                     }
@@ -148,9 +148,9 @@ async function uploadFileGPX(event) {
                 transpiration_estimee: transpirationEstimee,
                 hydratation_estimee: hydratationEstimee,
 
-                points_gps:lapPointGps
+                points_gps:pointsGPS
             }
-            const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
+            const dicoDataClean = removeValueUndefined(dicoDatasWorkout) // toutes les valeurs en undefined sont enlever du dico
             await db.entrainement.add(dicoDataClean)
 
             button.textContent = "Importé"

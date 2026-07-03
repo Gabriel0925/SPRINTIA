@@ -184,7 +184,7 @@ async function uploadFileGPX(event) {
             button.textContent = "Une erreur s'est produite"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } finally {
-            button.textContent = "Importer TCX"
+            button.textContent = "Importer GPX"
             button.disabled = false
         }
     }

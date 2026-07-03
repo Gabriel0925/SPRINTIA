@@ -21,17 +21,20 @@ async function uploadFileGPX(event) {
             const objetDate = gpx.metadata.time // c'est un objet date JS
             const workoutDate = objetDate.toISOString().split("T")[0] // 2026-07-03
 
+            // recup du sport
+            const workoutSport = dicoNameSport[gpx.tracks[0].type] // renvoie running ou cycling
+
             // recup de la durée de l'entrainement (gpxparser donne lheure de début/fin de l'entrainement) donc
             const tracks=gpx.tracks[0]
             const heureDebut = new Date(tracks.points[0].time) // on prend le premier point
             const heureFin = new Date(tracks.points[tracks.points.length - 1].time) // puis le dernier, grace à la longueur du nb de point du fichier GPX
 
             // calcul de la différence en ms
-            const differenceBetweenDebutFin = heureDebut-heureFin
+            const differenceBetweenDebutFin = heureFin-heureDebut
             const workoutTime = differenceBetweenDebutFin/60000 // conversion des ms en min
 
             // recup des datas spé au sport
-            const workoutDistance = gpx.tracks[0].distance.total // distance en metres
+            const workoutDistance = gpx.tracks[0].distance.total/1000 // recup de la distance en m puis conversion en km
             const workoutDenivele = gpx.tracks[0].elevation.pos // denivelé positif
             const pointsGPS = gpx.tracks[0].points.map(point => [point.lat, point.lon]) // [latitude, longitude]
 
@@ -131,16 +134,21 @@ async function uploadFileGPX(event) {
                 sport: workoutSport,
                 nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
                 date: workoutDate,
-                duree: workoutTime,     
+                duree: workoutTime,
                 rpe: rpeWorkout,
                 fc_moy: workoutFcMoy,
                 fc_max: workoutFcMax,
                 
                 distance:workoutDistance,
+                allure_moy:workoutAllureMoy,
+                vitesse_moy:workoutVitesseMoy,
+                denivele:workoutDenivele,
 
                 charge_entrainement: chargeEntrainementWorkout,
                 transpiration_estimee: transpirationEstimee,
-                hydratation_estimee: hydratationEstimee
+                hydratation_estimee: hydratationEstimee,
+
+                points_gps:lapPointGps
             }
             const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
             await db.entrainement.add(dicoDataClean)

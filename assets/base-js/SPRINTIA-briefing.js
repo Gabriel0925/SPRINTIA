@@ -96,7 +96,13 @@ function nameFavoriteIA() {
     }
 }
 
-
+function cleanEntrainementForIA(allWorkout) {
+    return allWorkout.map((workout) =>{
+        // on sépare les points gps du reste des données de l'entrainement car on n'envoie pas les points GPS à l'IA!
+        const {points_gps, ...autreStats} = workout
+        return autreStats
+    })
+}
 function cleanRecuperationForIA(allRecuperation) {
     return allRecuperation.map(elt => ({ // on garde que les datas essentielles car les ID par exemple on s'en fou
         "date": elt.date,
@@ -180,6 +186,7 @@ Données :
 
     // récup des données entrainement de l'utilisateur
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(21)).toArray()
+    historiqueData = cleanEntrainementForIA(historiqueData)
     let nbEntrainement = historiqueData.length
 
     if (nbEntrainement < 5) {
@@ -211,6 +218,7 @@ Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
 Données :
             `
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(28)).toArray()
+    historiqueData = cleanEntrainementForIA(historiqueData)
 
     if (historiqueData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
@@ -245,6 +253,7 @@ Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
 Données :
             `
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(28)).toArray()
+    historiqueData = cleanEntrainementForIA(historiqueData)
 
     if (historiqueData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
@@ -300,6 +309,9 @@ Données :
         return undefined
     }
 
+    // on enleve les datas des points gps
+    historiqueData = cleanEntrainementForIA(historiqueData)
+
     // ajout des données au prompt
     prompt += JSON.stringify(historiqueData, null, 2)
     historiqueRecuperationData = cleanRecuperationForIA(historiqueRecuperationData)
@@ -345,9 +357,11 @@ Données :
             `
 
     // récup des données entrainement de l'utilisateur
-    let historiqueData = await db.entrainement.get(idWorkout)
+    let historiqueData = await db.entrainement.get(idWorkout) 
+    // ça renvoie un dico et non un tableau donc
+    historiqueData = cleanEntrainementForIA([historiqueData]) // on met le dico dans un tableau pour pouvoir utiliser la fonction cleanEntrainementForIA    
 
-    if (historiqueData == undefined) {
+    if (historiqueData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
         // une IA alors qu'il n'y a pas de data
         return undefined
@@ -392,6 +406,9 @@ async function promptDiscussion() {
         prompt += "\nLe profil de l'utilisateur :\n"
         prompt += JSON.stringify(dataProfil, null, 2)
     }
+
+    // on enleve les datas des points gps
+    historiqueDataWorkout = cleanEntrainementForIA(historiqueDataWorkout)
 
     // les datas des entrainements des users
     prompt += "\n\nL'historique d'entrainement de l'utilisateur :\n"

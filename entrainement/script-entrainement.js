@@ -52,6 +52,7 @@ function afficherData(dataWorkout) {
 
     // Structure de base de la page entrainement
     let structureHTML = `
+        <div id="map" style="height: 180px"></div>
         <section class="container-block"> 
 
             <div class="container-block-data">
@@ -87,7 +88,10 @@ function afficherData(dataWorkout) {
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
-        if (cle=="note" ||cle=="points_gps") { // les points gps on les affiche sur la carte
+        if (cle=="note" || cle=="points_gps") { // les points gps on les affiche sur la carte
+            if (cle == "points_gps") {
+                console.log("test")
+            } 
             // si c'est la note on ne fais rien on le fera plus tard
         } else {
             const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 

@@ -641,7 +641,7 @@ async function uploadFileTCX(event) {
             const parser = new DOMParser() // création d'un objet pr transformer le txt en DOM
             const xmlDoc = parser.parseFromString(textFile, "text/xml") // transformation du texte en document XML c'est un langage équivalent à HTML
 
-            console.log(xmlDoc)
+            //console.log(xmlDoc)
 
             const dataLap = xmlDoc.getElementsByTagName("Lap")
             const tableauDataLap = Array.from(dataLap) // transformation des balises en tableau js pr les laps
@@ -666,6 +666,7 @@ async function uploadFileTCX(event) {
             let lapFcMax = []
             let lapMaximumSpeed = []
             let lapPointGps = []
+            let timeLastTrackpoint = undefined
 
             // Boucle qui parcoure tous les lap de l'entraînement et qui convertit par exemple des metres au km directement
             tableauDataLap.forEach(element => {
@@ -704,14 +705,24 @@ async function uploadFileTCX(event) {
                 })
 
                 // recupéré les points gps
-                const pointGpsLap = element.querySelectorAll("Position")
+                const pointGpsLap = element.querySelectorAll("Trackpoint")
                 pointGpsLap.forEach(elt => {
-                    const latitudePoint = Number(elt.querySelector("LatitudeDegrees")?.textContent ?? undefined)
-                    const longitudePoint = Number(elt.querySelector("LongitudeDegrees")?.textContent ?? undefined)
+                    const timeTrackpoint = elt.querySelector("Time")?.textContent??undefined
+                    const latitudePoint = Number(elt.querySelector("Position LatitudeDegrees")?.textContent ?? undefined)
+                    const longitudePoint = Number(elt.querySelector("Position LongitudeDegrees")?.textContent ?? undefined)
 
                     // un number en undefined ça renvoie NaN
                     if (!isNaN(latitudePoint) && !isNaN(longitudePoint)) {
-                        lapPointGps.push([latitudePoint, longitudePoint])
+                        // si c'est le premier point time alors on le init
+                        if (timeLastTrackpoint == undefined) {timeLastTrackpoint = timeTrackpoint}
+
+                        let tempsEcouleEntre2Points = new Date(timeTrackpoint).getTime()-new Date(timeLastTrackpoint).getTime()
+
+                        // Filtrage des datas (peut-être à enlever si on perd trop en qualité de tracé GPS)
+                        if (tempsEcouleEntre2Points >= 3000) { // en ms donc 3000ms->3s on filtre que si on a un point GPS toutes les une à 2 ou 3 sec
+                            lapPointGps.push([latitudePoint, longitudePoint])
+                            timeLastTrackpoint = timeTrackpoint
+                        }
                     }
                 })
             });
@@ -823,6 +834,7 @@ async function uploadFileTCX(event) {
                 dicoDataBase["vitesse_moy"] = workoutVitesseMoy
                 dicoDataBase["vitesse_max"] = workoutMaximumSpeed
                 dicoDataBase["denivele"] = workoutDenivele
+                dicoDataBase["points_gps"] = lapPointGps
             }
             const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
             await db.entrainement.add(dicoDataClean);

@@ -80,17 +80,18 @@ function afficherData(dataWorkout) {
 
         <section class="container-block"> 
     `
-    
     // initialisation de 2 tableaux
     const tableauDataNotDisplay = ["id", "Nom", "Sport", "Date", "Durée", "RPE", "Charge d'entraînement"]
     const tableauDataSeule = ["Muscles travaillés", "Score", "Voies effectuées"]
     let sixSeven = false
+    let latlngs = null;
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
         if (cle=="note" || cle=="points_gps") { // les points gps on les affiche sur la carte
             if (cle == "points_gps") {
                 console.log("test")
+                latlngs = valeur
             } 
             // si c'est la note on ne fais rien on le fera plus tard
         } else {
@@ -199,6 +200,20 @@ function afficherData(dataWorkout) {
 
     // on ajoute au conteneur
     document.querySelector(".page-entrainement").innerHTML = structureHTML
+
+    // initialisation de la carte
+    // 1. 
+    var mymap = L.map('map').setView([17.387140, 78.491684], 13);
+    // 2. 
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
+    }).addTo(mymap); 
+
+    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(mymap);
+
+    // zoom the map to the polyline
+    mymap.fitBounds(polyline.getBounds());
+
 
     // on remplit le champs note entrainement si il y a du contenu dans la BDD
     if (dataWorkout.note != undefined && dataWorkout.note) {

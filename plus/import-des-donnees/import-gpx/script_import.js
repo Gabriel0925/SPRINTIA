@@ -1,7 +1,10 @@
 async function uploadFileGPX(event) {
     const dicoNameSport = { // init dico pr les sports
         "running":"Course",
-        "cycling":"Vélo"
+        "cycling":"Vélo",
+        "hiking":"Randonnée",
+        "walking":"Marche",
+        "skiing": "Ski"
     }
 
     const fileGPX = event.target.files[0]
@@ -22,39 +25,47 @@ async function uploadFileGPX(event) {
             const workoutDate = objetDate.toISOString().split("T")[0] // 2026-07-03
 
             // recup du sport
-            const workoutSport = dicoNameSport[gpx.tracks[0].type] // renvoie running ou cycling
+            const workoutSport = dicoNameSport[gpx.tracks[0]?.type?.toLowerCase()] || "Libre" // renvoie running ou cycling
 
-            // recup de la durée de l'entrainement (gpxparser donne lheure de début/fin de l'entrainement) donc
+            // recup de la durée de l'entrainement
             const tracks=gpx.tracks[0]
-            const heureDebut = new Date(tracks.points[0].time) // on prend le premier point
-            const heureFin = new Date(tracks.points[tracks.points.length - 1].time) // puis le dernier, grace à la longueur du nb de point du fichier GPX
+            let workoutTimeMS = 0 // différence en ms
 
-            // calcul de la différence en ms
-            const differenceBetweenDebutFin = heureFin-heureDebut
-            const workoutTime = differenceBetweenDebutFin/60000 // conversion des ms en min
+            // calcul de la durée de l'entrainement en parcourant tous les points GPS du fichier GPX
+            for (let i=1; i<tracks.points.length; i++) {
+                const pointTourPrecedent = tracks.points[i-1]
+                const pointActuel= tracks.points[i]
+
+                const differenceBetween2Points = new Date(pointActuel.time)- new Date(pointTourPrecedent.time)
+
+                workoutTimeMS+=differenceBetween2Points
+            }
+            const workoutTime = workoutTimeMS/60000 // conversion des ms en min
 
             // recup des datas spé au sport
-            const workoutDistance = gpx.tracks[0].distance.total/1000 // recup de la distance en m puis conversion en km
-            const workoutDenivele = gpx.tracks[0].elevation.pos // denivelé positif
+            const workoutDistance = Number(Number(gpx.tracks[0].distance.total/1000).toFixed(2)) // recup de la distance en m puis conversion en km
+            const workoutDenivele = Math.floor(gpx.tracks[0].elevation.pos) // denivelé positif
             const pointsGPS = gpx.tracks[0].points.map(point => [point.lat, point.lon]) // [latitude, longitude]
 
             // calcul de l'allure moyenne ou de la vitesse en fonction du sport
             let workoutAllureMoy = 0
             let workoutVitesseMoy = 0
             if (workoutSport != "Libre") {
-                if (workoutSport == "Course" && workoutDistance > 0) {
-                    // Calcul de l'allure en course à pied
-                    workoutAllureMoy = workoutTime/workoutDistance // on obtient par exemple : 7.65
+                if (workoutSport == "Course" || workoutSport == "Randonnée" || workoutSport == "Marche") {
+                    if (workoutDistance > 0) {
+                        // Calcul de l'allure en course à pied
+                        workoutAllureMoy = workoutTime/workoutDistance // on obtient par exemple : 7.65
 
-                    let min = Math.floor(workoutAllureMoy) // pour recup les minutes
-                    let sec = Math.round((workoutAllureMoy%1)*60) // conversion du reste en seconde 
-                    workoutAllureMoy = `${min}:${sec.toString().padStart(2, "0")}`
-
-                } else if (workoutSport == "Vélo" && workoutDistance > 0) {
-                    // conversion des min en heures
-                    let workoutTimeHour = workoutTime/60
-                    workoutVitesseMoy = Number((workoutDistance/workoutTimeHour).toFixed(2))
-
+                        let min = Math.floor(workoutAllureMoy) // pour recup les minutes
+                        let sec = Math.round((workoutAllureMoy%1)*60) // conversion du reste en seconde 
+                        workoutAllureMoy = `${min}:${sec.toString().padStart(2, "0")}`
+                    }
+                } else if (workoutSport == "Vélo" || workoutSport == "Ski") { 
+                    if (workoutDistance > 0) {
+                        // conversion des min en heures
+                        let workoutTimeHour = workoutTime/60
+                        workoutVitesseMoy = Number((workoutDistance/workoutTimeHour).toFixed(2))
+                    }
                 }
             }
             if (workoutAllureMoy == 0) {workoutAllureMoy = undefined}
@@ -80,13 +91,15 @@ async function uploadFileGPX(event) {
             });
 
             // calcul de la fc moy (somme de toutes les fc des tours/ nb tours)
-            workoutFcMoy = Math.round(workoutFcMoy/compteur)
+            if (compteur > 0) {
+                workoutFcMoy = Math.round(workoutFcMoy/compteur)
+            }
 
 // !!! à revoir !!!
             // calcul du RPE
             // formule ci dessous à améliorer parce qu'elle n'est pas prouvé scientifiquement
             let rpeWorkout = 1
-            if (workoutFcMoy != 0 && workoutFcMax != 0) {// si ya des datas on calcule sinon on laisse à 1
+            if (workoutFcMoy > 0 && workoutFcMax > 0) {// si ya des datas on calcule sinon on laisse à 1
                 rpeWorkout = Math.round((workoutFcMoy/workoutFcMax)*10) || 1 // formule pour calculer le RPE : (FC moy / FC max) * 10
                 if (rpeWorkout < 1) { // si inférieur à 1 on le met sur la valeur minimum (=1)
                     rpeWorkout = 1
@@ -144,9 +157,6 @@ async function uploadFileGPX(event) {
                 fc_max: workoutFcMax,
                 
                 distance:workoutDistance,
-                allure_moy:workoutAllureMoy,
-                vitesse_moy:workoutVitesseMoy,
-                denivele:workoutDenivele,
 
                 charge_entrainement: chargeEntrainementWorkout,
                 transpiration_estimee: transpirationEstimee,
@@ -154,6 +164,12 @@ async function uploadFileGPX(event) {
 
                 points_gps:pointsGPS
             }
+            if (workoutSport != "Libre") {
+                dicoDatasWorkout["allure_moy"] = workoutAllureMoy
+                dicoDatasWorkout["vitesse_moy"] = workoutVitesseMoy
+                dicoDatasWorkout["denivele"] = workoutDenivele
+            }
+
             const dicoDataClean = removeValueUndefined(dicoDatasWorkout) // toutes les valeurs en undefined sont enlever du dico
             await db.entrainement.add(dicoDataClean)
 

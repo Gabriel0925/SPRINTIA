@@ -52,7 +52,8 @@ function afficherData(dataWorkout) {
 
     // Structure de base de la page entrainement
     let structureHTML = `
-        <div id="map""></div>
+        <div id="map"></div>
+
         <section class="container-block"> 
 
             <div class="container-block-data">
@@ -205,10 +206,12 @@ function afficherData(dataWorkout) {
         //recupération des couleurs
         const couleurTexte = getComputedStyle(document.documentElement).getPropertyValue('--COLOR_ACCENT').trim();
         const borderRadius = getComputedStyle(document.documentElement).getPropertyValue('--BORDER_NORMAL').trim();
+        const varMarginSpaceM = getComputedStyle(document.documentElement).getPropertyValue('--SPACE_L').trim();
 
         // afichage de la carte
-        document.getElementById('map').style.height = '180px';
+        document.getElementById('map').style.height = '300px';
         document.getElementById('map').style.borderRadius = borderRadius;
+        document.getElementById('map').style.margin = varMarginSpaceM + "0"
 
         var map = L.map('map').setView([17.387140, 78.491684], 13);
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

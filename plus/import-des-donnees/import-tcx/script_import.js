@@ -90,16 +90,17 @@ async function uploadFileTCX(event) {
 
                     // un number en undefined ça renvoie NaN
                     if (!isNaN(latitudePoint) && !isNaN(longitudePoint)) {
-                        // si c'est le premier point time alors on le init
-                        if (timeLastTrackpoint == undefined) {timeLastTrackpoint = timeTrackpoint}
+                        lapPointGps.push([latitudePoint, longitudePoint])
+                        // // si c'est le premier point time alors on le init
+                        // if (timeLastTrackpoint == undefined) {timeLastTrackpoint = timeTrackpoint}
 
-                        let tempsEcouleEntre2Points = new Date(timeTrackpoint).getTime()-new Date(timeLastTrackpoint).getTime()
+                        // let tempsEcouleEntre2Points = new Date(timeTrackpoint).getTime()-new Date(timeLastTrackpoint).getTime()
 
-                        // Filtrage des datas (peut-être à enlever si on perd trop en qualité de tracé GPS)
-                        if (tempsEcouleEntre2Points >= 3000) { // en ms donc 3000ms->3s on filtre que si on a un point GPS toutes les une à 2 ou 3 sec
-                            lapPointGps.push([latitudePoint, longitudePoint])
-                            timeLastTrackpoint = timeTrackpoint
-                        }
+                        // // Filtrage des datas (peut-être à enlever si on perd trop en qualité de tracé GPS)
+                        // if (tempsEcouleEntre2Points >= 3000) { // en ms donc 3000ms->3s on filtre que si on a un point GPS toutes les une à 2 ou 3 sec
+                        //     lapPointGps.push([latitudePoint, longitudePoint])
+                        //     timeLastTrackpoint = timeTrackpoint
+                        // }
                     }
                 })
             });
@@ -168,11 +169,11 @@ async function uploadFileTCX(event) {
             // Calcul de la transpiration
             let profilDB = await db.profil.get(1)
             let transpirationEstimee = 0
-            let HydratationEstimee = 0
+            let hydratationEstimee = 0
 
             if (profilDB != undefined) {
                 let poidsUser = Number(profilDB.poids)
-                let DureeHeure = workoutTime/60 // Conversion de la durée en heure
+                let dureeHeure = workoutTime/60 // Conversion de la durée en heure
                 let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
 
                 // Attribution de la valeur du RPE
@@ -182,7 +183,7 @@ async function uploadFileTCX(event) {
                 else {coefficientRpe = coefficientRpe[3]}
 
                 // Calcul
-                transpirationEstimee = Math.round((DureeHeure*coefficientRpe*(poidsUser/70))*1000)
+                transpirationEstimee = Math.round((dureeHeure*coefficientRpe*(poidsUser/70))*1000)
                 hydratationEstimee = Math.round(transpirationEstimee*1.2)
             } else {
                 transpirationEstimee = undefined

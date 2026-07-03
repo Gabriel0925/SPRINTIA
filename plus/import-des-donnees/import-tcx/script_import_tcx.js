@@ -156,15 +156,7 @@ async function uploadFileTCX(event) {
                 rpeWorkout = 10
             }
             let chargeEntrainementWorkout = Math.floor(rpeWorkout*workoutTime)
-// !!! fin de à revoir !!! 
-
-            // si la durée ou la date de l'entrainement n'est pas définie ou égale à 0 on enregistre rien
-            if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
-                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient des valeurs valides.")
-                button.disabled = false
-                button.textContent = "Importer fichier"
-                return
-            }
+// !!! fin de à revoir !!!
 
             // Calcul de la transpiration
             let profilDB = await db.profil.get(1)
@@ -190,6 +182,17 @@ async function uploadFileTCX(event) {
                 hydratationEstimee = undefined
             }
 
+            // si la durée ou la date de l'entrainement n'est pas définie ou égale à 0 on enregistre rien
+            if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
+                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient des valeurs valides.")
+                button.disabled = false
+                button.textContent = "Importer fichier"
+                return
+            }
+
+            // dernier nettoyage au cas ou ya pas de datas gps dans le fichier GPX
+            if (lapPointGps.length <= 0 || lapPointGps == undefined) {lapPointGps=undefined}
+
             // enregistrement des datas recup dans la BDD 
             let dicoDataBase = {
                 sport: workoutSport,
@@ -204,7 +207,9 @@ async function uploadFileTCX(event) {
 
                 charge_entrainement: chargeEntrainementWorkout,
                 transpiration_estimee: transpirationEstimee,
-                hydratation_estimee: hydratationEstimee
+                hydratation_estimee: hydratationEstimee,
+
+                points_gps: lapPointGps
             }
             if (workoutSport != "Libre") {
                 // ajout des datas spé à la couse et au vélo
@@ -212,7 +217,6 @@ async function uploadFileTCX(event) {
                 dicoDataBase["vitesse_moy"] = workoutVitesseMoy
                 dicoDataBase["vitesse_max"] = workoutMaximumSpeed
                 dicoDataBase["denivele"] = workoutDenivele
-                dicoDataBase["points_gps"] = lapPointGps
             }
             const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
             await db.entrainement.add(dicoDataClean)

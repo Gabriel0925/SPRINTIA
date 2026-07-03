@@ -146,6 +146,9 @@ async function uploadFileGPX(event) {
                 return
             }
 
+            // dernier nettoyage au cas ou ya pas de datas gps dans le fichier GPX
+            if (pointsGPS.length <= 0 || pointsGPS == undefined) {pointsGPS=undefined}
+
             // enregistrement des datas
             const dicoDatasWorkout = {
                 sport: workoutSport,

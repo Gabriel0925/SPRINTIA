@@ -228,6 +228,5 @@ async function uploadFileTCX(event) {
             button.textContent = "Importer TCX"
             button.disabled = false
         }
-
     }
 }

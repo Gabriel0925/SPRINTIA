@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Importer des données</title>
+    <title>SPRINTIA - Fichier Garmin (CSV)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,48 +74,46 @@
 
     </section>
     
-    <h1>Importer des données</h1>
+    <h1>Fichier Garmin (CSV)</h1>
 
-    <h2>Importer un entraînement</h2>
-    <div class="action-list">
+    <p class="text">
+        Vous avez une montre Garmin et vous voulez importer votre historique d'entraînement sur SPRINTIA, vous êtes au bon endroit.
+        Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînement disponible sur 
+        <a href="https://connect.garmin.com/app/activities" class="lien" target="_blank">Garmin Connect Web</a>.
+        Pour récupérer ce fichier, suivez les instructions :
+    </p>
+    <ul class="list-information">
+        <li>
+            Cliquez sur le lien ci-contre.
+        </li>
+        <li>
+            Connectez-vous à votre compte Garmin.
+        </li>
+        <li>
+            La langue de Garmin Connect Web doit être le <strong>Français</strong> ou l'<strong>Anglais</strong>.
+        </li>
+        <li>
+            Cliquez sur "Export CSV" (en haut à droite), le fichier CSV a dû se télécharger.
+        </li>
+    </ul>
 
-        <a href="import-tcx.html">
-            <div class="action-list-item">
-                <i class="fs-icon_file"></i>
-                <p class="text-param">Fichier <strong>TCX</strong> (universelle)</p>
-            </div>
-        </a>
-        <a href="import-gpx.html">
-            <div class="action-list-item">
-                <i class="fs-icon_gpx"></i>
-                <p class="text-param">Fichier <strong>GPX</strong></p>
-            </div>
-        </a>
-        <!-- <a href="import-sprintia.html">
-            <div class="action-list-item">
-                <i class="fs-icon_file_json"></i>
-                <p class="text-param">Fichier <strong>SPRINTIA</strong></p>
-            </div>
-        </a> -->
- 
-    </div>
+    <div class="container-center-marge">
+        <!-- On n' affiche pas le input file -->
+        <input type="file" id="file-input-garmin" accept=".csv" style="display: none;" onchange="uploadGarmin(event)">
+        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+        <button class="size-block" onclick="document.getElementById('file-input-garmin').click()" id="button-import-garmin">Importer fichier Garmin</button>
+    </div> 
 
-    <h2>Importer un historique d'entraînement</h2>
-    <div class="action-list">    
-        <a href="import-garmin.html">
-            <div class="action-list-item">
-                <i class="fs-icon_file_csv"></i>
-                <p class="text-param">Fichier <strong>Garmin</strong></p>
-            </div>
-        </a>
-        <a href="import-trainingpeaks.html">
-            <div class="action-list-item">
-                <i class="fs-icon_file_csv"></i>
-                <p class="text-param">Fichier <strong>TrainingPeaks</strong></p>
-            </div>
-        </a>
-
-    </div>
+    <h2>Conseil pour l'importation</h2>
+    <ul class="list-information">
+        <li>
+            1er conseil : Importer uniquement les 30 derniers jours de votre historique d'entraînement, juste pour calibrer les algorithmes de SPRINTIA.
+        </li>
+        <li>
+            2ème conseil : Vérifier dans l'historique d'entraînement de SPRINTIA que tout a bien été importer correctement. Si ce n'est pas le cas, 
+            je vous conseille de modifier l'entraînement pour corriger l'erreur.
+        </li>
+    </ul>
     
     <script src="../../assets/base-js/base.js"></script>
 
@@ -125,7 +123,7 @@
     <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
     <script src="../../assets/bibliotheques/papaparse.min.js"></script>
     <script src="script-import-seance.js"></script>
-
+    
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

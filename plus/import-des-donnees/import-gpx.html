@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Import TrainingPeaks CSV</title>
+    <title>SPRINTIA - Fichier GPX</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,54 +74,22 @@
 
     </section>
     
-    <h1>Importer un fichier TrainingPeaks CSV</h1>
-
+    <h1>Fichier GPX</h1>
     <p class="text">
-        Vous avez synchronisé votre montre (Apple Watch, Coros, Polar, Suunto...) avec TrainingPeaks. Vous pouvez grâce à cela importer 
-        votre historique d'entraînement sur SPRINTIA en important le fichier '.csv' que vous pouvez trouver sur le
-        <a href="https://app.trainingpeaks.com/" class="lien" target="_blank">site web de TrainingPeaks</a>.
-        Pour ce faire, suivez les instructions :
+        Vous voulez importer les datas d'un entraînement depuis un autre service comme Garmin, Coros, Strava,... Vous êtes au bon endroit.
+        Pour importer vos données, <strong>veuillez télécharger le fichier (.GPX)</strong> de votre entraînement depuis 
+        n'importe qu'elle plateforme.
     </p>
     <ul class="list-information">
         <li>
-            Cliquez sur le lien ci-contre.
-        </li>
-        <li>
-            Connectez-vous à votre compte TrainingPeaks.
-        </li>
-        <li>
-            Allez dans les paramètres (cliquer sur votre photo de profil en haut à droite puis "Settings").
-        </li>
-        <li>
-            Rendez-vous dans "Export data".
-        </li>
-        <li>
-            Remplissez les champs de la catégorie "Workout Summary".
-        </li>
-        <li>
-            Appuyez sur "Exporter".
+            Le format GPX prend en compte les sports suivants : Course et Vélo.
         </li>
     </ul>
-    <p class="text">
-        Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'workouts.csv' dans SPRINTIA.
-    </p>
+
     <div class="container-center-marge">
-        <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadTrainingPeaks(event)">
-        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input-TP').click()" id="button-import-TP">Importer CSV</button>
+        <input type="file" id="file-input-gpx" accept=".gpx" style="display: none;" onchange="uploadFileTCX(event)">
+        <button class="size-block" onclick="document.getElementById('file-input-gpx').click()" id="button-import-gpx">Importer GPX</button>
     </div>
-
-    <h2>Conseil pour l'importation</h2>
-    <ul class="list-information">
-        <li>
-            1er conseil : Importer uniquement les 30 derniers jours de votre historique d'entraînement, juste pour calibrer les algorithmes de SPRINTIA.
-        </li>
-        <li>
-            2ème conseil : Vérifier dans l'historique d'entraînement de SPRINTIA que tout a bien été importer correctement. Si ce n'est pas le cas, 
-            je vous conseille de modifier l'entraînement pour corriger l'erreur.
-        </li>
-    </ul>
     
     <script src="../../assets/base-js/base.js"></script>
 
@@ -129,7 +97,6 @@
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
-    <script src="../../assets/bibliotheques/papaparse.min.js"></script>
     <script src="script-import-seance.js"></script>
     
     <script defer src="/_vercel/insights/script.js"></script>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Import Garmin CSV</title>
+    <title>SPRINTIA - Fichier TrainingPeaks (CSV)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,35 +74,43 @@
 
     </section>
     
-    <h1>Importer un fichier Garmin CSV</h1>
+    <h1>Fichier TrainingPeaks (CSV)</h1>
 
     <p class="text">
-        Vous avez une montre Garmin et vous voulez importer votre historique d'entraînement sur SPRINTIA, vous êtes au bon endroit.
-        Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînement disponible sur 
-        <a href="https://connect.garmin.com/app/activities" class="lien" target="_blank">Garmin Connect Web</a>.
-        Pour récupérer ce fichier, suivez les instructions :
+        Vous avez synchronisé votre montre (Apple Watch, Coros, Polar, Suunto...) avec TrainingPeaks. Vous pouvez grâce à cela importer 
+        votre historique d'entraînement sur SPRINTIA en important le fichier '.csv' que vous pouvez trouver sur le
+        <a href="https://app.trainingpeaks.com/" class="lien" target="_blank">site web de TrainingPeaks</a>.
+        Pour ce faire, suivez les instructions :
     </p>
     <ul class="list-information">
         <li>
             Cliquez sur le lien ci-contre.
         </li>
         <li>
-            Connectez-vous à votre compte Garmin.
+            Connectez-vous à votre compte TrainingPeaks.
         </li>
         <li>
-            La langue de Garmin Connect Web doit être le <strong>Français</strong> ou l'<strong>Anglais</strong>.
+            Allez dans les paramètres (cliquer sur votre photo de profil en haut à droite puis "Settings").
         </li>
         <li>
-            Cliquez sur "Export CSV" (en haut à droite), le fichier CSV a dû se télécharger.
+            Rendez-vous dans "Export data".
+        </li>
+        <li>
+            Remplissez les champs de la catégorie "Workout Summary".
+        </li>
+        <li>
+            Appuyez sur "Exporter".
         </li>
     </ul>
-
+    <p class="text">
+        Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'workouts.csv' dans SPRINTIA.
+    </p>
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-garmin" accept=".csv" style="display: none;" onchange="uploadGarmin(event)">
+        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadTrainingPeaks(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input-garmin').click()" id="button-import-garmin">Importer fichier Garmin</button>
-    </div> 
+        <button class="size-block" onclick="document.getElementById('file-input-TP').click()" id="button-import-TP">Importer CSV</button>
+    </div>
 
     <h2>Conseil pour l'importation</h2>
     <ul class="list-information">

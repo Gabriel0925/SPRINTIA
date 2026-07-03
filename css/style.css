@@ -156,92 +156,95 @@ i {
 .fs-icon_glycogene:before {
   content: "\e910";
 }
-.fs-icon_historique:before {
+.fs-icon_gpx:before {
   content: "\e911";
 }
-.fs-icon_hydratation:before {
+.fs-icon_historique:before {
   content: "\e912";
 }
-.fs-icon_IA:before {
+.fs-icon_hydratation:before {
   content: "\e913";
 }
-.fs-icon_IMC:before {
+.fs-icon_IA:before {
   content: "\e914";
 }
-.fs-icon_indulgence_course:before {
+.fs-icon_IMC:before {
   content: "\e915";
 }
-.fs-icon_licence:before {
+.fs-icon_indulgence_course:before {
   content: "\e916";
 }
-.fs-icon_mail:before {
+.fs-icon_licence:before {
   content: "\e917";
 }
-.fs-icon_message:before {
+.fs-icon_mail:before {
   content: "\e918";
 }
-.fs-icon_metabolisme_base:before {
+.fs-icon_message:before {
   content: "\e919";
 }
-.fs-icon_miles_km:before {
+.fs-icon_metabolisme_base:before {
   content: "\e91a";
 }
-.fs-icon_modifier:before {
+.fs-icon_miles_km:before {
   content: "\e91b";
 }
-.fs-icon_niveau_course:before {
+.fs-icon_modifier:before {
   content: "\e91c";
 }
-.fs-icon_outils:before {
+.fs-icon_niveau_course:before {
   content: "\e91d";
 }
-.fs-icon_parametres:before {
+.fs-icon_outils:before {
   content: "\e91e";
 }
-.fs-icon_partager:before {
+.fs-icon_parametres:before {
   content: "\e91f";
 }
-.fs-icon_pause:before {
+.fs-icon_partager:before {
   content: "\e920";
 }
-.fs-icon_plus:before {
+.fs-icon_pause:before {
   content: "\e921";
 }
-.fs-icon_plus_horizontal:before {
+.fs-icon_plus:before {
   content: "\e922";
 }
-.fs-icon_profil:before {
+.fs-icon_plus_horizontal:before {
   content: "\e923";
 }
-.fs-icon_progression:before {
+.fs-icon_profil:before {
   content: "\e924";
 }
-.fs-icon_proteines:before {
+.fs-icon_progression:before {
   content: "\e925";
 }
-.fs-icon_recuperation:before {
+.fs-icon_proteines:before {
   content: "\e926";
 }
-.fs-icon_statistiques:before {
+.fs-icon_recuperation:before {
   content: "\e927";
 }
-.fs-icon_strategie_allure:before {
+.fs-icon_statistiques:before {
   content: "\e928";
 }
-.fs-icon_supprimer:before {
+.fs-icon_strategie_allure:before {
   content: "\e929";
 }
-.fs-icon_telechargement:before {
+.fs-icon_supprimer:before {
   content: "\e92a";
 }
-.fs-icon_temps_recup:before {
+.fs-icon_telechargement:before {
   content: "\e92b";
 }
-.fs-icon_to_day:before {
+.fs-icon_temps_recup:before {
   content: "\e92c";
 }
-.fs-icon_zones_cardiaques:before {
+.fs-icon_to_day:before {
   content: "\e92d";
+}
+.fs-icon_zones_cardiaques:before {
+  content: "\e92e";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */

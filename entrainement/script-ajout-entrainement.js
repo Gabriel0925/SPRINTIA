@@ -506,9 +506,17 @@ async function saveWorkout() {
 
     // enregistrement ou modification
     if (IdEditWorkout && IdEditWorkout != null) {
+        const dataWorkoutEdit = await db.entrainement.get(IdEditWorkout)
+
         workoutData["id"] = IdEditWorkout
         workoutData["note"] = noteEntrainement
 
+        if (dataWorkoutEdit) { // si ya des datas
+            let pointGPS = dataWorkoutEdit["points_gps"]
+            if (pointGPS != undefined) { // si ya des datas de points gps
+                workoutData["points_gps"] = pointGPS // on l'ajoute au dico
+            }
+        }
         await db.entrainement.put(workoutData)
         // mise sur true pour renvoyer vers lentrainement directement
         modificationEntrainement = true

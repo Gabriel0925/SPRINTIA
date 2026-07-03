@@ -87,7 +87,7 @@ function afficherData(dataWorkout) {
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
-        if (cle=="note") {
+        if (cle=="note" ||cle=="points_gps") { // les points gps on les affiche sur la carte
             // si c'est la note on ne fais rien on le fera plus tard
         } else {
             const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 

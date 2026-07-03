@@ -52,6 +52,7 @@ function afficherData(dataWorkout) {
 
     // Structure de base de la page entrainement
     let structureHTML = `
+        <div id="map""></div>
         <section class="container-block"> 
 
             <div class="container-block-data">
@@ -79,15 +80,18 @@ function afficherData(dataWorkout) {
 
         <section class="container-block"> 
     `
-    
     // initialisation de 2 tableaux
     const tableauDataNotDisplay = ["id", "Nom", "Sport", "Date", "Durée", "RPE", "Charge d'entraînement"]
     const tableauDataSeule = ["Muscles travaillés", "Score", "Voies effectuées"]
     let sixSeven = false
+    let latlngs = null;
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
-        if (cle=="note" ||cle=="points_gps") { // les points gps on les affiche sur la carte
+        if (cle=="note" || cle=="points_gps") { // les points gps on les affiche sur la carte
+            if (cle == "points_gps") {
+                latlngs = valeur
+            } 
             // si c'est la note on ne fais rien on le fera plus tard
         } else {
             const nomUniteData = BddNomData[cle] // on récupère le nom et l'unité de la data 
@@ -195,6 +199,32 @@ function afficherData(dataWorkout) {
 
     // on ajoute au conteneur
     document.querySelector(".page-entrainement").innerHTML = structureHTML
+
+    // on affiche iniquement si il y a des relevées gps
+    if (latlngs != null) {
+        //recupération des couleurs
+        const couleurTexte = getComputedStyle(document.documentElement).getPropertyValue('--COLOR_ACCENT').trim();
+        const borderRadius = getComputedStyle(document.documentElement).getPropertyValue('--BORDER_NORMAL').trim();
+
+        // afichage de la carte
+        document.getElementById('map').style.height = '180px';
+        document.getElementById('map').style.borderRadius = borderRadius;
+
+        var map = L.map('map').setView([17.387140, 78.491684], 13);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
+        }).addTo(map); 
+
+        // tracage du relevée gps
+        var polyline = L.polyline(latlngs, { color: couleurTexte}).addTo(map);
+
+        // markers d'arivée et de fin de la trace
+        L.marker(latlngs[0],title = 'start').addTo(map);
+        L.marker(latlngs[latlngs.length-1], title = 'stop').addTo(map);
+
+        // zoom sur le tracée
+        map.fitBounds(polyline.getBounds());
+    }
 
     // on remplit le champs note entrainement si il y a du contenu dans la BDD
     if (dataWorkout.note != undefined && dataWorkout.note) {

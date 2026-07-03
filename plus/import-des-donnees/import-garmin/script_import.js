@@ -369,7 +369,7 @@ async function uploadGarmin(event) {
             setTimeout(() => {              
                 button.disabled = false
                 button.textContent = "Importer CSV"
-                    window.location.href = "../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
+                window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
             }, 650)    
         } catch {
             alert("Une erreur s'est produite lors de l'importation de votre historique d'entraînement.")

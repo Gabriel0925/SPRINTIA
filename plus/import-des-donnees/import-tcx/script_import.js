@@ -218,7 +218,7 @@ async function uploadFileTCX(event) {
 
             button.textContent = "Importé"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
-            window.location.href = "../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
+            window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
 
         } catch(error) {
             console.log(error)

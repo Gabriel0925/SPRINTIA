@@ -211,7 +211,7 @@ async function uploadTrainingPeaks(event) {
             setTimeout(() => {        
                 button.disabled = false
                 button.textContent = "Importer CSV"
-                    window.location.href = "../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
+                window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
             }, 650)  
 
         } catch {

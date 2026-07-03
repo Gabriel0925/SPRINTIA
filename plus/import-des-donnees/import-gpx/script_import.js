@@ -35,13 +35,27 @@ async function uploadFileGPX(event) {
             const workoutDenivele = gpx.tracks[0].elevation.pos // denivelé positif
             const pointsGPS = gpx.tracks[0].points.map(point => [point.lat, point.lon]) // [latitude, longitude]
 
-            // si la durée ou la date de l'entrainement n'est pas définie ou égale à 0 on enregistre rien
-            if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
-                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier GPX contient des valeurs valides.")
-                button.disabled = false
-                button.textContent = "Importer fichier"
-                return
+            // calcul de l'allure moyenne ou de la vitesse en fonction du sport
+            let workoutAllureMoy = 0
+            let workoutVitesseMoy = 0
+            if (workoutSport != "Libre") {
+                if (workoutSport == "Course" && workoutDistance > 0) {
+                    // Calcul de l'allure en course à pied
+                    workoutAllureMoy = workoutTime/workoutDistance // on obtient par exemple : 7.65
+
+                    let min = Math.floor(workoutAllureMoy) // pour recup les minutes
+                    let sec = Math.round((workoutAllureMoy%1)*60) // conversion du reste en seconde 
+                    workoutAllureMoy = `${min}:${sec.toString().padStart(2, "0")}`
+
+                } else if (workoutSport == "Vélo" && workoutDistance > 0) {
+                    // conversion des min en heures
+                    let workoutTimeHour = workoutTime/60
+                    workoutVitesseMoy = Number((workoutDistance/workoutTimeHour).toFixed(2))
+
+                }
             }
+            if (workoutAllureMoy == 0) {workoutAllureMoy = undefined}
+            if (workoutVitesseMoy == 0) {workoutVitesseMoy = undefined}
 
             // on essaye de recup la fc moy/max si les datas sont dans le fichier
             let workoutFcMoy = 0
@@ -103,8 +117,37 @@ async function uploadFileGPX(event) {
                 transpirationEstimee = undefined
                 hydratationEstimee = undefined
             }
-            
 
+            // si la durée ou la date de l'entrainement n'est pas définie ou égale à 0 on enregistre rien
+            if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
+                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier GPX contient des valeurs valides.")
+                button.disabled = false
+                button.textContent = "Importer fichier"
+                return
+            }
+
+            // enregistrement des datas
+            const dicoDatasWorkout = {
+                sport: workoutSport,
+                nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
+                date: workoutDate,
+                duree: workoutTime,     
+                rpe: rpeWorkout,
+                fc_moy: workoutFcMoy,
+                fc_max: workoutFcMax,
+                
+                distance:workoutDistance,
+
+                charge_entrainement: chargeEntrainementWorkout,
+                transpiration_estimee: transpirationEstimee,
+                hydratation_estimee: hydratationEstimee
+            }
+            const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
+            await db.entrainement.add(dicoDataClean)
+
+            button.textContent = "Importé"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
         } catch(error) {
             console.log(error)
             button.textContent = "Une erreur s'est produite"

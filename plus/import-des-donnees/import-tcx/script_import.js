@@ -190,7 +190,7 @@ async function uploadFileTCX(event) {
             }
 
             // enregistrement des datas recup dans la BDD 
-            let dicoDataBase = {                    
+            let dicoDataBase = {
                 sport: workoutSport,
                 nom: workoutSport+" le "+workoutDate.split("-")[2]+"/"+workoutDate.split("-")[1].padStart(2, "0"), // exemple : Course le 28/04
                 date: workoutDate,
@@ -214,12 +214,11 @@ async function uploadFileTCX(event) {
                 dicoDataBase["points_gps"] = lapPointGps
             }
             const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
-            await db.entrainement.add(dicoDataClean);
+            await db.entrainement.add(dicoDataClean)
 
             button.textContent = "Importé"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
             window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
-
         } catch(error) {
             console.log(error)
             button.textContent = "Une erreur s'est produite"

@@ -160,7 +160,7 @@ async function uploadFileTCX(event) {
 
             // si la durée ou la date de l'entrainement n'est pas définie ou égale à 0 on enregistre rien
             if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
-                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier GPX contient des valeurs valides.")
+                alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient des valeurs valides.")
                 button.disabled = false
                 button.textContent = "Importer fichier"
                 return

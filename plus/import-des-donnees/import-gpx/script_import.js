@@ -18,7 +18,7 @@ async function uploadFileGPX(event) {
             gpx.parse(textFile)
 
             // recup de la date
-            const objetDate = gpx.metadata.time // c'est un objet date JS
+            const objetDate = new Date(gpx.metadata.time) // c'est un objet date JS
             const workoutDate = objetDate.toISOString().split("T")[0] // 2026-07-03
 
             // recup du sport
@@ -95,16 +95,20 @@ async function uploadFileGPX(event) {
                 }
             }
             let chargeEntrainementWorkout = Math.floor(rpeWorkout*workoutTime)
-// !!! fin de à revoir !!! 
+// !!! fin de à revoir !!!
+
+            // on clean les datas fcMoy/max
+            if (workoutFcMoy == 0) {workoutFcMoy=undefined}
+            if (workoutFcMax == 0) {workoutFcMax=undefined}
             
             // Calcul de la transpiration
             let profilDB = await db.profil.get(1)
             let transpirationEstimee = 0
-            let HydratationEstimee = 0
+            let hydratationEstimee = 0
 
             if (profilDB != undefined) {
                 let poidsUser = Number(profilDB.poids)
-                let DureeHeure = workoutTime/60 // Conversion de la durée en heure
+                let dureeHeure = workoutTime/60 // Conversion de la durée en heure
                 let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
 
                 // Attribution de la valeur du RPE
@@ -114,7 +118,7 @@ async function uploadFileGPX(event) {
                 else {coefficientRpe = coefficientRpe[3]}
 
                 // Calcul
-                transpirationEstimee = Math.round((DureeHeure*coefficientRpe*(poidsUser/70))*1000)
+                transpirationEstimee = Math.round((dureeHeure*coefficientRpe*(poidsUser/70))*1000)
                 hydratationEstimee = Math.round(transpirationEstimee*1.2)
             } else {
                 transpirationEstimee = undefined

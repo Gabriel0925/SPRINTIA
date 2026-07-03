@@ -665,6 +665,7 @@ async function uploadFileTCX(event) {
             let lapFcMoy= []
             let lapFcMax = []
             let lapMaximumSpeed = []
+            let lapPointGps = []
 
             // Boucle qui parcoure tous les lap de l'entraînement et qui convertit par exemple des metres au km directement
             tableauDataLap.forEach(element => {
@@ -700,6 +701,18 @@ async function uploadFileTCX(event) {
                     }
 
                     deniveleLastLap = altitudeNow
+                })
+
+                // recupéré les points gps
+                const pointGpsLap = element.querySelectorAll("Position")
+                pointGpsLap.forEach(elt => {
+                    const latitudePoint = Number(elt.querySelector("LatitudeDegrees")?.textContent ?? undefined)
+                    const longitudePoint = Number(elt.querySelector("LongitudeDegrees")?.textContent ?? undefined)
+
+                    // un number en undefined ça renvoie NaN
+                    if (!isNaN(latitudePoint) && !isNaN(longitudePoint)) {
+                        lapPointGps.push([latitudePoint, longitudePoint])
+                    }
                 })
             });
 

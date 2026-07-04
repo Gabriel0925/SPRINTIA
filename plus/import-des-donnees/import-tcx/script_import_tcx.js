@@ -222,7 +222,7 @@ async function uploadFileTCX(event) {
             await db.entrainement.add(dicoDataClean)
 
             button.textContent = "Importé"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
             window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
         } catch(error) {
             console.log(error)

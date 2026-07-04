@@ -45,7 +45,7 @@ async function downloadDatas() {
         baliseHTML.click() // on simule un click pour download
 
         buttonDownload.textContent = "Téléchargé"
-        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
 
     } catch(error) {
         console.log(error) // affichage de l'erreur en console
@@ -97,7 +97,7 @@ async function restaurationDatas(event) {
             }
 
             buttonRestoration.textContent = "Restauré"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
             logoDynamique("Vous revoilà 😇")
         } catch(error) {
             console.log(error)
@@ -125,7 +125,7 @@ async function nettoyerDatas(conserverDatas) { // conserverDatas vaut soit 30J/9
             }
             
             buttonNettoyer.textContent = "Nettoyé"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
             logoDynamique("🧹 Grand ménage !")
         } catch(error) {
             console.log(error)
@@ -152,7 +152,7 @@ async function reinitialiserSPRINTIA() {
             }
             
             buttonReinitialiser.textContent = "Réinitialisé"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
             window.location.href = "../../../index.html"
         } catch(error) {
             console.log(error)

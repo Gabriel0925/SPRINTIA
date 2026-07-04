@@ -493,6 +493,50 @@ async function JrmCoach() {
     return
 }
 
+async function dicoWithoutID(dico) {
+    return dico.map((workout) =>{
+        // on sépare l'id du reste des données de l'entrainement
+        const {id, ...autreStats} = workout
+        return autreStats
+    })
+}
+
+async function exporterData(dataWorkout) {
+    let button = document.getElementById("button-exporter")
+    
+    if (dataWorkout) {
+        try {
+            // on enleve l'id du dico
+            dataWorkout = await dicoWithoutID([dataWorkout]) // on met le dico dans un tableau car notre fonction est adapté pour les tableau pr use map
+            
+            // !!! ATTENTION désormais dataWorkout c'est un tableau plus un dico !!!
+
+            // transformation en texte JSON
+            const transformationTextJSON = JSON.stringify(dataWorkout[0], null, 2)
+
+            // création d'un objet nommé blob (=en gros on créer une URL temporaire)
+            // au moins la navigateur c'est ou télécharger le "fichier"
+            let urlBlob = URL.createObjectURL(new Blob([transformationTextJSON], {type: "application/json"})) // par ex : 'blob:http://127.0.0.1:5500/414b2c61-e902-4b86-84fb-61ad6afea08c'
+            let baliseHTML = document.createElement("a")
+
+            baliseHTML.href = urlBlob // on attribue l'URL du blob à la balise a
+            baliseHTML.download = dataWorkout[0].nom.replace(" ", "-") + "-SPRINTIA.json" // nom du "fichier"
+            baliseHTML.click() // on simule un click pour download
+
+            button.innerHTML = "<i class='fs-icon_file_json'></i> Exporté"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+            logoDynamique("📁 Fichier téléchargé !")
+        } catch(error) {
+            console.log(error)
+            button.innerHTML = "<i class='fs-icon_file_json'></i> Erreur !"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        } finally {
+            button.innerHTML = "<i class='fs-icon_file_json'></i> Exporter"
+            button.disabled = false
+        }
+    }
+}
+
 async function initialisation() {
     // ?workout=id
     const settingURL = window.location.search // recup des parametres de l'URL de la page 
@@ -519,6 +563,7 @@ async function initialisation() {
                 await JrmCoach()
 
                 // on donne un role au bouton
+                let buttonExporter = document.getElementById("button-exporter")
                 let buttonModifier = document.getElementById("button-modifier")
                 let buttonSupprimer = document.getElementById("button-supprimer") 
 
@@ -538,6 +583,9 @@ async function initialisation() {
 
                 buttonModifier.addEventListener("click", async () => { // Ajout d'une "action" au bouton edit
                     window.location.href = `ajouter-entrainement.html?edit=${dataWorkout.id}` // mettre un parametre dans l'URL
+                })
+                buttonExporter.addEventListener("click", async () => {
+                    await exporterData(dataWorkout)
                 })
             }
             

@@ -76,7 +76,7 @@ function carteGPS(data, latlngs) {
 
                 L.DomEvent.on(div, 'click', function(e) {
                     L.DomEvent.stopPropagation(e);
-                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds(), {padding: [30,30]});
                 });
 
                 // On mémorise le conteneur HTML et on le cache par défaut (mode normal)
@@ -115,7 +115,7 @@ function carteGPS(data, latlngs) {
 
                         setTimeout(() => { 
                             map.invalidateSize(); 
-                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds(), {padding: [30,30]});
                         }, 50);
                     }
                     else {
@@ -135,7 +135,7 @@ function carteGPS(data, latlngs) {
                         setTimeout(() => { 
                             mapElement.removeAttribute('style'); 
                             map.invalidateSize(); 
-                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds(), {padding: [30,30]});
                         }, 60); 
                     }
                 }, this);
@@ -162,7 +162,7 @@ function carteGPS(data, latlngs) {
 
                 setTimeout(() => { 
                     map.invalidateSize(); 
-                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds(), {padding: [30,30]});
                 }, 50);
             }
         });
@@ -178,7 +178,7 @@ function carteGPS(data, latlngs) {
         L.marker(latlngs[latlngs.length - 1], { title: 'stop' }).addTo(map);
 
         // Zoom initial sur le tracé
-        map.fitBounds(polyline.getBounds());
+        map.fitBounds(polyline.getBounds(), {padding: [30,30]});
 }
 
 function afficherData(dataWorkout) {

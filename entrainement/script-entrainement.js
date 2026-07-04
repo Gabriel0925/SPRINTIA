@@ -86,6 +86,8 @@ function afficherData(dataWorkout) {
     const tableauDataSeule = ["Muscles travaillés", "Score", "Voies effectuées"]
     let sixSeven = false
     let latlngs = null;
+    let fullscreen = false
+    let centerButtonContainer = null;
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
@@ -203,36 +205,133 @@ function afficherData(dataWorkout) {
 
     // on affiche iniquement si il y a des relevées gps
     if (latlngs != null) {
-        //recupération des couleurs
+        // Récupération des couleurs
         const couleurTexte = getComputedStyle(document.documentElement).getPropertyValue('--COLOR_ACCENT').trim();
-        const borderRadius = getComputedStyle(document.documentElement).getPropertyValue('--BORDER_NORMAL').trim();
-        const varMarginSpaceM = getComputedStyle(document.documentElement).getPropertyValue('--SPACE_L').trim();
 
-        // afichage de la carte
-        document.getElementById('map').style.height = '300px';
-        document.getElementById('map').style.borderRadius = borderRadius;
-        document.getElementById('map').style.margin = varMarginSpaceM + "0"
+        // Affichage de la carte initiale
+        const mapElement = document.getElementById('map');
+        mapElement.className = 'map-normal';
 
         var map = L.map('map', {
             zoomControl: false,
-            dragging:false, // deplacement du doigt
-            scrollWheelZoom:false, // scroll molette souris
-            doubleClickZoom:false, // double clic pr zoom
-            toucheZoom:false // desactive le zoom avec 2 doigts sur mobile
+            dragging: false, 
+            scrollWheelZoom: false, 
+            doubleClickZoom: false, 
+            toucheZoom: false 
         }).setView([17.387140, 78.491684], 13);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
+            attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
         }).addTo(map); 
 
-        // tracage du relevée gps
-        var polyline = L.polyline(latlngs, { color: couleurTexte}).addTo(map);
+        // Définition du bouton "Centrer"
+        let CenterTace = L.Control.extend({  
+            options: { position: 'topright' },
+            onAdd: function(map) {
+                var div = L.DomUtil.create('div', 'my-control');
+                var myButton = L.DomUtil.create('button', 'my-button-class', div);
+                myButton.innerHTML = 'Centrer';
 
-        // markers d'arivée et de fin de la trace
-        L.marker(latlngs[0],title = 'start').addTo(map);
-        L.marker(latlngs[latlngs.length-1], title = 'stop').addTo(map);
+                L.DomEvent.on(myButton, 'click', function(e) {
+                    L.DomEvent.stopPropagation(e);
+                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                });
 
-        // zoom sur le tracée
+                // On mémorise le conteneur HTML et on le cache par défaut (mode normal)
+                centerButtonContainer = div;
+                centerButtonContainer.style.display = 'none';
+
+                return div;
+            }
+        });
+
+        // Définition du bouton "Plein écran / Quitter"
+        let BouttonFullscreen = L.Control.extend({  
+            options: { position: 'topright' },
+            
+            onAdd: function(map) {
+                var div = L.DomUtil.create('div', 'my-control');
+                var myButton = L.DomUtil.create('button', 'my-button-class', div);
+                myButton.innerHTML = 'Plein écran';
+
+                L.DomEvent.on(myButton, 'click', function(e) {
+                    L.DomEvent.stopPropagation(e); 
+
+                    if (fullscreen == false) {
+                        mapElement.className = 'map-fullscreen';
+                        
+                        map.dragging.enable();           
+                        map.scrollWheelZoom.enable();    
+                        map.doubleClickZoom.enable();    
+                        
+                        myButton.innerHTML = 'Quitter';
+                        fullscreen = true;
+
+                        // AFFICHE le bouton Centrer
+                        if (centerButtonContainer) centerButtonContainer.style.display = 'block';
+
+                        setTimeout(() => { 
+                            map.invalidateSize(); 
+                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                        }, 50);
+                    }
+                    else {
+                        mapElement.className = 'map-normal';
+
+                        map.dragging.disable();           
+                        map.scrollWheelZoom.disable();    
+                        map.doubleClickZoom.disable();    
+
+                        myButton.innerHTML = 'Plein écran';
+                        fullscreen = false;
+
+                        // CACHE le bouton Centrer
+                        if (centerButtonContainer) centerButtonContainer.style.display = 'none';
+
+                        setTimeout(() => { 
+                            mapElement.removeAttribute('style'); 
+                            map.invalidateSize(); 
+                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                        }, 60); 
+                    }
+                }, this);
+                return div;
+            }
+        });
+
+        map.on('click', function(e) {
+            if (fullscreen == false && !e.originalEvent.target.closest('.my-button-class')) {
+                mapElement.className = 'map-fullscreen';
+                
+                map.dragging.enable();           
+                map.scrollWheelZoom.enable();    
+                map.doubleClickZoom.enable();
+
+                
+                fullscreen = true;
+
+                // AFFICHE le bouton Centrer lors du clic global
+                if (centerButtonContainer) centerButtonContainer.style.display = 'block';
+
+                setTimeout(() => { 
+                    map.invalidateSize(); 
+                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                }, 50);
+            }
+        });
+
+        let ControlBoutonExitMap = new BouttonFullscreen().addTo(map);
+        let ControlCenterTace = new CenterTace().addTo(map);
+        
+
+        // Traçage du relevé gps
+        var polyline = L.polyline(latlngs, { color: couleurTexte }).addTo(map);
+
+        // Markers d'arrivée et de fin de la trace
+        L.marker(latlngs[0], { title: 'start' }).addTo(map);
+        L.marker(latlngs[latlngs.length - 1], { title: 'stop' }).addTo(map);
+
+        // Zoom initial sur le tracé
         map.fitBounds(polyline.getBounds());
     }
 

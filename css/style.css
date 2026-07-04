@@ -1033,6 +1033,8 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
 
 
 
+
+
 p.text-toolbar {
     color: var(--COLOR_TEXT_SECONDARY);
 }
@@ -1680,6 +1682,63 @@ div#map {
 }
 div#map:active{
     opacity: 0.75;
+}
+
+div#map.map-normal {
+    position: relative !important;
+    width: 100% !important;
+    height: 300px !important; /* Force la hauteur */
+    border-radius: var(--BORDER_NORMAL) !important; /* Force les arrondis */
+    margin: var(--SPACE_L) 0 !important;
+    z-index: 1 !important;
+    overflow: hidden !important; /* Empêche le contenu de la carte de dépasser des arrondis */
+}
+
+/* Sélecteur renforcé pour le mode plein écran */
+div#map.map-fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+
+    background-color: var(--COLOR_BACKGROUND) !important;
+}
+
+div#map.map-normal *, #map.map-fullscreen * {
+    opacity: 1 !important;
+}
+div.my-control {
+    background-color: var(--COLOR_ACCENT);
+    border-radius: var(--BORDER_NORMAL);
+    padding: var(--SPACE_XS);
+    cursor: pointer !important;
+
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.my-control:hover {
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+}
+div.my-control:active {
+    transform: scale(var(--SCALE_NORMAL));
+}
+/* reset du style du bouton car le style du bouton c'est celle de la div */
+div.my-control button.my-button-class {
+    background: none;
+    border: none;
+    border-radius: none;
+    padding: 0;
+    color: var(--COLOR_BACKGROUND);
+}
+div.my-control button.my-button-class:active {
+    transform: scale(1);
 }
 
 

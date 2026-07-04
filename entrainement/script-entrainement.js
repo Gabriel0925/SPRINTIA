@@ -221,14 +221,14 @@ function afficherData(dataWorkout) {
         }).setView([17.387140, 78.491684], 13);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
+            attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
         }).addTo(map); 
 
         // Définition du bouton "Centrer"
         let CenterTace = L.Control.extend({  
             options: { position: 'topright' },
             onAdd: function(map) {
-                var div = L.DomUtil.create('div', 'leaflet-bar my-control');
+                var div = L.DomUtil.create('div', 'my-control');
                 var myButton = L.DomUtil.create('button', 'my-button-class', div);
                 myButton.innerHTML = 'Centrer';
 
@@ -250,7 +250,7 @@ function afficherData(dataWorkout) {
             options: { position: 'topright' },
             
             onAdd: function(map) {
-                var div = L.DomUtil.create('div', 'leaflet-bar my-control');
+                var div = L.DomUtil.create('div', 'my-control');
                 var myButton = L.DomUtil.create('button', 'my-button-class', div);
                 myButton.innerHTML = 'Plein écran';
 

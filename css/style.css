@@ -1032,7 +1032,45 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
 /* fin card workout */
 
 /* Map */
+#map.map-normal {
+    position: relative !important;
+    width: 100% !important;
+    height: 300px !important; /* Force la hauteur */
+    border-radius: var(--BORDER_NORMAL) !important; /* Force les arrondis */
+    margin: var(--SPACE_L) 0 !important;
+    z-index: 1 !important;
+    overflow: hidden !important; /* Empêche le contenu de la carte de dépasser des arrondis */
+}
 
+/* Sélecteur renforcé pour le mode plein écran */
+#map.map-fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+}
+
+#map.map-normal *, #map.map-fullscreen * {
+    opacity: 1 !important;
+}
+.my-control {
+    background-color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+.my-button-class {
+    background: none;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px 6px;
+}
 
 
 

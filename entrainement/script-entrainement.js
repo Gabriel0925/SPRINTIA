@@ -251,6 +251,7 @@ function afficherData(dataWorkout) {
             onAdd: function(map) {
                 var div = L.DomUtil.create('div', 'my-control');
                 var iconInDiv = L.DomUtil.create("i", "fs-icon_fullscreen", div)
+                iconInDiv.id = 'btn-fullscreen'
 
                 L.DomEvent.on(div, 'click', function(e) {
                     L.DomEvent.stopPropagation(e); 
@@ -302,6 +303,9 @@ function afficherData(dataWorkout) {
         map.on('click', function(e) {
             if (fullscreen == false && !e.originalEvent.target.closest('.my-button-class')) {
                 mapElement.className = 'map-fullscreen';
+                const monBouton = document.getElementById('btn-fullscreen');
+                monBouton.classList.remove("fs-icon_fullscreen")
+                monBouton.classList.add("fs-icon_fullscreen_exit")
                 
                 map.dragging.enable();           
                 map.scrollWheelZoom.enable();    

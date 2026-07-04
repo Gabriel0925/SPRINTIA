@@ -1,0 +1,28 @@
+async function uploadFileSPRINTIA(event) {
+    const fileSPRINTIA = event.target.files[0]
+    let button = document.getElementById("button-import-SPRINTIA")
+
+    if (fileSPRINTIA) {
+        button.disabled = true
+        button.textContent = "Importation..."
+
+        try {
+            let textFile = await fileSPRINTIA.text() // on récup le contenu du fichier en texte
+            let dicoDataWorkout = JSON.parse(textFile)
+            
+            const dicoDataClean = removeValueUndefined(dicoDataWorkout) // toutes les valeurs en undefined sont enlever du dico
+            await db.entrainement.add(dicoDataClean)
+
+            button.textContent = "Importé"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+            window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
+        } catch(error) {
+            console.log(error)
+            button.textContent = "Une erreur s'est produite"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        } finally {
+            button.textContent = "Importer fichier SPRINTIA"
+            button.disabled = false
+        }
+    }
+}

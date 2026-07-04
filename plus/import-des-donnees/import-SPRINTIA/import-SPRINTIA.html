@@ -74,11 +74,23 @@
 
     </section>
     
-    <h1>Fichier SPRINTIA</h1>
+    <h1>Fichier SPRINTIA (JSON)</h1>
+    <p class="text">
+        Vous avez exporté les données de votre entraînement depuis SPRINTIA et vous voulez les importer, vous êtes au bon endroit !
+    </p>
+
+    <div class="container-center-marge">
+        <!-- On n' affiche pas le input file -->
+        <input type="file" id="file-input-json" accept=".json" style="display: none;" onchange="uploadFileSPRINTIA(event)">
+        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+        <button class="size-block" onclick="document.getElementById('file-input-json').click()" id="button-import-SPRINTIA">Importer fichier SPRINTIA</button>
+    </div>
     
     <script src="../../../assets/base-js/base.js"></script>
-    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
-    <script src="../../../assets/bibliotheques/papaparse.min.js"></script>
+
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="../../../assets/bibliotheques/dexie.js"></script>
+    <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script_import.js"></script>
     <script src="../script-import-generale.js"></script>
     

@@ -1682,6 +1682,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
 
 /* --- la carte --- */
 div#map {
+    outline: none;
     transition: opacity ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1721,33 +1722,47 @@ div#map.map-fullscreen {
 div#map.map-normal *, #map.map-fullscreen * {
     opacity: 1 !important;
 }
+/* modification du style de base sur les class de la bibliotheque */
+.leaflet-right .leaflet-control {
+    margin-top: var(--SPACE_S_SMALL) !important;
+    margin-right: var(--SPACE_S_SMALL) !important;
+}
 div.my-control {
-    background-color: var(--COLOR_ACCENT);
-    border-radius: var(--BORDER_NORMAL);
-    padding: var(--SPACE_XS);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50px;
+    height: 50px;
+    
     cursor: pointer !important;
+}
+div.my-control i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+    font-size: var(--H2);
+    border-radius: 50%;
+
+    width: 100%;
+    height: 100%;
+
+    padding: var(--SPACE_XS);
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
-    div.my-control:hover {
+    div.my-control i:hover {
         background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
-div.my-control:active {
+div.my-control i:active {
+    background-color: var(--COLOR_ACCENT_HOVER);
     transform: scale(var(--SCALE_NORMAL));
-}
-/* reset du style du bouton car le style du bouton c'est celle de la div */
-div.my-control button.my-button-class {
-    background: none;
-    border: none;
-    border-radius: none;
-    padding: 0;
-    color: var(--COLOR_BACKGROUND);
-}
-div.my-control button.my-button-class:active {
-    transform: scale(1);
 }
 
 

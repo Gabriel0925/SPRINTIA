@@ -45,6 +45,142 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
 }
 let idWorkout = undefined
 
+function carteGPS(data, latlngs) {
+    let fullscreen = false
+    let centerButtonContainer = null;
+        // Récupération des couleurs
+        const couleurTexte = getComputedStyle(document.documentElement).getPropertyValue('--COLOR_ACCENT').trim();
+
+        // Affichage de la carte initiale
+        const mapElement = document.getElementById('map');
+        mapElement.className = 'map-normal';
+
+        var map = L.map('map', {
+            zoomControl: false,
+            dragging: false, 
+            scrollWheelZoom: false, 
+            doubleClickZoom: false, 
+            toucheZoom: false 
+        }).setView([17.387140, 78.491684], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
+        }).addTo(map); 
+
+        // Définition du bouton "Centrer"
+        let CenterTace = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd: function(map) {
+                var div = L.DomUtil.create('div', 'my-control');
+                var iconInDiv = L.DomUtil.create("i", "fs-icon_center_carte", div)
+
+                L.DomEvent.on(div, 'click', function(e) {
+                    L.DomEvent.stopPropagation(e);
+                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                });
+
+                // On mémorise le conteneur HTML et on le cache par défaut (mode normal)
+                centerButtonContainer = div;
+                centerButtonContainer.style.display = 'none';
+
+                return div;
+            }
+        });
+
+        // Définition du bouton "Plein écran / Quitter"
+        let BouttonFullscreen = L.Control.extend({  
+            options: { position: 'topright' },
+            
+            onAdd: function(map) {
+                var div = L.DomUtil.create('div', 'my-control');
+                var iconInDiv = L.DomUtil.create("i", "fs-icon_fullscreen", div)
+                iconInDiv.id = 'btn-fullscreen'
+
+                L.DomEvent.on(div, 'click', function(e) {
+                    L.DomEvent.stopPropagation(e); 
+
+                    if (fullscreen == false) {
+                        mapElement.className = 'map-fullscreen';
+                        
+                        map.dragging.enable();           
+                        map.scrollWheelZoom.enable();    
+                        map.doubleClickZoom.enable();    
+                        
+                        iconInDiv.classList.remove("fs-icon_fullscreen")
+                        iconInDiv.classList.add("fs-icon_fullscreen_exit")
+                        fullscreen = true;
+
+                        // AFFICHE le bouton Centrer
+                        if (centerButtonContainer) centerButtonContainer.style.display = 'block';
+
+                        setTimeout(() => { 
+                            map.invalidateSize(); 
+                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                        }, 50);
+                    }
+                    else {
+                        mapElement.className = 'map-normal';
+
+                        map.dragging.disable();           
+                        map.scrollWheelZoom.disable();    
+                        map.doubleClickZoom.disable();    
+                        
+                        iconInDiv.classList.remove("fs-icon_fullscreen_exit")
+                        iconInDiv.classList.add("fs-icon_fullscreen")
+                        fullscreen = false;
+
+                        // CACHE le bouton Centrer
+                        if (centerButtonContainer) centerButtonContainer.style.display = 'none';
+
+                        setTimeout(() => { 
+                            mapElement.removeAttribute('style'); 
+                            map.invalidateSize(); 
+                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                        }, 60); 
+                    }
+                }, this);
+                return div;
+            }
+        });
+
+        map.on('click', function(e) {
+            if (fullscreen == false && !e.originalEvent.target.closest('.my-button-class')) {
+                mapElement.className = 'map-fullscreen';
+                
+                const monBouton = document.getElementById('btn-fullscreen');
+                monBouton.classList.remove("fs-icon_fullscreen")
+                monBouton.classList.add("fs-icon_fullscreen_exit")
+                
+                map.dragging.enable();           
+                map.scrollWheelZoom.enable();    
+                map.doubleClickZoom.enable();
+
+                fullscreen = true;
+
+                // AFFICHE le bouton Centrer lors du clic global
+                if (centerButtonContainer) centerButtonContainer.style.display = 'block';
+
+                setTimeout(() => { 
+                    map.invalidateSize(); 
+                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
+                }, 50);
+            }
+        });
+
+        let ControlBoutonExitMap = new BouttonFullscreen().addTo(map);
+        let ControlCenterTace = new CenterTace().addTo(map);
+
+        // Traçage du relevé gps
+        var polyline = L.polyline(latlngs, { color: couleurTexte }).addTo(map);
+
+        // Markers d'arrivée et de fin de la trace
+        L.marker(latlngs[0], { title: 'start' }).addTo(map);
+        L.marker(latlngs[latlngs.length - 1], { title: 'stop' }).addTo(map);
+
+        // Zoom initial sur le tracé
+        map.fitBounds(polyline.getBounds());
+}
+
 function afficherData(dataWorkout) {
     // ajout des datas aux éléments existant
     document.getElementById("nom-workout").textContent = dataWorkout.nom
@@ -86,8 +222,6 @@ function afficherData(dataWorkout) {
     const tableauDataSeule = ["Muscles travaillés", "Score", "Voies effectuées"]
     let sixSeven = false
     let latlngs = null;
-    let fullscreen = false
-    let centerButtonContainer = null;
 
     // on parcourt les datas de l'entraînement (c un dico donc on recup la cle et la valeur)
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
@@ -205,138 +339,7 @@ function afficherData(dataWorkout) {
 
     // on affiche iniquement si il y a des relevées gps
     if (latlngs != null) {
-        // Récupération des couleurs
-        const couleurTexte = getComputedStyle(document.documentElement).getPropertyValue('--COLOR_ACCENT').trim();
-
-        // Affichage de la carte initiale
-        const mapElement = document.getElementById('map');
-        mapElement.className = 'map-normal';
-
-        var map = L.map('map', {
-            zoomControl: false,
-            dragging: false, 
-            scrollWheelZoom: false, 
-            doubleClickZoom: false, 
-            toucheZoom: false 
-        }).setView([17.387140, 78.491684], 13);
-
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
-        }).addTo(map); 
-
-        // Définition du bouton "Centrer"
-        let CenterTace = L.Control.extend({  
-            options: { position: 'topright' },
-            onAdd: function(map) {
-                var div = L.DomUtil.create('div', 'my-control');
-                var iconInDiv = L.DomUtil.create("i", "fs-icon_center_carte", div)
-
-                L.DomEvent.on(div, 'click', function(e) {
-                    L.DomEvent.stopPropagation(e);
-                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
-                });
-
-                // On mémorise le conteneur HTML et on le cache par défaut (mode normal)
-                centerButtonContainer = div;
-                centerButtonContainer.style.display = 'none';
-
-                return div;
-            }
-        });
-
-        // Définition du bouton "Plein écran / Quitter"
-        let BouttonFullscreen = L.Control.extend({  
-            options: { position: 'topright' },
-            
-            onAdd: function(map) {
-                var div = L.DomUtil.create('div', 'my-control');
-                var iconInDiv = L.DomUtil.create("i", "fs-icon_fullscreen", div)
-                iconInDiv.id = 'btn-fullscreen'
-
-                L.DomEvent.on(div, 'click', function(e) {
-                    L.DomEvent.stopPropagation(e); 
-
-                    if (fullscreen == false) {
-                        mapElement.className = 'map-fullscreen';
-                        
-                        map.dragging.enable();           
-                        map.scrollWheelZoom.enable();    
-                        map.doubleClickZoom.enable();    
-                        
-                        iconInDiv.classList.remove("fs-icon_fullscreen")
-                        iconInDiv.classList.add("fs-icon_fullscreen_exit")
-                        fullscreen = true;
-
-                        // AFFICHE le bouton Centrer
-                        if (centerButtonContainer) centerButtonContainer.style.display = 'block';
-
-                        setTimeout(() => { 
-                            map.invalidateSize(); 
-                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
-                        }, 50);
-                    }
-                    else {
-                        mapElement.className = 'map-normal';
-
-                        map.dragging.disable();           
-                        map.scrollWheelZoom.disable();    
-                        map.doubleClickZoom.disable();    
-                        
-                        iconInDiv.classList.remove("fs-icon_fullscreen_exit")
-                        iconInDiv.classList.add("fs-icon_fullscreen")
-                        fullscreen = false;
-
-                        // CACHE le bouton Centrer
-                        if (centerButtonContainer) centerButtonContainer.style.display = 'none';
-
-                        setTimeout(() => { 
-                            mapElement.removeAttribute('style'); 
-                            map.invalidateSize(); 
-                            if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
-                        }, 60); 
-                    }
-                }, this);
-                return div;
-            }
-        });
-
-        map.on('click', function(e) {
-            if (fullscreen == false && !e.originalEvent.target.closest('.my-button-class')) {
-                mapElement.className = 'map-fullscreen';
-                const monBouton = document.getElementById('btn-fullscreen');
-                monBouton.classList.remove("fs-icon_fullscreen")
-                monBouton.classList.add("fs-icon_fullscreen_exit")
-                
-                map.dragging.enable();           
-                map.scrollWheelZoom.enable();    
-                map.doubleClickZoom.enable();
-
-                
-                fullscreen = true;
-
-                // AFFICHE le bouton Centrer lors du clic global
-                if (centerButtonContainer) centerButtonContainer.style.display = 'block';
-
-                setTimeout(() => { 
-                    map.invalidateSize(); 
-                    if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
-                }, 50);
-            }
-        });
-
-        let ControlBoutonExitMap = new BouttonFullscreen().addTo(map);
-        let ControlCenterTace = new CenterTace().addTo(map);
-        
-
-        // Traçage du relevé gps
-        var polyline = L.polyline(latlngs, { color: couleurTexte }).addTo(map);
-
-        // Markers d'arrivée et de fin de la trace
-        L.marker(latlngs[0], { title: 'start' }).addTo(map);
-        L.marker(latlngs[latlngs.length - 1], { title: 'stop' }).addTo(map);
-
-        // Zoom initial sur le tracé
-        map.fitBounds(polyline.getBounds());
+        carteGPS(dataWorkout, latlngs)
     }
 
     // on remplit le champs note entrainement si il y a du contenu dans la BDD

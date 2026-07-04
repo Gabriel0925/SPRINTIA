@@ -500,11 +500,13 @@ async function dicoWithoutID(dico) {
         return autreStats
     })
 }
-
 async function exporterData(dataWorkout) {
     let button = document.getElementById("button-exporter")
     
     if (dataWorkout) {
+        button.innerHTML = "<i class='fs-icon_file_json'></i> Export..."
+        button.disabled = true
+
         try {
             // on enleve l'id du dico
             dataWorkout = await dicoWithoutID([dataWorkout]) // on met le dico dans un tableau car notre fonction est adapté pour les tableau pr use map

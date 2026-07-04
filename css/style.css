@@ -776,11 +776,6 @@ section.segmented-button div.segmented-button-button {
                 transform ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    section.segmented-button:has(div.segmented-button-button:not(.actif):hover) div.segmented-button-button.actif{
-        background-color: transparent;
-        box-shadow: none;
-        color: var(--COLOR_TEXT_PRIMARY);
-    }
     section.segmented-button:hover {
         transform: scale(1.014);
     }

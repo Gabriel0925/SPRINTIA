@@ -15,7 +15,7 @@ async function windowsBriefing(textInButton) {
 
     promptForIA = await buttonFonction[textInButton]() // on créer le prompt
     if (promptForIA != undefined) { // si le début de prompt a été généré
-        promptForIA += await addPromptContrainte(promptForIA) // on ajoute les contraintes
+        promptForIA = await addPromptContrainte(promptForIA) // on ajoute les contraintes
     }
 }
 function closeWindows() {
@@ -140,7 +140,7 @@ async function addPromptContrainte(prompt) {
     
     // --- Personnalisation des prompts ---
     if (personnaliteCoachBriefingUser == "true") { // si le user a activé le duplication du style du coach de SPRINTIA à son IA alors
-        promptWithContrainte += "Voici le coach que l'utilisateur a configuré dans la PWA SPRINTIA :"
+        promptWithContrainte += "\nVoici le coach que l'utilisateur a configuré dans la PWA SPRINTIA :\n"
         promptWithContrainte += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
         
         promptWithContrainte += `
@@ -174,19 +174,17 @@ Contraintes :
 
 async function promptTendances() {
     // début du prompt
-    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt et donne à l'utilisateur :
+    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt.\n\nStructure de ta réponse :
     1. 3 insights clés sur sa performance récente.
     2. 1 conseil actionnable pour sa prochaine séance.
     3. Analyse les tendances des statistiques en comparant la semaine actuelle (les 7 derniers jours) aux semaines précédentes.
 
-Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
-Données :
-            `
+Données d'entraînement :\n`
 
     // récup des données entrainement de l'utilisateur
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(21)).toArray()
-    historiqueData = cleanEntrainementForIA(historiqueData)
     let nbEntrainement = historiqueData.length
 
     if (nbEntrainement < 5) {
@@ -194,6 +192,8 @@ Données :
     } else if (nbEntrainement > 10) {
         historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
     }
+    
+    historiqueData = cleanEntrainementForIA(historiqueData) // on nettoie les datas inutile
 
     if (historiqueData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
@@ -208,19 +208,18 @@ Données :
 }
 async function promptCE() {
     // début du prompt
-    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt et apporte une vraie plus-value à l'algorithme de SPRINTIA pour aider l'utilisateur :
+    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Analyse les données que SPRINTIA te fournit dans ce prompt et apporte une vraie plus-value à l'algorithme de SPRINTIA pour aider l'utilisateur.\n\nStructure de ta réponse :
     1. Interprète ce que SPRINTIA a analysé mais en apportant une plus-value qu'un algorithme ne peut pas comprendre.
     2. Regarde la régularité : la charge vient-elle de séances régulières et stables, ou de gros pics soudains ?
-    3. Suggère un conseil actionnable pour la prochaine séance et propose lui une type de séance a effectuer (en précisant un RPE cible cohérent avec l'état actuel de sa charge d'entraînement).
+    3. Suggère un conseil actionnable pour la prochaine séance et propose lui une type de séance à privilégier (en précisant un RPE cible cohérent avec l'état actuel de sa charge d'entraînement).
 
-Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
-Données :
-            `
+Données d'entraînement :\n`
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(28)).toArray()
     historiqueData = cleanEntrainementForIA(historiqueData)
 
-    if (historiqueData.length <= 0) {
+    if (historiqueData.length <= 3) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
         // une IA alors qu'il n'y a pas de data
         return undefined
@@ -243,21 +242,25 @@ Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textCont
 }
 async function promptIndulgence() {
     // début du prompt
-    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Indulgence de course" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à gérer sa tolérence mécanique en course à pied et apporte des conseils comportementaux exclusifs : 
+    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Indulgence de course" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à gérer sa tolérence mécanique en course à pied et apporte des conseils pertinents.\n\nStructure de ta réponse : 
     1. Interprète ce que SPRINTIA a analysé mais ne te contente pas de valider la distance cible calculée par SPRINTIA, explique lui comment diviser intelligemment ce volume. Bien entendu tu adapteras ton explication en fonction du type de coureur·euse. 
-    2. Explique à l'utilisateur comment ces séances influencent la fatigue musculaire globale de ses jambes, même si son kilométrage de course semble faible.
+    2. Explique à l'utilisateur comment ses séances influencent la fatigue musculaire globale de ses jambes, même si son kilométrage de course semble faible.
     3. N'hésite pas à prendre en compte les autres sports que l'utilisateur a pratiqué mais reste focus un maximum sur la course à pied.
 
-Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
-Données :
-            `
+Données d'entraînement :\n`
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(28)).toArray()
     historiqueData = cleanEntrainementForIA(historiqueData)
 
     if (historiqueData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
         // une IA alors qu'il n'y a pas de data
+        return undefined
+    }
+        
+    // si l'algorithme écrit "0,0 - 0,0 km" ça veut dire que le user n'a pas fais d'entrainement de course à pied ses 28 derniers jours
+    if (document.getElementById("reponse-algo-indulgence").textContent == "0,0 - 0,0 km") {
         return undefined
     }
 
@@ -285,23 +288,26 @@ Type de coureur·euse (séléctionné par l'utilisateur dans les paramètres) : 
 }
 async function promptRecuperation() {
     // début du prompt
-    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Récupération" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à comprendre s'il est en forme pour faire une séance d'entraînement, l'algorithme de récupération n'as accès que à la FC repos de l'utilisateur mais toi tu as accès à la FC repos et aux entraînements donc apporte un vraie plus
+    let prompt = `Tu es le coach sportif expert de la PWA nommé SPRINTIA. Tu dois analyser plus profondément ce que l'algorithme nommé "Récupération" de SPRINTIA ne peut pas voir ni comprendre. Ton but ? Aider l'utilisateur à comprendre s'il est en forme pour faire une séance d'entraînement, l'algorithme de récupération n'as accès qu'à la FC repos de l'utilisateur mais toi tu as accès à la FC repos et à ses entraînements.\n\nStructure de ta réponse :
     1. Interprète ce que SPRINTIA a analysé mais ne te contente pas de valider ce que l'algorithme analyse va chercher plus loin dans l'analyse étant donné que tu as accès à l'historique d'entraînement.
-    2. Suggére un entraînement que l'utilisateur pourrais faire en fonction des ses préférences et de sa récupération. N'hésites pas à lui conseiller du repos si il en a besoin.
+    2. Suggère un entraînement que l'utilisateur pourrais faire en fonction de ses préférences et de sa récupération. N'hésites pas à lui conseiller du repos si il en a besoin.
 
-Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
-Données :
-            `
+Données d'entraînement :\n`
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(7)).toArray()
     let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(7)).toArray()
+    let recuperationUserToday = await db.recuperation.where("date").aboveOrEqual(createObjetDate(0)).toArray()
+
+    // on vérifie d'abord si l'utilisateur a saisi sa FC repos du jour avant de faire le prompt
+    if (recuperationUserToday.length <= 0) {return undefined} // pour pas qu'on génère le prompt
 
     if (historiqueData.length < 2) {
         historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
     }
     if (historiqueRecuperationData.length < 3) {
         historiqueRecuperationData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
-    } 
+    }
 
     if (historiqueData.length <= 0 || historiqueRecuperationData.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
@@ -314,6 +320,9 @@ Données :
 
     // ajout des données au prompt
     prompt += JSON.stringify(historiqueData, null, 2)
+
+    // ajout de la recup
+    prompt += "\n\nDonnées de récupération :\n"
     historiqueRecuperationData = cleanRecuperationForIA(historiqueRecuperationData)
     prompt += JSON.stringify(historiqueRecuperationData, null, 2)
 
@@ -351,10 +360,9 @@ async function promptAnalyseEntrainement() {
     2. 1 insights clés sur son entraînement
     3. Pose lui des questions sur cet entraînement
 
-Information temporelle : Nous sommes aujourd'hui le ${createObjetDate(0)}.
+Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
-Données :
-            `
+Données :\n`
 
     // récup des données entrainement de l'utilisateur
     let historiqueData = await db.entrainement.get(idWorkout) 
@@ -432,7 +440,7 @@ async function promptDiscussion() {
     }
 
     // ajout du prompt de l'utilisateur (pr info on a déjà vérifié si le textearea était vide dans le html)
-    prompt += `\n\nVoici la question que l'utilisateur a posé à SPRINTIA : '${document.getElementById("promt-user").value}'`
+    prompt += `\n\nVoici la question que l'utilisateur a posé à SPRINTIA : '${document.getElementById("promt-user").value}'\n`
 
     return prompt
 }

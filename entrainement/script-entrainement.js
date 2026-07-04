@@ -229,10 +229,9 @@ function afficherData(dataWorkout) {
             options: { position: 'topright' },
             onAdd: function(map) {
                 var div = L.DomUtil.create('div', 'my-control');
-                var myButton = L.DomUtil.create('button', 'my-button-class', div);
-                myButton.innerHTML = 'Centrer';
+                var iconInDiv = L.DomUtil.create("i", "fs-icon_center_carte", div)
 
-                L.DomEvent.on(myButton, 'click', function(e) {
+                L.DomEvent.on(div, 'click', function(e) {
                     L.DomEvent.stopPropagation(e);
                     if (typeof polyline !== 'undefined') map.fitBounds(polyline.getBounds());
                 });
@@ -251,10 +250,9 @@ function afficherData(dataWorkout) {
             
             onAdd: function(map) {
                 var div = L.DomUtil.create('div', 'my-control');
-                var myButton = L.DomUtil.create('button', 'my-button-class', div);
-                myButton.innerHTML = 'Plein écran';
+                var iconInDiv = L.DomUtil.create("i", "fs-icon_fullscreen", div)
 
-                L.DomEvent.on(myButton, 'click', function(e) {
+                L.DomEvent.on(div, 'click', function(e) {
                     L.DomEvent.stopPropagation(e); 
 
                     if (fullscreen == false) {
@@ -264,7 +262,8 @@ function afficherData(dataWorkout) {
                         map.scrollWheelZoom.enable();    
                         map.doubleClickZoom.enable();    
                         
-                        myButton.innerHTML = 'Quitter';
+                        iconInDiv.classList.remove("fs-icon_fullscreen")
+                        iconInDiv.classList.add("fs-icon_fullscreen_exit")
                         fullscreen = true;
 
                         // AFFICHE le bouton Centrer
@@ -281,8 +280,9 @@ function afficherData(dataWorkout) {
                         map.dragging.disable();           
                         map.scrollWheelZoom.disable();    
                         map.doubleClickZoom.disable();    
-
-                        myButton.innerHTML = 'Plein écran';
+                        
+                        iconInDiv.classList.remove("fs-icon_fullscreen_exit")
+                        iconInDiv.classList.add("fs-icon_fullscreen")
                         fullscreen = false;
 
                         // CACHE le bouton Centrer

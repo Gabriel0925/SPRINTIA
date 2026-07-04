@@ -1669,6 +1669,20 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
 }
 
 
+/* --- la carte --- */
+div#map {
+    transition: opacity ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div#map:hover{
+        opacity: 0.85;
+    }
+}
+div#map:active{
+    opacity: 0.75;
+}
+
+
 /* --- Choisir son IA préférée --- */
 ol.container-list-choice{
     display: grid;

@@ -213,7 +213,14 @@ function afficherData(dataWorkout) {
         document.getElementById('map').style.borderRadius = borderRadius;
         document.getElementById('map').style.margin = varMarginSpaceM + "0"
 
-        var map = L.map('map').setView([17.387140, 78.491684], 13);
+        var map = L.map('map', {
+            zoomControl: false,
+            dragging:false, // deplacement du doigt
+            scrollWheelZoom:false, // scroll molette souris
+            doubleClickZoom:false, // double clic pr zoom
+            toucheZoom:false // desactive le zoom avec 2 doigts sur mobile
+        }).setView([17.387140, 78.491684], 13);
+
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
         }).addTo(map); 

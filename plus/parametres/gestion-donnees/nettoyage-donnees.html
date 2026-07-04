@@ -86,9 +86,9 @@
 
     <h2 style="margin-bottom: 0;">Conserver les données des :</h2>
     <select style="width: 100%; margin: 0px; margin-top: var(--SPACE_S); max-width: 450px;" id="conserver-datas" autocomplete="off">
-        <option value="30">30 derniers jours (Recommandé)</option>
-        <option value="90">90 derniers jours (Trimestre)</option>
-        <option value="365">365 derniers jours (Année)</option>
+        <option value="30">30 derniers jours</option>
+        <option value="90">90 derniers jours (Recommandé)</option>
+        <option value="365">365 derniers jours</option>
     </select>
 
     <div class="container-center-marge">
@@ -101,6 +101,13 @@
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-save-restoration.js"></script>
+    <script>
+        // init
+        window.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("conserver-datas").value = "90"
+        })
+    </script>
+
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

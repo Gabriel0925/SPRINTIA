@@ -56,16 +56,17 @@ function carteGPS(data, latlngs) {
         mapElement.className = 'map-normal';
 
         var map = L.map('map', {
+            preferCanvas: true, // param pr améliorer les perf
             zoomControl: false,
             dragging: false, 
             scrollWheelZoom: false, 
             doubleClickZoom: false, 
-            toucheZoom: false 
+            touchZoom: false
         }).setView([17.387140, 78.491684], 13);
 
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
-        }).addTo(map); 
+        }).addTo(map);
 
         // Définition du bouton "Centrer"
         let CenterTace = L.Control.extend({
@@ -102,9 +103,10 @@ function carteGPS(data, latlngs) {
                     if (fullscreen == false) {
                         mapElement.className = 'map-fullscreen';
                         
-                        map.dragging.enable();           
-                        map.scrollWheelZoom.enable();    
-                        map.doubleClickZoom.enable();    
+                        map.dragging.enable();    
+                        map.scrollWheelZoom.enable();
+                        map.doubleClickZoom.enable();
+                        map.touchZoom.enable();
                         
                         iconInDiv.classList.remove("fs-icon_fullscreen")
                         iconInDiv.classList.add("fs-icon_fullscreen_exit")
@@ -121,9 +123,10 @@ function carteGPS(data, latlngs) {
                     else {
                         mapElement.className = 'map-normal';
 
-                        map.dragging.disable();           
-                        map.scrollWheelZoom.disable();    
-                        map.doubleClickZoom.disable();    
+                        map.dragging.disable();
+                        map.scrollWheelZoom.disable();
+                        map.doubleClickZoom.disable();
+                        map.touchZoom.disable()
                         
                         iconInDiv.classList.remove("fs-icon_fullscreen_exit")
                         iconInDiv.classList.add("fs-icon_fullscreen")

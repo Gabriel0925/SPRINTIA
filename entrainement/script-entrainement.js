@@ -59,13 +59,15 @@ function carteGPS(data, latlngs) {
             preferCanvas: true, // param pr améliorer les perf
             zoomControl: false,
             dragging: false, 
-            scrollWheelZoom: false, 
+            scrollWheelZoom: false,
             doubleClickZoom: false, 
             touchZoom: false
         }).setView([17.387140, 78.491684], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
+            attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors",
+            maxZoom: 22, // on limite le user sur le zoom
+            maxNativeZoom: 19 // pr éviter que Leaflet fasse des requetes pour recharger la carte alors qu'il n'y a plus de carte à afficher
         }).addTo(map);
 
         // Définition du bouton "Centrer"

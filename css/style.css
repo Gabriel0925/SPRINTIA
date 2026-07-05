@@ -1717,6 +1717,7 @@ div#map.map-fullscreen {
     opacity: 1 !important;
 
     background-color: var(--COLOR_BACKGROUND) !important;
+    touch-action: none; /* pr empecher le zoom sur la carte on désactive le tactile quand la carte est en plein écran */
 }
 
 div#map.map-normal *, #map.map-fullscreen * {

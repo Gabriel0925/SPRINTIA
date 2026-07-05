@@ -90,17 +90,16 @@ async function uploadFileTCX(event) {
 
                     // un number en undefined ça renvoie NaN
                     if (!isNaN(latitudePoint) && !isNaN(longitudePoint)) {
-                        lapPointGps.push([latitudePoint, longitudePoint])
-                        // // si c'est le premier point time alors on le init
-                        // if (timeLastTrackpoint == undefined) {timeLastTrackpoint = timeTrackpoint}
+                        // si c'est le premier point time alors on le init
+                        if (timeLastTrackpoint == undefined) {timeLastTrackpoint = timeTrackpoint}
 
-                        // let tempsEcouleEntre2Points = new Date(timeTrackpoint).getTime()-new Date(timeLastTrackpoint).getTime()
+                        let tempsEcouleEntre2Points = new Date(timeTrackpoint).getTime()-new Date(timeLastTrackpoint).getTime()
 
-                        // // Filtrage des datas (peut-être à enlever si on perd trop en qualité de tracé GPS)
-                        // if (tempsEcouleEntre2Points >= 3000) { // en ms donc 3000ms->3s on filtre que si on a un point GPS toutes les une à 2 ou 3 sec
-                        //     lapPointGps.push([latitudePoint, longitudePoint])
-                        //     timeLastTrackpoint = timeTrackpoint
-                        // }
+                        // Filtrage des datas (peut-être à enlever si on perd trop en qualité de tracé GPS)
+                        if (tempsEcouleEntre2Points >= 2000) { // en ms donc 2000ms->2s on filtre que si on a un point GPS toutes les une à 2 ou 3 sec
+                            lapPointGps.push([latitudePoint, longitudePoint])
+                            timeLastTrackpoint = timeTrackpoint
+                        }
                     }
                 })
             });

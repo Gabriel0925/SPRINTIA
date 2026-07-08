@@ -43,7 +43,6 @@ async function uploadFileTCX(event) {
             let lapFcMax = []
             let lapMaximumSpeed = []
             let lapPointGps = []
-            let timeLastTrackpoint = undefined
 
             // Boucle qui parcoure tous les lap de l'entraînement et qui convertit par exemple des metres au km directement
             tableauDataLap.forEach(element => {
@@ -90,16 +89,7 @@ async function uploadFileTCX(event) {
 
                     // un number en undefined ça renvoie NaN
                     if (!isNaN(latitudePoint) && !isNaN(longitudePoint)) {
-                        // si c'est le premier point time alors on le init
-                        if (timeLastTrackpoint == undefined) {timeLastTrackpoint = timeTrackpoint}
-
-                        let tempsEcouleEntre2Points = new Date(timeTrackpoint).getTime()-new Date(timeLastTrackpoint).getTime()
-
-                        // Filtrage des datas (peut-être à enlever si on perd trop en qualité de tracé GPS)
-                        if (tempsEcouleEntre2Points >= 2000) { // en ms donc 2000ms->2s on filtre que si on a un point GPS toutes les une à 2 ou 3 sec
-                            lapPointGps.push([latitudePoint, longitudePoint])
-                            timeLastTrackpoint = timeTrackpoint
-                        }
+                        lapPointGps.push({x:latitudePoint, y:longitudePoint})
                     }
                 })
             });
@@ -185,12 +175,15 @@ async function uploadFileTCX(event) {
             if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
                 alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier TCX contient des valeurs valides.")
                 button.disabled = false
-                button.textContent = "Importer fichier"
+                button.textContent = "Importer TCX"
                 return
             }
 
             // dernier nettoyage au cas ou ya pas de datas gps dans le fichier GPX
-            if (lapPointGps.length <= 0 || lapPointGps == undefined) {lapPointGps=undefined}
+            if (lapPointGps.length <= 0 || lapPointGps == undefined) {lapPointGps=undefined} else {
+                // filtrage des points gps
+                lapPointGps = simplify(lapPointGps, 0.00002, false) // pas de haute qualité pour gagner en perf, tolérence de 2 mètres
+            }
 
             // enregistrement des datas recup dans la BDD 
             let dicoDataBase = {

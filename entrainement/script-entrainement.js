@@ -232,7 +232,8 @@ function afficherData(dataWorkout) {
     Object.entries(dataWorkout).forEach(([cle, valeur]) => {
         if (cle=="note" || cle=="points_gps") { // les points gps on les affiche sur la carte
             if (cle == "points_gps") {
-                latlngs = valeur
+                // on recup les points x et y du dico pointsGPS enregistré dans la bdd, on le met dans un tableau
+                latlngs = valeur.map(pointGPS => [pointGPS.x, pointGPS.y])
             } 
             // si c'est la note on ne fais rien on le fera plus tard
         } else {

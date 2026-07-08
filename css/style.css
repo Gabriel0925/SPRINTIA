@@ -717,10 +717,23 @@ div.config-profil {
     font-weight: var(--FONT_WEIGHT_BUTTON);
     padding: var(--SPACE_XS);
     cursor: pointer;
-    max-width: 620px;
     border-radius: var(--BORDER_BIG);
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.config-profil:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+div.config-profil:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    transform: scale(var(--SCALE_SMALL));
 }
 div.config-profil div.config-profil-head {
     display: flex;
@@ -750,6 +763,27 @@ div.config-profil div.container-button-config-profil button{
     margin: 0;
     padding: 0;
     padding: 0.7rem;
+}
+div.config-profil div.container-button-config-profil button:active{
+    transform: scale(1);
+}
+div.config-profil div.container-button-config-profil button#ignorer{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_TEXT_PRIMARY);
+    border: 3px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+
+    transition: border ease-out var(--TIME_TRANSITION_FAST),
+                border-radius ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.config-profil div.container-button-config-profil button#ignorer:hover{
+        border: 3px solid var(--COLOR_ACCENT_TEXT);
+        color: var(--COLOR_ACCENT_TEXT);
+    }
+}
+div.config-profil div.container-button-config-profil button#ignorer:active{
+    border: 3px solid var(--COLOR_ACCENT_TEXT);
+    color: var(--COLOR_ACCENT_TEXT);
 }
 
 
@@ -2602,6 +2636,12 @@ div.box-last-maj div.content2 .description{
     padding: var(--SPACE_XXS);
     color: var(--COLOR_TEXT_SECONDARY);
     cursor: pointer;
+    
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 12; /* Limite à 12 lignes */
+    line-clamp: 12; /* Je met également ça pour que ça assure la compatibilité avec tous les navigateurs */
+    overflow: hidden;
 }
 div.box-last-maj div.content2 button{
     width: 100%;

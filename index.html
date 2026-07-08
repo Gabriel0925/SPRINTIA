@@ -94,16 +94,18 @@
         <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
     </div>
 
-    <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
+    <div class="config-profil" id="configurer-SPRINTIA" style="display: none;" onclick="location.href = 'plus/profil/modification-profil.html'">
         <div class="config-profil-head">
             <i class="fs-icon_profil"></i>
             <p>Configurer <strong>SPRINTIA</strong></p>
         </div>
 
-        <p class="description">Pour débloquer toutes les fonctionnalités de SPRINTIA, veuillez configurer votre profil.</p>
+        <p class="description">
+            Pour débloquer l'étendue des fonctionnalités de SPRINTIA, veuillez configurer votre profil.
+        </p>
             
         <div class="container-button-config-profil">
-            <button onclick="ignoreConfigurationProfil()">Ignorer</button>
+            <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
             <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
         </div>
     </div>

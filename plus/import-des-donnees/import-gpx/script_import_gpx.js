@@ -1,10 +1,50 @@
 async function uploadFileGPX(event) {
     const dicoNameSport = { // init dico pr les sports
+        // COURSE A PIED
         "running":"Course",
+        "run":"Course",
+        "course":"Course",
+        "course à pied":"Course",
+        "course a pied":"Course",
+        "trail":"Course",
+        "treadmill":"Course", // Tapis de course
+
+        // VELO
         "cycling":"Vélo",
-        "hiking":"Randonnée",
+        "biking":"Vélo",
+        "bike":"Vélo",
+        "velo":"Vélo",
+        "vélo":"Vélo",
+        "mountain_biking":"Vélo",
+        "vtt":"Vélo",
+        "indoor_cycling":"Vélo", // home-trainer
+        "gravel":"Vélo",
+
+        // MARCHE
         "walking":"Marche",
-        "skiing": "Ski"
+        "walk":"Marche",
+        "marche":"Marche",
+
+        // RANDONNEE
+        "hiking":"Randonnée",
+        "hike":"Randonnée",
+        "randonnée":"Randonnée",
+        "randonnee":"Randonnée",
+
+        // SPORT HIVER
+        "skiing": "Ski",
+        "ski": "Ski",
+        "alpine_skiing": "Ski",
+        "nordic_skiing": "Ski de fond",
+        "snowboarding": "Snowboard",
+        "snowboard": "Snowboard",
+
+        // SPORT EAU
+        "swimming":"Natation",
+        "swim":"Natation",
+        "natation":"Natation",
+        "open_water_swimming":"Natation", // en eau libre
+        "pool_swimming":"Natation", // en piscine
     }
 
     const fileGPX = event.target.files[0]
@@ -25,7 +65,7 @@ async function uploadFileGPX(event) {
             const workoutDate = objetDate.toISOString().split("T")[0] // 2026-07-03
 
             // recup du sport
-            const workoutSport = dicoNameSport[gpx.tracks[0]?.type?.toLowerCase()] || "Libre" // renvoie running ou cycling
+            const workoutSport = dicoNameSport[gpx.tracks[0]?.type?.toLowerCase().trim()] || "Libre" // renvoie running ou cycling
 
             // recup de la durée de l'entrainement
             const tracks=gpx.tracks[0]
@@ -45,7 +85,7 @@ async function uploadFileGPX(event) {
             // recup des datas spé au sport
             const workoutDistance = Number(Number(gpx.tracks[0].distance.total/1000).toFixed(2)) // recup de la distance en m puis conversion en km
             const workoutDenivele = Math.floor(gpx.tracks[0].elevation.pos) // denivelé positif
-            const pointsGPS = gpx.tracks[0].points.map(point => [point.lat, point.lon]) // [latitude, longitude]
+            let pointsGPS = gpx.tracks[0].points.map(point => ({x:point.lat, y:point.lon})) // on est obligé de mettre des parenthèses autour du dico pour pas que js crois que c'est du code à executer
 
             // calcul de l'allure moyenne ou de la vitesse en fonction du sport
             let workoutAllureMoy = 0
@@ -142,12 +182,15 @@ async function uploadFileGPX(event) {
             if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
                 alert("Une erreur s'est produite lors de l'importation de la séance. Veuillez vérifier que votre fichier GPX contient des valeurs valides.")
                 button.disabled = false
-                button.textContent = "Importer fichier"
+                button.textContent = "Importer GPX"
                 return
             }
 
             // dernier nettoyage au cas ou ya pas de datas gps dans le fichier GPX
-            if (pointsGPS.length <= 0 || pointsGPS == undefined) {pointsGPS=undefined}
+            if (pointsGPS.length <= 0 || pointsGPS == undefined) {pointsGPS=undefined} else {
+                // filtrage des points gps
+                pointsGPS = simplify(pointsGPS, 0.00002, false) // pas de haute qualité pour gagner en perf, tolérence de 2 mètres
+            }
 
             // enregistrement des datas
             const dicoDatasWorkout = {

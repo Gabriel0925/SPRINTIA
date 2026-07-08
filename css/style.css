@@ -2524,6 +2524,7 @@ div.card-releases p.description-maj {
     color: var(--COLOR_TEXT_SECONDARY);
     padding: var(--SPACE_XXS);
     cursor: pointer;
+    min-height: 81px;
 
     display: -webkit-box;
     -webkit-box-orient: vertical; 

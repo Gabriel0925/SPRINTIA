@@ -583,7 +583,7 @@ async function JrmCoach() {
         // on affiche le nom du coach choisi par le user
         if (TableauNomCoach[0].length > 0) {
             if (TableauAvatarCoach[0].length > 0) { // si il y a un avatar alors on met le nom du coach à coté de l'avatar
-                SectionNomCoach.textContent = TableauAvatarCoach[0] + " " + TableauNomCoach[0]
+                SectionNomCoach.innerHTML = TableauAvatarCoach[0] + " <strong>" + TableauNomCoach[0] + "</strong>"
             }
         }
     }

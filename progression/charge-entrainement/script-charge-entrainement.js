@@ -217,7 +217,7 @@ async function displayOnScreen() {
         ratioChargeUser, statutUser, analyse, avatarCoach, nameCoach] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
 
     // affichage du nom et de l'avatar du coach
-    document.getElementById("nom-coach").textContent = avatarCoach + " " + nameCoach
+    document.getElementById("nom-coach").innerHTML = avatarCoach + " " + "<strong>" + nameCoach + "</strong>"
 
 
     if (nbEntrainement28j < 3) {

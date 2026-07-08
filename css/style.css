@@ -1574,13 +1574,16 @@ div.zone-coach::before {
 div.zone-coach p.zone-coach-name {
     font-size: var(--H3);
     margin-bottom: var(--SPACE_S_SMALL);
+    font-weight: 1000;
+    margin-left: 0.12rem;
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+div.zone-coach p.zone-coach-name strong{
     background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    font-weight: 1000;
-    margin-left: 0.12rem;
 }
 div.zone-coach button {
     margin: 0;

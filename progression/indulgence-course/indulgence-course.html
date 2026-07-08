@@ -82,7 +82,7 @@
     <section class="container-box">
 
         <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach">JRM Coach</p>
+            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
             <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
                 Chargement...
             </p>
@@ -177,7 +177,7 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + NomCoach
+                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + "<strong>" + NomCoach + "</strong>"
             }
         }
 

@@ -81,11 +81,11 @@ function ChangeAvatar(value) {
     let NameJRM = document.getElementById("nom-coach").value
 
     if (!NameJRM) { // Si il y a rien dans le champs name alors on met en variable le nom de base pour que quand ça passera dans le else le nom de base sera mis
-        NameJRM = "JRM Coach"
+        NameJRM = "<strong>JRM Coach</strong>"
     }
 
     // maj de l'avatar dans la zone du coach
-    ZoneNameJRM.innerHTML = value + " " + NameJRM
+    ZoneNameJRM.innerHTML = value + " " + "<strong>" + NameJRM + "</strong>"
 
     return
 }
@@ -95,9 +95,9 @@ function MajName(value) {
     let AvatarCoach = document.getElementById("avatar-coach").value
 
     if (value == "" || value == " ") { // Si le champs est vide alors on met JRM coach dans la box JRM Coach
-        NameJRM.innerHTML = AvatarCoach + " " + "JRM Coach"
+        NameJRM.innerHTML = AvatarCoach + " " + "<strong>JRM Coach</strong>"
     } else {
-        NameJRM.innerHTML = AvatarCoach + " " + value
+        NameJRM.innerHTML = AvatarCoach + " " + "<strong>" + value + "</strong>"
     } 
 
     return
@@ -128,7 +128,7 @@ async function Initialisation() {
         InputAvatar.value = TableauAvatar[0]
 
         // Remplissage des zones
-        ZoneNameBox.textContent = TableauAvatar[0] + " " + TableauName[0] // Le nom du coach
+        ZoneNameBox.innerHTML = TableauAvatar[0] + " " + "<strong>" + TableauName[0] + "</strong>" // Le nom du coach
         ZoneJRMBox.innerHTML = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
 
     } else {
@@ -157,7 +157,7 @@ async function Reinitialisation() {
         document.getElementById("nom-coach").value = ""
         document.getElementById("style-coach").value = "Bienveillant"
         document.getElementById("avatar-coach").value = ""
-        document.getElementById("NomCoach").innerHTML = "JRM Coach"
+        document.getElementById("NomCoach").innerHTML = "<strong>JRM Coach</strong>"
         document.getElementById("JRM-coach").innerHTML = DicoPhraseExemple["Bienveillant"]
 
         // confirmation sauvegarde

@@ -726,15 +726,6 @@ div.config-profil {
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
-@media (hover: hover) and (pointer: fine) {
-    div.config-profil:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-div.config-profil:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_SMALL));
-}
 div.config-profil div.config-profil-head {
     display: flex;
     align-items: center;

@@ -16,12 +16,26 @@
         {
             "src": "/assets/icons-SPRINTIA/icon-192-V5.1.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/icons-SPRINTIA/icon-192-V5.1.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
         },
         {
             "src": "/assets/icons-SPRINTIA/icon-512-V5.1.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/icons-SPRINTIA/icon-512-V5.1.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
 

@@ -93,7 +93,10 @@
             La langue de Garmin Connect Web doit être le <strong>Français</strong> ou l'<strong>Anglais</strong>.
         </li>
         <li>
-            Cliquez sur "Export CSV" (en haut à droite), le fichier CSV a dû se télécharger.
+            Cliquez sur "Export CSV" (ou "Exporter au format CSV") en haut à droite, le fichier CSV a dû se télécharger.
+        </li>
+        <li>
+            Désormais, vous n'avez plus qu'à importer ce fichier dans SPRINTIA.
         </li>
     </ul>
 
@@ -102,18 +105,7 @@
         <input type="file" id="file-input-garmin" accept=".csv" style="display: none;" onchange="uploadFileGarmin(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
         <button class="size-block" onclick="document.getElementById('file-input-garmin').click()" id="button-import-garmin">Importer fichier Garmin</button>
-    </div> 
-
-    <h2>Conseil pour l'importation</h2>
-    <ul class="list-information">
-        <li>
-            1er conseil : Importer uniquement les 30 derniers jours de votre historique d'entraînement, juste pour calibrer les algorithmes de SPRINTIA.
-        </li>
-        <li>
-            2ème conseil : Vérifier dans l'historique d'entraînement de SPRINTIA que tout a bien été importer correctement. Si ce n'est pas le cas, 
-            je vous conseille de modifier l'entraînement pour corriger l'erreur.
-        </li>
-    </ul>
+    </div>
     
     <script src="../../../assets/base-js/base.js"></script>
 

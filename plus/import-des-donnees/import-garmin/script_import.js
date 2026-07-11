@@ -1,40 +1,53 @@
 const dicoNameSportFrancais = {
     // SPORT BASIQUES
-    "Course à pied": "Course", "Cyclisme": "Vélo", "Marche à pied": "Marche", "Randonnée": "Randonnée",
+    "Course à pied": "Course", "Trail": "Course", "Course à pied sur piste": "Course", "Course à pied sur tapis roulant": "Course", "Ultrafond": "Course", "Course virtuelle": "Course",
+    "Cyclisme": "Vélo", "VTT électrique": "Vélo", "Vélo électrique": "Vélo", "VTT enduro": "Vélo", "Gravel bike": "Vélo", "Vélo d'intérieur": "Vélo",
+    "VTT": "Vélo", "Cyclisme sur route": "Vélo", "Cyclisme sur piste": "Vélo", "Cyclisme virtuel": "Vélo", "BMX": "Vélo", "Cyclocross": "Vélo",
+    "Marche à pied": "Marche", "Randonnée": "Randonnée",
 
     // SPORT DE RAQUETTE
-    "Badminton": "Badminton",
+    "Badminton": "Badminton", "Tennis": "Tennis", "Tennis de table": "Tennis de table",
 
     // SPORT COLLECTIFS
-    "Basket-ball": "Basketball", "Volley-ball": "Volley", "Football": "Football",
+    "Basket-ball": "Basketball", "Volley-ball": "Volley", "Football": "Football", "Rugby": "Rugby",
 
     // SPORT DE RENFORCEMENT
-    "Musculation": "Musculation", "Rameur d'intérieur": "Rameur d'intérieur",
+    "Musculation": "Musculation",  "HIIT": "HIIT", "Cardio": "HIIT",
+    "Rameur d'intérieur": "Rameur d'intérieur",
 
     // SPORT D'EAU
-    "Nat. piscine": "Natation",
+    "Nat. piscine": "Natation", "Natation en eau libre": "Natation",
 
     // SPORT D'HIVER
-    "Ski en station": "Ski"
+    "Ski en station": "Ski", "Snowboard backcountry": "Snowboard", "Snowboard en station": "Snowboard", 
+    "Ski de fond classique": "Ski de fond", "Ski de fond skating": "Ski de fond",
+
+    // AUTRES
+    "Escalade en salle": "Escalade",  "Corde à sauter": "Corde à sauter",
 }
 const dicoNameSportEnglish = {
     // SPORT BASIQUES
-    "Running": "Course", "Cycling": "Vélo", "Walking": "Marche", "Hiking": "Randonnée",
+    "Running": "Course", "Trail Running": "Course", "Track Running": "Course", "Treadmill Running": "Course", "Ultra Running": "Course", "Virtual Running": "Course",
+    "Cycling": "Vélo", "eMountain Biking": "Vélo", "eBiking": "Vélo", "Enduro Mountain Biking": "Vélo", "Gravel/Unpaved Cycling": "Vélo", "Indoor Cycling": "Vélo",
+    "Mountain Biking": "Vélo", "Road Cycling": "Vélo", "Track Cycling": "Vélo", "Virtual Cycling": "Vélo", "BMX": "Vélo", "Cyclocross": "Vélo",
+    "Walking": "Marche", "Hiking": "Randonnée",
 
     // SPORT DE RAQUETTE
-    "Badminton": "Badminton",
+    "Badminton": "Badminton", "Tennis": "Tennis", "Table Tennis": "Tennis de table",
 
     // SPORT COLLECTIFS
-    "Basketball": "Basketball", "Volleyball": "Volley", "Soccer/Football": "Football",
+    "Basketball": "Basketball", "Volleyball": "Volley", "Soccer/Football": "Football", "Rugby": "Rugby",
 
     // SPORT DE RENFORCEMENT
-    "Strength Training": "Musculation", "Indoor Rowing": "Rameur d'intérieur",
+    "Strength Training": "Musculation",  "HIIT": "HIIT", "Cardio": "HIIT",
+    "Indoor Rowing": "Rameur d'intérieur",
 
     // SPORT D'EAU
-    "Pool Swim": "Natation",
+    "Pool Swim": "Natation", "Open Water Swimming": "Natation",
 
     // SPORT D'HIVER
-    "Resort Skiing": "Ski"
+    "Resort Skiing": "Ski", "Backcountry Snowboarding": "Snowboard", "Resort Snowboarding": "Snowboard", 
+    "Cross Country Classic Skiing": "Ski de fond", "Cross Country Skate Skiing": "Ski de fond",
 }
 
 function extractionDate(dateWorkout) {
@@ -79,6 +92,8 @@ async function uploadFileGarmin(event) {
         button.disabled = true
         button.textContent = "Importation..."
 
+        let sportWithDenievele = ["Course", "Vélo", "Marche", "Randonnée", "Ski"]
+
         try {
             const readFile = await fileCSV.text() // lecture du fichier et transformation en texte
             const ligneFile = Papa.parse(readFile) // appelle à la bibliothèque qui renvoie direct le dico
@@ -101,6 +116,7 @@ async function uploadFileGarmin(event) {
             let indexFcMaxWorkout = enteteFile.indexOf("Fréquence cardiaque maximale") == -1 ? enteteFile.indexOf("Max HR"):enteteFile.indexOf("Fréquence cardiaque maximale")
 
             let indexDistanceWorkout = enteteFile.indexOf("Distance") == -1 ? enteteFile.indexOf("Distance"):enteteFile.indexOf("Distance")
+            let indexDeniveleWorkout = enteteFile.indexOf("Ascension totale") == -1 ? enteteFile.indexOf("Total Ascent"):enteteFile.indexOf("Ascension totale")
 
             let nbWorkoutImporter = 0 // compteur pour compter le nombre d'entraînement importé
             let profilDB = await db.profil.get(1) // pour des calculs de transpiration,... par la suite
@@ -117,8 +133,8 @@ async function uploadFileGarmin(event) {
                 let fcMaxWorkout = parseInt(elt[indexFcMaxWorkout]) || undefined
 
                 // -- data spécifique aux sports extérieurs --
-                // Garmin met une virgule pour les décimales donc on la remplace par un point
                 let distanceWorkout = Number(Number(elt[indexDistanceWorkout]).toFixed(2)) || undefined // arrondi -> ex : 14.23 
+                let deniveleWorkout = parseInt(elt[indexDeniveleWorkout]) || undefined
                 
                 if (elt.length <= 1) { // car la derniere ligne du CSV Garmin est une ligne vide renvoie ça [''] et length == 1
                     //pass
@@ -136,31 +152,41 @@ async function uploadFileGarmin(event) {
                     
                     if (dureeWorkout == undefined || new Date(dateWorkout) == "Invalid Date") {
                         continue // on passe au tour suivant
-                    }
-                    else {
+                    } else {
                         nbWorkoutImporter+=1 // incrémentation
+                    }
+
+                    // si c'est de la natation on le met on l'enregistre en km dans la BDD
+                    if (sportWorkout == "Natation") {
+                        distanceWorkout = distanceWorkout*10**(-3) // de metres en km
                     }
 
                     // calcul de l'allure moyenne ou de la vitesse en fonction du sport
                     let allureMoyWorkout = 0
                     let vitesseMoyWorkout = 0
                     if (sportWorkout != "Libre") {
-                        if (sportWorkout == "Course" && distanceWorkout > 0) {
-                            // Calcul de l'allure en course à pied
-                            allureMoyWorkout = dureeWorkout/distanceWorkout // on obtient par exemple : 7.65
+                        if (distanceWorkout != undefined && distanceWorkout > 0) {
+                            if (sportWorkout == "Course" || sportWorkout == "Marche" || sportWorkout == "Randonnée") {
+                                // Calcul de l'allure en course à pied
+                                allureMoyWorkout = dureeWorkout/distanceWorkout // on obtient par exemple : 7.65
 
-                            let min = Math.floor(allureMoyWorkout) // pour recup les minutes
-                            let sec = Math.round((allureMoyWorkout%1)*60) // conversion du reste en seconde 
-                            allureMoyWorkout = `${min}:${sec.toString().padStart(2, "0")}`
-
-                        } else if (sportWorkout == "Vélo" && distanceWorkout > 0) {
-                            // conversion des min en heures
-                            let workoutTimeHour = dureeWorkout/60
-                            vitesseMoyWorkout = Number((distanceWorkout/workoutTimeHour).toFixed(2))
-                        }
+                                let min = Math.floor(allureMoyWorkout) // pour recup les minutes
+                                let sec = Math.round((allureMoyWorkout%1)*60) // conversion du reste en seconde 
+                                allureMoyWorkout = `${min}:${sec.toString().padStart(2, "0")}`
+                            } else if (sportWorkout == "Vélo" || sportWorkout == "Ski") {
+                                // conversion des min en heures
+                                let workoutTimeHour = dureeWorkout/60
+                                vitesseMoyWorkout = Number((distanceWorkout/workoutTimeHour).toFixed(2))
+                            }
+                        } else {distanceWorkout=undefined}
                     }
                     if (allureMoyWorkout == 0) {allureMoyWorkout = undefined}
                     if (vitesseMoyWorkout == 0) {vitesseMoyWorkout = undefined}
+
+                    // vérification que le sport de l'entraînement prenne en compte le dénivelé sinon on le met sur undefined
+                    if (!sportWithDenievele.includes(sportWorkout)) {
+                        deniveleWorkout = undefined
+                    }
 
                     if (trainingEffectWorkout == undefined) {
                         trainingEffectWorkout = 0.5 // car quand on va multiplier par 2 ça fera 1 soit le minimum en RPE
@@ -179,8 +205,8 @@ async function uploadFileGarmin(event) {
                     if (chargeEntrainementWorkout < 1) {chargeEntrainementWorkout = 1} // petite sécurité
 
                     // Calcul de la transpiration
-                    let TranspirationEstimee = 0
-                    let HydratationEstimee = 0
+                    let transpirationEstimee = 0
+                    let hydratationEstimee = 0
 
                     if (profilDB != undefined) {
                         let poidsUser = Number(profilDB.poids)
@@ -199,11 +225,11 @@ async function uploadFileGarmin(event) {
                         }
 
                         // Calcul
-                        TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
-                        HydratationEstimee = Math.round(TranspirationEstimee*1.2)
+                        transpirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
+                        hydratationEstimee = Math.round(transpirationEstimee*1.2)
                     } else {
-                        TranspirationEstimee = undefined
-                        HydratationEstimee = undefined
+                        transpirationEstimee = undefined
+                        hydratationEstimee = undefined
                     }
 
                     // dico de base
@@ -216,8 +242,8 @@ async function uploadFileGarmin(event) {
                         fc_moy: fcMoyWorkout,
                         fc_max: fcMaxWorkout,
                         distance: distanceWorkout,
-                        transpiration_estimee: TranspirationEstimee,
-                        hydratation_estimee:HydratationEstimee,
+                        transpiration_estimee: transpirationEstimee,
+                        hydratation_estimee:hydratationEstimee,
                         charge_entrainement: chargeEntrainementWorkout
                     }
 
@@ -225,6 +251,7 @@ async function uploadFileGarmin(event) {
                     if (sportWorkout != "Libre") {
                         dicoBase["allure_moy"] = allureMoyWorkout
                         dicoBase["vitesse_moy"] = vitesseMoyWorkout
+                        dicoBase["denivele"] = deniveleWorkout
                     }
 
                     const dicoDataClean = removeValueUndefined(dicoBase)

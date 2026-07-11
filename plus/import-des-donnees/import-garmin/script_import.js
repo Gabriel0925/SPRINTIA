@@ -48,6 +48,9 @@ const dicoNameSportEnglish = {
     // SPORT D'HIVER
     "Resort Skiing": "Ski", "Backcountry Snowboarding": "Snowboard", "Resort Snowboarding": "Snowboard", 
     "Cross Country Classic Skiing": "Ski de fond", "Cross Country Skate Skiing": "Ski de fond",
+
+    // AUTRES
+    "Indoor Climbing": "Escalade",  "Jump Rope": "Corde à sauter",
 }
 
 function extractionDate(dateWorkout) {

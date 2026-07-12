@@ -67,6 +67,7 @@ async function uploadFileTCX(event) {
 
                 // recup du dénivelé si il est présent
                 const pointsAltitudeLap = element.querySelectorAll("AltitudeMeters") // du lap actuel uniquement
+                const tolerance = 0.75
                 deniveleLastLap = undefined // on ré-initialise avant de réexecuté la boucle pour le dénivelé
                 pointsAltitudeLap.forEach(elt => {
                     const altitudeNow = Number(elt?.textContent ?? 0)
@@ -74,11 +75,12 @@ async function uploadFileTCX(event) {
                     // si c'est le premier point on l'init
                     if (deniveleLastLap == undefined) {deniveleLastLap=altitudeNow}
 
-                    if (altitudeNow > deniveleLastLap) { // si ça monte on ajoute la différence
+                    if (altitudeNow-deniveleLastLap > tolerance) { // si la différence entre les deux points est supérieur à une hausse de 0.75m
                         workoutDenivele = workoutDenivele+(altitudeNow-deniveleLastLap)
+                        deniveleLastLap = altitudeNow
+                    } else if (altitudeNow-deniveleLastLap < 0) { // si ça descend on met à jour le denivelé pour le tour suivant
+                        deniveleLastLap = altitudeNow
                     }
-
-                    deniveleLastLap = altitudeNow
                 })
 
                 // recupéré les points gps

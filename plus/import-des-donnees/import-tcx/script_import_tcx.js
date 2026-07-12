@@ -67,6 +67,7 @@ async function uploadFileTCX(event) {
 
                 // recup du dénivelé si il est présent
                 const pointsAltitudeLap = element.querySelectorAll("AltitudeMeters") // du lap actuel uniquement
+                deniveleLastLap = undefined // on ré-initialise avant de réexecuté la boucle pour le dénivelé
                 pointsAltitudeLap.forEach(elt => {
                     const altitudeNow = Number(elt?.textContent ?? 0)
 

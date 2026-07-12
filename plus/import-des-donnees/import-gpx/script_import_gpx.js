@@ -84,8 +84,28 @@ async function uploadFileGPX(event) {
 
             // recup des datas spé au sport
             const workoutDistance = Number(Number(gpx.tracks[0].distance.total/1000).toFixed(2)) // recup de la distance en m puis conversion en km
-            const workoutDenivele = Math.floor(gpx.tracks[0].elevation.pos) // denivelé positif
             let pointsGPS = gpx.tracks[0].points.map(point => ({x:point.lat, y:point.lon})) // on est obligé de mettre des parenthèses autour du dico pour pas que js crois que c'est du code à executer
+
+            // Calcul du dénivelé car la lib gpxParser ne le fait pas correctement
+            let workoutDenivele = 0
+            const tolerance = 2 // tolérence de 2m pour le calcul du dénivelé
+            let deniveleLastLap = undefined // on init la variable pour le calcul du dénivelé
+            if (tracks.points.length > 0) {
+                tracks.points.forEach(point => {
+                    const altitudeNow = Number(point.ele ?? 0) // si ya pas d'altitude on met à 0
+
+                    // si c'est le premier point on l'init
+                    if (deniveleLastLap == undefined) {deniveleLastLap=altitudeNow}
+
+                    if (altitudeNow-deniveleLastLap > tolerance) { // si la différence entre les deux points est supérieur à une hausse de 1.5m
+                        workoutDenivele = workoutDenivele+(altitudeNow-deniveleLastLap)
+                        deniveleLastLap = altitudeNow
+                    } else if (altitudeNow-deniveleLastLap < -tolerance) { // si ça descend on met à jour le denivelé pour le tour suivant (-tolerance pour l'inverse de tolérence soit -1.5m)
+                        deniveleLastLap = altitudeNow
+                    }
+                })
+            }
+            workoutDenivele = parseInt(workoutDenivele)
 
             // calcul de l'allure moyenne ou de la vitesse en fonction du sport
             let workoutAllureMoy = 0

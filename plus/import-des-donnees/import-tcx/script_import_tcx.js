@@ -77,7 +77,7 @@ async function uploadFileTCX(event) {
                     if (altitudeNow-deniveleLastLap > tolerance) { // si la différence entre les deux points est supérieur à une hausse de 0.75m
                         workoutDenivele = workoutDenivele+(altitudeNow-deniveleLastLap)
                         deniveleLastLap = altitudeNow
-                    } else if (altitudeNow-deniveleLastLap < 0) { // si ça descend on met à jour le denivelé pour le tour suivant
+                    } else if (altitudeNow-deniveleLastLap < tolerance) { // si ça descend on met à jour le denivelé pour le tour suivant
                         deniveleLastLap = altitudeNow
                     }
                 })

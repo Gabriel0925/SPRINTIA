@@ -88,7 +88,7 @@ async function uploadFileGPX(event) {
 
             // Calcul du dénivelé car la lib gpxParser ne le fait pas correctement
             let workoutDenivele = 0
-            const tolerance = 2 // tolérence de 2m pour le calcul du dénivelé
+            const tolerance = 1.5 // tolérence de 1.5m pour le calcul du dénivelé
             let deniveleLastLap = undefined // on init la variable pour le calcul du dénivelé
             if (tracks.points.length > 0) {
                 tracks.points.forEach(point => {
@@ -105,7 +105,13 @@ async function uploadFileGPX(event) {
                     }
                 })
             }
-            workoutDenivele = parseInt(workoutDenivele)
+
+            // nettoyage
+            if (workoutDenivele == 0) {
+                workoutDenivele = undefined
+            } else {
+                workoutDenivele = parseInt(workoutDenivele)
+            }
 
             // calcul de l'allure moyenne ou de la vitesse en fonction du sport
             let workoutAllureMoy = 0

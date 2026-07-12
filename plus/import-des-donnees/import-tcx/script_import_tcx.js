@@ -67,17 +67,17 @@ async function uploadFileTCX(event) {
 
                 // recup du dénivelé si il est présent
                 const pointsAltitudeLap = element.querySelectorAll("AltitudeMeters") // du lap actuel uniquement
-                const tolerance = 2
+                const tolerance = 1.5 // tolérence de 1.5m pour le calcul du dénivelé
                 pointsAltitudeLap.forEach(elt => {
                     const altitudeNow = Number(elt?.textContent ?? 0)
 
                     // si c'est le premier point on l'init
                     if (deniveleLastLap == undefined) {deniveleLastLap=altitudeNow}
 
-                    if (altitudeNow-deniveleLastLap > tolerance) { // si la différence entre les deux points est supérieur à une hausse de 2m
+                    if (altitudeNow-deniveleLastLap > tolerance) { // si la différence entre les deux points est supérieur à une hausse de 1.5m
                         workoutDenivele = workoutDenivele+(altitudeNow-deniveleLastLap)
                         deniveleLastLap = altitudeNow
-                    } else if (altitudeNow-deniveleLastLap < -tolerance) { // si ça descend on met à jour le denivelé pour le tour suivant (-tolerance pour l'inverse de tolérence soit -2m)
+                    } else if (altitudeNow-deniveleLastLap < -tolerance) { // si ça descend on met à jour le denivelé pour le tour suivant (-tolerance pour l'inverse de tolérence soit -1.5m)
                         deniveleLastLap = altitudeNow
                     }
                 })

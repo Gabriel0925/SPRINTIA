@@ -107,7 +107,7 @@
     </p>
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadTrainingPeaks(event)">
+        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadFileTP(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
         <button class="size-block" onclick="document.getElementById('file-input-TP').click()" id="button-import-TP">Importer CSV</button>
     </div>

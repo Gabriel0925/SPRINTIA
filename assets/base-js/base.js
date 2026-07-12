@@ -592,7 +592,8 @@ function verificationURL() {
     const dicoParamUrlMessage = {
         "workoutregister":"Bien joué 🔥",
         "workoutimport":"Bien reçu 😋",
-        "levelrunregister": "Impressionnant ⚡"
+        "levelrunregister": "Impressionnant ⚡",
+        "accountrestore": "Vous revoilà 😇"
     }
     
     if (separation.length > 1) {

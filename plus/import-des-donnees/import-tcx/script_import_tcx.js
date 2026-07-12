@@ -211,11 +211,13 @@ async function uploadFileTCX(event) {
                 dicoDataBase["denivele"] = workoutDenivele
             }
             const dicoDataClean = removeValueUndefined(dicoDataBase) // toutes les valeurs en undefined sont enlever du dico
-            await db.entrainement.add(dicoDataClean)
+
+            // on recup l'id direct au moment de l'enregistrement grâce à add qui renvoie l'id
+            const idWorkout = await db.entrainement.add(dicoDataClean)
 
             button.textContent = "Importé"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-            window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
+            window.location.href = `../../../entrainement/entrainement.html?workout=${idWorkout}` 
         } catch(error) {
             console.log(error)
             button.textContent = "Une erreur s'est produite"

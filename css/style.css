@@ -716,7 +716,6 @@ div.config-profil {
     margin-top: var(--SPACE_M);
     font-weight: var(--FONT_WEIGHT_BUTTON);
     padding: var(--SPACE_XS);
-    cursor: pointer;
     border-radius: var(--BORDER_BIG);
 
     user-select: none;
@@ -764,7 +763,7 @@ div.config-profil div.container-button-config-profil button#ignorer{
     border: 3px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 
     transition: border ease-out var(--TIME_TRANSITION_FAST),
-                border-radius ease-out var(--TIME_TRANSITION_FAST);
+                color ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     div.config-profil div.container-button-config-profil button#ignorer:hover{

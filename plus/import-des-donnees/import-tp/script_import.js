@@ -88,7 +88,7 @@ async function uploadFileTP(event) {
                         dureeWorkout = conversionMinutesTP(dureeWorkout)
                     }
 
-                    if (dureeWorkout == undefined || new Date(dateWorkout) == "Invalid Date") {
+                    if (dureeWorkout == undefined || dureeWorkout <= 0 || new Date(dateWorkout) == "Invalid Date") {
                         continue // on passe au tour suivant
                     } else {
                         nbWorkoutImporter+=1 // incrémentation

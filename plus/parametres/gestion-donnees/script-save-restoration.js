@@ -46,6 +46,7 @@ async function downloadDatas() {
 
         buttonDownload.textContent = "Téléchargé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+        logoDynamique("📁 Fichier téléchargé !")
 
     } catch(error) {
         console.log(error) // affichage de l'erreur en console
@@ -98,7 +99,7 @@ async function restaurationDatas(event) {
 
             buttonRestoration.textContent = "Restauré"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-            logoDynamique("Vous revoilà 😇")
+            window.location.href = "../../../index.html?accountrestore"
         } catch(error) {
             console.log(error)
             buttonRestoration.textContent = "Une erreur s'est produite"

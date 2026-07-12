@@ -159,7 +159,7 @@ async function uploadFileGarmin(event) {
                         dureeWorkout = conversionMinGarmin(dureeWorkout) // nettoyage de la durée inscrit dans le CSV Garmin
                     }                    
                     
-                    if (dureeWorkout == undefined || new Date(dateWorkout) == "Invalid Date") {
+                    if (dureeWorkout == undefined || dureeWorkout <= 0 || new Date(dateWorkout) == "Invalid Date") {
                         continue // on passe au tour suivant
                     } else {
                         nbWorkoutImporter+=1 // incrémentation

@@ -1,29 +1,38 @@
-// Pour l'import TrainingPeaks
-function conversionMinutesTP(DureeWorkoutUser) {
+const dicoSport = {
+    "Run": "Course",
+    "Bike": "Vélo", "MountainBike": "Vélo",
+    "Walk": "Marche",
+    "Hike": "Randonnée",
+    "Swim": "Natation",
+    "Strength": "Musculation",
+    "Rowing": "Rameur d'intérieur",
+    "XC-Ski": "Ski", "NordicSki": "Ski",
+    "Other": "Libre", "Custom": "Libre"
+}
+
+function conversionMinutesTP(dureeWorkoutUser) {
     // petite vérif pr s'assurer
-    if (DureeWorkoutUser != undefined) {
+    if (dureeWorkoutUser != undefined) {
         // training peaks renvoie 1.5 heure donc on le repasse en minutes -> 90 minutes
         try {
-            DureeWorkoutUser = Number(DureeWorkoutUser)*60
+            return Number(dureeWorkoutUser)*60
         } catch {
             return undefined
         }
-        return DureeWorkoutUser
-
     } else {
         return undefined
     }
 }
-async function uploadTrainingPeaks(event) {
+
+async function uploadFileTP(event) {
     const fileCSV = event.target.files[0]
     let button = document.getElementById("button-import-TP")
 
     if (fileCSV) {
-        try {
-            // transmet info au user
-            button.disabled = true
-            button.textContent = "Importation..."
+        button.disabled = true
+        button.textContent = "Importation..."
 
+        try {
             // on lit le fichier et on convertit en texte
             const readFile = await fileCSV.text()
             
@@ -39,188 +48,148 @@ async function uploadTrainingPeaks(event) {
             let indexNomWorkout = enteteFile.indexOf("Title")
             let indexDureeWorkout = enteteFile.indexOf("TimeTotalInHours")
             let indexRpe = enteteFile.indexOf("Rpe")
-            let indexDistanceWorkout = enteteFile.indexOf("DistanceInMeters")
+
             let indexFcMoy = enteteFile.indexOf("HeartRateAverage")
             let indexFcMax = enteteFile.indexOf("HeartRateMax")
-            let indexCadenceMoy = enteteFile.indexOf("CadenceAverage")
-            let indexDescription = enteteFile.indexOf("WorkoutDescription")
 
+            let indexDistanceWorkout = enteteFile.indexOf("DistanceInMeters")
+
+            let nbWorkoutImporter = 0 // compteur pour compter le nombre d'entraînement importé
+            let profilDB = await db.profil.get(1) // pour des calculs de transpiration,... par la suite
             for (const elt of dataHistoriqueEntrainement) {
                 // recup des datas
-                let sportWorkout = elt[indexSportWorkout]
-                let dateWorkout = elt[indexDateWorkout]
-                let nomWorkout = elt[indexNomWorkout]
-                let dureeWorkout = elt[indexDureeWorkout]
-                let rpeWorkout = elt[indexRpe] || undefined
-                let distanceWorkout = elt[indexDistanceWorkout] || undefined
-                let fcMoyWorkout = elt[indexFcMoy] || undefined
-                let fcMaxWorkout = elt[indexFcMax] || undefined
-                let cadenceMoyWorkout = elt[indexCadenceMoy] || undefined
-                let descriptionWorkout = elt[indexDescription] || undefined
+                let sportWorkout = elt?.[indexSportWorkout] ?? undefined
+                let dateWorkout = elt?.[indexDateWorkout]??undefined
+                let nomWorkout = elt?.[indexNomWorkout]??undefined
+                let dureeWorkout = elt[indexDureeWorkout]??undefined
+                let rpeWorkout = Number(elt[indexRpe]) || undefined
+
+                let fcMoyWorkout = parseInt(elt[indexFcMoy]) || undefined
+                let fcMaxWorkout = parseInt(elt[indexFcMax]) || undefined
+
+                let distanceWorkout = Number(Number(elt[indexDistanceWorkout]).toFixed(2)) || undefined
 
                 if (elt.length <= 1) { // car la derniere ligne du CSV renvoie ça [''] et length == 1
                     //pass
                 } else {
-                    // passage du format hh:mm:ss en minutes pour la durée
-                    dureeWorkout = conversionMinutesTP(dureeWorkout)
+                    // on adapte le nom du sport donné par TP à SPRINTIA
+                    sportWorkout = dicoSport?.[sportWorkout] ?? "Libre"
 
-                    // arrondi de la distance car TP ne le fait pas
-                    distanceWorkout = Number(distanceWorkout/1000).toFixed(2) // on convertit des metres au kilometre
-                    // vérif
-                    if (distanceWorkout == 0 || distanceWorkout < 0) {distanceWorkout = undefined} 
-
-                    // vérification
-                    if (rpeWorkout == "" || rpeWorkout == undefined) {
-                        rpeWorkout = 1
-                    }
-                    if (dureeWorkout == "" || dureeWorkout == undefined || dureeWorkout == 0) {
-                        // pas de datas donc on enregistre pas
+                    if (nomWorkout != undefined) {
+                        if (nomWorkout.length > 40) {
+                            nomWorkout = sportWorkout+" le "+dateWorkout.split("-")[2]+"/"+dateWorkout.split("-")[1].padStart(2, "0") // exemple : Course le 28/04
+                        }
                     } else {
-                        // on remet les bon nom de sport pour que SPRINTIA mettre les bonnes cartes dans l'historique d'entraînement
-                        if (sportWorkout == "Run") {
-                            sportWorkout="Course"
-                        } else if (sportWorkout == "Bike") {
-                            sportWorkout="Vélo"
-                        } else if (sportWorkout == "Walk") {
-                            sportWorkout="Marche"
-                            cadenceMoyWorkout = undefined // la cadence n'est pas pertinente pour la marche donc on ne l'enregistre pas
-                        } else if (sportWorkout == "Hike") {
-                            sportWorkout="Randonnée"
-                            cadenceMoyWorkout = undefined // la cadence n'est pas pertinente pour la randonnée donc on ne l'enregistre pas
-                        } else if (sportWorkout == "Strength") {
-                            sportWorkout="Musculation"
-                            // petite sécurité pour pas que les sports de muscu aient des données incohérentes
-                            cadenceMoyWorkout = undefined
-                            distanceWorkout = undefined
-                        }  else if (sportWorkout == "Rowing") {
-                            sportWorkout="Rameur d'intérieur"
-                        }  else if (sportWorkout == "XC-Ski") {
-                            sportWorkout="Ski"
-                            cadenceMoyWorkout = undefined
+                        nomWorkout = sportWorkout+" le "+dateWorkout.split("-")[2]+"/"+dateWorkout.split("-")[1].padStart(2, "0") // exemple : Course le 28/04
+                    }
+
+                    if (dureeWorkout != undefined) {                        
+                        // passage du format hh:mm:ss en minutes pour la durée
+                        dureeWorkout = conversionMinutesTP(dureeWorkout)
+                    }
+
+                    if (dureeWorkout == undefined || new Date(dateWorkout) == "Invalid Date") {
+                        continue // on passe au tour suivant
+                    } else {
+                        nbWorkoutImporter+=1 // incrémentation
+                    }
+
+                    distanceWorkout = distanceWorkout*10**(-3) // conversion des mètres en km
+                    
+                    // calcul de l'allure moyenne ou de la vitesse en fonction du sport
+                    let allureMoyWorkout = 0
+                    let vitesseMoyWorkout = 0
+                    if (sportWorkout != "Libre") {
+                        if (distanceWorkout != undefined && distanceWorkout > 0) {
+                            if (sportWorkout == "Course" || sportWorkout == "Marche" || sportWorkout == "Randonnée") {
+                                // Calcul de l'allure en course à pied
+                                allureMoyWorkout = dureeWorkout/distanceWorkout // on obtient par exemple : 7.65
+
+                                let min = Math.floor(allureMoyWorkout) // pour recup les minutes
+                                let sec = Math.round((allureMoyWorkout%1)*60) // conversion du reste en seconde 
+                                allureMoyWorkout = `${min}:${sec.toString().padStart(2, "0")}`
+                            } else if (sportWorkout == "Vélo" || sportWorkout == "Ski") {
+                                // conversion des min en heures
+                                let workoutTimeHour = dureeWorkout/60
+                                vitesseMoyWorkout = Number((distanceWorkout/workoutTimeHour).toFixed(2))
+                            }
+                        } else {distanceWorkout=undefined}
+                    }
+                    if (allureMoyWorkout == 0) {allureMoyWorkout = undefined}
+                    if (vitesseMoyWorkout == 0) {vitesseMoyWorkout = undefined}
+
+                    // netttoyage data
+                    if (rpeWorkout == "" || rpeWorkout == undefined) {rpeWorkout = 1} else {rpeWorkout = parseInt(rpeWorkout)}
+                    if (rpeWorkout > 10) {rpeWorkout=10} // petite sécurité
+                    
+                    let chargeEntrainementWorkout = Math.floor(rpeWorkout*dureeWorkout)
+                    if (chargeEntrainementWorkout < 1) {chargeEntrainementWorkout = 1} // petite sécurité
+
+                    // Calcul de la transpiration
+                    let transpirationEstimee = 0
+                    let hydratationEstimee = 0
+
+                    if (profilDB != undefined) {
+                        let poidsUser = Number(profilDB.poids)
+                        let dureeHeure = dureeWorkout/60 // Conversion de la durée en heure
+                        let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
+
+                        // Attribution de la valeur du RPE
+                        if (rpeWorkout <= 3) {
+                            coefficientRpe = coefficientRpe[0]
+                        } else if (rpeWorkout <= 6) {
+                            coefficientRpe = coefficientRpe[1]
+                        } else if (rpeWorkout <= 8) {
+                            coefficientRpe = coefficientRpe[2]
                         } else {
-                            sportWorkout = "Libre"
+                            coefficientRpe = coefficientRpe[3]
                         }
 
-                        // conversion de type + arrondi
-                        rpeWorkout = parseInt(rpeWorkout)
-                        if (cadenceMoyWorkout != undefined) {
-                            cadenceMoyWorkout = parseInt(cadenceMoyWorkout)
-                        }
-                        fcMoyWorkout = parseInt(fcMoyWorkout)
-                        fcMaxWorkout = parseInt(fcMaxWorkout)
+                        // Calcul
+                        transpirationEstimee = Math.round((dureeHeure*coefficientRpe*(poidsUser/70))*1000)
+                        hydratationEstimee = Math.round(transpirationEstimee*1.2)
+                    } else {
+                        transpirationEstimee = undefined
+                        hydratationEstimee = undefined
+                    }
 
-                        if (cadenceMoyWorkout == 0) {cadenceMoyWorkout = undefined} // si la cadence est à 0 on la met à undefined pour pas l'enregistrer
-                        // vérification pour voir si la data est vide ou incohérente
-                        if (fcMoyWorkout < 1 || fcMoyWorkout > 220) {fcMoyWorkout = undefined} 
-                        if (fcMaxWorkout < 1 || fcMaxWorkout > 220) {fcMaxWorkout = undefined}
+                    // dico de base
+                    let dicoBase = {
+                        sport: sportWorkout,
+                        date: dateWorkout,
+                        nom: nomWorkout,
+                        duree: dureeWorkout,
+                        rpe: rpeWorkout,
+                        fc_moy: fcMoyWorkout,
+                        fc_max: fcMaxWorkout,
+                        distance: distanceWorkout,
+                        transpiration_estimee: transpirationEstimee,
+                        hydratation_estimee:hydratationEstimee,
+                        charge_entrainement: chargeEntrainementWorkout
+                    }
 
-                        if (!isNaN(fcMoyWorkout) && !isNaN(fcMaxWorkout)) {
-                            // calcule du rpe d'une autre manière
-                            // a revoir plus tard parce que c'est pas prouvé scientifiquement
-                            rpeWorkout = Math.round((fcMoyWorkout/fcMaxWorkout)*10) || 1 // formule pour calculer le RPE : (FC moy / FC max) * 10
-                        }
+                    // on ajoute les données de sport spécifique
+                    if (sportWorkout != "Libre") {
+                        dicoBase["allure_moy"] = allureMoyWorkout
+                        dicoBase["vitesse_moy"] = vitesseMoyWorkout
+                    }
 
-                        if (descriptionWorkout == "") {
-                            descriptionWorkout = undefined
-                        }
-
-                        // calcul du RPE et de la charge d'entrainement (petite sécurité mais normalement c'est bon)
-                        if (rpeWorkout < 1) { // si inférieur à 1 on le met sur la valeur minimum (=1)
-                            rpeWorkout = 1
-                        }
-                        if (rpeWorkout > 10) { // si supérieur à 10 on le met sur la valeur max (=10)
-                            rpeWorkout = 10
-                        }
-                        let chargeEntrainementWorkout = Math.floor(rpeWorkout*dureeWorkout)
-
-                        if (chargeEntrainementWorkout < 1) {chargeEntrainementWorkout = 1} // si inférieur à 1 on le met sur la valeur minimum (=1)
-
-                        // Calcul de la transpiration
-                        let profilDB = await db.profil.get(1)
-                        let TranspirationEstimee = 0
-                        let HydratationEstimee = 0
-
-                        if (profilDB != undefined) {
-                            let poidsUser = Number(profilDB.poids)
-                            let DureeHeure = dureeWorkout/60 // Conversion de la durée en heure
-                            let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
-
-                            // Attribution de la valeur du RPE
-                            if (rpeWorkout <= 3) {
-                                CoefficientRpe = CoefficientRpe[0]
-                            } else if (rpeWorkout <= 6) {
-                                CoefficientRpe = CoefficientRpe[1]
-                            } else if (rpeWorkout <= 8) {
-                                CoefficientRpe = CoefficientRpe[2]
-                            } else {
-                                CoefficientRpe = CoefficientRpe[3]
-                            }
-
-                            // Calcul
-                            TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
-                            HydratationEstimee = Math.round(TranspirationEstimee*1.2)
-                        } else {
-                            TranspirationEstimee = undefined
-                            HydratationEstimee = undefined
-                        }
-
-                        // enregistrement différent selon le sport
-                        if (sportWorkout != "Libre") { // si le sport est différent de Libre on enregistre toutes les datas
-                            const dicoData = {
-                                sport: sportWorkout,
-                                date: dateWorkout,
-                                nom: nomWorkout,
-                                duree: dureeWorkout,
-                                rpe: rpeWorkout,
-                                distance: distanceWorkout,
-                                fc_moy: fcMoyWorkout,
-                                fc_max: fcMaxWorkout,
-                                cadence_moy: cadenceMoyWorkout,
-                                charge_entrainement: chargeEntrainementWorkout,
-                                note: descriptionWorkout,
-                                transpiration_estimee: TranspirationEstimee,
-                                hydratation_estimee:HydratationEstimee
-                            }
-                            const dicoDataClean = removeValueUndefined(dicoData)
-                            await db.entrainement.add(dicoDataClean)
-
-                        } else { // si le sport est libre
-                            const dicoData = {
-                                sport: sportWorkout,
-                                date: dateWorkout,
-                                nom: nomWorkout,
-                                duree: dureeWorkout,
-                                rpe: rpeWorkout,
-                                distance: distanceWorkout,
-                                fc_moy: fcMoyWorkout,
-                                fc_max: fcMaxWorkout,
-                                charge_entrainement: chargeEntrainementWorkout,
-                                note: descriptionWorkout,
-                                transpiration_estimee: TranspirationEstimee,
-                                hydratation_estimee:HydratationEstimee
-                            }
-                            const dicoDataClean = removeValueUndefined(dicoData)
-                            await db.entrainement.add(dicoDataClean)
-                        }
-
-                    } 
+                    const dicoDataClean = removeValueUndefined(dicoBase)
+                    await db.entrainement.add(dicoDataClean)
                 }
             }
 
-            // petite attente pour que le user voit le message dans le bouton
-            setTimeout(() => {        
-                button.disabled = false
-                button.textContent = "Importer CSV"
-                window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
-            }, 650)  
-
-        } catch {
-            alert("Une erreur s'est produite lors de l'importation de votre historique d'entraînement.")
-            button.disabled = false
+            button.textContent = `${nbWorkoutImporter} entraînements importés`
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+            window.location.href = "../../../index.html?workoutimport" // redirection vers l'historique d'entrainement après l'importation 
+        } catch(error) {
+            console.log(error)
+            button.textContent = "Une erreur s'est produite"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        } finally {
             button.textContent = "Importer CSV"
+            button.disabled = false
         }
     }
 
-
-    return
 }

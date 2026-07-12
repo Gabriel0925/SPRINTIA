@@ -147,7 +147,13 @@ async function uploadFileGarmin(event) {
                     dateWorkout = extractionDate(dateWorkout) // extraction uniquement de la date
 
                     // si le nom dépasse la limite imposée par SPRINTIA alors on lui donne un autre nom
-                    if (nomWorkout.length > 40) {nomWorkout = sportWorkout+" le "+dateWorkout.split("-")[2]+"/"+dateWorkout.split("-")[1].padStart(2, "0")} // exemple : Course le 28/04
+                    if (nomWorkout != undefined) {
+                        if (nomWorkout.length > 40) {
+                            nomWorkout = sportWorkout+" le "+dateWorkout.split("-")[2]+"/"+dateWorkout.split("-")[1].padStart(2, "0") // exemple : Course le 28/04
+                        }
+                    } else {
+                        nomWorkout = sportWorkout+" le "+dateWorkout.split("-")[2]+"/"+dateWorkout.split("-")[1].padStart(2, "0") // exemple : Course le 28/04
+                    }
 
                     if (dureeWorkout != undefined) {
                         dureeWorkout = conversionMinGarmin(dureeWorkout) // nettoyage de la durée inscrit dans le CSV Garmin
@@ -213,22 +219,22 @@ async function uploadFileGarmin(event) {
 
                     if (profilDB != undefined) {
                         let poidsUser = Number(profilDB.poids)
-                        let DureeHeure = dureeWorkout/60 // Conversion de la durée en heure
-                        let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
+                        let dureeHeure = dureeWorkout/60 // Conversion de la durée en heure
+                        let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
 
                         // Attribution de la valeur du RPE
                         if (rpeWorkout <= 3) {
-                            CoefficientRpe = CoefficientRpe[0]
+                            coefficientRpe = coefficientRpe[0]
                         } else if (rpeWorkout <= 6) {
-                            CoefficientRpe = CoefficientRpe[1]
+                            coefficientRpe = coefficientRpe[1]
                         } else if (rpeWorkout <= 8) {
-                            CoefficientRpe = CoefficientRpe[2]
+                            coefficientRpe = coefficientRpe[2]
                         } else {
-                            CoefficientRpe = CoefficientRpe[3]
+                            coefficientRpe = coefficientRpe[3]
                         }
 
                         // Calcul
-                        transpirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
+                        transpirationEstimee = Math.round((dureeHeure*coefficientRpe*(poidsUser/70))*1000)
                         hydratationEstimee = Math.round(transpirationEstimee*1.2)
                     } else {
                         transpirationEstimee = undefined

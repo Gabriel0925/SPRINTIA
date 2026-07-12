@@ -601,3 +601,24 @@ function verificationURL() {
     }
 }
 // --- Fin du déclenchement du logo dynamique quand ya qqch de caché dans l'URL ---
+
+
+// --- Configuration du service worker ---
+navigator.serviceWorker.register("../../sw.js").then(enregistrement => { // service worker enregistré
+    // on écoute si un nouveau service est dispo
+    enregistrement.addEventListener("updatefound", () => {
+        let sw = enregistrement.installing
+        // on écoute si un new service worker est installé
+        sw.addEventListener("statechange", () => {
+            if (sw.state == "installed" && navigator.serviceWorker.controller) { // si le sw est installé et qu'il y a deja un sw actif alors un nouveau sw est dispo
+                if (confirm("Une nouvelle version de l'application SPRINTIA est disponible, Voulez-vous mettre à jour ?")) {
+                    window.location.reload() // rechargement
+                }
+            }
+        })
+    })
+}).catch(error => {
+    console.log(error)
+})
+// --- Fin de la configuration du service worker ---
+

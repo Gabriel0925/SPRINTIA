@@ -591,6 +591,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    cursor: pointer;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);

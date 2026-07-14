@@ -604,7 +604,7 @@ function verificationURL() {
 
 
 // --- Configuration du service worker ---
-navigator.serviceWorker.register("../../sw.js").then(enregistrement => { // service worker enregistré
+navigator.serviceWorker.register("/sw.js").then(enregistrement => { // service worker enregistré
     // on écoute si un nouveau service est dispo
     enregistrement.addEventListener("updatefound", () => {
         let sw = enregistrement.installing

@@ -59,11 +59,11 @@
 /* Pour les icônes dans l'application */
 @font-face {
     font-family: 'Font-SPRINTIA';
-    src:  url('../assets/icons/Font-SPRINTIA-V5.1.eot');
-    src:  url('../assets/icons/Font-SPRINTIA-V5.1.eot') format('embedded-opentype'),
-        url('../assets/icons/Font-SPRINTIA-V5.1.ttf') format('truetype'),
-        url('../assets/icons/Font-SPRINTIA-V5.1.woff') format('woff'),
-        url('../assets/icons/Font-SPRINTIA-V5.1.svg') format('svg');
+    src:  url('../assets/icons/Font-SPRINTIA-V5.2.eot');
+    src:  url('../assets/icons/Font-SPRINTIA-V5.2.eot') format('embedded-opentype'),
+        url('../assets/icons/Font-SPRINTIA-V5.2.ttf') format('truetype'),
+        url('../assets/icons/Font-SPRINTIA-V5.2.woff') format('woff'),
+        url('../assets/icons/Font-SPRINTIA-V5.2.svg') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -252,8 +252,11 @@ i {
 .fs-icon_to_day:before {
   content: "\e930";
 }
-.fs-icon_zones_cardiaques:before {
+.fs-icon_video_library:before {
   content: "\e931";
+}
+.fs-icon_zones_cardiaques:before {
+  content: "\e932";
 }
 
 /* --- Reset du style de base d'une page d'HTML --- */
@@ -1316,6 +1319,9 @@ div.toolbar {
     align-items: center;
     z-index: 10000;
 }
+div.toolbar.marge {
+    margin-bottom: var(--SPACE_S);
+}
 div.toolbar a {
     margin-left: auto;
 }
@@ -2325,6 +2331,7 @@ select:focus {
     /* Pour enlever une barre de base */
     outline: none;
     border-radius: 4rem;
+    color: var(--COLOR_ACCENT_TEXT);
     border: 2.5px solid var(--COLOR_ACCENT_TEXT);
 }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Discuter avec JRM Coach</title>
+    <title>SPRINTIA - Paramètres discussion</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,70 +74,69 @@
 
     </section>
     
-    <div class="toolbar marge">
-        <h1 id="jrm-coach-title">Discuter avec <strong>JRM Coach</strong></h1>
-        <i class="fs-icon_parametres" onclick="window.location.href = 'discuter-coach-parametres.html'"></i>
+    <h1 id="jrm-coach-title">Paramètres discussion</h1>
+
+    <p class="text">
+        Lorsque vous discutez avec votre coach, SPRINTIA crée un prompt avec :
+    </p>
+    <ul class="list-information">
+        <li>
+            Vos données récentes (pour donner le contexte à l'IA)
+        </li>
+        <li>
+            Votre question
+        </li>
+        <li>
+            Des instructions pour personnaliser l'expérience de discussion entre votre IA favorite et vous
+        </li>
+    </ul>
+
+    <p class="text">
+        Le problème c'est que quand vous analysez vos tendances, votre entraînement ou votre récupération SPRINTIA ne fournit pas les données de votre
+        profil (sexe, âge, taille, poids, FC repos) mais quand vous discutez avec le coach, SPRINTIA fournit dans le prompt toutes vos données récentes
+        d'entraînement, de récupération et également de votre profil.
+        <br><br>
+        Or vous n'avez peut-être pas envie que Gemini (ou ChatGPT ou autre IA) connaisse votre poids, votre taille,... ce qui est totalement compréhensible
+        c'est pour ça que 
+        <strong>vous pouvez désactiver le partage de vos données de profil (sexe, âge, taille, poids, FC repos) dans le prompt que SPRINTIA
+        génére.</strong>
+    </p>
+
+    <div class="banner-toggle">
+        <p>Partager mon profil</p>
+        <input class="toggle" type="checkbox" onclick="shareDataProfil(event)" id="toggle-partage-profil">
     </div>
-    <div class="container-discuter-coach">
-        <textarea id="promt-user" style="min-height: 300px;" placeholder="Poser une question" maxlength="500"></textarea>
-        <button id="button-SPRINTIA-briefing-ask" onclick="
-                    if (!document.getElementById('promt-user').value) {
-                        alert('Veuillez ajouter votre demande dans la box de texte avant de vouloir demander à une IA.')
-                    } else {
-                        windowsBriefing('Demander à Vibe')
-                    }">
-        Demander à Vibe</button>
-    </div>
-    <!-- Fenetre flottante pour SPRINTIA Briefing -->
-    <section class="background-SPRINTIA-briefing">
-        
-        <div class="windows-SPRINTIA-briefing">
-
-            <div class="windows-SPRINTIA-briefing-head">
-                <p class="title">SPRINTIA Briefing</p>
-                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
-            </div>
-            <p class="explanation-briefing">
-                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
-            </p>
-            <div class="container-button-windows-SPRINTIA-briefing">
-                <button onclick="
-                    openIA('vibe')
-                    " id="button-open-ia">Copier & Ouvrir Vibe</button>
-            </div>
-
-        </div>
-
-    </section>
+    <p class="text">
+        En activant la fonctionnalité ci-dessus, SPRINTIA ajoutera les données de votre profil dans le prompt qu'il générera ce qui permettra à l'IA
+        d'être plus précise car le prompt lui donnera davantage de contexte mais ce n'est clairement pas obligatoire si vous ne souhaitez pas partager
+        les données de votre profil.
+    </p>
 
     <script src="../../assets/base-js/base.js"></script>
-
-    <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="../../assets/bibliotheques/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
     <script>
-        async function NomCoachInit() {
-            // Recup datas
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("jrm-coach-title").innerHTML = `Discuter avec <strong>${NomCoach}</strong>`
+        function shareDataProfil(event) {
+            if (event.target.checked) {
+                localStorage.setItem("shareProfilDataInPrompt", false)
+            } else {
+                localStorage.setItem("shareProfilDataInPrompt", true)
             }
+        }
 
-            return
+        function restoreToggle() {
+            let userChoice = localStorage.getItem("shareProfilDataInPrompt")
+
+            if (userChoice == "false") { // si le user à désactiver la fonction
+                document.getElementById("toggle-partage-profil").checked = true
+            } else { // si il l'a activé
+                document.getElementById("toggle-partage-profil").checked = false
+            }
         }
 
         window.addEventListener("DOMContentLoaded", () => {
-            NomCoachInit()
+            restoreToggle()
         })
     </script>
-    
+
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

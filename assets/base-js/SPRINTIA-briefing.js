@@ -386,6 +386,7 @@ async function promptDiscussion() {
     let prompt = "Tu es le coach sportif expert de la PWA nommé SPRINTIA. L'utilisateur ouvre une discussion avec toi. Tu as accès à l'intégralité des données de son profil sur SPRINTIA.\nTon but ? Répondre à ses questions de manière fluide et précise en te basant sur toutes ses données.\nInformation temporelle : Nous sommes aujourd'hui le " + createObjetDate(0) + "."
 
     // récup des données entrainement de l'utilisateur
+    let choiceUserToShareData = localStorage.getItem("shareProfilDataInPrompt") || "true"
     let dataProfil = await db.profil.get(1)
     let historiqueDataWorkout = await db.entrainement.where("date").aboveOrEqual(createObjetDate(21)).toArray()
     let historiqueDataRecuperation = await db.recuperation.where("date").aboveOrEqual(createObjetDate(7)).toArray()
@@ -409,7 +410,7 @@ async function promptDiscussion() {
         return undefined
     }
 
-    if (dataProfil != undefined) { // si le user à configurer son profil alors on ajoute ses datas dans le prompt
+    if (dataProfil != undefined && choiceUserToShareData == "true") { // si le user à configurer son profil alors on ajoute ses datas dans le prompt
         // le profil de l'utilisateur
         prompt += "\nLe profil de l'utilisateur :\n"
         prompt += JSON.stringify(dataProfil, null, 2)

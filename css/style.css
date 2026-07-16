@@ -1784,6 +1784,38 @@ section.container-round-input div.round-input-item#difficile{
     }
 }
 
+
+
+/* --- INTERFACE DE LA SEANCE --- */
+section.echauffement-workout-day {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    padding-bottom: var(--SPACE_XS);
+    margin: var(--SPACE_M) 0;
+    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+section.echauffement-workout-day.without-border {
+    padding-bottom: 0;
+    border-bottom: 0px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+section.echauffement-workout-day p.text-echauffement{
+    font-size: var(--H3);
+    font-weight: 1000;
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.echauffement-workout-day p.time-echauffement{
+    font-size: var(--P);
+    padding: var(--SPACE_XS);
+
+    background-color: var(--COLOR_ACCENT_TEXT);
+    color: var(--COLOR_BACKGROUND);
+    border-radius: var(--BORDER_BIG);
+}
+
+
+
 /* --- la carte --- */
 div#map {
     outline: none;

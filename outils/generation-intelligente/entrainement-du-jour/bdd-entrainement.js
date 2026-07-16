@@ -1,6 +1,7 @@
 const bddSeancesCourseFacile = {
     "20": [
         {
+            "title": "10 x 40s Récup 20s",
             "structure": {
                 "echauffement": {
                     "duree": [5, "min"]

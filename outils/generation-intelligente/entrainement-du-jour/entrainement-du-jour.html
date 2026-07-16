@@ -76,76 +76,67 @@
     
     <h1>Entraînement du jour</h1>
 
-    <h2>Quel sport ?</h2>
-    <section class="container-sport-workout-day">
+    <section class="container-item-workout-day">
 
-        <div class="sport-item selected" onclick="selectItem(this, '.sport-item')">
-            <i class="fs-icon_entrainement"></i>
-        </div>
+        <section class="item-workout-day">
 
-        <div class="container-deux-sport-item">
+            <h2>Quel sport ?</h2>
+            <section class="container-sport-workout-day">
 
-            <div class="sport-item" onclick="selectItem(this, '.sport-item')">
-                <i class="fs-icon_velo"></i>
-            </div>
-            <div class="sport-item" onclick="selectItem(this, '.sport-item')">
-                <i class="fs-icon_natation"></i>
-            </div>
+                <div class="sport-item selected" onclick="selectItem(this, '.sport-item')">
+                    <i class="fs-icon_entrainement"></i>
+                </div>
 
-        </div>
+                <div class="container-deux-sport-item">
 
-    </section>
+                    <div class="sport-item" onclick="selectItem(this, '.sport-item')">
+                        <i class="fs-icon_velo"></i>
+                    </div>
+                    <div class="sport-item" onclick="selectItem(this, '.sport-item')">
+                        <i class="fs-icon_natation"></i>
+                    </div>
 
-    <h2>Quel durée ?</h2>
-    <section class="container-duree-sport-workout-day">
+                </div>
 
-        <div class="duree-item selected" onclick="selectItem(this, '.duree-item')">20</div>
-        <div class="duree-item" onclick="selectItem(this, '.duree-item')">40</div>
-        <div class="duree-item" onclick="selectItem(this, '.duree-item')">60</div>
+            </section>
 
-    </section>
+        </section>
 
-    <h2>Quel intensité ?</h2>
-    <section class="container-intensity-workout-day">
+        <section class="item-workout-day">
+
+            <h2>Quelle durée ?</h2>
+            <section class="container-intensity-workout-day">
+                
+                <div class="intensity-item duree selected" onclick="selectItem(this, '.intensity-item.duree')">
+                    <p>20</p>
+                </div>
+                <div class="intensity-item duree" onclick="selectItem(this, '.intensity-item.duree')">
+                    <p>40</p>
+                </div>
+                <div class="intensity-item duree" onclick="selectItem(this, '.intensity-item.duree')">
+                    <p>60</p>
+                </div>
+            
+            </section>
+
+        </section>
         
-        <div class="intensity-item selected" id="facile" onclick="selectItem(this, '.intensity-item')">Facile</div>
-        <div class="intensity-item" id="modere" onclick="selectItem(this, '.intensity-item')">Modéré</div>
-        <div class="intensity-item" id="difficile" onclick="selectItem(this, '.intensity-item')">Difficile</div>
-        <div class="intensity-item" id="effort-maximal" onclick="selectItem(this, '.intensity-item')">Effort maximal</div>
-    
+        <section class="item-workout-day">
+
+            <h2>Quelle intensité ?</h2>
+            <section class="container-intensity-workout-day">
+                
+                <div class="intensity-item intensity selected" id="facile" onclick="selectItem(this, '.intensity-item.intensity')">Facile</div>
+                <div class="intensity-item intensity" id="modere" onclick="selectItem(this, '.intensity-item.intensity')">Modéré</div>
+                <div class="intensity-item intensity" id="difficile" onclick="selectItem(this, '.intensity-item.intensity')">Difficile</div>
+            
+            </section>
+
+        </section>
+        
     </section>
 
-    <h2>Résumé</h2>
-    <section class="container-workout-cards">
-
-        <div class="cards-history-workout not-click">        
-            <div class="data-workout-column">
-                <p class="name-workout">
-                    Vélo chill
-                </p>
-                <p class="sport-date-workout">
-                    Vélo · 16-07-2026
-                </p>
-            </div>
-            <div class="container-data-workout">
-                <div class="data-workout-paire">
-                    <p class="duree-workout">
-                        <strong>41:33</strong>
-                    </p>
-                    <p class="rpe-workout">
-                        RPE : <strong>3</strong>
-                    </p>
-                </div>
-                <div class="data-workout-paire">
-                    <p class="charge-workout">
-                        Charge d'entraî. : <strong>124 CE</strong>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <div class="container-center">
+    <div class="container-center-marge">
         <button>Générer des entraînements</button>
     </div>
 

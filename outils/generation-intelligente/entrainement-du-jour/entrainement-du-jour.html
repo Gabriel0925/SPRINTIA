@@ -76,6 +76,45 @@
     
     <h1>Entraînement du jour</h1>
 
+    <h2>Quel sport ?</h2>
+    <section class="container-sport-workout-day">
+
+        <div class="sport-item selected" onclick="selectItem(this, '.sport-item')">
+            <i class="fs-icon_entrainement"></i>
+        </div>
+
+        <div class="container-deux-sport-item">
+
+            <div class="sport-item" onclick="selectItem(this, '.sport-item')">
+                <i class="fs-icon_add"></i>
+            </div>
+            <div class="sport-item" onclick="selectItem(this, '.sport-item')">
+                <i class="fs-icon_parametres"></i>
+            </div>
+
+        </div>
+
+    </section>
+
+    <h2>Quel durée ?</h2>
+    <section class="container-duree-sport-workout-day">
+
+        <div class="duree-item selected" onclick="selectItem(this, '.duree-item')">20</div>
+        <div class="duree-item" onclick="selectItem(this, '.duree-item')">40</div>
+        <div class="duree-item" onclick="selectItem(this, '.duree-item')">60</div>
+
+    </section>
+
+    <h2>Quel intensité ?</h2>
+    <section class="container-intensity-workout-day">
+        
+        <div class="intensity-item selected" id="facile" onclick="selectItem(this, '.intensity-item')">Facile</div>
+        <div class="intensity-item" id="modere" onclick="selectItem(this, '.intensity-item')">Modéré</div>
+        <div class="intensity-item" id="difficile" onclick="selectItem(this, '.intensity-item')">Difficile</div>
+        <div class="intensity-item" id="effort-maximal" onclick="selectItem(this, '.intensity-item')">Effort maximal</div>
+    
+    </section>
+
     <script src="../../../assets/base-js/base.js"></script>
     <script src="script-entrainement-du-jour.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>

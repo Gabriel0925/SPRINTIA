@@ -1714,6 +1714,162 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
 }
 
 
+
+/* --- Entrainement du jour --- */
+
+/* SPORT */
+section.container-sport-workout-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--SPACE_S);
+    max-width: 480px;
+    margin: 0 auto;
+}
+section.container-sport-workout-day div.container-deux-sport-item{
+    display: flex;
+    justify-content: space-between;
+    gap: var(--SPACE_S);
+}
+section.container-sport-workout-day div.sport-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_TEXT_PRIMARY);
+    font-size: var(--H0);
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+
+    cursor: pointer;
+
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-sport-workout-day div.sport-item:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+section.container-sport-workout-day div.sport-item:active{
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+    transform: scale(var(--SCALE_NORMAL));
+}
+section.container-sport-workout-day div.sport-item.selected{
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+}
+
+/* DUREE */
+section.container-duree-sport-workout-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--SPACE_S);
+}
+section.container-duree-sport-workout-day div.duree-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_TEXT_PRIMARY);
+    font-size: var(--H2);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-duree-sport-workout-day div.duree-item:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+section.container-duree-sport-workout-day div.duree-item:active{
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+    transform: scale(var(--SCALE_NORMAL));
+}
+section.container-duree-sport-workout-day div.duree-item.selected{
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+}
+
+/* INTENSITE */
+section.container-intensity-workout-day {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--SPACE_L);
+}
+section.container-intensity-workout-day div.intensity-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_BACKGROUND);
+    text-align: center;
+    font-size: var(--P);
+    opacity: 0.75;
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                opacity ease-out var(--TIME_TRANSITION_FAST),
+                outline ease-out var(--TIME_TRANSITION),
+                font-weight ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-intensity-workout-day div.intensity-item:hover{
+        opacity: 1;
+    }
+}
+section.container-intensity-workout-day div.intensity-item:active{
+    transform: scale(var(--SCALE_NORMAL));
+}
+section.container-intensity-workout-day div.intensity-item.selected{
+    opacity: 1;
+    outline: 3px solid var(--COLOR_TEXT_PRIMARY);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.container-intensity-workout-day div.intensity-item#facile{
+    background-color: #58e086;
+}
+section.container-intensity-workout-day div.intensity-item#modere{
+    background-color: #FFF700;
+}
+section.container-intensity-workout-day div.intensity-item#difficile{
+    background-color: #ff4a4a;
+}
+section.container-intensity-workout-day div.intensity-item#effort-maximal{
+    background-color: #bc51ff;
+}
+
 /* --- la carte --- */
 div#map {
     outline: none;

@@ -1,4 +1,10 @@
 function selectItem(elt, nameComponent) {
-    document.querySelector(nameComponent+".selected").classList.remove("selected")
-    elt.classList.add("selected")
+    let lastSelected = document.querySelector(nameComponent+".selected")
+    
+    if (lastSelected) {
+        lastSelected.classList.remove("selected")
+        if (elt) {
+            elt.classList.add("selected")
+        }
+    }    
 }

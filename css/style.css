@@ -1694,11 +1694,11 @@ section.container-sport-workout-day div.sport-item p{
 }
 
 /* DUREE & INTENSITE */
-section.container-intensity-workout-day {
+section.container-round-input {
     display: flex;
     gap: var(--SPACE_M);
 }
-section.container-intensity-workout-day div.intensity-item{
+section.container-round-input div.round-input-item{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1726,57 +1726,57 @@ section.container-intensity-workout-day div.intensity-item{
                 font-weight ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
-section.container-intensity-workout-day div.intensity-item.duree{
+section.container-round-input div.round-input-item.duree{
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H2);
     opacity: 1;
 }
 @media (hover: hover) and (pointer: fine) {
-    section.container-intensity-workout-day div.intensity-item:hover{
+    section.container-round-input div.round-input-item:hover{
         opacity: 1;
     }
-    section.container-intensity-workout-day div.intensity-item.duree:hover{
+    section.container-round-input div.round-input-item.duree:hover{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
-    section.container-intensity-workout-day div.intensity-item.duree.selected:hover{
+    section.container-round-input div.round-input-item.duree.selected:hover{
         background-color: var(--COLOR_ACCENT);
     }
 }
-section.container-intensity-workout-day div.intensity-item:active{
+section.container-round-input div.round-input-item:active{
     opacity: 1;
     transform: scale(var(--SCALE_NORMAL));
 }
-section.container-intensity-workout-day div.intensity-item.duree:active{
+section.container-round-input div.round-input-item.duree:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-section.container-intensity-workout-day div.intensity-item.selected{
+section.container-round-input div.round-input-item.selected{
     background-color: var(--COLOR_ACCENT);
     opacity: 1;
     outline: 3px solid var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.container-intensity-workout-day div.intensity-item.duree.selected{
+section.container-round-input div.round-input-item.duree.selected{
     color: var(--COLOR_BACKGROUND);
 }
-section.container-intensity-workout-day div.intensity-item.duree.selected:active{
+section.container-round-input div.round-input-item.duree.selected:active{
     background-color: var(--COLOR_ACCENT);
 }
 
-section.container-intensity-workout-day div.intensity-item#facile{
+section.container-round-input div.round-input-item#facile{
     background-color: #58e086;
 }
-section.container-intensity-workout-day div.intensity-item#modere{
+section.container-round-input div.round-input-item#modere{
     background-color: #FFF700;
 }
-section.container-intensity-workout-day div.intensity-item#difficile{
+section.container-round-input div.round-input-item#difficile{
     background-color: #ff4a4a;
 }
 @media (max-width: 732px) {
     section.item-workout-day {
         width: 100%;
     }
-    section.container-intensity-workout-day {
+    section.container-round-input {
         justify-content: center;
     }
     section.container-sport-workout-day {

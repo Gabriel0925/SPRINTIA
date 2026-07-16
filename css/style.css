@@ -1814,6 +1814,24 @@ section.echauffement-workout-day p.time-echauffement{
     border-radius: var(--BORDER_BIG);
 }
 
+section.fractionne-workout-day {
+    display: flex;
+    flex-direction: column;
+    gap: var(--SPACE_XS);
+    padding-bottom: var(--SPACE_XS);
+    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+section.fractionne-workout-day p.nb-repetitions{
+    font-size: var(--H3);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.fractionne-workout-day div.container-structure p{
+    border-left: 3px solid var(--COLOR_ACCENT_TEXT);
+
+    margin: var(--SPACE_S) var(--SPACE_XS);
+    padding: var(--SPACE_XS);
+}
+
 
 
 /* --- la carte --- */

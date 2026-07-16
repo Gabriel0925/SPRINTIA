@@ -28,6 +28,16 @@ function interfaceWorkout(selectedWorkout) {
     timeEchauffement.classList.add("time-echauffement")
 
     // -- FRACTIONNE --
+    let sectionFractionne = document.createElement("section")
+    sectionFractionne.classList.add("fractionne-workout-day")
+    let paragrapheRepetition = document.createElement("p")
+    paragrapheRepetition.classList.add("nb-repetitions")
+    let divRepetition = document.createElement("div")
+    divRepetition.classList.add("container-structure")
+    let paragrapheDureeRep = document.createElement("p")
+    paragrapheDureeRep.classList.add("duree-repetition")
+    let paragrapheDureeRecup = document.createElement("p")
+    paragrapheDureeRecup.classList.add("duree-recuperation")
 
     // -- RETOUR AU CALME --
     let sectionRetourAuCalme = document.createElement("section")
@@ -51,6 +61,11 @@ function interfaceWorkout(selectedWorkout) {
     textEchauffement.innerHTML = "Échauffement"
     timeEchauffement.innerHTML = selectedWorkout["structure"]["echauffement"]["duree"][0] + " " + selectedWorkout["structure"]["echauffement"]["duree"][1]
 
+    // repetition
+    paragrapheRepetition.innerHTML = "Répéter " + selectedWorkout["structure"]["fractionne"]["nombre_repetitions"] + " fois"
+    paragrapheDureeRep.innerHTML = selectedWorkout["structure"]["fractionne"]["duree_repetition"][0] + " " + selectedWorkout["structure"]["fractionne"]["duree_repetition"][1]
+    paragrapheDureeRecup.innerHTML = selectedWorkout["structure"]["fractionne"]["duree_recuperation"][0] + " " + selectedWorkout["structure"]["fractionne"]["duree_recuperation"][1]
+
     // retour au calme
     textRetourAuCalme.innerHTML = "Retour au calme"
     timeRetourAuCalme.innerHTML = selectedWorkout["structure"]["retour_au_calme"]["duree"][0] + " " + selectedWorkout["structure"]["echauffement"]["duree"][1]
@@ -70,6 +85,13 @@ function interfaceWorkout(selectedWorkout) {
     document.body.appendChild(sectionEchauffement)
     sectionEchauffement.appendChild(textEchauffement)
     sectionEchauffement.appendChild(timeEchauffement)
+
+    // repetition
+    document.body.appendChild(sectionFractionne)
+    sectionFractionne.appendChild(paragrapheRepetition)
+    sectionFractionne.appendChild(divRepetition)
+    divRepetition.appendChild(paragrapheDureeRep)
+    divRepetition.appendChild(paragrapheDureeRecup)
 
     // recuperation
     document.body.appendChild(sectionRetourAuCalme)

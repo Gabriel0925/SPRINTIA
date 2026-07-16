@@ -858,10 +858,17 @@ section.container-workout-cards div.cards-history-workout {
     section.container-workout-cards div.cards-history-workout:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
+    section.container-workout-cards div.cards-history-workout.not-click:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD);
+    }
 }
 section.container-workout-cards div.cards-history-workout:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
+}
+section.container-workout-cards div.cards-history-workout.not-click:active {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    transform: scale(1);
 }
 section.container-workout-cards div.cards-history-workout a {
     display: flex;

@@ -86,10 +86,10 @@
         <div class="container-deux-sport-item">
 
             <div class="sport-item" onclick="selectItem(this, '.sport-item')">
-                <i class="fs-icon_add"></i>
+                <i class="fs-icon_velo"></i>
             </div>
             <div class="sport-item" onclick="selectItem(this, '.sport-item')">
-                <i class="fs-icon_parametres"></i>
+                <i class="fs-icon_natation"></i>
             </div>
 
         </div>
@@ -114,6 +114,40 @@
         <div class="intensity-item" id="effort-maximal" onclick="selectItem(this, '.intensity-item')">Effort maximal</div>
     
     </section>
+
+    <h2>Résumé</h2>
+    <section class="container-workout-cards">
+
+        <div class="cards-history-workout not-click">        
+            <div class="data-workout-column">
+                <p class="name-workout">
+                    Vélo chill
+                </p>
+                <p class="sport-date-workout">
+                    Vélo · 16-07-2026
+                </p>
+            </div>
+            <div class="container-data-workout">
+                <div class="data-workout-paire">
+                    <p class="duree-workout">
+                        <strong>41:33</strong>
+                    </p>
+                    <p class="rpe-workout">
+                        RPE : <strong>3</strong>
+                    </p>
+                </div>
+                <div class="data-workout-paire">
+                    <p class="charge-workout">
+                        Charge d'entraî. : <strong>124 CE</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="container-center">
+        <button>Générer des entraînements</button>
+    </div>
 
     <script src="../../../assets/base-js/base.js"></script>
     <script src="script-entrainement-du-jour.js"></script>

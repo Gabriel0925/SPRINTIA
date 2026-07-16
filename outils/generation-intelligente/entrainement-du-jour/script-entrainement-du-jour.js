@@ -13,8 +13,12 @@ function selectItem(elt, nameComponent) {
 function generateNbAleatoire(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min // formule via Gemini
 }
-function interfaceWorkout(selectedWorkout) {
+function interfaceWorkout(selectedWorkout, containerAllWorkout) {
     // --- creation des éléments ---
+
+    // -- BASE --
+    let containerWorkoutGenerate = document.createElement("section")
+    containerWorkoutGenerate.classList.add("container-workout-generate")
 
     // -- TITRE --
     let titleWorkout = document.createElement("h2")
@@ -49,8 +53,6 @@ function interfaceWorkout(selectedWorkout) {
     timeRetourAuCalme.classList.add("time-echauffement")
 
     // -- BUTTON COROS --
-    let divCenterMarge = document.createElement("div")
-    divCenterMarge.classList.add("container-center-marge")
     let buttonCOROS = document.createElement("button")
 
 
@@ -71,37 +73,35 @@ function interfaceWorkout(selectedWorkout) {
     timeRetourAuCalme.innerHTML = selectedWorkout["structure"]["retour_au_calme"]["duree"][0] + " " + selectedWorkout["structure"]["echauffement"]["duree"][1]
 
     // bouton COROS
-    divCenterMarge.style.maxWidth = "400px"
     buttonCOROS.innerHTML = "Ouvrir dans COROS"
     buttonCOROS.addEventListener("click", () => {
         window.open(selectedWorkout["lien"], '_blank')  
     })
 
     // --- ajout sur la page ---
-
+    containerAllWorkout.appendChild(containerWorkoutGenerate)
     // titre
-    document.body.appendChild(titleWorkout)
+    containerWorkoutGenerate.appendChild(titleWorkout)
 
     // echauffement
-    document.body.appendChild(sectionEchauffement)
+    containerWorkoutGenerate.appendChild(sectionEchauffement)
     sectionEchauffement.appendChild(textEchauffement)
     sectionEchauffement.appendChild(timeEchauffement)
 
     // repetition
-    document.body.appendChild(sectionFractionne)
+    containerWorkoutGenerate.appendChild(sectionFractionne)
     sectionFractionne.appendChild(paragrapheRepetition)
     sectionFractionne.appendChild(divRepetition)
     divRepetition.appendChild(paragrapheDureeRep)
     divRepetition.appendChild(paragrapheDureeRecup)
 
     // recuperation
-    document.body.appendChild(sectionRetourAuCalme)
+    containerWorkoutGenerate.appendChild(sectionRetourAuCalme)
     sectionRetourAuCalme.appendChild(textRetourAuCalme)
     sectionRetourAuCalme.appendChild(timeRetourAuCalme)
 
     // button COROS
-    document.body.appendChild(divCenterMarge)
-    divCenterMarge.appendChild(buttonCOROS)
+    containerWorkoutGenerate.appendChild(buttonCOROS)
 }
 
 
@@ -137,6 +137,11 @@ async function generationWorkout() {
         // on recup le tableau des séances en fonction de la séances
         const tableauWorkout = bddWorkout[dureeChoice] // on trouve l'étendu des entraînements
 
+        // création d'un container qui contiendra les 3 options
+        let containerAllWorkout = document.createElement("section")
+        containerAllWorkout.classList.add("container-all-workout")
+        document.body.appendChild(containerAllWorkout)
+
         for (let i=0; i<3; i++) {
             // on trouve un entrainement aléatoirement
             const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
@@ -144,7 +149,7 @@ async function generationWorkout() {
 
             if (selectedWorkout) {
                 // appelle à la fonction qui va générer l'interface
-                interfaceWorkout(selectedWorkout)
+                interfaceWorkout(selectedWorkout, containerAllWorkout)
             }
         }
         

@@ -1787,25 +1787,50 @@ section.container-round-input div.round-input-item#difficile{
 
 
 /* --- INTERFACE DE LA SEANCE --- */
-section.echauffement-workout-day {
+section.container-all-workout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--SPACE_L);
+}
+
+section.container-all-workout section.container-workout-generate {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: var(--BORDER_BIG);
+    padding: var(--SPACE_XS);
+    gap: var(--SPACE_S);
+
+    flex-grow: 1;
+    width: 320px;
+
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+section.container-all-workout section.container-workout-generate h2{
+    margin: 0;
+}
+section.container-workout-generate section.echauffement-workout-day {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 500px;
     padding-bottom: var(--SPACE_XS);
-    margin: var(--SPACE_M) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.echauffement-workout-day.without-border {
+section.container-workout-generate section.echauffement-workout-day.without-border {
     padding-bottom: 0;
     border-bottom: 0px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.echauffement-workout-day p.text-echauffement{
+section.container-workout-generate section.echauffement-workout-day p.text-echauffement{
     font-size: var(--H3);
     font-weight: 1000;
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.echauffement-workout-day p.time-echauffement{
+section.container-workout-generate section.echauffement-workout-day p.time-echauffement{
     font-size: var(--P);
     padding: var(--SPACE_XS);
 
@@ -1814,23 +1839,38 @@ section.echauffement-workout-day p.time-echauffement{
     border-radius: var(--BORDER_BIG);
 }
 
-section.fractionne-workout-day {
+section.container-workout-generate section.fractionne-workout-day {
     display: flex;
     flex-direction: column;
     gap: var(--SPACE_XS);
-    max-width: 500px;
     padding-bottom: var(--SPACE_XS);
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.fractionne-workout-day p.nb-repetitions{
+section.container-workout-generate section.fractionne-workout-day p.nb-repetitions{
     font-size: var(--H3);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.fractionne-workout-day div.container-structure p{
+section.container-workout-generate section.fractionne-workout-day div.container-structure p{
     border-left: 3px solid var(--COLOR_ACCENT_TEXT);
-
     margin: var(--SPACE_S) var(--SPACE_XS);
     padding: var(--SPACE_XS);
+}
+
+section.container-workout-generate button {
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+    font-size: var(--P);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin: 4px;
+    padding: 0.7rem;
+}
+section.container-workout-generate button:active{
+    background-color: var(--COLOR_ACCENT_HOVER);
+    transform: scale(1);
 }
 
 

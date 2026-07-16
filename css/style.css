@@ -1772,6 +1772,17 @@ section.container-intensity-workout-day div.intensity-item#modere{
 section.container-intensity-workout-day div.intensity-item#difficile{
     background-color: #ff4a4a;
 }
+@media (max-width: 732px) {
+    section.item-workout-day {
+        width: 100%;
+    }
+    section.container-intensity-workout-day {
+        justify-content: center;
+    }
+    section.container-sport-workout-day {
+        margin: 0 auto;
+    }
+}
 
 /* --- la carte --- */
 div#map {

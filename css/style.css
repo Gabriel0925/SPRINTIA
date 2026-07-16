@@ -1696,13 +1696,7 @@ section.container-sport-workout-day div.sport-item p{
 /* DUREE & INTENSITE */
 section.container-intensity-workout-day {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--SPACE_M);
-    padding: var(--SPACE_XXS);
-    padding-bottom: var(--SPACE_S);
-
-    overflow-x: auto;
-    flex-wrap: nowrap;
 }
 section.container-intensity-workout-day div.intensity-item{
     display: flex;
@@ -1749,6 +1743,7 @@ section.container-intensity-workout-day div.intensity-item.duree{
     }
 }
 section.container-intensity-workout-day div.intensity-item:active{
+    opacity: 1;
     transform: scale(var(--SCALE_NORMAL));
 }
 section.container-intensity-workout-day div.intensity-item.duree:active{
@@ -1907,6 +1902,7 @@ ol.container-list-choice li.choice-item {
     }
 }
 ol.container-list-choice li.choice-item:active{
+    opacity: 1;
     transform: scale(var(--SCALE_NORMAL));
 }
 ol.container-list-choice li.choice-item.selected{

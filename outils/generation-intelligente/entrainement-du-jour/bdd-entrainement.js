@@ -17,6 +17,42 @@ const bddSeancesCourseFacile = {
             },
             "type": "fractionne",
             "lien": "google.com"
+        },
+        {
+            "title": "10 x 40s Récup 20s (1)",
+            "structure": {
+                "echauffement": {
+                    "duree": [5, "min"]
+                },
+                "fractionne": {
+                    "nombre_repetitions": 10,
+                    "duree_repetition": [40, "sec"],
+                    "duree_recuperation": [20, "sec"]
+                },
+                "retour_au_calme": {
+                    "duree": [5, "min"]
+                }
+            },
+            "type": "fractionne",
+            "lien": "google.com"
+        },
+        {
+            "title": "10 x 40s Récup 20s (2)",
+            "structure": {
+                "echauffement": {
+                    "duree": [5, "min"]
+                },
+                "fractionne": {
+                    "nombre_repetitions": 10,
+                    "duree_repetition": [40, "sec"],
+                    "duree_recuperation": [20, "sec"]
+                },
+                "retour_au_calme": {
+                    "duree": [5, "min"]
+                }
+            },
+            "type": "fractionne",
+            "lien": "google.com"
         }
     ],
     "40": "",

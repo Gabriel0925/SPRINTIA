@@ -1791,7 +1791,7 @@ section.echauffement-workout-day {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 400px;
+    max-width: 500px;
     padding-bottom: var(--SPACE_XS);
     margin: var(--SPACE_M) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -1818,6 +1818,7 @@ section.fractionne-workout-day {
     display: flex;
     flex-direction: column;
     gap: var(--SPACE_XS);
+    max-width: 500px;
     padding-bottom: var(--SPACE_XS);
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }

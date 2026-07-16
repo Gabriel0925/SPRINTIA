@@ -71,6 +71,7 @@ function interfaceWorkout(selectedWorkout) {
     timeRetourAuCalme.innerHTML = selectedWorkout["structure"]["retour_au_calme"]["duree"][0] + " " + selectedWorkout["structure"]["echauffement"]["duree"][1]
 
     // bouton COROS
+    divCenterMarge.style.maxWidth = "400px"
     buttonCOROS.innerHTML = "Ouvrir dans COROS"
     buttonCOROS.addEventListener("click", () => {
         window.open(selectedWorkout["lien"], '_blank')  
@@ -101,8 +102,6 @@ function interfaceWorkout(selectedWorkout) {
     // button COROS
     document.body.appendChild(divCenterMarge)
     divCenterMarge.appendChild(buttonCOROS)
-
-    console.log(selectedWorkout)
 }
 
 
@@ -138,16 +137,21 @@ async function generationWorkout() {
         // on recup le tableau des séances en fonction de la séances
         const tableauWorkout = bddWorkout[dureeChoice] // on trouve l'étendu des entraînements
 
-        // on trouve un entrainement aléatoirement
-        const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
-        const selectedWorkout =  tableauWorkout[nbAleatoire] // recup de l'entrainement tiré au sort avec la structure de l'entrainement et le lien vers COROS
+        for (let i=0; i<3; i++) {
+            // on trouve un entrainement aléatoirement
+            const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
+            const selectedWorkout =  tableauWorkout[nbAleatoire] // recup de l'entrainement tiré au sort avec la structure de l'entrainement et le lien vers COROS
 
+            if (selectedWorkout) {
+                // appelle à la fonction qui va générer l'interface
+                interfaceWorkout(selectedWorkout)
+            }
+        }
+        
         // on enleve tout le contenu de la page
         document.querySelector(".container-item-workout-day").style.display = "none"
         document.querySelector(".container-center-marge").style.display = "none"
-
-        // appelle à la fonction qui va générer l'interface
-        interfaceWorkout(selectedWorkout)
+        document.querySelector("h1").innerHTML = "Entraînements suggérés"
 
         button.textContent = "Généré"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))        

@@ -105,159 +105,59 @@ i {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.fs-icon_1RM:before {
-  content: "\e900";
-}
-.fs-icon_a_propos:before {
-  content: "\e901";
-}
-.fs-icon_add:before {
-  content: "\e902";
-}
-.fs-icon_agenda:before {
-  content: "\e903";
-}
-.fs-icon_analyse_athlete:before {
-  content: "\e904";
-}
-.fs-icon_archiver:before {
-  content: "\e905";
-}
-.fs-icon_center_carte:before {
-  content: "\e906";
-}
-.fs-icon_charge_entrainement:before {
-  content: "\e907";
-}
-.fs-icon_coach:before {
-  content: "\e908";
-}
-.fs-icon_confidentialite:before {
-  content: "\e909";
-}
-.fs-icon_copy:before {
-  content: "\e90a";
-}
-.fs-icon_entrainement:before {
-  content: "\e90b";
-}
-.fs-icon_fermer:before {
-  content: "\e90c";
-}
-.fs-icon_file:before {
-  content: "\e90d";
-}
-.fs-icon_file_csv:before {
-  content: "\e90e";
-}
-.fs-icon_file_json:before {
-  content: "\e90f";
-}
-.fs-icon_fleche_droite:before {
-  content: "\e910";
-}
-.fs-icon_fullscreen:before {
-  content: "\e911";
-}
-.fs-icon_fullscreen_exit:before {
-  content: "\e912";
-}
-.fs-icon_glycogene:before {
-  content: "\e913";
-}
-.fs-icon_gpx:before {
-  content: "\e914";
-}
-.fs-icon_historique:before {
-  content: "\e915";
-}
-.fs-icon_hydratation:before {
-  content: "\e916";
-}
-.fs-icon_IA:before {
-  content: "\e917";
-}
-.fs-icon_IMC:before {
-  content: "\e918";
-}
-.fs-icon_indulgence_course:before {
-  content: "\e919";
-}
-.fs-icon_licence:before {
-  content: "\e91a";
-}
-.fs-icon_mail:before {
-  content: "\e91b";
-}
-.fs-icon_message:before {
-  content: "\e91c";
-}
-.fs-icon_metabolisme_base:before {
-  content: "\e91d";
-}
-.fs-icon_miles_km:before {
-  content: "\e91e";
-}
-.fs-icon_modifier:before {
-  content: "\e91f";
-}
-.fs-icon_niveau_course:before {
-  content: "\e920";
-}
-.fs-icon_outils:before {
-  content: "\e921";
-}
-.fs-icon_parametres:before {
-  content: "\e922";
-}
-.fs-icon_partager:before {
-  content: "\e923";
-}
-.fs-icon_pause:before {
-  content: "\e924";
-}
-.fs-icon_plus:before {
-  content: "\e925";
-}
-.fs-icon_plus_horizontal:before {
-  content: "\e926";
-}
-.fs-icon_profil:before {
-  content: "\e927";
-}
-.fs-icon_progression:before {
-  content: "\e928";
-}
-.fs-icon_proteines:before {
-  content: "\e929";
-}
-.fs-icon_recuperation:before {
-  content: "\e92a";
-}
-.fs-icon_statistiques:before {
-  content: "\e92b";
-}
-.fs-icon_strategie_allure:before {
-  content: "\e92c";
-}
-.fs-icon_supprimer:before {
-  content: "\e92d";
-}
-.fs-icon_telechargement:before {
-  content: "\e92e";
-}
-.fs-icon_temps_recup:before {
-  content: "\e92f";
-}
-.fs-icon_entrainement_du_jour:before {
-  content: "\e930";
-}
-.fs-icon_video_library:before {
-  content: "\e931";
-}
-.fs-icon_zones_cardiaques:before {
-  content: "\e932";
-}
+.fs-icon_1RM:before {content: "\e900";}
+.fs-icon_a_propos:before {content: "\e901";}
+.fs-icon_add:before {content: "\e902";}
+.fs-icon_agenda:before {content: "\e903";}
+.fs-icon_analyse_athlete:before {content: "\e904";}
+.fs-icon_archiver:before {content: "\e905";}
+.fs-icon_center_carte:before {content: "\e906";}
+.fs-icon_charge_entrainement:before {content: "\e907";}
+.fs-icon_coach:before {content: "\e908";}
+.fs-icon_confidentialite:before {content: "\e909";}
+.fs-icon_copy:before {content: "\e90a";}
+.fs-icon_entrainement:before {content: "\e90b";}
+.fs-icon_entrainement_du_jour:before {content: "\e90c";}
+.fs-icon_fermer:before {content: "\e90d";}
+.fs-icon_file:before {content: "\e90e";}
+.fs-icon_file_csv:before {content: "\e90f";}
+.fs-icon_file_json:before {content: "\e910";}
+.fs-icon_fleche_droite:before {content: "\e911";}
+.fs-icon_fullscreen:before {content: "\e912";}
+.fs-icon_fullscreen_exit:before {content: "\e913";}
+.fs-icon_glycogene:before {content: "\e914";}
+.fs-icon_gpx:before {content: "\e915";}
+.fs-icon_historique:before {content: "\e916";}
+.fs-icon_hydratation:before {content: "\e917";}
+.fs-icon_IA:before {content: "\e918";}
+.fs-icon_IMC:before {content: "\e919";}
+.fs-icon_indulgence_course:before {content: "\e91a";}
+.fs-icon_licence:before {content: "\e91b";}
+.fs-icon_mail:before {content: "\e91c";}
+.fs-icon_message:before {content: "\e91d";}
+.fs-icon_metabolisme_base:before {content: "\e91e";}
+.fs-icon_miles_km:before {content: "\e91f";}
+.fs-icon_modifier:before {content: "\e920";}
+.fs-icon_natation:before {content: "\e921";}
+.fs-icon_niveau_course:before {content: "\e922";}
+.fs-icon_outils:before {content: "\e923";}
+.fs-icon_parametres:before {content: "\e924";}
+.fs-icon_partager:before {content: "\e925";}
+.fs-icon_pause:before {content: "\e926";}
+.fs-icon_plus:before {content: "\e927";}
+.fs-icon_plus_horizontal:before {content: "\e928";}
+.fs-icon_profil:before {content: "\e929";}
+.fs-icon_progression:before {content: "\e92a";}
+.fs-icon_proteines:before {content: "\e92b";}
+.fs-icon_recuperation:before {content: "\e92c";}
+.fs-icon_statistiques:before {content: "\e92d";}
+.fs-icon_strategie_allure:before {content: "\e92e";}
+.fs-icon_supprimer:before {content: "\e92f";}
+.fs-icon_telechargement:before {content: "\e930";}
+.fs-icon_temps_recup:before {content: "\e931";}
+.fs-icon_velo:before {content: "\e932";}
+.fs-icon_video_library:before {content: "\e933";}
+.fs-icon_zones_cardiaques:before {content: "\e934";}
 
 /* --- Reset du style de base d'une page d'HTML --- */
 * {

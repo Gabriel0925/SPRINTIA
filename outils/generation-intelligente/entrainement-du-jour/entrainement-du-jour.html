@@ -83,16 +83,16 @@
             <h2>Quel sport ?</h2>
             <section class="container-sport-workout-day">
 
-                <div class="sport-item selected" onclick="selectItem(this, '.sport-item')">
+                <div class="sport-item selected" id="course" onclick="selectItem(this, '.sport-item')">
                     <i class="fs-icon_entrainement"></i>
                 </div>
 
                 <div class="container-deux-sport-item">
 
-                    <div class="sport-item" onclick="selectItem(this, '.sport-item')">
+                    <div class="sport-item" id="velo" onclick="selectItem(this, '.sport-item')">
                         <i class="fs-icon_velo"></i>
                     </div>
-                    <div class="sport-item" onclick="selectItem(this, '.sport-item')">
+                    <div class="sport-item" id="natationa" onclick="selectItem(this, '.sport-item')">
                         <i class="fs-icon_natation"></i>
                     </div>
 
@@ -107,13 +107,13 @@
             <h2>Quelle durée ?</h2>
             <section class="container-round-input">
                 
-                <div class="round-input-item duree selected" onclick="selectItem(this, '.round-input-item.duree')">
+                <div class="round-input-item duree selected" id="20" onclick="selectItem(this, '.round-input-item.duree')">
                     <p>20</p>
                 </div>
-                <div class="round-input-item duree" onclick="selectItem(this, '.round-input-item.duree')">
+                <div class="round-input-item duree" id="40" onclick="selectItem(this, '.round-input-item.duree')">
                     <p>40</p>
                 </div>
-                <div class="round-input-item duree" onclick="selectItem(this, '.round-input-item.duree')">
+                <div class="round-input-item duree" id="60" onclick="selectItem(this, '.round-input-item.duree')">
                     <p>60</p>
                 </div>
             
@@ -141,6 +141,7 @@
     </div>
 
     <script src="../../../assets/base-js/base.js"></script>
+    <script src="bdd-entrainement.js"></script>
     <script src="script-entrainement-du-jour.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
     

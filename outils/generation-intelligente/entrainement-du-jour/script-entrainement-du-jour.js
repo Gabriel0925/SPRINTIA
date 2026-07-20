@@ -196,18 +196,37 @@ function createCardWorkoutGenerate(selectedWorkout, containerCardWorkout) {
                 </p>
             </div>
             <div class="container-data-workout">
+
+                <div class="container-data-workout">
+
+                    <div class="data-workout-paire">
+                        <p class="duree-workout">
+                            <strong>${selectedWorkout["informations"]["duree_totale"][0]} ${selectedWorkout["informations"]["duree_totale"][1]}</strong>
+                        </p>
+                        <p class="rpe-workout">
+                            RPE : <strong>${selectedWorkout["informations"]["rpe"]}</strong>
+                        </p>
+                    </div>
+                    <div class="data-workout-paire">
+                        <p class="charge-workout">
+                            Charge d'entraînement : <strong>${selectedWorkout["informations"]["charge_entrainement"]} CE</strong>
+                        </p>
+                    </div>
+
+                </div>
                 <div class="action-button-card-workout">
                     <button>Détail de l'entraînement</button>
                 </div>
+
             </div>
         </div>
     `
 
     // ajout sur la page
-    containerCardWorkout.innerHTML = structureHTML
+    containerCardWorkout.innerHTML += structureHTML
 
     // ajout d'un event sur l'entiereté card pour afficher la structure de l'entraînement
-    let cardWorkout = containerCardWorkout.querySelector(".cards-history-workout")
+    const cardWorkout = containerCardWorkout.querySelector(".cards-history-workout:last-child")
     cardWorkout.addEventListener("click", () => {
         interfaceWorkout(selectedWorkout, containerCardWorkout)
     })
@@ -232,7 +251,7 @@ async function generationWorkout() {
         containerCardWorkout.classList.add("container-workout-cards")
         document.body.appendChild(containerCardWorkout)
 
-        for (let i=0; i<1; i++) {
+        for (let i=0; i<3; i++) {
             // on trouve un entrainement aléatoirement
             const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
             const selectedWorkout =  tableauWorkout[nbAleatoire] // recup de l'entrainement tiré au sort avec la structure de l'entrainement et le lien vers COROS

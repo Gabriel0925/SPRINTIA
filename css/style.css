@@ -835,7 +835,7 @@ div.carousel div.card-tool p{
 section.container-workout-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: var(--SPACE_L);
     margin-bottom: var(--SPACE_L);
     transition: all ease-out var(--TIME_TRANSITION);
@@ -851,8 +851,16 @@ section.container-workout-cards div.cards-history-workout {
     flex-grow: 1;
     padding: var(--SPACE_XS);
 
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
     transition: transform ease-out var(--TIME_TRANSITION_FAST),
                 background-color ease-out var(--TIME_TRANSITION);
+}
+section.container-workout-cards div.cards-history-workout.generation {
+    max-width: 320px;
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-workout-cards div.cards-history-workout:hover {
@@ -897,6 +905,12 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
     font-weight: var(--FONT_WEIGHT_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P);
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
 }
 section.container-workout-cards div.cards-history-workout p.charge-workout strong{
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -1787,12 +1801,6 @@ section.container-round-input div.round-input-item#difficile{
 
 
 /* --- INTERFACE DE LA SEANCE --- */
-section.container-all-workout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--SPACE_L);
-}
-
 section.container-all-workout section.container-workout-generate {
     display: flex;
     flex-direction: column;
@@ -1854,23 +1862,6 @@ section.container-workout-generate section.fractionne-workout-day div.container-
     border-left: 3px solid var(--COLOR_ACCENT_TEXT);
     margin: var(--SPACE_S) var(--SPACE_XS);
     padding: var(--SPACE_XS);
-}
-
-section.container-workout-generate button {
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    background-color: var(--COLOR_ACCENT);
-    color: var(--COLOR_BACKGROUND);
-    font-size: var(--P);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    margin: 4px;
-    padding: 0.7rem;
-}
-section.container-workout-generate button:active{
-    background-color: var(--COLOR_ACCENT_HOVER);
-    transform: scale(1);
 }
 
 

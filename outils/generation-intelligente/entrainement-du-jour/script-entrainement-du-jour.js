@@ -1,3 +1,21 @@
+const dicoSeances = {
+    "course": {
+        "facile": bddSeancesCourseFacile, 
+        "modere": bddSeancesCourseModere, 
+        "difficile": bddSeancesCourseDifficile, 
+    },
+    "velo": {
+        "facile": bddSeancesVeloFacile, 
+        "modere": bddSeancesVeloModere, 
+        "difficile": bddSeancesVeloDifficile, 
+    },
+    "natation": {
+        "facile": bddSeancesNatationFacile, 
+        "modere": bddSeancesNatationModere, 
+        "difficile": bddSeancesNatationDifficile, 
+    }
+}
+
 function selectItem(elt, nameComponent) {
     let lastSelected = document.querySelector(nameComponent+".selected")
     
@@ -8,8 +26,6 @@ function selectItem(elt, nameComponent) {
         }
     }   
 }
-
-
 function generateNbAleatoire(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min // formule via Gemini
 }
@@ -125,15 +141,22 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
 
 // }
 
-function interfaceWorkout(selectedWorkout, containerAllWorkout) {
+function interfaceWorkout(selectedWorkout, containerCardWorkout) {
+    // on supprime l'interface actuelle
+    containerCardWorkout.innerHTML = ""
+
+    // ajout du titre et de la description de l'entrainement
+    document.querySelector("h1").innerHTML = selectedWorkout["title"]
+    let descriptionWorkout = document.createElement("p")
+    descriptionWorkout.classList.add("text")
+    descriptionWorkout.innerHTML = selectedWorkout["description"]
+    containerCardWorkout.appendChild(descriptionWorkout)
+
+
     // la base du html
     let containerWorkoutGenerate = document.createElement("section")
     containerWorkoutGenerate.classList.add("container-workout-generate")
-    containerAllWorkout.appendChild(containerWorkoutGenerate) // ajout du la page
-
-    let titleWorkout = document.createElement("h2") // titre de la séance
-    titleWorkout.innerHTML = selectedWorkout["title"]
-    containerWorkoutGenerate.appendChild(titleWorkout) //ajout du titre dans l'interface
+    document.body.appendChild(containerWorkoutGenerate) // ajout à la page
 
     let structureWorkout = selectedWorkout["structure"]
     const dicoFunctionUI = { // chaque fonction a pour but de créer l'interface
@@ -149,31 +172,46 @@ function interfaceWorkout(selectedWorkout, containerAllWorkout) {
         dicoFunctionUI[eltWorkout](dataForThisKey, containerWorkoutGenerate) // on lance la fonction avec les bons param
     }
 
+    let containerCenterMarge = document.createElement("div")
+    containerCenterMarge.classList.add("container-center-marge")
     let buttonCOROS = document.createElement("button") // bouton Open in COROS
     buttonCOROS.innerHTML = "Ouvrir dans COROS"
     buttonCOROS.addEventListener("click", () => {
         window.open(selectedWorkout["lien"], '_blank')  
     })
-    containerWorkoutGenerate.appendChild(buttonCOROS) // le bouton COROS
+    containerWorkoutGenerate.appendChild(containerCenterMarge)
+    containerCenterMarge.appendChild(buttonCOROS)
 }
 
 
-const dicoSeances = {
-    "course": {
-        "facile": bddSeancesCourseFacile, 
-        "modere": bddSeancesCourseModere, 
-        "difficile": bddSeancesCourseDifficile, 
-    },
-    "velo": {
-        "facile": bddSeancesVeloFacile, 
-        "modere": bddSeancesVeloModere, 
-        "difficile": bddSeancesVeloDifficile, 
-    },
-    "natation": {
-        "facile": bddSeancesNatationFacile, 
-        "modere": bddSeancesNatationModere, 
-        "difficile": bddSeancesNatationDifficile, 
-    }
+function createCardWorkoutGenerate(selectedWorkout, containerCardWorkout) {
+    // création de la structure avec les données
+    let structureHTML = `
+        <div class="cards-history-workout generation">  
+            <div class="data-workout-column">
+                <p class="name-workout">
+                    ${selectedWorkout["title"]}
+                </p>
+                <p class="sport-date-workout">
+                    ${selectedWorkout["description"]}
+                </p>
+            </div>
+            <div class="container-data-workout">
+                <div class="action-button-card-workout">
+                    <button>Détail de l'entraînement</button>
+                </div>
+            </div>
+        </div>
+    `
+
+    // ajout sur la page
+    containerCardWorkout.innerHTML = structureHTML
+
+    // ajout d'un event sur l'entiereté card pour afficher la structure de l'entraînement
+    let cardWorkout = containerCardWorkout.querySelector(".cards-history-workout")
+    cardWorkout.addEventListener("click", () => {
+        interfaceWorkout(selectedWorkout, containerCardWorkout)
+    })
 }
 async function generationWorkout() {
     let button = document.getElementById("button-generation-entrainements")
@@ -191,9 +229,9 @@ async function generationWorkout() {
         const tableauWorkout = bddWorkout[dureeChoice] // on trouve l'étendu des entraînements
 
         // création d'un container qui contiendra les 3 options
-        let containerAllWorkout = document.createElement("section")
-        containerAllWorkout.classList.add("container-all-workout")
-        document.body.appendChild(containerAllWorkout)
+        let containerCardWorkout = document.createElement("section")
+        containerCardWorkout.classList.add("container-workout-cards")
+        document.body.appendChild(containerCardWorkout)
 
         for (let i=0; i<1; i++) {
             // on trouve un entrainement aléatoirement
@@ -202,7 +240,7 @@ async function generationWorkout() {
 
             if (selectedWorkout) {
                 // appelle à la fonction qui va générer l'interface
-                interfaceWorkout(selectedWorkout, containerAllWorkout)
+                createCardWorkoutGenerate(selectedWorkout, containerCardWorkout)
             }
         }
         

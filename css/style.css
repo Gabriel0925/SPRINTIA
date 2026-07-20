@@ -1826,7 +1826,7 @@ section.container-workout-generate section.echauffement-workout-day {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: var(--SPACE_XS);
+    padding: var(--SPACE_S_SMALL) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.echauffement-workout-day.without-border {
@@ -1851,8 +1851,7 @@ section.container-workout-generate section.fractionne-workout-day {
     display: flex;
     flex-direction: column;
     gap: var(--SPACE_XS);
-    padding-top: var(--SPACE_XS);
-    padding-bottom: var(--SPACE_XS);
+    padding: var(--SPACE_S_SMALL) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions{
@@ -1860,8 +1859,8 @@ section.container-workout-generate section.fractionne-workout-day p.nb-repetitio
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
 section.container-workout-generate section.fractionne-workout-day div.container-structure p{
-    border-left: 3px solid var(--COLOR_ACCENT_TEXT);
-    margin: var(--SPACE_S) var(--SPACE_XS);
+    border-left: 5px solid var(--COLOR_ACCENT_TEXT);
+    margin: var(--SPACE_S) var(--SPACE_L);
     padding: var(--SPACE_XS);
 }
 

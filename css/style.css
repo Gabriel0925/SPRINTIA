@@ -860,7 +860,7 @@ section.container-workout-cards div.cards-history-workout {
                 background-color ease-out var(--TIME_TRANSITION);
 }
 section.container-workout-cards div.cards-history-workout.generation {
-    max-width: 320px;
+    max-width: 480px;
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-workout-cards div.cards-history-workout:hover {
@@ -908,8 +908,8 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     overflow: hidden;
 }
 section.container-workout-cards div.cards-history-workout p.charge-workout strong{
@@ -1851,6 +1851,7 @@ section.container-workout-generate section.fractionne-workout-day {
     display: flex;
     flex-direction: column;
     gap: var(--SPACE_XS);
+    padding-top: var(--SPACE_XS);
     padding-bottom: var(--SPACE_XS);
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }

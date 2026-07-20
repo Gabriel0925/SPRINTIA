@@ -143,15 +143,14 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
 
 function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     // on supprime l'interface actuelle
-    containerCardWorkout.innerHTML = ""
+    containerCardWorkout.style.display = "none"
 
     // ajout du titre et de la description de l'entrainement
     document.querySelector("h1").innerHTML = selectedWorkout["title"]
     let descriptionWorkout = document.createElement("p")
     descriptionWorkout.classList.add("text")
     descriptionWorkout.innerHTML = selectedWorkout["description"]
-    containerCardWorkout.appendChild(descriptionWorkout)
-
+    document.body.appendChild(descriptionWorkout)
 
     // la base du html
     let containerWorkoutGenerate = document.createElement("section")

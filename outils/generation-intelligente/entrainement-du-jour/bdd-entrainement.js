@@ -2,56 +2,30 @@ const bddSeancesCourseFacile = {
     "20": [
         {
             "title": "10 x 40s Récup 20s",
+            "type": "fractionne",
             "structure": {
                 "echauffement": {
                     "duree": [5, "min"]
                 },
                 "fractionne": {
-                    "nombre_repetitions": 10,
-                    "duree_repetition": [40, "sec"],
-                    "duree_recuperation": [20, "sec"]
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {             
+                        "nombre_repetitions": 6,
+                        "duree_repetition": [40, "sec"],
+                        "duree_recuperation": [20, "sec"]
+                        },
+                        {                    
+                        "nombre_repetitions": 4,
+                        "duree_repetition": [30, "sec"],
+                        "duree_recuperation": [30, "sec"]
+                        }
+                    ]
                 },
                 "retour_au_calme": {
                     "duree": [5, "min"]
                 }
             },
-            "type": "fractionne",
-            "lien": "google.com"
-        },
-        {
-            "title": "10 x 40s Récup 20s (1)",
-            "structure": {
-                "echauffement": {
-                    "duree": [5, "min"]
-                },
-                "fractionne": {
-                    "nombre_repetitions": 10,
-                    "duree_repetition": [40, "sec"],
-                    "duree_recuperation": [20, "sec"]
-                },
-                "retour_au_calme": {
-                    "duree": [5, "min"]
-                }
-            },
-            "type": "fractionne",
-            "lien": "google.com"
-        },
-        {
-            "title": "10 x 40s Récup 20s (2)",
-            "structure": {
-                "echauffement": {
-                    "duree": [5, "min"]
-                },
-                "fractionne": {
-                    "nombre_repetitions": 10,
-                    "duree_repetition": [40, "sec"],
-                    "duree_recuperation": [20, "sec"]
-                },
-                "retour_au_calme": {
-                    "duree": [5, "min"]
-                }
-            },
-            "type": "fractionne",
             "lien": "google.com"
         }
     ],

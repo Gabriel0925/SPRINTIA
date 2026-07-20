@@ -81,23 +81,18 @@
         <section class="item-workout-day">
 
             <h2>Quel sport ?</h2>
-            <section class="container-sport-workout-day">
-
-                <div class="sport-item selected" id="course" onclick="selectItem(this, '.sport-item')">
+            <section class="container-round-input">
+                
+                <div class="round-input-item sport selected" id="course" onclick="selectItem(this, '.round-input-item.sport')">
                     <i class="fs-icon_entrainement"></i>
                 </div>
-
-                <div class="container-deux-sport-item">
-
-                    <div class="sport-item" id="velo" onclick="selectItem(this, '.sport-item')">
-                        <i class="fs-icon_velo"></i>
-                    </div>
-                    <div class="sport-item" id="natationa" onclick="selectItem(this, '.sport-item')">
-                        <i class="fs-icon_natation"></i>
-                    </div>
-
+                <div class="round-input-item sport" id="velo" onclick="selectItem(this, '.round-input-item.sport')">
+                    <i class="fs-icon_velo"></i>
                 </div>
-
+                <div class="round-input-item sport" id="natation" onclick="selectItem(this, '.round-input-item.sport')">
+                    <i class="fs-icon_natation"></i>
+                </div>
+            
             </section>
 
         </section>

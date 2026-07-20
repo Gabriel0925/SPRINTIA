@@ -218,7 +218,7 @@ async function generationWorkout() {
     button.textContent = "Génération..."
 
     try {
-        const sportChoice = document.querySelector(".sport-item.selected").id
+        const sportChoice = document.querySelector(".round-input-item.sport.selected").id
         const dureeChoice = document.querySelector(".round-input-item.duree.selected").id
         const intensityChoice = document.querySelector(".round-input-item.intensity.selected").id
 

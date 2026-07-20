@@ -1656,58 +1656,6 @@ section.container-item-workout-day {
         gap: var(--SPACE_S) var(--SPACE_XL);
     }
 }
-/* SPORT */
-section.container-sport-workout-day {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    width: 350px;
-}
-section.container-sport-workout-day div.container-deux-sport-item{
-    display: flex;
-    justify-content: space-between;
-}
-section.container-sport-workout-day div.sport-item{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_TEXT_PRIMARY);
-    font-size: var(--H0);
-
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin: 0 auto;
-
-    cursor: pointer;
-
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                color ease-out var(--TIME_TRANSITION),
-                outline ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    section.container-sport-workout-day div.sport-item:hover{
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-section.container-sport-workout-day div.sport-item:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_NORMAL));
-}
-section.container-sport-workout-day div.sport-item.selected{
-    background-color: var(--COLOR_ACCENT);
-    color: var(--COLOR_BACKGROUND);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    outline: 3px solid var(--COLOR_TEXT_PRIMARY);
-}
-section.container-sport-workout-day div.sport-item p{
-    font-size: var(--H1);
-}
-
-/* DUREE & INTENSITE */
 section.container-round-input {
     display: flex;
     gap: var(--SPACE_M);
@@ -1740,19 +1688,25 @@ section.container-round-input div.round-input-item{
                 font-weight ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
-section.container-round-input div.round-input-item.duree{
+section.container-round-input div.round-input-item.duree,
+section.container-round-input div.round-input-item.sport{
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H2);
     opacity: 1;
+}
+section.container-round-input div.round-input-item.sport i{
+    font-size: var(--H0);
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-round-input div.round-input-item:hover{
         opacity: 1;
     }
-    section.container-round-input div.round-input-item.duree:hover{
+    section.container-round-input div.round-input-item.duree:hover,
+    section.container-round-input div.round-input-item.sport:hover{
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
-    section.container-round-input div.round-input-item.duree.selected:hover{
+    section.container-round-input div.round-input-item.duree.selected:hover,
+    section.container-round-input div.round-input-item.sport.selected:hover{
         background-color: var(--COLOR_ACCENT);
     }
 }
@@ -1760,7 +1714,8 @@ section.container-round-input div.round-input-item:active{
     opacity: 1;
     transform: scale(var(--SCALE_NORMAL));
 }
-section.container-round-input div.round-input-item.duree:active{
+section.container-round-input div.round-input-item.duree:active,
+section.container-round-input div.round-input-item.sport:active{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
@@ -1770,13 +1725,19 @@ section.container-round-input div.round-input-item.selected{
     outline: 3px solid var(--COLOR_TEXT_PRIMARY);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.container-round-input div.round-input-item.duree.selected{
+section.container-round-input div.round-input-item.duree.selected,
+section.container-round-input div.round-input-item.sport.selected{
     color: var(--COLOR_BACKGROUND);
 }
-section.container-round-input div.round-input-item.duree.selected:active{
+section.container-round-input div.round-input-item.duree.selected,
+section.container-round-input div.round-input-item.sport.selected{
+    background-color: var(--COLOR_ACCENT);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.container-round-input div.round-input-item.duree.selected:active,
+section.container-round-input div.round-input-item.sport.selected:active{
     background-color: var(--COLOR_ACCENT);
 }
-
 section.container-round-input div.round-input-item#facile{
     background-color: #58e086;
 }

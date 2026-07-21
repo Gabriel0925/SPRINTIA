@@ -11,7 +11,7 @@ const bddSeancesCourseFacile = {
             },
             "structure": {
                 "echauffement": {
-                    "duree": [10, "min"]
+                    "volume": [10, "min"]
                 },
                 "fractionne": {
                     "plusieurs_blocs": true,
@@ -19,29 +19,29 @@ const bddSeancesCourseFacile = {
                         {
                         "type": "effort",
                         "nombre_repetitions": 10,
-                        "duree_effort": [30, "sec"],
-                        "duree_recuperation": [30, "sec"]
+                        "volume_effort": [30, "sec"],
+                        "volume_recuperation": [30, "sec"]
                         },
                         {
                         "type": "recuperation",
-                        "duree_recuperation": [2, "min"]
+                        "volume_recuperation": [2, "min"]
                         },
                         {
                         "type": "effort",        
                         "nombre_repetitions": 10,
-                        "duree_effort": [30, "sec"],
-                        "duree_recuperation": [30, "sec"]
+                        "volume_effort": [30, "sec"],
+                        "volume_recuperation": [30, "sec"]
                         }
                     ]
                 },
-                "effort": {
-                    "duree_effort": [10, "min"]
-                },
-                "recuperation": {
-                    "duree_recuperation": [10, "min"]
-                },
+                // "effort": {
+                //     "volume_effort": [10, "min"]
+                // },
+                // "recuperation": {
+                //     "volume_recuperation": [10, "min"]
+                // },
                 "retour_au_calme": {
-                    "duree": [10, "min"]
+                    "volume": [10, "min"]
                 }
             },
             "lien": "https://sharepageeu.coros.com/share/training/program/479033908856537487/region-3-time-1784540445"

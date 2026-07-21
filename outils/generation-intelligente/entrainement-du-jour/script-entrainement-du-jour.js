@@ -42,7 +42,7 @@ function createUiEchauffement(instruction_echauffement, containerWorkoutGenerate
 
     // remplissage des elt
     textEchauffement.innerHTML = "Échauffement"
-    timeEchauffement.innerHTML = instruction_echauffement["duree"][0] + " " + instruction_echauffement["duree"][1]
+    timeEchauffement.innerHTML = instruction_echauffement["volume"][0] + " " + instruction_echauffement["volume"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionEchauffement)
@@ -61,7 +61,7 @@ function createUiRetourAuCalme(instruction_retour_au_calme, containerWorkoutGene
 
     // remplissage des elt
     textRetourAuCalme.innerHTML = "Retour au calme"
-    timeRetourAuCalme.innerHTML = instruction_retour_au_calme["duree"][0] + " " + instruction_retour_au_calme["duree"][1]
+    timeRetourAuCalme.innerHTML = instruction_retour_au_calme["volume"][0] + " " + instruction_retour_au_calme["volume"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionRetourAuCalme)
@@ -89,9 +89,9 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
                 paragrapheDureeRecup.classList.add("duree-recuperation")
 
                 // remplissage des elt
-                paragrapheRepetition.innerHTML = "Répéter " + element["nombre_repetitions"] + " fois"
-                paragrapheDureeRep.innerHTML = element["duree_effort"][0] + " " + element["duree_effort"][1] + " (effort)"
-                paragrapheDureeRecup.innerHTML = element["duree_recuperation"][0] + " " + element["duree_recuperation"][1] + " (récupération)"
+                paragrapheRepetition.innerHTML = "Répéter <strong>" + element["nombre_repetitions"] + "</strong> fois"
+                paragrapheDureeRep.innerHTML = element["volume_effort"][0] + " " + element["volume_effort"][1] + " (effort)"
+                paragrapheDureeRecup.innerHTML = element["volume_recuperation"][0] + " " + element["volume_recuperation"][1] + " (récupération)"
 
                 // ajout sur la page
                 containerWorkoutGenerate.appendChild(sectionFractionne)
@@ -117,8 +117,8 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
 
         // remplissage des elt
         paragrapheRepetition.innerHTML = "Répéter " + instruction_fractionne["nombre_repetitions"] + " fois"
-        paragrapheDureeRep.innerHTML = instruction_fractionne["duree_effort"][0] + " " + instruction_fractionne["duree_effort"][1] + " (effort)"
-        paragrapheDureeRecup.innerHTML = instruction_fractionne["duree_recuperation"][0] + " " + instruction_fractionne["duree_recuperation"][1] + " (récupération)"
+        paragrapheDureeRep.innerHTML = instruction_fractionne["volume_effort"][0] + " " + instruction_fractionne["volume_effort"][1] + " (effort)"
+        paragrapheDureeRecup.innerHTML = instruction_fractionne["volume_recuperation"][0] + " " + instruction_fractionne["volume_recuperation"][1] + " (récupération)"
 
         // ajout sur la page
         containerWorkoutGenerate.appendChild(sectionFractionne)
@@ -141,7 +141,7 @@ function createUiEffort(instruction_repetition, containerWorkoutGenerate) {
 
     // remplissage des elt
     textEffort.innerHTML = "Effort"
-    timeEffort.innerHTML = instruction_repetition["duree_effort"][0] + " " + instruction_repetition["duree_effort"][1]
+    timeEffort.innerHTML = instruction_repetition["volume_effort"][0] + " " + instruction_repetition["volume_effort"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionEffort)
@@ -161,7 +161,7 @@ function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate
 
     // remplissage des elt
     textRecuperation.innerHTML = "Récupération"
-    timeRecuperation.innerHTML = instruction_recuperation["duree_recuperation"][0] + " " + instruction_recuperation["duree_recuperation"][1]
+    timeRecuperation.innerHTML = instruction_recuperation["volume_recuperation"][0] + " " + instruction_recuperation["volume_recuperation"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionRecuperation)

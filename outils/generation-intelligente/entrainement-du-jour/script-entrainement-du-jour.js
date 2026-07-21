@@ -169,21 +169,41 @@ function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate
     sectionRecuperation.appendChild(timeRecuperation)
 }
 
-function interfaceWorkout(selectedWorkout, containerCardWorkout) {
-    // on supprime l'interface actuelle
-    containerCardWorkout.style.display = "none"
+function interfaceWorkout(selectedWorkout) {
+    // on supprime le contenu actuelle de la page grâce au container et aussi au balise h1,...
+    let lastContainerStructureWorkout = document.querySelector(".container-workout-generate")
+    if (lastContainerStructureWorkout) {
+        lastContainerStructureWorkout.remove()
+    }
+    document.querySelector("h1").innerHTML = ""
+    if (document.querySelectorAll("h2").length > 0) { // si il y a des h2 on les supprime
+        document.querySelectorAll("h2").forEach(elt => {
+            elt.remove()
+        })
+    }
+    // on fait pareil pour les p avec la classe "text"
+    if (document.querySelectorAll("p.text").length > 0) {
+        document.querySelectorAll("p.text").forEach(elt => {
+            elt.remove()
+        })
+    }
 
+    // création d'un conteneur globale pour la structure de l'entrainement
+    let containerWorkoutGenerate = document.createElement("section")
+    containerWorkoutGenerate.classList.add("container-workout-generate")
+    document.body.appendChild(containerWorkoutGenerate)
+    
     // ajout du titre et de la description de l'entrainement
     document.querySelector("h1").innerHTML = selectedWorkout["title"]
     let descriptionWorkout = document.createElement("p")
     descriptionWorkout.classList.add("text")
     descriptionWorkout.innerHTML = selectedWorkout["description"]
-    document.body.appendChild(descriptionWorkout)
+    containerWorkoutGenerate.appendChild(descriptionWorkout)
     
     // ajout d'un h2 pour structurer la page
     let titleH2 = document.createElement("h2")
     titleH2.textContent = "Résumé de l'entraînement"
-    document.body.appendChild(titleH2)
+    containerWorkoutGenerate.appendChild(titleH2)
 
     // ajout des données de base de l'entrainement : durée + charge d'entraînement
     let structureHTML = `
@@ -204,7 +224,7 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
 
         </section>
     `
-    document.body.innerHTML += structureHTML // ajout des datas de base dans le body html
+    containerWorkoutGenerate.innerHTML += structureHTML // ajout des datas de base dans le body html
 
     // ajout d'un h2 pour structurer la page
     let titleH2Num2 = document.createElement("h2")
@@ -214,12 +234,7 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     titleH2Num2.style.margin = 0
     titleH2Num2.style.marginTop = "var(--SPACE_M)"
     titleH2Num2.style.marginBottom = "var(--SPACE_S_SMALL)"
-    document.body.appendChild(titleH2Num2)
-
-    // la base du html
-    let containerWorkoutGenerate = document.createElement("section")
-    containerWorkoutGenerate.classList.add("container-workout-generate")
-    document.body.appendChild(containerWorkoutGenerate) // ajout à la page
+    containerWorkoutGenerate.appendChild(titleH2Num2)
 
     let structureWorkout = selectedWorkout["structure"]
     const dicoFunctionUI = { // chaque fonction a pour but de créer l'interface
@@ -251,6 +266,9 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     containerCenterMarge.appendChild(buttonCOROS)
 
     window.scrollTo({top:0, behavior: "instant"}) // scroll vers le haut de la page
+
+    // on rend visible le bouton flottant
+    document.querySelector(".container-button-flottant").style.display = "flex"
 }
 
 
@@ -269,18 +287,13 @@ async function generationWorkout() {
         // on recup le tableau des séances en fonction de la séances
         const tableauWorkout = bddWorkout[dureeChoice] // on trouve l'étendu des entraînements
 
-        // création d'un container qui contiendra les 3 options
-        let containerCardWorkout = document.createElement("section")
-        containerCardWorkout.classList.add("container-workout-cards")
-        document.body.appendChild(containerCardWorkout)
-
         // on trouve un entrainement aléatoirement
         const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
         const selectedWorkout =  tableauWorkout[nbAleatoire] // recup de l'entrainement tiré au sort avec la structure de l'entrainement et le lien vers COROS
 
         if (selectedWorkout) {
             // appelle à la fonction qui va générer l'interface
-            interfaceWorkout(selectedWorkout, containerCardWorkout)
+            interfaceWorkout(selectedWorkout)
         }
         
         // on enleve tout le contenu de la page

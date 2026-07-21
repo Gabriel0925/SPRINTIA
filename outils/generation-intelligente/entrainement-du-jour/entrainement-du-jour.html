@@ -74,10 +74,10 @@
 
     </section>
  
-    <div class="container-button-flottant" >
-        <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'">
+    <div class="container-button-flottant" style="display: none;">
+        <div class="button-flottant" onclick="if(confirm('En générant un nouvel entraînement, celui-ci ne sera pas accessible. Êtes-vous sûr de vouloir continuer ?')){generationWorkout()}">
             <i class="fs-icon_refresh"></i>
-            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Ajouter</p>
+            <p style="font-size: var(--H3); font-weight: var(--FONT_WEIGHT_BUTTON);">Recharger</p>
         </div>
     </div>
     

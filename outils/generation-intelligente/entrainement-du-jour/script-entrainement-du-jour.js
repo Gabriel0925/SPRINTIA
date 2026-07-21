@@ -254,56 +254,6 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
 }
 
 
-function createCardWorkoutGenerate(selectedWorkout, containerCardWorkout) {
-    // création de la carte
-    const divCardWorkoutGenerate = document.createElement("div")
-    divCardWorkoutGenerate.classList.add("cards-history-workout")
-    divCardWorkoutGenerate.classList.add("generation")
-
-    // création de la structure avec les données
-    let structureHTML = `
-        <div class="data-workout-column">
-            <p class="name-workout">
-                ${selectedWorkout["title"]}
-            </p>
-            <p class="sport-date-workout">
-                ${selectedWorkout["description"]}
-            </p>
-        </div>
-        <div class="container-data-workout">
-
-            <div class="container-data-workout">
-
-                <div class="data-workout-paire">
-                    <p class="duree-workout">
-                        <strong>${selectedWorkout["informations"]["duree_totale"]}</strong>
-                    </p>
-                    <p class="rpe-workout">
-                        RPE : <strong>${selectedWorkout["informations"]["rpe"]}</strong>
-                    </p>
-                </div>
-                <div class="data-workout-paire">
-                    <p class="charge-workout">
-                        Charge d'entraînement : <strong>${selectedWorkout["informations"]["charge_entrainement"]} CE</strong>
-                    </p>
-                </div>
-
-            </div>
-            <div class="action-button-card-workout">
-                <button>Détail de l'entraînement</button>
-            </div>
-
-        </div>
-    `
-    // ajout de la structure dans la card
-    divCardWorkoutGenerate.innerHTML += structureHTML
-    containerCardWorkout.appendChild(divCardWorkoutGenerate)
-
-    // ajout d'un event sur l'entiereté card pour afficher la structure de l'entraînement
-    divCardWorkoutGenerate.addEventListener("click", () => {
-        interfaceWorkout(selectedWorkout, containerCardWorkout)
-    })
-}
 async function generationWorkout() {
     let button = document.getElementById("button-generation-entrainements")
     button.disabled = true
@@ -324,21 +274,18 @@ async function generationWorkout() {
         containerCardWorkout.classList.add("container-workout-cards")
         document.body.appendChild(containerCardWorkout)
 
-        for (let i=0; i<3; i++) {
-            // on trouve un entrainement aléatoirement
-            const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
-            const selectedWorkout =  tableauWorkout[nbAleatoire] // recup de l'entrainement tiré au sort avec la structure de l'entrainement et le lien vers COROS
+        // on trouve un entrainement aléatoirement
+        const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
+        const selectedWorkout =  tableauWorkout[nbAleatoire] // recup de l'entrainement tiré au sort avec la structure de l'entrainement et le lien vers COROS
 
-            if (selectedWorkout) {
-                // appelle à la fonction qui va générer l'interface
-                createCardWorkoutGenerate(selectedWorkout, containerCardWorkout)
-            }
+        if (selectedWorkout) {
+            // appelle à la fonction qui va générer l'interface
+            interfaceWorkout(selectedWorkout, containerCardWorkout)
         }
         
         // on enleve tout le contenu de la page
         document.querySelector(".container-item-workout-day").style.display = "none"
         document.querySelector(".container-center-marge").style.display = "none"
-        document.querySelector("h1").innerHTML = "Entraînements suggérés"
 
         window.scrollTo({top:0, behavior: "instant"}) // scroll vers le haut de la page
 
@@ -350,7 +297,7 @@ async function generationWorkout() {
         button.textContent = "Une erreur s'est produite"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
     } finally {
-        button.textContent = "Générer des entraînements"
+        button.textContent = "Générer un entraînement"
         button.disabled = false
     }
 }

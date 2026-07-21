@@ -80,6 +80,22 @@
 
         <section class="item-workout-day">
 
+            <h2>Quelle durée ?</h2>
+            <section class="container-round-input">
+                
+                <div class="round-input-item duree selected" id="25" onclick="selectItem(this, '.round-input-item.duree')">
+                    <p>25</p>
+                </div>
+                <div class="round-input-item duree" id="50" onclick="selectItem(this, '.round-input-item.duree')">
+                    <p>50</p>
+                </div>
+            
+            </section>
+
+        </section>
+
+        <section class="item-workout-day">
+
             <h2>Quel sport ?</h2>
             <section class="container-round-input">
                 
@@ -91,25 +107,6 @@
                 </div>
                 <div class="round-input-item sport" id="natation" onclick="selectItem(this, '.round-input-item.sport')">
                     <i class="fs-icon_natation"></i>
-                </div>
-            
-            </section>
-
-        </section>
-
-        <section class="item-workout-day">
-
-            <h2>Quelle durée ?</h2>
-            <section class="container-round-input">
-                
-                <div class="round-input-item duree selected" id="20" onclick="selectItem(this, '.round-input-item.duree')">
-                    <p>20</p>
-                </div>
-                <div class="round-input-item duree" id="40" onclick="selectItem(this, '.round-input-item.duree')">
-                    <p>40</p>
-                </div>
-                <div class="round-input-item duree" id="60" onclick="selectItem(this, '.round-input-item.duree')">
-                    <p>60</p>
                 </div>
             
             </section>
@@ -132,7 +129,7 @@
     </section>
 
     <div class="container-center-marge">
-        <button id="button-generation-entrainements" class="size-block" onclick="generationWorkout()">Générer des entraînements</button>
+        <button id="button-generation-entrainements" class="size-block" onclick="generationWorkout()">Générer un entraînement</button>
     </div>
 
     <script src="../../../assets/base-js/base.js"></script>

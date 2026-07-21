@@ -154,7 +154,7 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
 
     // ajout des données de base de l'entrainement : durée + charge d'entraînement
     let structureHTML = `
-        <section class="container-block"> 
+        <section class="container-block">
 
                 <div class="container-block-data">
                     <p class="container-block-data-header">Durée</p>
@@ -166,7 +166,7 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
                 </div>
                 <div class="container-block-data">
                     <p class="container-block-data-header">Charge d'entraînement</p>
-                    <p class="container-block-data-data">${selectedWorkout["informations"]["charge_entrainement"]} <small>CE</small></p>
+                    <p class="container-block-data-data">~ ${selectedWorkout["informations"]["charge_entrainement"]} <small>CE</small></p>
                 </div>
 
         </section>
@@ -194,15 +194,18 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
 
     let containerCenterMarge = document.createElement("div")
     containerCenterMarge.classList.add("container-center-marge")
+
     let buttonCOROS = document.createElement("button") // bouton Open in COROS
+    buttonCOROS.classList.add("size-block")
     buttonCOROS.innerHTML = "Ouvrir dans COROS"
     buttonCOROS.addEventListener("click", () => {
         window.open(selectedWorkout["lien"], '_blank')  
     })
+
     containerWorkoutGenerate.appendChild(containerCenterMarge)
     containerCenterMarge.appendChild(buttonCOROS)
 
-    window.scrollTo({top:0, behavior: "smooth"}) // scroll vers le haut de la page avec animation
+    window.scrollTo({top:0, behavior: "instant"}) // scroll vers le haut de la page
 }
 
 
@@ -292,7 +295,7 @@ async function generationWorkout() {
         document.querySelector(".container-center-marge").style.display = "none"
         document.querySelector("h1").innerHTML = "Entraînements suggérés"
 
-        window.scrollTo({top:0, behavior: "smooth"}) // scroll vers le haut de la page avec animation
+        window.scrollTo({top:0, behavior: "instant"}) // scroll vers le haut de la page
 
         button.textContent = "Généré"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))        

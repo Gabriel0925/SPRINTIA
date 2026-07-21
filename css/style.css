@@ -1761,8 +1761,16 @@ section.container-workout-generate section.echauffement-workout-day.without-bord
 }
 section.container-workout-generate section.echauffement-workout-day p.text-echauffement{
     font-size: var(--H3);
-    font-weight: 1000;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.container-workout-generate section.echauffement-workout-day p.text-echauffement.phase-recuperation{
+    padding: var(--SPACE_XXS) 0;
+    padding-left: var(--SPACE_XS);
+    border-left: 5px solid var(--COLOR_TEXT_SECONDARY);
+}
+section.container-workout-generate section.echauffement-workout-day p.text-echauffement.phase-effort{
+    padding: var(--SPACE_XXS) 0;
+    padding-left: var(--SPACE_XS);
+    border-left: 5px solid var(--COLOR_ACCENT_TEXT);
 }
 section.container-workout-generate section.echauffement-workout-day p.time-echauffement{
     font-size: var(--P);
@@ -1771,6 +1779,10 @@ section.container-workout-generate section.echauffement-workout-day p.time-echau
     background-color: var(--COLOR_ACCENT_TEXT);
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.container-workout-generate section.echauffement-workout-day p.time-echauffement.phase-recuperation{
+    background-color: var(--COLOR_TEXT_SECONDARY);
 }
 
 section.container-workout-generate section.fractionne-workout-day {
@@ -1782,11 +1794,11 @@ section.container-workout-generate section.fractionne-workout-day {
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions{
     font-size: var(--H3);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
 }
 section.container-workout-generate section.fractionne-workout-day div.container-structure p{
     margin: var(--SPACE_S) var(--SPACE_L);
     padding: var(--SPACE_XS);
+    font-weight: var(--FONT_WEIGHT_BUTTON);
 }
 section.container-workout-generate section.fractionne-workout-day div.container-structure p.duree-repetition{
     border-left: 5px solid var(--COLOR_ACCENT_TEXT);

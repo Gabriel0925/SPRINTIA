@@ -128,13 +128,25 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
         divRepetition.appendChild(paragrapheDureeRecup)
     }
 }
-function createUiRepetition(instruction_repetition, containerWorkoutGenerate) {
+function createUiEffort(instruction_repetition, containerWorkoutGenerate) {
     // création des elt
-    
+    let sectionRetourAuCalme = document.createElement("section")
+    sectionRetourAuCalme.classList.add("echauffement-workout-day")
+    let textRetourAuCalme = document.createElement("p")
+    textRetourAuCalme.classList.add("text-echauffement")
+    textRetourAuCalme.classList.add("phase-effort")
+    let timeRetourAuCalme = document.createElement("p")
+    timeRetourAuCalme.classList.add("time-echauffement")
+    timeRetourAuCalme.classList.add("phase-effort")
+
     // remplissage des elt
+    textRetourAuCalme.innerHTML = "Effort"
+    timeRetourAuCalme.innerHTML = instruction_repetition["duree_effort"][0] + " " + instruction_repetition["duree_effort"][1]
 
     // ajout sur la page
-
+    containerWorkoutGenerate.appendChild(sectionRetourAuCalme)
+    sectionRetourAuCalme.appendChild(textRetourAuCalme)
+    sectionRetourAuCalme.appendChild(timeRetourAuCalme)
 }
 function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate) {
     // création des elt
@@ -142,8 +154,10 @@ function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate
     sectionRetourAuCalme.classList.add("echauffement-workout-day")
     let textRetourAuCalme = document.createElement("p")
     textRetourAuCalme.classList.add("text-echauffement")
+    textRetourAuCalme.classList.add("phase-recuperation")
     let timeRetourAuCalme = document.createElement("p")
     timeRetourAuCalme.classList.add("time-echauffement")
+    timeRetourAuCalme.classList.add("phase-recuperation")
 
     // remplissage des elt
     textRetourAuCalme.innerHTML = "Récupération"
@@ -211,6 +225,8 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     const dicoFunctionUI = { // chaque fonction a pour but de créer l'interface
         "echauffement": createUiEchauffement,
         "fractionne": createUiFractionne,
+        "effort": createUiEffort,
+        "recuperation": createUiRecuperation,
         "retour_au_calme": createUiRetourAuCalme,
     }
     for (const eltWorkout in structureWorkout) { // eltWorkout c'est la clé du dico

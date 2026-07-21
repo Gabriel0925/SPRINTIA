@@ -34,12 +34,12 @@ const bddSeancesCourseFacile = {
                         }
                     ]
                 },
-                // "effort": {
-                //     "duree_effort": [10, "min"]
-                // },
-                // "recuperation": {
-                //     "duree_recuperation": [10, "min"]
-                // },
+                "effort": {
+                    "duree_effort": [10, "min"]
+                },
+                "recuperation": {
+                    "duree_recuperation": [10, "min"]
+                },
                 "retour_au_calme": {
                     "duree": [10, "min"]
                 }

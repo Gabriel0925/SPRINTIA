@@ -34,11 +34,11 @@ function generateNbAleatoire(min, max) {
 function createUiEchauffement(instruction_echauffement, containerWorkoutGenerate) {
     // création des elt
     let sectionEchauffement = document.createElement("section")
-    sectionEchauffement.classList.add("echauffement-workout-day")
+    sectionEchauffement.classList.add("label-workout-day")
     let textEchauffement = document.createElement("p")
-    textEchauffement.classList.add("text-echauffement")
+    textEchauffement.classList.add("text-label")
     let timeEchauffement = document.createElement("p")
-    timeEchauffement.classList.add("time-echauffement")
+    timeEchauffement.classList.add("instruction-label")
 
     // remplissage des elt
     textEchauffement.innerHTML = "Échauffement"
@@ -52,12 +52,12 @@ function createUiEchauffement(instruction_echauffement, containerWorkoutGenerate
 function createUiRetourAuCalme(instruction_retour_au_calme, containerWorkoutGenerate) {
     // création des elt
     let sectionRetourAuCalme = document.createElement("section")
-    sectionRetourAuCalme.classList.add("echauffement-workout-day")
+    sectionRetourAuCalme.classList.add("label-workout-day")
     sectionRetourAuCalme.classList.add("without-border")
     let textRetourAuCalme = document.createElement("p")
-    textRetourAuCalme.classList.add("text-echauffement")
+    textRetourAuCalme.classList.add("text-label")
     let timeRetourAuCalme = document.createElement("p")
-    timeRetourAuCalme.classList.add("time-echauffement")
+    timeRetourAuCalme.classList.add("instruction-label")
 
     // remplissage des elt
     textRetourAuCalme.innerHTML = "Retour au calme"
@@ -130,43 +130,43 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
 }
 function createUiEffort(instruction_repetition, containerWorkoutGenerate) {
     // création des elt
-    let sectionRetourAuCalme = document.createElement("section")
-    sectionRetourAuCalme.classList.add("echauffement-workout-day")
-    let textRetourAuCalme = document.createElement("p")
-    textRetourAuCalme.classList.add("text-echauffement")
-    textRetourAuCalme.classList.add("phase-effort")
-    let timeRetourAuCalme = document.createElement("p")
-    timeRetourAuCalme.classList.add("time-echauffement")
-    timeRetourAuCalme.classList.add("phase-effort")
+    let sectionEffort = document.createElement("section")
+    sectionEffort.classList.add("label-workout-day")
+    let textEffort = document.createElement("p")
+    textEffort.classList.add("text-label")
+    textEffort.classList.add("phase-effort")
+    let timeEffort = document.createElement("p")
+    timeEffort.classList.add("instruction-label")
+    timeEffort.classList.add("phase-effort")
 
     // remplissage des elt
-    textRetourAuCalme.innerHTML = "Effort"
-    timeRetourAuCalme.innerHTML = instruction_repetition["duree_effort"][0] + " " + instruction_repetition["duree_effort"][1]
+    textEffort.innerHTML = "Effort"
+    timeEffort.innerHTML = instruction_repetition["duree_effort"][0] + " " + instruction_repetition["duree_effort"][1]
 
     // ajout sur la page
-    containerWorkoutGenerate.appendChild(sectionRetourAuCalme)
-    sectionRetourAuCalme.appendChild(textRetourAuCalme)
-    sectionRetourAuCalme.appendChild(timeRetourAuCalme)
+    containerWorkoutGenerate.appendChild(sectionEffort)
+    sectionEffort.appendChild(textEffort)
+    sectionEffort.appendChild(timeEffort)
 }
 function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate) {
     // création des elt
-    let sectionRetourAuCalme = document.createElement("section")
-    sectionRetourAuCalme.classList.add("echauffement-workout-day")
-    let textRetourAuCalme = document.createElement("p")
-    textRetourAuCalme.classList.add("text-echauffement")
-    textRetourAuCalme.classList.add("phase-recuperation")
-    let timeRetourAuCalme = document.createElement("p")
-    timeRetourAuCalme.classList.add("time-echauffement")
-    timeRetourAuCalme.classList.add("phase-recuperation")
+    let sectionRecuperation = document.createElement("section")
+    sectionRecuperation.classList.add("label-workout-day")
+    let textRecuperation = document.createElement("p")
+    textRecuperation.classList.add("text-label")
+    textRecuperation.classList.add("phase-recuperation")
+    let timeRecuperation = document.createElement("p")
+    timeRecuperation.classList.add("instruction-label")
+    timeRecuperation.classList.add("phase-recuperation")
 
     // remplissage des elt
-    textRetourAuCalme.innerHTML = "Récupération"
-    timeRetourAuCalme.innerHTML = instruction_recuperation["duree_recuperation"][0] + " " + instruction_recuperation["duree_recuperation"][1]
+    textRecuperation.innerHTML = "Récupération"
+    timeRecuperation.innerHTML = instruction_recuperation["duree_recuperation"][0] + " " + instruction_recuperation["duree_recuperation"][1]
 
     // ajout sur la page
-    containerWorkoutGenerate.appendChild(sectionRetourAuCalme)
-    sectionRetourAuCalme.appendChild(textRetourAuCalme)
-    sectionRetourAuCalme.appendChild(timeRetourAuCalme)
+    containerWorkoutGenerate.appendChild(sectionRecuperation)
+    sectionRecuperation.appendChild(textRecuperation)
+    sectionRecuperation.appendChild(timeRecuperation)
 }
 
 function interfaceWorkout(selectedWorkout, containerCardWorkout) {

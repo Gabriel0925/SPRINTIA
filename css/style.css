@@ -1748,31 +1748,31 @@ section.container-all-workout section.container-workout-generate {
 section.container-all-workout section.container-workout-generate h2{
     margin: 0;
 }
-section.container-workout-generate section.echauffement-workout-day {
+section.container-workout-generate section.label-workout-day {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: var(--SPACE_S_SMALL) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.container-workout-generate section.echauffement-workout-day.without-border {
+section.container-workout-generate section.label-workout-day.without-border {
     padding-bottom: 0;
     border-bottom: 0px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.container-workout-generate section.echauffement-workout-day p.text-echauffement{
+section.container-workout-generate section.label-workout-day p.text-label{
     font-size: var(--H3);
 }
-section.container-workout-generate section.echauffement-workout-day p.text-echauffement.phase-recuperation{
+section.container-workout-generate section.label-workout-day p.text-label.phase-recuperation{
     padding: var(--SPACE_XXS) 0;
-    padding-left: var(--SPACE_XS);
+    padding-left: var(--SPACE_S_SMALL);
     border-left: 5px solid var(--COLOR_TEXT_SECONDARY);
 }
-section.container-workout-generate section.echauffement-workout-day p.text-echauffement.phase-effort{
+section.container-workout-generate section.label-workout-day p.text-label.phase-effort{
     padding: var(--SPACE_XXS) 0;
-    padding-left: var(--SPACE_XS);
+    padding-left: var(--SPACE_S_SMALL);
     border-left: 5px solid var(--COLOR_ACCENT_TEXT);
 }
-section.container-workout-generate section.echauffement-workout-day p.time-echauffement{
+section.container-workout-generate section.label-workout-day p.instruction-label{
     font-size: var(--P);
     padding: var(--SPACE_XS);
 
@@ -1781,7 +1781,7 @@ section.container-workout-generate section.echauffement-workout-day p.time-echau
     border-radius: var(--BORDER_BIG);
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
-section.container-workout-generate section.echauffement-workout-day p.time-echauffement.phase-recuperation{
+section.container-workout-generate section.label-workout-day p.instruction-label.phase-recuperation{
     background-color: var(--COLOR_TEXT_SECONDARY);
 }
 

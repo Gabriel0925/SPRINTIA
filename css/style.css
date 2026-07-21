@@ -859,9 +859,6 @@ section.container-workout-cards div.cards-history-workout {
     transition: transform ease-out var(--TIME_TRANSITION_FAST),
                 background-color ease-out var(--TIME_TRANSITION);
 }
-section.container-workout-cards div.cards-history-workout.generation {
-    max-width: 480px;
-}
 @media (hover: hover) and (pointer: fine) {
     section.container-workout-cards div.cards-history-workout:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -1788,11 +1785,15 @@ section.container-workout-generate section.fractionne-workout-day p.nb-repetitio
     font-weight: var(--FONT_WEIGHT_BUTTON);
 }
 section.container-workout-generate section.fractionne-workout-day div.container-structure p{
-    border-left: 5px solid var(--COLOR_ACCENT_TEXT);
     margin: var(--SPACE_S) var(--SPACE_L);
     padding: var(--SPACE_XS);
 }
-
+section.container-workout-generate section.fractionne-workout-day div.container-structure p.duree-repetition{
+    border-left: 5px solid var(--COLOR_ACCENT_TEXT);
+}
+section.container-workout-generate section.fractionne-workout-day div.container-structure p.duree-recuperation{
+    border-left: 5px solid var(--COLOR_TEXT_SECONDARY);
+}
 
 
 /* --- la carte --- */

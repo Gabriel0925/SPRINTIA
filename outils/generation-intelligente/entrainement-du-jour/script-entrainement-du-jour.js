@@ -73,29 +73,33 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
         let structure_blocs = instruction_fractionne["structure_blocs"]
 
         structure_blocs.forEach(element => {
-            // création des elt
-            let sectionFractionne = document.createElement("section")
-            sectionFractionne.classList.add("fractionne-workout-day")
-            let paragrapheRepetition = document.createElement("p")
-            paragrapheRepetition.classList.add("nb-repetitions")
-            let divRepetition = document.createElement("div")
-            divRepetition.classList.add("container-structure")
-            let paragrapheDureeRep = document.createElement("p")
-            paragrapheDureeRep.classList.add("duree-repetition")
-            let paragrapheDureeRecup = document.createElement("p")
-            paragrapheDureeRecup.classList.add("duree-recuperation")
+            if (element["type"] == "recuperation") { // phase de récup entre les blocs
+                createUiRecuperation(element, containerWorkoutGenerate) //appelle à la fonction qui va créer l'interface
+            } else { // la phase d'effort
+                // création des elt
+                let sectionFractionne = document.createElement("section")
+                sectionFractionne.classList.add("fractionne-workout-day")
+                let paragrapheRepetition = document.createElement("p")
+                paragrapheRepetition.classList.add("nb-repetitions")
+                let divRepetition = document.createElement("div")
+                divRepetition.classList.add("container-structure")
+                let paragrapheDureeRep = document.createElement("p")
+                paragrapheDureeRep.classList.add("duree-repetition")
+                let paragrapheDureeRecup = document.createElement("p")
+                paragrapheDureeRecup.classList.add("duree-recuperation")
 
-            // remplissage des elt
-            paragrapheRepetition.innerHTML = "Répéter " + element["nombre_repetitions"] + " fois"
-            paragrapheDureeRep.innerHTML = element["duree_repetition"][0] + " " + element["duree_repetition"][1]
-            paragrapheDureeRecup.innerHTML = element["duree_recuperation"][0] + " " + element["duree_recuperation"][1]
+                // remplissage des elt
+                paragrapheRepetition.innerHTML = "Répéter " + element["nombre_repetitions"] + " fois"
+                paragrapheDureeRep.innerHTML = element["duree_effort"][0] + " " + element["duree_effort"][1] + " (effort)"
+                paragrapheDureeRecup.innerHTML = element["duree_recuperation"][0] + " " + element["duree_recuperation"][1] + " (récupération)"
 
-            // ajout sur la page
-            containerWorkoutGenerate.appendChild(sectionFractionne)
-            sectionFractionne.appendChild(paragrapheRepetition)
-            sectionFractionne.appendChild(divRepetition)
-            divRepetition.appendChild(paragrapheDureeRep)
-            divRepetition.appendChild(paragrapheDureeRecup)
+                // ajout sur la page
+                containerWorkoutGenerate.appendChild(sectionFractionne)
+                sectionFractionne.appendChild(paragrapheRepetition)
+                sectionFractionne.appendChild(divRepetition)
+                divRepetition.appendChild(paragrapheDureeRep)
+                divRepetition.appendChild(paragrapheDureeRecup)
+            }
         });
 
     } else if (instruction_fractionne["plusieurs_blocs"] == false) {
@@ -113,8 +117,8 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
 
         // remplissage des elt
         paragrapheRepetition.innerHTML = "Répéter " + instruction_fractionne["nombre_repetitions"] + " fois"
-        paragrapheDureeRep.innerHTML = instruction_fractionne["duree_repetition"][0] + " " + instruction_fractionne["duree_repetition"][1]
-        paragrapheDureeRecup.innerHTML = instruction_fractionne["duree_recuperation"][0] + " " + instruction_fractionne["duree_recuperation"][1]
+        paragrapheDureeRep.innerHTML = instruction_fractionne["duree_effort"][0] + " " + instruction_fractionne["duree_effort"][1] + " (effort)"
+        paragrapheDureeRecup.innerHTML = instruction_fractionne["duree_recuperation"][0] + " " + instruction_fractionne["duree_recuperation"][1] + " (récupération)"
 
         // ajout sur la page
         containerWorkoutGenerate.appendChild(sectionFractionne)
@@ -124,22 +128,32 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
         divRepetition.appendChild(paragrapheDureeRecup)
     }
 }
-// function createUiRepetition(instruction_repetition, containerWorkoutGenerate) {
-//     // création des elt
+function createUiRepetition(instruction_repetition, containerWorkoutGenerate) {
+    // création des elt
     
-//     // remplissage des elt
+    // remplissage des elt
 
-//     // ajout sur la page
+    // ajout sur la page
 
-// }
-// function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate) {
-//     // création des elt
-    
-//     // remplissage des elt
+}
+function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate) {
+    // création des elt
+    let sectionRetourAuCalme = document.createElement("section")
+    sectionRetourAuCalme.classList.add("echauffement-workout-day")
+    let textRetourAuCalme = document.createElement("p")
+    textRetourAuCalme.classList.add("text-echauffement")
+    let timeRetourAuCalme = document.createElement("p")
+    timeRetourAuCalme.classList.add("time-echauffement")
 
-//     // ajout sur la page
+    // remplissage des elt
+    textRetourAuCalme.innerHTML = "Récupération"
+    timeRetourAuCalme.innerHTML = instruction_recuperation["duree_recuperation"][0] + " " + instruction_recuperation["duree_recuperation"][1]
 
-// }
+    // ajout sur la page
+    containerWorkoutGenerate.appendChild(sectionRetourAuCalme)
+    sectionRetourAuCalme.appendChild(textRetourAuCalme)
+    sectionRetourAuCalme.appendChild(timeRetourAuCalme)
+}
 
 function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     // on supprime l'interface actuelle
@@ -151,6 +165,11 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     descriptionWorkout.classList.add("text")
     descriptionWorkout.innerHTML = selectedWorkout["description"]
     document.body.appendChild(descriptionWorkout)
+    
+    // ajout d'un h2 pour structurer la page
+    let titleH2 = document.createElement("h2")
+    titleH2.textContent = "Résumé de l'entraînement"
+    document.body.appendChild(titleH2)
 
     // ajout des données de base de l'entrainement : durée + charge d'entraînement
     let structureHTML = `
@@ -172,6 +191,16 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
         </section>
     `
     document.body.innerHTML += structureHTML // ajout des datas de base dans le body html
+
+    // ajout d'un h2 pour structurer la page
+    let titleH2Num2 = document.createElement("h2")
+    titleH2Num2.textContent = "Structure de l'entraînement"
+
+    // changement des marges pour avoir un bon équillibre dans la page
+    titleH2Num2.style.margin = 0
+    titleH2Num2.style.marginTop = "var(--SPACE_M)"
+    titleH2Num2.style.marginBottom = "var(--SPACE_S_SMALL)"
+    document.body.appendChild(titleH2Num2)
 
     // la base du html
     let containerWorkoutGenerate = document.createElement("section")

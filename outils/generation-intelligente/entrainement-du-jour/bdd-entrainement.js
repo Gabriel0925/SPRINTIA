@@ -5,7 +5,7 @@ const bddSeancesCourseFacile = {
             "description": `Cet entraînement est un classique en course à pied. Le but de cet entraînement est de développer votre VMA et votre
                             capacité à répéter des efforts intenses.`,
             "informations": {
-                "duree_totale": [42, "min"],
+                "duree_totale": "42:00",
                 "rpe": 5,
                 "charge_entrainement": 210
             },
@@ -39,7 +39,7 @@ const bddSeancesCourseFacile = {
             "description": `Cet entraînement est un classique en course à pied. Le but de cet entraînement est de développer votre VMA et votre
                             capacité à répéter des efforts intenses.`,
             "informations": {
-                "duree_totale": [42, "min"],
+                "duree_totale": "42:00",
                 "rpe": 5,
                 "charge_entrainement": 210
             },
@@ -73,7 +73,7 @@ const bddSeancesCourseFacile = {
             "description": `Cet entraînement est un classique en course à pied. Le but de cet entraînement est de développer votre VMA et votre
                             capacité à répéter des efforts intenses.`,
             "informations": {
-                "duree_totale": [42, "min"],
+                "duree_totale": "42:00",
                 "rpe": 5,
                 "charge_entrainement": 210
             },
@@ -107,7 +107,7 @@ const bddSeancesCourseFacile = {
             "description": `Cet entraînement est un classique en course à pied. Le but de cet entraînement est de développer votre VMA et votre
                             capacité à répéter des efforts intenses.`,
             "informations": {
-                "duree_totale": [42, "min"],
+                "duree_totale": "42:00",
                 "rpe": 5,
                 "charge_entrainement": 210
             },

@@ -152,6 +152,27 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     descriptionWorkout.innerHTML = selectedWorkout["description"]
     document.body.appendChild(descriptionWorkout)
 
+    // ajout des données de base de l'entrainement : durée + charge d'entraînement
+    let structureHTML = `
+        <section class="container-block"> 
+
+                <div class="container-block-data">
+                    <p class="container-block-data-header">Durée</p>
+                    <p class="container-block-data-data">${selectedWorkout["informations"]["duree_totale"]}</p>
+                </div>
+                <div class="container-block-data">
+                    <p class="container-block-data-header">RPE</p>
+                    <p class="container-block-data-data">${selectedWorkout["informations"]["rpe"]} <small>/10</small></p>
+                </div>
+                <div class="container-block-data">
+                    <p class="container-block-data-header">Charge d'entraînement</p>
+                    <p class="container-block-data-data">${selectedWorkout["informations"]["charge_entrainement"]} <small>CE</small></p>
+                </div>
+
+        </section>
+    `
+    document.body.innerHTML += structureHTML // ajout des datas de base dans le body html
+
     // la base du html
     let containerWorkoutGenerate = document.createElement("section")
     containerWorkoutGenerate.classList.add("container-workout-generate")
@@ -180,54 +201,58 @@ function interfaceWorkout(selectedWorkout, containerCardWorkout) {
     })
     containerWorkoutGenerate.appendChild(containerCenterMarge)
     containerCenterMarge.appendChild(buttonCOROS)
+
+    window.scrollTo({top:0, behavior: "smooth"}) // scroll vers le haut de la page avec animation
 }
 
 
 function createCardWorkoutGenerate(selectedWorkout, containerCardWorkout) {
+    // création de la carte
+    const divCardWorkoutGenerate = document.createElement("div")
+    divCardWorkoutGenerate.classList.add("cards-history-workout")
+    divCardWorkoutGenerate.classList.add("generation")
+
     // création de la structure avec les données
     let structureHTML = `
-        <div class="cards-history-workout generation">  
-            <div class="data-workout-column">
-                <p class="name-workout">
-                    ${selectedWorkout["title"]}
-                </p>
-                <p class="sport-date-workout">
-                    ${selectedWorkout["description"]}
-                </p>
-            </div>
+        <div class="data-workout-column">
+            <p class="name-workout">
+                ${selectedWorkout["title"]}
+            </p>
+            <p class="sport-date-workout">
+                ${selectedWorkout["description"]}
+            </p>
+        </div>
+        <div class="container-data-workout">
+
             <div class="container-data-workout">
 
-                <div class="container-data-workout">
-
-                    <div class="data-workout-paire">
-                        <p class="duree-workout">
-                            <strong>${selectedWorkout["informations"]["duree_totale"][0]} ${selectedWorkout["informations"]["duree_totale"][1]}</strong>
-                        </p>
-                        <p class="rpe-workout">
-                            RPE : <strong>${selectedWorkout["informations"]["rpe"]}</strong>
-                        </p>
-                    </div>
-                    <div class="data-workout-paire">
-                        <p class="charge-workout">
-                            Charge d'entraînement : <strong>${selectedWorkout["informations"]["charge_entrainement"]} CE</strong>
-                        </p>
-                    </div>
-
+                <div class="data-workout-paire">
+                    <p class="duree-workout">
+                        <strong>${selectedWorkout["informations"]["duree_totale"]}</strong>
+                    </p>
+                    <p class="rpe-workout">
+                        RPE : <strong>${selectedWorkout["informations"]["rpe"]}</strong>
+                    </p>
                 </div>
-                <div class="action-button-card-workout">
-                    <button>Détail de l'entraînement</button>
+                <div class="data-workout-paire">
+                    <p class="charge-workout">
+                        Charge d'entraînement : <strong>${selectedWorkout["informations"]["charge_entrainement"]} CE</strong>
+                    </p>
                 </div>
 
             </div>
+            <div class="action-button-card-workout">
+                <button>Détail de l'entraînement</button>
+            </div>
+
         </div>
     `
-
-    // ajout sur la page
-    containerCardWorkout.innerHTML += structureHTML
+    // ajout de la structure dans la card
+    divCardWorkoutGenerate.innerHTML += structureHTML
+    containerCardWorkout.appendChild(divCardWorkoutGenerate)
 
     // ajout d'un event sur l'entiereté card pour afficher la structure de l'entraînement
-    const cardWorkout = containerCardWorkout.querySelector(".cards-history-workout:last-child")
-    cardWorkout.addEventListener("click", () => {
+    divCardWorkoutGenerate.addEventListener("click", () => {
         interfaceWorkout(selectedWorkout, containerCardWorkout)
     })
 }
@@ -266,6 +291,8 @@ async function generationWorkout() {
         document.querySelector(".container-item-workout-day").style.display = "none"
         document.querySelector(".container-center-marge").style.display = "none"
         document.querySelector("h1").innerHTML = "Entraînements suggérés"
+
+        window.scrollTo({top:0, behavior: "smooth"}) // scroll vers le haut de la page avec animation
 
         button.textContent = "Généré"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))        

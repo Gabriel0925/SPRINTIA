@@ -23,6 +23,30 @@ const bddSeancesCourseFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479080058817004138&region=3"
+        },
+        {
+            "title": `Base de 30 minutes avec ramassage`,
+            "description": `Cet entraînement est conçue pour être exécuté à un rythme de base. Accélérez le rythme pendant 30 sec puis retrouvez un rythme d'endurance pendant 5 min.`,
+            "informations": {
+                "duree_totale": "27:00",
+                "rpe": 3,
+                "charge_entrainement": 81
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [5, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [30, "sec"],
+                    "volume_recuperation": [5, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479083631153955215&region=3"
         }
     ],
     "50": [
@@ -40,6 +64,30 @@ const bddSeancesCourseFacile = {
                 },
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479080218267664483&region=3"
+        },
+        {
+            "title": `Base de 50 minutes avec ramassage`,
+            "description": `Cet entraînement est conçue pour être exécuté à un rythme de base. Accélérez le rythme pendant 30 sec puis retrouvez un rythme d'endurance pendant 5 min.`,
+            "informations": {
+                "duree_totale": "48:00",
+                "rpe": 3,
+                "charge_entrainement": 144
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 5,
+                    "volume_effort": [30, "sec"],
+                    "volume_recuperation": [5, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479083808589791239&region=3"
         }
     ]
 }
@@ -213,6 +261,54 @@ const bddSeancesCourseDifficile = {
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479080503075586048&region=3"
         },
+        {
+            "title": `3 x 1250m`,
+            "description": `Le but de cet entraînement est de développer votre VMA ainsi que votre VO2max et votre capacité à répéter de longs efforts intenses.`,
+            "informations": {
+                "duree_totale": "~ 30:00",
+                "rpe": 8,
+                "charge_entrainement": 240
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [5, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [1250, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479083549820109100&region=3"
+        },
+        {
+            "title": `2 x 2000m`,
+            "description": `Le but de cet entraînement est de travailler votre allure spécifique sur de longs blocs.`,
+            "informations": {
+                "duree_totale": "~ 26:00",
+                "rpe": 7,
+                "charge_entrainement": 182
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [5, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 2,
+                    "volume_effort": [2000, "m"],
+                    "volume_recuperation": [3, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479083882409541832&region=3"
+        }
     ],
     "50": [
         {
@@ -278,6 +374,46 @@ const bddSeancesCourseDifficile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479082934027076084&region=3"
+        },
+        {
+            "title": `2 blocs de 6 x 100m`,
+            "description": `Cet entraînement a pour but de travailler votre vitesse de sprint. L'objectif est de sprinter pendant 100m, c'est le moment 
+                            le plus important de l'entraînement, pendant les temps de récupération vous pouvez marcher si vous le souhaitez.`,
+            "informations": {
+                "duree_totale": "~ 45:00",
+                "rpe": 7,
+                "charge_entrainement": 315
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                        "type": "effort",
+                        "nombre_repetitions": 6,
+                        "volume_effort": [100, "m"],
+                        "volume_recuperation": [2, "min"]
+                        },
+                        {
+                        "type": "recuperation",
+                        "volume_recuperation": [5, "min"]
+                        },
+                        {
+                        "type": "effort",
+                        "nombre_repetitions": 6,
+                        "volume_effort": [100, "m"],
+                        "volume_recuperation": [2, "min"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479083460160569844&region=3"
         }
     ]
 }

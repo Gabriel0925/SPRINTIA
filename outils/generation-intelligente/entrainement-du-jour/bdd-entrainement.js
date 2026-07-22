@@ -69,6 +69,30 @@ const bddSeancesCourseModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479079963520319787&region=3"
+        },
+        {
+            "title": `4 x 500m`,
+            "description": `Un excellent entraînement pour travailler votre vitesse sur de courtes distances et améliorer votre VMA.`,
+            "informations": {
+                "duree_totale": "~ 26:00",
+                "rpe": 6,
+                "charge_entrainement": 156
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [500, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479083106633171063&region=3"
         }
     ],
     "50": [
@@ -136,6 +160,30 @@ const bddSeancesCourseModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479080429524271405&region=3"
+        },
+        {
+            "title": `4 x 800m`,
+            "description": `Une excellent entraînement pour habituer le corps à maintenir un rythme soutenu sur des distances plus longues qu'un simple fractionné court.`,
+            "informations": {
+                "duree_totale": "~ 42:00",
+                "rpe": 7,
+                "charge_entrainement": 294
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [800, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479083040059081003&region=3"
         }
     ]
 }
@@ -207,9 +255,32 @@ const bddSeancesCourseDifficile = {
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479079830646866019&region=3"
         },
+        {
+            "title": `5 x 1000m`,
+            "description": `Le but de cet entraînement est de développer votre VMA ainsi que votre VO2max et votre capacité à répéter de longs efforts intenses.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 8,
+                "charge_entrainement": 400
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 5,
+                    "volume_effort": [1000, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479082934027076084&region=3"
+        }
     ]
 }
-
 
 const bddSeancesVeloFacile = {
     "25": [

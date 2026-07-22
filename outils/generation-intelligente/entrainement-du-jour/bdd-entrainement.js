@@ -210,17 +210,165 @@ const bddSeancesCourseDifficile = {
     ]
 }
 
+
 const bddSeancesVeloFacile = {
-    "25": "",
-    "50": ""
+    "25": [
+        {
+            "title": `Récupération (25 min)`,
+            "description": `L'objectif de cet entraînement est de faire tourner les jambes pour activer la circulation et récupérer sans solliciter les muscles. Le mieux est de rester en zone 2 de fréquence cardiaque.`,
+            "informations": {
+                "duree_totale": "25:00",
+                "rpe": 2,
+                "charge_entrainement": 50
+            },
+            "structure": {
+                "effort": {
+                    "volume_effort": [25, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479081584602038471&region=3"
+        }
+    ],
+    "50": [
+        {
+            "title": `Endurance fondamentale (50 min)`,
+            "description": `Le but de cet entraînement est de développer votre aisance respiratoire. Je sais que c'est dur mais veuillez rester en zone 2 de fréquence cardiaque.`,
+            "informations": {
+                "duree_totale": "50:00",
+                "rpe": 3,
+                "charge_entrainement": 150
+            },
+            "structure": {
+                "effort": {
+                    "volume_effort": [50, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479081584602038471&region=3"
+        }
+    ]
 }
 const bddSeancesVeloModere = {
-    "25": "",
-    "50": ""
+    "25": [
+        {
+            "title": `10 x 15"/45"`,
+            "description": `C'est un entraînement dynamique composé de petites accélérations très courtes pour se faire plaisir et pour travailler la vitesse sans accumuler d'acide lactique.`,
+            "informations": {
+                "duree_totale": "26:00",
+                "rpe": 5,
+                "charge_entrainement": 130
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 10,
+                    "volume_effort": [15, "sec"],
+                    "volume_recuperation": [45, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479081686607511652&region=3"
+        }
+    ],
+    "50": [
+        {
+            "title": `Travail de la force - 3 x 8'`,
+            "description": `Cet entraînement vous permet de travailler au seuil, ce qui vous permettra d'améliorer vos performances par la suite.`,
+            "informations": {
+                "duree_totale": "50:00",
+                "rpe": 6,
+                "charge_entrainement": 300
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [8, "min"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479081706740171152&region=3"
+        }
+    ]
 }
 const bddSeancesVeloDifficile = {
-    "25": "",
-    "50": ""
+    "25": [
+        {
+            "title": `10 x 40"/20"`,
+            "description": `Cet entraînement est un grand classique en vélo, c'est l'un des formats les plus efficaces pour progresser rapidement. Votre VO2max va être boostée par cet entraînement.`,
+            "informations": {
+                "duree_totale": "26:00",
+                "rpe": 8,
+                "charge_entrainement": 208
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 10,
+                    "volume_effort": [40, "sec"],
+                    "volume_recuperation": [20, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479081797471355279&region=3"
+        }
+    ],
+    "50": [
+        {
+            "title": `2 blocs de 8 x 1'/1'`,
+            "description": `Cet entraînement vise à développer votre VO2max et votre résistance à l'effort donc votre mental.`,
+            "informations": {
+                "duree_totale": "56:00",
+                "rpe": 9,
+                "charge_entrainement": 504
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 8,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "recuperation",
+                            "volume_recuperation": [4, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 8,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479081883639136655&region=3"
+        }
+    ]
 }
 
 const bddSeancesNatationFacile = {

@@ -2,7 +2,7 @@ const bddSeancesCourseFacile = {
     "25": [
         {
             "title": `6 x 30"/30"`,
-            "description": `Une séance très accessible pour s'initier au fractionné court et dynamiser sa foulée en douceur sans accumuler de fatigue.`,
+            "description": `Un entraînement très accessible pour commencer le fractionné court et dynamiser votre foulée en douceur sans accumuler de fatigue.`,
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": "3-4",
@@ -74,7 +74,7 @@ const bddSeancesCourseModere = {
     "50": [
         {
             "title": `Pyramide 1-2-3-4-3-2-1 min`,
-            "description": `Une séance dynamique où la durée des efforts varie. Parfait pour faire travailler le coeur et casser la routine d'un footing classique.`,
+            "description": `Un entraînement dynamique où la durée des efforts varie. Parfait pour faire travailler votre cardio, votre mental et casser la routine d'un entraînement classique.`,
             "informations": {
                 "duree_totale": "46:00",
                 "rpe": 6,
@@ -143,7 +143,7 @@ const bddSeancesCourseDifficile = {
     "25": [
         {
             "title": `12 x 40"/20"`,
-            "description": `Une séance à haute intensité où la récupération très courte maintient la fréquence cardiaque au sommet. Idéal pour repousser tes limites en un minimum de temps.`,
+            "description": `Un entraînement à haute intensité où la récupération très courte maintient la fréquence cardiaque au sommet. Cet entraînement est idéal pour repousser tes limites en un minimum de temps.`,
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": 8,
@@ -226,7 +226,7 @@ const bddSeancesVeloFacile = {
                     "volume_effort": [25, "min"]
                 }
             },
-            "lien": "https://trainingeu.coros.com/workout-program?programId=479081584602038471&region=3"
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479081623527276944&region=3"
         }
     ],
     "50": [
@@ -372,14 +372,190 @@ const bddSeancesVeloDifficile = {
 }
 
 const bddSeancesNatationFacile = {
-    "25": "",
-    "50": ""
+    "25": [
+        {
+            "title": `Récupération (25 min)`,
+            "description": `L'objectif de cet entraînement est de nager dans l'eau à un rythme très doux, presque relaxant pour récupérer sans accumuler de fatigue.`,
+            "informations": {
+                "duree_totale": "25:00",
+                "rpe": 2,
+                "charge_entrainement": 50
+            },
+            "structure": {
+                "effort": {
+                    "volume_effort": [25, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479082090334437776&region=3"
+        }
+    ],
+    "50": [
+        {
+            "title": `Endurance fondamentale (50 min)`,
+            "description": `Le but de cet entraînement est de développer votre souffle. Prenez le temps de bien poser votre respiration et d'allonger vos mouvements.`,
+            "informations": {
+                "duree_totale": "50:00",
+                "rpe": 3,
+                "charge_entrainement": 150
+            },
+            "structure": {
+                "effort": {
+                    "volume_effort": [50, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479082104293081587&region=3"
+        }
+    ]
 }
 const bddSeancesNatationModere = {
-    "25": "",
-    "50": ""
+    "25": [
+        {
+            "title": `8 x 50m`,
+            "description": `Un entraînement dynamique avec de courtes accélérations sur une longueur pour dynamiser votre nage et travailler votre vitesse.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": 5,
+                "charge_entrainement": 125
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 8,
+                    "volume_effort": [50, "m"],
+                    "volume_recuperation": [20, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479082130333417972&region=3"
+        }
+    ],
+    "50": [
+        {
+            "title": `Pyramide 50m-100m-150m-100m-50m`,
+            "description": `Cet entraînement permet de travailler votre cardio et gérer votre effort sur la durée.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 6,
+                "charge_entrainement": 300
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [45, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [150, "m"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [45, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479082293003206656&region=3"
+        }
+    ]
 }
 const bddSeancesNatationDifficile = {
-    "25": "",
-    "50": ""
+    "25": [
+        {
+            "title": `12 x 50m`,
+            "description": `C'est un entraînement à haute intensité où la récupération est très courte ce qui maintient la fréquence cardiaque assez haute et ce qui travaille votre mental.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": 8,
+                "charge_entrainement": 200
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [5, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 12,
+                    "volume_effort": [50, "m"],
+                    "volume_recuperation": [15, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479082301058367888&region=3"
+        }
+    ],
+    "50": [
+        {
+            "title": `2 blocs de 6 x 100m`,
+            "description": `Cet entraînement vise à développer votre endurance à haute intensité et votre capacité à maintenir une bonne technique de nage avec de la fatigue.`,
+            "informations": {
+                "duree_totale": "~ 55:00",
+                "rpe": 8,
+                "charge_entrainement": 440
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 6,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        },
+                        {
+                            "type": "recuperation",
+                            "volume_recuperation": [3, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 6,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479082807593976008&region=3"
+        }
+    ]
 }

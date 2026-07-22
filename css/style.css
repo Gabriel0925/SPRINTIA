@@ -1777,7 +1777,7 @@ section.container-round-input div.round-input-item{
 
     width: 90px;
     height: 90px;
-    border-radius: 50%;
+    border-radius: var(--BORDER_BIG);
 
     flex-shrink: 0;
     cursor: pointer;
@@ -1787,7 +1787,7 @@ section.container-round-input div.round-input-item{
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
-                opacity ease-out var(--TIME_TRANSITION_FAST),
+                border-radius ease-out var(--TIME_TRANSITION),
                 outline ease-out var(--TIME_TRANSITION),
                 font-weight ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
@@ -1814,6 +1814,7 @@ section.container-round-input div.round-input-item:active{
 section.container-round-input div.round-input-item.selected{
     background-color: var(--COLOR_ACCENT);
     color: var(--COLOR_BACKGROUND);
+    border-radius: 50%;
     font-weight: var(--FONT_WEIGHT_BUTTON);
     border: 3px solid var(--COLOR_TEXT_PRIMARY);
 }

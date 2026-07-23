@@ -724,6 +724,54 @@ const bddSeancesVeloFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479106764653117839&region=3"
+        },
+        {
+            "title": `2 x 500m`,
+            "description": `Un entraînement express et très léger pour dynamiser l'entraînement et faire tourner les jambes sans accumuler de fatigue musculaire.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": 2,
+                "charge_entrainement": 50
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 2,
+                    "volume_effort": [500, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106799012855808&region=3"
+        },
+        {
+            "title": `30 min de récupération`,
+            "description": `L'objectif de cet entraînement est de faire tourner les jambes pour activer la circulation et récupérer sans solliciter les muscles. Cet entraînement est composé d'un petit bloc d'effort où vous ne devrez pas dépasser votre zone 3 de fréquence cardiaque.`,
+            "informations": {
+                "duree_totale": "30:00",
+                "rpe": 2,
+                "charge_entrainement": 60
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },                
+                "effort": {
+                    "volume_effort": [5, "min"]
+                },                
+                "recuperation": {
+                    "volume_recuperation": [5, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106912026280236&region=3"
         }
     ],
     "50": [

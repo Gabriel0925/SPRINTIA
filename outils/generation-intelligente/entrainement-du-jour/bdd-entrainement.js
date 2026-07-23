@@ -656,6 +656,30 @@ const bddSeancesCourseDifficile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479083460160569844&region=3"
+        },
+        {
+            "title": `3 x 2000m`,
+            "description": `Le but de cet entraînement est de développer votre VMA ainsi que votre VO2max et votre capacité à répéter de longs efforts intenses.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 8,
+                "charge_entrainement": 400
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [2000, "m"],
+                    "volume_recuperation": [3, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479103527321518580&region=3"
         }
     ]
 }
@@ -721,6 +745,30 @@ const bddSeancesVeloModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479081686607511652&region=3"
+        },
+        {
+            "title": `Fractionné - 5 x 1'`,
+            "description": `Un entraînement de seuil à intensité soutenue pour développer votre vitesse et votre capacité à répéter un effort intensif et court.`,
+            "informations": {
+                "duree_totale": "30:00",
+                "rpe": 5,
+                "charge_entrainement": 150
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 5,
+                    "volume_effort": [1, "min"],
+                    "volume_recuperation": [1, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479103793611587884&region=3"
         }
     ],
     "50": [
@@ -775,6 +823,93 @@ const bddSeancesVeloDifficile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479081797471355279&region=3"
+        },
+        {
+            "title": `2 blocs de 5 x 30"/30"`,
+            "description": `Le but de cet entraînement est de développer votre VO2max et votre capacité à répéter des efforts intenses avec peu de récupération.`,
+            "informations": {
+                "duree_totale": "26:00",
+                "rpe": 7,
+                "charge_entrainement": 182
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 5,
+                            "volume_effort": [30, "sec"],
+                            "volume_recuperation": [30, "sec"]
+                        },
+                        {
+                            "type": "recuperation",
+                            "volume_recuperation": [3, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 5,
+                            "volume_effort": [30, "sec"],
+                            "volume_recuperation": [30, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479104025808257124&region=3"
+        },
+        {
+            "title": `Sprints explosifs - 6 x 15" `,
+            "description": `Travail d'explosivité et de vitesse pure. Chaque répétition doit être un sprint maximal, soyez régulier !`,
+            "informations": {
+                "duree_totale": "26:00",
+                "rpe": 8.5,
+                "charge_entrainement": 221
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 6,
+                    "volume_effort": [15, "sec"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479104088888492036&region=3"
+        },
+        {
+            "title": `3 x 2000m`,
+            "description": `Cet entraînement vise à développer votre VO2max et votre résistance à l'effort donc votre mental.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": 8,
+                "charge_entrainement": 200
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [2000, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": ""
         }
     ],
     "50": [
@@ -816,6 +951,78 @@ const bddSeancesVeloDifficile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479081883639136655&region=3"
+        },
+        {
+            "title": `Fractionné - 3 x 4'`,
+            "description": `Un entraînement de seuil à intensité soutenue pour développer votre vitesse et votre capacité à maintenir un effort intensif.`,
+            "informations": {
+                "duree_totale": "48:00",
+                "rpe": 8,
+                "charge_entrainement": 384
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [4, "min"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479103672010326116&region=3"
+        },
+        {
+            "title": `Fractionné - 4 x 5'`,
+            "description": `Un entraînement de seuil à intensité soutenue pour développer votre vitesse et votre capacité à maintenir un effort intensif.`,
+            "informations": {
+                "duree_totale": "48:00",
+                "rpe": 8,
+                "charge_entrainement": 384
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [12, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [5, "min"],
+                    "volume_recuperation": [3, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479103714959999076&region=3"
+        },
+        {
+            "title": `10 x 1'30"/30"`,
+            "description": `Un entraînement intense avec une récupération très courte. Idéal pour habituer le corps à ré-accélérer rapidement.`,
+            "informations": {
+                "duree_totale": "50:00",
+                "rpe": 8,
+                "charge_entrainement": 425
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 10,
+                    "volume_effort": [90, "sec"],
+                    "volume_recuperation": [30, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479103929708363976&region=3"
         }
     ]
 }

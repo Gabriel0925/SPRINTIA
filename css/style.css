@@ -1773,7 +1773,7 @@ section.container-round-input div.round-input-item{
     background-color: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_TEXT_PRIMARY);
     text-align: center;
-    font-size: var(--P);
+    font-size: 1.125rem;
 
     width: 90px;
     height: 90px;

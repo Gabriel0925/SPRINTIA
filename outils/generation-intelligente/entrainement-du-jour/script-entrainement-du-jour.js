@@ -15,6 +15,7 @@ const dicoSeances = {
         "difficile": bddSeancesNatationDifficile, 
     }
 }
+let lastNbAleatoireGenerate = undefined
 
 function selectItem(elt, nameComponent) {
     let lastSelected = document.querySelector(nameComponent+".selected")
@@ -27,7 +28,17 @@ function selectItem(elt, nameComponent) {
     }   
 }
 function generateNbAleatoire(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min // formule via Gemini
+    let nbGenerate = Math.floor(Math.random() * (max - min + 1)) + min // formule via Gemini
+    let compteur = 0
+
+    while (nbGenerate === lastNbAleatoireGenerate) {
+        nbGenerate = Math.floor(Math.random() * (max - min + 1)) + min // formule via Gemini
+
+        if (compteur > 10) {break} // si plus de 10 tirage alors on sort de la boucle
+        compteur+=1
+    }
+
+    return nbGenerate
 }
 
 
@@ -289,6 +300,7 @@ async function generationWorkout() {
 
         // on trouve un entrainement aléatoirement
         const nbAleatoire = generateNbAleatoire(0, tableauWorkout.length - 1)
+        lastNbAleatoireGenerate = nbAleatoire
         const selectedWorkout =  tableauWorkout[nbAleatoire] // recup de l'entrainement tiré au sort avec la structure de l'entrainement et le lien vers COROS
 
         if (selectedWorkout) {

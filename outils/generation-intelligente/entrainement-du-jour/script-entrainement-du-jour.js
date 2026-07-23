@@ -276,7 +276,7 @@ function interfaceWorkout(selectedWorkout) {
     containerWorkoutGenerate.appendChild(containerCenterMarge)
     containerCenterMarge.appendChild(buttonCOROS)
 
-    window.scrollTo({top:0, behavior: "instant"}) // scroll vers le haut de la page
+    window.scrollTo({top:0, behavior: "smooth"}) // scroll vers le haut de la page
 
     // on rend visible le bouton flottant
     document.querySelector(".container-button-flottant").style.display = "flex"

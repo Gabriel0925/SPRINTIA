@@ -1161,7 +1161,7 @@ const bddSeancesVeloDifficile = {
             "description": `Travail d'explosivité et de vitesse pure. Chaque répétition doit être un sprint maximal, soyez régulier !`,
             "informations": {
                 "duree_totale": "26:00",
-                "rpe": 8.5,
+                "rpe": "8-9",
                 "charge_entrainement": 221
             },
             "structure": {

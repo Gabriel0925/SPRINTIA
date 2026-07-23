@@ -227,7 +227,7 @@ const bddSeancesCourseModere = {
             "lien": "https://trainingeu.coros.com/workout-program?programId=479083106633171063&region=3"
         },
         {
-            "title": `Pyramide courte 1-2-1-2 min'`,
+            "title": `Pyramide courte 1-2-1-2 min`,
             "description": `Un entraînement dynamique où la durée des efforts varie. Parfait pour faire travailler votre cardio, votre mental et casser la routine d'un entraînement classique.`,
             "informations": {
                 "duree_totale": "26:00",
@@ -387,6 +387,69 @@ const bddSeancesCourseModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479083040059081003&region=3"
+        },
+        {
+            "title": `Tempo - 3 x 6 min`,
+            "description": `Le but de cet entraînement est de travailler votre capacité à maintenir une allure active (allure 10 km/ semi) sur des blocs prolongés.`,
+            "informations": {
+                "duree_totale": "44:00",
+                "rpe": 6,
+                "charge_entrainement": 264
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [6, "min"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479100991680200704&region=3"
+        },
+        {
+            "title": `2 blocs de 5 x 1'/1'`,
+            "description": `Le but de cet entraînement est de développer votre VMA et votre VO2max sur deux séries.`,
+            "informations": {
+                "duree_totale": "48:00",
+                "rpe": 6,
+                "charge_entrainement": 288
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 5,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "recuperation",
+                            "volume_recuperation": [3, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 5,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479101027650552023&region=3"
         }
     ]
 }
@@ -463,7 +526,31 @@ const bddSeancesCourseDifficile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479083882409541832&region=3"
-        }
+        },
+        {
+            "title": `8 x 1'/30"`,
+            "description": `Un entraînement conçue pour développer votre VMA. À réaliser avec une allure régulière mais soutenue.`,
+            "informations": {
+                "duree_totale": "25:00",
+                "rpe": "8-9",
+                "charge_entrainement": 213
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 8,
+                    "volume_effort": [1, "min"],
+                    "volume_recuperation": [30, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479101100128125341&region=3"
+        },
     ],
     "50": [
         {

@@ -235,6 +235,7 @@ async function displayOnScreen() {
     
     // affichage de la charge 7j et 28j
     document.getElementById("charge-7j").innerHTML = parseInt(chargeTotale7j)
-    document.getElementById("charge-28j").innerHTML = parseInt(chargeTotale28j)
+    document.getElementById("ratio-aigue-chronique").innerHTML = ratioChargeUser.toFixed(2)
+    document.getElementById("charge-28j").innerHTML = parseInt(chargeTotale28j) + " <small>CE</small>"
 
 };

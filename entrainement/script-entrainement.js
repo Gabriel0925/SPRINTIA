@@ -223,7 +223,7 @@ function afficherData(dataWorkout) {
         <section class="container-block"> 
     `
     // initialisation de 2 tableaux
-    const tableauDataNotDisplay = ["id", "Nom", "Sport", "Date", "Durée", "RPE", "Charge d'entraînement"]
+    const tableauDataNotDisplay = ["id", "Nom", "Sport", "Date", "Durée", "RPE", "Charge d'entraînement", "Transpiration estimée", "Réhydratation conseillée"]
     const tableauDataSeule = ["Muscles travaillés", "Score", "Voies effectuées"]
     let sixSeven = false
     let latlngs = null;
@@ -330,6 +330,24 @@ function afficherData(dataWorkout) {
         }
 
     });
+
+    // dernière données moins importante transpiration et hydratation conseillé, si ya des datas on y affiche
+    if (dataWorkout.transpiration_estimee != undefined && dataWorkout.hydratation_estimee) {
+        structureHTML += `
+            </section>
+
+            <section class="container-block"> 
+
+                <div class="container-block-data">
+                    <p class="container-block-data-header">Transpiration estimée</p>
+                    <p class="container-block-data-data">${dataWorkout.transpiration_estimee} <small>mL</small></p>
+                </div>
+                <div class="container-block-data">
+                    <p class="container-block-data-header">Réhydratation conseillée</p>
+                    <p class="container-block-data-data">${dataWorkout.hydratation_estimee} <small>mL</small></p>
+                </div>
+        `
+    }
 
     structureHTML += `
         </section>

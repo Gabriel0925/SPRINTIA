@@ -1117,6 +1117,11 @@ section.container-block div.container-block-data {
     min-width: 150px;
     flex: 1;
 }
+section.container-block div.container-block-data.blue-outline {
+    border: 2px solid var(--COLOR_ACCENT);
+    border-radius: var(--BORDER_BIG);
+    padding: var(--SPACE_S_SMALL);
+}
 section.container-block div.container-block-data p.container-block-data-header{    
     font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
@@ -1126,6 +1131,9 @@ section.container-block div.container-block-data p.container-block-data-data{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     text-align: left;
     color: var(--COLOR_TEXT_PRIMARY);
+}
+section.container-block div.container-block-data.blue-outline p.container-block-data-data{
+    margin-top: var(--SPACE_XS);
 }
 section.container-block div.container-block-data p.container-block-data-data small{    
     font-size: var(--P_SMALL);

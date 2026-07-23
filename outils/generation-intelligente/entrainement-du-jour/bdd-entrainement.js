@@ -1336,6 +1336,78 @@ const bddSeancesNatationFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479082090334437776&region=3"
+        },
+        {
+            "title": `Aisance - 4 x 100m`,
+            "description": `Un entraînement court axé sur le travail de la technique. L'objectif est de chercher à faire le moins de coups de bras possible par longueur sans accélérer le rythme.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": "2-3",
+                "charge_entrainement": 63
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [100, "m"],
+                    "volume_recuperation": [1, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107373196296791&region=3"
+        },
+        {
+            "title": `Alternance Crawl/Dos - 6 x 50m`,
+            "description": `Un entraînement doux alternant le crawl et le dos crawlé pour relâcher les épaules et favoriser la récupération.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": 2,
+                "charge_entrainement": 50
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 6,
+                    "volume_effort": [50, "m"],
+                    "volume_recuperation": [45, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107387962343625&region=3"
+        },
+        {
+            "title": `Focus battements - 8 x 25m`,
+            "description": `Un entraînement court qui cible le bas du corps. Alternez les battements sur le ventre et sur le dos pour renforcer les chevilles et le gainage.`,
+            "informations": {
+                "duree_totale": "~ 24:00",
+                "rpe": 3,
+                "charge_entrainement": 60
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 8,
+                    "volume_effort": [25, "m"],
+                    "volume_recuperation": [30, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107559492600127&region=3"
         }
     ],
     "50": [
@@ -1353,6 +1425,107 @@ const bddSeancesNatationFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479082104293081587&region=3"
+        },
+        {
+            "title": `Travail du souffle - 4 x 200m`,
+            "description": `Un travail d'endurance très accessible, prenez le temps de bien expirer sous l'eau et concentrez vous sur les mouvements de vos bras.`,
+            "informations": {
+                "duree_totale": "~ 48:00",
+                "rpe": 3,
+                "charge_entrainement": 144
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [200, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107434399580459&region=3"
+        },
+        {
+            "title": `Endurance - 8 x 100m`,
+            "description": `Un entraînement simple et efficace pour travailler votre souffle et récupérer.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 3,
+                "charge_entrainement": 150
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 8,
+                    "volume_effort": [100, "m"],
+                    "volume_recuperation": [1, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107498018783432&region=3"
+        },
+        {
+            "title": `Pyramide 50m-100m-150m-100m-50m`,
+            "description": `Cet entraînement permet de travailler votre cardio et gérer votre effort sur la durée. C'est un format progressif et accessible pour casser la routine de nage.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 3,
+                "charge_entrainement": 150
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [150, "m"],
+                            "volume_recuperation": [2, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [1, "min"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107600026353964&region=3"
         }
     ]
 }
@@ -1381,6 +1554,107 @@ const bddSeancesNatationModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479082130333417972&region=3"
+        },
+        {
+            "title": `4 x 100m`,
+            "description": `Un entraînement axé sur le maintien d'une allure régulière et soutenue.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": 5,
+                "charge_entrainement": 125
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [100, "m"],
+                    "volume_recuperation": [30, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107729412243856&region=3"
+        },
+        {
+            "title": `Pyramide Express - 25m-50m-75m-50m-25m`,
+            "description": `Cet entraînement permet de travailler votre cardio et gérer votre effort sur la durée. C'est un format progressif et accessible pour casser la routine de nage.`,
+            "informations": {
+                "duree_totale": "~ 25:00",
+                "rpe": 5,
+                "charge_entrainement": 125
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [25, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [20, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [75, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [20, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [25, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107771288174992&region=3"
+        },
+        {
+            "title": `Sprint - 6 x 25m`,
+            "description": `Un entraînement dynamique axé sur la vitesse de sprint. Donnez le meilleur de vous même sur chaque 25m, toutefois essayez de rester le plus régulier possible sur chacune des répétitions.`,
+            "informations": {
+                "duree_totale": "~ 26:00",
+                "rpe": 6,
+                "charge_entrainement": 156
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 6,
+                    "volume_effort": [25, "m"],
+                    "volume_recuperation": [45, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107995698119056&region=3"
         }
     ],
     "50": [
@@ -1436,6 +1710,93 @@ const bddSeancesNatationModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479082293003206656&region=3"
+        },
+        {
+            "title": `10 x 100m`,
+            "description": `Cet entraînement est simple et efficace, le but est de travailler votre vitesse et donc de l'améliorer.`,
+            "informations": {
+                "duree_totale": "~ 45:00",
+                "rpe": 6,
+                "charge_entrainement": 270
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 10,
+                    "volume_effort": [100, "m"],
+                    "volume_recuperation": [30, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107828464927419&region=3"
+        },
+        {
+            "title": `5 x 200m`,
+            "description": `Un entraînement orienté cardio sur moyenne distance. L'objectif est d'adopter un rythme modéré mais soutenu sans faiblir sur les derniers mètres de chaque 200m.`,
+            "informations": {
+                "duree_totale": "~ 52:00",
+                "rpe": "5-6",
+                "charge_entrainement": 286
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 5,
+                    "volume_effort": [200, "m"],
+                    "volume_recuperation": [45, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479107891010388190&region=3"
+        },
+        {
+            "title": `2 blocs de 4 x 100m`,
+            "description": `Cet entraînement est idéal pour travailler votre cardio et pour travailler votre régularité sur des efforts de moyenne distance.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 6,
+                "charge_entrainement": 300
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 4,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        },
+                        {
+                            "type": "recuperation_inter_bloc",
+                            "volume_recuperation": [2, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 4,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479108060927934664&region=3"
         }
     ]
 }
@@ -1464,6 +1825,93 @@ const bddSeancesNatationDifficile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479082301058367888&region=3"
+        },
+        {
+            "title": `Sprint lactique - 10 x 25m`,
+            "description": `Un entraînement de répétitions de sprint. Chaque 25m doit être nagé à 100% de vos capacités. La récupération courte de 20 secondes pousse le corps à bout.`,
+            "informations": {
+                "duree_totale": "~ 22:00",
+                "rpe": 10,
+                "charge_entrainement": 220
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [6, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 10,
+                    "volume_effort": [25, "m"],
+                    "volume_recuperation": [20, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [6, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479108251787640833&region=3"
+        },
+        {
+            "title": `Progressif & Relance - 6 x 50m`,
+            "description": `Un travail de relance d'allure. Chaque 50m démarre à rythme modéré pour se finir en sprint maximal sur les 25 derniers mètres.`,
+            "informations": {
+                "duree_totale": "~ 24:00",
+                "rpe": "7-8",
+                "charge_entrainement": 180
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [6, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 6,
+                    "volume_effort": [50, "m"],
+                    "volume_recuperation": [20, "sec"]
+                },
+                "retour_au_calme": {
+                    "volume": [6, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479108300911329680&region=3"
+        },
+        {
+            "title": `2 blocs de 3 x 50m`,
+            "description": `Cet entraînement est idéal pour travailler votre cardio et pour travailler votre régularité et votre capacité à répéter des efforts intenses avec peu de récupération.`,
+            "informations": {
+                "duree_totale": "~ 26:00",
+                "rpe": 8,
+                "charge_entrainement": 208
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [6, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 3,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        },
+                        {
+                            "type": "recuperation_inter_bloc",
+                            "volume_recuperation": [2, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 3,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [6, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479108337148018787&region=3"
         }
     ],
     "50": [
@@ -1505,6 +1953,141 @@ const bddSeancesNatationDifficile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479082807593976008&region=3"
+        },
+        {
+            "title": `Technique - 4x200m + 4x100m`,
+            "description": `Cet entraînement vous permet de tester votre endurance et également votre technique de nage lorsque vous êtes fatigué. De plus, votre mental devra être au rendez-vous pour maintenir un rythme soutenu sur les 4x200m.`,
+            "informations": {
+                "duree_totale": "~ 54:00",
+                "rpe": 8,
+                "charge_entrainement": 432
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 4,
+                            "volume_effort": [200, "m"],
+                            "volume_recuperation": [30, "sec"]
+                        },
+                        {
+                            "type": "recuperation_inter_bloc",
+                            "volume_recuperation": [2, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 4,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [20, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479108151392780296&region=3"
+        },
+        {
+            "title": `Pyramide 300m-200m-100m-50m`,
+            "description": `Cet entraînement permet de travailler votre cardio et gérer votre effort sur la durée. C'est un format progressif et accessible pour casser la routine de nage.`,
+            "informations": {
+                "duree_totale": "~ 52:00",
+                "rpe": "8-9",
+                "charge_entrainement": 442
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [300, "m"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [200, "m"],
+                            "volume_recuperation": [40, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [100, "m"],
+                            "volume_recuperation": [20, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479108412846817580&region=3"
+        },
+        {
+            "title": `3 blocs de 4 x 50m`,
+            "description": `Cet entraînement vise à développer votre endurance à haute intensité et votre capacité à maintenir une bonne technique de nage avec de la fatigue.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 9.5,
+                "charge_entrainement": 475
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 4,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        },
+                        {
+                            "type": "recuperation_inter_bloc",
+                            "volume_recuperation": [2, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 4,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        },
+                        {
+                            "type": "recuperation_inter_bloc",
+                            "volume_recuperation": [2, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 4,
+                            "volume_effort": [50, "m"],
+                            "volume_recuperation": [15, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479108484521181384&region=3"
         }
     ]
 }

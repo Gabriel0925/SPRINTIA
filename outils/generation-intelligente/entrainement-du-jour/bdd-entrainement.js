@@ -909,7 +909,7 @@ const bddSeancesVeloDifficile = {
                     "volume": [5, "min"]
                 }
             },
-            "lien": ""
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479104213710979272&region=3"
         }
     ],
     "50": [

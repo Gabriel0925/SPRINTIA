@@ -1781,7 +1781,7 @@ const bddSeancesNatationModere = {
                             "volume_recuperation": [30, "sec"]
                         },
                         {
-                            "type": "recuperation_inter_bloc",
+                            "type": "recuperation",
                             "volume_recuperation": [2, "min"]
                         },
                         {
@@ -1896,7 +1896,7 @@ const bddSeancesNatationDifficile = {
                             "volume_recuperation": [15, "sec"]
                         },
                         {
-                            "type": "recuperation_inter_bloc",
+                            "type": "recuperation",
                             "volume_recuperation": [2, "min"]
                         },
                         {
@@ -1976,7 +1976,7 @@ const bddSeancesNatationDifficile = {
                             "volume_recuperation": [30, "sec"]
                         },
                         {
-                            "type": "recuperation_inter_bloc",
+                            "type": "recuperation",
                             "volume_recuperation": [2, "min"]
                         },
                         {
@@ -2062,7 +2062,7 @@ const bddSeancesNatationDifficile = {
                             "volume_recuperation": [15, "sec"]
                         },
                         {
-                            "type": "recuperation_inter_bloc",
+                            "type": "recuperation",
                             "volume_recuperation": [2, "min"]
                         },
                         {
@@ -2072,7 +2072,7 @@ const bddSeancesNatationDifficile = {
                             "volume_recuperation": [15, "sec"]
                         },
                         {
-                            "type": "recuperation_inter_bloc",
+                            "type": "recuperation",
                             "volume_recuperation": [2, "min"]
                         },
                         {

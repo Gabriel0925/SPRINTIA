@@ -700,6 +700,30 @@ const bddSeancesVeloFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479081623527276944&region=3"
+        },
+        {
+            "title": `Endurance 3 x 15"`,
+            "description": `Un entraînement très accessible qui permet de faire tourner rapidement les jambes pendant 15 secondes sans mettre de résistance, puis de dérouler plus tranquillement le reste du temps.`,
+            "informations": {
+                "duree_totale": "29:00",
+                "rpe": "2-3",
+                "charge_entrainement": 73
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [5, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [15, "sec"],
+                    "volume_recuperation": [6, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106764653117839&region=3"
         }
     ],
     "50": [
@@ -717,6 +741,78 @@ const bddSeancesVeloFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479081584602038471&region=3"
+        },
+        {
+            "title": `4 x 500m`,
+            "description": `C'est un entraînement léger qui a pour but de dynamiser votre entraînement et de faire tourner les jambes pendant de courtes distance sans trop solliciter les muscles.`,
+            "informations": {
+                "duree_totale": "~ 44:00",
+                "rpe": 3,
+                "charge_entrainement": 129
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [500, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106468300374315&region=3"
+        },
+        {
+            "title": `Endurance avec des sprints`,
+            "description": `Cet entraînement est conçue pour être exécuté à un rythme de base. Accélérez le rythme pendant 30 sec puis retrouvez un rythme d'endurance pendant 5 min (zone 2 de fréquence cardiaque).`,
+            "informations": {
+                "duree_totale": "52:00",
+                "rpe": 3,
+                "charge_entrainement": 156
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [30, "sec"],
+                    "volume_recuperation": [5, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106627751034893&region=3"
+        },
+        {
+            "title": `Endurance 5 x 15"`,
+            "description": `Un entraînement très accessible qui permet de faire tourner rapidement les jambes pendant 15 secondes sans mettre de résistance, puis de dérouler plus tranquillement le reste du temps.`,
+            "informations": {
+                "duree_totale": "46:00",
+                "rpe": 3,
+                "charge_entrainement": 138
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 5,
+                    "volume_effort": [15, "sec"],
+                    "volume_recuperation": [3, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106668016353379&region=3"
         }
     ]
 }
@@ -769,6 +865,83 @@ const bddSeancesVeloModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479103793611587884&region=3"
+        },
+        {
+            "title": `3 x 1000m`,
+            "description": `Cet entraînement vise à développer votre VO2max et votre résistance à l'effort donc votre mental.`,
+            "informations": {
+                "duree_totale": "~ 28:00",
+                "rpe": 5,
+                "charge_entrainement": 140
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [1000, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479105932771639696&region=3"
+        },
+        {
+            "title": `Pyramide 30"-1'-1'30"-1'-30"`,
+            "description": `Cet entraînement permet de travailler votre cardio et gérer votre effort sur la durée. C'est un format progressif et accessible pour casser la routine du pédalage.`,
+            "informations": {
+                "duree_totale": "27:00",
+                "rpe": "5-6",
+                "charge_entrainement": 149
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [30, "sec"],
+                            "volume_recuperation": [30, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [90, "sec"],
+                            "volume_recuperation": [90, "sec"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [30, "sec"],
+                            "volume_recuperation": [30, "sec"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106020015260147&region=3"
         }
     ],
     "50": [
@@ -795,6 +968,78 @@ const bddSeancesVeloModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479081706740171152&region=3"
+        },
+        {
+            "title": `2 x 5000m`,
+            "description": `Un entraînement basée sur la tenue d'effort sur une longue distance. L'objectif est de trouver votre rythme de croisière sur 5 km sans accélérations brusques.`,
+            "informations": {
+                "duree_totale": "~ 50:00",
+                "rpe": 6,
+                "charge_entrainement": 300
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [12, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 2,
+                    "volume_effort": [5000, "m"],
+                    "volume_recuperation": [4, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106088466301228&region=3"
+        },
+        {
+            "title": `Endurance Fondamentale - 3 x 10'`,
+            "description": `Un entraînement au temps sans aucune pression de vitesse. Pendant les 10 minutes d'effort, le but est de maintenir un pédalage régulier tout au long des 10 minutes.`,
+            "informations": {
+                "duree_totale": "49:00",
+                "rpe": 4,
+                "charge_entrainement": 196
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [10, "min"],
+                    "volume_recuperation": [3, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [5, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106202012402064&region=3"
+        },
+        {
+            "title": `4 x 2000m`,
+            "description": `Cet entraînement est idéal pour travailler de l'endurance active. L'objectif lors des phases d'effort est de maintenir une allure régulière.`,
+            "informations": {
+                "duree_totale": "~ 48:00",
+                "rpe": 5,
+                "charge_entrainement": 240
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [12, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 4,
+                    "volume_effort": [2000, "m"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479106354217402970&region=3"
         }
     ]
 }
@@ -864,7 +1109,7 @@ const bddSeancesVeloDifficile = {
             "lien": "https://trainingeu.coros.com/workout-program?programId=479104025808257124&region=3"
         },
         {
-            "title": `Sprints explosifs - 6 x 15" `,
+            "title": `Sprints explosifs - 6 x 15"`,
             "description": `Travail d'explosivité et de vitesse pure. Chaque répétition doit être un sprint maximal, soyez régulier !`,
             "informations": {
                 "duree_totale": "26:00",

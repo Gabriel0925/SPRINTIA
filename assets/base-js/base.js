@@ -140,6 +140,9 @@ let timer2 = 0
 function logoDynamique(message) {
     clearTimeout(timer1)
     clearTimeout(timer2)
+
+    if (message==undefined || message==null || message=="") {return}
+
     // // Recup du logo dynamique
     let elementLogoDynamique = document.querySelector(".logo-dynamique")
 

@@ -47,6 +47,45 @@ const bddSeancesCourseFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479083631153955215&region=3"
+        },
+        {
+            "title": `Footing de récupération`,
+            "description": `Le but de cet entraînement est de développer votre aisance respiratoire. Je sais que c'est dur mais veuillez rester en zone 2 de fréquence cardiaque.`,
+            "informations": {
+                "duree_totale": "25:00",
+                "rpe": 2,
+                "charge_entrainement": 50
+            },
+            "structure": {
+                "effort": {
+                    "volume_effort": [25, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479099864253382955&region=3"
+        },
+        {
+            "title": `Fartlek - 1'/1'`,
+            "description": `Un entraînement alternant 1 minute un peu plus soutenue et 1 minute de footing lent. Le but est de varier les rythmes sans brusquer le corps.`,
+            "informations": {
+                "duree_totale": "26:00",
+                "rpe": "3-4",
+                "charge_entrainement": 91
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [10, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 3,
+                    "volume_effort": [1, "min"],
+                    "volume_recuperation": [1, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479099916864635179&region=3"
         }
     ],
     "50": [
@@ -88,6 +127,51 @@ const bddSeancesCourseFacile = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479083808589791239&region=3"
+        },
+        {
+            "title": `Endurance progressive (50 min)`,
+            "description": `Démarrez à un rythme très lent pour bien vous échauffer, puis augmentez un peu l'allure jusqu'à votre vitesse d'endurance.`,
+            "informations": {
+                "duree_totale": "50:00",
+                "rpe": 3,
+                "charge_entrainement": 150
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "effort": {
+                    "volume_effort": [25, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [10, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479099973775048803&region=3"
+        },
+        {
+            "title": `Fartlek - 30"/2'30"`,
+            "description": `Un footing d'endurance composé de quelques accélérations pour dynamiser la foulée et réveiller les muscles sans les fatiguer.`,
+            "informations": {
+                "duree_totale": "45:00",
+                "rpe": 3,
+                "charge_entrainement": 135
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [15, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 6,
+                    "volume_effort": [30, "sec"],
+                    "volume_recuperation": [2, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [15, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479100016454189255&region=3"
         }
     ]
 }
@@ -141,6 +225,77 @@ const bddSeancesCourseModere = {
                 }
             },
             "lien": "https://trainingeu.coros.com/workout-program?programId=479083106633171063&region=3"
+        },
+        {
+            "title": `Pyramide courte 1-2-1-2 min'`,
+            "description": `Un entraînement dynamique où la durée des efforts varie. Parfait pour faire travailler votre cardio, votre mental et casser la routine d'un entraînement classique.`,
+            "informations": {
+                "duree_totale": "26:00",
+                "rpe": 6,
+                "charge_entrainement": 156
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": true,
+                    "structure_blocs": [
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [2, "min"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [1, "min"],
+                            "volume_recuperation": [1, "min"]
+                        },
+                        {
+                            "type": "effort",
+                            "nombre_repetitions": 1,
+                            "volume_effort": [2, "min"],
+                            "volume_recuperation": [1, "min"]
+                        }
+                    ]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479100136176402932&region=3"
+        },
+        {
+            "title": `5 x 200m`,
+            "description": `Une excellent entraînement pour habituer le corps à maintenir un rythme soutenu sur des distances un peu plus longues qu'un simple fractionné court.`,
+            "informations": {
+                "duree_totale": "25:00",
+                "rpe": 5,
+                "charge_entrainement": 125
+            },
+            "structure": {
+                "echauffement": {
+                    "volume": [8, "min"]
+                },
+                "fractionne": {
+                    "plusieurs_blocs": false,
+                    "nombre_repetitions": 5,
+                    "volume_effort": [200, "m"],
+                    "volume_recuperation": [1, "min"]
+                },
+                "retour_au_calme": {
+                    "volume": [8, "min"]
+                }
+            },
+            "lien": "https://trainingeu.coros.com/workout-program?programId=479100192010977489&region=3"
         }
     ],
     "50": [

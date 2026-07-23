@@ -13,4 +13,4 @@ self.addEventListener("activate", (event) => {
     event.waitUntil(self.clients.claim()) // pr rafraichir le manifest et le sw
 }) 
 
-// version du fichier manifest : V5
+// version du fichier manifest : V5.2

@@ -41,21 +41,10 @@
 
     "shortcuts": [
         {
-            "name": "Charge d'entraînement (CE)",
-            "short_name":"Charge d'entraînement",
-            "description":"Accéder directement à l'algorithme de charge d'entraînement",
-            "url":"progression/charge-entrainement/charge-entrainement.html",
-            "icons": [{
-                "src": "/assets/icons-manifest/icon-ce.png",
-                "sizes": "192x192",
-                "type": "image/png"
-            }]
-        },
-        {
             "name": "Ajouter un entraînement",
             "short_name":"Ajouter entraînement",
             "description":"Accéder rapidement à la page d'ajout d'entraînement",
-            "url":"entrainement/ajouter-entrainement.html",
+            "url":"/entrainement/ajouter-entrainement.html",
             "icons": [{
                 "src": "/assets/icons-manifest/icon-add.png",
                 "sizes": "192x192",
@@ -66,9 +55,20 @@
             "name": "Importer des données",
             "short_name":"Import données",
             "description":"Accéder rapidement à la page d'import de données",
-            "url":"plus/import-des-donnees/importer-donnees.html",
+            "url":"/plus/import-des-donnees/importer-donnees.html",
             "icons": [{
                 "src": "/assets/icons-manifest/icon-import-file.png",
+                "sizes": "192x192",
+                "type": "image/png"
+            }]
+        },
+        {
+            "name": "Entraînement du jour",
+            "short_name":"Entraî. du jour",
+            "description":"Accéder rapidement à la page d'entraînement du jour",
+            "url":"/outils/generation-intelligente/entrainement-du-jour/entrainement-du-jour.html",
+            "icons": [{
+                "src": "/assets/icons-manifest/icon-entrainement-jour.png",
                 "sizes": "192x192",
                 "type": "image/png"
             }]

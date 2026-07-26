@@ -83,63 +83,65 @@
     
     <h1>Charge d'entraînement</h1>
 
-    <section class="container-zone">
+    <section class="container-global-zone">
+        <section class="container-zone">
 
-        <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
-                Chargement...
-            </p>
-            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser ma CE')">Analyser ma CE</button>
-        </div>
-        <!-- Fenetre flottante pour SPRINTIA Briefing -->
-        <section class="background-SPRINTIA-briefing">
-            
-            <div class="windows-SPRINTIA-briefing">
-
-                <div class="windows-SPRINTIA-briefing-head">
-                    <p class="title">SPRINTIA Briefing</p>
-                    <i class="fs-icon_fermer" onclick="closeWindows()"></i>
-                </div>
-                <p class="explanation-briefing">
-                    SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                    le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                    <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+            <div class="zone-coach">
+                <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
+                <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
+                    Chargement...
                 </p>
-                <div class="container-button-windows-SPRINTIA-briefing">
-                    <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+                <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser ma CE')">Analyser ma CE</button>
+            </div>
+            <!-- Fenetre flottante pour SPRINTIA Briefing -->
+            <section class="background-SPRINTIA-briefing">
+                
+                <div class="windows-SPRINTIA-briefing">
+
+                    <div class="windows-SPRINTIA-briefing-head">
+                        <p class="title">SPRINTIA Briefing</p>
+                        <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+                    </div>
+                    <p class="explanation-briefing">
+                        SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                        le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                        <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                    </p>
+                    <div class="container-button-windows-SPRINTIA-briefing">
+                        <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+                    </div>
+
                 </div>
 
-            </div>
+            </section> 
 
-        </section> 
-
-    </section>
+        </section>
     
-    <section class="container-box">
+        <section class="container-box">
 
-        <div class="small-zone-result">
-            <p class="small-zone-result-name">Charge 7J</p>
-            <p class="small-zone-result-indication" id="cible-charge-7j">Charge aiguë</p>
+            <div class="small-zone-result">
+                <p class="small-zone-result-name">Charge 7J</p>
+                <p class="small-zone-result-indication" id="cible-charge-7j">Charge aiguë</p>
 
-            <div class="container-result">
-                <p class="small-zone-result-result" id="charge-7j">0</p>
-                <p class="small-zone-result-unit">CE</p>
+                <div class="container-result">
+                    <p class="small-zone-result-result" id="charge-7j">0</p>
+                    <p class="small-zone-result-unit">CE</p>
+                </div>
             </div>
-        </div>
-        
-    </section>
-    <section class="container-block" style="margin: var(--SPACE_M) 0;"> 
+            
+        </section>
+        <section class="container-block with-container-global-zone"> 
 
-        <div class="container-block-data blue-outline">
-            <p class="container-block-data-header">Ratio A/C</p>
-            <p class="container-block-data-data" id="ratio-aigue-chronique">0.00</p>
-        </div>
-        <div class="container-block-data blue-outline">
-            <p class="container-block-data-header">Charge 28J</p>
-            <p class="container-block-data-data" id="charge-28j">0 <small>CE</small></p>
-        </div>
+            <div class="container-block-data blue-outline">
+                <p class="container-block-data-header">Ratio A/C</p>
+                <p class="container-block-data-data" id="ratio-aigue-chronique">0.00</p>
+            </div>
+            <div class="container-block-data blue-outline">
+                <p class="container-block-data-header">Charge 28J</p>
+                <p class="container-block-data-data" id="charge-28j">0 <small>CE</small></p>
+            </div>
 
+        </section>
     </section>
 
     <h2>Suivi de la CE (4 sem.)</h2>

@@ -140,7 +140,10 @@ function cible(chargeTotale28j, nombreWeekLissage) { // la cible permet de guide
     return [cibleMin, cibleMax];
 }
 function ratio(chargeTotale7j, chargeTotale28j, nombreWeekLissage) {
-    return chargeTotale7j/(chargeTotale28j/nombreWeekLissage) // nombreWeekLissage c'est le nombre de semaine
+    let ratioResult = chargeTotale7j/(chargeTotale28j/nombreWeekLissage) // nombreWeekLissage c'est le nombre de semaine
+
+    if (isNaN(ratioResult)) {ratioResult=0.00}
+    return ratioResult
 };
 
 function statut(ratioChargeUser, nbEntrainement28j) {

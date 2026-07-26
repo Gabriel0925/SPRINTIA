@@ -87,30 +87,33 @@
         <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
     </div>
 
-    <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
-        <div class="config-profil-head">
-            <i class="fs-icon_profil"></i>
-            <p>Configurer <strong>SPRINTIA</strong></p>
+    <section class="container-config-profil">
+
+        <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
+            <div class="config-profil-head">
+                <i class="fs-icon_profil"></i>
+                <p>Configurer <strong>SPRINTIA</strong></p>
+            </div>
+
+            <p class="description">
+                Pour débloquer l'étendue des fonctionnalités de SPRINTIA, veuillez configurer votre profil.
+            </p>
+                
+            <div class="container-button-config-profil">
+                <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
+                <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
+            </div>
         </div>
 
-        <p class="description">
-            Pour débloquer l'étendue des fonctionnalités de SPRINTIA, veuillez configurer votre profil.
-        </p>
-            
-        <div class="container-button-config-profil">
-            <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
-            <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
+        <div class="zone-coach">
+            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
+            <p class="zone-coach-interpretation" id="reponse-coach">
+                Chargement...
+            </p>
+            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
         </div>
-    </div>
 
-    <h2></h2> <!-- il faut le laisser pour la marges -->
-    <div class="zone-coach">
-        <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-        <p class="zone-coach-interpretation" id="reponse-coach">
-            Chargement...
-        </p>
-        <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
-    </div>
+    </section>
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
     <section class="background-SPRINTIA-briefing">
         

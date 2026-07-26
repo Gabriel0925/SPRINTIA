@@ -719,23 +719,32 @@ div.container-center {
     display: flex;
     justify-content: center;
 } 
+section.container-config-profil {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: var(--SPACE_XL);
+    margin-top: var(--SPACE_S);
+}
+@media (max-width: 1080px) {
+    section.container-config-profil {
+        gap: var(--SPACE_M); 
+    }
+}
 div.config-profil {
     display: flex;
     flex-direction: column;
     gap: var(--SPACE_XS);
     background-color: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_TEXT_PRIMARY);
-    margin-top: var(--SPACE_M);
     font-weight: var(--FONT_WEIGHT_BUTTON);
+    height: fit-content;
+    max-width: 501px;
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
-
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-    
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION), transform ease-out var(--TIME_TRANSITION_FAST);
 }
 div.config-profil div.config-profil-head {
     display: flex;
@@ -1110,6 +1119,14 @@ section.container-block{
     justify-content: start;
     gap: var(--SPACE_M);
     margin-top: var(--SPACE_M);
+}
+section.container-block.with-container-global-zone {
+    flex-direction: column;
+}
+@media (max-width: 1036px) {
+    section.container-block.with-container-global-zone {
+        flex-direction: row;
+    }
 }
 section.container-block div.container-block-data {
     border-top: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -1573,6 +1590,16 @@ div.menu-many-action li i{
 
 
 
+section.container-global-zone {
+    display: flex;
+    gap: var(--SPACE_M);
+}
+@media (max-width: 1036px) {
+    section.container-global-zone {
+        display: block;
+        gap: 0;
+    }
+}
 section.container-zone {
     display: flex;
     justify-content: center;

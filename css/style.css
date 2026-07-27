@@ -2204,6 +2204,9 @@ div.small-zone-result {
     height: 180px;
     transition: all ease-out var(--TIME_TRANSITION);
 }
+div.small-zone-result.charge{
+    height: 188px;
+}
 div.small-zone-result.color-zone:nth-child(1) {
     border: solid 2px #3dbaf9;
 }

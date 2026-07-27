@@ -140,10 +140,7 @@ function cible(chargeTotale28j, nombreWeekLissage) { // la cible permet de guide
     return [cibleMin, cibleMax];
 }
 function ratio(chargeTotale7j, chargeTotale28j, nombreWeekLissage) {
-    let ratioResult = chargeTotale7j/(chargeTotale28j/nombreWeekLissage) // nombreWeekLissage c'est le nombre de semaine
-
-    if (isNaN(ratioResult)) {ratioResult=0.00}
-    return ratioResult
+    return chargeTotale7j/(chargeTotale28j/nombreWeekLissage) // nombreWeekLissage c'est le nombre de semaine
 };
 
 function statut(ratioChargeUser, nbEntrainement28j) {
@@ -238,7 +235,6 @@ async function displayOnScreen() {
     
     // affichage de la charge 7j et 28j
     document.getElementById("charge-7j").innerHTML = parseInt(chargeTotale7j)
-    document.getElementById("ratio-aigue-chronique").innerHTML = ratioChargeUser.toFixed(2)
-    document.getElementById("charge-28j").innerHTML = parseInt(chargeTotale28j) + " <small>CE</small>"
+    document.getElementById("charge-28j").innerHTML = parseInt(chargeTotale28j)
 
 };

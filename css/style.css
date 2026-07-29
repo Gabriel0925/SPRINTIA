@@ -2255,6 +2255,10 @@ div.small-zone-result div.container-result p.small-zone-result-unit{
 }
 
 
+div.container-videos-yt > a{ /*on cible les enfants de container-videos-yt*/
+    display: block;
+    max-width: 100%;
+}
 div.container-videos-yt {
     display: flex;
     flex-wrap: wrap;

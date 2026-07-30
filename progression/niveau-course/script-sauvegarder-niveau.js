@@ -3,65 +3,67 @@ let idNiveauModif = undefined
 
 async function saveNiveauCourse() {
     // Recup bouton, inputs et de la valeur du niveau
-    let boutonLimite1Clic = document.getElementById("button-sauvegarde-niveau")
+    let button = document.getElementById("button-sauvegarde-niveau")
     let dateNiveauUser = document.getElementById("date-niveau-course").value
     let distanceUser = Number(document.getElementById("distance-user").value).toFixed(2)
     let niveauCourseUser = parseFloat(document.querySelector(".large-zone-result-result").innerHTML.trim().replace(",", "."))
 
-    // Recup de la date
-    let dateActuelle = createObjetDate(0)
+    try {
+        // Recup de la date
+        let dateActuelle = createObjetDate(0)
 
-    // verification des inputs
-    if (niveauCourseUser == "--") {
-        alert("Avant de vouloir sauvegarder votre niveau de course veuillez remplir le champ distance.")
-        return
-    }
-    if (dateNiveauUser > dateActuelle) {
-        alert("La date ne peut pas être dans le futur !")
-        return
-    }
-    if (distanceUser <= 0) {
-        alert("Valeur non valide, la distance doit être supérieure à 0.")
-        return
-    }
-    if (distanceUser >= 7) {
-        alert("Valeur non valide, la distance doit être inférieure à 7.")
-        return
-    }
- 
-    boutonLimite1Clic.disabled = true // Pour empeche que le user clique 2 fois
-    // signe d'enregistrement pr le user
-    boutonLimite1Clic.textContent = "Sauvegarde..." 
+        // verification des inputs
+        if (niveauCourseUser == "--") {
+            alert("Avant de vouloir sauvegarder votre niveau de course veuillez remplir le champ distance.")
+            return
+        }
+        if (dateNiveauUser > dateActuelle) {
+            alert("La date ne peut pas être dans le futur !")
+            return
+        }
+        if (distanceUser <= 0) {
+            alert("Valeur non valide, la distance doit être supérieure à 0.")
+            return
+        }
+        if (distanceUser >= 7) {
+            alert("Valeur non valide, la distance doit être inférieure à 7.")
+            return
+        }
+    
+        button.disabled = true
+        button.textContent = "Sauvegarde..." 
 
-    if (modificationData == true) {
-        // Modification de la data
-        if (idNiveauModif != undefined) {
-            await db.niveau_course.put({
-                id: idNiveauModif,
+        if (modificationData == true) {
+            // Modification de la data
+            if (idNiveauModif != undefined) {
+                await db.niveau_course.put({
+                    id: idNiveauModif,
+                    niveau_course_user: niveauCourseUser,
+                    distance: distanceUser,
+                    date: dateNiveauUser
+                })
+            }
+
+        } else {
+            // Ajout datas
+            await db.niveau_course.add({
                 niveau_course_user: niveauCourseUser,
                 distance: distanceUser,
                 date: dateNiveauUser
             })
         }
 
-    } else {
-        // Ajout datas
-        await db.niveau_course.add({
-            niveau_course_user: niveauCourseUser,
-            distance: distanceUser,
-            date: dateNiveauUser
-        })
+        button.textContent = "Sauvegardé"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+        window.location.href = `niveau-course-analyse.html?levelrunregister` 
+    } catch(error) {
+        console.log(error)
+        button.textContent = "Une erreur s'est produite"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+    } finally {
+        button.textContent = "Sauvegarder"
+        button.disabled = false
     }
-
-    setTimeout(() => {
-        boutonLimite1Clic.textContent = "Sauvegardé" // transimission de l'info au user
-    }, 650);
-    setTimeout(() => {
-        // remise etat normal
-        boutonLimite1Clic.textContent = "Sauvegarder"
-        boutonLimite1Clic.disabled = false 
-        window.location.href = "niveau-course-analyse.html?levelrunregister"
-    }, 1300);
 }
 
 function liveResultViaInput() {

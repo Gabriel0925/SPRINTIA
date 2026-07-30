@@ -523,26 +523,21 @@ async function saveWorkout() {
     } else {
         await db.entrainement.add(workoutData)
     }
+    
+    BoutonSauvegarde.textContent = "Sauvegardé"
+    await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+    window.location.href = `niveau-course-analyse.html?levelrunregister`
+    
+    BoutonSauvegarde.textContent = "Sauvegarder"
+    BoutonSauvegarde.disabled = false
 
-    setTimeout(() => {
-        BoutonSauvegarde.textContent = "Sauvegardé"
-    }, 650);
-
-    setTimeout(() => {
-        // Remise bouton etat normal
-        BoutonSauvegarde.textContent = "Sauvegarder"
-        BoutonSauvegarde.disabled = false
-
-        if (modificationEntrainement == true) {
-            // Renvoi vers la page entraînement
-            window.location.href = `entrainement.html?workout=${IdEditWorkout}` // on met un param dans l'URL
-        } else {
-            // Renvoi vers la page entraînement
-            window.location.href = "../index.html?workoutregister" // on met un param dans l'URL
-        }
-    }, 1300) 
-
-    return
+    if (modificationEntrainement == true) {
+        // Renvoi vers la page entraînement
+        window.location.href = `entrainement.html?workout=${IdEditWorkout}` // on met un param dans l'URL
+    } else {
+        // Renvoi vers la page entraînement
+        window.location.href = "../index.html?workoutregister" // on met un param dans l'URL
+    }
 }
 
 function cacherInput(value) { // pour cacher tout les champs de datas spécifique

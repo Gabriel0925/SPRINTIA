@@ -2256,19 +2256,21 @@ div.small-zone-result div.container-result p.small-zone-result-unit{
 
 
 div.container-videos-yt > a{ /*on cible les enfants de container-videos-yt*/
-    display: block;
+    display: flex;
     max-width: 100%;
+    flex-grow: 1;
 }
 div.container-videos-yt {
     display: flex;
     flex-wrap: wrap;
     gap: var(--SPACE_L);
+    margin: var(--SPACE_M) 0;
 }
 div.container-videos-yt div.card-video-yt {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
-    width: 100%;
+    width: 350px;
+    flex-grow: 1;
 
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
@@ -2293,15 +2295,14 @@ div.container-videos-yt div.card-video-yt:active {
 }
 div.container-videos-yt div.card-video-yt p{
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    padding: var(--SPACE_S_SMALL);
-    min-height: 78px;
+    margin: var(--SPACE_S_SMALL);
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--P);
-    
+
     display: -webkit-box;
-    -webkit-box-orient: vertical; 
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    line-clamp: 2; 
+    line-clamp: 2;
     overflow: hidden;
 }
 

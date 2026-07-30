@@ -14,7 +14,7 @@ function favoriteIA(idElement) {
 
 function reinitialiserBriefing(btn) {
     if (confirm("Êtes-vous sur de vouloir restaurer les paramètres par défaut de SPRINTIA Briefing ?")) {
-        btn.textContent = "Restauration..."
+        btn.textContent = "Réinitialisation..."
         btn.disabled = true
         
         // --- IA Favorite ---
@@ -33,11 +33,11 @@ function reinitialiserBriefing(btn) {
         localStorage.removeItem("niveauAnalyseIA") // maj dans le local storage
         
         setTimeout(() => {
-            btn.textContent = "Restauré"
+            btn.textContent = "Réinitialisé"
         }, 650);
         
         setTimeout(() => {
-            btn.textContent = "Restaurer l'IA par défaut"
+            btn.textContent = "Réinitialisation Briefing"
             btn.disabled = false
         }, 1300);
     }

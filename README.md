@@ -4,11 +4,16 @@
 SPRINTIA est conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
 Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
-<img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png" width="48%" alt="Interface de la page entraînement de SPRINTIA" />
-<img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png" width="48%" alt="Interface de la page de progression de SPRINTIA" />
-<img src"/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png" width="48%" alt="Interface de la fonctionnalité de génération d'entraînement" />
-<img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png" width="48%" alt="Interface de la page de progression de SPRINTIA" />
-<img src"/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png" width="48%" alt="Interface de la fonctionnalité SPRINTIA Briefing" />
+<p align="center">
+    <img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png" width="48%" alt="Interface de la page entraînement de SPRINTIA" />
+    <img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png" width="48%" alt="Interface de la page de progression de SPRINTIA" />
+</p>
+
+<p align="center">
+    <img src"/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png" width="48%" alt="Interface de la fonctionnalité de génération d'entraînement" />
+    <img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png" width="48%" alt="Interface de la page de progression de SPRINTIA" />
+    <img src"/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png" width="48%" alt="Interface de la fonctionnalité SPRINTIA Briefing" />
+</p>
 
 ## Analyse
 * Charge d'entraînement (Charge aiguë/chronique, Suivi de la charge d'entraînement sur 4 semaines, Interprétation et Statut)

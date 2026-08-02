@@ -1,3 +1,7 @@
+![Vercel Status](https://img.shields.io/badge/Vercel-Deployed-black?style=flat-square&logo=vercel)
+![PWA](https://img.shields.io/badge/PWA-Ready-blue?style=flat-square&logo=pwa)
+![License](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-green?style=flat-square)
+
 # SPRINTIA
 ![Bannière logo SPRINTIA](/assets/icons-SPRINTIA/banniere-V5.png)
 
@@ -12,8 +16,8 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://SPRINTIA.verce
 
 ## Analyse
 * Charge d'entraînement (Charge aiguë/chronique, Suivi de la charge d'entraînement sur 4 semaines, Interprétation et Statut)
-* Indulgence de course (Distance hebdomadaire conseillée en fonction de votre historique des 4 dernière semaines et de votre type de coureur·euse, Distance moy. par semaine, Distance 28J et Suivi de la distance sur 4 semaines)
-* Niveau de course (estimation de la VMA, VO2max, Allure au seuil, rFTPw, Prédicteur de course sur 400m/800m/1000m/5km/10km/Semi-marathon/Marathon, Zone d'allure/puissance et Evolution de votre niveau de course au cours du temps)
+* Indulgence de course (Distance hebdomadaire conseillée en fonction de votre historique des 4 dernières semaines et de votre type de coureur·euse, Distance moy. par semaine, Distance 28J et Suivi de la distance sur 4 semaines)
+* Niveau de course (estimation de la VMA, VO2max, Allure au seuil, rFTPw, Prédicteur de course sur 400m/800m/1000m/5km/10km/Semi-marathon/Marathon, Zone d'allure/puissance et Évolution de votre niveau de course au cours du temps)
 * Récupération (FC repos du jour, Moyenne 30J, Graphique de FC repos au cours du temps et Interprétation des données)
 * Des outils rapides (Zones Cardiaques, Métabolisme de base, IMC, Estimation 1RM, Protéines Quotidiennes, Temps de Récupération, Hydratation, Convertisseur km/miles,...)
 
@@ -21,10 +25,10 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://SPRINTIA.verce
 * SPRINTIA Briefing : exportez vos données d'entraînement vers votre IA préférée et obtenez des analyses précises et pertinente en quelques clics.
 * Créez votre propre coach : choisissez son nom, son style et même son avatar.
 * Entraînement du jour : Générez un entraînement en fonction de l'intensité et de la durée que vous souhaitez puis envoyez directement cet entraînement sur votre compte COROS (compatible avec la course à pied, le vélo et la natation).
-* Statistiques : Durée totale d'entraînement, Nb entraînement, Charge d'entraînement totale sur la période séléctionnée (7J, 30J, 90J, 365J), Sports pratiqués en pourcentage, Statistiques par sport (Course, Vélo, Natation).
+* Statistiques : Durée totale d'entraînement, Nb entraînement, Charge d'entraînement totale sur la période sélectionnée (7J, 30J, 90J, 365J), Sports pratiqués en pourcentage, Statistiques par sport (Course, Vélo, Natation).
 
 ## Confidentialité
-Toutes les données que vous enregistrez dans SPRINTIA sont stockés dans votre navigateur et donc sur votre appareil, donc même moi qui suit le développeur de SPRINTIA, je n'ai pas accès aux données que vous enregistrez dans SPRINTIA.
+Toutes les données que vous enregistrez dans SPRINTIA sont stockeés dans votre navigateur et donc sur votre appareil, donc même moi qui suis le développeur de SPRINTIA, je n'ai pas accès aux données que vous enregistrez dans SPRINTIA.
 
 ## Licence
 Ce projet est sous licence PolyForm Noncommercial 1.0.0.

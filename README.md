@@ -1,18 +1,14 @@
-![Vercel Status](https://img.shields.io/badge/Vercel-Deployed-black?style=flat-square&logo=vercel)
-![PWA](https://img.shields.io/badge/PWA-Ready-blue?style=flat-square&logo=pwa)
-![License](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-green?style=flat-square)
-
 # SPRINTIA
 ![Bannière logo SPRINTIA](/assets/icons-SPRINTIA/banniere-V5.png)
 
 SPRINTIA est conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
-Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://SPRINTIA.vercel.app)
+Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
-## Aperçu visuel
-![Interface de la page entraînement de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png)
-![Interface de la page de progression de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png)
-![Interface de la fonctionnalité de génération d'entraînement](/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png)
-![Interface de la fonctionnalité SPRINTIA Briefing qui créer un raccourci entre SPRINTIA et les IA grands publics](/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png)
+<img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png" width="48%" alt="Interface de la page entraînement de SPRINTIA" />
+<img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png" width="48%" alt="Interface de la page de progression de SPRINTIA" />
+<img src"/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png" width="48%" alt="Interface de la fonctionnalité de génération d'entraînement" />
+<img src"/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png" width="48%" alt="Interface de la page de progression de SPRINTIA" />
+<img src"/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png" width="48%" alt="Interface de la fonctionnalité SPRINTIA Briefing" />
 
 ## Analyse
 * Charge d'entraînement (Charge aiguë/chronique, Suivi de la charge d'entraînement sur 4 semaines, Interprétation et Statut)

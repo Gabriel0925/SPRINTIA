@@ -76,7 +76,7 @@
     
     <div class="toolbar">
         <h1>Plus</h1>
-        <i class="fs-icon_update" onclick="window.location.href='historique-versions/dernieres-nouveautes.html'"></i>
+        <i class="fs-icon_update" onclick="vuMaj(); window.location.href='historique-versions/dernieres-nouveautes.html'"></i>
     </div>
     
     <div class="action-list">
@@ -144,8 +144,20 @@
             return
         }
 
+        function newMaj() {
+            let newMajVu = localStorage.getItem("newMajVu") || undefined
+
+            if (newMajVu == undefined || newMajVu == "false") {
+                document.querySelector(".fs-icon_update").classList.add("new-maj")
+            }
+        }
+        function vuMaj() {
+            localStorage.setItem("newMajVu", "true")
+        }
+
         window.addEventListener("DOMContentLoaded", () => {
             NomCoachInit()
+            newMaj()
         })
     </script>
 

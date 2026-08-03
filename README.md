@@ -9,10 +9,10 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.verce
 | :---: | :---: |
 | ![Interface de la page entraînement de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png) | ![Interface de la page de progression de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png) |
 | **Génération d'entraînement** | **SPRINTIA Briefing** |
-| ![Interface de la fonctionnalité de génération d'entraînement](/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png) | ![Interface de la fonctionnalité SPRINTIA Briefing qui créer un raccourci entre SPRINTIA et les IA grands publics](/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png) |
+| ![Interface de la fonctionnalité de génération d'entraînement](/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png) | ![Interface de la fonctionnalité SPRINTIA Briefing qui crée un raccourci entre SPRINTIA et les IA grands publics](/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png) |
 
 ## Fonctionnalités clés
-* SPRINTIA Briefing : exportez vos données d'entraînement vers votre IA préférée et obtenez des analyses précises et pertinente en quelques clics.
+* SPRINTIA Briefing : exportez vos données d'entraînement vers votre IA préférée et obtenez des analyses précises et pertinentes en quelques clics.
 * Créez votre propre coach : choisissez son nom, son style et même son avatar.
 * Entraînement du jour : Générez un entraînement en fonction de l'intensité et de la durée que vous souhaitez puis envoyez directement cet entraînement sur votre compte COROS (compatible avec la course à pied, le vélo et la natation).
 * Statistiques : Durée totale d'entraînement, Nb entraînement, Charge d'entraînement totale sur la période sélectionnée (7J, 30J, 90J, 365J), Sports pratiqués en pourcentage, Statistiques par sport (Course, Vélo, Natation).
@@ -25,7 +25,10 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.verce
 * Des outils rapides (Zones Cardiaques, Métabolisme de base, IMC, Estimation 1RM, Protéines Quotidiennes, Temps de Récupération, Hydratation, Convertisseur km/miles,...)
 
 ## Confidentialité
-Toutes les données que vous enregistrez dans SPRINTIA sont stockeés dans votre navigateur et donc sur votre appareil, donc même moi qui suis le développeur de SPRINTIA, je n'ai pas accès aux données que vous enregistrez dans SPRINTIA.
+Toutes les données que vous enregistrez dans SPRINTIA sont stockées dans votre navigateur, donc même moi qui suis le développeur de SPRINTIA, je n'ai pas accès aux données que vous enregistrez dans SPRINTIA.
+
+## Local-First
+L'objectif du projet est de faire uniquement du front-end, pas de back-end ! Pourquoi ? Parce que je ne veux pas payer l'hébergement de SPRINTIA, je suis sur le plan hobby de Vercel et ce forfait impose une limite sur les requêtes au serveur. Moi je n'ai pas envie de me dire qu'il y a une limite, par conséquent, je fais mon maximum pour que tout reste en front-end et donc en local sur votre appareil.
 
 ## Licence
-Ce projet est sous licence PolyForm Noncommercial 1.0.0.
+Ce projet est sous licence [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0).

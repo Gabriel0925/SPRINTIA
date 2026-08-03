@@ -1321,7 +1321,7 @@ div.toolbar i:active {
 }
 @keyframes animation_new_maj {
     0% {transform: scale(1) rotate(0deg);}
-    40% {transform: scale(1.3) rotate(360deg);}
+    40% {transform: scale(1.28) rotate(360deg);}
     60% {transform: scale(1.05) rotate(360deg);}
     85% {transform: scale(0.96) rotate(360deg);}
     100% {transform: scale(1) rotate(360deg);}

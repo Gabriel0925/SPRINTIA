@@ -5,10 +5,11 @@ SPRINTIA est conçu pour vous aider avant et après vos entraînements grâce à
 Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
 ## Aperçu visuel
-![Interface de la page entraînement de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png)
-![Interface de la page de progression de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png)
-![Interface de la fonctionnalité de génération d'entraînement](/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png)
-![Interface de la fonctionnalité SPRINTIA Briefing qui créer un raccourci entre SPRINTIA et les IA grands publics](/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png)
+| Page Entraînement | Page Progression |
+| :---: | :---: |
+| ![Interface de la page entraînement de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png) | ![Interface de la page de progression de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png) |
+| **Génération d'entraînement** | **SPRINTIA Briefing** |
+| ![Interface de la fonctionnalité de génération d'entraînement](/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png) | ![Interface de la fonctionnalité SPRINTIA Briefing qui créer un raccourci entre SPRINTIA et les IA grands publics](/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png) |
 
 ## Fonctionnalités clés
 * SPRINTIA Briefing : exportez vos données d'entraînement vers votre IA préférée et obtenez des analyses précises et pertinente en quelques clics.

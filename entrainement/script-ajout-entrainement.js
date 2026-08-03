@@ -505,8 +505,10 @@ async function saveWorkout() {
     workoutData["hydratation_estimee"] = HydratationEstimee
 
     // enregistrement ou modification
+    let idWorkout = undefined
     if (IdEditWorkout && IdEditWorkout != null) {
         const dataWorkoutEdit = await db.entrainement.get(IdEditWorkout)
+        idWorkout = IdEditWorkout
 
         workoutData["id"] = IdEditWorkout
         workoutData["note"] = noteEntrainement
@@ -521,22 +523,17 @@ async function saveWorkout() {
         // mise sur true pour renvoyer vers lentrainement directement
         modificationEntrainement = true
     } else {
-        await db.entrainement.add(workoutData)
+        idWorkout = await db.entrainement.add(workoutData)
     }
     
     BoutonSauvegarde.textContent = "Sauvegardé"
     await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-    window.location.href = `niveau-course-analyse.html?levelrunregister`
     
     BoutonSauvegarde.textContent = "Sauvegarder"
     BoutonSauvegarde.disabled = false
 
-    if (modificationEntrainement == true) {
-        // Renvoi vers la page entraînement
-        window.location.href = `entrainement.html?workout=${IdEditWorkout}` // on met un param dans l'URL
-    } else {
-        // Renvoi vers la page entraînement
-        window.location.href = "../index.html?workoutregister" // on met un param dans l'URL
+    if (idWorkout != undefined) {
+        window.location.href = `entrainement.html?workout=${idWorkout}` // on met un param dans l'URL
     }
 }
 

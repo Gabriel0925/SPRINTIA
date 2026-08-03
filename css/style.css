@@ -3,6 +3,7 @@
     --COLOR_BACKGROUND: #000000;
     --COLOR_BACKGROUND_CARD: #232222;
     --COLOR_BACKGROUND_CARD_HOVER: #373636;
+    --COLOR_BACKGROUND_CARD_ACTIVE: #474646;
 
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
@@ -10,6 +11,7 @@
     /* Accent classique */
     --COLOR_ACCENT: #5A97F2;
     --COLOR_ACCENT_HOVER: #75a7f0;
+    --COLOR_ACCENT_ACTIVE: #8fb3e9;
     --COLOR_ACCENT_TEXT: #8eccff;
 
     /* Le dégradé dédié pour le coach */
@@ -252,7 +254,7 @@ button{
     }
 }
 button:active{
-    background-color: var(--COLOR_ACCENT_HOVER);
+    background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 /* Pour les boutons dans un tableau */
@@ -287,7 +289,7 @@ button.table {
     }
 }
 button.table:active{
-    color: var(--COLOR_ACCENT_HOVER);
+    color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 /* Pour les boutons dynamique */
@@ -306,10 +308,12 @@ a.lien {
 }
 @media (hover: hover) and (pointer: fine) {
     a.lien:hover{
+        color: var(--COLOR_ACCENT_HOVER);
         letter-spacing: 1px;
     }
 }
 a.lien:active{
+    color: var(--COLOR_ACCENT_ACTIVE);
     letter-spacing: 1px;
 }
 
@@ -356,7 +360,7 @@ section.header div.logo {
     }
 }
 section.header div.logo:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 
@@ -431,7 +435,7 @@ section.header ul.header-container-items:has(li.header-items:not(.selected):acti
     }
 }
 section.header ul.header-container-items li.header-items:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.015);
@@ -515,7 +519,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     }
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.06);
@@ -524,6 +528,9 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
+}
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected):active) li.tab-bars-items.selected{
     background-color: transparent;
@@ -743,7 +750,7 @@ section.segmented-button div.segmented-button-button:active {
     color: var(--COLOR_ACCENT_TEXT);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     font-weight: var(--FONT_WEIGHT_BUTTON);
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -752,6 +759,9 @@ section.segmented-button div.segmented-button-button.actif {
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
     font-weight: var(--FONT_WEIGHT_BUTTON);
+}
+section.segmented-button div.segmented-button-button.actif:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 
 
@@ -797,7 +807,7 @@ div.carousel div.card-tool:nth-child(1) {
     }
 }
 div.carousel div.card-tool:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 div.carousel div.card-tool div.icone{
@@ -879,7 +889,7 @@ section.container-workout-cards div.cards-history-workout {
     }
 }
 section.container-workout-cards div.cards-history-workout:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 section.container-workout-cards div.cards-history-workout.not-click:active {
@@ -986,7 +996,7 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
     }
 }
 section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:active{
-    background-color: var(--COLOR_ACCENT_HOVER);
+    background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(1);
 }
 section.container-workout-cards div.cards-history-workout div.action-button-card-workout button i{
@@ -1151,7 +1161,7 @@ section.container-widget-progression section.widget-charge-entrainement {
     }
 }
 section.container-widget-progression section.widget-charge-entrainement:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 @media (max-width: 643px) {
@@ -1306,7 +1316,7 @@ div.toolbar i {
     }
 }
 div.toolbar i:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 
@@ -1363,7 +1373,7 @@ div.button-flottant {
     }
 }
 div.button-flottant:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 div.button-flottant p{
@@ -1639,7 +1649,8 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
     width: 40px;
     cursor: pointer;
 
-    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:hover{
@@ -1647,6 +1658,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
     }
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation-briefing {
@@ -1739,7 +1751,7 @@ section.container-round-input div.round-input-item.sport i{
     }
 }
 section.container-round-input div.round-input-item:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 section.container-round-input div.round-input-item.selected{
@@ -1749,8 +1761,13 @@ section.container-round-input div.round-input-item.selected{
     font-weight: var(--FONT_WEIGHT_BUTTON);
     border: 3px solid var(--COLOR_TEXT_PRIMARY);
 }
+@media (hover: hover) and (pointer: fine) {
+    section.container-round-input div.round-input-item.selected:hover{
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+}
 section.container-round-input div.round-input-item.selected:active{
-    background-color: var(--COLOR_ACCENT);
+    background-color: var(--COLOR_ACCENT_ACTIVE);
 }
 @media (max-width: 732px) {
     section.item-workout-day {
@@ -2184,7 +2201,7 @@ div.container-videos-yt div.card-video-yt {
     }
 }
 div.container-videos-yt div.card-video-yt:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 div.container-videos-yt div.card-video-yt p{
@@ -2542,8 +2559,8 @@ div.form-different-button {
 div.form-different-button:active {
     letter-spacing: -1px;
     border-radius: 4rem;
-    border: 4px solid var(--COLOR_ACCENT_HOVER);
-    color: var(--COLOR_ACCENT_HOVER);
+    border: 4px solid var(--COLOR_ACCENT_ACTIVE);
+    color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -2679,7 +2696,7 @@ div.carousel-content a:nth-child(1) .card-releases {
     }
 }
 div.card-releases:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 div.card-releases-image {
@@ -2743,7 +2760,7 @@ div.action-list a:nth-last-child(1) div.action-list-item {
     }
 }
 div.action-list div.action-list-item:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_BIG);
     transform: scale(var(--SCALE_SMALL));
 }
@@ -2762,82 +2779,6 @@ div.action-list div.action-list-item p strong.jrm-coach{
     color: transparent;
     font-weight: 1000;
     margin-left: 0.12rem;
-}
-
-
-
-div.box-last-maj{
-    background: var(--COLOR_BACKGROUND_CARD);
-    border-radius: var(--BORDER_BIG);
-    max-width: 600px;
-    cursor: pointer;
-    padding: var(--SPACE_XS);
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.box-last-maj:hover{
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-div.box-last-maj:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    transform: scale(var(--SCALE_NORMAL));
-}
-div.box-last-maj div.content1 .card-releases-image-last-maj {
-    font-size: var(--H2);
-    text-align: left;
-    font-weight: 1000;
-    width: 100%;
-    border-bottom: 2px solid var(--COLOR_ACCENT);
-    padding-bottom: var(--SPACE_XS);
-    padding-top: var(--SPACE_XXS);
-    padding-left: var(--SPACE_XXS);
-    color: var(--COLOR_TEXT_PRIMARY);
-    margin-bottom: var(--SPACE_XS);
-}
-div.box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
-    font-size: var(--P);
-    font-weight: normal;
-    margin-top: var(--SPACE_XXS);
-}
-div.box-last-maj div.content2 {
-    display: block;
-    margin-top: var(--SPACE_XS);
-}
-div.box-last-maj div.content2 .description{
-    font-size: var(--P);
-    padding: var(--SPACE_XXS);
-    color: var(--COLOR_TEXT_SECONDARY);
-    cursor: pointer;
-    
-    display: -webkit-box;
-    -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 12; /* Limite à 12 lignes */
-    line-clamp: 12; /* Je met également ça pour que ça assure la compatibilité avec tous les navigateurs */
-    overflow: hidden;
-}
-div.box-last-maj div.content2 button{
-    width: 100%;
-    padding: 0.7rem;
-    margin: 0;    
-    margin-top: var(--SPACE_S_SMALL);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-
-    border-radius: var(--BORDER_NORMAL);
-    background-color: var(--COLOR_ACCENT);
-    transition: background-color ease-out var(--TIME_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.box-last-maj div.content2 button:hover {
-        background-color: var(--COLOR_ACCENT_HOVER);
-    }
-}
-div.box-last-maj div.content2 button:active{
-    background-color: var(--COLOR_ACCENT_HOVER);
-    transform: scale(1); /* pour éviter que le bouton s'enfonce alors que la card fais deja un transform scale */
 }
 
 
@@ -2922,6 +2863,14 @@ div.banner-toggle input[type="checkbox"].toggle{
     cursor: pointer;
     border-radius: 5rem;
     transition: all ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.banner-toggle input[type="checkbox"].toggle:hover{
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+}
+div.banner-toggle input[type="checkbox"].toggle:active{
+    background-color: var(--COLOR_ACCENT_ACTIVE);
 }
 /* C'est pour le rond du toggle */
 div.banner-toggle input[type="checkbox"].toggle::after{

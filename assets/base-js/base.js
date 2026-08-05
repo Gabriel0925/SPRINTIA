@@ -613,9 +613,7 @@ navigator.serviceWorker.register("/sw.js").then(enregistrement => { // service w
         // on écoute si un new service worker est installé
         sw.addEventListener("statechange", () => {
             if (sw.state == "installed" && navigator.serviceWorker.controller) { // si le sw est installé et qu'il y a deja un sw actif alors un nouveau sw est dispo
-                if (confirm("Une nouvelle version de l'application SPRINTIA est disponible, Voulez-vous mettre à jour ?")) {
-                    window.location.reload() // rechargement
-                }
+                logoDynamique("Mise à jour auto...")
             }
         })
     })

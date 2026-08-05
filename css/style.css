@@ -110,14 +110,14 @@ i {
 .fs-icon_1RM:before {content: "\e900";}
 .fs-icon_a_propos:before {content: "\e901";}
 .fs-icon_add:before {content: "\e902";}
-.fs-icon_agenda:before {content: "\e903";}
-.fs-icon_analyse_athlete:before {content: "\e904";}
-.fs-icon_archiver:before {content: "\e905";}
-.fs-icon_center_carte:before {content: "\e906";}
-.fs-icon_charge_entrainement:before {content: "\e907";}
-.fs-icon_coach:before {content: "\e908";}
-.fs-icon_confidentialite:before {content: "\e909";}
-.fs-icon_copy:before {content: "\e90a";}
+.fs-icon_ameliorer_SPRINTIA:before {content: "\e903";}
+.fs-icon_archiver:before {content: "\e904";}
+.fs-icon_center_carte:before {content: "\e905";}
+.fs-icon_charge_entrainement:before {content: "\e906";}
+.fs-icon_coach:before {content: "\e907";}
+.fs-icon_confidentialite:before {content: "\e908";}
+.fs-icon_discussion_JRM_Coach:before {content: "\e909";}
+.fs-icon_dompter_SPRINTIA:before {content: "\e90a";}
 .fs-icon_entrainement:before {content: "\e90b";}
 .fs-icon_entrainement_du_jour:before {content: "\e90c";}
 .fs-icon_fermer:before {content: "\e90d";}
@@ -127,42 +127,34 @@ i {
 .fs-icon_fleche_droite:before {content: "\e911";}
 .fs-icon_fullscreen:before {content: "\e912";}
 .fs-icon_fullscreen_exit:before {content: "\e913";}
-.fs-icon_glycogene:before {content: "\e914";}
-.fs-icon_gpx:before {content: "\e915";}
-.fs-icon_historique:before {content: "\e916";}
-.fs-icon_hydratation:before {content: "\e917";}
-.fs-icon_IA:before {content: "\e918";}
-.fs-icon_IMC:before {content: "\e919";}
-.fs-icon_indulgence_course:before {content: "\e91a";}
-.fs-icon_licence:before {content: "\e91b";}
-.fs-icon_mail:before {content: "\e91c";}
-.fs-icon_message:before {content: "\e91d";}
-.fs-icon_metabolisme_base:before {content: "\e91e";}
-.fs-icon_miles_km:before {content: "\e91f";}
-.fs-icon_modifier:before {content: "\e920";}
-.fs-icon_natation:before {content: "\e921";}
-.fs-icon_niveau_course:before {content: "\e922";}
-.fs-icon_outils:before {content: "\e923";}
-.fs-icon_parametres:before {content: "\e924";}
-.fs-icon_partager:before {content: "\e925";}
-.fs-icon_pause:before {content: "\e926";}
-.fs-icon_plus:before {content: "\e927";}
-.fs-icon_plus_horizontal:before {content: "\e928";}
-.fs-icon_profil:before {content: "\e929";}
-.fs-icon_progression:before {content: "\e92a";}
-.fs-icon_proteines:before {content: "\e92b";}
-.fs-icon_recuperation:before {content: "\e92c";}
-.fs-icon_refresh:before {content: "\e92d";}
-.fs-icon_statistiques:before {content: "\e92e";}
-.fs-icon_strategie_allure:before {content: "\e92f";}
-.fs-icon_supprimer:before {content: "\e930";}
-.fs-icon_telechargement:before {content: "\e931";}
-.fs-icon_temps_recup:before {content: "\e932";}
-.fs-icon_update:before {content: "\e933";}
-.fs-icon_update_history:before {content: "\e934";}
-.fs-icon_velo:before {content: "\e935";}
-.fs-icon_video_library:before {content: "\e936";}
-.fs-icon_zones_cardiaques:before {content: "\e937";}
+.fs-icon_gpx:before {content: "\e914";}
+.fs-icon_hydratation:before {content: "\e915";}
+.fs-icon_IMC:before {content: "\e916";}
+.fs-icon_indulgence_course:before {content: "\e917";}
+.fs-icon_licence:before {content: "\e918";}
+.fs-icon_metabolisme_base:before {content: "\e919";}
+.fs-icon_miles_km:before {content: "\e91a";}
+.fs-icon_modifier:before {content: "\e91b";}
+.fs-icon_natation:before {content: "\e91c";}
+.fs-icon_niveau_course:before {content: "\e91d";}
+.fs-icon_outils:before {content: "\e91e";}
+.fs-icon_parametres:before {content: "\e91f";}
+.fs-icon_pause:before {content: "\e920";}
+.fs-icon_plus:before {content: "\e921";}
+.fs-icon_plus_horizontal:before {content: "\e922";}
+.fs-icon_profil:before {content: "\e923";}
+.fs-icon_progression:before {content: "\e924";}
+.fs-icon_proteines:before {content: "\e925";}
+.fs-icon_recuperation:before {content: "\e926";}
+.fs-icon_refresh:before {content: "\e927";}
+.fs-icon_SPRINTIA_briefing:before {content: "\e928";}
+.fs-icon_statistiques:before {content: "\e929";}
+.fs-icon_supprimer:before {content: "\e92a";}
+.fs-icon_telechargement:before {content: "\e92b";}
+.fs-icon_temps_recup:before {content: "\e92c";}
+.fs-icon_update_history:before {content: "\e92d";}
+.fs-icon_velo:before {content: "\e92e";}
+.fs-icon_zones_cardiaques:before {content: "\e92f";}
 /* --- Reset du style de base d'une page d'HTML --- */
 * {
     margin: 0;
@@ -193,6 +185,10 @@ body {
     padding-bottom: 10rem;
     /* Pour désactiver le highlight bleu lors d'un clic sur les balises a majoritairement */
     -webkit-tap-highlight-color: transparent;
+}
+body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
 }
 
 h1{
@@ -616,10 +612,6 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
 
 
 
-div.container-center {
-    display: flex;
-    justify-content: center;
-} 
 section.container-config-profil {
     display: flex; 
     flex-wrap: wrap; 
@@ -1010,13 +1002,6 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
 
 
 
-
-p.text-toolbar {
-    color: var(--COLOR_TEXT_SECONDARY);
-}
-p.text-toolbar strong{
-    color: var(--COLOR_TEXT_PRIMARY);
-}
 section.container-block{
     display: flex;
     flex-wrap: wrap;
@@ -1061,6 +1046,9 @@ section.container-block div.container-block-data p.container-block-data-data sma
     text-align: left;
     color: var(--COLOR_TEXT_SECONDARY);
 }
+
+
+
 textarea {
     width: 100%;
     height: 150px;
@@ -1341,6 +1329,13 @@ div.toolbar i.fs-icon_update.new-maj:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
+/* pour la page d'entraînement */
+div.toolbar p.text-toolbar {
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+div.toolbar p.text-toolbar strong{
+    color: var(--COLOR_TEXT_PRIMARY);
+}
 
 
 div.container-button-flottant {
@@ -1516,16 +1511,6 @@ div.menu-many-action li i{
 
 
 
-section.container-global-zone {
-    display: flex;
-    gap: var(--SPACE_M);
-}
-@media (max-width: 1036px) {
-    section.container-global-zone {
-        display: block;
-        gap: 0;
-    }
-}
 section.container-zone {
     display: flex;
     justify-content: center;
@@ -1621,10 +1606,6 @@ section.background-SPRINTIA-briefing {
     height: 100%;
 
     z-index: 17000;
-}
-body.no-scroll {
-    overflow: hidden;
-    touch-action: none;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
     background-color: var(--COLOR_BACKGROUND_CARD);
@@ -2020,37 +2001,16 @@ ol.container-list-choice li.choice-item.selected{
         font-size: var(--P);
     }
 }
-ol.container-list-choice li.choice-item#vibe{
-    background-color: #ff6c11;
-}
-ol.container-list-choice li.choice-item#gemini{
-    background-color: #247df9;
-}
-ol.container-list-choice li.choice-item#chat-gpt{
-    background-color: #13ac8a;
-}
-ol.container-list-choice li.choice-item#claude{
-    background-color: #d77655;
-}
-ol.container-list-choice li.choice-item#grok{
-    background-color: #ffffff;
-    color: #000000;
-}
-ol.container-list-choice li.choice-item#meta-ai{
-    background-color: #bf54ff;
-}
-ol.container-list-choice li.choice-item#deepseek{
-    background-color: #4c6bfe;
-}
-ol.container-list-choice li.choice-item#copilot{
-    background-color: #8A50D8;
-}
-ol.container-list-choice li.choice-item#perplexity{
-    background-color: #1cb2c6;
-}
-ol.container-list-choice li.choice-item#ia-locale{
-    background-color: #4a4a4a;
-}
+ol.container-list-choice li.choice-item#vibe{background-color: #ff6c11;}
+ol.container-list-choice li.choice-item#gemini{background-color: #247df9;}
+ol.container-list-choice li.choice-item#chat-gpt{background-color: #13ac8a;}
+ol.container-list-choice li.choice-item#claude{background-color: #d77655;}
+ol.container-list-choice li.choice-item#grok{background-color: #ffffff; color: #000000;}
+ol.container-list-choice li.choice-item#meta-ai{background-color: #bf54ff;}
+ol.container-list-choice li.choice-item#deepseek{background-color: #4c6bfe;}
+ol.container-list-choice li.choice-item#copilot{background-color: #8A50D8;}
+ol.container-list-choice li.choice-item#perplexity{background-color: #1cb2c6;}
+ol.container-list-choice li.choice-item#ia-locale{background-color: #4a4a4a;}
 
 
 
@@ -2140,27 +2100,13 @@ div.small-zone-result {
 div.small-zone-result.charge{
     height: 188px;
 }
-div.small-zone-result.color-zone:nth-child(1) {
-    border: solid 2px #3dbaf9;
-}
-div.small-zone-result.color-zone:nth-child(2) {
-    border: solid 2px #1fff80;
-}
-div.small-zone-result.color-zone:nth-child(3) {
-    border: solid 2px #e7e625;
-}
-div.small-zone-result.color-zone:nth-child(4) {
-    border: solid 2px #ff781e;
-}
-div.small-zone-result.color-zone:nth-child(5) {
-    border: solid 2px #ff4b4c;
-}
-div.small-zone-result.color-zone:nth-child(6) {
-    border: solid 2px #d672ff;
-}
-div.small-zone-result.color-zone:nth-child(7) {
-    border: solid 2px #7b68ee;
-}
+div.small-zone-result.color-zone:nth-child(1) {border: solid 2px #3dbaf9;}
+div.small-zone-result.color-zone:nth-child(2) {border: solid 2px #1fff80;}
+div.small-zone-result.color-zone:nth-child(3) {border: solid 2px #e7e625;}
+div.small-zone-result.color-zone:nth-child(4) {border: solid 2px #ff781e;}
+div.small-zone-result.color-zone:nth-child(5) {border: solid 2px #ff4b4c;}
+div.small-zone-result.color-zone:nth-child(6) {border: solid 2px #d672ff;}
+div.small-zone-result.color-zone:nth-child(7) {border: solid 2px #7b68ee;}
 div.small-zone-result p.small-zone-result-name {
     font-size: var(--H3);
     font-weight: var(--FONT_WEIGHT_BUTTON);
@@ -3005,13 +2951,6 @@ div.container-center-marge {
 
 
 /* ----- RESPONSIVE ----- */
-@media (max-width : 480px) {
-    section.container-tools-pin div.tools-pin {
-        margin: var(--SPACE_XS) 0;
-    }
-}
-
-
 @media (max-width: 490px) {
     div.form div.side-by-side {
         display: block;

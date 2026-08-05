@@ -1935,7 +1935,7 @@ div.my-control i {
     }
 }
 div.my-control i:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 

@@ -63,8 +63,8 @@
             }]
         },
         {
-            "name": "Entraînement du jour",
-            "short_name":"Entraî. du jour",
+            "name": "Entraînement du Jour",
+            "short_name":"Entraî. du Jour",
             "description":"Accéder rapidement à la page d'entraînement du jour",
             "url":"/outils/generation-intelligente/entrainement-du-jour/entrainement-du-jour.html",
             "icons": [{

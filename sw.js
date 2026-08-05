@@ -13,4 +13,4 @@ self.addEventListener("activate", (event) => {
     event.waitUntil(self.clients.claim()) // pr rafraichir le manifest et le sw
 }) 
 
-// service worker -> v1
+// service worker -> v1.0.1

@@ -74,9 +74,53 @@
 
     </section>
     
-    <div class="toolbar">
-        <h1>Plus</h1>
-        <i class="fs-icon_update" onclick="vuMaj(); window.location.href='historique-versions/dernieres-nouveautes.html'"></i>
+    <h1>Plus</h1>
+
+    <h2>Dernières nouveautés</h2>
+    <div class="carousel">
+        <div class="carousel-content">
+
+            <a href="historique-versions/generation-5/SPRINTIA-5.2.html">
+                <div class="card-releases">
+                    <div class="card-releases-image">
+                        <p class="version">SPRINTIA 5.2</p>
+                        <p class="date">05 Août 2026</p>
+                    </div>
+                    <p class="description-maj">
+                        L'outil "Entraînement du jour" vous permet de générer un entraînement rapidement pour gagner du temps si vous manquez d'idées.
+                    </p>
+                </div>
+            </a>
+            <a href="historique-versions/generation-5/SPRINTIA-5.1.html">
+                <div class="card-releases">
+                    <div class="card-releases-image">
+                        <p class="version">SPRINTIA 5.1</p>
+                        <p class="date">08 Juillet 2026</p>
+                    </div>
+                    <p class="description-maj">
+                        Ajout d'un raccourci entre les modèles d'IA et le JRM Coach de SPRINTIA pour pousser l'analyse encore plus loin.
+                    </p>
+                </div>
+            </a>
+            <a href="historique-versions/generation-5/SPRINTIA-5.html">
+                <div class="card-releases">
+                    <div class="card-releases-image">
+                        <p class="version">SPRINTIA 5</p>
+                        <p class="date">27 Juin 2026</p>
+                    </div>
+                    <p class="description-maj">
+                        Refonte de l'organisation de SPRINTIA et ajout d'une tab-bar flottante pour la version mobile.
+                    </p>
+                </div>
+            </a>
+    
+            <button style="
+    scroll-snap-align: center; /*le button se centre dans le carousel*/
+    margin-left: var(--SPACE_M);" onclick="location.href='historique-versions/historique-versions.html'">
+                Tout voir
+            </button>
+
+        </div>
     </div>
     
     <div class="action-list">
@@ -144,20 +188,8 @@
             return
         }
 
-        function newMaj() {
-            let newMajVu = localStorage.getItem("newMajVu") || undefined
-
-            if (newMajVu == undefined || newMajVu == "false") {
-                document.querySelector(".fs-icon_update").classList.add("new-maj")
-            }
-        }
-        function vuMaj() {
-            localStorage.setItem("newMajVu", "true")
-        }
-
         window.addEventListener("DOMContentLoaded", () => {
             NomCoachInit()
-            newMaj()
         })
     </script>
 

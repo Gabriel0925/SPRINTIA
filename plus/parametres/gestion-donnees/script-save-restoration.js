@@ -1,39 +1,77 @@
-async function downloadDatas() {
-    let buttonDownload = document.getElementById("download-button")
-    buttonDownload.textContent = "Téléchargement..."
-    buttonDownload.disabled = true 
+async function createFileJSON() {
+    let dicoDataLocalStorage = {} // ex structure dico : 'personnaliteCoachBriefing': 'true',...
+    // boucle qui parcout tous ce qu'il y a d'enregistrer dans le local storage
+    for (let i=0; i < localStorage.length; i++) {
+        // on récup la clé de l'element du local storage et on l'ajoute au dico en recherchant la valeur de cette clé
+        dicoDataLocalStorage[localStorage.key(i)] = localStorage.getItem(localStorage.key(i))
+    }
+
+    // (!!!--- Modifier si ajout de table ---!!!)
+    // recup des datas de chaque table de l'indexedDB 
+    let workoutDB = await db.entrainement.toArray()
+    let niveauCourseDB = await db.niveau_course.toArray()
+    let jrmCoachDB = await db.JRM_Coach.toArray()
+    let profilDB = await db.profil.toArray()
+    let recupDB = await db.recuperation.toArray()
+
+    // (!!!--- Modifier si ajout de table ---!!!)
+    const dataTelecharger = {
+        DataLocalStorage: dicoDataLocalStorage,
+
+        DataIndexedDB: {
+            entrainement: workoutDB,
+            niveau_course: niveauCourseDB,
+            JRM_Coach: jrmCoachDB,
+            profil: profilDB,
+            recuperation:recupDB
+        }
+    }
+
+    // transformation du dico en txt JSON, avec 2 tab comme identation et null pr appliquer aucun filtre
+    return JSON.stringify(dataTelecharger, null, 2)
+}
+
+async function shareData(button) {
+    button.textContent = "Partage en cours..."
+    button.disabled = true
 
     try {
-        let dicoDataLocalStorage = {} // ex structure dico : 'personnaliteCoachBriefing': 'true',...
-        // boucle qui parcout tous ce qu'il y a d'enregistrer dans le local storage
-        for (let i=0; i < localStorage.length; i++) {
-            // on récup la clé de l'element du local storage et on l'ajoute au dico en recherchant la valeur de cette clé
-            dicoDataLocalStorage[localStorage.key(i)] = localStorage.getItem(localStorage.key(i))
+        let txtDataUser = await createFileJSON()
+        let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.json", {type: "application/json"}) // on crée le fichier
+
+        // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier
+        if (navigator.canShare && navigator.canShare({files: [fileUserData]})) {
+            await navigator.share({files:[fileUserData], // on met dans un tableau car navigator.share peut permettre d'envoyer plusieurs fichier [fichier1, fichier2,...]
+                title:"Sauvegarde SPRINTIA", 
+                text:"Voici la sauvegarde de mes données enregistrées sur SPRINTIA"})            
+            
+            button.textContent = "Partagé"
+        } else {
+            button.textContent = "Navigateur incompatible !"
         }
+        
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
 
-        // (!!!--- Modifier si ajout de table ---!!!)
-        // recup des datas de chaque table de l'indexedDB 
-        let workoutDB = await db.entrainement.toArray()
-        let niveauCourseDB = await db.niveau_course.toArray()
-        let jrmCoachDB = await db.JRM_Coach.toArray()
-        let profilDB = await db.profil.toArray()
-        let recupDB = await db.recuperation.toArray()
-
-        // (!!!--- Modifier si ajout de table ---!!!)
-        const dataTelecharger = {
-            DataLocalStorage: dicoDataLocalStorage,
-
-            DataIndexedDB: {
-                entrainement: workoutDB,
-                niveau_course: niveauCourseDB,
-                JRM_Coach: jrmCoachDB,
-                profil: profilDB,
-                recuperation:recupDB
-            }
+    } catch(error) {
+        if (error.name== "AbortError") { // ça veut dire que le user à fermer le menu de partage sans envoyer le fichier
+            // donc on affiche pas le "Une erreur s'est produite"
+        } else {
+            console.log(error) // affichage de l'erreur en console
+            button.textContent = "Une erreur s'est produite"
         }
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+    } finally {
+        button.textContent = "Partager vos données"
+        button.disabled = false 
+    }
+}
 
-        // transformation du dico en txt JSON, avec 2 tab comme identation et null pr appliquer aucun filtre
-        let txtDataUser = JSON.stringify(dataTelecharger, null, 2)
+async function downloadDatas(button) {
+    button.textContent = "Téléchargement..."
+    button.disabled = true 
+
+    try {
+        let txtDataUser = await createFileJSON()
 
         // création d'un objet nommé blob (=en gros on créer une URL temporaire)
         // au moins la navigateur c'est ou télécharger le "fichier"
@@ -44,17 +82,16 @@ async function downloadDatas() {
         baliseHTML.download = "Sauvegarde-SPRINTIA.json" // nom du "fichier"
         baliseHTML.click() // on simule un click pour download
 
-        buttonDownload.textContent = "Téléchargé"
+        button.textContent = "Téléchargé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        logoDynamique("📁 Fichier téléchargé !")
 
     } catch(error) {
         console.log(error) // affichage de l'erreur en console
-        buttonDownload.textContent = "Une erreur s'est produite"
+        button.textContent = "Une erreur s'est produite"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
     } finally {
-        buttonDownload.textContent = "Télécharger vos données"
-        buttonDownload.disabled = false 
+        button.textContent = "Télécharger le fichier"
+        button.disabled = false 
     }
 }
 

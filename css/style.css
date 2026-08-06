@@ -139,22 +139,23 @@ i {
 .fs-icon_niveau_course:before {content: "\e91d";}
 .fs-icon_outils:before {content: "\e91e";}
 .fs-icon_parametres:before {content: "\e91f";}
-.fs-icon_pause:before {content: "\e920";}
-.fs-icon_plus:before {content: "\e921";}
-.fs-icon_plus_horizontal:before {content: "\e922";}
-.fs-icon_profil:before {content: "\e923";}
-.fs-icon_progression:before {content: "\e924";}
-.fs-icon_proteines:before {content: "\e925";}
-.fs-icon_recuperation:before {content: "\e926";}
-.fs-icon_refresh:before {content: "\e927";}
-.fs-icon_SPRINTIA_briefing:before {content: "\e928";}
-.fs-icon_statistiques:before {content: "\e929";}
-.fs-icon_supprimer:before {content: "\e92a";}
-.fs-icon_telechargement:before {content: "\e92b";}
+.fs-icon_partage:before {content: "\e920";}
+.fs-icon_pause:before {content: "\e921";}
+.fs-icon_plus:before {content: "\e922";}
+.fs-icon_plus_horizontal:before {content: "\e923";}
+.fs-icon_profil:before {content: "\e924";}
+.fs-icon_progression:before {content: "\e925";}
+.fs-icon_proteines:before {content: "\e926";}
+.fs-icon_recuperation:before {content: "\e927";}
+.fs-icon_refresh:before {content: "\e928";}
+.fs-icon_SPRINTIA_briefing:before {content: "\e929";}
+.fs-icon_statistiques:before {content: "\e92a";}
+.fs-icon_supprimer:before {content: "\e92b";}
 .fs-icon_temps_recup:before {content: "\e92c";}
 .fs-icon_update_history:before {content: "\e92d";}
 .fs-icon_velo:before {content: "\e92e";}
 .fs-icon_zones_cardiaques:before {content: "\e92f";}
+
 /* --- Reset du style de base d'une page d'HTML --- */
 * {
     margin: 0;
@@ -2733,7 +2734,7 @@ div.action-list div.action-list-item:active {
     transform: scale(var(--SCALE_SMALL));
 }
 div.action-list i{
-    font-size: 2.25rem;
+    font-size: var(--H1);
 }
 div.action-list div.action-list-item p{
     margin-left: var(--SPACE_S);

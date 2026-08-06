@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Télécharger vos données</title>
+    <title>SPRINTIA - Exporter vos données</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,12 +74,22 @@
 
     </section>
     
-    <h1>Télécharger vos données</h1>
+    <h1>Exporter vos données</h1>
+    
+    <h2>Partager vos données</h2>
     <p class="text">
-        Télécharger vos données pour les importer sur un autre appareil.
+        Partager vos données directement via AirDrop, Quick Share, WhatsApp, Messages,...
     </p>
     <div class="container-center-marge">
-        <button class="size-block" onclick="downloadDatas()" id="download-button">Télécharger vos données</button>
+        <button class="size-block" onclick="shareData(this)" id="partager-button">Partager vos données</button>
+    </div>
+
+    <h2>Télécharger le fichier</h2>
+    <p class="text">
+        Télécharger un fichier (JSON) qui contient les données que vous avez enregistrées sur SPRINTIA.
+    </p>
+    <div class="container-center-marge">
+        <button class="size-block" onclick="downloadDatas(this)" id="download-button">Télécharger le fichier</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>

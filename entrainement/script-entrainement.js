@@ -645,9 +645,7 @@ async function exporterData(dataWorkout) {
 
             // transformation en texte JSON
             const transformationTextJSON = JSON.stringify(dataWorkout[0], null, 2)
-
-            console.log(dataWorkout[0])
-            return
+            
             let fileWorkoutData = new File([transformationTextJSON], `${dataWorkout[0].name}.text`, {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
 
             // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier

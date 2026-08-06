@@ -668,7 +668,7 @@ async function exporterData(dataWorkout) {
             }
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } finally {
-            button.innerHTML = "<i class='fs-icon_partage'></i> Partager l'entraî"
+            button.innerHTML = "<i class='fs-icon_partage'></i> Partager l'entraî."
             button.disabled = false 
         }
     }

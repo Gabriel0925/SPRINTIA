@@ -90,7 +90,7 @@
 
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-json" accept=".json" style="display: none;" onchange="uploadFileSPRINTIA(event)">
+        <input type="file" id="file-input-json" accept=".json, .txt, text/plain" style="display: none;" onchange="uploadFileSPRINTIA(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
         <button class="size-block" onclick="document.getElementById('file-input-json').click()" id="button-import-SPRINTIA">Importer fichier SPRINTIA</button>
     </div>

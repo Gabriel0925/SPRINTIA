@@ -37,13 +37,12 @@ async function shareData(button) {
 
     try {
         let txtDataUser = await createFileJSON()
-        let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.text", {type: "text/plain"}) // on crée le fichier
+        let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.text", {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
 
         // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier
         if (navigator.canShare && navigator.canShare({files: [fileUserData]})) {
             await navigator.share({files:[fileUserData], // on met dans un tableau car navigator.share peut permettre d'envoyer plusieurs fichier [fichier1, fichier2,...]
-                title:"Sauvegarde SPRINTIA", 
-                text:"Voici la sauvegarde de mes données enregistrées sur SPRINTIA"})            
+                title:"Sauvegarde SPRINTIA"})            
             
             button.textContent = "Partagé"
         } else {
@@ -54,7 +53,7 @@ async function shareData(button) {
 
     } catch(error) {
         if (error.name== "AbortError") { // ça veut dire que le user à fermer le menu de partage sans envoyer le fichier
-            // donc on affiche pas le "Une erreur s'est produite"
+            button.textContent = "Partage annulé !"
         } else {
             console.log(error) // affichage de l'erreur en console
             button.textContent = "Une erreur s'est produite"

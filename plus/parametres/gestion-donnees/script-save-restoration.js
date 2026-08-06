@@ -37,7 +37,7 @@ async function shareData(button) {
 
     try {
         let txtDataUser = await createFileJSON()
-        let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.json", {type: "application/json"}) // on crée le fichier
+        let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.text", {type: "text/plain"}) // on crée le fichier
 
         // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier
         if (navigator.canShare && navigator.canShare({files: [fileUserData]})) {

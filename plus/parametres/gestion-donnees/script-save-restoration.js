@@ -53,7 +53,7 @@ async function shareData(button) {
 
     } catch(error) {
         if (error.name== "AbortError") { // ça veut dire que le user à fermer le menu de partage sans envoyer le fichier
-            button.textContent = "Partage annulé !"
+            button.textContent = "Partage annulé"
         } else {
             console.log(error) // affichage de l'erreur en console
             button.textContent = "Une erreur s'est produite"

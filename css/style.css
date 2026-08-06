@@ -1433,7 +1433,7 @@ div.button-flottant p{
     100% {transform: translate(0px, 0px) scale(1)}
 }
 div.menu-many-action {
-    width: 180px;
+    width: 200px;
     position: absolute;
     right: 0;
 
@@ -1449,7 +1449,7 @@ div.menu-many-action {
     overflow: hidden;
     opacity: 1;
     z-index: 1200;
-    transform: translate(75px, -80px) scale(0);
+    transform: translate(87px, -80px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {
@@ -1501,7 +1501,7 @@ div.menu-many-action.open li:nth-child(6) {
     }
 }
 div.menu-many-action li:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.06);

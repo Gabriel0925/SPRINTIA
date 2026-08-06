@@ -631,10 +631,10 @@ async function dicoWithoutID(dico) {
     })
 }
 async function exporterData(dataWorkout) {
-    let button = document.getElementById("button-exporter")
+    let button = document.getElementById("button-partager-entrainement")
     
     if (dataWorkout) {
-        button.innerHTML = "<i class='fs-icon_file_json'></i> Export..."
+        button.innerHTML = "<i class='fs-icon_partage'></i> En cours..."
         button.disabled = true
 
         try {
@@ -645,26 +645,31 @@ async function exporterData(dataWorkout) {
 
             // transformation en texte JSON
             const transformationTextJSON = JSON.stringify(dataWorkout[0], null, 2)
+            let fileWorkoutData = new File([transformationTextJSON], "Sauvegarde-SPRINTIA.text", {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
 
-            // création d'un objet nommé blob (=en gros on créer une URL temporaire)
-            // au moins la navigateur c'est ou télécharger le "fichier"
-            let urlBlob = URL.createObjectURL(new Blob([transformationTextJSON], {type: "application/json"})) // par ex : 'blob:http://127.0.0.1:5500/414b2c61-e902-4b86-84fb-61ad6afea08c'
-            let baliseHTML = document.createElement("a")
-
-            baliseHTML.href = urlBlob // on attribue l'URL du blob à la balise a
-            baliseHTML.download = dataWorkout[0].nom.replace(" ", "-") + "-SPRINTIA.json" // nom du "fichier"
-            baliseHTML.click() // on simule un click pour download
-
-            button.innerHTML = "<i class='fs-icon_file_json'></i> Exporté"
+            // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier
+            if (navigator.canShare && navigator.canShare({files: [fileWorkoutData]})) {
+                await navigator.share({files:[fileWorkoutData], // on met dans un tableau car navigator.share peut permettre d'envoyer plusieurs fichier [fichier1, fichier2,...]
+                    title:"Sauvegarde SPRINTIA"})            
+                
+                button.innerHTML = "<i class='fs-icon_partage'></i> Partagé"
+            } else {
+                alert("Votre navigateur est incompatible avec le partage de fichier !")
+            }
+            
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-            logoDynamique("📁 Fichier téléchargé !")
+
         } catch(error) {
-            console.log(error)
-            button.innerHTML = "<i class='fs-icon_file_json'></i> Erreur !"
+            if (error.name== "AbortError") { // ça veut dire que le user à fermer le menu de partage sans envoyer le fichier
+                button.innerHTML = "<i class='fs-icon_partage'></i> Annulé"
+            } else {
+                console.log(error) // affichage de l'erreur en console
+                button.innerHTML = "<i class='fs-icon_partage'></i> Erreur !"
+            }
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } finally {
-            button.innerHTML = "<i class='fs-icon_file_json'></i> Exporter"
-            button.disabled = false
+            button.innerHTML = "<i class='fs-icon_partage'></i> Partager l'entraî"
+            button.disabled = false 
         }
     }
 }
@@ -695,7 +700,7 @@ async function initialisation() {
                 await JrmCoach()
 
                 // on donne un role au bouton
-                let buttonExporter = document.getElementById("button-exporter")
+                let buttonPartageWorkout = document.getElementById("button-partager-entrainement")
                 let buttonModifier = document.getElementById("button-modifier")
                 let buttonSupprimer = document.getElementById("button-supprimer") 
 
@@ -716,7 +721,7 @@ async function initialisation() {
                 buttonModifier.addEventListener("click", async () => { // Ajout d'une "action" au bouton edit
                     window.location.href = `ajouter-entrainement.html?edit=${dataWorkout.id}` // mettre un parametre dans l'URL
                 })
-                buttonExporter.addEventListener("click", async () => {
+                buttonPartageWorkout.addEventListener("click", async () => {
                     await exporterData(dataWorkout)
                 })
             }

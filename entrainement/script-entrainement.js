@@ -646,7 +646,20 @@ async function exporterData(dataWorkout) {
             // transformation en texte JSON
             const transformationTextJSON = JSON.stringify(dataWorkout[0], null, 2)
             
-            let fileWorkoutData = new File([transformationTextJSON], `${dataWorkout[0].name}.text`, {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
+            // on clean le titre du fichier et on enleve les signes interdit pour un nom de fichier
+            let nameFile = dataWorkout[0].nom
+                                .replaceAll(" ", "-")
+                                .replaceAll("/", "")
+                                .replaceAll('\\', "") // on met 2 "\\" car si on met 1 "\" ça va bugger pour régler le probleme (d'après Gemini) il faut en mettre 2
+                                .replaceAll(":", "")
+                                .replaceAll("*", "")
+                                .replaceAll("?", "")
+                                .replaceAll('"', "")
+                                .replaceAll("<", "")
+                                .replaceAll(">", "")
+                                .replaceAll("|", "") + "-SPRINTIA.text"
+
+            let fileWorkoutData = new File([transformationTextJSON], nameFile, {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
 
             // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier
             if (navigator.canShare && navigator.canShare({files: [fileWorkoutData]})) {

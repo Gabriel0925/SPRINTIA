@@ -27,8 +27,15 @@ async function createFileJSON() {
         }
     }
 
-    // transformation du dico en txt JSON, avec 2 tab comme identation et null pr appliquer aucun filtre
-    return JSON.stringify(dataTelecharger, null, 2)
+    // si il n'y a pas de données on return false
+    // le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" donc on vérif si il y a plus d'une clé
+    if (Object.keys(dicoDataLocalStorage).length <= 1 && workoutDB.length === 0 && niveauCourseDB.length === 0 && 
+        jrmCoachDB.length === 0 && profilDB.length === 0 && recupDB.length === 0) {
+        return false
+    } else {
+        // transformation du dico en txt JSON, avec 2 tab comme identation et null pr appliquer aucun filtre
+        return JSON.stringify(dataTelecharger, null, 2)
+    }
 }
 
 async function shareData(button) {
@@ -37,16 +44,22 @@ async function shareData(button) {
 
     try {
         let txtDataUser = await createFileJSON()
-        let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.text", {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
 
-        // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier
-        if (navigator.canShare && navigator.canShare({files: [fileUserData]})) {
-            await navigator.share({files:[fileUserData], // on met dans un tableau car navigator.share peut permettre d'envoyer plusieurs fichier [fichier1, fichier2,...]
-                title:"Sauvegarde SPRINTIA"})            
-            
-            button.textContent = "Partagé"
+        // si txtDataUser vaut false c'est que ya pas de données à partager
+        if (txtDataUser == false) {
+            button.textContent = "Aucune donnée à partager"
         } else {
-            button.textContent = "Navigateur incompatible !"
+            let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.text", {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
+
+            // on vérifie si le navigateur est compatible avec navigator.share et on vérifie aussi si il sait partager un fichier
+            if (navigator.canShare && navigator.canShare({files: [fileUserData]})) {
+                await navigator.share({files:[fileUserData], // on met dans un tableau car navigator.share peut permettre d'envoyer plusieurs fichier [fichier1, fichier2,...]
+                    title:"Sauvegarde SPRINTIA"})            
+                
+                button.textContent = "Partagé"
+            } else {
+                button.textContent = "Navigateur incompatible !"
+            }
         }
         
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
@@ -64,7 +77,6 @@ async function shareData(button) {
         button.disabled = false 
     }
 }
-
 async function downloadDatas(button) {
     button.textContent = "Téléchargement..."
     button.disabled = true 
@@ -72,16 +84,22 @@ async function downloadDatas(button) {
     try {
         let txtDataUser = await createFileJSON()
 
-        // création d'un objet nommé blob (=en gros on créer une URL temporaire)
-        // au moins la navigateur c'est ou télécharger le "fichier"
-        let urlBlob = URL.createObjectURL(new Blob([txtDataUser], {type: "application/json"})) // par ex : 'blob:http://127.0.0.1:5500/414b2c61-e902-4b86-84fb-61ad6afea08c'
-        let baliseHTML = document.createElement("a")
+        // si txtDataUser vaut false c'est que ya pas de données à télécharger
+        if (txtDataUser == false) {
+            button.textContent = "Aucune donnée à télécharger"
+        } else {
+            // création d'un objet nommé blob (=en gros on créer une URL temporaire)
+            // au moins la navigateur c'est ou télécharger le "fichier"
+            let urlBlob = URL.createObjectURL(new Blob([txtDataUser], {type: "application/json"})) // par ex : 'blob:http://127.0.0.1:5500/414b2c61-e902-4b86-84fb-61ad6afea08c'
+            let baliseHTML = document.createElement("a")
 
-        baliseHTML.href = urlBlob // on attribue l'URL du blob à la balise a
-        baliseHTML.download = "Sauvegarde-SPRINTIA.json" // nom du "fichier"
-        baliseHTML.click() // on simule un click pour download
+            baliseHTML.href = urlBlob // on attribue l'URL du blob à la balise a
+            baliseHTML.download = "Sauvegarde-SPRINTIA.json" // nom du "fichier"
+            baliseHTML.click() // on simule un click pour download
 
-        button.textContent = "Téléchargé"
+            button.textContent = "Téléchargé"
+        }
+
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
 
     } catch(error) {
@@ -106,36 +124,46 @@ async function restaurationDatas(event) {
             const textFile = await file.text() // on lis le contenu du fichier sous la forme d'un texte
             const dataFile = JSON.parse(textFile) // conversion en objet js
             const dataFileLocalStorage = dataFile.DataLocalStorage // recup du dico des datas du localstorage
-
-            localStorage.clear() // réinitialisation du localStorage
-            for (var key in dataFileLocalStorage) {
-                localStorage.setItem(key, dataFileLocalStorage[key]) // enregistrement
-            }
-            sessionStorage.clear() // on clear le sessionStorage au passage
-
             const dataFileIndexedDB = dataFile.DataIndexedDB // recup du dico des datas de l'indexedDB
 
-            for (const table of db.tables) { // on parcourt chaque table de la bdd et on supprime
-                await table.clear()
+            // si le fichier ne contient aucune donnée on affiche un message ds le btn
+            // le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" donc on vérif si il y a plus d'une clé
+            if (Object.keys(dataFileLocalStorage).length <= 1 && dataFileIndexedDB.entrainement.length === 0 && 
+                dataFileIndexedDB.niveau_course.length === 0 && dataFileIndexedDB.JRM_Coach.length === 0 && 
+                dataFileIndexedDB.profil.length === 0 && dataFileIndexedDB.recuperation.length === 0) {
+                buttonRestoration.textContent = "Aucune donnée à restaurer"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
 
-                const tableFileJSON = dataFileIndexedDB[table.name] // on récupère les datas de la table actuelle de la boucle for dans le fichier JSON
+            } else {
+                localStorage.clear() // réinitialisation du localStorage
+                for (var key in dataFileLocalStorage) {
+                    localStorage.setItem(key, dataFileLocalStorage[key]) // enregistrement
+                }
+                sessionStorage.clear() // on clear le sessionStorage au passage
 
-                if (tableFileJSON && tableFileJSON.length > 0) {  // on verifie qu'il y a des datas dans la table du JSON
-                    for (let elt of tableFileJSON) { // on recupere les datas ligne par ligne de la table correspondante
-                        if (table.name == "profil") {
-                            // on le met à l'id 1 car il y a que cette ligne dans cette table
-                            await table.put(elt, 1) // on utilise direct la var table qui est déjà co à db
+                for (const table of db.tables) { // on parcourt chaque table de la bdd et on supprime
+                    await table.clear()
 
-                        } else {
-                            await table.add(elt) // on utilise direct la var table qui est déjà co à db
+                    const tableFileJSON = dataFileIndexedDB[table.name] // on récupère les datas de la table actuelle de la boucle for dans le fichier JSON
+
+                    if (tableFileJSON && tableFileJSON.length > 0) {  // on verifie qu'il y a des datas dans la table du JSON
+                        for (let elt of tableFileJSON) { // on recupere les datas ligne par ligne de la table correspondante
+                            if (table.name == "profil") {
+                                // on le met à l'id 1 car il y a que cette ligne dans cette table
+                                await table.put(elt, 1) // on utilise direct la var table qui est déjà co à db
+
+                            } else {
+                                await table.add(elt) // on utilise direct la var table qui est déjà co à db
+                            }
                         }
                     }
                 }
+
+                buttonRestoration.textContent = "Restauré"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+                window.location.href = "../../../index.html?accountrestore"
             }
 
-            buttonRestoration.textContent = "Restauré"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-            window.location.href = "../../../index.html?accountrestore"
         } catch(error) {
             console.log(error)
             buttonRestoration.textContent = "Une erreur s'est produite"

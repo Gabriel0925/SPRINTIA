@@ -18,76 +18,78 @@
 </head>
 
 <body>
-    <div class="container-logo-dynamique">
-        <div class="logo-dynamique"></div>
-    </div>
-    
-    <section class="header">
-
-        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
-
+    <main>
+        <div class="container-logo-dynamique">
+            <div class="logo-dynamique"></div>
+        </div>
         
-        <ul class="header-container-items">
+        <section class="header">
 
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                Entraînement
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                Progression
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                Outils
-            </li>
-            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                Plus
-            </li>
+            <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
 
-        </ul>
+            
+            <ul class="header-container-items">
 
-    </section>
-    <section class="tab-bars">
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+                <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    Plus
+                </li>
 
-        <ul class="tab-bars-container-items">
+            </ul>
 
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                <p class="tab-bars-items-name">Entraînement</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                <p class="tab-bars-items-name">Progression</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                <p class="tab-bars-items-name">Outils</p>
-            </li>
-            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                <p class="tab-bars-items-name">Plus</p>
-            </li>
+        </section>
+        <section class="tab-bars">
 
-        </ul>
+            <ul class="tab-bars-container-items">
 
-    </section>
-    
-    <div class="toolbar marge">
-        <h1 id="jrm-coach-title">Discuter avec <strong>JRM Coach</strong></h1>
-        <i class="fs-icon_parametres" onclick="window.location.href = 'discuter-coach-parametres.html'"></i>
-    </div>
-    <div class="container-discuter-coach">
-        <textarea id="promt-user" style="min-height: 300px;" placeholder="Poser une question" maxlength="500"></textarea>
-        <button id="button-SPRINTIA-briefing-ask" onclick="
-                    if (!document.getElementById('promt-user').value.trim()) {
-                        alert('Veuillez ajouter votre question dans le champs de texte avant de vouloir demander à une IA.')
-                    } else {
-                        windowsBriefing('Demander à Vibe')
-                    }">
-        Demander à Vibe</button>
-    </div>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+                <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    <p class="tab-bars-items-name">Plus</p>
+                </li>
+
+            </ul>
+
+        </section>
+        
+        <div class="toolbar marge">
+            <h1 id="jrm-coach-title">Discuter avec <strong>JRM Coach</strong></h1>
+            <i class="fs-icon_parametres" onclick="window.location.href = 'discuter-coach-parametres.html'"></i>
+        </div>
+        <div class="container-discuter-coach">
+            <textarea id="promt-user" style="min-height: 300px;" placeholder="Poser une question" maxlength="500"></textarea>
+            <button id="button-SPRINTIA-briefing-ask" onclick="
+                        if (!document.getElementById('promt-user').value.trim()) {
+                            alert('Veuillez ajouter votre question dans le champs de texte avant de vouloir demander à une IA.')
+                        } else {
+                            windowsBriefing('Demander à Vibe')
+                        }">
+            Demander à Vibe</button>
+        </div>
+    </main>
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
     <section class="background-SPRINTIA-briefing">
         

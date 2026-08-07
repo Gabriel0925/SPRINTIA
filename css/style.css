@@ -191,6 +191,13 @@ body.no-scroll {
     overflow: hidden;
     touch-action: none;
 }
+main {
+    transform-origin: center center; /*pour que le scale se fasse à partir du centre de l'écran*/
+    transition: transform ease-out var(--TIME_TRANSITION);
+}
+main.briefing-open {
+    transform: scale(0.96);
+}
 
 h1{
     font-size: var(--H2);
@@ -1106,6 +1113,18 @@ div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
     background: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
     z-index: -1;
 }
+@media (hover: hover) and (pointer: fine) {
+    div.container-discuter-coach button#button-SPRINTIA-briefing-ask:hover {
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+}
+div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active::before {
+    opacity:0;
+}
+div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active {
+    background-color: var(--COLOR_ACCENT_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
+}
 
 
 
@@ -1588,11 +1607,23 @@ div.zone-coach button::before {
     background: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
     z-index: -1;
 }
+@media (hover: hover) and (pointer: fine) {
+    div.zone-coach button:hover {
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+}
+div.zone-coach button:active::before {
+    opacity:0;
+}
+div.zone-coach button:active {
+    background-color: var(--COLOR_ACCENT_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
+}
 
 
 /* --- Fenetre pour SPRITNIA Briefing --- */
 section.background-SPRINTIA-briefing {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(2px);
 
     display: none;
@@ -2884,7 +2915,7 @@ div.banner-toggle {
     transition: all ease-out var(--TIME_TRANSITION);
 }
 div.banner-toggle i{
-    font-size: 2.25rem;
+    font-size: var(--H1);
     color: var(--COLOR_TEXT_PRIMARY);
 }
 div.banner-toggle p {

@@ -18,146 +18,149 @@
 </head>  
 
 <body>
-    <div class="container-logo-dynamique">
-        <div class="logo-dynamique"></div>
-    </div>
-    
-    <section class="header">
-
-        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
-
+    <main>
+        <div class="container-logo-dynamique">
+            <div class="logo-dynamique"></div>
+        </div>
         
-        <ul class="header-container-items">
+        <section class="header">
 
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                Entraînement
-            </li>
-            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                Progression
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                Outils
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                Plus
-            </li>
+            <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
 
-        </ul>
-
-    </section>
-    <section class="tab-bars">
-
-        <ul class="tab-bars-container-items">
-
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                <p class="tab-bars-items-name">Entraînement</p>
-            </li>
-            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                <p class="tab-bars-items-name">Progression</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                <p class="tab-bars-items-name">Outils</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                <p class="tab-bars-items-name">Plus</p>
-            </li>
-
-        </ul>
-
-    </section>
-
-    <div class="container-button-flottant">
-        <div class="button-flottant" onclick="window.location.href = '../../entrainement/ajouter-entrainement.html'">
-            <i class="fs-icon_add"></i>
-            <p>Ajouter</p>
-        </div>
-    </div>
-    
-    <h1>Charge d'entraînement</h1>
-
-    <section class="container-zone">
-
-        <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
-                Chargement...
-            </p>
-            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser ma CE')">Analyser ma CE</button>
-        </div>
-        <!-- Fenetre flottante pour SPRINTIA Briefing -->
-        <section class="background-SPRINTIA-briefing">
             
-            <div class="windows-SPRINTIA-briefing">
+            <ul class="header-container-items">
 
-                <div class="windows-SPRINTIA-briefing-head">
-                    <p class="title">SPRINTIA Briefing</p>
-                    <i class="fs-icon_fermer" onclick="closeWindows()"></i>
-                </div>
-                <p class="explanation-briefing">
-                    SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                    le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                    <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
-                </p>
-                <div class="container-button-windows-SPRINTIA-briefing">
-                    <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
-                </div>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+                <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    Plus
+                </li>
 
-            </div>
+            </ul>
 
-        </section> 
+        </section>
+        <section class="tab-bars">
 
-    </section>
-    
-    <section class="container-box">
+            <ul class="tab-bars-container-items">
 
-        <div class="small-zone-result">
-            <p class="small-zone-result-name">Charge 7J</p>
-            <p class="small-zone-result-indication" id="cible-charge-7j">Charge aiguë</p>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+                <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    <p class="tab-bars-items-name">Plus</p>
+                </li>
 
-            <div class="container-result">
-                <p class="small-zone-result-result" id="charge-7j">0</p>
-                <p class="small-zone-result-unit">CE</p>
-            </div>
-        </div>
-        <div class="small-zone-result">
-            <p class="small-zone-result-name">Charge 28J</p>
-            <p class="small-zone-result-indication">Charge chronique</p>
+            </ul>
 
-            <div class="container-result">
-                <p class="small-zone-result-result" id="charge-28j">0</p>
-                <p class="small-zone-result-unit">CE</p>
+        </section>
+
+        <div class="container-button-flottant">
+            <div class="button-flottant" onclick="window.location.href = '../../entrainement/ajouter-entrainement.html'">
+                <i class="fs-icon_add"></i>
+                <p>Ajouter</p>
             </div>
         </div>
         
-    </section>
+        <h1>Charge d'entraînement</h1>
 
-    <h2>Suivi de la CE (4 sem.)</h2>
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-    </div>
+        <section class="container-zone">
 
-    <h2>C'est quoi la charge d'entraînement (CE) ?</h2>
-    <p class="text">
-        La charge d'entraînement (CE) permet de quantifier le stress physique imposé à votre corps
-        durant les 7 derniers jours. La charge d'entraînement prend en compte la durée de 
-        l'entraînement et l'effort fourni durant cet entraînement. La charge des 7 derniers jours
-        est comparée sur les 28 derniers jours afin d'avoir une idée de votre progression par 
-        rapport à avant. En respectant la charge d'entraînement vous réduisez le risque de vous blesser.
-    </p>
+            <div class="zone-coach">
+                <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
+                <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
+                    Chargement...
+                </p>
+                <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser ma CE')">Analyser ma CE</button>
+            </div>
 
-    <h2>À quoi ça sert la charge d'entraînement ?</h2>
-    <p class="text">
-        La charge d'entraînement sert à optimiser l'intensité et le volume de vos entraînements futurs.
-    </p>
+        </section>
+        
+        <section class="container-box">
+
+            <div class="small-zone-result">
+                <p class="small-zone-result-name">Charge 7J</p>
+                <p class="small-zone-result-indication" id="cible-charge-7j">Charge aiguë</p>
+
+                <div class="container-result">
+                    <p class="small-zone-result-result" id="charge-7j">0</p>
+                    <p class="small-zone-result-unit">CE</p>
+                </div>
+            </div>
+            <div class="small-zone-result">
+                <p class="small-zone-result-name">Charge 28J</p>
+                <p class="small-zone-result-indication">Charge chronique</p>
+
+                <div class="container-result">
+                    <p class="small-zone-result-result" id="charge-28j">0</p>
+                    <p class="small-zone-result-unit">CE</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <h2>Suivi de la CE (4 sem.)</h2>
+        <div class="chart-container" id="conteneur-graphique">
+            <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+            <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+        </div>
+
+        <h2>C'est quoi la charge d'entraînement (CE) ?</h2>
+        <p class="text">
+            La charge d'entraînement (CE) permet de quantifier le stress physique imposé à votre corps
+            durant les 7 derniers jours. La charge d'entraînement prend en compte la durée de 
+            l'entraînement et l'effort fourni durant cet entraînement. La charge des 7 derniers jours
+            est comparée sur les 28 derniers jours afin d'avoir une idée de votre progression par 
+            rapport à avant. En respectant la charge d'entraînement vous réduisez le risque de vous blesser.
+        </p>
+
+        <h2>À quoi ça sert la charge d'entraînement ?</h2>
+        <p class="text">
+            La charge d'entraînement sert à optimiser l'intensité et le volume de vos entraînements futurs.
+        </p>
+    </main>
+
+    <!-- Fenetre flottante pour SPRINTIA Briefing -->
+    <section class="background-SPRINTIA-briefing">
+            
+        <div class="windows-SPRINTIA-briefing">
+
+            <div class="windows-SPRINTIA-briefing-head">
+                <p class="title">SPRINTIA Briefing</p>
+                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+            </div>
+            <p class="explanation-briefing">
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+            </p>
+            <div class="container-button-windows-SPRINTIA-briefing">
+                <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+            </div>
+
+        </div>
+
+    </section> 
 
     <script src="../../assets/base-js/base.js"></script>
 

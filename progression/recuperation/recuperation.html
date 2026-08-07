@@ -18,163 +18,166 @@
 </head>
 
 <body>
-    <div class="container-logo-dynamique">
-        <div class="logo-dynamique"></div>
-    </div>
-    
-    <section class="header">
-
-        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
-
-        
-        <ul class="header-container-items">
-
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                Entraînement
-            </li>
-            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                Progression
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                Outils
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                Plus
-            </li>
-
-        </ul>
-
-    </section>
-    <section class="tab-bars">
-
-        <ul class="tab-bars-container-items">
-
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                <p class="tab-bars-items-name">Entraînement</p>
-            </li>
-            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                <p class="tab-bars-items-name">Progression</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                <p class="tab-bars-items-name">Outils</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                <p class="tab-bars-items-name">Plus</p>
-            </li>
-
-        </ul>
-
-    </section>
-
-    <div class="container-button-flottant">
-        <div class="button-flottant" onclick="window.location.href = 'ajouter-recuperation.html'">
-            <i class="fs-icon_add"></i>
-            <p>Ajouter</p>
-        </div> 
-    </div>
-    
-    <h1>Récupération</h1>
-
-    <section class="container-zone">
-
-        <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-            <p class="zone-coach-interpretation" id="reponse-coach">
-                Chargement...
-            </p>
-            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser ma récupération')">Analyser ma récupération</button>
+    <main>
+        <div class="container-logo-dynamique">
+            <div class="logo-dynamique"></div>
         </div>
-        <!-- Fenetre flottante pour SPRINTIA Briefing -->
-        <section class="background-SPRINTIA-briefing">
+        
+        <section class="header">
+
+            <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
+
             
-            <div class="windows-SPRINTIA-briefing">
+            <ul class="header-container-items">
 
-                <div class="windows-SPRINTIA-briefing-head">
-                    <p class="title">SPRINTIA Briefing</p>
-                    <i class="fs-icon_fermer" onclick="closeWindows()"></i>
-                </div>
-                <p class="explanation-briefing">
-                    SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                    le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                    <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+                <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    Plus
+                </li>
+
+            </ul>
+
+        </section>
+        <section class="tab-bars">
+
+            <ul class="tab-bars-container-items">
+
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+                <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    <p class="tab-bars-items-name">Plus</p>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <div class="container-button-flottant">
+            <div class="button-flottant" onclick="window.location.href = 'ajouter-recuperation.html'">
+                <i class="fs-icon_add"></i>
+                <p>Ajouter</p>
+            </div> 
+        </div>
+        
+        <h1>Récupération</h1>
+
+        <section class="container-zone">
+
+            <div class="zone-coach">
+                <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
+                <p class="zone-coach-interpretation" id="reponse-coach">
+                    Chargement...
                 </p>
-                <div class="container-button-windows-SPRINTIA-briefing">
-                    <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
-                </div>
-
+                <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser ma récupération')">Analyser ma récupération</button>
             </div>
 
-        </section> 
+        </section>
+        <section class="container-block"> 
 
-    </section>
-    <section class="container-block"> 
+            <div class="container-block-data">
+                <p class="container-block-data-header">FC repos du jour</p>
+                <p class="container-block-data-data" id="fc-repos-today">--  <small>bpm</small></p>
+            </div>
+            <div class="container-block-data">
+                <p class="container-block-data-header">Moyenne 30J</p>
+                <p class="container-block-data-data" id="fc-repos-moyenne-30j">--  <small>bpm</small></p>
+            </div>
 
-        <div class="container-block-data">
-            <p class="container-block-data-header">FC repos du jour</p>
-            <p class="container-block-data-data" id="fc-repos-today">--  <small>bpm</small></p>
+        </section>
+
+        <h2>FC repos au cours du temps</h2>
+        <div class="chart-container" id="conteneur-graphique">
+            <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+            <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
-        <div class="container-block-data">
-            <p class="container-block-data-header">Moyenne 30J</p>
-            <p class="container-block-data-data" id="fc-repos-moyenne-30j">--  <small>bpm</small></p>
+
+        <h2>Historique (7J)</h2>
+        <p class="text" id="text-informatif" style="display: none;">
+            Aucune donnée de récupération enregistrée ses 7 derniers jours. Veuillez
+            <a href="ajouter-recuperation.html" class="lien">ajouter une récupération</a>.
+        </p>
+        <div class="carousel table">
+            <div class="carousel-content table">
+                <table id="tableau-historique">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>FC repos</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody><!-- Remplis en js --></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container-center-marge">
+            <button id="button_plus" onclick="location.href = 'historique-recuperation.html'">
+                Voir l'historique complet
+            </button>
+        </div> 
+
+        <h2>C'est quoi l'algorithme de récupération ?</h2>
+        <p class="text">
+            Cet algorithme vous permet de suivre votre récupération grâce à votre FC repos (=fréquence cardiaque au repos). Cet algorithme
+            peut vous indiquer si vous êtes prêt à fournir un effort physique aujourd'hui ou alors si il faut mieux se reposer aujourd'hui.
+            <strong>
+                Attention, l'algorithme recommande mais c'est vous qui restez maître de votre corps et de vos sensations.
+            </strong>
+        </p>
+
+        <h2>Petite limite</h2>
+        <p class="text">
+            Si vous avez une FC repos réellement supérieur à votre moyenne de 30J, le coach de SPRINTIA vous indiquera que c'est lié à un surentraînement.
+            Sauf que c'est pas forcément ça. Ça peut aussi vouloir dire que vous êtes en train de tomber malade, que vous êtes stressé ou 
+            juste que vous dormez super mal en ce moment.
+        </p>
+    </main>
+
+    <!-- Fenetre flottante pour SPRINTIA Briefing -->
+    <section class="background-SPRINTIA-briefing">
+            
+        <div class="windows-SPRINTIA-briefing">
+
+            <div class="windows-SPRINTIA-briefing-head">
+                <p class="title">SPRINTIA Briefing</p>
+                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+            </div>
+            <p class="explanation-briefing">
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+            </p>
+            <div class="container-button-windows-SPRINTIA-briefing">
+                <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+            </div>
+
         </div>
 
-    </section>
-
-    <h2>FC repos au cours du temps</h2>
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-    </div>
-
-    <h2>Historique (7J)</h2>
-    <p class="text" id="text-informatif" style="display: none;">
-        Aucune donnée de récupération enregistrée ses 7 derniers jours. Veuillez
-        <a href="ajouter-recuperation.html" class="lien">ajouter une récupération</a>.
-    </p>
-    <div class="carousel table">
-        <div class="carousel-content table">
-            <table id="tableau-historique">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>FC repos</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody><!-- Remplis en js --></tbody>
-            </table>
-        </div>
-    </div>
-    <div class="container-center-marge">
-        <button id="button_plus" onclick="location.href = 'historique-recuperation.html'">
-            Voir l'historique complet
-        </button>
-    </div> 
-
-    <h2>C'est quoi l'algorithme de récupération ?</h2>
-    <p class="text">
-        Cet algorithme vous permet de suivre votre récupération grâce à votre FC repos (=fréquence cardiaque au repos). Cet algorithme
-        peut vous indiquer si vous êtes prêt à fournir un effort physique aujourd'hui ou alors si il faut mieux se reposer aujourd'hui.
-        <strong>
-            Attention, l'algorithme recommande mais c'est vous qui restez maître de votre corps et de vos sensations.
-        </strong>
-    </p>
-
-    <h2>Petite limite</h2>
-    <p class="text">
-        Si vous avez une FC repos réellement supérieur à votre moyenne de 30J, le coach de SPRINTIA vous indiquera que c'est lié à un surentraînement.
-        Sauf que c'est pas forcément ça. Ça peut aussi vouloir dire que vous êtes en train de tomber malade, que vous êtes stressé ou 
-        juste que vous dormez super mal en ce moment.
-    </p>
+    </section> 
 
     <script src="../../assets/base-js/base.js"></script>
 

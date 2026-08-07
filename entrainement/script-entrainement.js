@@ -398,16 +398,12 @@ async function saveDescription() {
         note:noteWorkout
     })
 
-    setTimeout(() => {
-        buttonSave.textContent = "Sauvegardé"
-    }, 650);
+    buttonSave.textContent = "Sauvegardé"
+    await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
 
-    setTimeout(() => {
-        // remise à l'état d'origine
-        buttonSave.disabled = false
-        buttonSave.textContent = "Sauvegarder la note"
-        buttonSave.style.display = "none"
-    }, 1300);
+    buttonSave.disabled = false
+    buttonSave.textContent = "Sauvegarder la note"
+    buttonSave.style.display = "none"
 
     return
 }

@@ -18,144 +18,147 @@
 </head>
 
 <body>
-    <div class="container-logo-dynamique">
-        <div class="logo-dynamique"></div>
-    </div>
-    
-    <section class="header">
-
-        <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
-
-        
-        <ul class="header-container-items">
-
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                Entraînement
-            </li>
-            <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                Progression
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                Outils
-            </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                Plus
-            </li>
-
-        </ul>
-
-    </section>
-    <section class="tab-bars">
-
-        <ul class="tab-bars-container-items">
-
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
-                <p class="tab-bars-items-name">Entraînement</p>
-            </li>
-            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
-                <i class="fs-icon_progression"></i>
-                <p class="tab-bars-items-name">Progression</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
-                <i class="fs-icon_outils"></i>
-                <p class="tab-bars-items-name">Outils</p>
-            </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
-                <p class="tab-bars-items-name">Plus</p>
-            </li>
-
-        </ul>
-
-    </section>
-    
-    <div class="toolbar">
-        <h1>Indulgence de course</h1>
-        <a href="parametres-indulgence-course.html"><i class="fs-icon_parametres"></i></a>
-    </div>
-
-    <section class="container-box">
-
-        <div class="zone-coach">
-            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-            <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
-                Chargement...
-            </p>
-            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mon indulgence')">Analyser mon indulgence</button>
+    <main>
+        <div class="container-logo-dynamique">
+            <div class="logo-dynamique"></div>
         </div>
-        <!-- Fenetre flottante pour SPRINTIA Briefing -->
-        <section class="background-SPRINTIA-briefing">
+        
+        <section class="header">
+
+            <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
+
             
-            <div class="windows-SPRINTIA-briefing">
+            <ul class="header-container-items">
 
-                <div class="windows-SPRINTIA-briefing-head">
-                    <p class="title">SPRINTIA Briefing</p>
-                    <i class="fs-icon_fermer" onclick="closeWindows()"></i>
-                </div>
-                <p class="explanation-briefing">
-                    SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                    le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                    <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    Entraînement
+                </li>
+                <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    Progression
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    Outils
+                </li>
+                <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    Plus
+                </li>
+
+            </ul>
+
+        </section>
+        <section class="tab-bars">
+
+            <ul class="tab-bars-container-items">
+
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Entraînement')">
+                    <i class="fs-icon_entrainement"></i>
+                    <p class="tab-bars-items-name">Entraînement</p>
+                </li>
+                <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Progression')">
+                    <i class="fs-icon_progression"></i>
+                    <p class="tab-bars-items-name">Progression</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Outils')">
+                    <i class="fs-icon_outils"></i>
+                    <p class="tab-bars-items-name">Outils</p>
+                </li>
+                <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
+                    <i class="fs-icon_plus_horizontal"></i>
+                    <p class="tab-bars-items-name">Plus</p>
+                </li>
+
+            </ul>
+
+        </section>
+        
+        <div class="toolbar">
+            <h1>Indulgence de course</h1>
+            <a href="parametres-indulgence-course.html"><i class="fs-icon_parametres"></i></a>
+        </div>
+
+        <section class="container-box">
+
+            <div class="zone-coach">
+                <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
+                <p class="zone-coach-interpretation" id="reponse-coach-indulgence">
+                    Chargement...
                 </p>
-                <div class="container-button-windows-SPRINTIA-briefing">
-                    <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
-                </div>
-
+                <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mon indulgence')">Analyser mon indulgence</button>
             </div>
 
-        </section> 
+        </section>
 
-    </section>
+        <section class="container-box">
 
-    <section class="container-box">
+            <div class="large-zone-result">
+                <p class="large-zone-result-name">Distance réel sur 7J</p>
+                <p class="large-zone-result-result" id="reponse-algo-allure">
+                    0 km
+                </p>
+            </div>
+            <div class="large-zone-result">
+                <p class="large-zone-result-name">Distance hebdo. conseillée</p>
+                <p class="large-zone-result-result" id="reponse-algo-indulgence">
+                    0 - 0 km
+                </p>
+            </div>
+                
+        </section>
 
-        <div class="large-zone-result">
-            <p class="large-zone-result-name">Distance réel sur 7J</p>
-            <p class="large-zone-result-result" id="reponse-algo-allure">
-                0 km
-            </p>
+        <h2>Suivi de la distance (4 sem.)</h2>
+        <div class="chart-container" id="conteneur-graphique">
+            <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+            <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
-        <div class="large-zone-result">
-            <p class="large-zone-result-name">Distance hebdo. conseillée</p>
-            <p class="large-zone-result-result" id="reponse-algo-indulgence">
-                0 - 0 km
-            </p>
-        </div>
+        <section class="container-block"> 
+
+            <div class="container-block-data">
+                <p class="container-block-data-header">Distance 28J</p>
+                <p class="container-block-data-data" id="somme-28J">0,00  <small>km</small></p>
+            </div>
+            <div class="container-block-data">
+                <p class="container-block-data-header">Distance moy. par semaine</p>
+                <p class="container-block-data-data" id="km-par-semaine">0,00  <small>km</small></p>
+            </div>
+
+        </section>
+
+        <h2>C'est quoi l'Indulgence de course ?</h2>
+        <p class="text">
+            L'indulgence de course vous aide à ajuster votre kilométrage des 7 prochains jours pour rester dans une progression 
+            optimale, sans dépasser votre limite et éviter de vous blesser. 
+            <strong>
+                Cet outil est conçu pour les personnes qui débutent la course à pied, ou qui reprennent la course à pied après 
+                une pause, voire qui se lancent dans un nouveau plan d'entrainement.
+            </strong>
+        </p>
+    </main>
+
+    <!-- Fenetre flottante pour SPRINTIA Briefing -->
+    <section class="background-SPRINTIA-briefing">
             
-    </section>
+        <div class="windows-SPRINTIA-briefing">
 
-    <h2>Suivi de la distance (4 sem.)</h2>
-    <div class="chart-container" id="conteneur-graphique">
-        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
-    </div>
-    <section class="container-block"> 
+            <div class="windows-SPRINTIA-briefing-head">
+                <p class="title">SPRINTIA Briefing</p>
+                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+            </div>
+            <p class="explanation-briefing">
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+            </p>
+            <div class="container-button-windows-SPRINTIA-briefing">
+                <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+            </div>
 
-        <div class="container-block-data">
-            <p class="container-block-data-header">Distance 28J</p>
-            <p class="container-block-data-data" id="somme-28J">0,00  <small>km</small></p>
         </div>
-        <div class="container-block-data">
-            <p class="container-block-data-header">Distance moy. par semaine</p>
-            <p class="container-block-data-data" id="km-par-semaine">0,00  <small>km</small></p>
-        </div>
 
-    </section>
-
-    <h2>C'est quoi l'Indulgence de course ?</h2>
-    <p class="text">
-        L'indulgence de course vous aide à ajuster votre kilométrage des 7 prochains jours pour rester dans une progression 
-        optimale, sans dépasser votre limite et éviter de vous blesser. 
-        <strong>
-            Cet outil est conçu pour les personnes qui débutent la course à pied, ou qui reprennent la course à pied après 
-            une pause, voire qui se lancent dans un nouveau plan d'entrainement.
-        </strong>
-    </p>
+    </section> 
 
     <script src="../../assets/base-js/base.js"></script>
 

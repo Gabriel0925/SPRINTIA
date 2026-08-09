@@ -94,7 +94,7 @@
 
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-tcx" accept=".tcx, .txt, text/plain" style="display: none;" onchange="uploadFileTCX(event)">
+        <input type="file" id="file-input-tcx" accept=".tcx" style="display: none;" onchange="uploadFileTCX(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
         <button class="size-block" onclick="document.getElementById('file-input-tcx').click()" id="button-import-tcx">Importer TCX</button>
     </div>

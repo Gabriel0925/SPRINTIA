@@ -146,7 +146,9 @@ async function uploadFileTCX(event) {
             } else if (rpeWorkout > 10) { // si supérieur à 10 on le met sur la valeur max (=10)
                 rpeWorkout = 10
             }
-            let chargeEntrainementWorkout = Math.floor(rpeWorkout*workoutTime)
+            
+            let coefRpe = {1:0.2, 2:0.4, 3:0.7, 4:1.1, 5:1.6, 6:2.3, 7:3.2, 8:4.5, 9:6.2, 10:8.5}
+            let chargeEntrainementWorkout = Math.floor(coefRpe[rpeWorkout]*workoutTime)
 // !!! fin de à revoir !!!
 
             // Calcul de la transpiration

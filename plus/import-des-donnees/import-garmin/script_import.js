@@ -277,7 +277,7 @@ async function uploadFileGarmin(event) {
             button.textContent = "Une erreur s'est produite"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } finally {
-            button.textContent = "Importer fichier Garmin"
+            button.textContent = "Importer CSV"
             button.disabled = false
         }
 

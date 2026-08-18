@@ -1,8 +1,27 @@
 async function uploadFileTCX(event) {
     const dicoNameSport = { // init dico pr les sports
-        "Running":"Course",
-        "Biking":"Vélo",
-        "Other":"Libre"
+        // COURSE A PIED
+        "running":"Course",
+        "run":"Course",
+        "course":"Course",
+        "course à pied":"Course",
+        "course a pied":"Course",
+        "trail":"Course",
+        "treadmill":"Course", // Tapis de course
+
+        // VELO
+        "cycling":"Vélo",
+        "biking":"Vélo",
+        "bike":"Vélo",
+        "velo":"Vélo",
+        "vélo":"Vélo",
+        "mountain_biking":"Vélo",
+        "vtt":"Vélo",
+        "indoor_cycling":"Vélo", // home-trainer
+        "gravel":"Vélo",
+        
+        // OTHER
+        "other":"Libre"
     }
 
     const fileTCX = event.target.files[0]
@@ -24,7 +43,7 @@ async function uploadFileTCX(event) {
             const tableauDataLap = Array.from(dataLap) // transformation des balises en tableau js pr les laps
 
             // Recup du sport et de la date
-            const workoutSport = dicoNameSport[xmlDoc.querySelector("Activity").getAttribute("Sport")] || "Libre" // si le sport n'est pas dans le dico on le met en Libre
+            const workoutSport = dicoNameSport[xmlDoc.querySelector("Activity").getAttribute("Sport").toLowerCase()] || "Libre" // si le sport n'est pas dans le dico on le met en Libre
             let xmlDate = xmlDoc.querySelector("Id").textContent // on obtient ça : 2026-03-28T08:08:56Z
             let tableauXmlDate = xmlDate.split("T") // ["2026-03-28", "08:08:56Z"]
             const workoutDate = tableauXmlDate[0] // 2026-03-28

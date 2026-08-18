@@ -15,7 +15,7 @@ async function majLocalStorage(versionDbStockee) {
     if (versionDbStockee == "5.2") {
         let coefRpe = {1:0.2, 2:0.4, 3:0.7, 4:1.1, 5:1.6, 6:2.3, 7:3.2, 8:4.5, 9:6.2, 10:8.5}
         
-        // parcours de tous les entraînements et recalcule de la charge d'entrainement car on passe de la méthode rpe*charge à la méthode sRPE grâce à des coefs
+        // parcours de tous les entraînements et calcul de la nouvelle charge d'entrainement car on passe de la méthode rpe*charge à la méthode sRPE grâce à des coefs
         const workoutUser = await db.entrainement.toArray()
         for (const workout of workoutUser) {
             let chargeEntrainementWorkout = Math.floor(workout.duree*coefRpe[workout.rpe])

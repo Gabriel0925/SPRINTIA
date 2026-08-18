@@ -1119,7 +1119,7 @@ div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
     }
 }
 div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active::before {
-    opacity:0;
+    background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
 div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
@@ -2683,6 +2683,12 @@ div.card-releases {
 }
 div.carousel-content a:nth-child(1) .card-releases {
     margin-left: 0;
+    margin-left: var(--SPACE_XS);
+    box-shadow: 1px 1px 18px var(--COLOR_ACCENT);
+}
+div.carousel-content a:nth-child(1) .card-releases.new-maj {
+    margin-left: var(--SPACE_XS);
+    box-shadow: 1px 1px 18px var(--COLOR_ACCENT);
 }
 @media (hover: hover) and (pointer: fine) {
     div.card-releases:hover {

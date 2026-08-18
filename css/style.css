@@ -1589,6 +1589,7 @@ div.zone-coach button {
     border-radius: var(--BORDER_BIG);
 
     color: var(--COLOR_BACKGROUND);
+    background-color: var(--COLOR_ACCENT_ACTIVE);
     background-color: transparent;
     overflow: hidden;
     position: relative;

@@ -1613,7 +1613,7 @@ div.zone-coach button::before {
     }
 }
 div.zone-coach button:active::before {
-    opacity:0.2;
+    background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
 div.zone-coach button:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);

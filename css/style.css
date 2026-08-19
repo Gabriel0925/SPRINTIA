@@ -255,7 +255,7 @@ p.text.small {
 }
 
 
-strong {font-weight: var(--FW_BOLD); color: var(--COLOR_TEXT_PRIMARY);}
+strong {font-weight: var(--FW_BOLD);}
 
 
 a.lien {
@@ -2698,7 +2698,7 @@ div.carousel-content div.card-releases div.card-releases-image p.version span.po
     display: block;
 }
 div.carousel-content div.card-releases div.card-releases-image p.date{
-    font-size: var(--P);
+    font-size: var(--P_SMALL);
     margin-top: var(--SPACE_XXS);
 }
 div.carousel-content div.card-releases p.description-maj {

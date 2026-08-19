@@ -400,6 +400,7 @@ section.header {
 
 section.header div.logo {
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
@@ -436,6 +437,7 @@ section.header ul.header-container-items {
     margin: var(--SPACE_XS) 0;
     
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
@@ -519,6 +521,7 @@ section.tab-bars ul.tab-bars-container-items{
     flex-grow: 1;
 
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
@@ -621,6 +624,7 @@ div.container-logo-dynamique div.logo-dynamique {
     border-radius: var(--BORDER_NORMAL);
     
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
@@ -1357,6 +1361,7 @@ div.toolbar i:active {
 div.toolbar i#icon-menu-many-action {
     background-color: transparent;
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
@@ -1404,6 +1409,7 @@ div.button-flottant {
     padding: var(--SPACE_M);
     
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
@@ -1471,6 +1477,7 @@ div.menu-many-action {
     right: 0;
 
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
@@ -1527,13 +1534,13 @@ div.menu-many-action.open li:nth-child(6) {
         transform: scale(1.025);
     }
     div.menu-many-action li:hover {
-        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
         color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.06);
     }
 }
 div.menu-many-action li:active{
-    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.06);
 }
@@ -1957,6 +1964,7 @@ div.my-control i {
     align-items: center;
 
     background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
@@ -1979,7 +1987,7 @@ div.my-control i {
     }
 }
 div.my-control i:active {
-    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 

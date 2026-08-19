@@ -11,7 +11,7 @@ const buttonFonction  = {
 async function windowsBriefing(textInButton) {
     document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
-    document.querySelector("body").classList.add("no-scroll") 
+    document.querySelector("body").classList.add("briefing-open") 
     document.querySelector("main").classList.add("briefing-open")
 
     promptForIA = await buttonFonction[textInButton]() // on créer le prompt
@@ -21,7 +21,7 @@ async function windowsBriefing(textInButton) {
 }
 function closeWindows() {
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
-    document.querySelector("body").classList.remove("no-scroll")
+    document.querySelector("body").classList.remove("briefing-open")
     document.querySelector("main").classList.remove("briefing-open")
 
     setTimeout(() => {

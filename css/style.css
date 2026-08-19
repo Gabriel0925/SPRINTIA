@@ -1,5 +1,11 @@
 :root {
-    /* Éléments de base */
+    /* ACCENT */
+    --COLOR_ACCENT: #5A97F2;
+    --COLOR_ACCENT_HOVER: #75a7f0;
+    --COLOR_ACCENT_ACTIVE: #8fb3e9;
+    --COLOR_ACCENT_TEXT: #8eccff;
+
+    /* BASE */
     --COLOR_BACKGROUND: #000000;
     --COLOR_BACKGROUND_CARD: #232222;
     --COLOR_BACKGROUND_CARD_HOVER: #373636;
@@ -8,49 +14,53 @@
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
-    /* Accent classique */
-    --COLOR_ACCENT: #5A97F2;
-    --COLOR_ACCENT_HOVER: #75a7f0;
-    --COLOR_ACCENT_ACTIVE: #8fb3e9;
-    --COLOR_ACCENT_TEXT: #8eccff;
+    /* GLASSMORPHISM
+    --COLOR_GLASSMORPHISM: rgba(38, 38, 40, 0.6);
+    --BLUR_GLASSMORPHISM: 16px;
+    --SATURATE_GLASSMORPHISM: 150%; */
 
-    /* Le dégradé dédié pour le coach */
-    --COLOR_IA_START: #4689ef;
-    --COLOR_IA_END: #94b8ef;
+    /* BRIEFING */
+    --COLOR_BRIEFING_START: #4689ef;
+    --COLOR_BRIEFING_END: #94b8ef;
 
+    /* 3D */
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.15);
 
-    /* Tailles & Configuration de la font */
-    --H0: 2.5rem; 
-    --H1: 2rem;
-    --H2: 1.6rem;
-    --H3: 1.2rem;
+    /* FONT */
+    --H1: 1.9rem;
+    --FW_BOLD: 700;
+    --LINE_HEIGHT_TITLE: 1.2;
+
+    --H2: 1.35rem;
+    --FW_BOLD_SMALL: 600;
+
     --P: 1rem;
-    --P_SMALL: 0.9rem;
+    --P_SMALL: 0.75rem;
+    --LINE_HEIGHT_TEXT: 1.4;
+    --FW_REGULAR: 400;
 
-    --LINE_HEIGHT: 1.5;
+    --FW_BUTTON: 500;
     --FONT_FAMILY: "Zalando Sans SemiExpanded";
-    --FONT_WEIGHT_BUTTON: 500;
 
-    /* Arrondi des bordures */
+    /* BORDER RADIUS */
+    --BORDER_SMALL: 0.75rem;
     --BORDER_NORMAL: 1rem;
     --BORDER_BIG: 1.5rem;
 
-    /* Valeur d'enfoncement d'un élément lors d'un clic (pour les ':active') */
+    /* SCALE */
     --SCALE_SMALL: 0.975;
     --SCALE_NORMAL: 0.95;
     --SCALE_SUP: 1.05;
 
-    /* Marges  */
-    --SPACE_XXS: 0.3rem;
+    /* MARGE */
+    --SPACE_XXS: 0.25rem;
     --SPACE_XS: 0.5rem;
-    --SPACE_S_SMALL: 0.9rem;
-    --SPACE_S: 1rem;
-    --SPACE_M: 1.5rem;
-    --SPACE_L: 2rem;
-    --SPACE_XL: 3rem;
+    --SPACE_S: 0.75rem;
+    --SPACE_M: 1rem; /*Standart*/
+    --SPACE_L: 1.5rem;
+    --SPACE_XL: 2rem;
     
-    /* Autres variables */
+    /* OTHER */
     --MAX_WIDTH: 1500px;
     --TIME_TRANSITION: 0.2s;
     --TIME_TRANSITION_FAST: 0.1s;
@@ -70,29 +80,37 @@
     font-style: normal;
     font-display: block;
 }
-/* Police Zalando-sans-semiexpanded-regular */
+/* zalando-sans-semiexpanded-regular - latin */
 @font-face {
-    font-display: swap;
-    font-family: 'Zalando Sans SemiExpanded';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../assets/fonts/zalando-sans-semiexpanded-v2-latin-regular.woff2') format('woff2'); 
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Zalando Sans SemiExpanded';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/zalando-sans-semiexpanded-v3-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* Police Zalando-sans-semiexpanded-regular font-weight : 500 */
+/* zalando-sans-semiexpanded-500 - latin */
 @font-face {
-    font-display: swap;
-    font-family: 'Zalando Sans SemiExpanded';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../assets/fonts/zalando-sans-semiexpanded-v2-latin-500.woff2') format('woff2'); 
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Zalando Sans SemiExpanded';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/zalando-sans-semiexpanded-v3-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* Police Zalando-sans-semiexpanded-regular font-weight : 900 */
+/* zalando-sans-semiexpanded-600 - latin */
 @font-face {
-    font-display: swap;
-    font-family: 'Zalando Sans SemiExpanded';
-    font-style: normal;
-    font-weight: 900;
-    src: url('../assets/fonts/zalando-sans-semiexpanded-v2-latin-900.woff2') format('woff2'); 
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Zalando Sans SemiExpanded';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/zalando-sans-semiexpanded-v3-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* zalando-sans-semiexpanded-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Zalando Sans SemiExpanded';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/zalando-sans-semiexpanded-v3-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* Configuration des icônes de l'application */
 i {
@@ -106,7 +124,6 @@ i {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 .fs-icon_1RM:before {content: "\e900";}
 .fs-icon_a_propos:before {content: "\e901";}
 .fs-icon_add:before {content: "\e902";}
@@ -156,7 +173,7 @@ i {
 .fs-icon_velo:before {content: "\e92e";}
 .fs-icon_zones_cardiaques:before {content: "\e92f";}
 
-/* --- Reset du style de base d'une page d'HTML --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -167,31 +184,29 @@ i {
     /* Pour les barres de slide (pr Firefox) */
     scrollbar-color: var(--COLOR_TEXT_SECONDARY) transparent;
     scrollbar-width: thin;
-
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    -webkit-tap-highlight-color: transparent;/* Pour désactiver le highlight bleu lors d'un clic sur les balises a majoritairement */
 }
 /* --- Reset du style pour les sliders */
-*::-webkit-scrollbar {/* Pour l'épaisseur */width: 6px;}
+*::-webkit-scrollbar {width: 6px;}
 *::-webkit-scrollbar-track {background: transparent;}
 *::-webkit-scrollbar-thumb {background: var(--COLOR_TEXT_SECONDARY);}
 
+
 body {
     font-family: var(--FONT_FAMILY); 
-    /* Pour que les éléments en position 'absolute' respecte les contraintes du body comme le max-width */
-    position: relative;
-    line-height: var(--LINE_HEIGHT);
+    position: relative; /* Pour que les éléments en position 'absolute' respecte les contraintes du body comme le max-width */
+    line-height: var(--LINE_HEIGHT_TEXT);
     background-color: var(--COLOR_BACKGROUND); 
     color: var(--COLOR_TEXT_PRIMARY);
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_M);
     padding-bottom: 10rem;
-    /* Pour désactiver le highlight bleu lors d'un clic sur les balises a majoritairement */
-    -webkit-tap-highlight-color: transparent;
 }
-body.no-scroll {
+body.briefing-open {
     overflow: hidden;
     touch-action: none;
 }
@@ -199,42 +214,68 @@ main {
     transform-origin: top center; /*pour que le scale se fasse à partir du centre de l'écran*/
     transition: transform ease-out var(--TIME_TRANSITION);
 }
-main.briefing-open {
-    transform: scale(0.95);
-}
+main.briefing-open {transform: scale(0.95);}
+
 
 h1{
-    font-size: var(--H2);
+    font-size: var(--H1);
+    font-weight: var(--FW_BOLD);
+    line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
-    margin-bottom: var(--SPACE_S);
-    margin-top: var(--SPACE_XS);
-}
-h1#jrm-coach-title strong {
-    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    font-weight: 1000;
-    margin-left: 0.12rem;
 }
 h2{
-    font-size: var(--H3);
+    font-size: var(--H2);
+    font-weight: var(--FW_BOLD_SMALL);
+    line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
-    margin: var(--SPACE_M) 0;
+}
+
+
+p {
+    font-size: var(--P);
+}
+p.component {
+    font-weight: var(--FW_REGULAR);
+    line-height: var(--LINE_HEIGHT_TEXT);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 p.text {
-    font-size: var(--P);
+    font-weight: normal;
+    line-height: var(--LINE_HEIGHT_TEXT);
     color: var(--COLOR_TEXT_SECONDARY);
-    margin: var(--SPACE_S_SMALL) 0px;
 }
+p.text.small {
+    font-size: var(--P_SMALL);
+}
+
+
+strong {font-weight: var(--FW_BOLD);}
+
+a.lien {
+    color: var(--COLOR_ACCENT);
+    cursor: pointer;
+    font-weight: var(--FW_BUTTON);
+    text-decoration: underline;
+    transition: letter-spacing ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    a.lien:hover{
+        color: var(--COLOR_ACCENT_HOVER);
+        letter-spacing: 1px;
+    }
+}
+a.lien:active{
+    color: var(--COLOR_ACCENT_ACTIVE);
+    letter-spacing: 1px;
+}
+
 
 button{
     background-color: var(--COLOR_ACCENT);
     border: none;
     color: var(--COLOR_BACKGROUND);
     margin: var(--SPACE_XS);
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     display: block;
@@ -242,7 +283,7 @@ button{
     min-width: 110px; /* ! important */
     
     font-family: var(--FONT_FAMILY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--P);
     
     appearance: none;
@@ -265,8 +306,7 @@ button:active{
     background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
-/* Pour les boutons dans un tableau */
-button.table {
+button.table { /* Pour les boutons dans un tableau */
     background-color: transparent;
     border: none;
     margin: 0px auto;
@@ -277,7 +317,7 @@ button.table {
     color: var(--COLOR_ACCENT);
     
     font-family: var(--FONT_FAMILY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--P);
     
     appearance: none;
@@ -300,29 +340,8 @@ button.table:active{
     color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
-/* Pour les boutons dynamique */
-button.size-block {
+button.size-block { /* Pour les boutons dynamique */
     width: 270px;
-}
-
-
-/* Pour des liens vers une adresse */
-a.lien {
-    color: var(--COLOR_ACCENT);
-    cursor: pointer;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    text-decoration: underline;
-    transition: letter-spacing ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    a.lien:hover{
-        color: var(--COLOR_ACCENT_HOVER);
-        letter-spacing: 1px;
-    }
-}
-a.lien:active{
-    color: var(--COLOR_ACCENT_ACTIVE);
-    letter-spacing: 1px;
 }
 
 
@@ -339,20 +358,14 @@ section.header {
     margin-bottom: var(--SPACE_S);
 }
 
-section.header a {
-    display: flex;
-    max-width: 300px;
-}
 section.header div.logo {
     background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                0px 5px 20px var(--COLOR_BACKGROUND);
-
-    padding: 0.75rem;
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT), 0px 5px 20px var(--COLOR_BACKGROUND);
+    padding: var(--SPACE_S);
     margin: var(--SPACE_XS) 0;
     border-radius: var(--BORDER_NORMAL);
-    font-weight: 1000;
-    font-size: var(--H3);
+    font-weight: var(--FW_BOLD);
+    font-size: var(--H2);
     pointer-events: all;
     cursor: pointer;
     -webkit-user-select: none;
@@ -376,15 +389,11 @@ section.header ul.header-container-items {
     display: flex;
     align-items: center;
     pointer-events: all;
-
     padding: var(--SPACE_XXS);
-    margin: var(--SPACE_XS) 0;
     gap: var(--SPACE_XXS);
-
+    margin: var(--SPACE_XS) 0;
     background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                0px 5px 20px var(--COLOR_BACKGROUND);
-                
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT), 0px 5px 20px var(--COLOR_BACKGROUND);
     border-radius: 1.25rem;
 
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
@@ -402,15 +411,12 @@ section.header ul.header-container-items li.header-items{
     align-items: center;
     justify-content: center;
     gap: var(--SPACE_XS);
-
     background-color: transparent;
     color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
-    font-size: var(--H3);
+    font-size: var(--P);
     border-radius: var(--BORDER_NORMAL);
-    width: 180px;
-    padding: var(--SPACE_XS);
-
+    width: 160px;
+    padding: var(--SPACE_S);
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -455,12 +461,10 @@ section.tab-bars {
     display: none;
     align-items: center;
     justify-content: right;
-    
     position: fixed;
     gap: 0.75rem;
-    padding: 0 var(--SPACE_S);
+    padding: 0 var(--SPACE_M);
     padding-bottom: var(--SPACE_L);
-    
     pointer-events: none;
     bottom: 0;
     left: 0;
@@ -472,11 +476,9 @@ section.tab-bars ul.tab-bars-container-items{
     max-width: 475px;
     height: 65px;
     flex-grow: 1;
-
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
                 0px 5px 20px var(--COLOR_BACKGROUND);
-                
     border-radius: 1.75rem;
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
@@ -499,8 +501,6 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     text-align: center;
     border-radius: var(--BORDER_BIG);
     color: var(--COLOR_TEXT_PRIMARY);
-    font-size: 0.56rem;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
     overflow: hidden;
     width: 60px;
     flex-grow: 1;
@@ -546,7 +546,10 @@ section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected
     color: var(--COLOR_TEXT_PRIMARY);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
-    font-size: 1.35rem;
+    font-size: 1.5rem;
+}
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items p{
+    font-size: 0.55rem;
 }
 
 
@@ -571,7 +574,7 @@ div.container-logo-dynamique div.logo-dynamique {
 
     text-align: center;
     font-size: var(--H2);
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     white-space: nowrap;
     overflow: hidden;
 
@@ -641,7 +644,7 @@ div.config-profil {
     gap: var(--SPACE_XS);
     background-color: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     height: fit-content;
     max-width: 501px;
     padding: var(--SPACE_XS);
@@ -740,7 +743,7 @@ section.segmented-button div.segmented-button-button {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
         box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
         color: var(--COLOR_ACCENT_TEXT);
-        font-weight: var(--FONT_WEIGHT_BUTTON);
+        font-weight: var(--FW_BUTTON);
         transform: scale(var(--SCALE_SUP));
     }
 }
@@ -751,7 +754,7 @@ section.segmented-button div.segmented-button-button:active {
     transform: scale(var(--SCALE_SUP));
     color: var(--COLOR_ACCENT_TEXT);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
@@ -760,7 +763,7 @@ section.segmented-button div.segmented-button-button.actif {
     color: var(--COLOR_ACCENT_TEXT);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
@@ -833,7 +836,7 @@ div.carousel div.card-tool div.icone i{
 div.carousel div.card-tool div.icone p.title{
     margin: auto 0;
     color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: 1.1rem;
     
     display: -webkit-box;
@@ -910,7 +913,7 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
     padding: var(--SPACE_XXS);
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.name-workout{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--H3);
 
     display: -webkit-box;
@@ -920,7 +923,7 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
     overflow: hidden;
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.sport-date-workout{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--P);
 
@@ -931,7 +934,7 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
     overflow: hidden;
 }
 section.container-workout-cards div.cards-history-workout p.charge-workout strong{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     color: var(--COLOR_ACCENT_TEXT);
 }
 section.container-workout-cards div.cards-history-workout div.container-data-workout {
@@ -955,7 +958,7 @@ section.container-workout-cards div.cards-history-workout div.data-workout-paire
     flex-grow: 1;
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-paire p strong{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     letter-spacing: 0.1px;
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-paire p.muscles-workout{
@@ -975,7 +978,7 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
     margin-top: var(--SPACE_S_SMALL);
 }
 section.container-workout-cards div.cards-history-workout div.action-button-card-workout button{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     background-color: var(--COLOR_ACCENT);
     color: var(--COLOR_BACKGROUND);
     font-size: var(--P);
@@ -1042,7 +1045,7 @@ section.container-block div.container-block-data p.container-block-data-header{
 }
 section.container-block div.container-block-data p.container-block-data-data{    
     font-size: var(--H3);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     text-align: left;
     color: var(--COLOR_TEXT_PRIMARY);
 }
@@ -1068,7 +1071,7 @@ textarea {
     padding: var(--SPACE_S);
     font-size: var(--P);
     font-family: var(--FONT_FAMILY);
-    line-height: var(--LINE_HEIGHT);
+    line-height: var(--LINE_HEIGHT_TEXT);
 
     border: 2px solid transparent;
     resize: vertical;
@@ -1110,7 +1113,7 @@ div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
     width: 100%;
     height: 100%;
     transform: scale(1.35);
-    background: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    background: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     z-index: -1;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1186,7 +1189,7 @@ section.container-widget-progression section.widget-charge-entrainement div.widg
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header p.widget-charge-entrainement-header-title{
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header i{
     font-size: var(--H2);
@@ -1200,10 +1203,10 @@ section.container-widget-progression section.widget-charge-entrainement div.widg
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score{
     margin-top: var(--SPACE_XS);
     font-size: var(--H1);
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
 }
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score small{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
@@ -1211,7 +1214,7 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
 
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut{
     font-size: var(--H3);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     color: var(--COLOR_ACCENT_TEXT);
     margin-top: var(--SPACE_XS);
 }
@@ -1260,17 +1263,17 @@ section.container-small-widget-progression section.small-widget p.small-widget-t
 
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     margin-top: var(--SPACE_XS);
     min-height: 48px;
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data{
     margin-top: var(--SPACE_XS);
     font-size: var(--H1);
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data small{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
@@ -1312,7 +1315,7 @@ div.toolbar i {
     border-radius: 50%;
 
     font-size: var(--H1);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 transform ease-out var(--TIME_TRANSITION_FAST);
@@ -1415,7 +1418,7 @@ div.button-flottant:active {
 }
 div.button-flottant p{
     font-size: var(--H3);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 @media (max-width: 1140px) {
     /* on le repasse en display block et width,... à 0 pour que le bouton se replace en bas a droite */
@@ -1485,7 +1488,7 @@ div.menu-many-action li {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     cursor: pointer;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
@@ -1572,12 +1575,12 @@ div.zone-coach::before {
 div.zone-coach p.zone-coach-name {
     font-size: var(--H3);
     margin-bottom: var(--SPACE_S_SMALL);
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     margin-left: 0.12rem;
     color: var(--COLOR_TEXT_PRIMARY);
 }
 div.zone-coach p.zone-coach-name strong{
-    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1604,7 +1607,7 @@ div.zone-coach button::before {
     width: 100%;
     height: 100%;
     transform: scale(1.35);
-    background: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    background: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     z-index: -1;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1669,7 +1672,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head p.title{
     font-size: var(--H3);
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -1792,7 +1795,7 @@ section.container-round-input div.round-input-item.selected{
     background-color: var(--COLOR_ACCENT);
     color: var(--COLOR_BACKGROUND);
     border-radius: 50%;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     border: 3px solid var(--COLOR_TEXT_PRIMARY);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1849,7 +1852,7 @@ section.container-workout-generate section.label-workout-day p.instruction-label
     background-color: var(--COLOR_ACCENT_TEXT);
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 section.container-workout-generate section.label-workout-day p.instruction-label.phase-recuperation{
     background-color: var(--COLOR_TEXT_SECONDARY);
@@ -1866,12 +1869,12 @@ section.container-workout-generate section.fractionne-workout-day p.nb-repetitio
     font-size: var(--H3);
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions strong{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 section.container-workout-generate section.fractionne-workout-day div.container-structure p{
     margin: var(--SPACE_S) var(--SPACE_L);
     padding: var(--SPACE_XS);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 section.container-workout-generate section.fractionne-workout-day div.container-structure p.duree-repetition{
     border-left: 5px solid var(--COLOR_ACCENT_TEXT);
@@ -2015,7 +2018,7 @@ ol.container-list-choice li.choice-item.selected{
     outline: 3px solid var(--COLOR_TEXT_PRIMARY);
     opacity: 1;
     border-radius: var(--BORDER_BIG);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 @media (max-width : 900px) {
     ol.container-list-choice{
@@ -2059,7 +2062,7 @@ div.zone-result {
     overflow: hidden;
 }
 div.zone-result p.zone-result-name-result{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--H3);
 
     margin-bottom: var(--SPACE_XS);
@@ -2084,12 +2087,12 @@ div.large-zone-result {
     overflow: hidden;
 }
 div.large-zone-result p.large-zone-result-name {
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--H3);
 }
 div.large-zone-result p.large-zone-result-result {
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     font-size: var(--H1);
     padding: 0;
     margin: auto 0;
@@ -2138,7 +2141,7 @@ div.small-zone-result.color-zone:nth-child(6) {border: solid 2px #d672ff;}
 div.small-zone-result.color-zone:nth-child(7) {border: solid 2px #7b68ee;}
 div.small-zone-result p.small-zone-result-name {
     font-size: var(--H3);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 div.small-zone-result p.small-zone-result-indication {
     font-size: var(--P_SMALL);
@@ -2153,11 +2156,11 @@ div.small-zone-result div.container-result {
     gap: var(--SPACE_XS);
 }
 div.small-zone-result div.container-result p.small-zone-result-result{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--H2);
 }
 div.small-zone-result div.container-result p.small-zone-result-unit{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
 }
@@ -2200,7 +2203,7 @@ div.container-videos-yt div.card-video-yt:active {
     transform: scale(var(--SCALE_NORMAL));
 }
 div.container-videos-yt div.card-video-yt p{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     margin: var(--SPACE_S_SMALL);
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--P);
@@ -2236,7 +2239,7 @@ div.form p.indication {
     display: none;
     color: #ff6b6b;
     text-align: center;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     margin: var(--SPACE_XXS) var(--SPACE_S_SMALL);
     transform: translateY(-20px) scale(0);
     transition: all ease-out 0.2s;
@@ -2358,7 +2361,7 @@ input:not(:placeholder-shown) + .label-input {
     padding: var(--SPACE_XXS);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border-radius: var(--BORDER_BIG);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     transform: translateY(-40px) scale(0.8);
     z-index: 800;
 }
@@ -2466,10 +2469,10 @@ input:not(:placeholder-shown) + .label-input {
     margin-right: var(--SPACE_S);
 }
 .slider-name strong{
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 }
 .slider-name span.RPE {
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     padding: 0.25rem var(--SPACE_S_SMALL);
     margin: 0 var(--SPACE_XS);
@@ -2527,7 +2530,7 @@ div.form-different-button {
     border-radius: var(--BORDER_NORMAL);
     border: 3px solid var(--COLOR_ACCENT);
     color: var(--COLOR_ACCENT);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
 
     display: flex;
     align-items: center;
@@ -2601,7 +2604,7 @@ table tr td {
 table tr th {
     padding: var(--SPACE_XS);
     color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     font-size: var(--P);
     min-width: 130px;
 }
@@ -2631,10 +2634,10 @@ div.visuel-version {
 div.visuel-version p.visuel-version-title{
     font-size: 2.3rem;
     text-align: center;
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     margin-bottom: var(--SPACE_M);
     
-    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2643,7 +2646,7 @@ div.visuel-version p.visuel-version-title{
 div.visuel-version p.visuel-version-description{
     font-size: var(--H2);
     text-align: center;
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_PRIMARY);
 }
 div.summary-version {
@@ -2652,7 +2655,7 @@ div.summary-version {
 div.summary-version p.summary-version-title {
     margin-bottom: var(--SPACE_S);
     font-size: var(--H3);
-    font-weight: var(--FONT_WEIGHT_BUTTON);
+    font-weight: var(--FW_BUTTON);
     padding-bottom: var(--SPACE_XS);
     border-bottom: solid 2px var(--COLOR_BACKGROUND_CARD_HOVER);
 }
@@ -2671,14 +2674,13 @@ div.carousel-content {
 div.carousel-content.table {
     display: block;
 }
-div.card-releases {
-    width: 280px;
+div.carousel-content div.card-releases {
+    width: 240px;
     background-color: var(--COLOR_BACKGROUND_CARD);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
     margin: var(--SPACE_XS);
-    position: relative;
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
@@ -2686,54 +2688,51 @@ div.card-releases {
 div.carousel-content a:nth-child(1) .card-releases {
     margin-left: 0;
 }
-div.card-releases span.point-rouge.visible {
-    background-color: red;
-    border-radius: 50%;
-    width: 8px;
-    height: 8px;
-
-    right: 0;
-    margin-right: 9px;
-    margin-top: 1px;
-
-    position: absolute;
-}
-div.carousel-content a:nth-child(1) .card-releases.new-maj {
-    margin-left: var(--SPACE_XS);
-    box-shadow: 1px 1px 18px var(--COLOR_ACCENT);
-}
 @media (hover: hover) and (pointer: fine) {
-    div.card-releases:hover {
+    div.carousel-content div.card-releases:hover {
         transform: translateY(-5px);
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-div.card-releases:active {
+div.carousel-content div.card-releases:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.card-releases-image {
-    font-size: var(--H2);
+div.carousel-content div.card-releases div.card-releases-image {
+    font-size: 1.4rem;
     text-align: left;
     border-bottom: 2px solid var(--COLOR_ACCENT);
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     padding-bottom: var(--SPACE_XS);
     padding-top: var(--SPACE_XXS);
     padding-left: var(--SPACE_XXS);
     color: var(--COLOR_TEXT_PRIMARY);
     margin-bottom: var(--SPACE_XS);
 }
-div.card-releases-image p.date{
-    font-size: var(--P);
+div.carousel-content div.card-releases div.card-releases-image p.version {
+    display: flex;
+}
+div.carousel-content div.card-releases div.card-releases-image p.version span.point-rouge.visible {
+    background-color: var(--COLOR_ACCENT);
+    border-radius: 50%;
+    width: 9px;
+    height: 9px;
+
+    margin-right: 10px;
+    margin-top: 12px;
+    display: block;
+}
+div.carousel-content div.card-releases div.card-releases-image p.date{
+    font-size: var(--P_SMALL);
     font-weight: normal;
     margin-top: var(--SPACE_XXS);
 }
-div.card-releases p.description-maj {
-    font-size: var(--P);
+div.carousel-content div.card-releases p.description-maj {
+    font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     padding: var(--SPACE_XXS);
     cursor: pointer;
-    min-height: 81px;
+    min-height: 74px;
 
     display: -webkit-box;
     -webkit-box-orient: vertical; 
@@ -2785,12 +2784,12 @@ div.action-list div.action-list-item p{
     font-size: var(--H3);
 }
 div.action-list div.action-list-item p strong.jrm-coach{
-    background-image: radial-gradient(circle, var(--COLOR_IA_START), var(--COLOR_IA_END));
+    background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     margin-left: 0.12rem;
 }
 
@@ -2817,7 +2816,7 @@ div.box-last-maj:active{
 div.box-last-maj div.content1 .card-releases-image-last-maj {
     font-size: var(--H2);
     text-align: left;
-    font-weight: 1000;
+    font-weight: var(--FW_BOLD);
     width: 100%;
     border-bottom: 2px solid var(--COLOR_ACCENT);
     padding-bottom: var(--SPACE_XS);

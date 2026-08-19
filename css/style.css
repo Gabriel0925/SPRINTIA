@@ -14,10 +14,10 @@
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
-    /* GLASSMORPHISM
+    /* GLASSMORPHISM */
     --COLOR_GLASSMORPHISM: rgba(38, 38, 40, 0.6);
     --BLUR_GLASSMORPHISM: 16px;
-    --SATURATE_GLASSMORPHISM: 150%; */
+    --SATURATE_GLASSMORPHISM: 150%;
 
     /* BRIEFING */
     --COLOR_BRIEFING_START: #4689ef;
@@ -27,7 +27,7 @@
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.15);
 
     /* FONT */
-    --H1: 1.9rem;
+    --H1: 1.78rem;
     --FW_BOLD: 700;
     --LINE_HEIGHT_TITLE: 1.2;
 
@@ -224,6 +224,20 @@ h1{
     line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
     margin-bottom: var(--SPACE_L);
+}
+h1#briefing {
+    background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+h1 strong#briefing {
+    background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 h2{
     font-size: var(--H2);
@@ -1301,9 +1315,7 @@ div.toolbar i {
     margin-left: auto;
 
     background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                0px 5px 20px var(--COLOR_BACKGROUND);
-
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_TEXT_PRIMARY);
     padding: var(--SPACE_XS);
     cursor: pointer;
@@ -1324,35 +1336,6 @@ div.toolbar i {
 div.toolbar i:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_SUP));
-}
-@keyframes animation_new_maj {
-    0% {transform: scale(1) rotate(0deg);}
-    40% {transform: scale(1.28) rotate(360deg);}
-    60% {transform: scale(1.05) rotate(360deg);}
-    85% {transform: scale(0.96) rotate(360deg);}
-    100% {transform: scale(1) rotate(360deg);}
-}
-div.toolbar i.fs-icon_update.new-maj {
-    background-color: var(--COLOR_ACCENT);
-    color: var(--COLOR_BACKGROUND);
-    animation: animation_new_maj 0.8s ease-out;
-}
-@media (hover: hover) and (pointer: fine) {
-    div.toolbar i.fs-icon_update.new-maj:hover {
-        background-color: var(--COLOR_ACCENT_HOVER);
-        transform: scale(var(--SCALE_SUP));
-    }
-}
-div.toolbar i.fs-icon_update.new-maj:active {
-    background-color: var(--COLOR_ACCENT_ACTIVE);
-    transform: scale(var(--SCALE_SUP));
-}
-/* pour la page d'entraînement */
-div.toolbar p.text-toolbar {
-    color: var(--COLOR_TEXT_SECONDARY);
-}
-div.toolbar p.text-toolbar strong{
-    color: var(--COLOR_TEXT_PRIMARY);
 }
 
 
@@ -1639,7 +1622,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
 
     display: none;
     flex-direction: column;
-    margin: auto var(--SPACE_S);
+    margin: auto var(--SPACE_M);
     padding: var(--SPACE_S);
     
     flex-grow: 1;

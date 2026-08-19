@@ -2678,13 +2678,25 @@ div.card-releases {
     border-radius: var(--BORDER_BIG);
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
     margin: var(--SPACE_XS);
+    position: relative;
+
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 div.carousel-content a:nth-child(1) .card-releases {
     margin-left: 0;
-    margin-left: var(--SPACE_XS);
-    box-shadow: 1px 1px 18px var(--COLOR_ACCENT);
+}
+div.card-releases span.point-rouge.visible {
+    background-color: red;
+    border-radius: 50%;
+    width: 9px;
+    height: 9px;
+
+    right: 0;
+    margin-right: 9px;
+    margin-top: 10px;
+
+    position: absolute;
 }
 div.carousel-content a:nth-child(1) .card-releases.new-maj {
     margin-left: var(--SPACE_XS);

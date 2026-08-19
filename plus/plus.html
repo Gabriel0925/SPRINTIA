@@ -82,6 +82,7 @@
 
             <a href="historique-versions/generation-26/v26.09.html">
                 <div class="card-releases">
+                    <span class="point-rouge"></span>
                     <div class="card-releases-image">
                         <p class="version">v26.09</p>
                         <p class="date">Septembre 2026</p>
@@ -188,8 +189,16 @@
             return
         }
 
+        function derniereMajView() {
+            let viewNewMaj = localStorage.getItem("viewNewMaj") || "false"
+
+            // si le user n'a pas regardé le patch note de la maj alorsil y aura un point rouge
+            if (viewNewMaj == "false") {document.querySelector("span.point-rouge").classList.add("visible")}
+        }
+
         window.addEventListener("DOMContentLoaded", () => {
             NomCoachInit()
+            derniereMajView()
         })
     </script>
 

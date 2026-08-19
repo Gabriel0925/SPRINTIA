@@ -25,8 +25,8 @@
     --BLUR_GLASSMORPHISM_BARS: 10px; /* tab-bars, nav-bar */
     --SATURATE_GLASSMORPHISM_BARS: 200%;
 
-    --BLUR_GLASSMORPHISM_PANELS: 16px; /* arrière-plan, menu flottant */
-    --SATURATE_GLASSMORPHISM_PANELS: 150%;
+    --BLUR_GLASSMORPHISM_PANELS: 16px; /* menu flottant */
+    --SATURATE_GLASSMORPHISM_PANELS: 160%;
 
     --BLUR_GLASSMORPHISM_BUTTON: 20px; /* petit boutons flottants */
     --SATURATE_GLASSMORPHISM_BUTTON: 120%;
@@ -620,9 +620,10 @@ div.container-logo-dynamique div.logo-dynamique {
     height: 55px;
     margin-top: 0.56rem;
     border-radius: var(--BORDER_NORMAL);
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                0px 5px 20px var(--COLOR_BACKGROUND);
+    
+    background: var(--COLOR_GLASSMORPHISM);
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
     pointer-events: none;
     z-index: 20000;
@@ -1635,8 +1636,8 @@ div.zone-coach button:active {
 
 /* --- Fenetre pour SPRITNIA Briefing --- */
 section.background-SPRINTIA-briefing {
-    background-color: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(8px) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px) saturate(140%);
 
     display: none;
     justify-content: center;

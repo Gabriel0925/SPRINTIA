@@ -32,10 +32,11 @@
     --LINE_HEIGHT_TITLE: 1.2;
 
     --H2: 1.35rem;
+    --H3: 1.15rem;
     --FW_BOLD_SMALL: 600;
 
     --P: 1rem;
-    --P_SMALL: 0.75rem;
+    --P_SMALL: 0.86rem;
     --LINE_HEIGHT_TEXT: 1.4;
     --FW_REGULAR: 400;
 
@@ -222,14 +223,21 @@ h1{
     font-weight: var(--FW_BOLD);
     line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
-    margin-bottom: var(--SPACE_M);
+    margin-bottom: var(--SPACE_L);
 }
 h2{
     font-size: var(--H2);
     font-weight: var(--FW_BOLD_SMALL);
     line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
-    margin: var(--SPACE_S) 0;
+    margin: var(--SPACE_M) 0;
+}
+h3{
+    font-size: var(--H3);
+    font-weight: var(--FW_BOLD_SMALL);
+    line-height: var(--LINE_HEIGHT_TITLE);
+    color: var(--COLOR_TEXT_PRIMARY);
+    margin: var(--SPACE_M) 0;
 }
 
 
@@ -252,6 +260,7 @@ p.text.small {
 
 
 strong {font-weight: var(--FW_BOLD);}
+
 
 a.lien {
     color: var(--COLOR_ACCENT);
@@ -277,7 +286,7 @@ button{
     border: none;
     color: var(--COLOR_BACKGROUND);
     margin: var(--SPACE_XS);
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_M);
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     display: block;
@@ -650,7 +659,7 @@ div.config-profil {
 div.config-profil div.config-profil-head {
     display: flex;
     align-items: center;
-    gap: var(--SPACE_XS);
+    gap: var(--SPACE_S);
     margin: 4px;
 }
 div.config-profil i{
@@ -659,7 +668,7 @@ div.config-profil i{
 div.config-profil p{
     font-size: var(--H2);
 }
-div.config-profil p.description{                
+div.config-profil p.description{     
     font-size: var(--P_SMALL);
     font-weight: normal;
     color: var(--COLOR_TEXT_SECONDARY);
@@ -683,7 +692,6 @@ div.config-profil div.container-button-config-profil button#ignorer{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_TEXT_PRIMARY);
     border: 3px solid var(--COLOR_BACKGROUND_CARD_HOVER);
-
     transition: border ease-out var(--TIME_TRANSITION_FAST),
                 color ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -703,17 +711,15 @@ div.config-profil div.container-button-config-profil button#ignorer:active{
 section.segmented-button {
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
-
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     width: fit-content;
-
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
     gap: var(--SPACE_XS);
-    transition:  transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.segmented-button div.segmented-button-button {
     padding: var(--SPACE_XS);
@@ -721,7 +727,6 @@ section.segmented-button div.segmented-button-button {
     cursor: pointer;
     width: 60px;
     text-align: center;
-    
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -910,7 +915,6 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.name-workout{
     font-weight: var(--FW_BUTTON);
     font-size: var(--H3);
-
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -1012,8 +1016,8 @@ section.container-block{
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    gap: var(--SPACE_M);
-    margin-top: var(--SPACE_M);
+    gap: var(--SPACE_L);
+    margin-top: var(--SPACE_L);
 }
 section.container-block.with-container-global-zone {
     flex-direction: column;
@@ -1039,7 +1043,7 @@ section.container-block div.container-block-data p.container-block-data-header{
     color: var(--COLOR_TEXT_SECONDARY);
 }
 section.container-block div.container-block-data p.container-block-data-data{    
-    font-size: var(--H3);
+    font-size: var(--H2);
     font-weight: var(--FW_BUTTON);
     text-align: left;
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1208,7 +1212,7 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
 }
 
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut{
-    font-size: var(--H3);
+    font-size: var(--P);
     font-weight: var(--FW_BUTTON);
     color: var(--COLOR_ACCENT_TEXT);
     margin-top: var(--SPACE_XS);
@@ -1362,10 +1366,8 @@ div.container-button-flottant {
     align-items: center;
     gap: var(--SPACE_XS);
     pointer-events: none;
-
     max-width: var(--MAX_WIDTH);
     margin: 0 auto;
-
     position: fixed;
     bottom: var(--SPACE_S);
     right: var(--SPACE_S);
@@ -1381,12 +1383,9 @@ div.button-flottant {
     gap: var(--SPACE_XS);
     cursor: pointer;
     pointer-events: all;
-
     bottom: var(--SPACE_S);
     right: var(--SPACE_S);
     padding: var(--SPACE_S);
-
-
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
                 0px 5px 20px var(--COLOR_BACKGROUND);
@@ -1397,7 +1396,6 @@ div.button-flottant {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -1412,7 +1410,7 @@ div.button-flottant:active {
     transform: scale(var(--SCALE_SUP));
 }
 div.button-flottant p{
-    font-size: var(--H3);
+    font-size: var(--P);
     font-weight: var(--FW_BUTTON);
 }
 @media (max-width: 1140px) {
@@ -1423,7 +1421,7 @@ div.button-flottant p{
         pointer-events: none;
 
         position: fixed;
-        bottom: 6rem;
+        bottom: 5.6rem;
         right: 0;
         padding: var(--SPACE_S);
         width: fit-content;
@@ -1432,7 +1430,7 @@ div.button-flottant p{
     }
     div.button-flottant {
         margin-bottom: 0;
-        font-size: 2.6rem;
+        font-size: 2.8rem;
         bottom: var(--SPACE_S);
         right: var(--SPACE_S);
         padding: var(--SPACE_S);
@@ -1568,7 +1566,7 @@ div.zone-coach::before {
     z-index: -1;
 }
 div.zone-coach p.zone-coach-name {
-    font-size: var(--H3);
+    font-size: var(--P);
     margin-bottom: var(--SPACE_S);
     font-weight: var(--FW_BOLD);
     margin-left: 0.12rem;
@@ -1666,7 +1664,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
     justify-content: space-between;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head p.title{
-    font-size: var(--H3);
+    font-size: var(--H2);
     font-weight: var(--FW_BOLD);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i{
@@ -1706,7 +1704,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button{
     margin: 0;
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_M);
     flex-grow: 1;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-copy{
@@ -1828,7 +1826,7 @@ section.container-workout-generate section.label-workout-day.without-border {
     border-bottom: 0px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.label-workout-day p.text-label{
-    font-size: var(--H3);
+    font-size: var(--P);
 }
 section.container-workout-generate section.label-workout-day p.text-label.phase-recuperation{
     padding: var(--SPACE_XXS) 0;
@@ -1861,7 +1859,7 @@ section.container-workout-generate section.fractionne-workout-day {
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions{
-    font-size: var(--H3);
+    font-size: var(--P);
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions strong{
     font-weight: var(--FW_BUTTON);
@@ -1990,7 +1988,7 @@ ol.container-list-choice li.choice-item {
 
 
     
-    font-size: var(--H3);
+    font-size: var(--P);
     padding: var(--SPACE_XS) var(--SPACE_M);
     border-radius: 0.6rem;
     
@@ -2058,7 +2056,7 @@ div.zone-result {
 }
 div.zone-result p.zone-result-name-result{
     font-weight: var(--FW_BUTTON);
-    font-size: var(--H3);
+    font-size: var(--P);
 
     margin-bottom: var(--SPACE_XS);
 }
@@ -2084,7 +2082,7 @@ div.large-zone-result {
 div.large-zone-result p.large-zone-result-name {
     font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
-    font-size: var(--H3);
+    font-size: var(--P);
 }
 div.large-zone-result p.large-zone-result-result {
     font-weight: var(--FW_BOLD);
@@ -2135,7 +2133,7 @@ div.small-zone-result.color-zone:nth-child(5) {border: solid 2px #ff4b4c;}
 div.small-zone-result.color-zone:nth-child(6) {border: solid 2px #d672ff;}
 div.small-zone-result.color-zone:nth-child(7) {border: solid 2px #7b68ee;}
 div.small-zone-result p.small-zone-result-name {
-    font-size: var(--H3);
+    font-size: var(--P);
     font-weight: var(--FW_BUTTON);
 }
 div.small-zone-result p.small-zone-result-indication {
@@ -2264,7 +2262,7 @@ input[type="text"] {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     border: 3px solid transparent; /* init des borders pour éviter les décalages quand on passe en hover/active */
 
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_M);
     margin: var(--SPACE_XS); /* !!! Attention la margin et le width sont liés !!! */
     width: calc(100% - (var(--SPACE_XS) * 2));
     font-size: var(--P);
@@ -2302,18 +2300,15 @@ input[type="date"]{
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
     border-radius: var(--BORDER_NORMAL);
-
     border: 3px solid transparent; /* init des borders pour éviter les décalages quand on passe en hover/active */
     -webkit-appearance: none;
     appearance: none;
     outline: none;
     cursor: pointer;
-
     font-family: var(--FONT_FAMILY);
     font-size: var(--P);
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_M);
     margin: var(--SPACE_XS);
-
     transition: border ease-out var(--TIME_TRANSITION),
                 border-radius ease-out 0.3s;
 }
@@ -2479,7 +2474,7 @@ select {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_TEXT_PRIMARY);
     margin: var(--SPACE_XS);
-    padding: var(--SPACE_S);
+    padding: var(--SPACE_M);
     border: 3px solid transparent; /* init des borders pour éviter les décalages quand on passe en hover/active */
     border-radius: var(--BORDER_NORMAL);
     height: 55px;
@@ -2494,7 +2489,7 @@ select {
     background-image: var(--URL_FLECHE_ICON);
     background-repeat: no-repeat;
     background-position: right var(--SPACE_XS) center; /* On met l'icône à droite */
-    background-size: var(--H3);
+    background-size: var(--P);
 
     transition: border ease-out var(--TIME_TRANSITION),
                 border-radius ease-out 0.3s;
@@ -2649,7 +2644,7 @@ div.summary-version {
 }
 div.summary-version p.summary-version-title {
     margin-bottom: var(--SPACE_S);
-    font-size: var(--H3);
+    font-size: var(--P);
     font-weight: var(--FW_BUTTON);
     padding-bottom: var(--SPACE_XS);
     border-bottom: solid 2px var(--COLOR_BACKGROUND_CARD_HOVER);
@@ -2776,7 +2771,7 @@ div.action-list i{
 }
 div.action-list div.action-list-item p{
     margin-left: var(--SPACE_S);
-    font-size: var(--H3);
+    font-size: var(--P);
 }
 div.action-list div.action-list-item p strong.jrm-coach{
     background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
@@ -2925,7 +2920,7 @@ div.banner-toggle i{
     color: var(--COLOR_TEXT_PRIMARY);
 }
 div.banner-toggle p {
-    font-size: var(--H3);
+    font-size: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
     margin-right: auto;
     margin-left: var(--SPACE_S);

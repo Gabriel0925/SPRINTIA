@@ -19,17 +19,17 @@
 
     /* GLASSMORPHISM */
     --COLOR_GLASSMORPHISM: rgba(38, 38, 40, 0.6);
-    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.13);
-    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.26);
+    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.12);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.20);
 
-    --BLUR_GLASSMORPHISM_BARS: 10px; /* tab-bars, nav-bar */
-    --SATURATE_GLASSMORPHISM_BARS: 200%;
+    --BLUR_GLASSMORPHISM_BARS: 12px; /* tab-bars, nav-bar */
+    --SATURATE_GLASSMORPHISM_BARS: 190%;
 
-    --BLUR_GLASSMORPHISM_PANELS: 16px; /* menu flottant */
+    --BLUR_GLASSMORPHISM_PANELS: 18px; /* menu flottant */
     --SATURATE_GLASSMORPHISM_PANELS: 160%;
 
-    --BLUR_GLASSMORPHISM_BUTTON: 20px; /* petit boutons flottants */
-    --SATURATE_GLASSMORPHISM_BUTTON: 120%;
+    --BLUR_GLASSMORPHISM_BUTTON: 22px; /* petit boutons flottants */
+    --SATURATE_GLASSMORPHISM_BUTTON: 130%;
 
 
     /* BRIEFING */
@@ -1483,7 +1483,7 @@ div.menu-many-action {
     overflow: hidden;
     opacity: 1;
     z-index: 1200;
-    transform: translate(87px, -80px) scale(0);
+    transform: translate(84px, -79px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {
@@ -2177,53 +2177,12 @@ div.small-zone-result div.container-result p.small-zone-result-unit{
 }
 
 
-div.container-videos-yt > a{ /*on cible les enfants de container-videos-yt*/
-    display: flex;
-    max-width: 100%;
-    flex-grow: 1;
-}
+
 div.container-videos-yt {
     display: flex;
     flex-wrap: wrap;
     gap: var(--SPACE_L);
     margin: var(--SPACE_M) 0;
-}
-div.container-videos-yt div.card-video-yt {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-    flex-grow: 1;
-
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    border-radius: var(--BORDER_BIG);
-
-    overflow: hidden;
-
-    cursor: pointer;
-
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.container-videos-yt div.card-video-yt:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-div.container-videos-yt div.card-video-yt:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    transform: scale(var(--SCALE_NORMAL));
-}
-div.container-videos-yt div.card-video-yt p{
-    font-weight: var(--FW_BUTTON);
-    margin: var(--SPACE_S);
-    color: var(--COLOR_TEXT_PRIMARY);
-    font-size: var(--P);
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
 }
 
 

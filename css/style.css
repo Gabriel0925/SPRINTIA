@@ -1562,7 +1562,7 @@ div.zone-coach::before {
     z-index: -1;
 }
 div.zone-coach p.zone-coach-name {
-    font-size: var(--P);
+    font-size: var(--H3);
     margin-bottom: var(--SPACE_S);
     font-weight: var(--FW_BOLD);
     margin-left: 0.12rem;

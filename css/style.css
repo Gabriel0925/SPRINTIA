@@ -1456,8 +1456,8 @@ div.menu-many-action {
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
                 0px 5px 20px var(--COLOR_BACKGROUND);
 
-    margin-top: var(--SPACE_S);
-    margin-right: var(--SPACE_M);
+    margin-top: var(--SPACE_M);
+    margin-right: var(--SPACE_L);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 
@@ -1944,7 +1944,7 @@ div.my-control i {
     color: var(--COLOR_TEXT_PRIMARY);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
                 0px 5px 20px var(--COLOR_BACKGROUND);
-    font-size: var(--H2);
+    font-size: var(--H1);
     border-radius: 50%;
 
     width: 100%;

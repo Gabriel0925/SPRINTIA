@@ -1539,7 +1539,7 @@ section.container-box {
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--SPACE_L);
-    margin: var(--SPACE_M) 0px;
+    margin: var(--SPACE_L) 0px;
 }
 
 
@@ -1730,13 +1730,14 @@ section.container-item-workout-day {
 @media (max-width: 732px) {
     section.container-item-workout-day {
         justify-content: start;
-        gap: var(--SPACE_S) var(--SPACE_XL);
+        gap: var(--SPACE_M) var(--SPACE_XL);
     }
 }
 section.container-round-input {
     display: flex;
-    gap: var(--SPACE_M);
+    gap: var(--SPACE_L);
     min-width: 318px;
+    margin: var(--SPACE_L) 0;
 }
 section.container-round-input div.round-input-item{
     display: flex;
@@ -1755,7 +1756,6 @@ section.container-round-input div.round-input-item{
     flex-shrink: 0;
     cursor: pointer;
 
-
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 border-radius ease-out var(--TIME_TRANSITION),
@@ -1763,14 +1763,14 @@ section.container-round-input div.round-input-item{
                 font-weight ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
-section.container-round-input div.round-input-item.duree{
-    font-size: 1.8rem;
+section.container-round-input div.round-input-item.duree p{
+    font-size: var(--H1);
 }
 section.container-round-input div.round-input-item.sport{
     font-size: var(--H2);
 }
 section.container-round-input div.round-input-item.sport i{
-    font-size: var(--H0);
+    font-size: 2.3rem;
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-round-input div.round-input-item:hover{
@@ -1818,7 +1818,7 @@ section.container-workout-generate section.label-workout-day {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--SPACE_S) 0;
+    padding: var(--SPACE_M) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.label-workout-day.without-border {
@@ -1826,7 +1826,7 @@ section.container-workout-generate section.label-workout-day.without-border {
     border-bottom: 0px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.label-workout-day p.text-label{
-    font-size: var(--P);
+    font-size: var(--H3);
 }
 section.container-workout-generate section.label-workout-day p.text-label.phase-recuperation{
     padding: var(--SPACE_XXS) 0;
@@ -1859,7 +1859,7 @@ section.container-workout-generate section.fractionne-workout-day {
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions{
-    font-size: var(--P);
+    font-size: var(--H3);
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions strong{
     font-weight: var(--FW_BUTTON);
@@ -2082,7 +2082,7 @@ div.large-zone-result {
 div.large-zone-result p.large-zone-result-name {
     font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
-    font-size: var(--P);
+    font-size: var(--H3);
 }
 div.large-zone-result p.large-zone-result-result {
     font-weight: var(--FW_BOLD);
@@ -2133,7 +2133,7 @@ div.small-zone-result.color-zone:nth-child(5) {border: solid 2px #ff4b4c;}
 div.small-zone-result.color-zone:nth-child(6) {border: solid 2px #d672ff;}
 div.small-zone-result.color-zone:nth-child(7) {border: solid 2px #7b68ee;}
 div.small-zone-result p.small-zone-result-name {
-    font-size: var(--P);
+    font-size: var(--H3);
     font-weight: var(--FW_BUTTON);
 }
 div.small-zone-result p.small-zone-result-indication {
@@ -2768,10 +2768,13 @@ div.action-list div.action-list-item:active {
 }
 div.action-list i{
     font-size: var(--H1);
+    padding-top: var(--SPACE_XXS);
+    padding-bottom: var(--SPACE_XXS);
+    padding-left: var(--SPACE_XXS);
 }
 div.action-list div.action-list-item p{
-    margin-left: var(--SPACE_S);
-    font-size: var(--P);
+    margin-left: var(--SPACE_M);
+    font-size: var(--H3);
 }
 div.action-list div.action-list-item p strong.jrm-coach{
     background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));

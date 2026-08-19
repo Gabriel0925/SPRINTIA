@@ -2689,12 +2689,12 @@ div.carousel-content a:nth-child(1) .card-releases {
 div.card-releases span.point-rouge.visible {
     background-color: red;
     border-radius: 50%;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
 
     right: 0;
     margin-right: 9px;
-    margin-top: 10px;
+    margin-top: 1px;
 
     position: absolute;
 }

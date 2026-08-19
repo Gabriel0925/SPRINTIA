@@ -222,12 +222,14 @@ h1{
     font-weight: var(--FW_BOLD);
     line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
+    margin-bottom: var(--SPACE_M);
 }
 h2{
     font-size: var(--H2);
     font-weight: var(--FW_BOLD_SMALL);
     line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
+    margin: var(--SPACE_S) 0;
 }
 
 
@@ -558,11 +560,9 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items p{
 div.container-logo-dynamique {
     display: flex;
     justify-content: left;
-
-    width: calc(100% - (var(--SPACE_S_SMALL) * 2));
+    width: calc(100% - (var(--SPACE_S) * 2));
     height: 100px;
     max-width: var(--MAX_WIDTH);
-
     pointer-events: none;
     position: fixed;
     z-index: 18000;
@@ -571,26 +571,22 @@ div.container-logo-dynamique div.logo-dynamique {
     display: none;
     justify-content: center;
     align-items: center;
-
     text-align: center;
     font-size: var(--H2);
     font-weight: var(--FW_BOLD);
     white-space: nowrap;
     overflow: hidden;
-
     max-width: 350px;
     flex-grow: 1;
     height: 55px;
     margin-top: 0.56rem;
     border-radius: var(--BORDER_NORMAL);
-
     background-color: var(--COLOR_BACKGROUND_CARD);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
                 0px 5px 20px var(--COLOR_BACKGROUND);
 
     pointer-events: none;
     z-index: 20000;
-
     transition: transform ease-out 0.6s;
 }
 @media (max-width: 1140px) {
@@ -649,7 +645,6 @@ div.config-profil {
     max-width: 501px;
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
-
     transition: background-color ease-out var(--TIME_TRANSITION), transform ease-out var(--TIME_TRANSITION_FAST);
 }
 div.config-profil div.config-profil-head {
@@ -662,7 +657,7 @@ div.config-profil i{
     font-size: var(--H1);
 }
 div.config-profil p{
-    font-size: var(--H3);
+    font-size: var(--H2);
 }
 div.config-profil p.description{                
     font-size: var(--P_SMALL);
@@ -819,7 +814,7 @@ div.carousel div.card-tool div.icone{
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: var(--SPACE_S_SMALL);
+    gap: var(--SPACE_S);
 }
 div.carousel div.card-tool div.icone i{
     display: flex;
@@ -975,7 +970,7 @@ section.container-workout-cards div.cards-history-workout div.action-button-card
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: var(--SPACE_S_SMALL);
+    margin-top: var(--SPACE_S);
 }
 section.container-workout-cards div.cards-history-workout div.action-button-card-workout button{
     font-weight: var(--FW_BUTTON);
@@ -1037,7 +1032,7 @@ section.container-block div.container-block-data {
 section.container-block div.container-block-data.blue-outline {
     border: 2px solid var(--COLOR_ACCENT);
     border-radius: var(--BORDER_BIG);
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
 }
 section.container-block div.container-block-data p.container-block-data-header{    
     font-size: var(--P_SMALL);
@@ -1151,7 +1146,7 @@ section.container-widget-progression {
 section.container-widget-progression section.widget-charge-entrainement {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1232,7 +1227,7 @@ section.container-small-widget-progression section.small-widget {
     cursor: pointer;
 
     overflow: hidden;
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1574,7 +1569,7 @@ div.zone-coach::before {
 }
 div.zone-coach p.zone-coach-name {
     font-size: var(--H3);
-    margin-bottom: var(--SPACE_S_SMALL);
+    margin-bottom: var(--SPACE_S);
     font-weight: var(--FW_BOLD);
     margin-left: 0.12rem;
     color: var(--COLOR_TEXT_PRIMARY);
@@ -1706,12 +1701,12 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing {
     display: flex;
-    gap: var(--SPACE_S_SMALL);
+    gap: var(--SPACE_S);
     margin-top: var(--SPACE_XS);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button{
     margin: 0;
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
     flex-grow: 1;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-copy{
@@ -1825,7 +1820,7 @@ section.container-workout-generate section.label-workout-day {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--SPACE_S_SMALL) 0;
+    padding: var(--SPACE_S) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.label-workout-day.without-border {
@@ -1837,12 +1832,12 @@ section.container-workout-generate section.label-workout-day p.text-label{
 }
 section.container-workout-generate section.label-workout-day p.text-label.phase-recuperation{
     padding: var(--SPACE_XXS) 0;
-    padding-left: var(--SPACE_S_SMALL);
+    padding-left: var(--SPACE_S);
     border-left: 5px solid var(--COLOR_TEXT_SECONDARY);
 }
 section.container-workout-generate section.label-workout-day p.text-label.phase-effort{
     padding: var(--SPACE_XXS) 0;
-    padding-left: var(--SPACE_S_SMALL);
+    padding-left: var(--SPACE_S);
     border-left: 5px solid var(--COLOR_ACCENT_TEXT);
 }
 section.container-workout-generate section.label-workout-day p.instruction-label{
@@ -1862,7 +1857,7 @@ section.container-workout-generate section.fractionne-workout-day {
     display: flex;
     flex-direction: column;
     gap: var(--SPACE_XS);
-    padding: var(--SPACE_S_SMALL) 0;
+    padding: var(--SPACE_S) 0;
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 section.container-workout-generate section.fractionne-workout-day p.nb-repetitions{
@@ -1929,8 +1924,8 @@ div#map.map-normal *, #map.map-fullscreen * {
 }
 /* modification du style de base sur les class de la bibliotheque */
 .leaflet-right .leaflet-control {
-    margin-top: var(--SPACE_S_SMALL) !important;
-    margin-right: var(--SPACE_S_SMALL) !important;
+    margin-top: var(--SPACE_S) !important;
+    margin-right: var(--SPACE_S) !important;
 }
 div.my-control {
     display: flex;
@@ -2057,7 +2052,7 @@ div.zone-result {
     height: auto;
     min-height: 180px;
 
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
     position: relative;
     overflow: hidden;
 }
@@ -2082,7 +2077,7 @@ div.large-zone-result {
     max-width: 420px;
     min-width: 300px;
 
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
     position: relative;
     overflow: hidden;
 }
@@ -2123,7 +2118,7 @@ div.small-zone-result {
 
     display: flex;
     flex-direction: column;
-    padding: var(--SPACE_S_SMALL);
+    padding: var(--SPACE_S);
 
     width: 240px;
     height: 180px;
@@ -2204,7 +2199,7 @@ div.container-videos-yt div.card-video-yt:active {
 }
 div.container-videos-yt div.card-video-yt p{
     font-weight: var(--FW_BUTTON);
-    margin: var(--SPACE_S_SMALL);
+    margin: var(--SPACE_S);
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--P);
 
@@ -2240,7 +2235,7 @@ div.form p.indication {
     color: #ff6b6b;
     text-align: center;
     font-weight: var(--FW_BUTTON);
-    margin: var(--SPACE_XXS) var(--SPACE_S_SMALL);
+    margin: var(--SPACE_XXS) var(--SPACE_S);
     transform: translateY(-20px) scale(0);
     transition: all ease-out 0.2s;
 }
@@ -2474,7 +2469,7 @@ input:not(:placeholder-shown) + .label-input {
 .slider-name span.RPE {
     font-weight: var(--FW_BOLD);
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    padding: 0.25rem var(--SPACE_S_SMALL);
+    padding: 0.25rem var(--SPACE_S);
     margin: 0 var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 }
@@ -2850,7 +2845,7 @@ div.box-last-maj div.content2 button{
     width: 100%;
     padding: 0.7rem;
     margin: 0;    
-    margin-top: var(--SPACE_S_SMALL);
+    margin-top: var(--SPACE_S);
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -3020,7 +3015,7 @@ div.container-center-marge {
     div.small-zone-result {
         width: 100%;
         height: fit-content;
-        padding: var(--SPACE_S_SMALL);
+        padding: var(--SPACE_S);
     }
 }
 

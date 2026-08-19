@@ -88,7 +88,7 @@ window.addEventListener("pageshow", (event) => {
 
 // --- Menu plus ---
 window.onclick = function (event) { // on track les clicks sur la page complète
-    let TrackClickButtonMore = document.getElementById("button-group-button")
+    let TrackClickButtonMore = document.getElementById("icon-menu-many-action")
     let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus
      
     // si dans la page il y a le bouton plus alors on regarde si c'est sur lui qu'on a cliqué
@@ -108,12 +108,12 @@ window.onclick = function (event) { // on track les clicks sur la page complète
             // on referme le menu plus
             menuButtonMore.classList.remove("open")
             // pour remettre l'icone plus
-            document.getElementById("button-group-button").classList.add("fs-icon_plus")
+            document.getElementById("icon-menu-many-action").classList.add("fs-icon_plus")
         }
     }
 }
 window.addEventListener("click", (event) => {
-    if (event.target.id == "button-group-button") {
+    if (event.target.id == "icon-menu-many-action") {
         const menuButtonMore = document.querySelector(".menu-many-action")
         menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
@@ -127,7 +127,7 @@ window.addEventListener("scroll", () => {
         // on referme le menu plus
         menuButtonMore.classList.remove("open")
         // pour remettre l'icone plus
-        document.getElementById("button-group-button").classList.add("fs-icon_plus")
+        document.getElementById("icon-menu-many-action").classList.add("fs-icon_plus")
     }
 })
 // --- Fin menu plus ---
@@ -285,9 +285,9 @@ async function genererGraphiqueDoughnut(label, listePourcentage) {
 
 
 // --- Mise à jour local storage ---
-async function majLocalStorage(versionStockee) {
+async function majLocalStorage(versionLocalStorageStockee) {
     // migration de 4.0.0 à 4.0.1
-    if (versionStockee == "4.0.0") {
+    if (versionLocalStorageStockee == "4.0.0") {
         localStorage.removeItem("ThemeActuel") // car le choix de thème clair ou sombre a été nerf
         localStorage.removeItem("DisplayConseil") // car les astuces sur la page d'accueil ont été supprimé
 
@@ -306,11 +306,11 @@ async function majLocalStorage(versionStockee) {
         }
 
         localStorage.setItem("VersionLocalStorage", "4.0.1")
-        versionStockee = "4.0.1" // maj de la variable pour enchaine avec les futures if de nouvelle version
+        versionLocalStorageStockee = "4.0.1" // maj de la variable pour enchaine avec les futures if de nouvelle version
     }
     
     // migration de 4.0.1 à 4.0.2
-    if (versionStockee == "4.0.1") {
+    if (versionLocalStorageStockee == "4.0.1") {
         localStorage.removeItem("DisplayBanniere")
         localStorage.removeItem("ToggleThemeComplet")
 
@@ -328,11 +328,11 @@ async function majLocalStorage(versionStockee) {
         }
 
         localStorage.setItem("VersionLocalStorage", "4.0.2")
-        versionStockee = "4.0.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
+        versionLocalStorageStockee = "4.0.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
     }
     
     // migration de 4.0.2 à 4.2
-    if (versionStockee == "4.0.2") {
+    if (versionLocalStorageStockee == "4.0.2") {
         let tableauOutilPin = localStorage.getItem("OutilsPin")
 
         if (tableauOutilPin != null) { // si il y a rien dans le local storage (=null) on ne fait rien
@@ -348,16 +348,16 @@ async function majLocalStorage(versionStockee) {
         }
 
         localStorage.setItem("VersionLocalStorage", "4.2")
-        versionStockee = "4.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
+        versionLocalStorageStockee = "4.2" // maj de la variable pour enchaine avec les futures if de nouvelle version
     }
     
     // migration de 4.2 à 4.3
-    if (versionStockee == "4.2") {
+    if (versionLocalStorageStockee == "4.2") {
         localStorage.removeItem("StatutAnalyse")
         localStorage.removeItem("OutilsPin")
 
         localStorage.setItem("VersionLocalStorage", "4.3")
-        versionStockee = "4.3" // maj de la variable pour enchaine avec les futures if de nouvelle version
+        versionLocalStorageStockee = "4.3" // maj de la variable pour enchaine avec les futures if de nouvelle version
 
         // maj des thèmes avec les nouveaux nom,...
         const dicoNewName = {
@@ -401,20 +401,18 @@ async function majLocalStorage(versionStockee) {
     }
     
     // migration de 4.3 à 5
-    if (versionStockee == "4.3") {
+    if (versionLocalStorageStockee == "4.3") {
         localStorage.setItem("VersionLocalStorage", "5")
         localStorage.removeItem("themeUser") // on supprime les thèmes
-
-        // puis on supprime l'avatar du coach depuis le fichier db.config
     }
 
     return
 }
 
-const versionActuelle = "5"
-let versionStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
-if (versionStockee != versionActuelle) {
-    majLocalStorage(versionStockee)
+const versionLocalStorageActuelle = "5"
+let versionLocalStorageStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
+if (versionLocalStorageStockee != versionLocalStorageActuelle) {
+    majLocalStorage(versionLocalStorageStockee)
 }
 // --- Fin mise à jour local storage ---
 

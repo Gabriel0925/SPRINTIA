@@ -11,7 +11,7 @@ const buttonFonction  = {
 async function windowsBriefing(textInButton) {
     document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
-    document.querySelector("body").classList.add("no-scroll") 
+    document.querySelector("body").classList.add("briefing-open") 
     document.querySelector("main").classList.add("briefing-open")
 
     promptForIA = await buttonFonction[textInButton]() // on créer le prompt
@@ -21,7 +21,7 @@ async function windowsBriefing(textInButton) {
 }
 function closeWindows() {
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
-    document.querySelector("body").classList.remove("no-scroll")
+    document.querySelector("body").classList.remove("briefing-open")
     document.querySelector("main").classList.remove("briefing-open")
 
     setTimeout(() => {
@@ -74,7 +74,7 @@ function nameFavoriteIA() {
             document.querySelector(".explanation-briefing").innerHTML = `
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à ${dicoIA[favoriteIA]}</strong>.
-                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
             `
             document.getElementById("button-open-ia").textContent = "Copier"
 
@@ -83,7 +83,7 @@ function nameFavoriteIA() {
             document.querySelector(".explanation-briefing").innerHTML = `
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à ${dicoIA[favoriteIA]}</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de ${dicoIA[favoriteIA]}.
-                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
             `
             document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
 

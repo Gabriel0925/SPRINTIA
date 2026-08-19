@@ -595,8 +595,8 @@ async function JrmCoach() {
         let TableauNomCoach = CoachUserDB.map(elementDB => elementDB.nom)
         let TableauAvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
         // on affiche le nom du coach choisi par le user
-        if (TableauNomCoach[0].length > 0) {
-            if (TableauAvatarCoach[0].length > 0) { // si il y a un avatar alors on met le nom du coach à coté de l'avatar
+        if (TableauNomCoach.length > 0) {
+            if (TableauAvatarCoach.length > 0) { // si il y a un avatar alors on met le nom du coach à coté de l'avatar
                 SectionNomCoach.innerHTML = TableauAvatarCoach[0] + " <strong>" + TableauNomCoach[0] + "</strong>"
             }
         }
@@ -712,12 +712,7 @@ async function initialisation() {
                 // on donne un role au bouton
                 let buttonPartageWorkout = document.getElementById("button-partager-entrainement")
                 let buttonModifier = document.getElementById("button-modifier")
-                let buttonSupprimer = document.getElementById("button-supprimer") 
-
-                let connectCSS = document.documentElement
-                let recupVar = getComputedStyle(connectCSS)
-                // on donne une couleur au bouton supprimer
-                buttonSupprimer.style.color = recupVar.getPropertyValue("--COLOR_ACCENT_TEXT")
+                let buttonSupprimer = document.getElementById("button-supprimer")
 
                 buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
                     // Demande de confirmation avant

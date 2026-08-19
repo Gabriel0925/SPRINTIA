@@ -122,7 +122,8 @@ async function uploadFileTP(event) {
                     if (rpeWorkout == "" || rpeWorkout == undefined) {rpeWorkout = 1} else {rpeWorkout = parseInt(rpeWorkout)}
                     if (rpeWorkout > 10) {rpeWorkout=10} // petite sécurité
                     
-                    let chargeEntrainementWorkout = Math.floor(rpeWorkout*dureeWorkout)
+                    let coefRpe = {1:0.2, 2:0.4, 3:0.7, 4:1.1, 5:1.6, 6:2.3, 7:3.2, 8:4.5, 9:6.2, 10:8.5}
+                    let chargeEntrainementWorkout = Math.floor(coefRpe[rpeWorkout]*dureeWorkout)
                     if (chargeEntrainementWorkout < 1) {chargeEntrainementWorkout = 1} // petite sécurité
 
                     // Calcul de la transpiration

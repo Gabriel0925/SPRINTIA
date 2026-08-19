@@ -306,8 +306,9 @@ async function saveWorkout() {
 
     // init
     let chargeWorkout = 0
+    let coefRpe = {1:0.2, 2:0.4, 3:0.7, 4:1.1, 5:1.6, 6:2.3, 7:3.2, 8:4.5, 9:6.2, 10:8.5}
     // Calcul Charge
-    chargeWorkout = Math.floor(DureeWorkoutUser*ValueRpeUser)
+    chargeWorkout = Math.floor(DureeWorkoutUser*coefRpe[ValueRpeUser])
     // si la charge est inférieur à 1 alors on la met a 1
     if (chargeWorkout < 1) {chargeWorkout = 1}
     

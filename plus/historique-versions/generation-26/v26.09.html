@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA 26.09</title>
+    <title>v26.09</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -76,19 +76,18 @@
     </section>
     
     <div class="visuel-version">
-        <p class="visuel-version-title">SPRINTIA 26.09</p>
-        <p class="visuel-version-description">Rentrée</p>
+        <p class="visuel-version-title">v26.09</p>
     </div>
 
     <section class="container-block" style="margin-bottom: var(--SPACE_M);">
 
         <div class="container-block-data">
             <p class="container-block-data-header">Date</p>
-            <p class="container-block-data-data">06 Septembre 2026</p>
+            <p class="container-block-data-data">Sept. 2026</p>
         </div>
         <div class="container-block-data">
             <p class="container-block-data-header">Taille</p>
-            <p class="container-block-data-data">-- <small>Mo</small></p>
+            <p class="container-block-data-data">2,70 <small>Mo</small></p>
         </div>
 
     </section>
@@ -106,7 +105,17 @@
     <ul class="list-information">
 
         <li>
-            ...
+            Changement de méthode de calcul pour déterminer la charge d'un entraînement, elle repose désormais sur la méthode sRPE (prouvée scientifiquement).
+            Ce changement permet de corriger des problèmes qu'il y avait auparavant, désormais vos entraînement intenses mais courtes (sprint, VMA) ne sont plus sous estimés,
+            et vos entraînement de récupération ne gonflent plus artificiellement votre charge d'entraînement.
+            <strong>
+                Tout votre historique d'entraînement a été mis à jour, donc toutes votre charge d'entraînement a été revue.
+            </strong>
+        </li>
+        <li>
+            SPRINTIA adopte le glassmorphism pour la première fois, ce qui permet de se mettre aux goûts du jour car beaucoup d'applications
+            vont vers ce style d'interface à cause/grâce à Apple avec iOS 26 et leurs liquid glass. Ces effets de transparence et de flou
+            donnent de la vie à l'interface lorsque l'utilisateur intéragit avec SPRINTIA.
         </li>
 
     </ul>
@@ -115,7 +124,19 @@
     <ul class="list-information">
 
         <li>
-            ...
+            Lorsque qu'une nouvelle mise à jour est publiée, le patch note dans l'onglet "Plus" possède désormais un point
+            bleu pour vous indiquer que de nouvelles fonctionnalités sont disponibles, tant que vous n'aurez pas ouvert le patch note,
+            le point bleu restera visible.
+        </li>
+        <li>
+            Intégration du player youtube directement dans SPRINTIA, ce qui permet de regarder des vidéos youtube sans quitter l'application.
+        </li>
+        <li>
+            La page nommé "Dompté SPRINTIA" a été renommé en "Tutoriels" pour être plus clair et plus compréhensible.
+        </li>
+        <li>
+            Beaucoup d'images des versions ont été supprimées pour alléger la taille de l'application. En plus, désormais j'ai un compte
+            insta exprès pours SPRINTIA donc c'est là bah que je garderais un historique des images des versions précédentes de SPRINTIA.
         </li>
 
     </ul>
@@ -124,17 +145,38 @@
     <ul class="list-information">
 
         <li>
-            ...
+            Séléction de texte lors d'appuie long désactivé.
+        </li>
+        <li>
+            Correction d'une erreur de design pour les balises "select".
+        </li>
+        <li>
+            Correction d'un léger bug lors d'un appui sur un bouton associé à SPRINTIA Briefing.
+        </li>
+        <li>
+            Correction d'un bug lors de l'import d'un fichier TCX, le sport était parfois mal détecté car
+            certains fichiers TCX ne respecte pas les conventions de nom de sport, donc désormais j'ai augmenté les
+            chances de détection du sport.
+        </li>
+        <li>
+            Les variables CSS ont été totalement retravaillées pour améliorer mes interfaces car auparavant, je devais 
+            mettre d'autres valeurs pour certains éléments spécifiques, ce qui rendait le code un peu plus complexe.
+        </li>
+        <li>
+            Certains titres de fonctionnalités que je considérais comme trop long ont été raccourcis pour être plus percutant et plus clair.
+        </li>
+        <li>
+            Correction d'un bug : dans le détail de l'entraînement, le nom du coach que vous avez configuré ne s'affichait pas, il restait
+            sur la valeur de base : "JRM Coach".
+        </li>
+        <li>
+            Le header a été optimisé pour améliorer l'expérience sur tablette, la tab-bar a également été un peu retravaillée.
+        </li>
+        <li>
+            Plusieurs éléments d'interface ont été légèrement revus pour améliorer le design et la cohérence dans SPRINTIA.
         </li>
         
     </ul>
-        
-    <!-- <h2>Quelques images</h2>
-    <div class="gallery-version">
-        <img src="images-gen-5/v5.2-entrainement-du-jour.png" alt="Interface de l'outil 'entraînement du jour' de SPRINTIA 5.2">
-        <img src="images-gen-5/v5.2-generation-entrainement.png" alt="Interface de l'entraînement généré de SPRINTIA 5.2">
-        <img src="images-gen-5/v5.2-dompter-SPRINTIA.png" alt="Section 'Dompter SPRINTIA' de SPRINTIA 5.2">
-    </div> -->
     
     <script src="../../../assets/base-js/base.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>

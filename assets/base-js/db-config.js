@@ -10,6 +10,28 @@ db.version(11).stores({ // ++ pour autoincrement
     recuperation: "++id, date, fc_repos"
 })
 
+async function majLocalStorage(versionDbStockee) {
+    // migration de v5.2 à 26.09
+    if (versionDbStockee == "5.2") {
+        let coefRpe = {1:0.2, 2:0.4, 3:0.7, 4:1.1, 5:1.6, 6:2.3, 7:3.2, 8:4.5, 9:6.2, 10:8.5}
+        
+        // parcours de tous les entraînements et calcul de la nouvelle charge d'entrainement car on passe de la méthode rpe*charge à la méthode sRPE grâce à des coefs
+        const workoutUser = await db.entrainement.toArray()
+        for (const workout of workoutUser) {
+            let chargeEntrainementWorkout = Math.floor(workout.duree*coefRpe[workout.rpe])
+            await db.entrainement.update(workout.id, {charge_entrainement: chargeEntrainementWorkout})
+        }
+
+        localStorage.setItem("versionDB", "26.09") // maj de la version
+    }
+}
+
+const versioDbActuelle = "26.09"
+let versionDbStockee = localStorage.getItem("versionDB") || "5.2"
+if (versionDbStockee != versioDbActuelle) {
+    majLocalStorage(versionDbStockee)
+}
+
 // Gérer erreur d'ouverture de bdd
 db.open().catch(function() {
     alert("Une erreur de base de données s'est produite !")

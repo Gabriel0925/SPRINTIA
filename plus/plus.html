@@ -80,11 +80,11 @@
     <div class="carousel">
         <div class="carousel-content">
 
-            <a href="historique-versions/annee-2026/SPRINTIA-26.09.html">
-                <div class="card-releases">
+            <a href="historique-versions/generation-26/v26.09.html">
+                <div class="card-releases" onclick="clickPatchNote(this)">
                     <div class="card-releases-image">
-                        <p class="version">SPRINTIA 26.09</p>
-                        <p class="date">06 Septembre 2026</p>
+                        <p class="version"><span class="point-rouge"></span>v26.09</p>
+                        <p class="date">Septembre 2026</p>
                     </div>
                     <p class="description-maj">
                         ...
@@ -92,7 +92,7 @@
                 </div>
             </a>
             <a href="historique-versions/generation-5/SPRINTIA-5.2.html">
-                <div class="card-releases">
+                <div class="card-releases" onclick="clickPatchNote(this)">
                     <div class="card-releases-image">
                         <p class="version">SPRINTIA 5.2</p>
                         <p class="date">05 Août 2026</p>
@@ -103,7 +103,7 @@
                 </div>
             </a>
             <a href="historique-versions/generation-5/SPRINTIA-5.1.html">
-                <div class="card-releases">
+                <div class="card-releases" onclick="clickPatchNote(this)">
                     <div class="card-releases-image">
                         <p class="version">SPRINTIA 5.1</p>
                         <p class="date">08 Juillet 2026</p>
@@ -116,7 +116,9 @@
     
             <button style="
     scroll-snap-align: center; /*le button se centre dans le carousel*/
-    margin-left: var(--SPACE_M);" onclick="location.href='historique-versions/historique-versions.html'">
+    margin-left: var(--SPACE_M);
+    border-radius: var(--BORDER_BIG);"
+    onclick="location.href='historique-versions/historique-versions.html'">
                 Tout voir
             </button>
 
@@ -125,10 +127,10 @@
     
     <div class="action-list">
 
-        <a href="discuter-coach/discuter-coach.html">
+        <a href="discussion-jrm-coach/discussion.html">
             <div class="action-list-item">
                 <i class="fs-icon_discussion_JRM_Coach"></i>
-                <p class="text-param" id="nom-coach">Discuter avec <strong class="jrm-coach">JRM Coach</strong></p>
+                <p class="text-param" id="nom-coach"><strong class="jrm-coach">JRM Coach</strong></p>
             </div>
         </a>
         <a href="import-des-donnees/importer-donnees.html">
@@ -142,10 +144,10 @@
 
     <div class="action-list">
 
-        <a href="dompter-SPRINTIA/dompter-SPRINTIA.html">
+        <a href="tutoriels/tutoriels.html">
             <div class="action-list-item">
                 <i class="fs-icon_dompter_SPRINTIA"></i>
-                <p class="text-param">Dompter SPRINTIA</p>
+                <p class="text-param">Tutoriels</p>
             </div>
         </a>
 
@@ -182,14 +184,29 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("nom-coach").innerHTML = `Discuter avec <strong class="jrm-coach">${NomCoach}</strong>`
+                document.getElementById("nom-coach").innerHTML = `<strong class="jrm-coach">${NomCoach}</strong>`
             }
 
             return
         }
 
+        let lastVersion = document.querySelector("p.version").textContent
+        function derniereMajView() {
+            let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
+
+            // si le user n'a pas regardé le patch note de la maj alorsil y aura un point rouge
+            if (lastViewVersion != lastVersion) {document.querySelector("span.point-rouge").classList.add("visible")}
+        }
+
+        function clickPatchNote(elt) {
+            if (elt.querySelector("p.version").textContent == lastVersion) {
+                localStorage.setItem("lastViewVersion", elt.querySelector("p.version").textContent)
+            }
+        }
+
         window.addEventListener("DOMContentLoaded", () => {
             NomCoachInit()
+            derniereMajView()
         })
     </script>
 

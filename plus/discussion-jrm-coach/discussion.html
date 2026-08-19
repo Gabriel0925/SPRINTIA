@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Discuter avec JRM Coach</title>
+    <title>SPRINTIA - JRM Coach</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -75,11 +75,15 @@
 
     <main>    
         <div class="toolbar marge">
-            <h1 id="jrm-coach-title">Discuter avec <strong>JRM Coach</strong></h1>
-            <i class="fs-icon_parametres" onclick="window.location.href = 'discuter-coach-parametres.html'"></i>
+            <h1 id="briefing">JRM Coach</h1>
+            <i class="fs-icon_parametres" onclick="window.location.href = 'parametres.html'"></i>
         </div>
+        <p class="text">
+            Posez une question et ensuite SPRINTIA génèrera un prompt contenant : vos données récentes ainsi qu'une question ce qui
+            permettra à votre IA préférée de répondre à votre interrogation.
+        </p>
         <div class="container-discuter-coach">
-            <textarea id="promt-user" style="min-height: 300px;" placeholder="Poser une question" maxlength="500"></textarea>
+            <textarea id="promt-user" style="min-height: 300px;" placeholder="Une question ?" maxlength="500"></textarea>
             <button id="button-SPRINTIA-briefing-ask" onclick="
                         if (!document.getElementById('promt-user').value.trim()) {
                             alert('Veuillez ajouter votre question dans le champs de texte avant de vouloir demander à une IA.')
@@ -101,7 +105,7 @@
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                <a href="/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing-info.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
                 <button onclick="
@@ -118,7 +122,6 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
     <script>
         async function NomCoachInit() {
             // Recup datas
@@ -128,16 +131,15 @@
                 let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
                 let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-                document.getElementById("jrm-coach-title").innerHTML = `Discuter avec <strong>${NomCoach}</strong>`
+                document.getElementById("briefing").innerHTML = NomCoach
             }
-
-            return
         }
 
         window.addEventListener("DOMContentLoaded", () => {
             NomCoachInit()
         })
     </script>
+    <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
     
     <script defer src="/_vercel/insights/script.js"></script>
 

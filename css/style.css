@@ -724,7 +724,7 @@ section.segmented-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: var(--SPACE_L) auto;
     width: fit-content;
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
@@ -2988,7 +2988,7 @@ div.container-center-marge {
 
 
 /* --- Gérer l'affichage du header/tab-bars en fonction de l'appareil --- */
-@media (max-width: 1140px) {
+@media (max-width: 915px) {
     section.header {
         display: none;
     }

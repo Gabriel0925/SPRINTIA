@@ -6,7 +6,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": "3-4",
-                "charge_entrainement": 91
+                "charge_entrainement": 24
             },
             "structure": {
                 "echauffement": {
@@ -30,7 +30,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "27:00",
                 "rpe": 3,
-                "charge_entrainement": 81
+                "charge_entrainement": 19
             },
             "structure": {
                 "echauffement": {
@@ -54,7 +54,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "25:00",
                 "rpe": 2,
-                "charge_entrainement": 50
+                "charge_entrainement": 10
             },
             "structure": {
                 "effort": {
@@ -69,7 +69,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": "3-4",
-                "charge_entrainement": 91
+                "charge_entrainement": 24
             },
             "structure": {
                 "echauffement": {
@@ -95,7 +95,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "50:00",
                 "rpe": "2-3",
-                "charge_entrainement": 125
+                "charge_entrainement": 28
             },
             "structure": {
                 "effort": {
@@ -110,7 +110,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "48:00",
                 "rpe": 3,
-                "charge_entrainement": 144
+                "charge_entrainement": 34
             },
             "structure": {
                 "echauffement": {
@@ -134,7 +134,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "50:00",
                 "rpe": 3,
-                "charge_entrainement": 150
+                "charge_entrainement": 35
             },
             "structure": {
                 "echauffement": {
@@ -155,7 +155,7 @@ const bddSeancesCourseFacile = {
             "informations": {
                 "duree_totale": "45:00",
                 "rpe": 3,
-                "charge_entrainement": 135
+                "charge_entrainement": 32
             },
             "structure": {
                 "echauffement": {
@@ -184,7 +184,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": 6,
-                "charge_entrainement": 156
+                "charge_entrainement": 60
             },
             "structure": {
                 "echauffement": {
@@ -208,7 +208,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "~ 26:00",
                 "rpe": 6,
-                "charge_entrainement": 156
+                "charge_entrainement": 60
             },
             "structure": {
                 "echauffement": {
@@ -232,7 +232,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": 6,
-                "charge_entrainement": 156
+                "charge_entrainement": 60
             },
             "structure": {
                 "echauffement": {
@@ -279,7 +279,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "25:00",
                 "rpe": 5,
-                "charge_entrainement": 125
+                "charge_entrainement": 40
             },
             "structure": {
                 "echauffement": {
@@ -305,7 +305,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "46:00",
                 "rpe": 6,
-                "charge_entrainement": 276
+                "charge_entrainement": 106
             },
             "structure": {
                 "echauffement": {
@@ -370,7 +370,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "~ 42:00",
                 "rpe": 7,
-                "charge_entrainement": 294
+                "charge_entrainement": 135
             },
             "structure": {
                 "echauffement": {
@@ -394,7 +394,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "44:00",
                 "rpe": 6,
-                "charge_entrainement": 264
+                "charge_entrainement": 101
             },
             "structure": {
                 "echauffement": {
@@ -418,7 +418,7 @@ const bddSeancesCourseModere = {
             "informations": {
                 "duree_totale": "48:00",
                 "rpe": 6,
-                "charge_entrainement": 288
+                "charge_entrainement": 110
             },
             "structure": {
                 "echauffement": {
@@ -461,7 +461,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": 8,
-                "charge_entrainement": 208
+                "charge_entrainement": 117
             },
             "structure": {
                 "echauffement": {
@@ -485,7 +485,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "~ 30:00",
                 "rpe": 8,
-                "charge_entrainement": 240
+                "charge_entrainement": 135
             },
             "structure": {
                 "echauffement": {
@@ -509,7 +509,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "~ 26:00",
                 "rpe": 7,
-                "charge_entrainement": 182
+                "charge_entrainement": 83
             },
             "structure": {
                 "echauffement": {
@@ -533,7 +533,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "25:00",
                 "rpe": "8-9",
-                "charge_entrainement": 213
+                "charge_entrainement": 134
             },
             "structure": {
                 "echauffement": {
@@ -560,7 +560,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "43:00",
                 "rpe": 7,
-                "charge_entrainement": 301
+                "charge_entrainement": 138
             },
             "structure": {
                 "echauffement": {
@@ -599,7 +599,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "~ 50:00",
                 "rpe": 8,
-                "charge_entrainement": 400
+                "charge_entrainement": 225
             },
             "structure": {
                 "echauffement": {
@@ -624,7 +624,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "~ 45:00",
                 "rpe": 7,
-                "charge_entrainement": 315
+                "charge_entrainement": 144
             },
             "structure": {
                 "echauffement": {
@@ -663,7 +663,7 @@ const bddSeancesCourseDifficile = {
             "informations": {
                 "duree_totale": "~ 50:00",
                 "rpe": 8,
-                "charge_entrainement": 400
+                "charge_entrainement": 225
             },
             "structure": {
                 "echauffement": {
@@ -692,7 +692,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "25:00",
                 "rpe": 2,
-                "charge_entrainement": 50
+                "charge_entrainement": 10
             },
             "structure": {
                 "effort": {
@@ -707,7 +707,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "29:00",
                 "rpe": "2-3",
-                "charge_entrainement": 73
+                "charge_entrainement": 16
             },
             "structure": {
                 "echauffement": {
@@ -731,7 +731,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": 2,
-                "charge_entrainement": 50
+                "charge_entrainement": 10
             },
             "structure": {
                 "echauffement": {
@@ -755,7 +755,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "30:00",
                 "rpe": 2,
-                "charge_entrainement": 60
+                "charge_entrainement": 12
             },
             "structure": {
                 "echauffement": {
@@ -781,7 +781,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "50:00",
                 "rpe": 3,
-                "charge_entrainement": 150
+                "charge_entrainement": 35
             },
             "structure": {
                 "effort": {
@@ -796,7 +796,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "~ 44:00",
                 "rpe": 3,
-                "charge_entrainement": 129
+                "charge_entrainement": 31
             },
             "structure": {
                 "echauffement": {
@@ -820,7 +820,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "52:00",
                 "rpe": 3,
-                "charge_entrainement": 156
+                "charge_entrainement": 36
             },
             "structure": {
                 "echauffement": {
@@ -844,7 +844,7 @@ const bddSeancesVeloFacile = {
             "informations": {
                 "duree_totale": "46:00",
                 "rpe": 3,
-                "charge_entrainement": 138
+                "charge_entrainement": 32
             },
             "structure": {
                 "echauffement": {
@@ -872,7 +872,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": 5,
-                "charge_entrainement": 130
+                "charge_entrainement": 42
             },
             "structure": {
                 "echauffement": {
@@ -896,7 +896,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "30:00",
                 "rpe": 5,
-                "charge_entrainement": 150
+                "charge_entrainement": 48
             },
             "structure": {
                 "echauffement": {
@@ -920,7 +920,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "~ 28:00",
                 "rpe": 5,
-                "charge_entrainement": 140
+                "charge_entrainement": 45
             },
             "structure": {
                 "echauffement": {
@@ -944,7 +944,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "27:00",
                 "rpe": "5-6",
-                "charge_entrainement": 149
+                "charge_entrainement": 53
             },
             "structure": {
                 "echauffement": {
@@ -999,7 +999,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "50:00",
                 "rpe": 6,
-                "charge_entrainement": 300
+                "charge_entrainement": 115
             },
             "structure": {
                 "echauffement": {
@@ -1023,7 +1023,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "~ 50:00",
                 "rpe": 6,
-                "charge_entrainement": 300
+                "charge_entrainement": 115
             },
             "structure": {
                 "echauffement": {
@@ -1047,7 +1047,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "49:00",
                 "rpe": 4,
-                "charge_entrainement": 196
+                "charge_entrainement": 54
             },
             "structure": {
                 "echauffement": {
@@ -1071,7 +1071,7 @@ const bddSeancesVeloModere = {
             "informations": {
                 "duree_totale": "~ 48:00",
                 "rpe": 5,
-                "charge_entrainement": 240
+                "charge_entrainement": 77
             },
             "structure": {
                 "echauffement": {
@@ -1099,7 +1099,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": 8,
-                "charge_entrainement": 208
+                "charge_entrainement": 117
             },
             "structure": {
                 "echauffement": {
@@ -1123,7 +1123,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": 7,
-                "charge_entrainement": 182
+                "charge_entrainement": 83
             },
             "structure": {
                 "echauffement": {
@@ -1162,7 +1162,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "26:00",
                 "rpe": "8-9",
-                "charge_entrainement": 221
+                "charge_entrainement": 278
             },
             "structure": {
                 "echauffement": {
@@ -1186,7 +1186,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": 8,
-                "charge_entrainement": 200
+                "charge_entrainement": 113
             },
             "structure": {
                 "echauffement": {
@@ -1212,7 +1212,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "56:00",
                 "rpe": 9,
-                "charge_entrainement": 504
+                "charge_entrainement": 347
             },
             "structure": {
                 "echauffement": {
@@ -1251,7 +1251,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "48:00",
                 "rpe": 8,
-                "charge_entrainement": 384
+                "charge_entrainement": 216
             },
             "structure": {
                 "echauffement": {
@@ -1275,7 +1275,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "48:00",
                 "rpe": 8,
-                "charge_entrainement": 384
+                "charge_entrainement": 216
             },
             "structure": {
                 "echauffement": {
@@ -1299,7 +1299,7 @@ const bddSeancesVeloDifficile = {
             "informations": {
                 "duree_totale": "50:00",
                 "rpe": 8,
-                "charge_entrainement": 425
+                "charge_entrainement": 225
             },
             "structure": {
                 "echauffement": {
@@ -1328,7 +1328,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "25:00",
                 "rpe": 2,
-                "charge_entrainement": 50
+                "charge_entrainement": 10
             },
             "structure": {
                 "effort": {
@@ -1343,7 +1343,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": "2-3",
-                "charge_entrainement": 63
+                "charge_entrainement": 14
             },
             "structure": {
                 "echauffement": {
@@ -1367,7 +1367,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": 2,
-                "charge_entrainement": 50
+                "charge_entrainement": 10
             },
             "structure": {
                 "echauffement": {
@@ -1391,7 +1391,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "~ 24:00",
                 "rpe": 3,
-                "charge_entrainement": 60
+                "charge_entrainement": 17
             },
             "structure": {
                 "echauffement": {
@@ -1417,7 +1417,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "50:00",
                 "rpe": 3,
-                "charge_entrainement": 150
+                "charge_entrainement": 35
             },
             "structure": {
                 "effort": {
@@ -1432,7 +1432,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "~ 48:00",
                 "rpe": 3,
-                "charge_entrainement": 144
+                "charge_entrainement": 34
             },
             "structure": {
                 "echauffement": {
@@ -1456,7 +1456,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "~ 50:00",
                 "rpe": 3,
-                "charge_entrainement": 150
+                "charge_entrainement": 35
             },
             "structure": {
                 "echauffement": {
@@ -1480,7 +1480,7 @@ const bddSeancesNatationFacile = {
             "informations": {
                 "duree_totale": "~ 50:00",
                 "rpe": 3,
-                "charge_entrainement": 150
+                "charge_entrainement": 35
             },
             "structure": {
                 "echauffement": {
@@ -1537,7 +1537,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": 5,
-                "charge_entrainement": 125
+                "charge_entrainement": 40
             },
             "structure": {
                 "echauffement": {
@@ -1561,7 +1561,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": 5,
-                "charge_entrainement": 125
+                "charge_entrainement": 40
             },
             "structure": {
                 "echauffement": {
@@ -1585,7 +1585,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": 5,
-                "charge_entrainement": 125
+                "charge_entrainement": 50
             },
             "structure": {
                 "echauffement": {
@@ -1638,7 +1638,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 26:00",
                 "rpe": 6,
-                "charge_entrainement": 156
+                "charge_entrainement": 59
             },
             "structure": {
                 "echauffement": {
@@ -1664,7 +1664,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 50:00",
                 "rpe": 6,
-                "charge_entrainement": 300
+                "charge_entrainement": 115
             },
             "structure": {
                 "echauffement": {
@@ -1717,7 +1717,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 45:00",
                 "rpe": 6,
-                "charge_entrainement": 270
+                "charge_entrainement": 104
             },
             "structure": {
                 "echauffement": {
@@ -1741,7 +1741,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 52:00",
                 "rpe": "5-6",
-                "charge_entrainement": 286
+                "charge_entrainement": 101
             },
             "structure": {
                 "echauffement": {
@@ -1765,7 +1765,7 @@ const bddSeancesNatationModere = {
             "informations": {
                 "duree_totale": "~ 50:00",
                 "rpe": 6,
-                "charge_entrainement": 300
+                "charge_entrainement": 115
             },
             "structure": {
                 "echauffement": {
@@ -1808,7 +1808,7 @@ const bddSeancesNatationDifficile = {
             "informations": {
                 "duree_totale": "~ 25:00",
                 "rpe": 8,
-                "charge_entrainement": 200
+                "charge_entrainement": 113
             },
             "structure": {
                 "echauffement": {
@@ -1832,7 +1832,7 @@ const bddSeancesNatationDifficile = {
             "informations": {
                 "duree_totale": "~ 22:00",
                 "rpe": 10,
-                "charge_entrainement": 220
+                "charge_entrainement": 187
             },
             "structure": {
                 "echauffement": {
@@ -1856,7 +1856,7 @@ const bddSeancesNatationDifficile = {
             "informations": {
                 "duree_totale": "~ 24:00",
                 "rpe": "7-8",
-                "charge_entrainement": 180
+                "charge_entrainement": 92
             },
             "structure": {
                 "echauffement": {
@@ -1880,7 +1880,7 @@ const bddSeancesNatationDifficile = {
             "informations": {
                 "duree_totale": "~ 26:00",
                 "rpe": 8,
-                "charge_entrainement": 208
+                "charge_entrainement": 117
             },
             "structure": {
                 "echauffement": {
@@ -1921,7 +1921,7 @@ const bddSeancesNatationDifficile = {
             "informations": {
                 "duree_totale": "~ 55:00",
                 "rpe": 8,
-                "charge_entrainement": 440
+                "charge_entrainement": 248
             },
             "structure": {
                 "echauffement": {
@@ -1960,7 +1960,7 @@ const bddSeancesNatationDifficile = {
             "informations": {
                 "duree_totale": "~ 54:00",
                 "rpe": 8,
-                "charge_entrainement": 432
+                "charge_entrainement": 243
             },
             "structure": {
                 "echauffement": {
@@ -1999,7 +1999,7 @@ const bddSeancesNatationDifficile = {
             "informations": {
                 "duree_totale": "~ 52:00",
                 "rpe": "8-9",
-                "charge_entrainement": 442
+                "charge_entrainement": 278
             },
             "structure": {
                 "echauffement": {
@@ -2045,8 +2045,8 @@ const bddSeancesNatationDifficile = {
             "description": `Cet entraînement vise à développer votre endurance à haute intensité et votre capacité à maintenir une bonne technique de nage avec de la fatigue.`,
             "informations": {
                 "duree_totale": "~ 50:00",
-                "rpe": 9.5,
-                "charge_entrainement": 475
+                "rpe": "9-10",
+                "charge_entrainement": 368
             },
             "structure": {
                 "echauffement": {

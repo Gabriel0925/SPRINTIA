@@ -88,7 +88,7 @@ window.addEventListener("pageshow", (event) => {
 
 // --- Menu plus ---
 window.onclick = function (event) { // on track les clicks sur la page complète
-    let TrackClickButtonMore = document.getElementById("button-group-button")
+    let TrackClickButtonMore = document.getElementById("icon-menu-many-action")
     let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus
      
     // si dans la page il y a le bouton plus alors on regarde si c'est sur lui qu'on a cliqué
@@ -108,12 +108,12 @@ window.onclick = function (event) { // on track les clicks sur la page complète
             // on referme le menu plus
             menuButtonMore.classList.remove("open")
             // pour remettre l'icone plus
-            document.getElementById("button-group-button").classList.add("fs-icon_plus")
+            document.getElementById("icon-menu-many-action").classList.add("fs-icon_plus")
         }
     }
 }
 window.addEventListener("click", (event) => {
-    if (event.target.id == "button-group-button") {
+    if (event.target.id == "icon-menu-many-action") {
         const menuButtonMore = document.querySelector(".menu-many-action")
         menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
@@ -127,7 +127,7 @@ window.addEventListener("scroll", () => {
         // on referme le menu plus
         menuButtonMore.classList.remove("open")
         // pour remettre l'icone plus
-        document.getElementById("button-group-button").classList.add("fs-icon_plus")
+        document.getElementById("icon-menu-many-action").classList.add("fs-icon_plus")
     }
 })
 // --- Fin menu plus ---

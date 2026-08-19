@@ -712,12 +712,7 @@ async function initialisation() {
                 // on donne un role au bouton
                 let buttonPartageWorkout = document.getElementById("button-partager-entrainement")
                 let buttonModifier = document.getElementById("button-modifier")
-                let buttonSupprimer = document.getElementById("button-supprimer") 
-
-                let connectCSS = document.documentElement
-                let recupVar = getComputedStyle(connectCSS)
-                // on donne une couleur au bouton supprimer
-                buttonSupprimer.style.color = recupVar.getPropertyValue("--COLOR_ACCENT_TEXT")
+                let buttonSupprimer = document.getElementById("button-supprimer")
 
                 buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
                     // Demande de confirmation avant

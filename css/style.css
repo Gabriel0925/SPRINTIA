@@ -5,27 +5,41 @@
     --COLOR_ACCENT_ACTIVE: #8fb3e9;
     --COLOR_ACCENT_TEXT: #8eccff;
 
+
     /* BASE */
     --COLOR_BACKGROUND: #000000;
     --COLOR_BACKGROUND_CARD: #232222;
     --COLOR_BACKGROUND_CARD_HOVER: #373636;
     --COLOR_BACKGROUND_CARD_ACTIVE: #474646;
 
+
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
+
     /* GLASSMORPHISM */
     --COLOR_GLASSMORPHISM: rgba(38, 38, 40, 0.6);
-    --COLOR_GLASSMORPHISM_SELECTED: rgba(255, 255, 255, 0.13);
-    --BLUR_GLASSMORPHISM: 16px;
-    --SATURATE_GLASSMORPHISM: 220%;
+    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.13);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.26);
+
+    --BLUR_GLASSMORPHISM_BARS: 10px; /* tab-bars, nav-bar */
+    --SATURATE_GLASSMORPHISM_BARS: 200%;
+
+    --BLUR_GLASSMORPHISM_PANELS: 16px; /* arrière-plan, menu flottant */
+    --SATURATE_GLASSMORPHISM_PANELS: 150%;
+
+    --BLUR_GLASSMORPHISM_BUTTON: 20px; /* petit boutons flottants */
+    --SATURATE_GLASSMORPHISM_BUTTON: 120%;
+
 
     /* BRIEFING */
     --COLOR_BRIEFING_START: #4689ef;
     --COLOR_BRIEFING_END: #94b8ef;
 
+
     /* 3D */
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.15);
+
 
     /* FONT */
     --H1: 1.78rem;
@@ -44,15 +58,18 @@
     --FW_BUTTON: 500;
     --FONT_FAMILY: "Zalando Sans SemiExpanded";
 
+
     /* BORDER RADIUS */
     --BORDER_SMALL: 0.75rem;
     --BORDER_NORMAL: 1rem;
     --BORDER_BIG: 1.5rem;
 
+
     /* SCALE */
     --SCALE_SMALL: 0.975;
     --SCALE_NORMAL: 0.95;
     --SCALE_SUP: 1.05;
+
 
     /* MARGE */
     --SPACE_XXS: 0.25rem;
@@ -61,11 +78,13 @@
     --SPACE_M: 1rem; /*Standart*/
     --SPACE_L: 1.5rem;
     --SPACE_XL: 2rem;
+
     
     /* OTHER */
     --MAX_WIDTH: 1500px;
     --TIME_TRANSITION: 0.2s;
     --TIME_TRANSITION_FAST: 0.1s;
+
 
     /* URL flèche vers le bas pour les combobox */
     --URL_FLECHE_ICON: url("../assets/icons/icon-fleche.svg");
@@ -381,8 +400,10 @@ section.header {
 }
 
 section.header div.logo {
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT), 0px 5px 20px var(--COLOR_BACKGROUND);
+    background: var(--COLOR_GLASSMORPHISM);
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+
     padding: var(--SPACE_S);
     margin: var(--SPACE_XS) 0;
     border-radius: var(--BORDER_NORMAL);
@@ -398,12 +419,12 @@ section.header div.logo {
 }
 @media (hover: hover) and (pointer: fine) {
     section.header div.logo:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
 section.header div.logo:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 
@@ -414,10 +435,12 @@ section.header ul.header-container-items {
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     margin: var(--SPACE_XS) 0;
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT), 0px 5px 20px var(--COLOR_BACKGROUND);
-    border-radius: 1.25rem;
+    
+    background: var(--COLOR_GLASSMORPHISM);
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
+    border-radius: 1.25rem;
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -448,8 +471,7 @@ section.header ul.header-container-items li.header-items{
                 transform ease-out var(--TIME_TRANSITION);
 }
 section.header ul.header-container-items li.header-items.selected{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    background: var(--COLOR_GLASSMORPHISM_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
 }
 section.header ul.header-container-items:has(li.header-items:not(.selected):active) li.header-items.selected{
@@ -459,8 +481,7 @@ section.header ul.header-container-items:has(li.header-items:not(.selected):acti
 }
 @media (hover: hover) and (pointer: fine) {
     section.header ul.header-container-items li.header-items:hover{
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
         color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.015);
     }
@@ -471,8 +492,7 @@ section.header ul.header-container-items:has(li.header-items:not(.selected):acti
     }
 }
 section.header ul.header-container-items li.header-items:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.015);
 }
@@ -500,7 +520,7 @@ section.tab-bars ul.tab-bars-container-items{
     flex-grow: 1;
 
     background: var(--COLOR_GLASSMORPHISM);
-    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM)) blur(var(--BLUR_GLASSMORPHISM));
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
     border-radius: 1.75rem;
@@ -539,8 +559,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
 }
 @media (hover: hover) and (pointer: fine) {
     section.tab-bars ul.tab-bars-container-items li.tab-bars-items:hover{
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
         color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.06);
     }
@@ -551,17 +570,16 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     }
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.06);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
-    background: var(--COLOR_GLASSMORPHISM_SELECTED);
+    background: var(--COLOR_GLASSMORPHISM_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
 section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected):active) li.tab-bars-items.selected{
     background-color: transparent;
@@ -1317,14 +1335,11 @@ div.toolbar i {
     margin-left: auto;
 
     background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_TEXT_PRIMARY);
-    padding: var(--SPACE_XS);
+    padding: var(--SPACE_S);
     cursor: pointer;
     border-radius: 50%;
-
     font-size: var(--H1);
-    font-weight: var(--FW_BUTTON);
     
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 transform ease-out var(--TIME_TRANSITION_FAST);
@@ -1337,6 +1352,26 @@ div.toolbar i {
 }
 div.toolbar i:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_SUP));
+}
+div.toolbar i#icon-menu-many-action {
+    background-color: transparent;
+    background: var(--COLOR_GLASSMORPHISM);
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.toolbar i#icon-menu-many-action:hover {
+        background-color: transparent;
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
+        transform: scale(var(--SCALE_SUP));
+    }
+}
+div.toolbar i#icon-menu-many-action:active {
+    background-color: transparent;
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 
@@ -1367,9 +1402,11 @@ div.button-flottant {
     bottom: var(--SPACE_S);
     right: var(--SPACE_S);
     padding: var(--SPACE_M);
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                0px 5px 20px var(--COLOR_BACKGROUND);
+    
+    background: var(--COLOR_GLASSMORPHISM);
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+
     color: var(--COLOR_TEXT_PRIMARY);
     border-radius: var(--BORDER_BIG);
     font-size: var(--H1);
@@ -1382,12 +1419,12 @@ div.button-flottant {
 }
 @media (hover: hover) and (pointer: fine) {
     div.button-flottant:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
 div.button-flottant:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 div.button-flottant p{
@@ -1433,9 +1470,9 @@ div.menu-many-action {
     position: absolute;
     right: 0;
 
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                0px 5px 20px var(--COLOR_BACKGROUND);
+    background: var(--COLOR_GLASSMORPHISM);
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
     margin-top: var(--SPACE_M);
     margin-right: var(--SPACE_L);
@@ -1490,15 +1527,13 @@ div.menu-many-action.open li:nth-child(6) {
         transform: scale(1.025);
     }
     div.menu-many-action li:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
         color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.06);
     }
 }
 div.menu-many-action li:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.06);
 }
@@ -1600,8 +1635,8 @@ div.zone-coach button:active {
 
 /* --- Fenetre pour SPRITNIA Briefing --- */
 section.background-SPRINTIA-briefing {
-    background-color: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
 
     display: none;
     justify-content: center;
@@ -1921,10 +1956,11 @@ div.my-control i {
     justify-content: center;
     align-items: center;
 
-    background-color: var(--COLOR_BACKGROUND_CARD);
+    background: var(--COLOR_GLASSMORPHISM);
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+
     color: var(--COLOR_TEXT_PRIMARY);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                0px 5px 20px var(--COLOR_BACKGROUND);
     font-size: var(--H2);
     border-radius: 50%;
 
@@ -1938,12 +1974,12 @@ div.my-control i {
 }
 @media (hover: hover) and (pointer: fine) {
     div.my-control i:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
 div.my-control i:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
 

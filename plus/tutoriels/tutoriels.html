@@ -81,6 +81,10 @@
         que vous aimeriez voir.
     </p>
 
+    <div class="container-chargement">
+        <div class="chargement"></div>
+    </div>
+
     <div class="container-videos-yt">
 
         <iframe loading="lazy" src="https://www.youtube.com/embed/S3B5Tm9ssRQ?si=nVabSJy36okwI0dt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -93,6 +97,13 @@
     </div>
 
     <script src="../../assets/base-js/base.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            let divChargement = document.querySelector(".container-chargement")
+            
+            if (divChargement) {divChargement.classList.add("finish")}
+        })
+    </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

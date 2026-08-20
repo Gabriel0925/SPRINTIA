@@ -30,6 +30,10 @@
     --BLUR_GLASSMORPHISM_BUTTON: 22px; /* petit boutons flottants */
     --SATURATE_GLASSMORPHISM_BUTTON: 130%;
 
+    --BLUR_GLASSMORPHISM_LAYOUT: 4px; /* layouts */
+    --COLOR_LAYOUT: rgba(0, 0, 0, 0.3);
+    --SATURATE_GLASSMORPHISM_LAYOUT: 140%;
+
 
     /* BRIEFING */
     --COLOR_BRIEFING_START: #4689ef;
@@ -744,7 +748,6 @@ div.config-profil div.container-button-config-profil button#ignorer:active{
 
 section.segmented-button {
     background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -775,7 +778,6 @@ section.segmented-button div.segmented-button-button {
     }
     section.segmented-button div.segmented-button-button:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
         color: var(--COLOR_ACCENT_TEXT);
         font-weight: var(--FW_BUTTON);
         transform: scale(var(--SCALE_SUP));
@@ -787,13 +789,11 @@ section.segmented-button:active {
 section.segmented-button div.segmented-button-button:active {
     transform: scale(var(--SCALE_SUP));
     color: var(--COLOR_ACCENT_TEXT);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     font-weight: var(--FW_BUTTON);
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
@@ -1642,9 +1642,9 @@ div.zone-coach button:active {
 
 /* --- Fenetre pour SPRITNIA Briefing --- */
 section.background-SPRINTIA-briefing {
-    background-color: rgba(0, 0, 0, 0.3);
-    -webkit-backdrop-filter: blur(4px) saturate(140%);
-    backdrop-filter: blur(4px) saturate(140%);
+    background-color: var(--COLOR_LAYOUT);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
 
     display: none;
     justify-content: center;
@@ -2192,8 +2192,9 @@ div.container-chargement {
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-backdrop-filter: saturate(140%) blur(4px);
-    backdrop-filter: saturate(140%) blur(4px);
+    background-color: var(--COLOR_LAYOUT);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
     width: 100%;
     height: 100%;
     transition: opacity ease-out 0.6s;

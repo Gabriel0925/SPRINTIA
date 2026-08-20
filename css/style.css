@@ -2186,15 +2186,16 @@ div.small-zone-result div.container-result p.small-zone-result-unit{
 
 div.container-chargement {
     position: fixed;
-    top: 0;
     left: 0;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--COLOR_BACKGROUND);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     width: 100%;
     height: 100%;
-    transition: opacity ease-out var(--TIME_TRANSITION);
+    transition: opacity ease-out 0.6s;
 }
 div.container-chargement.finish {
     opacity: 0;
@@ -2203,12 +2204,19 @@ div.container-chargement.finish {
     to {transform: rotate(360deg);}
 }
 div.container-chargement div.chargement {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(255, 255, 255, 0.4);
-    border-left-color: #ffffff;
+    width: 45px;
+    height: 45px;
+    border: 5px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+    border-top-color: var(--COLOR_ACCENT_TEXT);
     border-radius: 50%;
-    animation: tourner_en_rond 0.8s infinite;
+    animation: tourner_en_rond 0.8s infinite forwards;
+}
+@keyframes finish_tourner_en_rond {
+    0% {transform: scale(1);}
+    100% {transform: scale(0);}
+}
+div.container-chargement.finish div.chargement {
+    animation: finish_tourner_en_rond 0.6s infinite;
 }
 
 div.container-videos-yt {

@@ -87,21 +87,20 @@
         <a href="entrainement/statistiques.html"><i class="icon_statistiques"></i></a>
     </div>
         
-    <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
-        <div class="config-profil-head">
-            <i class="icon_profil"></i>
-            <p>Configurer <strong>SPRINTIA</strong></p>
-        </div>
+    <section class="container-invite-to-config" id="configurer-SPRINTIA" style="display: none;">
 
-        <p class="description">
-            Pour débloquer l'étendue des fonctionnalités de SPRINTIA, veuillez configurer votre profil.
+        <div class="icone">
+            <i class="icon_profil"></i>
+        </div>
+        <p class="information">
+            Pour débloquer l'étendue des fonctionnalités, veuillez <strong>configurer votre profil</strong>.
         </p>
-                    
-        <div class="container-button-config-profil">
+        <div class="container-button">
             <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
             <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
         </div>
-    </div>
+
+    </section>
 
     <div class="input-search">
         <!-- pour un input on use pas "click()" on use "focus()" -->
@@ -165,8 +164,10 @@
         }
 
         function ignoreConfigurationProfil() {
-            document.getElementById("configurer-SPRINTIA").style.display = "none"
-            localStorage.setItem("configurationProfil", "ignorer")
+            if (confirm("Êtes-vous sûr de vouloir ignorer la configuration de votre profil ?")) {
+                document.getElementById("configurer-SPRINTIA").style.display = "none"
+                localStorage.setItem("configurationProfil", "ignorer")
+            }
         }
 
         window.addEventListener("DOMContentLoaded", configSPRINTIA())

@@ -704,6 +704,56 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
 }
 
 
+section.container-invite-to-config {
+    margin: var(--SPACE_XL) 0;
+    height: 270px;
+    z-index: 1;
+    position: relative;
+}
+section.container-invite-to-config::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    filter: blur(30px) brightness(0.7) saturate(120%);
+    z-index: -1;
+}
+section.container-invite-to-config div.icone{
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--SPACE_M);
+}
+section.container-invite-to-config div.icone i{
+    font-size: 5rem;
+}
+section.container-invite-to-config p.information{
+    margin: var(--SPACE_M) 0;
+    font-size: var(--P);
+    color: var(--COLOR_TEXT_PRIMARY);
+    text-align: center;
+}
+section.container-invite-to-config div.container-button{
+    display: flex;
+    justify-content: center;
+}
+section.container-invite-to-config div.container-button button#ignorer{
+    background-color: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+@media (hover: hover) and (pointer: fine) {    
+    section.container-invite-to-config div.container-button button#ignorer:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+    }
+}
+section.container-invite-to-config div.container-button button#ignorer:active{
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+}
 
 div.config-profil {
     display: flex;
@@ -1549,7 +1599,7 @@ div.zone-coach::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(30px) brightness(0.7);
+    filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
 }
 div.zone-coach p.zone-coach-name {

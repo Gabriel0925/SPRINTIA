@@ -206,23 +206,13 @@
                         ${workout.sport} · ${DateEuropeen}
                     </p>
                 </div>
-                <div class="container-data-workout">
-                    <div class="data-workout-paire">
-                        <p class="duree-workout">
-                            <strong>${dureeWorkout}</strong>
-                        </p>
-                        <p class="rpe-workout">
-                            RPE : <strong>${workout.rpe}</strong>
-                        </p>
-                    </div>
-                    <div class="data-workout-paire">
-                        <p class="charge-workout">
-                            Charge d'entraînement : <strong>${workout.charge_entrainement} CE</strong>
-                        </p>
-                    </div>
-                    <div class="action-button-card-workout">
-                        <button>Détail de l'entraînement</button>
-                    </div>
+                <div class="container-data-resume-workout">
+                    <p class="duree-workout">
+                        ${dureeWorkout}
+                    </p>
+                    <p class="charge-workout">
+                        ${workout.charge_entrainement} <small>CE</small>
+                    </p>
                 </div>
             </a>
             `

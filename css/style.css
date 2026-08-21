@@ -547,7 +547,7 @@ section.tab-bars ul.tab-bars-container-items{
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
-    border-radius: 2rem;
+    border-radius: 1.75rem;
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     pointer-events: all;
@@ -567,7 +567,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    border-radius: 1.75rem;
+    border-radius: var(--BORDER_BIG);
     color: var(--COLOR_TEXT_PRIMARY);
     overflow: hidden;
     width: 60px;
@@ -920,7 +920,7 @@ section.container-workout-cards {
 section.container-workout-cards div.cards-history-workout {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
-    min-height: 180px;
+    min-height: 160px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -961,103 +961,51 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p{
     color: var(--COLOR_TEXT_PRIMARY);
-    padding: var(--SPACE_XXS);
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.name-workout{
-    font-weight: var(--FW_BUTTON);
+    font-weight: var(--FW_BOLD_SMALL);
     font-size: var(--H3);
+    color: var(--COLOR_TEXT_PRIMARY);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
+    padding: var(--SPACE_XXS);
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.sport-date-workout{
-    font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
-    font-size: var(--P);
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    overflow: hidden;
+    font-size: var(--P_SMALL);
+    padding: 0 var(--SPACE_XXS);
 }
-section.container-workout-cards div.cards-history-workout p.charge-workout strong{
-    font-weight: var(--FW_BUTTON);
-    color: var(--COLOR_ACCENT_TEXT);
+div.container-data-resume-workout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
 }
-section.container-workout-cards div.cards-history-workout div.container-data-workout {
-    display: flex;
-    flex-direction: column;
-    margin-top: auto;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire{
-    display: flex;
-    margin: var(--SPACE_XXS) 0;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire p{
-    color: var(--COLOR_TEXT_PRIMARY);
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border-radius: var(--BORDER_NORMAL);
-    padding: var(--SPACE_XS);
-    font-size: var(--P);
-    text-align: left;
-    width: 160px;
-    margin: 2px 4px;
-    flex-grow: 1;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire p strong{
-    font-weight: var(--FW_BUTTON);
-    letter-spacing: 0.1px;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire p.muscles-workout{
-    margin-top: var(--SPACE_XXS);
-    text-align: left;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-    line-clamp: 6; 
-    overflow: hidden;
-}
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--SPACE_S);
-}
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout button{
-    font-weight: var(--FW_BUTTON);
-    background-color: var(--COLOR_ACCENT);
-    color: var(--COLOR_BACKGROUND);
-    font-size: var(--P);
+div.container-data-resume-workout p{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 160px;
 
-    flex-grow: 1;
-    margin: 4px;
-    padding: 0.7rem;
-
-    transition: all ease-out var(--TIME_TRANSITION);
+    font-size: var(--H1);
 }
-@media (hover: hover) and (pointer: fine) {
-    section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:hover{
-        background-color: var(--COLOR_ACCENT_HOVER);
-    }
+div.container-data-resume-workout p.duree-workout{
+    font-weight: var(--FW_BOLD);
+    color: var(--COLOR_ACCENT);
+    border-right: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:active{
-    background-color: var(--COLOR_ACCENT_ACTIVE);
-    transform: scale(1);
+div.container-data-resume-workout p.charge-workout{
+    font-weight: var(--FW_BUTTON);
 }
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout button i{
-    color: var(--COLOR_BACKGROUND);
-    font-size: var(--P);
+div.container-data-resume-workout p.charge-workout small{
     font-weight: normal;
-    margin-right: var(--SPACE_XXS);
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin-left: var(--SPACE_XS);
+    font-size: var(--P_SMALL);
+    margin-top: 10px;
 }
+
 /* fin card workout */
 
 

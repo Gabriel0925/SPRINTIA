@@ -680,6 +680,7 @@ div.config-profil {
     height: fit-content;
     max-width: 501px;
     padding: var(--SPACE_XS);
+    margin: var(--SPACE_M) 0;
     border-radius: var(--BORDER_BIG);
     transition: background-color ease-out var(--TIME_TRANSITION), transform ease-out var(--TIME_TRANSITION_FAST);
 }

@@ -670,17 +670,6 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
 
 
 
-section.container-config-profil {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: var(--SPACE_XL);
-    margin-top: var(--SPACE_S);
-}
-@media (max-width: 1080px) {
-    section.container-config-profil {
-        gap: var(--SPACE_M); 
-    }
-}
 div.config-profil {
     display: flex;
     flex-direction: column;
@@ -897,7 +886,7 @@ section.container-workout-cards {
     flex-wrap: wrap;
     justify-content: left;
     gap: var(--SPACE_L);
-    margin-bottom: var(--SPACE_L);
+    margin: var(--SPACE_L) 0;
     transition: all ease-out var(--TIME_TRANSITION);
 }
 section.container-workout-cards div.cards-history-workout {
@@ -1124,7 +1113,7 @@ textarea:focus {
 textarea::placeholder {
     color: var(--COLOR_TEXT_PRIMARY);
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask {
+button.briefing {
     margin: 0;
     margin-top: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
@@ -1137,7 +1126,7 @@ div.container-discuter-coach button#button-SPRINTIA-briefing-ask {
     width: 100%;
     max-width: 450px;
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
+button.briefing::before {
     content: "";
     position: absolute;
     pointer-events: none;
@@ -1150,14 +1139,14 @@ div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
     z-index: -1;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.container-discuter-coach button#button-SPRINTIA-briefing-ask:hover {
+    button.briefing:hover {
         background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active::before {
+button.briefing:active::before {
     background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active {
+button.briefing:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }

@@ -660,7 +660,7 @@ div.container-logo-dynamique div.logo-dynamique {
     flex-grow: 1;
     height: 55px;
     margin-top: 0.56rem;
-    border-radius: var(--BORDER_NORMAL);
+    border-radius: 1.5rem;
     
     background: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
@@ -679,7 +679,7 @@ div.container-logo-dynamique div.logo-dynamique {
         height: 65px;
         margin-top: 0;
         max-width: 600px;
-        border-radius: 1.75rem;
+        border-radius: 2rem;
     }
 }
 @keyframes animation_logo_dynamique {

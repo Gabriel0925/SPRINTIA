@@ -2201,6 +2201,7 @@ div.container-chargement {
 }
 div.container-chargement.finish {
     opacity: 0;
+    pointer-events: none;
 }
 @keyframes tourner_en_rond {
     to {transform: rotate(360deg);}
@@ -2218,7 +2219,7 @@ div.container-chargement div.chargement {
     100% {transform: scale(0);}
 }
 div.container-chargement.finish div.chargement {
-    animation: finish_tourner_en_rond 0.5s infinite;
+    animation: finish_tourner_en_rond 0.5s forwards;
 }
 
 div.container-videos-yt {

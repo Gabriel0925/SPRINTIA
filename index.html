@@ -108,7 +108,10 @@
     <p class="text" id="text-informatif">
         SPRINTIA n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
         <a href="entrainement/ajouter-entrainement.html" class="lien">ajouter un entraînement</a>.
-    </p> 
+    </p>
+    <p class="text" style="display: none;" id="txt-aucun-result">
+        Aucun résultat
+    </p>
 
     <section class="container-workout-cards" id="liste-workouts"></section>
         <div class="container-center-marge">
@@ -325,21 +328,35 @@
         let inputSearch = document.getElementById("input-search")
         inputSearch.addEventListener("input", () => { // on recup en temps réel ce que le user tape
             let rechercheUser = inputSearch.value.toLowerCase()
-            
-            let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => workout.nom.toLowerCase().includes(rechercheUser))
 
-            document.getElementById("liste-workouts").innerHTML = ""
-            filteredHistoriqueComplet.forEach(element => {
-                const CardWorkout = document.createElement("div")
-                CardWorkout.classList.add("cards-history-workout")
+            if (rechercheUser.trim() == "") {
+                document.getElementById("txt-aucun-result").style.display = "none"
+                document.getElementById("liste-workouts").innerHTML = ""
+                initialisationAffichage()
+            } else {
+                let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => workout.nom.toLowerCase().includes(rechercheUser))
 
-                // Inversion de la date de "2026-01-8" à "8-01-2026"
-                let DateEuropeen = formatEuropeenDate(element.date)
-                let dureeWorkout = dureeFormatee(element.duree, "null") // on exige aucun format
+                document.getElementById("liste-workouts").innerHTML = ""
+                document.getElementById("button_afficher_plus").style.display = "none"
 
-                let CardWorkoutHTML = HTMLCard(CardWorkout, element, DateEuropeen, dureeWorkout)
-                document.getElementById("liste-workouts").appendChild(CardWorkoutHTML)
-            });
+                if (filteredHistoriqueComplet.length <= 0) {
+                    document.getElementById("txt-aucun-result").style.display = "block"
+                } else {
+                    document.getElementById("txt-aucun-result").style.display = "none"
+
+                    filteredHistoriqueComplet.forEach(element => {
+                        const CardWorkout = document.createElement("div")
+                        CardWorkout.classList.add("cards-history-workout")
+
+                        // Inversion de la date de "2026-01-8" à "8-01-2026"
+                        let DateEuropeen = formatEuropeenDate(element.date)
+                        let dureeWorkout = dureeFormatee(element.duree, "null") // on exige aucun format
+
+                        let CardWorkoutHTML = HTMLCard(CardWorkout, element, DateEuropeen, dureeWorkout)
+                        document.getElementById("liste-workouts").appendChild(CardWorkoutHTML)
+                    });
+                }
+            }
             console.log(filteredHistoriqueComplet)
         })
     </script>

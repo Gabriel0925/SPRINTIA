@@ -924,7 +924,7 @@ section.container-workout-cards div.cards-history-workout {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 340px;
     flex-grow: 1;
     padding: var(--SPACE_XS);
 
@@ -982,13 +982,13 @@ div.container-data-resume-workout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     height: 100%;
+    margin-top: var(--SPACE_XS);
 }
 div.container-data-resume-workout p{
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: var(--H1);
+    font-size: 1.6rem;
 }
 div.container-data-resume-workout p.duree-workout{
     font-weight: var(--FW_BOLD);

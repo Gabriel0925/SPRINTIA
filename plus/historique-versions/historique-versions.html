@@ -77,22 +77,21 @@
     <h1>Historique des versions</h1>
         
     <h2>Dernière version</h2>
-    <div class="box-last-maj" onclick="location.href = 'generation-26/v26.09.html'">
+    <div class="box-last-maj" onclick="clickPatchNote(this, 'generation-26/v26.09.html');">
         <div class="content1">
             <div class="card-releases-image-last-maj">
-                <p>v26.09</p>
+                <p class="version-last-maj"><span class="point-bleu"></span>v26.09</p>
                 <p class="date-last-maj">Septembre 2026</p>
             </div>
         </div>
         <div class="content2">
             <p class="description">
-                ...
+                Voici un cours résumé
             </p>
-            <button style="min-width: 238px;">Découvrir la mise à jour</button>
         </div>
     </div>
 
-    <h2>Génération 5 : La vision concrétisée</h2>
+    <h3>Génération 5 : La vision concrétisée</h3>
     <div class="carousel">
         <div class="carousel-content">
 
@@ -133,7 +132,7 @@
         </div>
     </div>
 
-    <h2>Génération 4 : WebApp et PWA</h2>
+    <h3>Génération 4 : WebApp et PWA</h3>
     <div class="carousel">
         <div class="carousel-content">            
             
@@ -235,7 +234,7 @@
         </div>
     </div>
 
-    <h2>Génération 3 : Une identité trouvée</h2>
+    <h3>Génération 3 : Une identité trouvée</h3>
     <div class="carousel">
         <div class="carousel-content">
 
@@ -327,7 +326,7 @@
         </div>
     </div>
 
-    <h2>Génération 2 : Une interface graphique</h2>
+    <h3>Génération 2 : Une interface graphique</h3>
     <div class="carousel">
         <div class="carousel-content">
                         
@@ -344,7 +343,7 @@
         </div>
     </div>
 
-    <h2>Génération 1 : Les débuts</h2>
+    <h3>Génération 1 : Les débuts</h3>
     <div class="carousel">
         <div class="carousel-content">
               
@@ -390,6 +389,25 @@
     </div>
     
     <script src="../../assets/base-js/base.js"></script>
+    <script>
+        function derniereMajView() {
+            let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
+
+            // si le user n'a pas regardé le patch note de la maj alorsil y aura un point rouge
+            if (lastViewVersion != VERSION_SPRINTIA) {document.querySelector("span.point-bleu").classList.add("visible")}
+        }
+
+        function clickPatchNote(elt, url) {
+            if (elt.querySelector(".card-releases-image-last-maj p.version-last-maj").textContent == VERSION_SPRINTIA) {
+                localStorage.setItem("lastViewVersion", elt.querySelector(".card-releases-image-last-maj p.version-last-maj").textContent)
+            }
+            location.href = url
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            derniereMajView()
+        })
+    </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

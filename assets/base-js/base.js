@@ -1,3 +1,7 @@
+// VARIABLE GLOBALE A TOUTES LES PAGES SPRINTIA
+const VERSION_SPRINTIA = "v26.09"
+
+
 // --- Navigation pour la tab-bar ---
 const dicoUrl = {
     "racine": {

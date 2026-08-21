@@ -63,9 +63,9 @@
 
 
     /* BORDER RADIUS */
-    --BORDER_SMALL: 0.75rem;
-    --BORDER_NORMAL: 1rem;
-    --BORDER_BIG: 1.5rem;
+    --BORDER_SMALL: 1rem;
+    --BORDER_NORMAL: 1.25rem;
+    --BORDER_BIG: 1.75rem;
 
 
     /* SCALE */
@@ -148,55 +148,55 @@ i {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.fs-icon_1RM:before {content: "\e900";}
-.fs-icon_a_propos:before {content: "\e901";}
-.fs-icon_add:before {content: "\e902";}
-.fs-icon_ameliorer_SPRINTIA:before {content: "\e903";}
-.fs-icon_archiver:before {content: "\e904";}
-.fs-icon_center_carte:before {content: "\e905";}
-.fs-icon_charge_entrainement:before {content: "\e906";}
-.fs-icon_coach:before {content: "\e907";}
-.fs-icon_confidentialite:before {content: "\e908";}
-.fs-icon_discussion_JRM_Coach:before {content: "\e909";}
-.fs-icon_dompter_SPRINTIA:before {content: "\e90a";}
-.fs-icon_entrainement:before {content: "\e90b";}
-.fs-icon_entrainement_du_jour:before {content: "\e90c";}
-.fs-icon_fermer:before {content: "\e90d";}
-.fs-icon_file:before {content: "\e90e";}
-.fs-icon_file_csv:before {content: "\e90f";}
-.fs-icon_file_json:before {content: "\e910";}
-.fs-icon_fleche_droite:before {content: "\e911";}
-.fs-icon_fullscreen:before {content: "\e912";}
-.fs-icon_fullscreen_exit:before {content: "\e913";}
-.fs-icon_gpx:before {content: "\e914";}
-.fs-icon_hydratation:before {content: "\e915";}
-.fs-icon_IMC:before {content: "\e916";}
-.fs-icon_indulgence_course:before {content: "\e917";}
-.fs-icon_licence:before {content: "\e918";}
-.fs-icon_metabolisme_base:before {content: "\e919";}
-.fs-icon_miles_km:before {content: "\e91a";}
-.fs-icon_modifier:before {content: "\e91b";}
-.fs-icon_natation:before {content: "\e91c";}
-.fs-icon_niveau_course:before {content: "\e91d";}
-.fs-icon_outils:before {content: "\e91e";}
-.fs-icon_parametres:before {content: "\e91f";}
-.fs-icon_partage:before {content: "\e920";}
-.fs-icon_pause:before {content: "\e921";}
-.fs-icon_plus:before {content: "\e922";}
-.fs-icon_plus_horizontal:before {content: "\e923";}
-.fs-icon_profil:before {content: "\e924";}
-.fs-icon_progression:before {content: "\e925";}
-.fs-icon_proteines:before {content: "\e926";}
-.fs-icon_recuperation:before {content: "\e927";}
-.fs-icon_refresh:before {content: "\e928";}
-.fs-icon_search:before {content: "\e929";}
-.fs-icon_SPRINTIA_briefing:before {content: "\e92a";}
-.fs-icon_statistiques:before {content: "\e92b";}
-.fs-icon_supprimer:before {content: "\e92c";}
-.fs-icon_temps_recup:before {content: "\e92d";}
-.fs-icon_update_history:before {content: "\e92e";}
-.fs-icon_velo:before {content: "\e92f";}
-.fs-icon_zones_cardiaques:before {content: "\e930";}
+.icon_RM:before {content: "\e900";}
+.icon_add:before {content: "\e901";}
+.icon_archiver:before {content: "\e902";}
+.icon_charge_entrainement:before {content: "\e903";}
+.icon_coach:before {content: "\e904";}
+.icon_confidentialite:before {content: "\e905";}
+.icon_conversion:before {content: "\e906";}
+.icon_discussion:before {content: "\e907";}
+.icon_entrainement:before {content: "\e908";}
+.icon_entrainement_du_jour:before {content: "\e909";}
+.icon_fermer:before {content: "\e90a";}
+.icon_file:before {content: "\e90b";}
+.icon_file_csv:before {content: "\e90c";}
+.icon_file_json:before {content: "\e90d";}
+.icon_fleche_droite:before {content: "\e90e";}
+.icon_fullscreen:before {content: "\e90f";}
+.icon_fullscreen_exit:before {content: "\e910";}
+.icon_gpx:before {content: "\e911";}
+.icon_hydratation:before {content: "\e912";}
+.icon_IMC:before {content: "\e913";}
+.icon_indulgence_course:before {content: "\e914";}
+.icon_info:before {content: "\e915";}
+.icon_licence:before {content: "\e916";}
+.icon_mail:before {content: "\e917";}
+.icon_metabolisme_base:before {content: "\e918";}
+.icon_modifier:before {content: "\e919";}
+.icon_natation:before {content: "\e91a";}
+.icon_niveau_course:before {content: "\e91b";}
+.icon_outils:before {content: "\e91c";}
+.icon_parametres:before {content: "\e91d";}
+.icon_partage:before {content: "\e91e";}
+.icon_pause:before {content: "\e91f";}
+.icon_plus:before {content: "\e920";}
+.icon_plus_horizontal:before {content: "\e921";}
+.icon_position:before {content: "\e922";}
+.icon_profil:before {content: "\e923";}
+.icon_progression:before {content: "\e924";}
+.icon_proteines:before {content: "\e925";}
+.icon_recuperation:before {content: "\e926";}
+.icon_refresh:before {content: "\e927";}
+.icon_search:before {content: "\e928";}
+.icon_SPRINTIA_briefing:before {content: "\e929";}
+.icon_statistiques:before {content: "\e92a";}
+.icon_supprimer:before {content: "\e92b";}
+.icon_telephone:before {content: "\e92c";}
+.icon_temps_recup:before {content: "\e92d";}
+.icon_velo:before {content: "\e92e";}
+.icon_video:before {content: "\e92f";}
+.icon_zones_cardiaques:before {content: "\e930";}
 
 * {
     margin: 0;
@@ -410,7 +410,7 @@ section.header div.logo {
 
     padding: var(--SPACE_S);
     margin: var(--SPACE_XS) 0;
-    border-radius: var(--BORDER_NORMAL);
+    border-radius: 1.5rem;
     font-weight: var(--FW_BOLD);
     font-size: var(--H2);
     pointer-events: all;
@@ -445,7 +445,7 @@ section.header ul.header-container-items {
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
-    border-radius: 1.25rem;
+    border-radius: 1.50rem;
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -501,6 +501,24 @@ section.header ul.header-container-items li.header-items:active{
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.015);
 }
+section.header ul.header-container-items li.header-items.point-bleu-header{
+    position: relative;
+}
+section.header ul.header-container-items li.header-items.point-bleu-header::before{
+    content: "";
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 5px;
+    margin-top: var(--SPACE_S);
+    margin-right: 2.8rem;
+
+    background-color: var(--COLOR_ACCENT);
+    border-radius: 50%;
+}
+
 
 
 /* --- Tab bars --- */
@@ -529,7 +547,7 @@ section.tab-bars ul.tab-bars-container-items{
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
-    border-radius: 1.75rem;
+    border-radius: 2rem;
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     pointer-events: all;
@@ -686,6 +704,57 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
 }
 
 
+section.container-invite-to-config {
+    margin: var(--SPACE_XL) auto;
+    height: 265px;
+    z-index: 1;
+    position: relative;
+    max-width: 650px;
+}
+section.container-invite-to-config::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    filter: blur(30px) brightness(0.7) saturate(120%);
+    z-index: -1;
+}
+section.container-invite-to-config div.icone{
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--SPACE_M);
+}
+section.container-invite-to-config div.icone i{
+    font-size: 5rem;
+}
+section.container-invite-to-config p.information{
+    margin: var(--SPACE_M) 0;
+    font-size: var(--P);
+    color: var(--COLOR_TEXT_PRIMARY);
+    text-align: center;
+}
+section.container-invite-to-config div.container-button{
+    display: flex;
+    justify-content: center;
+}
+section.container-invite-to-config div.container-button button#ignorer{
+    background-color: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+@media (hover: hover) and (pointer: fine) {    
+    section.container-invite-to-config div.container-button button#ignorer:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+    }
+}
+section.container-invite-to-config div.container-button button#ignorer:active{
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+}
 
 div.config-profil {
     display: flex;
@@ -902,11 +971,11 @@ section.container-workout-cards {
 section.container-workout-cards div.cards-history-workout {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
-    min-height: 180px;
+    min-height: 160px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 340px;
     flex-grow: 1;
     padding: var(--SPACE_XS);
 
@@ -943,103 +1012,51 @@ section.container-workout-cards div.cards-history-workout div.data-workout-colum
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p{
     color: var(--COLOR_TEXT_PRIMARY);
-    padding: var(--SPACE_XXS);
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.name-workout{
-    font-weight: var(--FW_BUTTON);
+    font-weight: var(--FW_BOLD_SMALL);
     font-size: var(--H3);
+    color: var(--COLOR_TEXT_PRIMARY);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
+    padding: var(--SPACE_XXS);
 }
 section.container-workout-cards div.cards-history-workout div.data-workout-column p.sport-date-workout{
-    font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_SECONDARY);
-    font-size: var(--P);
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    overflow: hidden;
+    font-size: var(--P_SMALL);
+    padding: 0 var(--SPACE_XXS);
 }
-section.container-workout-cards div.cards-history-workout p.charge-workout strong{
-    font-weight: var(--FW_BUTTON);
-    color: var(--COLOR_ACCENT_TEXT);
+div.container-data-resume-workout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    margin-top: var(--SPACE_XS);
 }
-section.container-workout-cards div.cards-history-workout div.container-data-workout {
-    display: flex;
-    flex-direction: column;
-    margin-top: auto;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire{
-    display: flex;
-    margin: var(--SPACE_XXS) 0;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire p{
-    color: var(--COLOR_TEXT_PRIMARY);
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border-radius: var(--BORDER_NORMAL);
-    padding: var(--SPACE_XS);
-    font-size: var(--P);
-    text-align: left;
-    width: 160px;
-    margin: 2px 4px;
-    flex-grow: 1;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire p strong{
-    font-weight: var(--FW_BUTTON);
-    letter-spacing: 0.1px;
-}
-section.container-workout-cards div.cards-history-workout div.data-workout-paire p.muscles-workout{
-    margin-top: var(--SPACE_XXS);
-    text-align: left;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-    line-clamp: 6; 
-    overflow: hidden;
-}
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--SPACE_S);
-}
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout button{
-    font-weight: var(--FW_BUTTON);
-    background-color: var(--COLOR_ACCENT);
-    color: var(--COLOR_BACKGROUND);
-    font-size: var(--P);
+div.container-data-resume-workout p{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 160px;
-
-    flex-grow: 1;
-    margin: 4px;
-    padding: 0.7rem;
-
-    transition: all ease-out var(--TIME_TRANSITION);
+    font-size: 1.6rem;
 }
-@media (hover: hover) and (pointer: fine) {
-    section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:hover{
-        background-color: var(--COLOR_ACCENT_HOVER);
-    }
+div.container-data-resume-workout p.duree-workout{
+    font-weight: var(--FW_BOLD);
+    color: var(--COLOR_ACCENT);
+    border-right: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout button:active{
-    background-color: var(--COLOR_ACCENT_ACTIVE);
-    transform: scale(1);
+div.container-data-resume-workout p.charge-workout{
+    font-weight: var(--FW_BUTTON);
 }
-section.container-workout-cards div.cards-history-workout div.action-button-card-workout button i{
-    color: var(--COLOR_BACKGROUND);
-    font-size: var(--P);
+div.container-data-resume-workout p.charge-workout small{
     font-weight: normal;
-    margin-right: var(--SPACE_XXS);
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin-left: var(--SPACE_XS);
+    font-size: var(--P_SMALL);
+    margin-top: 10px;
 }
+
 /* fin card workout */
 
 
@@ -1125,7 +1142,7 @@ textarea::placeholder {
 }
 button.briefing {
     margin: 0;
-    margin-top: var(--SPACE_XS);
+    margin: var(--SPACE_XS) 0;
     border-radius: var(--BORDER_BIG);
 
     color: var(--COLOR_BACKGROUND);
@@ -1166,9 +1183,7 @@ button.briefing:active {
 img.img-banniere-SPRINTIA {
     width: 100%;
     height: auto;
-    margin-top: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
-    background-color: var(--COLOR_ACCENT);
 }
 
 
@@ -1224,7 +1239,7 @@ section.container-widget-progression section.widget-charge-entrainement div.widg
     font-weight: var(--FW_BUTTON);
 }
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header i{
-    font-size: var(--H2);
+    font-size: var(--H1);
     margin-left: auto;
 }
 section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header i#icon-card{
@@ -1233,20 +1248,20 @@ section.container-widget-progression section.widget-charge-entrainement div.widg
 }
 
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score{
-    margin-top: var(--SPACE_S);
+    margin: var(--SPACE_S) 0;
     font-size: var(--H1);
-    font-weight: var(--FW_BOLD);
+    font-weight: var(--FW_BOLD_SMALL);
 }
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score small{
-    font-weight: var(--FW_BUTTON);
-    font-size: var(--P);
+    font-weight: var(--FW_REGULAR);
+    font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
 }
 
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut{
-    font-size: var(--P);
-    font-weight: var(--FW_BUTTON);
+    font-size: var(--H3);
+    font-weight: var(--FW_BOLD);
     color: var(--COLOR_ACCENT_TEXT);
     margin-top: var(--SPACE_S);
 }
@@ -1284,7 +1299,7 @@ section.container-small-widget-progression section.small-widget:active {
 }
 section.container-small-widget-progression section.small-widget i {
     color: var(--COLOR_TEXT_SECONDARY);
-    font-size: var(--H2);
+    font-size: var(--H1);
 }
 section.container-small-widget-progression section.small-widget p.small-widget-title{
     display: -webkit-box;
@@ -1292,21 +1307,19 @@ section.container-small-widget-progression section.small-widget p.small-widget-t
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
-
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     font-weight: var(--FW_BUTTON);
     margin-top: var(--SPACE_XS);
-    min-height: 48px;
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data{
     margin-top: var(--SPACE_XS);
     font-size: var(--H1);
-    font-weight: var(--FW_BOLD);
+    font-weight: var(--FW_BOLD_SMALL);
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data small{
-    font-weight: var(--FW_BUTTON);
-    font-size: var(--P);
+    font-weight: var(--FW_REGULAR);
+    font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
 }
@@ -1443,7 +1456,7 @@ div.button-flottant p{
         pointer-events: none;
 
         position: fixed;
-        bottom: 5.6rem;
+        bottom: 5.8rem;
         right: 0;
         padding: var(--SPACE_S);
         width: fit-content;
@@ -1583,7 +1596,7 @@ div.zone-coach::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
-    filter: blur(30px) brightness(0.7);
+    filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
 }
 div.zone-coach p.zone-coach-name {
@@ -2799,6 +2812,11 @@ div.visuel-version p.visuel-version-title{
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
+div.visuel-version p.visuel-version-date{
+    font-size: var(--P);
+    font-weight: var(--FW_BUTTON);
+    color: var(--COLOR_TEXT_SECONDARY);
+}
 div.summary-version {
     background-color: transparent;
 }
@@ -2814,6 +2832,50 @@ div.summary-version p.summary-version-summary {
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     border-bottom: solid 2px var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+
+section.container-new-functionnality {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--SPACE_L);
+    margin: var(--SPACE_XL) 0;
+}
+@media (max-width: 1270px) {
+    section.container-new-functionnality {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 800px) {
+    section.container-new-functionnality {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+section.container-new-functionnality div.new-functionnality{
+    display: flex;
+    gap: var(--SPACE_M);
+    padding: var(--SPACE_XS);
+}
+section.container-new-functionnality div.new-functionnality div.content-left{
+    display: flex;
+    justify-content: center;
+}
+section.container-new-functionnality div.new-functionnality div.content-left i{
+    font-size: 2.3rem;
+    color: var(--COLOR_ACCENT);
+}
+section.container-new-functionnality div.new-functionnality div.content-right{
+    width: 100%;
+}
+section.container-new-functionnality div.new-functionnality div.content-right p.title{
+    font-size: var(--P);
+    font-weight: var(--FW_BOLD_SMALL);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+section.container-new-functionnality div.new-functionnality div.content-right p.description{
+    font-size: var(--P);
+    font-weight: normal;
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin-top: var(--SPACE_XXS);
 }
 
 

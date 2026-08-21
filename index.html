@@ -31,19 +31,19 @@
         <ul class="header-container-items">
 
             <li class="header-items selected">
-                <i class="fs-icon_entrainement"></i>
+                <i class="icon_entrainement"></i>
                 Entraînement
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'racine', 'Progression')">
-                <i class="fs-icon_progression"></i>
+                <i class="icon_progression"></i>
                 Progression
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'racine', 'Outils')">
-                <i class="fs-icon_outils"></i>
+                <i class="icon_outils"></i>
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'racine', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
+                <i class="icon_plus_horizontal"></i>
                 Plus
             </li>
 
@@ -55,19 +55,19 @@
         <ul class="tab-bars-container-items">
 
             <li class="tab-bars-items selected">
-                <i class="fs-icon_entrainement"></i>
+                <i class="icon_entrainement"></i>
                 <p class="tab-bars-items-name">Entraînement</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'racine', 'Progression')">
-                <i class="fs-icon_progression"></i>
+                <i class="icon_progression"></i>
                 <p class="tab-bars-items-name">Progression</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'racine', 'Outils')">
-                <i class="fs-icon_outils"></i>
+                <i class="icon_outils"></i>
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'racine', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
+                <i class="icon_plus_horizontal"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -77,35 +77,34 @@
     
     <div class="container-button-flottant">
         <div class="button-flottant" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'">
-            <i class="fs-icon_add"></i>
+            <i class="icon_add"></i>
             <p >Ajouter</p>
         </div>
     </div>
         
     <div class="toolbar">
         <h1>Entraînement</h1>
-        <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
+        <a href="entrainement/statistiques.html"><i class="icon_statistiques"></i></a>
     </div>
         
-    <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
-        <div class="config-profil-head">
-            <i class="fs-icon_profil"></i>
-            <p>Configurer <strong>SPRINTIA</strong></p>
-        </div>
+    <section class="container-invite-to-config" id="configurer-SPRINTIA" style="display: none;">
 
-        <p class="description">
-            Pour débloquer l'étendue des fonctionnalités de SPRINTIA, veuillez configurer votre profil.
+        <div class="icone">
+            <i class="icon_profil"></i>
+        </div>
+        <p class="information">
+            Pour débloquer l'étendue des fonctionnalités, veuillez <strong>configurer votre profil</strong>.
         </p>
-                    
-        <div class="container-button-config-profil">
+        <div class="container-button">
             <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
             <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
         </div>
-    </div>
+
+    </section>
 
     <div class="input-search">
         <!-- pour un input on use pas "click()" on use "focus()" -->
-        <i class="fs-icon_search" onclick="document.getElementById('input-search').focus()"></i>
+        <i class="icon_search" onclick="document.getElementById('input-search').focus()"></i>
         <input type="search" id="input-search" placeholder="Rechercher un entraînement" autocomplete="off">
     </div>
 
@@ -132,7 +131,7 @@
 
             <div class="windows-SPRINTIA-briefing-head">
                 <p class="title">SPRINTIA Briefing</p>
-                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+                <i class="icon_fermer" onclick="closeWindows()"></i>
             </div>
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
@@ -165,8 +164,10 @@
         }
 
         function ignoreConfigurationProfil() {
-            document.getElementById("configurer-SPRINTIA").style.display = "none"
-            localStorage.setItem("configurationProfil", "ignorer")
+            if (confirm("Êtes-vous sûr de vouloir ignorer la configuration de votre profil ?")) {
+                document.getElementById("configurer-SPRINTIA").style.display = "none"
+                localStorage.setItem("configurationProfil", "ignorer")
+            }
         }
 
         window.addEventListener("DOMContentLoaded", configSPRINTIA())
@@ -206,23 +207,13 @@
                         ${workout.sport} · ${DateEuropeen}
                     </p>
                 </div>
-                <div class="container-data-workout">
-                    <div class="data-workout-paire">
-                        <p class="duree-workout">
-                            <strong>${dureeWorkout}</strong>
-                        </p>
-                        <p class="rpe-workout">
-                            RPE : <strong>${workout.rpe}</strong>
-                        </p>
-                    </div>
-                    <div class="data-workout-paire">
-                        <p class="charge-workout">
-                            Charge d'entraînement : <strong>${workout.charge_entrainement} CE</strong>
-                        </p>
-                    </div>
-                    <div class="action-button-card-workout">
-                        <button>Détail de l'entraînement</button>
-                    </div>
+                <div class="container-data-resume-workout">
+                    <p class="duree-workout">
+                        ${dureeWorkout}
+                    </p>
+                    <p class="charge-workout">
+                        ${workout.charge_entrainement} <small>CE</small>
+                    </p>
                 </div>
             </a>
             `

@@ -189,14 +189,14 @@ i {
 .fs-icon_proteines:before {content: "\e926";}
 .fs-icon_recuperation:before {content: "\e927";}
 .fs-icon_refresh:before {content: "\e928";}
-.fs-icon_SPRINTIA_briefing:before {content: "\e929";}
-.fs-icon_statistiques:before {content: "\e92a";}
-.fs-icon_supprimer:before {content: "\e92b";}
-.fs-icon_temps_recup:before {content: "\e92c";}
-.fs-icon_update_history:before {content: "\e92d";}
-.fs-icon_velo:before {content: "\e92e";}
-.fs-icon_zones_cardiaques:before {content: "\e92f";}
-
+.fs-icon_search:before {content: "\e929";}
+.fs-icon_SPRINTIA_briefing:before {content: "\e92a";}
+.fs-icon_statistiques:before {content: "\e92b";}
+.fs-icon_supprimer:before {content: "\e92c";}
+.fs-icon_temps_recup:before {content: "\e92d";}
+.fs-icon_update_history:before {content: "\e92e";}
+.fs-icon_velo:before {content: "\e92f";}
+.fs-icon_zones_cardiaques:before {content: "\e930";}
 
 * {
     margin: 0;
@@ -1341,12 +1341,11 @@ div.toolbar i {
 @media (hover: hover) and (pointer: fine) {
     div.toolbar i:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        transform: scale(var(--SCALE_SUP));
     }
 }
 div.toolbar i:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    transform: scale(var(--SCALE_SUP));
+    transform: scale(var(--SCALE_NORMAL));
 }
 div.toolbar i#icon-menu-many-action {
     background-color: transparent;
@@ -2335,13 +2334,30 @@ div.input-search {
 
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
+    outline: 2px solid var(--COLOR_BACKGROUND_CARD);
     overflow: hidden;
 
-    max-width: 450px;
+    max-width: 425px;
     height: 50px;
 
     margin: var(--SPACE_M) 0;
     padding: var(--SPACE_XXS);
+
+    transition: outline ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.input-search:hover {
+        outline: 2px solid var(--COLOR_ACCENT_TEXT);
+    }
+}
+div.input-search:active,
+div.input-search:focus-within {
+    outline: 2px solid var(--COLOR_ACCENT_TEXT);
+} 
+@media (max-width: 695px) {
+    div.input-search {
+        max-width: none;
+    }
 }
 div.input-search i{
     display: flex;
@@ -2356,6 +2372,7 @@ div.input-search i{
 
     font-size: 2rem;
     padding: var(--SPACE_XS);
+    cursor: pointer;
 }
 div.input-search input[type="search"]{
     background-color: var(--COLOR_BACKGROUND_CARD);

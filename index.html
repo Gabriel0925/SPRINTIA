@@ -104,7 +104,8 @@
     </div>
 
     <div class="input-search">
-        <i class="fs-icon_add" onclick="document.getElementById('input-search').click()"></i>
+        <!-- pour un input on use pas "click()" on use "focus()" -->
+        <i class="fs-icon_search" onclick="document.getElementById('input-search').focus()"></i>
         <input type="search" id="input-search" placeholder="Rechercher un entraînement" autocomplete="off">
     </div>
 
@@ -362,7 +363,6 @@
                     });
                 }
             }
-            console.log(filteredHistoriqueComplet)
         })
     </script>
 

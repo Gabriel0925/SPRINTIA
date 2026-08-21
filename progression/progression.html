@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../assets/icons-SPRINTIA/icon-navigateur.png">
-    <link rel="manifest" href="../manifest-V5.2.json">
+    <link rel="manifest" href="../manifest.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
@@ -74,55 +74,95 @@
 
     </section>
 
-    <h1>Progression</h1>
+    <main>
+        <h1>Progression</h1>
 
-    <section class="container-widget-progression">
+        <h2>Volume d'entraî. (4 sem.)</h2>
+        <p class="text">
+            Ce graphique permet de suivre votre régularité en comparant votre temps total d'entraînement par semaine.
+        </p>
+        <div class="chart-container" id="conteneur-graphique">
+            <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+            <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+        </div>
+        <button class="briefing" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
 
-        <section class="widget-charge-entrainement" onclick="window.location.href = 'charge-entrainement/charge-entrainement.html'">
+        <h2>Analyse</h2>
+        <section class="container-widget-progression">
 
-            <div class="widget-charge-entrainement-header">
-                <i class="fs-icon_charge_entrainement" id="icon-card"></i>
-                <p class="widget-charge-entrainement-header-title">Charge d'entraînement</p>
-                <i class="fs-icon_fleche_droite"></i>
-            </div>
+            <section class="widget-charge-entrainement" onclick="window.location.href = 'charge-entrainement/charge-entrainement.html'">
 
-            <p class="widget-charge-entrainement-score" id="charge-7j">0 <small>CE</small></p>
-            <p class="widget-charge-entrainement-statut" id="statut-charge-entrainement">chargement...</p>
+                <div class="widget-charge-entrainement-header">
+                    <i class="fs-icon_charge_entrainement" id="icon-card"></i>
+                    <p class="widget-charge-entrainement-header-title">Charge d'entraînement</p>
+                    <i class="fs-icon_fleche_droite"></i>
+                </div>
+
+                <p class="widget-charge-entrainement-score" id="charge-7j">0 <small>CE</small></p>
+                <p class="widget-charge-entrainement-statut" id="statut-charge-entrainement">chargement...</p>
+
+            </section>
+            <section class="widget-charge-entrainement" onclick="window.location.href = 'niveau-course/niveau-course-analyse.html'">
+
+                <div class="widget-charge-entrainement-header">
+                    <i class="fs-icon_niveau_course" id="icon-card"></i>
+                    <p class="widget-charge-entrainement-header-title">Niveau de course</p>
+                    <i class="fs-icon_fleche_droite"></i>
+                </div>
+
+                <p class="widget-charge-entrainement-score" id="dernier-niveau-course">-- <small>/100</small></p>
+                <p class="widget-charge-entrainement-statut" id="zone-dernier-niveau-course">chargement...</p>
+
+            </section>
 
         </section>
-        <section class="widget-charge-entrainement" onclick="window.location.href = 'niveau-course/niveau-course-analyse.html'">
 
-            <div class="widget-charge-entrainement-header">
-                <i class="fs-icon_niveau_course" id="icon-card"></i>
-                <p class="widget-charge-entrainement-header-title">Niveau de course</p>
-                <i class="fs-icon_fleche_droite"></i>
-            </div>
+        <section class="container-small-widget-progression">
+            
+            <section class="small-widget" onclick="window.location.href = 'indulgence-course/indulgence-course.html'">
+                <i class="fs-icon_indulgence_course"></i>
+                <p class="small-widget-title">Indulgence de course</p>
 
-            <p class="widget-charge-entrainement-score" id="dernier-niveau-course">-- <small>/100</small></p>
-            <p class="widget-charge-entrainement-statut" id="zone-dernier-niveau-course">chargement...</p>
+                <p class="small-widget-data" id="data-dist-7j">0,0 <small>km</small></p>
+            </section>
+            <section class="small-widget" onclick="window.location.href = 'recuperation/recuperation.html'">
+                <i class="fs-icon_recuperation"></i>
+                <p class="small-widget-title">Récupération</p>
+
+                <p class="small-widget-data" id="data-recuperation">-- <small>bpm</small></p>
+            </section>
 
         </section>
+    </main>
 
-    </section>
-
-    <section class="container-small-widget-progression">
+    <!-- Fenetre flottante pour SPRINTIA Briefing -->
+    <section class="background-SPRINTIA-briefing">
         
-        <section class="small-widget" onclick="window.location.href = 'indulgence-course/indulgence-course.html'">
-            <i class="fs-icon_indulgence_course"></i>
-            <p class="small-widget-title">Indulgence de course</p>
+        <div class="windows-SPRINTIA-briefing">
 
-            <p class="small-widget-data" id="data-dist-7j">0,0 <small>km</small></p>
-        </section>
-        <section class="small-widget" onclick="window.location.href = 'recuperation/recuperation.html'">
-            <i class="fs-icon_recuperation"></i>
-            <p class="small-widget-title">Récupération</p>
+            <div class="windows-SPRINTIA-briefing-head">
+                <p class="title">SPRINTIA Briefing</p>
+                <i class="fs-icon_fermer" onclick="closeWindows()"></i>
+            </div>
+            <p class="explanation-briefing">
+                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
+                le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
+            </p>
+            <div class="container-button-windows-SPRINTIA-briefing">
+                <button onclick="
+                    openIA('vibe')
+                    " id="button-open-ia">Copier & Ouvrir Vibe</button>
+            </div>
 
-            <p class="small-widget-data" id="data-recuperation">-- <small>bpm</small></p>
-        </section>
+        </div>
 
     </section>
 
     <script src="../assets/base-js/base.js"></script>
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="../assets/bibliotheques/chart.min.js"></script>   
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../assets/bibliotheques/dexie.js"></script>
     <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
@@ -131,6 +171,95 @@
     <script src="charge-entrainement/script-charge-entrainement.js"></script>
     <!-- connexion au fichier du niveau de course pr avoir accès au fonction -->
     <script src="niveau-course/script-niveau-course-analyse.js"></script>
+
+    <!-- Pour le graphique -->
+    <script>
+        let DureeTotalSemaine = 0
+
+        async function RecupData() {
+            // Initialisation
+            DureeTotalSemaine = 0 // Variable deja défini en haut du script (remise à 0)
+            let DureeTotalSemaine2 = 0
+            let DureeTotalSemaine3 = 0
+            let DureeTotalSemaine4 = 0
+    
+            // Date recup
+            let dateMoins7J = createObjetDate(7)
+            let dateMoins14J = createObjetDate(14)
+            let dateMoins21J = createObjetDate(21)
+            let dateMoins28J = createObjetDate(28)
+
+            // Recup data in BDD
+            const HistoriqueDB = await db.entrainement.where("date").aboveOrEqual(dateMoins28J).toArray()
+
+            // Trier par date 
+            HistoriqueDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
+                if (element1.date < element2.date) return 1
+                if (element1.date > element2.date) return -1
+            })
+
+            // Recup valeur qui nous interesse
+            let DureeDataSemaine = HistoriqueDB.map(data => data.duree)
+            let DateDataSemaine = HistoriqueDB.map(data => data.date)
+
+            // Unit
+            let TableauDureeSemaine = [] 
+            let TableauDureeSemaine2 = [] 
+            let TableauDureeSemaine3 = [] 
+            let TableauDureeSemaine4 = [] 
+            let compteur = 0
+
+            DateDataSemaine.forEach(element => { // Parcours des dates
+                if (element >= dateMoins7J) {
+                    TableauDureeSemaine.push(DureeDataSemaine[compteur]) // tableau pour la durée des 7 derniers jours
+                } else if (element >= dateMoins14J) {
+                    TableauDureeSemaine2.push(DureeDataSemaine[compteur]) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
+                } else if (element >= dateMoins21J) {
+                    TableauDureeSemaine3.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
+                } else if (element >= dateMoins28J) {
+                    TableauDureeSemaine4.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
+                }
+                
+                compteur += 1
+            });
+
+            // 3 boucles pour ajouter les durée pr savoir jai fais combien de temps de sport les 7 derniers jours,...
+            TableauDureeSemaine.forEach(element => { 
+                DureeTotalSemaine += element
+            })            
+            TableauDureeSemaine2.forEach(element => {
+                DureeTotalSemaine2 += element
+            })
+            TableauDureeSemaine3.forEach(element => {
+                DureeTotalSemaine3 += element
+            })
+            TableauDureeSemaine4.forEach(element => {
+                DureeTotalSemaine4 += element
+            })
+
+            const TableauPourGraphique = [Math.floor(DureeTotalSemaine4), Math.floor(DureeTotalSemaine3), Math.floor(DureeTotalSemaine2), Math.floor(DureeTotalSemaine)]
+
+            return TableauPourGraphique
+        }
+
+        async function graph() {
+            // recup des datas
+            let TableauPourGraphique = await RecupData()
+
+            genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], TableauPourGraphique)
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            graph()
+        })
+
+        // Pour recharger le graphique si c'est dans le BFCache
+        window.addEventListener("pageshow", (event) => {
+            if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
+                graph()
+            }
+        })
+    </script>
     <script>
         window.addEventListener("DOMContentLoaded", async () => {
             // --- Charge d'entrainement ---
@@ -174,6 +303,9 @@
 
         })
     </script>
+    
+    <!-- SPRINTIA Briefing -->
+    <script src="../assets/base-js/SPRINTIA-briefing.js"></script>
 
     <script defer src="/_vercel/insights/script.js"></script>
 

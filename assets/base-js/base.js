@@ -1,3 +1,20 @@
+// VARIABLE GLOBALE A TOUTES LES PAGES SPRINTIA
+const VERSION_SPRINTIA = "v26.09"
+
+function newMajPointBleu() {
+    let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
+
+    if (lastViewVersion != VERSION_SPRINTIA) {
+        let ongletPlus = document.querySelector(".tab-bars-items:last-child")
+        if (ongletPlus) {
+            ongletPlus.classList.add("point-bleu-tab-bars")
+        }
+    }
+}
+window.addEventListener("DOMContentLoaded", () => {
+    newMajPointBleu()
+})
+
 // --- Navigation pour la tab-bar ---
 const dicoUrl = {
     "racine": {

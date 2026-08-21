@@ -203,10 +203,10 @@ async function nettoyerDatas(conserverDatas) { // conserverDatas vaut soit 30J/9
     }
 }
 
-async function reinitialiserSPRINTIA() {
+async function suppressionDonnees() {
     if (confirm("Êtes-vous sur de vouloir supprimer toutes vos données ?")) {
         let buttonReinitialiser = document.getElementById("reinitialiser-SPRINTIA")
-        buttonReinitialiser.textContent = "Réinitialisation..."
+        buttonReinitialiser.textContent = "Suppression..."
         buttonReinitialiser.disabled = true
         
         try {
@@ -216,7 +216,7 @@ async function reinitialiserSPRINTIA() {
                 await elt.clear()
             }
             
-            buttonReinitialiser.textContent = "Réinitialisé"
+            buttonReinitialiser.textContent = "Supprimé"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
             window.location.href = "../../../index.html"
         } catch(error) {
@@ -224,7 +224,7 @@ async function reinitialiserSPRINTIA() {
             buttonReinitialiser.textContent = "Une erreur s'est produite"
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } finally {
-            buttonReinitialiser.textContent = "Réinitialiser SPRINTIA"
+            buttonReinitialiser.textContent = "Supprimer vos données"
             buttonReinitialiser.disabled = false
         }
     }

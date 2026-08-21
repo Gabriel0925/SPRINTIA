@@ -30,6 +30,10 @@
     --BLUR_GLASSMORPHISM_BUTTON: 22px; /* petit boutons flottants */
     --SATURATE_GLASSMORPHISM_BUTTON: 130%;
 
+    --BLUR_GLASSMORPHISM_LAYOUT: 4px; /* layouts */
+    --COLOR_LAYOUT: rgba(0, 0, 0, 0.3);
+    --SATURATE_GLASSMORPHISM_LAYOUT: 140%;
+
 
     /* BRIEFING */
     --COLOR_BRIEFING_START: #4689ef;
@@ -185,14 +189,14 @@ i {
 .fs-icon_proteines:before {content: "\e926";}
 .fs-icon_recuperation:before {content: "\e927";}
 .fs-icon_refresh:before {content: "\e928";}
-.fs-icon_SPRINTIA_briefing:before {content: "\e929";}
-.fs-icon_statistiques:before {content: "\e92a";}
-.fs-icon_supprimer:before {content: "\e92b";}
-.fs-icon_temps_recup:before {content: "\e92c";}
-.fs-icon_update_history:before {content: "\e92d";}
-.fs-icon_velo:before {content: "\e92e";}
-.fs-icon_zones_cardiaques:before {content: "\e92f";}
-
+.fs-icon_search:before {content: "\e929";}
+.fs-icon_SPRINTIA_briefing:before {content: "\e92a";}
+.fs-icon_statistiques:before {content: "\e92b";}
+.fs-icon_supprimer:before {content: "\e92c";}
+.fs-icon_temps_recup:before {content: "\e92d";}
+.fs-icon_update_history:before {content: "\e92e";}
+.fs-icon_velo:before {content: "\e92f";}
+.fs-icon_zones_cardiaques:before {content: "\e930";}
 
 * {
     margin: 0;
@@ -588,10 +592,27 @@ section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected
     box-shadow: none;
     color: var(--COLOR_TEXT_PRIMARY);
 }
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-bars{
+    position: relative;
+}
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-bars::before{
+    content: "";
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    margin-top: var(--SPACE_XS);
+    margin-right: var(--SPACE_L);
+
+    background-color: var(--COLOR_ACCENT);
+    border-radius: 50%;
+}
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
     font-size: 1.5rem;
 }
-section.tab-bars ul.tab-bars-container-items li.tab-bars-items p{
+section.tab-bars ul.tab-bars-container-items li.tab-bars-items p.tab-bars-items-name{
     font-size: 0.55rem;
 }
 
@@ -632,7 +653,7 @@ div.container-logo-dynamique div.logo-dynamique {
     z-index: 20000;
     transition: transform ease-out 0.6s;
 }
-@media (max-width: 1140px) {
+@media (max-width: 1050px) {
     div.container-logo-dynamique {
         justify-content: center;
     }
@@ -666,17 +687,6 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
 
 
 
-section.container-config-profil {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: var(--SPACE_XL);
-    margin-top: var(--SPACE_S);
-}
-@media (max-width: 1080px) {
-    section.container-config-profil {
-        gap: var(--SPACE_M); 
-    }
-}
 div.config-profil {
     display: flex;
     flex-direction: column;
@@ -687,6 +697,7 @@ div.config-profil {
     height: fit-content;
     max-width: 501px;
     padding: var(--SPACE_XS);
+    margin: var(--SPACE_M) 0;
     border-radius: var(--BORDER_BIG);
     transition: background-color ease-out var(--TIME_TRANSITION), transform ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -744,7 +755,6 @@ div.config-profil div.container-button-config-profil button#ignorer:active{
 
 section.segmented-button {
     background-color: var(--COLOR_BACKGROUND_CARD);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -764,36 +774,25 @@ section.segmented-button div.segmented-button-button {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                color ease-out var(--TIME_TRANSITION),
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                color ease-out var(--TIME_TRANSITION_FAST),
                 font-weight ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION);
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
-    section.segmented-button:hover {
-        transform: scale(1.014);
-    }
     section.segmented-button div.segmented-button-button:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
         color: var(--COLOR_ACCENT_TEXT);
-        font-weight: var(--FW_BUTTON);
-        transform: scale(var(--SCALE_SUP));
     }
 }
-section.segmented-button:active {
-    transform: scale(1.014);
-}
 section.segmented-button div.segmented-button-button:active {
-    transform: scale(var(--SCALE_SUP));
+    transform: scale(var(--SCALE_NORMAL));
     color: var(--COLOR_ACCENT_TEXT);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     font-weight: var(--FW_BUTTON);
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     color: var(--COLOR_ACCENT_TEXT);
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
@@ -897,7 +896,7 @@ section.container-workout-cards {
     flex-wrap: wrap;
     justify-content: left;
     gap: var(--SPACE_L);
-    margin-bottom: var(--SPACE_L);
+    margin: var(--SPACE_L) 0;
     transition: all ease-out var(--TIME_TRANSITION);
 }
 section.container-workout-cards div.cards-history-workout {
@@ -1124,7 +1123,7 @@ textarea:focus {
 textarea::placeholder {
     color: var(--COLOR_TEXT_PRIMARY);
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask {
+button.briefing {
     margin: 0;
     margin-top: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
@@ -1137,7 +1136,7 @@ div.container-discuter-coach button#button-SPRINTIA-briefing-ask {
     width: 100%;
     max-width: 450px;
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
+button.briefing::before {
     content: "";
     position: absolute;
     pointer-events: none;
@@ -1150,14 +1149,14 @@ div.container-discuter-coach button#button-SPRINTIA-briefing-ask::before {
     z-index: -1;
 }
 @media (hover: hover) and (pointer: fine) {
-    div.container-discuter-coach button#button-SPRINTIA-briefing-ask:hover {
+    button.briefing:hover {
         background-color: var(--COLOR_ACCENT_HOVER);
     }
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active::before {
+button.briefing:active::before {
     background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
-div.container-discuter-coach button#button-SPRINTIA-briefing-ask:active {
+button.briefing:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
@@ -1234,7 +1233,7 @@ section.container-widget-progression section.widget-charge-entrainement div.widg
 }
 
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score{
-    margin-top: var(--SPACE_XS);
+    margin-top: var(--SPACE_S);
     font-size: var(--H1);
     font-weight: var(--FW_BOLD);
 }
@@ -1249,7 +1248,7 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     font-size: var(--P);
     font-weight: var(--FW_BUTTON);
     color: var(--COLOR_ACCENT_TEXT);
-    margin-top: var(--SPACE_XS);
+    margin-top: var(--SPACE_S);
 }
 
 section.container-small-widget-progression {
@@ -1351,12 +1350,11 @@ div.toolbar i {
 @media (hover: hover) and (pointer: fine) {
     div.toolbar i:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        transform: scale(var(--SCALE_SUP));
     }
 }
 div.toolbar i:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    transform: scale(var(--SCALE_SUP));
+    transform: scale(var(--SCALE_NORMAL));
 }
 div.toolbar i#icon-menu-many-action {
     background-color: transparent;
@@ -1437,7 +1435,7 @@ div.button-flottant p{
     font-size: var(--H2);
     font-weight: var(--FW_BUTTON);
 }
-@media (max-width: 915px) {
+@media (max-width: 1050px) {
     /* on le repasse en display block et width,... à 0 pour que le bouton se replace en bas a droite */
     div.container-button-flottant {
         display: block;
@@ -1642,8 +1640,9 @@ div.zone-coach button:active {
 
 /* --- Fenetre pour SPRITNIA Briefing --- */
 section.background-SPRINTIA-briefing {
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px) saturate(140%);
+    background-color: var(--COLOR_LAYOUT);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
 
     display: none;
     justify-content: center;
@@ -1978,15 +1977,18 @@ div.my-control i {
     padding: var(--SPACE_XS);
 
     transition: background-color ease-out var(--TIME_TRANSITION),
+                color ease-out var(--TIME_TRANSITION_FAST),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     div.my-control i:hover {
+        color: var(--COLOR_BACKGROUND);
         background-color: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
 div.my-control i:active {
+    color: var(--COLOR_BACKGROUND);
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
@@ -2184,17 +2186,114 @@ div.small-zone-result div.container-result p.small-zone-result-unit{
 }
 
 
+div.container-chargement {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--COLOR_LAYOUT);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
+    width: 100%;
+    height: 100%;
+    transition: opacity ease-out 0.6s;
+}
+div.container-chargement.finish {
+    opacity: 0;
+    pointer-events: none;
+}
+@keyframes tourner_en_rond {
+    to {transform: rotate(360deg);}
+}
+div.container-chargement div.chargement {
+    width: 45px;
+    height: 45px;
+    border: 5px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-top-color: var(--COLOR_ACCENT_TEXT);
+    border-radius: 50%;
+    animation: tourner_en_rond 0.8s infinite forwards;
+}
+@keyframes finish_tourner_en_rond {
+    0% {transform: scale(1);}
+    100% {transform: scale(0);}
+}
+div.container-chargement.finish div.chargement {
+    animation: finish_tourner_en_rond 0.5s forwards;
+}
 
 div.container-videos-yt {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--SPACE_L);
-    margin: var(--SPACE_M) 0;
+    margin: var(--SPACE_L) 0;
 }
 div.container-videos-yt iframe {
-    flex-grow: 1;
-    height: 180px;
+    width: 100%;
+    height: 230px;
     border-radius: var(--BORDER_BIG);
+}
+@media (max-width: 1314px) {
+    div.container-videos-yt iframe {
+        height: 200px;
+    }
+}
+@media (max-width: 1150px) {
+    div.container-videos-yt {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    div.container-videos-yt iframe {
+        height: 270px;
+    }
+}
+@media (max-width: 1035px) {
+    div.container-videos-yt iframe {
+        height: 230px;
+    }
+}
+@media (max-width: 885px) {
+    div.container-videos-yt iframe {
+        height: 200px;
+    }
+}
+@media (max-width: 764px) {
+    div.container-videos-yt iframe {
+        height: 180px;
+    }
+}
+@media (max-width: 704px) {
+    div.container-videos-yt {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    div.container-videos-yt iframe {
+        height: 320px;
+    }
+}
+@media (max-width: 612px) {
+    div.container-videos-yt iframe {
+        height: 280px;
+    }
+}
+@media (max-width: 532px) {
+    div.container-videos-yt iframe {
+        height: 240px;
+    }
+}
+@media (max-width: 468px) {
+    div.container-videos-yt iframe {
+        height: 200px;
+    }
+}
+@media (max-width: 392px) {
+    div.container-videos-yt iframe {
+        height: 180px;
+    }
+}
+@media (max-width: 359px) {
+    div.container-videos-yt iframe {
+        height: 165px;
+    }
 }
 
 
@@ -2237,6 +2336,84 @@ div.form div.side-by-side {
 }
 div.form div.container-input {
     position: relative;
+}
+
+/* --- Style de l'input search --- */
+div.input-search {
+    display: flex;
+    align-items: center;
+    gap: var(--SPACE_S);
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: var(--BORDER_BIG);
+    outline: 2px solid var(--COLOR_BACKGROUND_CARD);
+    overflow: hidden;
+
+    max-width: 425px;
+    height: 50px;
+
+    margin: var(--SPACE_M) 0;
+    margin-top: var(--SPACE_L);
+    padding: var(--SPACE_XXS);
+
+    transition: outline ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.input-search:hover {
+        outline: 2px solid var(--COLOR_ACCENT_TEXT);
+    }
+}
+div.input-search:active,
+div.input-search:focus-within {
+    outline: 2px solid var(--COLOR_ACCENT_TEXT);
+} 
+@media (max-width: 695px) {
+    div.input-search {
+        max-width: none;
+    }
+}
+div.input-search i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    border-radius: var(--BORDER_BIG);
+
+    width: 75px;
+    height: 42px;
+
+    font-size: 2rem;
+    padding: var(--SPACE_XS);
+    cursor: pointer;
+}
+div.input-search input[type="search"]{
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border: 0;
+    outline: 0;
+    border-radius: var(--BORDER_BIG);
+
+    font-family: var(--FONT_FAMILY);
+    font-size: var(--P);
+
+    width: 100%;
+    height: 100%;
+
+    /* désactive les styles de base */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+div.input-search input[type="search"]::placeholder{
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+/* pr suppr la croix  et licone recherche de base */
+div.input-search input[type="search"]::-webkit-search-decoration,
+div.input-search input[type="search"]::-webkit-search-cancel-button,
+div.input-search input[type="search"]::-webkit-search-results-button,
+div.input-search input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 /* --- Style de tous les inputs text, number et date --- */
@@ -2311,7 +2488,9 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 }
 
 /* Pour le label input */
-input::placeholder {
+input[type="number"]::placeholder,
+input[type="date"]::placeholder,
+input[type="text"]::placeholder {
     color: transparent !important; /* Il faut mettre le !important sinon ça ne marche pas */
 }
 /* Logique de l'animation */
@@ -2625,13 +2804,14 @@ div.summary-version {
 }
 div.summary-version p.summary-version-title {
     margin-bottom: var(--SPACE_S);
-    font-size: var(--H3);
-    font-weight: var(--FW_BUTTON);
+    font-size: var(--H2);
+    color: var(--COLOR_TEXT_PRIMARY);
     padding-bottom: var(--SPACE_XS);
     border-bottom: solid 2px var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 div.summary-version p.summary-version-summary {
     padding-bottom: var(--SPACE_S);
+    font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     border-bottom: solid 2px var(--COLOR_BACKGROUND_CARD_HOVER);
 }
@@ -2681,11 +2861,11 @@ div.carousel-content div.card-releases div.card-releases-image p.version {
     font-size: var(--H2);
     font-weight: var(--FW_BOLD);
 }
-div.carousel-content div.card-releases div.card-releases-image p.version span.point-rouge.visible {
+span.point-bleu.visible {
     background-color: var(--COLOR_ACCENT);
     border-radius: 50%;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     margin-right: 10px;
     margin-top: 10px;
     display: block;
@@ -2705,7 +2885,6 @@ div.carousel-content div.card-releases p.description-maj {
     line-clamp: 3; 
     overflow: hidden;
 }
-
 
 
 div.action-list {
@@ -2769,6 +2948,7 @@ div.box-last-maj{
     max-width: 500px;
     cursor: pointer;
     padding: var(--SPACE_XS);
+    margin: var(--SPACE_M) 0;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -2792,7 +2972,8 @@ div.box-last-maj div.content1 .card-releases-image-last-maj {
     color: var(--COLOR_TEXT_PRIMARY);
     margin-bottom: var(--SPACE_XS);
 }
-div.box-last-maj div.content1 .card-releases-image-last-maj p{
+div.box-last-maj div.content1 .card-releases-image-last-maj p.version-last-maj{
+    display: flex;
     font-size: var(--H2);
 }
 div.box-last-maj div.content1 .card-releases-image-last-maj p.date-last-maj{
@@ -2809,34 +2990,13 @@ div.box-last-maj div.content2 .description{
     padding: var(--SPACE_XXS);
     color: var(--COLOR_TEXT_SECONDARY);
     cursor: pointer;
+    margin: var(--SPACE_XXS) 0;
     
     display: -webkit-box;
     -webkit-box-orient: vertical; 
     -webkit-line-clamp: 12; /* Limite à 12 lignes */
     line-clamp: 12; /* Je met également ça pour que ça assure la compatibilité avec tous les navigateurs */
     overflow: hidden;
-}
-div.box-last-maj div.content2 button{
-    width: 100%;
-    padding: 0.7rem;
-    margin: 0;    
-    margin-top: var(--SPACE_S);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-
-    border-radius: var(--BORDER_NORMAL);
-    background-color: var(--COLOR_ACCENT);
-    transition: background-color ease-out var(--TIME_TRANSITION);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.box-last-maj div.content2 button:hover {
-        background-color: var(--COLOR_ACCENT_HOVER);
-    }
-}
-div.box-last-maj div.content2 button:active{
-    background-color: var(--COLOR_ACCENT_HOVER);
-    transform: scale(1); /* pour éviter que le bouton s'enfonce alors que la card fais deja un transform scale */
 }
 
 
@@ -3000,7 +3160,7 @@ div.container-center-marge {
 
 
 /* --- Gérer l'affichage du header/tab-bars en fonction de l'appareil --- */
-@media (max-width: 915px) {
+@media (max-width: 1050px) {
     section.header {
         display: none;
     }

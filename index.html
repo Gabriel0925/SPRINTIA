@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="assets/icons-SPRINTIA/icon-navigateur.png">
 
-    <link rel="manifest" href="manifest-V5.2.json">
+    <link rel="manifest" href="manifest.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
@@ -82,62 +82,48 @@
         </div>
     </div>
         
-    <main>
-        <div class="toolbar">
-            <h1>Entraînement</h1>
-            <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
+    <div class="toolbar">
+        <h1>Entraînement</h1>
+        <a href="entrainement/statistiques.html"><i class="fs-icon_statistiques"></i></a>
+    </div>
+        
+    <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
+        <div class="config-profil-head">
+            <i class="fs-icon_profil"></i>
+            <p>Configurer <strong>SPRINTIA</strong></p>
         </div>
 
-        <section class="container-config-profil">
-
-            <div class="config-profil" id="configurer-SPRINTIA" style="display: none;">
-                <div class="config-profil-head">
-                    <i class="fs-icon_profil"></i>
-                    <p>Configurer <strong>SPRINTIA</strong></p>
-                </div>
-
-                <p class="description">
-                    Pour débloquer l'étendue des fonctionnalités de SPRINTIA, veuillez configurer votre profil.
-                </p>
-                    
-                <div class="container-button-config-profil">
-                    <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
-                    <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
-                </div>
-            </div>
-
-            <div class="zone-coach">
-                <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-                <p class="zone-coach-interpretation" id="reponse-coach">
-                    Chargement...
-                </p>
-                <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
-            </div>
-
-        </section>
-
-        <h2>Volume d'entraî. (4 sem.)</h2>
-        <p class="text">
-            Ce graphique permet de suivre votre régularité en comparant votre temps total d'entraînement par semaine.
+        <p class="description">
+            Pour débloquer l'étendue des fonctionnalités de SPRINTIA, veuillez configurer votre profil.
         </p>
-        <div class="chart-container" id="conteneur-graphique">
-            <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
-            <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+                    
+        <div class="container-button-config-profil">
+            <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
+            <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
         </div>
+    </div>
 
-        <h2>Historique d'entraînement</h2>
-        <p class="text" id="text-informatif">
-            SPRINTIA n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
-            <a href="entrainement/ajouter-entrainement.html" class="lien">ajouter un entraînement</a>.
-        </p> 
+    <div class="input-search">
+        <!-- pour un input on use pas "click()" on use "focus()" -->
+        <i class="fs-icon_search" onclick="document.getElementById('input-search').focus()"></i>
+        <input type="search" id="input-search" placeholder="Rechercher un entraînement" autocomplete="off">
+    </div>
 
-        <section class="container-workout-cards" id="liste-workouts"></section>
+    <p class="text" id="text-informatif">
+        SPRINTIA n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
+        <a href="entrainement/ajouter-entrainement.html" class="lien">ajouter un entraînement</a>.
+    </p>
+    <p class="text" style="display: none;" id="txt-aucun-result">
+        Aucun résultat
+    </p>
+
+    <section class="container-workout-cards" id="liste-workouts"></section>
         <div class="container-center-marge">
             <button id="button_afficher_plus" onclick="AfficherData()">
                 Afficher plus
             </button>
         </div>
-    </main>
+    </section>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
     <section class="background-SPRINTIA-briefing">
@@ -163,8 +149,6 @@
     
     <script src="assets/base-js/base.js"></script>
 
-    <!-- Import de la bibliothèque pr le graphique -->
-    <script src="assets/bibliotheques/chart.min.js"></script>   
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="assets/bibliotheques/dexie.js"></script>
     <script src="assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
@@ -186,278 +170,6 @@
         }
 
         window.addEventListener("DOMContentLoaded", configSPRINTIA())
-    </script>
-
-    <!-- Pour le JRM Coach -->
-    <script>
-        function PassageHeureJRMCoach(minutes) {
-            let Heure = Math.floor(minutes/60) // Arrondi à l'entier inférieur
-            let MinutesRestante = Math.floor(minutes-60*Heure) // floor car on arrondi vers le bas
-
-            // Initialisation
-            let Result = ""
-            if (Heure < 1) { // Si l'heure est inférieur à 1 on affiche que les minutes pour ne pas afficher 0h 23min
-                Result = Math.floor(minutes) + "min"
-            } else { // Sinon on affiche tous
-                Result = Heure + "h " + MinutesRestante.toString().padStart(1, "0") + "m"
-            }
-            
-            return Result
-        }
-
-        async function JRMCoach() {
-            // Recup data
-            let HistoriqueDB = await db.entrainement.toArray()
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + "<strong>" + NomCoach + "</strong>"
-            }
-
-            if (HistoriqueDB.length > 0) { // Si il y a des datas
-                // Initialisation
-                let DureeTotale = 0
-                let dateMoins7J = createObjetDate(7)
-
-                // Recup du temps
-                let TableauDate = HistoriqueDB.map(elementDB => elementDB.date)
-                let TableauSport = HistoriqueDB.map(elementDB => elementDB.sport)
-
-                let TableauDuree = HistoriqueDB.map(elementDB => elementDB.duree)
-                let TableauDistance = HistoriqueDB.map(elementDB => elementDB.distance)
-                let TableauDenivele = HistoriqueDB.map(elementDB => elementDB.denivele)
-
-                // Initialisation pour la boucle
-                let compteur = 0
-                let NbWorkout = 0
-                let NbWorkoutMuscu = 0
-
-                // Innitialisation pour les distances
-                let DistanceTotale = 0
-                let DistanceTotaleCourse = 0
-                let DistanceTotaleVelo = 0
-                let DistanceTotaleMarche = 0
-
-                let DeniveleTotale = 0
-
-                let ExistenDataDistance = false // cette variable sera sur true si il y a des datas de distance pour que le JRM Coach les affiche
-                // Prepa des variables pour recup les datas des différentes listes dans la boucle
-                let DateElement = ""
-                let DistanceElement = 0 
-                let SportElement = ""
-
-                // Parcour des données de la durée
-                TableauDuree.forEach(element => {
-                    // Mise en variable des elements de chaque tableau qui correspondant au data de l'entrainement 
-                    DateElement = TableauDate[compteur]
-                    DistanceElement = Number(TableauDistance[compteur])
-                    DeniveleElement = Number(TableauDenivele[compteur])
-                    SportElement = TableauSport[compteur]
-
-                    if (DateElement >= dateMoins7J) { // Si la date est plus lointaine que 7J on prend pas
-                        DureeTotale += element // Ajout de la durée qui est entrain d'être parcourue
-                        NbWorkout += 1 // Ajout de 1 pour calculer le nombre d'entraînement
-
-                        if (DistanceElement != null && !isNaN(DistanceElement)) { // Si il y a une distance dans cette séance
-                            ExistenDataDistance = true // Mise de la variable sur true pour que le coach affiche la distance dans son résumé
-                            DistanceTotale += DistanceElement // ajout de la distance de la séance
-                                                        
-                            // Ajout de la distance en fonction du sport
-                            if (SportElement == "Course") {
-                                DistanceTotaleCourse += DistanceElement // calcul distance totale en course
-                            } else if (SportElement == "Vélo") {
-                                DistanceTotaleVelo += DistanceElement // calcul distance totale en vélo
-                            } else if (SportElement == "Marche") {
-                                DistanceTotaleMarche += DistanceElement // calcul distance totale en marche
-                            }
-
-                            DeniveleTotale += DeniveleElement
-                        }
-
-                        if (SportElement == "Musculation") { // si le sport c'est un de muscu on compte
-                            NbWorkoutMuscu += 1 // Ajout de la séance dans le compteur
-                        }
-                    }
-
-                    compteur += 1 // incrémentation
-                });
-
-                const DureeTotaleHeure = PassageHeureJRMCoach(DureeTotale) // pour passer de 90 min à 1h 30min
-
-                // Début interpretation
-                let Interpretation = `Ces 7 derniers jours, tu as fait :<br><br>
-                                <strong>⏱️ ${DureeTotaleHeure}</strong> d'entraînement<br>`
-                
-                if (NbWorkout == 1 || NbWorkout == 0) {
-                    Interpretation += `<strong>💪 ${NbWorkout} séance</strong>`
-                } else {
-                    Interpretation += `<strong>💪 ${NbWorkout} séances</strong>`
-                }
-                
-                // Si il y a des datas de distance
-                if (ExistenDataDistance == true) {
-                    Interpretation += `<br><br><strong>↔️ ${DistanceTotale.toFixed(1).replace(".", ",")} km</strong>` // Ajout de la distance totale peut importe le sport dans l'interpretation
-
-                    // Tous ses if pour savoir quel est le sport que le user a le plus pratiqué cette semaine en fonction de la distance
-                    if (DistanceTotaleCourse >= DistanceTotaleVelo && DistanceTotaleCourse >= DistanceTotaleMarche) {
-                        if (DistanceTotaleCourse != 0) {
-                            if (DistanceTotaleCourse == DistanceTotale) { // Si la distance de course est la meme que la distance totale on ajoute le sport a la fin
-                                Interpretation += " de course à pied"
-                            } else {  
-                                // cette interpretation pour que le user sache que sur 600 km parcourue cette semaine il en a fait 30 en course par exemple
-                                Interpretation += `<br><strong>🏃 ${DistanceTotaleCourse.toFixed(1).replace(".", ",")} km de course à pied</strong>` 
-                            }
-                          
-                        } 
-
-                    } else if (DistanceTotaleVelo >= DistanceTotaleMarche) {
-                        if (DistanceTotaleVelo != 0) {
-                            if (DistanceTotaleVelo == DistanceTotale) { // Si la distance de vélo est la meme que la distance totale on ajoute le sport a la fin
-                                Interpretation += " de vélo" 
-                            } else {
-                                // cette interpretation pour que le user sache que sur 600 km parcourue cette semaine il en a fait 30 de vélo par exemple
-                                Interpretation += `<br><strong>🚴 ${DistanceTotaleVelo.toFixed(1).replace(".", ",")} km de vélo</strong>`
-                            }
-
-                        }
-
-                    } else {
-                        if (DistanceTotaleMarche != 0) {
-                            if (DistanceTotaleMarche == DistanceTotale) { // Si la distance de marche est la meme que la distance totale on ajoute le sport a la fin
-                                Interpretation += " de marche"
-                            } else {
-                                // cette interpretation pour que le user sache que sur 600 km parcourue cette semaine il en a fait 30 en marche par exemple
-                                Interpretation += `<br><strong>🚶‍♂️ ${DistanceTotaleMarche.toFixed(1).replace(".", ",")} km de marche</strong>`
-                            }
-                            
-                        }
-
-                    }
-                    
-                    if (DeniveleTotale > 0) { // Si le dénivelé est supérieur a 0 on l'affiche
-                        Interpretation += `<br><strong>🏔️ ${Math.floor(DeniveleTotale)} m</strong> de dénivelé`
-                    }
-                }
-
-                if (NbWorkoutMuscu != 0) { // Si il y a au moins une seance de muscu le coach l'affiche
-                    if (NbWorkoutMuscu == 1) {
-                        Interpretation += `<br><br><strong>🏋️ ${NbWorkoutMuscu} séance de musculation</strong>`
-                    } else {
-                        Interpretation += `<br><br><strong>🏋️ ${NbWorkoutMuscu} séances de musculation</strong>`
-                    }
-                }
-                
-                // Si les datas de durée sont égale à 0 alors petit message d'encouragement
-                if (DureeTotale == 0) {
-                    Interpretation += "<br><br>Essaie de prendre le temps de faire une séance de sport, ton corps te remerciera plus tard. Si tu fais un entraînement, même léger, tu dormiras mieux ce soir !"
-                }
-
-                document.getElementById("reponse-coach").innerHTML = Interpretation // affichage dans le champs
-
-            } else { // si il ny a pas de datas
-                let NotData = `Je n'ai <strong>pas encore assez de données</strong> pour analyser ta semaine d'entraînement. Continue tes efforts, j'ai hâte de voir tes <strong>premiers entraînements</strong> !`
-
-                document.getElementById("reponse-coach").innerHTML = NotData
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            JRMCoach()
-        })
-    </script>
-
-    <!-- Pour le graphique -->
-    <script>
-        let DureeTotalSemaine = 0
-
-        async function RecupData() {
-            // Initialisation
-            DureeTotalSemaine = 0 // Variable deja défini en haut du script (remise à 0)
-            let DureeTotalSemaine2 = 0
-            let DureeTotalSemaine3 = 0
-            let DureeTotalSemaine4 = 0
-    
-            // Date recup
-            let dateMoins7J = createObjetDate(7)
-            let dateMoins14J = createObjetDate(14)
-            let dateMoins21J = createObjetDate(21)
-            let dateMoins28J = createObjetDate(28)
-
-            // Recup data in BDD
-            const HistoriqueDB = await db.entrainement.where("date").aboveOrEqual(dateMoins28J).toArray()
-
-            // Trier par date 
-            HistoriqueDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
-                if (element1.date < element2.date) return 1
-                if (element1.date > element2.date) return -1
-            })
-
-            // Recup valeur qui nous interesse
-            let DureeDataSemaine = HistoriqueDB.map(data => data.duree)
-            let DateDataSemaine = HistoriqueDB.map(data => data.date)
-
-            // Unit
-            let TableauDureeSemaine = [] 
-            let TableauDureeSemaine2 = [] 
-            let TableauDureeSemaine3 = [] 
-            let TableauDureeSemaine4 = [] 
-            let compteur = 0
-
-            DateDataSemaine.forEach(element => { // Parcours des dates
-                if (element >= dateMoins7J) {
-                    TableauDureeSemaine.push(DureeDataSemaine[compteur]) // tableau pour la durée des 7 derniers jours
-                } else if (element >= dateMoins14J) {
-                    TableauDureeSemaine2.push(DureeDataSemaine[compteur]) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
-                } else if (element >= dateMoins21J) {
-                    TableauDureeSemaine3.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
-                } else if (element >= dateMoins28J) {
-                    TableauDureeSemaine4.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
-                }
-                
-                compteur += 1
-            });
-
-            // 3 boucles pour ajouter les durée pr savoir jai fais combien de temps de sport les 7 derniers jours,...
-            TableauDureeSemaine.forEach(element => { 
-                DureeTotalSemaine += element
-            })            
-            TableauDureeSemaine2.forEach(element => {
-                DureeTotalSemaine2 += element
-            })
-            TableauDureeSemaine3.forEach(element => {
-                DureeTotalSemaine3 += element
-            })
-            TableauDureeSemaine4.forEach(element => {
-                DureeTotalSemaine4 += element
-            })
-
-            const TableauPourGraphique = [Math.floor(DureeTotalSemaine4), Math.floor(DureeTotalSemaine3), Math.floor(DureeTotalSemaine2), Math.floor(DureeTotalSemaine)]
-
-            return TableauPourGraphique
-        }
-
-        async function graph() {
-            // recup des datas
-            let TableauPourGraphique = await RecupData()
-
-            genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], TableauPourGraphique)
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            graph()
-        })
-
-        // Pour recharger le graphique si c'est dans le BFCache
-        window.addEventListener("pageshow", (event) => {
-            if (event.persisted) { // Si la page est dans le BFCache alors on relance le graphique
-                graph()
-            }
-        })
     </script>
 
     <!-- Historique d'entraînement -->
@@ -564,6 +276,8 @@
             // si il n'y a plus de cartes a ajouter on fais disparaitre le bouton voir plus
             if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
                 document.getElementById("button_afficher_plus").style.display = "none"
+            } else {
+                document.getElementById("button_afficher_plus").style.display = "block"
             }
         }
 
@@ -614,6 +328,41 @@
 
         window.addEventListener("DOMContentLoaded", async () => {
             await Init()
+        })
+
+        // Recherche d'entraînement
+        let inputSearch = document.getElementById("input-search")
+        inputSearch.addEventListener("input", () => { // on recup en temps réel ce que le user tape
+            let rechercheUser = inputSearch.value.toLowerCase()
+
+            if (rechercheUser.trim() == "") {
+                document.getElementById("txt-aucun-result").style.display = "none"
+                document.getElementById("liste-workouts").innerHTML = ""
+                initialisationAffichage()
+            } else {
+                let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => workout.nom.toLowerCase().includes(rechercheUser))
+
+                document.getElementById("liste-workouts").innerHTML = ""
+                document.getElementById("button_afficher_plus").style.display = "none"
+
+                if (filteredHistoriqueComplet.length <= 0) {
+                    document.getElementById("txt-aucun-result").style.display = "block"
+                } else {
+                    document.getElementById("txt-aucun-result").style.display = "none"
+
+                    filteredHistoriqueComplet.forEach(element => {
+                        const CardWorkout = document.createElement("div")
+                        CardWorkout.classList.add("cards-history-workout")
+
+                        // Inversion de la date de "2026-01-8" à "8-01-2026"
+                        let DateEuropeen = formatEuropeenDate(element.date)
+                        let dureeWorkout = dureeFormatee(element.duree, "null") // on exige aucun format
+
+                        let CardWorkoutHTML = HTMLCard(CardWorkout, element, DateEuropeen, dureeWorkout)
+                        document.getElementById("liste-workouts").appendChild(CardWorkoutHTML)
+                    });
+                }
+            }
         })
     </script>
 

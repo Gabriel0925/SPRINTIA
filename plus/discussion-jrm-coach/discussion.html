@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
-    <link rel="manifest" href="../../manifest-V5.2.json">
+    <link rel="manifest" href="../../manifest.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
@@ -84,7 +84,7 @@
         </p>
         <div class="container-discuter-coach">
             <textarea id="promt-user" style="min-height: 300px;" placeholder="Une question ?" maxlength="500"></textarea>
-            <button id="button-SPRINTIA-briefing-ask" onclick="
+            <button class="briefing" id="button-SPRINTIA-briefing-ask" onclick="
                         if (!document.getElementById('promt-user').value.trim()) {
                             alert('Veuillez ajouter votre question dans le champs de texte avant de vouloir demander à une IA.')
                         } else {

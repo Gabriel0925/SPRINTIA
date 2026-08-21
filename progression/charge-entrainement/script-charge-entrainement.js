@@ -1,26 +1,29 @@
-const statutAvailable = ["Désentraînement", "Productif", "Surentraînement", "Pas de statut"]
+const statutAvailable = ["Désentraînement", "Maintien", "Productif", "Surentraînement", "Pas de statut"]
 const dicoAnalyse = {
     "Bienveillant": {
         "Désentraînement": "Ta condition physique semble décliner ! Essaie d'augmenter l'intensité de tes entraînements pour basculer en statut productif et améliorer tes performances.",
+        "Maintien": "Ta forme est stable ! Tu maintiens ton niveau actuel. Si tu veux franchir une étape, tu as juste à augmenter une peu ta charge d'entraînement pour atteindre la cible des 7 derniers jours.",
         "Productif": "Tu es en train de progresser, bravo ! Tes entraînements portent leurs fruits, garde cette régularité et cette discipline pour continuer de booster tes performances.",
         "Surentraînement": "Ta charge d'entraînement est significativement plus élevée que d'habitude, ton corps a du mal à suivre, il a besoin de quelques jours de repos pour récupérer."
     },
     "Strict-Motivant": {
         "Désentraînement": "Ta condition physique est en train de diminuer ! Si tu souhaites améliorer tes performances, il est plus que temps d'augmenter l'intensité de tes futurs entraînements.",
+        "Maintien": "Tu es en train de stagner ! C'est suffisant pour ne pas régresser, mais si tu veux de vrais résultats essaye d'atteindre la cible des 7 derniers jours pour passer en statut productif.",
         "Productif": "Tu progresses, félicitations ! Tes entraînements portent leurs fruits, continue à mettre autant d'intensité qu'actuellement lors de tes futurs entraînements.",
         "Surentraînement": "Tu risques la blessure et blessure égale perte de niveau donc arrête de jouer avec le feu et repose-toi pendant quelques jours."
     },
     "Copain": {
         "Désentraînement": "Je suis désolé·e mais là tu abuses, tu devrais augmenter l'intensité de tes entraînements sinon tous tes efforts passés vont disparaître en quelques semaines.",
+        "Maintien": "Tranquille tu maintiens ton niveau actuel, c'est une bonne chose ! Pour passer en statut productif il te suffit d'augmenter un tout petit peu ta charge d'entraînement des 7 derniers jours.",
         "Productif": "Bravo, tu progresses ! Tous tes efforts sont en train de payer, continue de t'entraîner de cette façon, ça semble être positif pour ta progression.",
         "Surentraînement": "Tu t'entraînes plus que d'habitude, ton corps semble galérer à se régénérer. Petit conseil, fais une pause de quelques jours."
     },
     "Go-muscu": {
         "Désentraînement": "Tu régresses là ! Il ne faut pas hésiter à faire 1 ou 2 répétitions en plus sur tes séries pour pouvoir augmenter ton RPE et par conséquent ta charge d'entraînement.",
+        "Maintien": "Attention tu es en pleine zone de confort ! Monte un peu les poids ou rajoute plus d'intensité si tu veux aller chercher le statut productif.",
         "Productif": "GG, tu progresses, je vois que tu mets une bonne intensité pendant tes séances, continue comme ça. Tu n'as presque plus besoin de moi.",
         "Surentraînement": "Ton corps n'arrive pas à bien récupérer de tes entraînements récents, n'oublie jamais que le muscle se construit au repos, pas à la salle, repose-toi un peu avant d'aller à la salle."
-    },
-
+    }
 }
 
 // variable globale
@@ -134,7 +137,7 @@ async function algorithmeLissageWeek() {
     return nbSemaine;
 };
 function cible(chargeTotale28j, nombreWeekLissage) { // la cible permet de guider l'utilisateur pour qu'il soit en statut productif
-    let cibleMin = 0.8*(chargeTotale28j/nombreWeekLissage);
+    let cibleMin = 0.95*(chargeTotale28j/nombreWeekLissage);
     let cibleMax = 1.35*(chargeTotale28j/nombreWeekLissage);
 
     return [cibleMin, cibleMax];
@@ -147,16 +150,18 @@ function statut(ratioChargeUser, nbEntrainement28j) {
     let statutUser = undefined;
 
     // si il y a moins de 3 entrainements on ne détermine pas de statut
-    if (nbEntrainement28j < 3) {return statutAvailable[3]}
+    if (nbEntrainement28j < 3) {return statutAvailable[4]}
 
-    if (ratioChargeUser <= 0.8) { 
+    if (ratioChargeUser <= 0.8) {
         statutUser = statutAvailable[0]; // désentrainement
+    } else if (ratioChargeUser <= 0.95) {
+        statutUser = statutAvailable[1]; // maintien
     } else if (ratioChargeUser <= 1.35) {
-        statutUser = statutAvailable[1]; // productif
+        statutUser = statutAvailable[2]; // productif
     } else if (ratioChargeUser >= 1.35) {
-        statutUser = statutAvailable[2]; // surentrainement
+        statutUser = statutAvailable[3]; // surentrainement
     } else {
-        statutUser = statutAvailable[3]
+        statutUser = statutAvailable[4]
     }
 
     return statutUser;
@@ -179,7 +184,7 @@ async function interpretation(statutUser) {
         avatarCoach = coachUserDB.avatar
     };
 
-    if (statutUser != statutAvailable[3]) {analyse = dicoAnalyse[styleCoachUser][statutUser]};
+    if (statutUser != statutAvailable[4]) {analyse = dicoAnalyse[styleCoachUser][statutUser]};
  
     return [analyse, avatarCoach, nameCoach]; // on return aussi le nom/avatar du coach pour l'afficher ensuite
 };

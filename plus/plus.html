@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../assets/icons-SPRINTIA/icon-navigateur.png">
-    <link rel="manifest" href="../manifest-V5.2.json">
+    <link rel="manifest" href="../manifest.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
@@ -83,7 +83,7 @@
             <a href="historique-versions/generation-26/v26.09.html">
                 <div class="card-releases" onclick="clickPatchNote(this)">
                     <div class="card-releases-image">
-                        <p class="version"><span class="point-rouge"></span>v26.09</p>
+                        <p class="version"><span class="point-bleu"></span>v26.09</p>
                         <p class="date">Septembre 2026</p>
                     </div>
                     <p class="description-maj">
@@ -190,16 +190,14 @@
             return
         }
 
-        let lastVersion = document.querySelector("p.version").textContent
         function derniereMajView() {
             let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
 
             // si le user n'a pas regardé le patch note de la maj alorsil y aura un point rouge
-            if (lastViewVersion != lastVersion) {document.querySelector("span.point-rouge").classList.add("visible")}
+            if (lastViewVersion != VERSION_SPRINTIA) {document.querySelector("span.point-bleu").classList.add("visible")}
         }
-
         function clickPatchNote(elt) {
-            if (elt.querySelector("p.version").textContent == lastVersion) {
+            if (elt.querySelector("p.version").textContent == VERSION_SPRINTIA) {
                 localStorage.setItem("lastViewVersion", elt.querySelector("p.version").textContent)
             }
         }

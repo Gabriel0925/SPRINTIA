@@ -829,16 +829,16 @@ section.segmented-button {
     align-items: center;
     margin: var(--SPACE_L) auto;
     width: fit-content;
-    padding: var(--SPACE_XS);
+    padding: var(--SPACE_XXS);
     border-radius: var(--BORDER_BIG);
-    gap: var(--SPACE_XS);
+    gap: var(--SPACE_XXS);
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.segmented-button div.segmented-button-button {
-    padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_NORMAL);
+    padding: var(--SPACE_S);
+    border-radius: var(--BORDER_BIG);
     cursor: pointer;
-    width: 60px;
+    width: 70px;
     text-align: center;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -857,15 +857,13 @@ section.segmented-button div.segmented-button-button {
 section.segmented-button div.segmented-button-button:active {
     transform: scale(var(--SCALE_NORMAL));
     color: var(--COLOR_ACCENT_TEXT);
-    font-weight: var(--FW_BUTTON);
+    font-weight: var(--FW_BOLD_SMALL);
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
-    padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_NORMAL);
-    font-weight: var(--FW_BUTTON);
+    font-weight: var(--FW_BOLD_SMALL);
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);

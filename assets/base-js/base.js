@@ -125,7 +125,7 @@ window.onclick = function (event) { // on track les clicks sur la page complète
             // on referme le menu plus
             menuButtonMore.classList.remove("open")
             // pour remettre l'icone plus
-            document.getElementById("icon-menu-many-action").classList.add("fs-icon_plus")
+            document.getElementById("icon-menu-many-action").classList.add("icon_plus")
         }
     }
 }
@@ -135,7 +135,7 @@ window.addEventListener("click", (event) => {
         menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
         const isOpenMenuMore = menuButtonMore.classList.contains('open')
-        event.target.classList = isOpenMenuMore ? 'fs-icon_fermer' : 'fs-icon_plus'
+        event.target.classList = isOpenMenuMore ? 'icon_fermer' : 'icon_plus'
     }
 })
 window.addEventListener("scroll", () => {
@@ -144,7 +144,7 @@ window.addEventListener("scroll", () => {
         // on referme le menu plus
         menuButtonMore.classList.remove("open")
         // pour remettre l'icone plus
-        document.getElementById("icon-menu-many-action").classList.add("fs-icon_plus")
+        document.getElementById("icon-menu-many-action").classList.add("icon_plus")
     }
 })
 // --- Fin menu plus ---

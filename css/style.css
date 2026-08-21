@@ -148,55 +148,55 @@ i {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.fs-icon_1RM:before {content: "\e900";}
-.fs-icon_a_propos:before {content: "\e901";}
-.fs-icon_add:before {content: "\e902";}
-.fs-icon_ameliorer_SPRINTIA:before {content: "\e903";}
-.fs-icon_archiver:before {content: "\e904";}
-.fs-icon_center_carte:before {content: "\e905";}
-.fs-icon_charge_entrainement:before {content: "\e906";}
-.fs-icon_coach:before {content: "\e907";}
-.fs-icon_confidentialite:before {content: "\e908";}
-.fs-icon_discussion_JRM_Coach:before {content: "\e909";}
-.fs-icon_dompter_SPRINTIA:before {content: "\e90a";}
-.fs-icon_entrainement:before {content: "\e90b";}
-.fs-icon_entrainement_du_jour:before {content: "\e90c";}
-.fs-icon_fermer:before {content: "\e90d";}
-.fs-icon_file:before {content: "\e90e";}
-.fs-icon_file_csv:before {content: "\e90f";}
-.fs-icon_file_json:before {content: "\e910";}
-.fs-icon_fleche_droite:before {content: "\e911";}
-.fs-icon_fullscreen:before {content: "\e912";}
-.fs-icon_fullscreen_exit:before {content: "\e913";}
-.fs-icon_gpx:before {content: "\e914";}
-.fs-icon_hydratation:before {content: "\e915";}
-.fs-icon_IMC:before {content: "\e916";}
-.fs-icon_indulgence_course:before {content: "\e917";}
-.fs-icon_licence:before {content: "\e918";}
-.fs-icon_metabolisme_base:before {content: "\e919";}
-.fs-icon_miles_km:before {content: "\e91a";}
-.fs-icon_modifier:before {content: "\e91b";}
-.fs-icon_natation:before {content: "\e91c";}
-.fs-icon_niveau_course:before {content: "\e91d";}
-.fs-icon_outils:before {content: "\e91e";}
-.fs-icon_parametres:before {content: "\e91f";}
-.fs-icon_partage:before {content: "\e920";}
-.fs-icon_pause:before {content: "\e921";}
-.fs-icon_plus:before {content: "\e922";}
-.fs-icon_plus_horizontal:before {content: "\e923";}
-.fs-icon_profil:before {content: "\e924";}
-.fs-icon_progression:before {content: "\e925";}
-.fs-icon_proteines:before {content: "\e926";}
-.fs-icon_recuperation:before {content: "\e927";}
-.fs-icon_refresh:before {content: "\e928";}
-.fs-icon_search:before {content: "\e929";}
-.fs-icon_SPRINTIA_briefing:before {content: "\e92a";}
-.fs-icon_statistiques:before {content: "\e92b";}
-.fs-icon_supprimer:before {content: "\e92c";}
-.fs-icon_temps_recup:before {content: "\e92d";}
-.fs-icon_update_history:before {content: "\e92e";}
-.fs-icon_velo:before {content: "\e92f";}
-.fs-icon_zones_cardiaques:before {content: "\e930";}
+.icon_RM:before {content: "\e900";}
+.icon_add:before {content: "\e901";}
+.icon_archiver:before {content: "\e902";}
+.icon_charge_entrainement:before {content: "\e903";}
+.icon_coach:before {content: "\e904";}
+.icon_confidentialite:before {content: "\e905";}
+.icon_conversion:before {content: "\e906";}
+.icon_discussion:before {content: "\e907";}
+.icon_entrainement:before {content: "\e908";}
+.icon_entrainement_du_jour:before {content: "\e909";}
+.icon_fermer:before {content: "\e90a";}
+.icon_file:before {content: "\e90b";}
+.icon_file_csv:before {content: "\e90c";}
+.icon_file_json:before {content: "\e90d";}
+.icon_fleche_droite:before {content: "\e90e";}
+.icon_fullscreen:before {content: "\e90f";}
+.icon_fullscreen_exit:before {content: "\e910";}
+.icon_gpx:before {content: "\e911";}
+.icon_hydratation:before {content: "\e912";}
+.icon_IMC:before {content: "\e913";}
+.icon_indulgence_course:before {content: "\e914";}
+.icon_info:before {content: "\e915";}
+.icon_licence:before {content: "\e916";}
+.icon_mail:before {content: "\e917";}
+.icon_metabolisme_base:before {content: "\e918";}
+.icon_modifier:before {content: "\e919";}
+.icon_natation:before {content: "\e91a";}
+.icon_niveau_course:before {content: "\e91b";}
+.icon_outils:before {content: "\e91c";}
+.icon_parametres:before {content: "\e91d";}
+.icon_partage:before {content: "\e91e";}
+.icon_pause:before {content: "\e91f";}
+.icon_plus:before {content: "\e920";}
+.icon_plus_horizontal:before {content: "\e921";}
+.icon_position:before {content: "\e922";}
+.icon_profil:before {content: "\e923";}
+.icon_progression:before {content: "\e924";}
+.icon_proteines:before {content: "\e925";}
+.icon_recuperation:before {content: "\e926";}
+.icon_refresh:before {content: "\e927";}
+.icon_search:before {content: "\e928";}
+.icon_SPRINTIA_briefing:before {content: "\e929";}
+.icon_statistiques:before {content: "\e92a";}
+.icon_supprimer:before {content: "\e92b";}
+.icon_telephone:before {content: "\e92c";}
+.icon_temps_recup:before {content: "\e92d";}
+.icon_velo:before {content: "\e92e";}
+.icon_video:before {content: "\e92f";}
+.icon_zones_cardiaques:before {content: "\e930";}
 
 * {
     margin: 0;
@@ -2799,6 +2799,11 @@ div.visuel-version p.visuel-version-title{
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
+div.visuel-version p.visuel-version-date{
+    font-size: var(--P);
+    font-weight: var(--FW_BUTTON);
+    color: var(--COLOR_TEXT_SECONDARY);
+}
 div.summary-version {
     background-color: transparent;
 }
@@ -2814,6 +2819,50 @@ div.summary-version p.summary-version-summary {
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     border-bottom: solid 2px var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+
+section.container-new-functionnality {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--SPACE_L);
+    margin: var(--SPACE_XL) 0;
+}
+@media (max-width: 1270px) {
+    section.container-new-functionnality {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 800px) {
+    section.container-new-functionnality {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+section.container-new-functionnality div.new-functionnality{
+    display: flex;
+    gap: var(--SPACE_M);
+    padding: var(--SPACE_XS);
+}
+section.container-new-functionnality div.new-functionnality div.content-left{
+    display: flex;
+    justify-content: center;
+}
+section.container-new-functionnality div.new-functionnality div.content-left i{
+    font-size: 2.3rem;
+    color: var(--COLOR_ACCENT);
+}
+section.container-new-functionnality div.new-functionnality div.content-right{
+    width: 100%;
+}
+section.container-new-functionnality div.new-functionnality div.content-right p.title{
+    font-size: var(--P);
+    font-weight: var(--FW_BOLD_SMALL);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+section.container-new-functionnality div.new-functionnality div.content-right p.description{
+    font-size: var(--P);
+    font-weight: normal;
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin-top: var(--SPACE_XXS);
 }
 
 

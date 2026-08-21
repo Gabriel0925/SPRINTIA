@@ -31,19 +31,19 @@
         <ul class="header-container-items">
 
             <li class="header-items" onclick="window.location.href = '../../../index.html'">
-                <i class="fs-icon_entrainement"></i>
+                <i class="icon_entrainement"></i>
                 Entraînement
             </li>
             <li class="header-items" onclick="window.location.href = '../../../progression/progression.html'">
-                <i class="fs-icon_progression"></i>
+                <i class="icon_progression"></i>
                 Progression
             </li>
             <li class="header-items" onclick="window.location.href = '../../../outils/outils.html'">
-                <i class="fs-icon_outils"></i>
+                <i class="icon_outils"></i>
                 Outils
             </li>
             <li class="header-items selected" onclick="window.location.href = '../../../plus/plus.html'">
-                <i class="fs-icon_plus_horizontal"></i>
+                <i class="icon_plus_horizontal"></i>
                 Plus
             </li>
 
@@ -55,19 +55,19 @@
         <ul class="tab-bars-container-items">
 
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Entraînement')">
-                <i class="fs-icon_entrainement"></i>
+                <i class="icon_entrainement"></i>
                 <p class="tab-bars-items-name">Entraînement</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Progression')">
-                <i class="fs-icon_progression"></i>
+                <i class="icon_progression"></i>
                 <p class="tab-bars-items-name">Progression</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Outils')">
-                <i class="fs-icon_outils"></i>
+                <i class="icon_outils"></i>
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Plus')">
-                <i class="fs-icon_plus_horizontal"></i>
+                <i class="icon_plus_horizontal"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -77,119 +77,78 @@
     
     <div class="visuel-version">
         <p class="visuel-version-title">v26.09</p>
+        <p class="visuel-version-date">Septembre 2026</p>
     </div>
 
-    <section class="container-block" style="margin-bottom: var(--SPACE_M);">
+    <h2>Les nouveautés</h2>
 
-        <div class="container-block-data">
-            <p class="container-block-data-header">Date</p>
-            <p class="container-block-data-data">Sept. 2026</p>
+    <section class="container-new-functionnality">
+
+        <div class="new-functionnality">
+
+            <div class="content-left">
+                <i class="icon_charge_entrainement"></i>
+            </div>
+            <div class="content-right">
+                <p class="title">
+                    Calculs de charge via sRPE
+                </p>
+                <p class="description">
+                    Vos charges d'entraînement sont désormais plus précises. Un statut "Maintien" fait aussi son apparition.
+                </p>
+            </div>
+
         </div>
-        <div class="container-block-data">
-            <p class="container-block-data-header">Taille</p>
-            <p class="container-block-data-data">2,70 <small>Mo</small></p>
+
+        <div class="new-functionnality">
+
+            <div class="content-left">
+                <i class="icon_telephone"></i>
+            </div>
+            <div class="content-right">
+                <p class="title">
+                    Nouveau design
+                </p>
+                <p class="description">
+                    L'interface évolue avec des effets de transparence et de flou.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="new-functionnality">
+
+            <div class="content-left">
+                <i class="icon_search"></i>
+            </div>
+            <div class="content-right">
+                <p class="title">
+                    Recherche d'entraînement
+                </p>
+                <p class="description">
+                    Retrouvez plus facilement vos anciens entraînements grâce à la fonctionnalité de recherche.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="new-functionnality">
+
+            <div class="content-left">
+                <i class="icon_video"></i>
+            </div>
+            <div class="content-right">
+                <p class="title">
+                    Lecteur vidéo
+                </p>
+                <p class="description">
+                    Visionnez mes vidéos Youtube directement dans l'application.
+                </p>
+            </div>
+
         </div>
 
     </section>
-
-    <div class="summary-version">
-        <p class="summary-version-title">Résumé</p>
-        <p class="summary-version-summary" style="border-bottom: 0px;">
-            ...
-        </p>
-    </div>
-
-    <h1 style="margin-top: var(--SPACE_M);">Patch note</h1>
-
-    <h2>Nouvelles fonctionnalités</h2>
-    <ul class="list-information">
-
-        <li>
-            Changement de méthode de calcul pour déterminer la charge d'un entraînement, elle repose désormais sur la méthode sRPE (prouvée scientifiquement).
-            Ce changement permet de corriger des problèmes qu'il y avait auparavant, désormais vos entraînement intenses mais courtes (sprint, VMA) ne sont plus sous estimés,
-            et vos entraînement de récupération ne gonflent plus artificiellement votre charge d'entraînement.
-            <strong>
-                Tout votre historique d'entraînement a été mis à jour, donc toutes votre charge d'entraînement a été revue.
-            </strong>
-        </li>
-        <li>
-            SPRINTIA adopte le glassmorphism pour la première fois, ce qui permet de se mettre aux goûts du jour car beaucoup d'applications
-            vont vers ce style d'interface à cause/grâce à Apple avec iOS 26 et leurs liquid glass. Ces effets de transparence et de flou
-            donnent de la vie à l'interface lorsque l'utilisateur intéragit avec SPRINTIA.
-        </li>
-        <li>
-            Un nouveau statut a été ajouté pour la chage d'entraînement, il s'agit du statut "Maintien".
-        </li>
-        <li>
-            Vous pouvez enfin rechercher un entraînement dans votre historique d'entraînement.
-        </li>
-
-    </ul>
-
-    <h2>Améliorations</h2>
-    <ul class="list-information">
-
-        <li>
-            Lorsque qu'une nouvelle mise à jour est publiée, le patch note dans l'onglet "Plus" possède désormais un point
-            bleu pour vous indiquer que de nouvelles fonctionnalités sont disponibles, tant que vous n'aurez pas ouvert le patch note,
-            le point bleu restera visible.
-        </li>
-        <li>
-            Intégration du player youtube directement dans SPRINTIA, ce qui permet de regarder des vidéos youtube sans quitter l'application.
-        </li>
-        <li>
-            La page nommé "Dompté SPRINTIA" a été renommé en "Tutoriels" pour être plus clair et plus compréhensible.
-        </li>
-        <li>
-            Beaucoup d'images des versions ont été supprimées pour alléger la taille de l'application. En plus, désormais j'ai un compte
-            insta exprès pours SPRINTIA donc c'est là bah que je garderais un historique des images des versions précédentes de SPRINTIA.
-        </li>
-        <li>
-            Désormais les icônes des shorcuts sont bleues, ce qui permet de renforcer l'identité de SPRINTIA.
-        </li>
-        <li>
-            Le versionning des mises à jour a été revu pour améliorer la compréhension aux yeux de tous. Désormais, le numéro de version est sous le format
-            vYY.MM, par exemple v26.09 signifie que c'est la version de septembre 2026, et v26.10 sera la version d'octobre 2026.
-        </li>
-
-    </ul>
-
-    <h2>Correction des bugs et optimisations</h2>
-    <ul class="list-information">
-
-        <li>
-            Séléction de texte lors d'appuie long désactivé.
-        </li>
-        <li>
-            Correction d'une erreur de design pour les balises "select".
-        </li>
-        <li>
-            Correction d'un léger bug lors d'un appui sur un bouton associé à SPRINTIA Briefing.
-        </li>
-        <li>
-            Correction d'un bug lors de l'import d'un fichier TCX, le sport était parfois mal détecté car
-            certains fichiers TCX ne respecte pas les conventions de nom de sport, donc désormais j'ai augmenté les
-            chances de détection du sport.
-        </li>
-        <li>
-            Les variables CSS ont été totalement retravaillées pour améliorer mes interfaces car auparavant, je devais 
-            mettre d'autres valeurs pour certains éléments spécifiques, ce qui rendait le code un peu plus complexe.
-        </li>
-        <li>
-            Certains titres de fonctionnalités que je considérais comme trop long ont été raccourcis pour être plus percutant et plus clair.
-        </li>
-        <li>
-            Correction d'un bug : dans le détail de l'entraînement, le nom du coach que vous avez configuré ne s'affichait pas, il restait
-            sur la valeur de base : "JRM Coach".
-        </li>
-        <li>
-            Le header a été optimisé pour améliorer l'expérience sur tablette, la tab-bar a également été un peu retravaillée.
-        </li>
-        <li>
-            Plusieurs éléments d'interface ont été légèrement revus pour améliorer le design et la cohérence dans SPRINTIA.
-        </li>
-        
-    </ul>
     
     <script src="../../../assets/base-js/base.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>

@@ -75,7 +75,7 @@ function carteGPS(data, latlngs) {
             options: { position: 'topright' },
             onAdd: function(map) {
                 var div = L.DomUtil.create('div', 'my-control');
-                var iconInDiv = L.DomUtil.create("i", "fs-icon_center_carte", div)
+                var iconInDiv = L.DomUtil.create("i", "icon_position", div)
 
                 L.DomEvent.on(div, 'click', function(e) {
                     L.DomEvent.stopPropagation(e);
@@ -96,7 +96,7 @@ function carteGPS(data, latlngs) {
             
             onAdd: function(map) {
                 var div = L.DomUtil.create('div', 'my-control');
-                var iconInDiv = L.DomUtil.create("i", "fs-icon_fullscreen", div)
+                var iconInDiv = L.DomUtil.create("i", "icon_fullscreen", div)
                 iconInDiv.id = 'btn-fullscreen'
 
                 L.DomEvent.on(div, 'click', function(e) {
@@ -110,8 +110,8 @@ function carteGPS(data, latlngs) {
                         map.doubleClickZoom.enable();
                         map.touchZoom.enable();
                         
-                        iconInDiv.classList.remove("fs-icon_fullscreen")
-                        iconInDiv.classList.add("fs-icon_fullscreen_exit")
+                        iconInDiv.classList.remove("icon_fullscreen")
+                        iconInDiv.classList.add("icon_fullscreen_exit")
                         fullscreen = true;
 
                         // AFFICHE le bouton Centrer
@@ -130,8 +130,8 @@ function carteGPS(data, latlngs) {
                         map.doubleClickZoom.disable();
                         map.touchZoom.disable()
                         
-                        iconInDiv.classList.remove("fs-icon_fullscreen_exit")
-                        iconInDiv.classList.add("fs-icon_fullscreen")
+                        iconInDiv.classList.remove("icon_fullscreen_exit")
+                        iconInDiv.classList.add("icon_fullscreen")
                         fullscreen = false;
 
                         // CACHE le bouton Centrer
@@ -153,8 +153,8 @@ function carteGPS(data, latlngs) {
                 mapElement.className = 'map-fullscreen';
                 
                 const monBouton = document.getElementById('btn-fullscreen');
-                monBouton.classList.remove("fs-icon_fullscreen")
-                monBouton.classList.add("fs-icon_fullscreen_exit")
+                monBouton.classList.remove("icon_fullscreen")
+                monBouton.classList.add("icon_fullscreen_exit")
                 
                 map.dragging.enable();           
                 map.scrollWheelZoom.enable();    
@@ -630,7 +630,7 @@ async function exporterData(dataWorkout) {
     let button = document.getElementById("button-partager-entrainement")
     
     if (dataWorkout) {
-        button.innerHTML = "<i class='fs-icon_partage'></i> En cours..."
+        button.innerHTML = "<i class='icon_partage'></i> En cours..."
         button.disabled = true
 
         try {
@@ -662,7 +662,7 @@ async function exporterData(dataWorkout) {
                 await navigator.share({files:[fileWorkoutData], // on met dans un tableau car navigator.share peut permettre d'envoyer plusieurs fichier [fichier1, fichier2,...]
                     title:"Sauvegarde SPRINTIA"})            
                 
-                button.innerHTML = "<i class='fs-icon_partage'></i> Partagé"
+                button.innerHTML = "<i class='icon_partage'></i> Partagé"
             } else {
                 alert("Votre navigateur est incompatible avec le partage de fichier !")
             }
@@ -671,14 +671,14 @@ async function exporterData(dataWorkout) {
 
         } catch(error) {
             if (error.name== "AbortError") { // ça veut dire que le user à fermer le menu de partage sans envoyer le fichier
-                button.innerHTML = "<i class='fs-icon_partage'></i> Annulé"
+                button.innerHTML = "<i class='icon_partage'></i> Annulé"
             } else {
                 console.log(error) // affichage de l'erreur en console
-                button.innerHTML = "<i class='fs-icon_partage'></i> Erreur !"
+                button.innerHTML = "<i class='icon_partage'></i> Erreur !"
             }
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } finally {
-            button.innerHTML = "<i class='fs-icon_partage'></i> Partager l'entraî."
+            button.innerHTML = "<i class='icon_partage'></i> Partager l'entraî."
             button.disabled = false 
         }
     }

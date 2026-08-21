@@ -5,10 +5,11 @@ function newMajPointBleu() {
     let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
 
     if (lastViewVersion != VERSION_SPRINTIA) {
-        let ongletPlus = document.querySelector(".tab-bars-items:last-child")
-        if (ongletPlus) {
-            ongletPlus.classList.add("point-bleu-tab-bars")
-        }
+        let ongletPlusTabBars = document.querySelector(".tab-bars-items:last-child")
+        if (ongletPlusTabBars) {ongletPlusTabBars.classList.add("point-bleu-tab-bars")}
+
+        let ongletPlusHeader = document.querySelector(".header-items:last-child")
+        if (ongletPlusHeader) {ongletPlusHeader.classList.add("point-bleu-header")}
     }
 }
 window.addEventListener("DOMContentLoaded", () => {

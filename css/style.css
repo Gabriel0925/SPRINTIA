@@ -501,6 +501,24 @@ section.header ul.header-container-items li.header-items:active{
     color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.015);
 }
+section.header ul.header-container-items li.header-items.point-bleu-header{
+    position: relative;
+}
+section.header ul.header-container-items li.header-items.point-bleu-header::before{
+    content: "";
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 5px;
+    margin-top: var(--SPACE_S);
+    margin-right: 2.8rem;
+
+    background-color: var(--COLOR_ACCENT);
+    border-radius: 50%;
+}
+
 
 
 /* --- Tab bars --- */
@@ -529,7 +547,7 @@ section.tab-bars ul.tab-bars-container-items{
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
-    border-radius: 1.75rem;
+    border-radius: 2rem;
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     pointer-events: all;
@@ -549,7 +567,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    border-radius: var(--BORDER_BIG);
+    border-radius: 1.75rem;
     color: var(--COLOR_TEXT_PRIMARY);
     overflow: hidden;
     width: 60px;

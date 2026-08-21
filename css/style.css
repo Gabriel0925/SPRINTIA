@@ -63,9 +63,9 @@
 
 
     /* BORDER RADIUS */
-    --BORDER_SMALL: 0.75rem;
-    --BORDER_NORMAL: 1rem;
-    --BORDER_BIG: 1.5rem;
+    --BORDER_SMALL: 1rem;
+    --BORDER_NORMAL: 1.25rem;
+    --BORDER_BIG: 1.75rem;
 
 
     /* SCALE */
@@ -547,7 +547,7 @@ section.tab-bars ul.tab-bars-container-items{
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
-    border-radius: 1.75rem;
+    border-radius: 2rem;
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     pointer-events: all;
@@ -1142,7 +1142,7 @@ textarea::placeholder {
 }
 button.briefing {
     margin: 0;
-    margin-top: var(--SPACE_XS);
+    margin: var(--SPACE_XS) 0;
     border-radius: var(--BORDER_BIG);
 
     color: var(--COLOR_BACKGROUND);
@@ -1183,9 +1183,7 @@ button.briefing:active {
 img.img-banniere-SPRINTIA {
     width: 100%;
     height: auto;
-    margin-top: var(--SPACE_XS);
     border-radius: var(--BORDER_NORMAL);
-    background-color: var(--COLOR_ACCENT);
 }
 
 

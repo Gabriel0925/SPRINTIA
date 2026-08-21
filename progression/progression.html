@@ -77,15 +77,12 @@
     <main>
         <h1>Progression</h1>
 
-        <h2>Volume d'entraî. (4 sem.)</h2>
-        <p class="text">
-            Ce graphique permet de suivre votre régularité en comparant votre temps total d'entraînement par semaine.
-        </p>
+        <h2>Volume d'entraînement</h2>
         <div class="chart-container" id="conteneur-graphique">
             <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
             <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
-        <button class="briefing" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
+        <button class="briefing" style="margin-bottom: var(--SPACE_L); margin-top: 0;" onclick="windowsBriefing('Analyser mes tendances')">Analyser mes tendances</button>
 
         <h2>Analyse</h2>
         <section class="container-widget-progression">

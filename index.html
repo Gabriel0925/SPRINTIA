@@ -103,7 +103,10 @@
         </div>
     </div>
 
-    <input type="search" id="input-search" placeholder="Rechercher un entraînement">
+    <div class="input-search">
+        <i class="fs-icon_add" onclick="document.getElementById('input-search').click()"></i>
+        <input type="search" id="input-search" placeholder="Rechercher un entraînement" autocomplete="off">
+    </div>
 
     <p class="text" id="text-informatif">
         SPRINTIA n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
@@ -272,6 +275,8 @@
             // si il n'y a plus de cartes a ajouter on fais disparaitre le bouton voir plus
             if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
                 document.getElementById("button_afficher_plus").style.display = "none"
+            } else {
+                document.getElementById("button_afficher_plus").style.display = "block"
             }
         }
 

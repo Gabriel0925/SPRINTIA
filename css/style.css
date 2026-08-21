@@ -2327,6 +2327,65 @@ div.form div.container-input {
     position: relative;
 }
 
+/* --- Style de l'input search --- */
+div.input-search {
+    display: flex;
+    align-items: center;
+    gap: var(--SPACE_S);
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: var(--BORDER_BIG);
+    overflow: hidden;
+
+    max-width: 450px;
+    height: 50px;
+
+    margin: var(--SPACE_M) 0;
+    padding: var(--SPACE_XXS);
+}
+div.input-search i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    border-radius: var(--BORDER_BIG);
+
+    width: 75px;
+    height: 42px;
+
+    font-size: 2rem;
+    padding: var(--SPACE_XS);
+}
+div.input-search input[type="search"]{
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border: 0;
+    outline: 0;
+    border-radius: var(--BORDER_BIG);
+
+    font-family: var(--FONT_FAMILY);
+    font-size: var(--P);
+
+    width: 100%;
+    height: 100%;
+
+    /* désactive les styles de base */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+div.input-search input[type="search"]::placeholder{
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+/* pr suppr la croix  et licone recherche de base */
+div.input-search input[type="search"]::-webkit-search-decoration,
+div.input-search input[type="search"]::-webkit-search-cancel-button,
+div.input-search input[type="search"]::-webkit-search-results-button,
+div.input-search input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 /* --- Style de tous les inputs text, number et date --- */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="text"]::-webkit-inner-spin-button {
@@ -2399,7 +2458,9 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 }
 
 /* Pour le label input */
-input::placeholder {
+input[type="number"]::placeholder,
+input[type="date"]::placeholder,
+input[type="text"]::placeholder {
     color: transparent !important; /* Il faut mettre le !important sinon ça ne marche pas */
 }
 /* Logique de l'animation */

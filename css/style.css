@@ -1294,16 +1294,17 @@ div.toolbar {
         position: sticky;
         top: 0;
         z-index: 10000;
+        min-height: 85px;
 
         /* intégration de marges négative pour combler le padding du body */
         /* au lieu de mettre une marge positive on en met une négative, donc on prend la var "SPACE_M" et on multiplie par -1 pour avoir la marge en négative */
         /* par exemple -> 24px*-1 = -24px, c'est logique */
         margin-left: calc(var(--SPACE_M) * -1);
         margin-right: calc(var(--SPACE_M) * -1);
-        padding: 0 var(--SPACE_M);
+        padding: var(--SPACE_XS) var(--SPACE_M);
         
-        -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_BARS));
-        backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_BARS));
+        -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT));
+        backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT));
     }
 }
 div.toolbar h1{
@@ -1326,6 +1327,7 @@ div.toolbar div.container-command {
     margin: var(--SPACE_XS) 0;
     margin-left: auto;
     gap: var(--SPACE_XXS);
+    flex-shrink: 0;
 
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -1343,6 +1345,7 @@ div.toolbar div.container-command i{
     padding: var(--SPACE_XS);
     width: 44px;
     height: 44px;
+    flex-shrink: 0;
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
@@ -1356,7 +1359,6 @@ div.toolbar div.container-command i:active{
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
 }
-
 /* div.toolbar a {
     margin-left: auto;
 }

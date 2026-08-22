@@ -1295,6 +1295,13 @@ div.toolbar {
         top: 0;
         z-index: 10000;
 
+        /* intégration de marges négative pour combler le padding du body */
+        /* au lieu de mettre une marge positive on en met une négative, donc on prend la var "SPACE_M" et on multiplie par -1 pour avoir la marge en négative */
+        /* par exemple -> 24px*-1 = -24px, c'est logique */
+        margin-left: calc(var(--SPACE_M) * -1);
+        margin-right: calc(var(--SPACE_M) * -1);
+        padding: 0 var(--SPACE_M);
+        
         -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_BARS));
         backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_BARS));
     }

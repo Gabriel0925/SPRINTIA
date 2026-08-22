@@ -1287,6 +1287,7 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
 div.toolbar {
     display: flex;
     align-items: center;
+    margin-bottom: var(--SPACE_M);
 }
 @media (max-width: 1050px) {
     div.toolbar {

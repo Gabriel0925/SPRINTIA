@@ -1287,21 +1287,20 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
 div.toolbar {
     display: flex;
     align-items: center;
-    margin-bottom: var(--SPACE_M);
 }
 @media (max-width: 1050px) {
     div.toolbar {
         position: sticky;
         top: 0;
         z-index: 10000;
-        min-height: 85px;
+        min-height: 60px;
 
         /* intégration de marges négative pour combler le padding du body */
         /* au lieu de mettre une marge positive on en met une négative, donc on prend la var "SPACE_M" et on multiplie par -1 pour avoir la marge en négative */
         /* par exemple -> 24px*-1 = -24px, c'est logique */
         margin-left: calc(var(--SPACE_M) * -1);
         margin-right: calc(var(--SPACE_M) * -1);
-        padding: var(--SPACE_XS) var(--SPACE_M);
+        padding: 0 var(--SPACE_M);
         
         -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT));
         backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT));
@@ -1309,7 +1308,6 @@ div.toolbar {
 }
 div.toolbar h1{
     margin: 0;
-    margin-right: var(--SPACE_S);
 }
 div.toolbar div.container-command {
     display: flex;
@@ -1318,13 +1316,10 @@ div.toolbar div.container-command {
     overflow: hidden;
 
     background-color: var(--COLOR_GLASSMORPHISM);
-    /* -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
-    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)); */
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     border-radius: var(--BORDER_BIG);
 
     padding: var(--SPACE_XXS);
-    margin: var(--SPACE_XS) 0;
     margin-left: auto;
     gap: var(--SPACE_XXS);
     flex-shrink: 0;
@@ -1340,11 +1335,10 @@ div.toolbar div.container-command i{
     align-items: center;
     cursor: pointer;
 
-    font-size: var(--H1);
+    font-size: var(--H2);
     border-radius: 50%;
-    padding: var(--SPACE_XS);
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
 
     transition: background-color ease-out var(--TIME_TRANSITION),

@@ -1287,21 +1287,45 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
 div.toolbar {
     position: sticky;
     top: 0;
+    
     display: flex;
     align-items: center;
     z-index: 10000;
     margin-bottom: var(--SPACE_M);
 }
-div.toolbar a {
-    margin-left: auto;
-}
-div.toolbar h1 {
+div.toolbar h1{
     margin: 0;
-    display: -webkit-box;
-    -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 2;
-    line-clamp: 2; 
+}
+div.toolbar div.container-command {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+
+    background-color: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    border-radius: var(--BORDER_BIG);
+
+    padding: var(--SPACE_XXS);
+    margin: var(--SPACE_XS) 0;
+    margin-left: auto;
+    gap: var(--SPACE_XXS);
+}
+div.toolbar div.container-command i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: var(--H1);
+    border-radius: 50%;
+
+    padding: var(--SPACE_XS);
+}
+
+/* div.toolbar a {
+    margin-left: auto;
 }
 div.toolbar i {
     display: flex;
@@ -1348,7 +1372,7 @@ div.toolbar i#icon-menu-many-action:active {
     background-color: transparent;
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_SUP));
-}
+} */
 
 
 div.container-button-flottant {

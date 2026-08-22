@@ -1316,8 +1316,8 @@ div.toolbar div.container-command {
     overflow: hidden;
 
     background-color: var(--COLOR_GLASSMORPHISM);
-    -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
-    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    /* -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)); */
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     border-radius: var(--BORDER_BIG);
 
@@ -1335,6 +1335,17 @@ div.toolbar div.container-command i{
     border-radius: 50%;
 
     padding: var(--SPACE_XS);
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.toolbar div.container-command i:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+    }
+}
+div.toolbar div.container-command i:active{
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: scale(var(--SCALE_SUP));
 }
 
 /* div.toolbar a {

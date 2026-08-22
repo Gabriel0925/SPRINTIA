@@ -80,8 +80,11 @@
         </div> 
     </div>
 
-    <main>    
-        <h1>Récupération</h1>
+    <main>
+        <div class="toolbar">
+            <h1>Récupération</h1>
+            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+        </div>
 
         <section class="container-zone">
 
@@ -113,11 +116,15 @@
             <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
 
-        <h2>Historique (7J)</h2>
-        <p class="text" id="text-informatif" style="display: none;">
-            Aucune donnée de récupération enregistrée ses 7 derniers jours. Veuillez
-            <a href="ajouter-recuperation.html" class="lien">ajouter une récupération</a>.
-        </p>
+        <h2>Historique (7J)</h2>    
+        <div class="visuel-information" id="aucune-data" style="display: none;">
+            <i class="icon_folder_open"></i>
+            <h3>Aucune donnée de récupération</h3>
+            <p>
+                Vous avez enregistré aucune donnée de récupération ses 7 derniers jours.
+            </p>
+        </div>
+
         <div class="carousel table">
             <div class="carousel-content table">
                 <table id="tableau-historique">
@@ -137,23 +144,7 @@
             <button id="button_plus" onclick="location.href = 'historique-recuperation.html'">
                 Voir l'historique complet
             </button>
-        </div> 
-
-        <h2>C'est quoi l'algorithme de récupération ?</h2>
-        <p class="text">
-            Cet algorithme vous permet de suivre votre récupération grâce à votre FC repos (=fréquence cardiaque au repos). Cet algorithme
-            peut vous indiquer si vous êtes prêt à fournir un effort physique aujourd'hui ou alors si il faut mieux se reposer aujourd'hui.
-            <strong>
-                Attention, l'algorithme recommande mais c'est vous qui restez maître de votre corps et de vos sensations.
-            </strong>
-        </p>
-
-        <h2>Petite limite</h2>
-        <p class="text">
-            Si vous avez une FC repos réellement supérieur à votre moyenne de 30J, le coach de SPRINTIA vous indiquera que c'est lié à un surentraînement.
-            Sauf que c'est pas forcément ça. Ça peut aussi vouloir dire que vous êtes en train de tomber malade, que vous êtes stressé ou 
-            juste que vous dormez super mal en ce moment.
-        </p>
+        </div>
     </main>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->

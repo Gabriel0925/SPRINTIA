@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Paramètres</title>
+    <title>SPRINTIA - À propos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,12 +21,11 @@
     <div class="container-logo-dynamique">
         <div class="logo-dynamique"></div>
     </div>
-    
+        
     <section class="header">
 
         <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
-
-        
+    
         <ul class="header-container-items">
 
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
@@ -73,60 +72,24 @@
         </ul>
 
     </section>
-    
-    <h1>Paramètres</h1>
 
-    <h2>Type de coureur·euse</h2>
-    <select style="width: 100%; margin: 0px; max-width: 450px;" id="type-coureur-user" onchange="typeRunner(value)" autocomplete="off">
-        <option value="occasionnel">Occasionnel·le</option>
-        <option value="regulier">Régulier·ère</option>
-        <option value="confirme">Confirmé·e</option>
-    </select>
-    
-    <ul class="list-information">
-        <li> 
-            Le type nommé : <strong>"Occasionnel·le"</strong> correspond à une personne qui court de manière très irrégulière, 
-            par exemple 1 à 2 fois par mois, ou qui a repris la course à pied récemment après une longue période d'inactivité. 
-        </li>
-        <li>
-            Le type nommé : <strong>"Régulier·ère"</strong> correspond à une personne qui court de manière régulière, par exemple 2 à 3 fois par 
-            semaine, mais qui n'est pas un athlète confirmé.
-        </li>
-        <li>
-            Le type nommé : <strong>"Confirmé·e"</strong> correspond à une personne qui court de manière très régulière et qui a une certaine 
-            expérience en course à pied, par exemple 4 fois ou plus par semaine.
-        </li>
-    </ul>
+    <h1>À propos</h1>
 
-    <h2>À quoi ça sert ?</h2>
+    <h2>C'est quoi la charge d'entraînement (CE) ?</h2>
     <p class="text">
-        Cette fonctionnalité permet d'améliorer les recommandations de distance hebdomadaire car SPRINTIA sera désormais qu'elle type 
-        de coureur·euse vous êtes, ce qui lui permettra d'adapter ses recommandations en fonction de votre profil.
+        La charge d'entraînement (CE) permet de quantifier le stress physique imposé à votre corps
+        durant les 7 derniers jours. La charge d'entraînement prend en compte la durée de 
+        l'entraînement et l'effort fourni durant cet entraînement. La charge des 7 derniers jours
+        est comparée sur les 28 derniers jours afin d'avoir une idée de votre progression par 
+        rapport à avant. En respectant la charge d'entraînement vous réduisez le risque de vous blesser.
+    </p>
+
+    <h2>À quoi ça sert la charge d'entraînement ?</h2>
+    <p class="text">
+        La charge d'entraînement sert à optimiser l'intensité et le volume de vos entraînements futurs.
     </p>
 
     <script src="../../assets/base-js/base.js"></script>
-
-    <!-- Import de la bibliothèque pr le graphique -->
-    <script src="../../assets/bibliotheques/chart.min.js"></script> 
-    <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="../../assets/bibliotheques/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script>
-        function typeRunner(value) {
-            // enregistrement du type de coureur
-            localStorage.setItem("typeCoureur", value)
-            return
-        }
-
-        window.onload = function() {
-            // Affichage du type de coureur enregistré
-            const typeCoureur = localStorage.getItem("typeCoureur")
-            if (typeCoureur) {
-                document.getElementById("type-coureur-user").value = typeCoureur
-            }
-        }
-    </script>
-    
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

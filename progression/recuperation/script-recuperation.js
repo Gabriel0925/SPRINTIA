@@ -176,7 +176,14 @@ async function remplissageTableau() {
         // on cache le tableau
         tableauHistorique.style.display = "none"
         // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
-        document.getElementById("text-informatif").style.display = "block"
+        document.getElementById("aucune-data").style.display = "flex"
+        document.querySelector(".carousel.table").style.display = "none"
+
+        const allDataRecup = await db.recuperation.toArray()
+        if (allDataRecup.length <= 0) {
+            document.querySelector(".container-center-marge").style.display = "none"
+        }
+
         return
     }
 
@@ -222,7 +229,13 @@ async function remplissageTableau() {
                     // On cache tout
                     tableau.style.display = "none"
                     // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
-                    document.getElementById("text-informatif").style.display = "block"
+                    document.getElementById("aucune-data").style.display = "flex"
+                    document.querySelector(".carousel.table").style.display = "none"
+
+                    const allDataRecup = await db.recuperation.toArray()
+                    if (allDataRecup.length <= 0) {
+                        document.querySelector(".container-center-marge").style.display = "none"
+                    }
                 } 
 
                 // transmission de l'info au user

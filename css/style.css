@@ -1308,6 +1308,7 @@ div.toolbar {
 }
 div.toolbar h1{
     margin: 0;
+    margin-right: var(--SPACE_S);
 }
 div.toolbar div.container-command {
     display: flex;
@@ -1325,18 +1326,26 @@ div.toolbar div.container-command {
     margin: var(--SPACE_XS) 0;
     margin-left: auto;
     gap: var(--SPACE_XXS);
+
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+}
+div.toolbar div.container-command:active {
+    transform: scale(var(--SCALE_SUP));
 }
 div.toolbar div.container-command i{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     font-size: var(--H1);
     border-radius: 50%;
-
     padding: var(--SPACE_XS);
+    width: 44px;
+    height: 44px;
+
     transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+                transform ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.toolbar div.container-command i:hover{

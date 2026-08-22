@@ -148,21 +148,21 @@ i {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.icon_RM:before {content: "\e900";}
-.icon_add:before {content: "\e901";}
-.icon_archiver:before {content: "\e902";}
-.icon_charge_entrainement:before {content: "\e903";}
-.icon_coach:before {content: "\e904";}
-.icon_confidentialite:before {content: "\e905";}
-.icon_conversion:before {content: "\e906";}
-.icon_discussion:before {content: "\e907";}
-.icon_entrainement:before {content: "\e908";}
-.icon_entrainement_du_jour:before {content: "\e909";}
-.icon_fermer:before {content: "\e90a";}
-.icon_file:before {content: "\e90b";}
-.icon_file_csv:before {content: "\e90c";}
-.icon_file_json:before {content: "\e90d";}
-.icon_fleche_droite:before {content: "\e90e";}
+.icon_add:before {content: "\e900";}
+.icon_archiver:before {content: "\e901";}
+.icon_charge_entrainement:before {content: "\e902";}
+.icon_coach:before {content: "\e903";}
+.icon_confidentialite:before {content: "\e904";}
+.icon_conversion:before {content: "\e905";}
+.icon_discussion:before {content: "\e906";}
+.icon_entrainement:before {content: "\e907";}
+.icon_entrainement_du_jour:before {content: "\e908";}
+.icon_fermer:before {content: "\e909";}
+.icon_file:before {content: "\e90a";}
+.icon_file_csv:before {content: "\e90b";}
+.icon_file_json:before {content: "\e90c";}
+.icon_fleche_droite:before {content: "\e90d";}
+.icon_folder_open:before {content: "\e90e";}
 .icon_fullscreen:before {content: "\e90f";}
 .icon_fullscreen_exit:before {content: "\e910";}
 .icon_gpx:before {content: "\e911";}
@@ -188,15 +188,17 @@ i {
 .icon_proteines:before {content: "\e925";}
 .icon_recuperation:before {content: "\e926";}
 .icon_refresh:before {content: "\e927";}
-.icon_search:before {content: "\e928";}
-.icon_SPRINTIA_briefing:before {content: "\e929";}
-.icon_statistiques:before {content: "\e92a";}
-.icon_supprimer:before {content: "\e92b";}
-.icon_telephone:before {content: "\e92c";}
-.icon_temps_recup:before {content: "\e92d";}
-.icon_velo:before {content: "\e92e";}
-.icon_video:before {content: "\e92f";}
-.icon_zones_cardiaques:before {content: "\e930";}
+.icon_RM:before {content: "\e928";}
+.icon_search:before {content: "\e929";}
+.icon_search_off:before {content: "\e92a";}
+.icon_SPRINTIA_briefing:before {content: "\e92b";}
+.icon_statistiques:before {content: "\e92c";}
+.icon_supprimer:before {content: "\e92d";}
+.icon_telephone:before {content: "\e92e";}
+.icon_temps_recup:before {content: "\e92f";}
+.icon_velo:before {content: "\e930";}
+.icon_video:before {content: "\e931";}
+.icon_zones_cardiaques:before {content: "\e932";}
 
 * {
     margin: 0;
@@ -474,6 +476,9 @@ section.header ul.header-container-items li.header-items{
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
+}
+section.header ul.header-container-items li.header-items i{
+    font-size: var(--H3);
 }
 section.header ul.header-container-items li.header-items.selected{
     background: var(--COLOR_GLASSMORPHISM_HOVER);
@@ -756,68 +761,19 @@ section.container-invite-to-config div.container-button button#ignorer:active{
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
 
-div.config-profil {
+div.visuel-information {
     display: flex;
-    flex-direction: column;
-    gap: var(--SPACE_XS);
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FW_BUTTON);
-    height: fit-content;
-    max-width: 501px;
-    padding: var(--SPACE_XS);
-    margin: var(--SPACE_M) 0;
-    border-radius: var(--BORDER_BIG);
-    transition: background-color ease-out var(--TIME_TRANSITION), transform ease-out var(--TIME_TRANSITION_FAST);
-}
-div.config-profil div.config-profil-head {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: var(--SPACE_S);
-    margin: 4px;
+    flex-direction: column;
+    margin: var(--SPACE_XL) 0;
 }
-div.config-profil i{
-    font-size: var(--H1);
+div.visuel-information i{
+    font-size: 5rem;
 }
-div.config-profil p{
-    font-size: var(--H2);
-}
-div.config-profil p.description{     
-    font-size: var(--P_SMALL);
-    font-weight: normal;
+div.visuel-information p{
     color: var(--COLOR_TEXT_SECONDARY);
-    margin: 13px 4px;
-}
-div.config-profil div.container-button-config-profil {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    margin: 4px;
-}
-div.config-profil div.container-button-config-profil button{
-    margin: 0;
-    padding: 0;
-    padding: 0.7rem;
-}
-div.config-profil div.container-button-config-profil button:active{
-    transform: scale(1);
-}
-div.config-profil div.container-button-config-profil button#ignorer{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    color: var(--COLOR_TEXT_PRIMARY);
-    border: 3px solid var(--COLOR_BACKGROUND_CARD_HOVER);
-    transition: border ease-out var(--TIME_TRANSITION_FAST),
-                color ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.config-profil div.container-button-config-profil button#ignorer:hover{
-        border: 3px solid var(--COLOR_ACCENT_TEXT);
-        color: var(--COLOR_ACCENT_TEXT);
-    }
-}
-div.config-profil div.container-button-config-profil button#ignorer:active{
-    border: 3px solid var(--COLOR_ACCENT_TEXT);
-    color: var(--COLOR_ACCENT_TEXT);
+    text-align: center;
 }
 
 
@@ -1320,6 +1276,11 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
     font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
+}
+@media (max-width: 454px) {
+    section.container-small-widget-progression section.small-widget p.small-widget-title{
+        min-height: 44px;
+    }
 }
 
 
@@ -2094,13 +2055,13 @@ div.zone-result {
 }
 div.zone-result p.zone-result-name-result{
     font-weight: var(--FW_BUTTON);
-    font-size: var(--P);
-
+    font-size: var(--H3);
     margin-bottom: var(--SPACE_XS);
 }
 div.zone-result p.zone-result-interpretation{
     max-height: 160px;
     color: var(--COLOR_TEXT_SECONDARY);
+    font-size: var(--P);
 }
 
 /* --- Zone pour mettre en avant le résultat --- */
@@ -3180,7 +3141,7 @@ div.banner-toggle input[type="checkbox"].toggle:checked:after{
 
 div.container-center-marge {
     padding: var(--SPACE_XS);
-    margin: var(--SPACE_S);
+    margin: var(--SPACE_M) 0;
     justify-content: center;
     display: flex;
 }

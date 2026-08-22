@@ -102,19 +102,24 @@
 
     </section>
 
+    <div class="visuel-information" id="aucune-data" style="display: none;">
+        <i class="icon_folder_open"></i>
+        <h3>Aucun entraînement</h3>
+        <p>
+            Ajoutez votre premier entraînement pour commencer le suivi de vos statistiques.
+        </p>
+    </div>
+
     <div class="input-search">
         <!-- pour un input on use pas "click()" on use "focus()" -->
         <i class="icon_search" onclick="document.getElementById('input-search').focus()"></i>
         <input type="search" id="input-search" placeholder="Rechercher un entraînement" autocomplete="off">
     </div>
 
-    <p class="text" id="text-informatif">
-        SPRINTIA n'a pas encore assez de données pour afficher votre historique d'entraînement. Veuillez 
-        <a href="entrainement/ajouter-entrainement.html" class="lien">ajouter un entraînement</a>.
-    </p>
-    <p class="text" style="display: none;" id="txt-aucun-result">
-        Aucun résultat
-    </p>
+    <div class="visuel-information" id="aucun-resultat" style="display: none;">
+        <i class="icon_search_off"></i>
+        <h3>Aucun résultat</h3>
+    </div>
 
     <section class="container-workout-cards" id="liste-workouts"></section>
         <div class="container-center-marge">
@@ -235,9 +240,9 @@
         }
 
         async function initialisationAffichage() { // pour quand on recharge la page
-            // Cacher le text comme quoi il n'y a pas dentrainement enregistrer
-            if (HistoriqueComplet.length > 0) {
-                document.getElementById("text-informatif").style.display = "none"
+            if (HistoriqueComplet.length <= 0) {
+                document.getElementById("aucune-data").style.display = "flex"
+                document.querySelector(".input-search").style.display = "none"
             } 
             if (HistoriqueComplet.length <= 12) {
                 document.getElementById("button_afficher_plus").style.display = "none"
@@ -273,9 +278,9 @@
         }
 
         async function AfficherData() { // lors d'un clic sur le bouton afficher plus
-            // Cacher le text comme quoi il n'y a pas dentrainement enregistrer
-            if (HistoriqueComplet.length > 0) {
-                document.getElementById("text-informatif").style.display = "none"
+            if (HistoriqueComplet.length <= 0) {
+                document.getElementById("aucune-data").style.display = "flex"
+                document.querySelector(".input-search").style.display = "none"
             } 
             // Cacher le bouton si il n'y a plus d'element a charger
             if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
@@ -327,7 +332,7 @@
             let rechercheUser = inputSearch.value.toLowerCase()
 
             if (rechercheUser.trim() == "") {
-                document.getElementById("txt-aucun-result").style.display = "none"
+                document.getElementById("aucun-resultat").style.display = "none"
                 document.getElementById("liste-workouts").innerHTML = ""
                 initialisationAffichage()
             } else {
@@ -337,9 +342,9 @@
                 document.getElementById("button_afficher_plus").style.display = "none"
 
                 if (filteredHistoriqueComplet.length <= 0) {
-                    document.getElementById("txt-aucun-result").style.display = "block"
+                    document.getElementById("aucun-resultat").style.display = "flex"
                 } else {
-                    document.getElementById("txt-aucun-result").style.display = "none"
+                    document.getElementById("aucun-resultat").style.display = "none"
 
                     filteredHistoriqueComplet.forEach(element => {
                         const CardWorkout = document.createElement("div")

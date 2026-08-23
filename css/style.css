@@ -232,7 +232,7 @@ body {
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
     padding: var(--SPACE_M);
-    padding-bottom: 20rem;
+    padding-bottom: 10rem;
 }
 body.briefing-open {
     overflow: hidden;

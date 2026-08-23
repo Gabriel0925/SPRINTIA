@@ -1495,8 +1495,8 @@ div.button-flottant p{
 
 
 @keyframes animation_menu_li {
-    0% {transform: translate(20px, -10px) scale(1)}
-    50% {transform: translate(-20px, 10px) scale(0.7)}
+    0% {transform: translate(25px, -15px) scale(0.8)}
+    50% {transform: translate(-10px, 4px) scale(1.05)}
     100% {transform: translate(0px, 0px) scale(1)}
 }
 div.menu-many-action {
@@ -1521,8 +1521,7 @@ div.menu-many-action {
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {
-    transform: translate(0) scale(1);
-    opacity:1;
+    transform: translate(0, -22px) scale(1);
     transition: all ease-out 0.21s;
 }
 div.menu-many-action.open:active {
@@ -1539,23 +1538,26 @@ div.menu-many-action li {
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
 }
+div.menu-many-action.open li {
+    animation: animation_menu_li 0.4s ease-out backwards;
+}
 div.menu-many-action.open li:nth-child(1) {
-    animation: animation_menu_li 0.36s ease-out;
+    animation-delay: 0.03s;
 }
 div.menu-many-action.open li:nth-child(2) {
-    animation: animation_menu_li 0.46s ease-out;
+    animation-delay: 0.06s;
 }
 div.menu-many-action.open li:nth-child(3) {
-    animation: animation_menu_li 0.51s ease-out;
+    animation-delay: 0.09s;
 }
 div.menu-many-action.open li:nth-child(4) {
-    animation: animation_menu_li 0.54s ease-out;
+    animation-delay: 0.12s;
 }
 div.menu-many-action.open li:nth-child(5) {
-    animation: animation_menu_li 0.57s ease-out;
+    animation-delay: 0.15s;
 }
 div.menu-many-action.open li:nth-child(6) {
-    animation: animation_menu_li 0.59s ease-out;
+    animation-delay: 0.18s;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action.open:hover {

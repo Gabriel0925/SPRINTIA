@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../assets/icons-SPRINTIA/icon-192.png">
 
     <link rel="stylesheet" href="../assets/bibliotheques/leaflet.css"/>
     <script src="../assets/bibliotheques/leaflet.js"></script>
@@ -131,17 +131,19 @@
 
         <div id="map"></div>
 
-        <h2>Stats détaillées</h2>
-        <!-- <button class="briefing" style="margin-bottom: var(--SPACE_L); margin-top: 0;" onclick="windowsBriefing('Analyser mon entraînement')">Analyser mon entraînement</button> -->
+        <h2 id="title-stats-detaillees">Stats détaillées</h2>
 
         <!-- La suite est rempli en JS -->
         <div class="page-entrainement"></div>
+        <button class="briefing" style="margin-bottom: var(--SPACE_L); margin-top: 0;" onclick="windowsBriefing('Approfondir l\'analyse')">Approfondir l'analyse</button>
 
         <h2>Réhydratation conseillée</h2>
         <div class="container-rehydratation">
             <i class="icon_verre_eau"></i>
-            <p class="value" id="rehydratation">-- <small>mL</small></p>
-            <i class="icon_info"></i>
+            <p class="value" id="rehydratation" onclick="if (this.textContent == '-- mL') {
+                alert('Pour obtenir une estimation de réhydratation conseillée veuillez configurer votre profil.')
+            }">-- <small>mL</small></p>
+            <i class="icon_info" onclick="window.location.href = 'a-propos-rehydratation.html'"></i>
         </div>
 
         <h2>Note</h2>

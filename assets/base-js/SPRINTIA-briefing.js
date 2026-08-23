@@ -4,7 +4,7 @@ const buttonFonction  = {
     "Analyser ma CE": promptCE,
     "Analyser mon indulgence": promptIndulgence,
     "Analyser ma récupération": promptRecuperation,
-    "Analyser mon entraînement": promptAnalyseEntrainement,
+    "Approfondir l'analyse": promptAnalyseEntrainement,
     "Demander à Vibe": promptDiscussion
 }
 

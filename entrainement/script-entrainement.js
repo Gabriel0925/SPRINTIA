@@ -340,6 +340,15 @@ function afficherData(dataWorkout) {
     // on affiche iniquement si il y a des relevées gps
     if (latlngs != null) {
         carteGPS(dataWorkout, latlngs)
+    } else {
+        document.getElementById("map").style.display = "none"
+    }
+
+    // si il n'y a pas de stats détaillé
+    if (document.querySelector(".page-entrainement").innerHTML == `<section class="container-block"></section>`) {
+        document.getElementById("title-stats-detaillees").style.display = "none"
+        document.querySelector(".page-entrainement").style.display = "none"
+        document.querySelector("button.briefing").style.setProperty("margin-top", "var(--SPACE_L)")
     }
 
     // réhydratation conseillée

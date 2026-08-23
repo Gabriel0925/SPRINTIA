@@ -1544,14 +1544,14 @@ div.container-rehydratation {
     border-radius: var(--BORDER_NORMAL);
 
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: var(--SPACE_M);
     margin: var(--SPACE_M) 0;
     max-width: 500px;
 }
 div.container-rehydratation i{
     margin-left: var(--SPACE_XS);
-    font-size: 2.6rem;
+    font-size: 1.8rem;
     padding: var(--SPACE_XS) 0;
 }
 div.container-rehydratation i.icon_info{
@@ -1559,7 +1559,6 @@ div.container-rehydratation i.icon_info{
     justify-content: center;
     align-items: center;
 
-    font-size: 1.6rem;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     padding: var(--SPACE_XS);
     border-radius: 50%;
@@ -1577,7 +1576,7 @@ div.container-rehydratation i.icon_info:active{
     transform: scale(var(--SCALE_SMALL));
 }
 div.container-rehydratation p.value{
-    margin-left: auto;
+    margin-left: var(--SPACE_XS);
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
     margin-right: auto;

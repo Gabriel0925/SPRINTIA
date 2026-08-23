@@ -329,10 +329,6 @@ function afficherData(dataWorkout) {
                     <p class="container-block-data-header">Transpiration estimée</p>
                     <p class="container-block-data-data">${dataWorkout.transpiration_estimee} <small>mL</small></p>
                 </div>
-                <div class="container-block-data">
-                    <p class="container-block-data-header">Réhydratation conseillée</p>
-                    <p class="container-block-data-data">${dataWorkout.hydratation_estimee} <small>mL</small></p>
-                </div>
         `
     }
 
@@ -344,6 +340,11 @@ function afficherData(dataWorkout) {
     // on affiche iniquement si il y a des relevées gps
     if (latlngs != null) {
         carteGPS(dataWorkout, latlngs)
+    }
+
+    // réhydratation conseillée
+    if (dataWorkout.hydratation_estimee && dataWorkout.hydratation_estimee != undefined) {
+        document.getElementById("rehydratation").innerHTML = dataWorkout.hydratation_estimee + " <small>mL</small>"
     }
 
     // on remplit le champs note entrainement si il y a du contenu dans la BDD

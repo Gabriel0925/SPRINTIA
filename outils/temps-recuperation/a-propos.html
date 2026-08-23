@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Calculateur IMC</title>
+    <title>SPRINTIA - À propos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -74,72 +74,10 @@
     </section>
 
     <div class="toolbar">
-        <h1>Calculateur IMC</h1>
-        <div class="container-command">
-            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
-        </div>
+        <h1>À propos</h1>
     </div>
 
-    <section class="container-zone">
-
-        <div class="form"> 
-                
-            <div class="container-input">
-                <input type="number" id="taille-user" placeholder="Taille (cm)" autocomplete="off">
-                <div class="label-input">Taille (cm)</div>
-            </div>
-                    
-            <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
-                <div class="label-input">Poids (kg)</div>
-            </div>
-
-            <button id="button-calcul-imc" onclick="calculIMC()">Calculer</button>
-        </div>
-
-        <div class="zone-result">
-            <p class="zone-result-name-result">Votre IMC : <strong>--</strong></p>
-            <p class="zone-result-interpretation">
-                Veuillez rentrer votre taille ainsi que votre poids pour avoir une interprétation.
-            </p>
-        </div>
-
-    </section>
-
-    <h2>C'est quoi l'IMC ?</h2>
-    <p class="text">
-        L'IMC (indice de masse corporelle) sert à estimer la corpulence. Ce n'est pas un indicateur sportif, mais plutôt un repère de santé.
-    </p>
-    <h2>Le problème de l'IMC ?</h2>
-    <p class="text">
-        L'IMC estime la corpulence à partir de la taille et du poids, mais il ne connait pas votre masse musculaire ! Par exemple, vous pouvez
-        être en obésité sévère alors qu'en réalité vous allez juste à la salle et que vous êtes musclé. Mais ça, l'IMC ne le saura jamais.
-        C'est pourquoi, il faut savoir prendre du recul sur les résultats de cet indicateur.
-    </p>
-
     <script src="../../assets/base-js/base.js"></script>
-    <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="../../assets/bibliotheques/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-outil.js"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", async () => {
-            await remplissageChamps(["taille-user", "poids-user"])
-
-            if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && !isNaN(document.getElementById("taille-user").value) && !isNaN(document.getElementById("poids-user").value)) {
-                document.getElementById("button-calcul-imc").click()
-            }
-        })
-        
-        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-        let formKeyEntry = document.querySelector(".form")
-        formKeyEntry.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                calculIMC()
-            }
-        })
-    </script>
-    
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

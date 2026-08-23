@@ -1336,10 +1336,10 @@ div.toolbar div.container-command i{
     align-items: center;
     cursor: pointer;
 
-    font-size: var(--H2);
+    font-size: var(--H1);
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
 
     transition: background-color ease-out var(--TIME_TRANSITION),

@@ -199,8 +199,9 @@ i {
 .icon_telephone:before {content: "\e92f";}
 .icon_temps_recup:before {content: "\e930";}
 .icon_velo:before {content: "\e931";}
-.icon_video:before {content: "\e932";}
-.icon_zones_cardiaques:before {content: "\e933";}
+.icon_verre_eau:before {content: "\e932";}
+.icon_video:before {content: "\e933";}
+.icon_zones_cardiaques:before {content: "\e934";}
 
 * {
     margin: 0;
@@ -1466,16 +1467,18 @@ section.resume-stats-workout {
     flex-direction: column;
     gap: var(--SPACE_S);
     margin: var(--SPACE_M) 0;
+    max-width: 500px;
 }
 section.resume-stats-workout div.container-data{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--SPACE_M);
     border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    padding-bottom: var(--SPACE_S);
+    padding-bottom: var(--SPACE_XS);
 }
-section.resume-stats-workout div.container-data div.data#data-duree{
-    border-right: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
+section.resume-stats-workout div.container-data div.data{
+    padding: var(--SPACE_XS) 0;
+    border-top: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.resume-stats-workout div.container-data div.data p.title-data{
     font-size: var(--P_SMALL);
@@ -1531,6 +1534,10 @@ section.resume-stats-workout div.data-rpe div.container-value-rpe div.descriptio
     font-weight: var(--FW_BUTTON);
 }
 
+div.page-entrainement {
+    margin: var(--SPACE_M) 0;
+}
+
 div.container-rehydratation {
     background-color:var(--COLOR_BACKGROUND_CARD);
     padding: var(--SPACE_XS);
@@ -1540,35 +1547,45 @@ div.container-rehydratation {
     align-items: center;
     gap: var(--SPACE_M);
     margin: var(--SPACE_M) 0;
+    max-width: 500px;
 }
 div.container-rehydratation i{
-    font-size: 3rem;
+    margin-left: var(--SPACE_XS);
+    font-size: 2.6rem;
     padding: var(--SPACE_XS) 0;
+}
+div.container-rehydratation i.icon_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.6rem;
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    padding: var(--SPACE_XS);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.container-rehydratation i.icon_info:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    }
+}
+div.container-rehydratation i.icon_info:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_SMALL));
 }
 div.container-rehydratation p.value{
     margin-left: auto;
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
+    margin-right: auto;
 }
 div.container-rehydratation p.value small{
     font-size: var(--P);
     font-weight: normal;
     color: var(--COLOR_TEXT_SECONDARY);
-}
-div.container-rehydratation div.container-info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin-bottom: auto;
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border-radius: 50%;
-}
-div.container-rehydratation div.container-info i{
-    padding: 0;
-    font-size: var(--H2);
-    color: var(--COLOR_TEXT_PRIMARY);
-    padding: var(--SPACE_XXS);
 }
 
 
@@ -1926,6 +1943,7 @@ section.container-workout-generate section.fractionne-workout-day div.container-
 
 /* --- la carte --- */
 div#map {
+    margin: var(--SPACE_M) 0;
     outline: none;
     transition: opacity ease-out var(--TIME_TRANSITION_FAST);
 }

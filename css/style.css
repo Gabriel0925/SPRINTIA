@@ -1329,6 +1329,15 @@ div.toolbar h1{
     margin-right: var(--SPACE_XS);
     padding: var(--SPACE_XS) 0;
 }
+div.toolbar p.detail-entrainement{
+    color: var(--COLOR_TEXT_SECONDARY);
+    font-size: var(--P);
+}
+div.toolbar p.detail-entrainement strong{
+    color: var(--COLOR_TEXT_PRIMARY);
+    font-size: var(--H3);
+    font-weight: var(--FW_BOLD_SMALL);
+}
 div.toolbar div.container-command {
     display: flex;
     justify-content: center;
@@ -1411,7 +1420,7 @@ div.menu-many-action.open {
     transition: all ease-out 0.21s;
 }
 div.menu-many-action.open:active {
-    transform: scale(1.025);
+    transform: translate(0, -22px) scale(1.025);
 }
 div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
@@ -1444,7 +1453,7 @@ div.menu-many-action.open li:nth-child(5) {
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action.open:hover {
-        transform: scale(1.025);
+        transform: translate(0, -22px) scale(1.025);
     }
     div.menu-many-action li:hover {
         background: var(--COLOR_GLASSMORPHISM_HOVER);

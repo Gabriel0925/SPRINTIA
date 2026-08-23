@@ -196,7 +196,7 @@ function afficherData(dataWorkout) {
 
     // ajout des datas aux éléments existant
     document.getElementById("nom-workout").textContent = dataWorkout.nom
-    document.querySelector(".text-toolbar").innerHTML = `<strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}`
+    document.querySelector(".detail-entrainement").innerHTML = `<strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}`
 
     document.getElementById("duree").innerHTML = dureeFormatee(dataWorkout.duree)
     document.getElementById("charge").innerHTML = dataWorkout.charge_entrainement + "<small>CE</small>"

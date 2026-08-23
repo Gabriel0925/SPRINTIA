@@ -1509,7 +1509,7 @@ div.zone-coach p.zone-coach-name strong{
 }
 div.zone-coach button {
     margin: 0;
-    margin-top: var(--SPACE_S);
+    margin-top: var(--SPACE_M);
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
 
     color: var(--COLOR_BACKGROUND);

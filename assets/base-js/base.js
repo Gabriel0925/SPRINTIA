@@ -164,23 +164,31 @@ function logoDynamique(message) {
     // // Recup du logo dynamique
     let elementLogoDynamique = document.querySelector(".logo-dynamique")
 
-    // Initialisation (Remise à 0)
-    elementLogoDynamique.classList.remove("return", "message")
+    if (elementLogoDynamique) {
+        // Initialisation (Remise à 0)
+        elementLogoDynamique.classList.remove("return", "message")
+        
+        elementLogoDynamique.addEventListener("click", () => {
+            clearTimeout(timer1)
+            clearTimeout(timer2)
+            elementLogoDynamique.classList.add("return")
+        }, {once:true}) // le addevenlister se détruit dès qu'il y a un clic
 
-    // Déclenchement de l'animation pour afficher le message au user
-    elementLogoDynamique.classList.add("message")
-    // Affichage message au user
-    elementLogoDynamique.textContent = message;
+        // Déclenchement de l'animation pour afficher le message au user
+        elementLogoDynamique.classList.add("message")
+        // Affichage message au user
+        elementLogoDynamique.textContent = message;
 
-    timer1 = setTimeout(() => { 
-        elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
-    }, 2600);
+        timer1 = setTimeout(() => { 
+            elementLogoDynamique.classList.add("return") // a ré-ajoute la class pour que le logo dynamique retourne à sa position de base
+        }, 2600);
 
-    timer2 = setTimeout(() => {
-        // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
-        elementLogoDynamique.classList.remove("return")
-        elementLogoDynamique.classList.remove("message")
-    }, 2800) 
+        timer2 = setTimeout(() => {
+            // On supprime les deux class qu'on a rajouté pour le remettre totalement à 0
+            elementLogoDynamique.classList.remove("return")
+            elementLogoDynamique.classList.remove("message")
+        }, 2800) 
+    }
 }
 
 

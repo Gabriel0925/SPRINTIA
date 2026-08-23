@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -42,7 +42,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -66,7 +66,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -74,19 +74,21 @@
 
     </section>
     
-    <h1>Historique de récupération</h1>
-
-    <div class="container-button-flottant">
-        <div class="button-flottant" onclick="window.location.href = 'ajouter-recuperation.html'">
-            <i class="icon_add"></i>
-            <p >Ajouter</p>
-        </div> 
+    <div class="toolbar">
+        <h1>Historique de récupération</h1>
+        <div class="container-command">
+            <i class="icon_add" onclick="window.location.href = 'ajouter-recuperation.html'"></i>
+        </div>
     </div>
 
-    <p class="text" id="text-informatif" style="display: none;">
-        SPRINTIA n'a pas encore assez de données pour afficher votre historique de récupération. Veuillez
-        <a href="ajouter-recuperation.html" class="lien">ajouter une récupération</a>.
-    </p>
+    <div class="visuel-information" id="aucune-data" style="display: none;">
+        <i class="icon_folder_open"></i>
+        <h3>Aucune donnée de récupération</h3>
+        <p>
+            Vous avez enregistré aucune donnée de récupération.
+        </p>
+    </div>
+
     <div class="carousel table">
         <div class="carousel-content table">
             <table id="tableau-historique">
@@ -130,7 +132,7 @@
                 // on cache le tableau
                 tableauHistorique.style.display = "none"
                 // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
-                document.getElementById("text-informatif").style.display = "block"
+                document.getElementById("aucune-data").style.display = "flex"
                 return
             }
 
@@ -174,7 +176,7 @@
                             // On cache tout
                             tableau.style.display = "none"
                             // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
-                            document.getElementById("text-informatif").style.display = "block"
+                            document.getElementById("aucune-data").style.display = "flex"
                         } 
 
                         // transmission de l'info au user

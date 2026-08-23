@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -42,7 +42,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -66,7 +66,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -77,7 +77,10 @@
     <main>
         <div class="toolbar">
             <h1>Indulgence de course</h1>
-            <a href="parametres.html"><i class="icon_parametres"></i></a>
+            <div class="container-command">
+                <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+                <i class="icon_parametres" onclick="window.location.href = 'parametres.html'"></i>
+            </div>
         </div>
 
         <section class="container-box">
@@ -127,15 +130,6 @@
 
         </section>
 
-        <h2>C'est quoi l'Indulgence de course ?</h2>
-        <p class="text">
-            L'indulgence de course vous aide à ajuster votre kilométrage des 7 prochains jours pour rester dans une progression 
-            optimale, sans dépasser votre limite et éviter de vous blesser. 
-            <strong>
-                Cet outil est conçu pour les personnes qui débutent la course à pied, ou qui reprennent la course à pied après 
-                une pause, voire qui se lancent dans un nouveau plan d'entrainement.
-            </strong>
-        </p>
     </main>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
@@ -150,7 +144,7 @@
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
                 <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>

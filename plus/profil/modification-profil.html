@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -42,7 +42,7 @@
                 Outils
             </li>
             <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -66,7 +66,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -74,12 +74,12 @@
 
     </section>
     
-    <h1>Modification profil</h1>
+    <div class="toolbar">
+        <h1>Modification profil</h1>
+    </div>
+    
     <p class="text">
         <strong>Vos données personnelles reste en local sur votre appareil.</strong>
-        <br><br>
-        En enregistrant vos données, SPRINTIA vous fera gagner du temps lors de l'utilisation des outils.
-        De plus, elles permettent de débloquer des fonctionnalités comme l'estimation de la transpiration et de votre rFTPw.
     </p>
 
     <section class="container-zone">
@@ -133,7 +133,6 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-save-restoration.js"></script>
 
     <script>
         async function saveProfil() {
@@ -241,7 +240,16 @@
             }
         }
 
+        async function init() {
+            const dataProfilUser = await db.profil.toArray()
+
+            if (dataProfilUser.length <= 0) {
+                document.querySelector("h1").textContent = "Configuration profil"
+            }
+        }
+
         window.addEventListener("DOMContentLoaded", () => {
+            init()
             remplirChamps()
         })
         

@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -41,7 +41,7 @@
                 Outils
             </li>
             <li class="header-items selected" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -65,7 +65,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -73,11 +73,14 @@
 
     </section>
 
-    <main>    
-        <div class="toolbar marge">
+    <main>
+        <div class="toolbar">
             <h1 id="briefing">JRM Coach</h1>
-            <i class="icon_parametres" onclick="window.location.href = 'parametres.html'"></i>
+            <div class="container-command">
+                <i class="icon_parametres" onclick="window.location.href = 'parametres.html'"></i>
+            </div>
         </div>
+        
         <p class="text">
             Posez une question et ensuite SPRINTIA génèrera un prompt contenant : vos données récentes ainsi qu'une question ce qui
             permettra à votre IA préférée de répondre à votre interrogation.
@@ -105,7 +108,7 @@
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
                 <button onclick="

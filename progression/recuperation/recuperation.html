@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -41,7 +41,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -65,7 +65,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -73,15 +73,14 @@
 
     </section>
 
-    <div class="container-button-flottant">
-        <div class="button-flottant" onclick="window.location.href = 'ajouter-recuperation.html'">
-            <i class="icon_add"></i>
-            <p>Ajouter</p>
-        </div> 
-    </div>
-
     <main>    
-        <h1>Récupération</h1>
+        <div class="toolbar">
+            <h1>Récupération</h1>
+            <div class="container-command">
+                <i class="icon_add" onclick="window.location.href = 'ajouter-recuperation.html'"></i>
+                <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+            </div>
+        </div>
 
         <section class="container-zone">
 
@@ -113,11 +112,15 @@
             <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
 
-        <h2>Historique (7J)</h2>
-        <p class="text" id="text-informatif" style="display: none;">
-            Aucune donnée de récupération enregistrée ses 7 derniers jours. Veuillez
-            <a href="ajouter-recuperation.html" class="lien">ajouter une récupération</a>.
-        </p>
+        <h2>Historique (7J)</h2>    
+        <div class="visuel-information" id="aucune-data" style="display: none;">
+            <i class="icon_folder_open"></i>
+            <h3>Aucune donnée de récupération (7J)</h3>
+            <p>
+                Vous avez enregistré aucune donnée de récupération ses 7 derniers jours.
+            </p>
+        </div>
+
         <div class="carousel table">
             <div class="carousel-content table">
                 <table id="tableau-historique">
@@ -137,23 +140,7 @@
             <button id="button_plus" onclick="location.href = 'historique-recuperation.html'">
                 Voir l'historique complet
             </button>
-        </div> 
-
-        <h2>C'est quoi l'algorithme de récupération ?</h2>
-        <p class="text">
-            Cet algorithme vous permet de suivre votre récupération grâce à votre FC repos (=fréquence cardiaque au repos). Cet algorithme
-            peut vous indiquer si vous êtes prêt à fournir un effort physique aujourd'hui ou alors si il faut mieux se reposer aujourd'hui.
-            <strong>
-                Attention, l'algorithme recommande mais c'est vous qui restez maître de votre corps et de vos sensations.
-            </strong>
-        </p>
-
-        <h2>Petite limite</h2>
-        <p class="text">
-            Si vous avez une FC repos réellement supérieur à votre moyenne de 30J, le coach de SPRINTIA vous indiquera que c'est lié à un surentraînement.
-            Sauf que c'est pas forcément ça. Ça peut aussi vouloir dire que vous êtes en train de tomber malade, que vous êtes stressé ou 
-            juste que vous dormez super mal en ce moment.
-        </p>
+        </div>
     </main>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
@@ -168,7 +155,7 @@
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
                 <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>

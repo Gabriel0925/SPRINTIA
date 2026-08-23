@@ -279,7 +279,7 @@ function interfaceWorkout(selectedWorkout) {
     window.scrollTo({top:0, behavior: "smooth"}) // scroll vers le haut de la page
 
     // on rend visible le bouton flottant
-    document.querySelector(".container-button-flottant").style.display = "flex"
+    document.querySelector(".container-command").style.display = "block"
 }
 
 

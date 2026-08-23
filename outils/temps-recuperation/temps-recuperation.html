@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -42,7 +42,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -66,7 +66,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -74,7 +74,13 @@
 
     </section>
     
-    <h1>Temps de Récupération</h1>
+    <div class="toolbar">
+        <h1>Temps de Récupération</h1>
+        <div class="container-command">
+            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+        </div>
+    </div>
+
     <section class="container-zone">
 
         <div class="form"> 
@@ -109,16 +115,6 @@
         </div>
 
     </section>
-    
-    <h2>Comment se servir de cet algorithme ?</h2>
-    <p class="text">
-        Après un entraînement intense, léger,... Votre corps a besoin de récupérer, cet algorithme estime la durée de récupération nécessaire
-        pour que votre corps se répare complètement. Or, votre corps n'a pas besoin d'être tout le temps à 100%. C'est pour cela que cet algorithme
-        donne un temps de récupération avant votre prochain gros entraînement.
-        <br><br>
-        Par exemple, si l'algorithme vous suggère 54h de récupération, ça veut dire qu'il ne faudrait pas faire de gros entraînements avant 54h.
-        Néanmoins, vous pouvez totalement faire un entraînement léger.
-    </p>
 
     <script src="../../assets/base-js/base.js"></script>
     <script src="script-outil.js"></script>

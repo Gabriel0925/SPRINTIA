@@ -41,6 +41,7 @@
 
 
     /* 3D */
+    --COLOR_BORDER_FLOATING_BUTTON: rgba(230, 242, 255, 0.3);
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.15);
 
 
@@ -148,9 +149,9 @@ i {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.icon_RM:before {content: "\e900";}
-.icon_add:before {content: "\e901";}
-.icon_archiver:before {content: "\e902";}
+.icon_add:before {content: "\e900";}
+.icon_archiver:before {content: "\e901";}
+.icon_autorenew:before {content: "\e902";}
 .icon_charge_entrainement:before {content: "\e903";}
 .icon_coach:before {content: "\e904";}
 .icon_confidentialite:before {content: "\e905";}
@@ -163,40 +164,43 @@ i {
 .icon_file_csv:before {content: "\e90c";}
 .icon_file_json:before {content: "\e90d";}
 .icon_fleche_droite:before {content: "\e90e";}
-.icon_fullscreen:before {content: "\e90f";}
-.icon_fullscreen_exit:before {content: "\e910";}
-.icon_gpx:before {content: "\e911";}
-.icon_hydratation:before {content: "\e912";}
-.icon_IMC:before {content: "\e913";}
-.icon_indulgence_course:before {content: "\e914";}
-.icon_info:before {content: "\e915";}
-.icon_licence:before {content: "\e916";}
-.icon_mail:before {content: "\e917";}
-.icon_metabolisme_base:before {content: "\e918";}
-.icon_modifier:before {content: "\e919";}
-.icon_natation:before {content: "\e91a";}
-.icon_niveau_course:before {content: "\e91b";}
-.icon_outils:before {content: "\e91c";}
-.icon_parametres:before {content: "\e91d";}
-.icon_partage:before {content: "\e91e";}
-.icon_pause:before {content: "\e91f";}
-.icon_plus:before {content: "\e920";}
-.icon_plus_horizontal:before {content: "\e921";}
+.icon_folder_open:before {content: "\e90f";}
+.icon_fullscreen:before {content: "\e910";}
+.icon_fullscreen_exit:before {content: "\e911";}
+.icon_gpx:before {content: "\e912";}
+.icon_hydratation:before {content: "\e913";}
+.icon_IMC:before {content: "\e914";}
+.icon_indulgence_course:before {content: "\e915";}
+.icon_info:before {content: "\e916";}
+.icon_licence:before {content: "\e917";}
+.icon_mail:before {content: "\e918";}
+.icon_metabolisme_base:before {content: "\e919";}
+.icon_modifier:before {content: "\e91a";}
+.icon_natation:before {content: "\e91b";}
+.icon_niveau_course:before {content: "\e91c";}
+.icon_outils:before {content: "\e91d";}
+.icon_parametres:before {content: "\e91e";}
+.icon_partage:before {content: "\e91f";}
+.icon_pause:before {content: "\e920";}
+.icon_plus:before {content: "\e921";}
 .icon_position:before {content: "\e922";}
 .icon_profil:before {content: "\e923";}
 .icon_progression:before {content: "\e924";}
 .icon_proteines:before {content: "\e925";}
 .icon_recuperation:before {content: "\e926";}
 .icon_refresh:before {content: "\e927";}
-.icon_search:before {content: "\e928";}
-.icon_SPRINTIA_briefing:before {content: "\e929";}
-.icon_statistiques:before {content: "\e92a";}
-.icon_supprimer:before {content: "\e92b";}
-.icon_telephone:before {content: "\e92c";}
-.icon_temps_recup:before {content: "\e92d";}
-.icon_velo:before {content: "\e92e";}
-.icon_video:before {content: "\e92f";}
-.icon_zones_cardiaques:before {content: "\e930";}
+.icon_RM:before {content: "\e928";}
+.icon_search:before {content: "\e929";}
+.icon_search_off:before {content: "\e92a";}
+.icon_SPRINTIA_briefing:before {content: "\e92b";}
+.icon_statistiques:before {content: "\e92c";}
+.icon_supprimer:before {content: "\e92d";}
+.icon_telephone:before {content: "\e92e";}
+.icon_temps_recup:before {content: "\e92f";}
+.icon_velo:before {content: "\e930";}
+.icon_verre_eau:before {content: "\e931";}
+.icon_video:before {content: "\e932";}
+.icon_zones_cardiaques:before {content: "\e933";}
 
 * {
     margin: 0;
@@ -475,6 +479,9 @@ section.header ul.header-container-items li.header-items{
                 color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
 }
+section.header ul.header-container-items li.header-items i{
+    font-size: var(--H3);
+}
 section.header ul.header-container-items li.header-items.selected{
     background: var(--COLOR_GLASSMORPHISM_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
@@ -539,7 +546,7 @@ section.tab-bars {
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
     max-width: 475px;
-    height: 65px;
+    height: 70px;
     flex-grow: 1;
 
     background: var(--COLOR_GLASSMORPHISM);
@@ -551,7 +558,6 @@ section.tab-bars ul.tab-bars-container-items{
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     pointer-events: all;
-    z-index: 11000;
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -645,7 +651,7 @@ div.container-logo-dynamique {
     max-width: var(--MAX_WIDTH);
     pointer-events: none;
     position: fixed;
-    z-index: 18000;
+    z-index: 15000;
 }
 div.container-logo-dynamique div.logo-dynamique {
     display: none;
@@ -660,7 +666,7 @@ div.container-logo-dynamique div.logo-dynamique {
     flex-grow: 1;
     height: 55px;
     margin-top: 0.56rem;
-    border-radius: var(--BORDER_NORMAL);
+    border-radius: 1.5rem;
     
     background: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
@@ -668,8 +674,16 @@ div.container-logo-dynamique div.logo-dynamique {
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
     pointer-events: none;
-    z-index: 20000;
-    transition: transform ease-out 0.6s;
+    transition: transform ease-out 0.6s,
+                background-color ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.container-logo-dynamique div.logo-dynamique:hover {
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
+    }
+}
+div.container-logo-dynamique div.logo-dynamique:active {
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
 @media (max-width: 1050px) {
     div.container-logo-dynamique {
@@ -679,7 +693,7 @@ div.container-logo-dynamique div.logo-dynamique {
         height: 65px;
         margin-top: 0;
         max-width: 600px;
-        border-radius: 1.75rem;
+        border-radius: 2rem;
     }
 }
 @keyframes animation_logo_dynamique {
@@ -690,6 +704,8 @@ div.container-logo-dynamique div.logo-dynamique {
 }
 div.container-logo-dynamique div.logo-dynamique.message {
     display: flex;
+    cursor: pointer;
+    pointer-events: auto;
     transform: scale(1) translateY(0);
     animation: animation_logo_dynamique ease-out 0.6s forwards;
 }
@@ -698,8 +714,6 @@ div.container-logo-dynamique div.logo-dynamique.message {
     100% {transform: scale(1.4, 1.4); opacity: 0;}
 }
 div.container-logo-dynamique div.logo-dynamique.message.return {
-    display: flex;
-    transform: scale(1) translateY(0);
     animation: animation_logo_dynamique_return ease-out 0.2s forwards;
 }
 
@@ -740,6 +754,9 @@ section.container-invite-to-config div.container-button{
     display: flex;
     justify-content: center;
 }
+section.container-invite-to-config div.container-button button{
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
+}
 section.container-invite-to-config div.container-button button#ignorer{
     background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
@@ -756,68 +773,19 @@ section.container-invite-to-config div.container-button button#ignorer:active{
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
 
-div.config-profil {
+div.visuel-information {
     display: flex;
-    flex-direction: column;
-    gap: var(--SPACE_XS);
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_TEXT_PRIMARY);
-    font-weight: var(--FW_BUTTON);
-    height: fit-content;
-    max-width: 501px;
-    padding: var(--SPACE_XS);
-    margin: var(--SPACE_M) 0;
-    border-radius: var(--BORDER_BIG);
-    transition: background-color ease-out var(--TIME_TRANSITION), transform ease-out var(--TIME_TRANSITION_FAST);
-}
-div.config-profil div.config-profil-head {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: var(--SPACE_S);
-    margin: 4px;
+    flex-direction: column;
+    margin: var(--SPACE_XL) 0;
 }
-div.config-profil i{
-    font-size: var(--H1);
+div.visuel-information i{
+    font-size: 5rem;
 }
-div.config-profil p{
-    font-size: var(--H2);
-}
-div.config-profil p.description{     
-    font-size: var(--P_SMALL);
-    font-weight: normal;
+div.visuel-information p{
     color: var(--COLOR_TEXT_SECONDARY);
-    margin: 13px 4px;
-}
-div.config-profil div.container-button-config-profil {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    margin: 4px;
-}
-div.config-profil div.container-button-config-profil button{
-    margin: 0;
-    padding: 0;
-    padding: 0.7rem;
-}
-div.config-profil div.container-button-config-profil button:active{
-    transform: scale(1);
-}
-div.config-profil div.container-button-config-profil button#ignorer{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    color: var(--COLOR_TEXT_PRIMARY);
-    border: 3px solid var(--COLOR_BACKGROUND_CARD_HOVER);
-    transition: border ease-out var(--TIME_TRANSITION_FAST),
-                color ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.config-profil div.container-button-config-profil button#ignorer:hover{
-        border: 3px solid var(--COLOR_ACCENT_TEXT);
-        color: var(--COLOR_ACCENT_TEXT);
-    }
-}
-div.config-profil div.container-button-config-profil button#ignorer:active{
-    border: 3px solid var(--COLOR_ACCENT_TEXT);
-    color: var(--COLOR_ACCENT_TEXT);
+    text-align: center;
 }
 
 
@@ -829,16 +797,16 @@ section.segmented-button {
     align-items: center;
     margin: var(--SPACE_L) auto;
     width: fit-content;
-    padding: var(--SPACE_XS);
+    padding: var(--SPACE_XXS);
     border-radius: var(--BORDER_BIG);
-    gap: var(--SPACE_XS);
+    gap: var(--SPACE_XXS);
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 section.segmented-button div.segmented-button-button {
-    padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_NORMAL);
+    padding: var(--SPACE_S);
+    border-radius: var(--BORDER_BIG);
     cursor: pointer;
-    width: 60px;
+    width: 70px;
     text-align: center;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -857,15 +825,13 @@ section.segmented-button div.segmented-button-button {
 section.segmented-button div.segmented-button-button:active {
     transform: scale(var(--SCALE_NORMAL));
     color: var(--COLOR_ACCENT_TEXT);
-    font-weight: var(--FW_BUTTON);
+    font-weight: var(--FW_BOLD_SMALL);
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
-    padding: var(--SPACE_XS);
-    border-radius: var(--BORDER_NORMAL);
-    font-weight: var(--FW_BUTTON);
+    font-weight: var(--FW_BOLD_SMALL);
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
@@ -1143,7 +1109,7 @@ textarea::placeholder {
 button.briefing {
     margin: 0;
     margin: var(--SPACE_XS) 0;
-    border-radius: var(--BORDER_BIG);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
 
     color: var(--COLOR_BACKGROUND);
     background-color: transparent;
@@ -1323,163 +1289,108 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
 }
+@media (max-width: 454px) {
+    section.container-small-widget-progression section.small-widget p.small-widget-title{
+        min-height: 44px;
+    }
+}
 
 
 div.toolbar {
     display: flex;
     align-items: center;
-    z-index: 10000;
-}
-div.toolbar.marge {
-    margin-bottom: var(--SPACE_S);
-}
-div.toolbar a {
-    margin-left: auto;
-}
-div.toolbar h1 {
-    margin: 0;
-    display: -webkit-box;
-    -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 2;
-    line-clamp: 2; 
-    overflow: hidden;
-}
-div.toolbar i {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_TEXT_PRIMARY);
-    padding: var(--SPACE_S);
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: var(--H1);
-    
-    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
-                transform ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.toolbar i:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    }
-}
-div.toolbar i:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    transform: scale(var(--SCALE_NORMAL));
-}
-div.toolbar i#icon-menu-many-action {
-    background-color: transparent;
-    background: var(--COLOR_GLASSMORPHISM);
-    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
-    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
-    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
-                transform ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.toolbar i#icon-menu-many-action:hover {
-        background-color: transparent;
-        background: var(--COLOR_GLASSMORPHISM_HOVER);
-        transform: scale(var(--SCALE_SUP));
-    }
-}
-div.toolbar i#icon-menu-many-action:active {
-    background-color: transparent;
-    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    transform: scale(var(--SCALE_SUP));
-}
-
-
-div.container-button-flottant {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--SPACE_XS);
-    pointer-events: none;
-    max-width: var(--MAX_WIDTH);
-    margin: 0 auto;
-    position: fixed;
-    bottom: var(--SPACE_S);
-    right: var(--SPACE_S);
-    left: 0;
-    padding: var(--SPACE_S);
-    width: 100%;
-    z-index: 1500;
-}
-div.button-flottant {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--SPACE_XS);
-    cursor: pointer;
-    pointer-events: all;
-    bottom: var(--SPACE_S);
-    right: var(--SPACE_S);
-    padding: var(--SPACE_M);
-    
-    background: var(--COLOR_GLASSMORPHISM);
-    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
-    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
-
-    color: var(--COLOR_TEXT_PRIMARY);
-    border-radius: var(--BORDER_BIG);
-    font-size: var(--H1);
-    z-index: 1550;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
-                transform ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.button-flottant:hover {
-        background: var(--COLOR_GLASSMORPHISM_HOVER);
-        transform: scale(var(--SCALE_SUP));
-    }
-}
-div.button-flottant:active {
-    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    transform: scale(var(--SCALE_SUP));
-}
-div.button-flottant p{
-    font-size: var(--H2);
-    font-weight: var(--FW_BUTTON);
+    margin-bottom: var(--SPACE_M);
 }
 @media (max-width: 1050px) {
-    /* on le repasse en display block et width,... à 0 pour que le bouton se replace en bas a droite */
-    div.container-button-flottant {
-        display: block;
-        gap: 0;
-        pointer-events: none;
+    div.toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10000;
+        min-height: 60px;
 
-        position: fixed;
-        bottom: 5.8rem;
-        right: 0;
-        padding: var(--SPACE_S);
-        width: fit-content;
-        z-index: 1500;
-        left: auto;
+        /* intégration de marges négative pour combler le padding du body */
+        /* au lieu de mettre une marge positive on en met une négative, donc on prend la var "SPACE_M" et on multiplie par -1 pour avoir la marge en négative */
+        /* par exemple -> 24px*-1 = -24px, c'est logique */
+        margin-left: calc(var(--SPACE_M) * -1);
+        margin-right: calc(var(--SPACE_M) * -1);
+        padding: 0 var(--SPACE_M);
+        
+        -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+        backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
     }
-    div.button-flottant {
-        margin-bottom: 0;
-        font-size: 2.8rem;
-        bottom: var(--SPACE_S);
-        right: var(--SPACE_S);
-        padding: var(--SPACE_S);
-        border-radius: 50%;
+    div.toolbar.not-fixed {
+        position: static;
+        padding: 0 var(--SPACE_M);
     }
-    div.button-flottant p {
-        display: none;
+}
+div.toolbar h1{
+    margin: 0;
+    margin-right: var(--SPACE_XS);
+    padding: var(--SPACE_XS) 0;
+}
+div.toolbar p.detail-entrainement{
+    color: var(--COLOR_TEXT_SECONDARY);
+    font-size: var(--P);
+}
+div.toolbar p.detail-entrainement strong{
+    color: var(--COLOR_TEXT_PRIMARY);
+    font-size: var(--H3);
+    font-weight: var(--FW_BOLD_SMALL);
+}
+div.toolbar div.container-command {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    background-color: var(--COLOR_GLASSMORPHISM);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    border-radius: var(--BORDER_BIG);
+
+    padding: var(--SPACE_XXS);
+    margin-left: auto;
+    gap: var(--SPACE_XXS);
+    flex-shrink: 0;
+
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.toolbar div.container-command:hover {
+        transform: scale(var(--SCALE_SUP));
     }
+}
+div.toolbar div.container-command:active {
+    transform: scale(var(--SCALE_SUP));
+}
+div.toolbar div.container-command i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    font-size: var(--H1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.toolbar div.container-command i:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+    }
+}
+div.toolbar div.container-command i:active{
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: scale(var(--SCALE_SUP));
 }
 
 
 @keyframes animation_menu_li {
-    0% {transform: translate(20px, -10px) scale(1)}
-    50% {transform: translate(-20px, 10px) scale(0.7)}
+    0% {transform: translate(25px, -15px) scale(0.8)}
+    50% {transform: translate(-10px, 4px) scale(1.05)}
     100% {transform: translate(0px, 0px) scale(1)}
 }
 div.menu-many-action {
@@ -1499,17 +1410,16 @@ div.menu-many-action {
 
     overflow: hidden;
     opacity: 1;
-    z-index: 1200;
-    transform: translate(84px, -79px) scale(0);
+    z-index: 8000;
+    transform: translate(84px, -100px) scale(0);
     transition: all ease-out 0.15s;
 }
 div.menu-many-action.open {
-    transform: translate(0) scale(1);
-    opacity:1;
+    transform: translate(0, -22px) scale(1);
     transition: all ease-out 0.21s;
 }
 div.menu-many-action.open:active {
-    transform: scale(1.025);
+    transform: translate(0, -22px) scale(1.025);
 }
 div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
@@ -1522,27 +1432,27 @@ div.menu-many-action li {
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
 }
+div.menu-many-action.open li {
+    animation: animation_menu_li 0.4s ease-out backwards; /* backwards c'est pour que l'animation commence à sa position initiale */
+}
 div.menu-many-action.open li:nth-child(1) {
-    animation: animation_menu_li 0.36s ease-out;
+    animation-delay: 0.03s; /* on met un délai de départ d'animation */
 }
 div.menu-many-action.open li:nth-child(2) {
-    animation: animation_menu_li 0.46s ease-out;
+    animation-delay: 0.07s;
 }
 div.menu-many-action.open li:nth-child(3) {
-    animation: animation_menu_li 0.51s ease-out;
+    animation-delay: 0.12s;
 }
 div.menu-many-action.open li:nth-child(4) {
-    animation: animation_menu_li 0.54s ease-out;
+    animation-delay: 0.17s;
 }
 div.menu-many-action.open li:nth-child(5) {
-    animation: animation_menu_li 0.57s ease-out;
-}
-div.menu-many-action.open li:nth-child(6) {
-    animation: animation_menu_li 0.59s ease-out;
+    animation-delay: 0.23s;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action.open:hover {
-        transform: scale(1.025);
+        transform: translate(0, -22px) scale(1.025);
     }
     div.menu-many-action li:hover {
         background: var(--COLOR_GLASSMORPHISM_HOVER);
@@ -1557,6 +1467,132 @@ div.menu-many-action li:active{
 }
 div.menu-many-action li i{
     margin-right: var(--SPACE_XXS);
+}
+
+
+section.resume-stats-workout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--SPACE_S);
+    margin: var(--SPACE_M) 0;
+    max-width: 500px;
+}
+section.resume-stats-workout div.container-data{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--SPACE_M);
+    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    padding-bottom: var(--SPACE_XS);
+}
+section.resume-stats-workout div.container-data div.data{
+    padding: var(--SPACE_XS) 0;
+    border-top: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
+}
+section.resume-stats-workout div.container-data div.data p.title-data{
+    font-size: var(--P_SMALL);
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+section.resume-stats-workout div.container-data div.data p.value-data{
+    display: flex;
+    align-items: baseline;
+    font-size: var(--H2);
+    font-weight: var(--FW_BUTTON);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+section.resume-stats-workout div.container-data div.data p.value-data#duree{
+    font-weight: var(--FW_BOLD);
+    color: var(--COLOR_ACCENT);
+}
+section.resume-stats-workout div.container-data div.data p.value-data small{
+    font-size: var(--P_SMALL);
+    font-weight: normal;
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin-left: var(--SPACE_XS);
+}
+
+section.resume-stats-workout div.data-rpe{
+    display: flex;
+    align-items: center;
+}
+section.resume-stats-workout div.data-rpe p.title{
+    font-size: var(--H3);
+}
+section.resume-stats-workout div.data-rpe div.container-value-rpe{
+    display: flex;
+    align-items: center;
+    padding: 0 var(--SPACE_XS);
+    gap: var(--SPACE_M);
+    margin-left: auto;
+}
+section.resume-stats-workout div.data-rpe div.container-value-rpe div.value{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: var(--H2);
+    font-weight: var(--FW_BOLD_SMALL);
+    background: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_BACKGROUND);
+}
+section.resume-stats-workout div.data-rpe div.container-value-rpe div.description{
+    font-size: var(--H3);
+    font-weight: var(--FW_BUTTON);
+}
+
+div.page-entrainement {
+    margin: var(--SPACE_M) 0;
+}
+
+div.container-rehydratation {
+    background-color:var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_XS);
+    border-radius: var(--BORDER_NORMAL);
+
+    display: flex;
+    align-items: baseline;
+    gap: var(--SPACE_M);
+    margin: var(--SPACE_M) 0;
+    max-width: 500px;
+}
+div.container-rehydratation i{
+    margin-left: var(--SPACE_XS);
+    font-size: 1.8rem;
+    padding: var(--SPACE_XS) 0;
+}
+div.container-rehydratation i.icon_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    padding: var(--SPACE_XS);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.container-rehydratation i.icon_info:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    }
+}
+div.container-rehydratation i.icon_info:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_SMALL));
+}
+div.container-rehydratation p.value{
+    margin-left: var(--SPACE_XS);
+    font-size: var(--H1);
+    font-weight: var(--FW_BOLD_SMALL);
+    margin-right: auto;
+}
+div.container-rehydratation p.value small{
+    font-size: var(--P);
+    font-weight: normal;
+    color: var(--COLOR_TEXT_SECONDARY);
 }
 
 
@@ -1615,8 +1651,8 @@ div.zone-coach p.zone-coach-name strong{
 }
 div.zone-coach button {
     margin: 0;
-    margin-top: var(--SPACE_S);
-    border-radius: var(--BORDER_BIG);
+    margin-top: var(--SPACE_M);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
 
     color: var(--COLOR_BACKGROUND);
     background-color: transparent;
@@ -1668,7 +1704,7 @@ section.background-SPRINTIA-briefing {
     width: 100%;
     height: 100%;
 
-    z-index: 17000;
+    z-index: 20000;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
     background-color: var(--COLOR_BACKGROUND_CARD);
@@ -1914,6 +1950,7 @@ section.container-workout-generate section.fractionne-workout-day div.container-
 
 /* --- la carte --- */
 div#map {
+    margin: var(--SPACE_M) 0;
     outline: none;
     transition: opacity ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -1943,7 +1980,7 @@ div#map.map-fullscreen {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 999999 !important;
+    z-index: 20000 !important;
     border-radius: 0 !important;
     margin: 0 !important;
     opacity: 1 !important;
@@ -2023,10 +2060,7 @@ ol.container-list-choice li.choice-item {
     align-items: center;
     overflow: hidden;
     cursor: pointer;
-    z-index: 1;
     opacity: 0.75;
-
-
     
     font-size: var(--P);
     padding: var(--SPACE_XS) var(--SPACE_M);
@@ -2096,13 +2130,13 @@ div.zone-result {
 }
 div.zone-result p.zone-result-name-result{
     font-weight: var(--FW_BUTTON);
-    font-size: var(--P);
-
+    font-size: var(--H3);
     margin-bottom: var(--SPACE_XS);
 }
 div.zone-result p.zone-result-interpretation{
     max-height: 160px;
     color: var(--COLOR_TEXT_SECONDARY);
+    font-size: var(--P);
 }
 
 /* --- Zone pour mettre en avant le résultat --- */
@@ -2211,6 +2245,7 @@ div.container-chargement {
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
     width: 100%;
     height: 100%;
+    z-index: 20000;
     transition: opacity ease-out 0.6s;
 }
 div.container-chargement.finish {
@@ -2800,7 +2835,6 @@ div.visuel-version {
 
     margin-top: var(--SPACE_L);
     margin-bottom: var(--SPACE_XL);
-    z-index: 1;
 }
 div.visuel-version p.visuel-version-title{
     font-size: var(--H1);
@@ -3130,6 +3164,9 @@ div.banner-toggle p {
     margin-right: auto;
     margin-left: var(--SPACE_M);
 }
+div.banner-toggle.without-icon p {
+    margin-left: var(--SPACE_XS);
+}
 
 
 
@@ -3182,9 +3219,12 @@ div.banner-toggle input[type="checkbox"].toggle:checked:after{
 
 div.container-center-marge {
     padding: var(--SPACE_XS);
-    margin: var(--SPACE_S);
+    margin: var(--SPACE_M) 0;
     justify-content: center;
     display: flex;
+}
+div.container-center-marge button{
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
 }
 
 

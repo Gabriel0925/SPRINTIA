@@ -77,7 +77,7 @@ async function remplirTableau() {
     let tableauHistorique = document.getElementById("tableau-historique") // Recup du tableau
 
     if (dataDB.length > 0) {
-        document.getElementById("text-informatif").style.display = "none"
+        document.getElementById("aucune-data").style.display = "none"
     } else {
         tableauHistorique.style.display = 'none'
     }
@@ -137,7 +137,7 @@ async function remplirTableau() {
                     // On cache tout
                     tableau.style.display = "none"
                     // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
-                    document.getElementById("text-informatif").style.display = "block"
+                    document.getElementById("aucune-data").style.display = "flex"
                 } 
                 
                 logoDynamique("Supprimé 🗑️")

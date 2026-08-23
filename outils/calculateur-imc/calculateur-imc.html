@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -41,7 +41,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -65,7 +65,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -73,7 +73,13 @@
 
     </section>
 
-    <h1>Calculateur IMC</h1>
+    <div class="toolbar">
+        <h1>Calculateur IMC</h1>
+        <div class="container-command">
+            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+        </div>
+    </div>
+
     <section class="container-zone">
 
         <div class="form"> 
@@ -99,17 +105,6 @@
         </div>
 
     </section>
-
-    <h2>C'est quoi l'IMC ?</h2>
-    <p class="text">
-        L'IMC (indice de masse corporelle) sert à estimer la corpulence. Ce n'est pas un indicateur sportif, mais plutôt un repère de santé.
-    </p>
-    <h2>Le problème de l'IMC ?</h2>
-    <p class="text">
-        L'IMC estime la corpulence à partir de la taille et du poids, mais il ne connait pas votre masse musculaire ! Par exemple, vous pouvez
-        être en obésité sévère alors qu'en réalité vous allez juste à la salle et que vous êtes musclé. Mais ça, l'IMC ne le saura jamais.
-        C'est pourquoi, il faut savoir prendre du recul sur les résultats de cet indicateur.
-    </p>
 
     <script src="../../assets/base-js/base.js"></script>
     <!-- Import bibliothèque pour simplifier le code de indexed db -->

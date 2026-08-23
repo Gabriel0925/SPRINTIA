@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Convertisseur km/miles</title>
+    <title>SPRINTIA - À propos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -26,7 +26,6 @@
 
         <div class="logo" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">SPRINTIA</div>
 
-        
         <ul class="header-container-items">
 
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Entraînement')">
@@ -42,7 +41,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -66,7 +65,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -74,32 +73,21 @@
 
     </section>
 
-    <h1>Convertisseur km/miles</h1>
-    <section class="container-zone">
-
-        <div class="form">
-            <div class="container-input">
-                <input type="number" id="kilometres" placeholder="Saisis les kilomètres" oninput="KmMiles()" autocomplete="off">
-                <div class="label-input">Saisis les kilomètres</div>
-            </div>
-                    
-            <div class="container-input">
-                <input type="number" id="miles" placeholder="Ou saisis les miles" oninput="MilesKm()" autocomplete="off">
-                <div class="label-input">Ou saisis les miles</div>
-            </div>
-        </div>
-
-    </section>
-
-    <h2>À quoi ça sert de convertir les kilomètres en miles ?</h2>
+    <div class="toolbar">
+        <h1>À propos</h1>
+    </div>
+    
+    <h2>Comment se servir de cet algorithme ?</h2>
     <p class="text">
-        L'Europe utilise le système métrique donc les distances sont en kilomètres. Mais dans d'autres pays comme au États-Unis ou autre, ils utilisent
-        les miles pour les distances. Le convertisseur km/miles vous permet de connaître la distance en kilomètre d'une course au États-Unis ou inversement.
+        Après un entraînement intense, léger,... Votre corps a besoin de récupérer, cet algorithme estime la durée de récupération nécessaire
+        pour que votre corps se répare complètement. Or, votre corps n'a pas besoin d'être tout le temps à 100%. C'est pour cela que cet algorithme
+        donne un temps de récupération avant votre prochain gros entraînement.
+        <br><br>
+        Par exemple, si l'algorithme vous suggère 54h de récupération, ça veut dire qu'il ne faudrait pas faire de gros entraînements avant 54h.
+        Néanmoins, vous pouvez totalement faire un entraînement léger.
     </p>
 
     <script src="../../assets/base-js/base.js"></script>
-    <script src="script-outil.js"></script>
-    
     <script defer src="/_vercel/insights/script.js"></script>
 
 </body>

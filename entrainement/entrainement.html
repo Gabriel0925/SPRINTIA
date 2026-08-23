@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../assets/icons-SPRINTIA/icon-192.png">
 
     <link rel="stylesheet" href="../assets/bibliotheques/leaflet.css"/>
     <script src="../assets/bibliotheques/leaflet.js"></script>
@@ -45,7 +45,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur1', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -69,7 +69,7 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur1', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
@@ -78,12 +78,13 @@
     </section>
     
     <main>
-
         <h1 id="nom-workout">Chargement...</h1>
-
-        <div class="toolbar">
-            <p class="text-toolbar">Chargement...</p>
-            <i class="icon_plus" id="icon-menu-many-action"></i>
+        
+        <div class="toolbar not-fixed">
+            <p class="detail-entrainement"><strong>SPORT</strong><br>JJ-MM-AAAA</p>
+            <div class="container-command">
+                <i class="icon_plus" id="icon-menu-many-action"></i>
+            </div>
         </div>
 
         <div class="menu-many-action">
@@ -100,17 +101,54 @@
                 Supprimer
             </li>
         </div>
-        
-        <div class="zone-coach" id="coach-ajoute-entrainement" style="margin: var(--SPACE_M) 0;">
-            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-            <p class="zone-coach-interpretation" id="reponse-coach">
-                Chargement...
-            </p>
-            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mon entraînement')">Analyser mon entraînement</button>
-        </div>
+
+    
+        <h2>Résumé</h2>
+        <section class="resume-stats-workout">
+
+            <div class="container-data">
+
+                <div class="data" id="data-duree"><!--l'id sert au css-->
+                    <p class="title-data">Durée</p>
+                    <p class="value-data" id="duree">--:--</p>
+                </div>
+                <div class="data">
+                    <p class="title-data">Charge entraînement</p>
+                    <p class="value-data" id="charge">-- <small>CE</small></p>
+                </div>
+
+            </div>
+
+            <div class="data-rpe">
+                <p class="title">RPE</p>
+                <div class="container-value-rpe">
+                    <div class="value" id="value-rpe">--</div>
+                    <div class="description" id="description-rpe">--</div>
+                </div>
+            </div>
+
+        </section>
+
+        <div id="map"></div>
+
+        <h2 id="title-stats-detaillees">Stats détaillées</h2>
 
         <!-- La suite est rempli en JS -->
         <div class="page-entrainement"></div>
+        <button class="briefing" style="margin-bottom: var(--SPACE_L); margin-top: 0;" onclick="windowsBriefing('Approfondir l\'analyse')">Approfondir l'analyse</button>
+
+        <h2>Réhydratation conseillée</h2>
+        <div class="container-rehydratation">
+            <i class="icon_verre_eau"></i>
+            <p class="value" id="rehydratation" onclick="if (this.textContent == '-- mL') {
+                alert('Pour obtenir une estimation de réhydratation conseillée veuillez configurer votre profil.')
+            }">-- <small>mL</small></p>
+            <i class="icon_info" onclick="window.location.href = 'a-propos-rehydratation.html'"></i>
+        </div>
+
+        <h2>Note</h2>
+        <textarea id="note-entrainement" oninput="apparitionButton()" maxlength=500 placeholder="Note de l'entraînement"></textarea>
+        <button class="size-block" id="button-sauvegarder-note-workout" style="display: none; margin-left: 0;" onclick="saveDescription()">Sauvegarder la note</button>
     </main>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
@@ -125,7 +163,7 @@
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
                 <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>

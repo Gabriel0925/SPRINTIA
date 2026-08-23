@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>  
 
@@ -41,7 +41,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -65,23 +65,22 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur2', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
         </ul>
 
     </section>
-
-    <div class="container-button-flottant">
-        <div class="button-flottant" onclick="window.location.href = '../../entrainement/ajouter-entrainement.html'">
-            <i class="icon_add"></i>
-            <p>Ajouter</p>
-        </div>
-    </div>
         
-    <main>
-        <h1>Charge d'entraînement</h1>
+    <main>    
+        <div class="toolbar">
+            <h1>Charge d'entraînement</h1>
+            <div class="container-command">
+                <i class="icon_add" onclick="window.location.href = '../../entrainement/ajouter-entrainement.html'"></i>
+                <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+            </div>
+        </div>
 
         <section class="container-zone">
 
@@ -123,20 +122,7 @@
             <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
             <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
-
-        <h2>C'est quoi la charge d'entraînement (CE) ?</h2>
-        <p class="text">
-            La charge d'entraînement (CE) permet de quantifier le stress physique imposé à votre corps
-            durant les 7 derniers jours. La charge d'entraînement prend en compte la durée de 
-            l'entraînement et l'effort fourni durant cet entraînement. La charge des 7 derniers jours
-            est comparée sur les 28 derniers jours afin d'avoir une idée de votre progression par 
-            rapport à avant. En respectant la charge d'entraînement vous réduisez le risque de vous blesser.
-        </p>
-
-        <h2>À quoi ça sert la charge d'entraînement ?</h2>
-        <p class="text">
-            La charge d'entraînement sert à optimiser l'intensité et le volume de vos entraînements futurs.
-        </p>
+        
     </main>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
@@ -151,7 +137,7 @@
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
                 le transfert de vos données à Vibe</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de Vibe.
-                <a href="/plus/parametres/SPRINTIA-briefing/a-propos-briefing.html" class="lien">En savoir plus</a>.
+                <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
                 <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>

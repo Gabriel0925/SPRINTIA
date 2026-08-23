@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../../assets/icons-SPRINTIA/icon-192-V5.1.png">
+    <link rel="apple-touch-icon" href="../../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -42,7 +42,7 @@
                 Outils
             </li>
             <li class="header-items" onclick="navigationLinks(this, 'header', 'profondeur3', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 Plus
             </li>
 
@@ -66,22 +66,20 @@
                 <p class="tab-bars-items-name">Outils</p>
             </li>
             <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Plus')">
-                <i class="icon_plus_horizontal"></i>
+                <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
 
         </ul>
 
     </section>
- 
-    <div class="container-button-flottant" style="display: none;">
-        <div class="button-flottant" onclick="if(confirm('En générant un nouvel entraînement, celui-ci ne sera plus accessible. Êtes-vous sûr de vouloir continuer ?')){generationWorkout()}">
-            <i class="icon_refresh"></i>
-            <p >Recharger</p>
+    
+    <div class="toolbar">
+        <h1>Entraînement du Jour</h1>
+        <div class="container-command" style="display: none;">
+            <i class="icon_refresh" onclick="if(confirm('En générant un nouvel entraînement, celui-ci ne sera plus accessible. Êtes-vous sûr de vouloir continuer ?')){generationWorkout()}"></i>
         </div>
     </div>
-    
-    <h1>Entraînement du Jour</h1>
 
     <section class="container-item-workout-day">
 

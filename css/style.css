@@ -1303,7 +1303,6 @@ div.toolbar {
         margin-right: calc(var(--SPACE_M) * -1);
         padding: 0 var(--SPACE_M);
         
-        background-color: red;
         -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT));
         backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BARS)) saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT));
     }

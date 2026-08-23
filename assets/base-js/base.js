@@ -194,8 +194,8 @@ function logoDynamique(message) {
 const logoDynamiqueElt = document.querySelector("div.logo-dynamique")
 if (logoDynamiqueElt) {
     logoDynamiqueElt.addEventListener("click", stopLogo)
-    logoDynamiqueElt.addEventListener("touchStart", stopLogo)
-    logoDynamiqueElt.addEventListener("touchMove", stopLogo)
+    logoDynamiqueElt.addEventListener("touchstart", stopLogo)
+    logoDynamiqueElt.addEventListener("touchmove", stopLogo)
 }
 
 

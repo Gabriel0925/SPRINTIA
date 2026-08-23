@@ -80,9 +80,6 @@
     
     <p class="text">
         <strong>Vos données personnelles reste en local sur votre appareil.</strong>
-        <br><br>
-        En enregistrant vos données, SPRINTIA vous fera gagner du temps lors de l'utilisation des outils.
-        De plus, elles permettent de débloquer des fonctionnalités comme l'estimation de la transpiration et de votre rFTPw.
     </p>
 
     <section class="container-zone">
@@ -136,7 +133,6 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-save-restoration.js"></script>
 
     <script>
         async function saveProfil() {
@@ -244,7 +240,16 @@
             }
         }
 
+        async function init() {
+            const dataProfilUser = await db.profil.toArray()
+
+            if (dataProfilUser.length <= 0) {
+                document.querySelector("h1").textContent = "Configuration profil"
+            }
+        }
+
         window.addEventListener("DOMContentLoaded", () => {
+            init()
             remplirChamps()
         })
         

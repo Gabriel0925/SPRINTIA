@@ -41,6 +41,7 @@
 
 
     /* 3D */
+    --COLOR_BORDER_FLOATING_BUTTON: rgba(230, 242, 255, 0.3);
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.15);
 
 
@@ -744,6 +745,9 @@ section.container-invite-to-config div.container-button{
     display: flex;
     justify-content: center;
 }
+section.container-invite-to-config div.container-button button{
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
+}
 section.container-invite-to-config div.container-button button#ignorer{
     background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
@@ -1330,6 +1334,11 @@ div.toolbar div.container-command {
     flex-shrink: 0;
 
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.toolbar div.container-command:hover {
+        transform: scale(var(--SCALE_SUP));
+    }
 }
 div.toolbar div.container-command:active {
     transform: scale(var(--SCALE_SUP));
@@ -3070,6 +3079,9 @@ div.container-center-marge {
     margin: var(--SPACE_M) 0;
     justify-content: center;
     display: flex;
+}
+div.container-center-marge button{
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
 }
 
 

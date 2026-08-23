@@ -155,6 +155,13 @@ window.addEventListener("scroll", () => {
 // --- Pour le logo dynamique ---
 let timer1 = 0
 let timer2 = 0
+function stopLogo() {
+    clearTimeout(timer1)
+    clearTimeout(timer2)
+
+    const divLogo = document.querySelector(".logo-dynamique")
+    divLogo.classList.add("return")
+}
 function logoDynamique(message) {
     clearTimeout(timer1)
     clearTimeout(timer2)
@@ -167,12 +174,6 @@ function logoDynamique(message) {
     if (elementLogoDynamique) {
         // Initialisation (Remise à 0)
         elementLogoDynamique.classList.remove("return", "message")
-        
-        elementLogoDynamique.addEventListener("click", () => {
-            clearTimeout(timer1)
-            clearTimeout(timer2)
-            elementLogoDynamique.classList.add("return")
-        }, {once:true}) // le addevenlister se détruit dès qu'il y a un clic
 
         // Déclenchement de l'animation pour afficher le message au user
         elementLogoDynamique.classList.add("message")
@@ -189,6 +190,12 @@ function logoDynamique(message) {
             elementLogoDynamique.classList.remove("message")
         }, 2800) 
     }
+}
+const logoDynamiqueElt = document.querySelector("div.logo-dynamique")
+if (logoDynamiqueElt) {
+    logoDynamiqueElt.addEventListener("click", stopLogo)
+    logoDynamiqueElt.addEventListener("touchStart", stopLogo)
+    logoDynamiqueElt.addEventListener("touchMove", stopLogo)
 }
 
 

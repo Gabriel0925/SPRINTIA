@@ -674,7 +674,16 @@ div.container-logo-dynamique div.logo-dynamique {
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
     pointer-events: none;
-    transition: transform ease-out 0.6s;
+    transition: transform ease-out 0.6s,
+                background-color ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.container-logo-dynamique div.logo-dynamique:hover {
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
+    }
+}
+div.container-logo-dynamique div.logo-dynamique:active {
+    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
 @media (max-width: 1050px) {
     div.container-logo-dynamique {
@@ -695,6 +704,8 @@ div.container-logo-dynamique div.logo-dynamique {
 }
 div.container-logo-dynamique div.logo-dynamique.message {
     display: flex;
+    cursor: pointer;
+    pointer-events: auto;
     transform: scale(1) translateY(0);
     animation: animation_logo_dynamique ease-out 0.6s forwards;
 }
@@ -703,8 +714,6 @@ div.container-logo-dynamique div.logo-dynamique.message {
     100% {transform: scale(1.4, 1.4); opacity: 0;}
 }
 div.container-logo-dynamique div.logo-dynamique.message.return {
-    display: flex;
-    transform: scale(1) translateY(0);
     animation: animation_logo_dynamique_return ease-out 0.2s forwards;
 }
 
@@ -1317,6 +1326,7 @@ div.toolbar {
 div.toolbar h1{
     margin: 0;
     margin-right: var(--SPACE_XS);
+    padding: var(--SPACE_XS) 0;
 }
 div.toolbar div.container-command {
     display: flex;

@@ -101,17 +101,55 @@
                 Supprimer
             </li>
         </div>
-        
-        <div class="zone-coach" id="coach-ajoute-entrainement" style="margin: var(--SPACE_M) 0;">
-            <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-            <p class="zone-coach-interpretation" id="reponse-coach">
-                Chargement...
-            </p>
-            <button id="button-SPRINTIA-briefing" onclick="windowsBriefing('Analyser mon entraînement')">Analyser mon entraînement</button>
-        </div>
+
+    
+        <h2>Résumé</h2>
+        <section class="resume-stats-workout">
+
+            <div class="container-data">
+
+                <div class="data" id="data-duree"><!--l'id sert au css-->
+                    <p class="title-data">Durée</p>
+                    <p class="value-data" id="duree">--:--</p>
+                </div>
+                <div class="data">
+                    <p class="title-data">Charge entraînement</p>
+                    <p class="value-data" id="charge">--</p>
+                </div>
+
+            </div>
+
+            <div class="data-rpe">
+                <p class="title">RPE</p>
+                <div class="container-value-rpe">
+                    <div class="value" id="value-rpe">--</div>
+                    <div class="description" id="description-rpe">--</div>
+                </div>
+            </div>
+
+        </section>
+
+        <div id="map"></div>
+
+        <h2>Stats détaillées</h2>
+        <!-- <button class="briefing" style="margin-bottom: var(--SPACE_L); margin-top: 0;" onclick="windowsBriefing('Analyser mon entraînement')">Analyser mon entraînement</button> -->
 
         <!-- La suite est rempli en JS -->
         <div class="page-entrainement"></div>
+
+        <h2>Réhydratation</h2>
+        <div class="container-rehydratation">
+            <i class="icon_add"></i>
+            <p class="value">1733 <small>mL</small></p>
+            <div class="container-info">
+                <i class="icon_info"></i>
+            </div>
+            
+        </div>
+
+        <h2>Note</h2>
+        <textarea id="note-entrainement" oninput="apparitionButton()" maxlength=500 placeholder="Note de l'entraînement"></textarea>
+        <button class="size-block" id="button-sauvegarder-note-workout" style="display: none; margin-left: 0;" onclick="saveDescription()">Sauvegarder la note</button>
     </main>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->

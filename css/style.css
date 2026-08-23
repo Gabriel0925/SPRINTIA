@@ -1430,19 +1430,16 @@ div.menu-many-action.open li:nth-child(1) {
     animation-delay: 0.03s; /* on met un délai de départ d'animation */
 }
 div.menu-many-action.open li:nth-child(2) {
-    animation-delay: 0.06s;
+    animation-delay: 0.07s;
 }
 div.menu-many-action.open li:nth-child(3) {
-    animation-delay: 0.09s;
-}
-div.menu-many-action.open li:nth-child(4) {
     animation-delay: 0.12s;
 }
-div.menu-many-action.open li:nth-child(5) {
-    animation-delay: 0.15s;
+div.menu-many-action.open li:nth-child(4) {
+    animation-delay: 0.17s;
 }
-div.menu-many-action.open li:nth-child(6) {
-    animation-delay: 0.18s;
+div.menu-many-action.open li:nth-child(5) {
+    animation-delay: 0.23s;
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action.open:hover {
@@ -1461,6 +1458,117 @@ div.menu-many-action li:active{
 }
 div.menu-many-action li i{
     margin-right: var(--SPACE_XXS);
+}
+
+
+section.resume-stats-workout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--SPACE_S);
+    margin: var(--SPACE_M) 0;
+}
+section.resume-stats-workout div.container-data{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--SPACE_M);
+    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    padding-bottom: var(--SPACE_S);
+}
+section.resume-stats-workout div.container-data div.data#data-duree{
+    border-right: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
+}
+section.resume-stats-workout div.container-data div.data p.title-data{
+    font-size: var(--P_SMALL);
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+section.resume-stats-workout div.container-data div.data p.value-data{
+    display: flex;
+    align-items: baseline;
+    font-size: var(--H2);
+    font-weight: var(--FW_BUTTON);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+section.resume-stats-workout div.container-data div.data p.value-data#duree{
+    font-weight: var(--FW_BOLD);
+    color: var(--COLOR_ACCENT);
+}
+section.resume-stats-workout div.container-data div.data p.value-data small{
+    font-size: var(--P_SMALL);
+    font-weight: normal;
+    color: var(--COLOR_TEXT_SECONDARY);
+    margin-left: var(--SPACE_XS);
+}
+
+section.resume-stats-workout div.data-rpe{
+    display: flex;
+    align-items: center;
+}
+section.resume-stats-workout div.data-rpe p.title{
+    font-size: var(--H3);
+}
+section.resume-stats-workout div.data-rpe div.container-value-rpe{
+    display: flex;
+    align-items: center;
+    padding: 0 var(--SPACE_XS);
+    gap: var(--SPACE_M);
+    margin-left: auto;
+}
+section.resume-stats-workout div.data-rpe div.container-value-rpe div.value{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: var(--H2);
+    font-weight: var(--FW_BOLD_SMALL);
+    background: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_BACKGROUND);
+}
+section.resume-stats-workout div.data-rpe div.container-value-rpe div.description{
+    font-size: var(--H3);
+    font-weight: var(--FW_BUTTON);
+}
+
+div.container-rehydratation {
+    background-color:var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_XS);
+    border-radius: var(--BORDER_NORMAL);
+
+    display: flex;
+    align-items: center;
+    gap: var(--SPACE_M);
+    margin: var(--SPACE_M) 0;
+}
+div.container-rehydratation i{
+    font-size: 3rem;
+    padding: var(--SPACE_XS) 0;
+}
+div.container-rehydratation p.value{
+    margin-left: auto;
+    font-size: var(--H1);
+    font-weight: var(--FW_BOLD_SMALL);
+}
+div.container-rehydratation p.value small{
+    font-size: var(--P);
+    font-weight: normal;
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+div.container-rehydratation div.container-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: auto;
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    border-radius: 50%;
+}
+div.container-rehydratation div.container-info i{
+    padding: 0;
+    font-size: var(--H2);
+    color: var(--COLOR_TEXT_PRIMARY);
+    padding: var(--SPACE_XXS);
 }
 
 

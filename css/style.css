@@ -1101,6 +1101,7 @@ button.briefing {
     margin: 0;
     margin: var(--SPACE_XS) 0;
     border-radius: var(--BORDER_BIG);
+    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
 
     color: var(--COLOR_BACKGROUND);
     background-color: transparent;

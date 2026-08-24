@@ -14,7 +14,7 @@ const fileInCache = [
     "/assets/fonts/zalando-sans-semiexpanded-v3-latin-700.woff2", "/assets/fonts/zalando-sans-semiexpanded-v3-latin-regular.woff2",
 
     // ICONS
-    "/assets/icons/Font-SPRINTIA.eot", "/assets/icons/Font-SPRINTIA.svg", "/assets/icons/Font-SPRINTIA.ttf", "/assets/icons/Font-SPRINTIA.woff",
+    "/assets/icons/Font-SPRINTIA-V1.0.0.eot", "/assets/icons/Font-SPRINTIA-V1.0.0.svg", "/assets/icons/Font-SPRINTIA-V1.0.0.ttf", "/assets/icons/Font-SPRINTIA-V1.0.0.woff",
     "/assets/icons/icon-fleche.svg",
 
     // ICONS MANIFEST

@@ -95,12 +95,12 @@
 }
 /* Pour les icônes dans l'application */
 @font-face {
-    font-family: 'Font-SPRINTIA';
-    src:  url('../assets/icons/Font-SPRINTIA.eot');
-    src:  url('../assets/icons/Font-SPRINTIA.eot') format('embedded-opentype'),
-        url('../assets/icons/Font-SPRINTIA.ttf') format('truetype'),
-        url('../assets/icons/Font-SPRINTIA.woff') format('woff'),
-        url('../assets/icons/Font-SPRINTIA.svg') format('svg');
+    font-family: 'Font-SPRINTIA-V1.0.0';
+    src:  url('../assets/icons/Font-SPRINTIA-V1.0.0.eot');
+    src:  url('../assets/icons/Font-SPRINTIA-V1.0.0.eot') format('embedded-opentype'),
+        url('../assets/icons/Font-SPRINTIA-V1.0.0.ttf') format('truetype'),
+        url('../assets/icons/Font-SPRINTIA-V1.0.0.woff') format('woff'),
+        url('../assets/icons/Font-SPRINTIA-V1.0.0.svg') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -139,7 +139,7 @@
 }
 /* Configuration des icônes de l'application */
 i {
-    font-family: 'Font-SPRINTIA' !important;
+    font-family: 'Font-SPRINTIA-V1.0.0' !important;
     /*speak: never;*/
     font-style: normal;
     font-weight: normal;

@@ -288,9 +288,13 @@ function afficherData(dataWorkout) {
                     // pass
                 } else {
                     if (tableauDataSeule.includes(nomData)) { // on check si c'est une data qu'on doit afficher seul ou pas 
+                        //si il y a que une seule data  dans l'entraînement alors on met direct dans le container data qu'on a crée au tout début
+                        // je sais pas comment le faire ??!! 
+
+
+
                         // on referme d'abord la section container-block on la rouvre puis on la referme
-                        structureHTML += `
-                            </section>
+                        structureHTML += `</section>
 
                             <section class="container-block">
                                 <div class="container-block-data">
@@ -299,8 +303,7 @@ function afficherData(dataWorkout) {
                                 </div>
                             </section>
 
-                            <section class="container-block">
-                        `
+                            <section class="container-block">`
 
                     } else {
                         // si c'est un data normal alors on met la div correspondante
@@ -320,8 +323,7 @@ function afficherData(dataWorkout) {
 
     // dernière données moins importante transpiration et hydratation conseillé, si ya des datas on y affiche
     if (dataWorkout.transpiration_estimee != undefined && dataWorkout.hydratation_estimee) {
-        structureHTML += `
-            </section>
+        structureHTML += `</section>
 
             <section class="container-block"> 
 
@@ -333,6 +335,9 @@ function afficherData(dataWorkout) {
     }
 
     structureHTML += `</section>` // on referme
+
+    // nettoyage de la page pour les container-data-block vide, par exemple quand on remplit uniquement le champs "Muscles travaillés" et qu'il n'y a pas de data de FC
+    structureHTML = structureHTML.replaceAll(`<section class="container-block"></section>`, "")
 
     // on ajoute au conteneur
     document.querySelector(".page-entrainement").innerHTML = structureHTML

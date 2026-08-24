@@ -1475,7 +1475,6 @@ section.resume-stats-workout {
     flex-direction: column;
     gap: var(--SPACE_S);
     margin: var(--SPACE_M) 0;
-    max-width: 500px;
 }
 section.resume-stats-workout div.container-data{
     display: grid;
@@ -1555,7 +1554,7 @@ div.container-rehydratation {
     align-items: baseline;
     gap: var(--SPACE_M);
     margin: var(--SPACE_M) 0;
-    max-width: 500px;
+    max-width: 450px;
 }
 div.container-rehydratation i{
     margin-left: var(--SPACE_XS);

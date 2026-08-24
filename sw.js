@@ -135,20 +135,17 @@ const fileInCache = [
 
 // self désigne le service worker
 self.addEventListener("fetch", (event) => {
-    const url = new URL(event.request.url)
-
-    // on donne le fichier dans le cache si il y a une request
-    if (url.origin === location.origin) {
-        // lorsque qu'une page demande un file dans le cache
-        event.respondWith(
-            // on view si on a le fichier (dans le cache) que la requete demande
-            // then pour attendre le result du match
-            caches.match(event.request).then((response) => {
-                // si le file est trouvé dans le cache on le return sinon on le chercher sur internet (donc avec de la connexion)
-                return response || fetch(event.request)
-            })
-        )
-    }
+    // lorsque qu'une page demande un file dans le cache
+    event.respondWith(
+        // on view si on a le fichier (dans le cache) que la requete demande
+        // then pour attendre le result du match
+        // le "ignoreSearch->true" c'est pour ignorer les param comme c'est dit dans le nom et ça permet d'ouvrir la page entrainement
+        // car auparavant ça fonctionnait pas car il y avait un param sauf que la requette cherchait un nom de fichier "entrainement.html?234" alors que c'est l'id le fichier c'est "entrainement.html"
+        caches.match(event.request, {ignoreSearch: true}).then((response) => {
+            // si le file est trouvé dans le cache on le return sinon on le chercher sur internet (donc avec de la connexion)
+            return response || fetch(event.request)
+        })
+    )
 })
 
 // pr forcer la maj du sw

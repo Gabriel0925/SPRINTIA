@@ -142,10 +142,10 @@ self.addEventListener("fetch", (event) => {
         // then pour attendre le result du match
         // le "ignoreSearch->true" c'est pour ignorer les param comme c'est dit dans le nom et ça permet d'ouvrir la page entrainement
         // car auparavant ça fonctionnait pas car il y avait un param sauf que la requette cherchait un nom de fichier "entrainement.html?234" alors que c'est l'id le fichier c'est "entrainement.html"
-        caches.match(event.request, {ignoreSearch: true}).then((response) => {
-            // si le file est trouvé dans le cache on le return sinon on le chercher sur internet (donc avec de la connexion)
-            return response || fetch(event.request)
-        })
+        // caches.match(event.request, {ignoreSearch: true}).then((response) => {
+        //     // si le file est trouvé dans le cache on le return sinon on le chercher sur internet (donc avec de la connexion)
+        //     return response || fetch(event.request)
+        // })
     )
 })
 
@@ -154,9 +154,9 @@ self.addEventListener("install", (event) => {
     self.skipWaiting()
 
     // on met dans le cache les fichiers
-    event.waitUntil(
-        caches.open(VERSION_CACHE).then(cache=>cache.addAll(fileInCache))
-    )
+    // event.waitUntil(
+    //     caches.open(VERSION_CACHE).then(cache=>cache.addAll(fileInCache))
+    // )
 })
 
 // le nouveau sw prend le controle

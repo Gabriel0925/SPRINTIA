@@ -159,18 +159,6 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(VERSION_CACHE).then(cache=>cache.addAll(fileInCache))
     )
-    // event.waitUntil(
-    //     caches.open(VERSION_CACHE).then((cache) => {
-    //         //On ajoute les fichiers 1 par 1 pour repérer ceux qui bloquent
-    //         return Promise.all(
-    //             fileInCache.map((file) => {
-    //                 return cache.add(file).catch((error) => {
-    //                     console.error("Fichier introuvable ou erreur :", file)
-    //                 })
-    //             })
-    //         )
-    //     })
-    // )
 })
 
 // le nouveau sw prend le controle

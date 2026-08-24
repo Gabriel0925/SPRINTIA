@@ -1,4 +1,4 @@
-const VERSION_CACHE = "1.0.0"
+const VERSION_CACHE = "1.0.2"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     // BASE DE L'APP
@@ -132,6 +132,7 @@ const fileInCache = [
 ]
 
 // script que le navigateur fais tourner en arrière plan, séparement de ma page web
+// !!! ATTENTION le localhost est désactivé en localhost (voir file base.js)
 
 // self désigne le service worker
 self.addEventListener("fetch", (event) => {
@@ -162,5 +163,3 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
     event.waitUntil(self.clients.claim()) // pr rafraichir le manifest et le sw sans rafraichir la page
 })
-
-// service worker -> v2.0.0

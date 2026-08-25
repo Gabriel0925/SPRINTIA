@@ -1,4 +1,4 @@
-const VERSION_CACHE = "1.0.4"
+const VERSION_CACHE = "V1"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     // BASE DE L'APP
@@ -132,34 +132,57 @@ const fileInCache = [
 ]
 
 // script que le navigateur fais tourner en arrière plan, séparement de ma page web
-// !!! ATTENTION le localhost est désactivé en localhost (voir file base.js)
 
 // self désigne le service worker
-self.addEventListener("fetch", (event) => {
-    // lorsque qu'une page demande un file dans le cache
-    event.respondWith(
-        // on view si on a le fichier (dans le cache) que la requete demande
-        // then pour attendre le result du match
-        // le "ignoreSearch->true" c'est pour ignorer les param comme c'est dit dans le nom et ça permet d'ouvrir la page entrainement
-        // car auparavant ça fonctionnait pas car il y avait un param sauf que la requette cherchait un nom de fichier "entrainement.html?234" alors que c'est l'id le fichier c'est "entrainement.html"
-        // caches.match(event.request, {ignoreSearch: true}).then((response) => {
-        //     // si le file est trouvé dans le cache on le return sinon on le chercher sur internet (donc avec de la connexion)
-        //     return response || fetch(event.request)
-        // })
-    )
-})
-
-// pr forcer la maj du sw
-self.addEventListener("install", (event) => {
+self.addEventListener("install", (event) => { // pr forcer la maj du sw
     self.skipWaiting()
+    // console.log(`${VERSION_CACHE} Install`)
 
     // on met dans le cache les fichiers
-    // event.waitUntil(
-    //     caches.open(VERSION_CACHE).then(cache=>cache.addAll(fileInCache))
-    // )
+    event.waitUntil((async () => { // waitUntil attend une promesse
+        const cache = await caches.open(VERSION_CACHE) // on ouvre le cache
+        cache.addAll(fileInCache)
+    })()) // on appelle direct la fonction async pour avoir la promesse
 })
 
 // le nouveau sw prend le controle
 self.addEventListener("activate", (event) => {
-    event.waitUntil(self.clients.claim()) // pr rafraichir le manifest et le sw sans rafraichir la page
+    clients.claim() // pour que le nouveau sw prenne le controle de la page web
+
+    // on supprime les anciens caches quand ya une nouvelle version du sw qui prend le controle
+    event.waitUntil((async () => {
+        const keys = await caches.keys()
+        console.log("All : ", keys)
+        // on parcours chaque clé du cache et on suppr les anciens caches qui sont inutiles
+        await Promise.all( // on attend que toutes les clés soit supprimée pour continuer
+            keys.map((key) => {
+                console.log("Nom de la clé : ", key)
+                if (!key.includes(VERSION_CACHE)) {
+                    console.log("Clé suppr : ", key)
+                    return caches.delete(key)
+                }
+                //console.log(keys)
+            })
+        )
+    })())
+    // console.log(`${VERSION_CACHE} Activate`)
+})
+
+self.addEventListener("fetch", (event) => {
+    // console.log(`Fetching : ${event.request.url}, Mode : ${event.request.mode}`)
+
+    // lorsque qu'une page demande un file dans le cache
+    event.respondWith((async () => { // respondWith attend une promesse
+        try { // quand on est en ligne, on essaye de recup le fichier sur internet
+            const preloadResponse = await event.preloadResponse
+            if (preloadResponse) {return preloadResponse}
+
+            return fetch(event.request)
+
+        } catch(e) { // quand on est hors ligne, on recup le fichier dans le cache
+            const cache = await caches.open(VERSION_CACHE) // on ouvre le cache
+            return await cache.match(event.request, {ignoreSearch: true})
+        }
+
+    })()) // on appelle direct la fonction async pour avoir la promesse
 })

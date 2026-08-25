@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.0.4"
+const VERSION_CACHE = "V1.0.5"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     // BASE DE L'APP
@@ -170,12 +170,6 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
     // console.log(`Fetching : ${event.request.url}, Mode : ${event.request.mode}`)
-
-    // on regarde si la requete provient de mon site grâce à startsWith
-    // exemple localhost : "event.request.url" -> "http://127.0.0.1:5500/" et self.location.origin -> "http://127.0.0.1:5500"
-    if (event.request.url.startsWith(self.location.origin)) { // si la requete ne commence pas par self.location.origin -> "http://127.0.0.1:5500" alors on bloque
-        return
-    }
 
     // lorsque qu'une page demande un file dans le cache
     event.respondWith((async () => { // respondWith attend une promesse

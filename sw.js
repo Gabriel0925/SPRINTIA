@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.0.6"
+const VERSION_CACHE = "V1.0.7"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     // BASE DE L'APP
@@ -157,7 +157,7 @@ self.addEventListener("activate", (event) => {
         await Promise.all( // on attend que toutes les clés soit supprimée pour continuer
             keys.map((key) => {
                 //console.log("Nom de la clé : ", key)
-                if (!key.includes(VERSION_CACHE)) {
+                if (key != VERSION_CACHE) {
                     // console.log("Clé suppr : ", key)
                     return caches.delete(key)
                 }

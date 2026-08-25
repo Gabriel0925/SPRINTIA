@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.0.1"
+const VERSION_CACHE = "V1.0.3"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     // BASE DE L'APP
@@ -88,18 +88,18 @@ const fileInCache = [
     // gen 26
     "/plus/historique-versions/generation-26/v26.09.html",
 
-    "/plus/import-des-donnees/importer-donnees.html", "/plus/import-des-donnees/script-import-generale.js",
-    "/plus/import-des-donnees/import-garmin/import-garmin.html", "/plus/import-des-donnees/import-garmin/script_import.js",
-    "/plus/import-des-donnees/import-gpx/import-gpx.html", "/plus/import-des-donnees/import-gpx/script_import_gpx.js",
-    "/plus/import-des-donnees/import-SPRINTIA/import-SPRINTIA.html", "/plus/import-des-donnees/import-SPRINTIA/script_import.js",
-    "/plus/import-des-donnees/import-tcx/import-tcx.html", "/plus/import-des-donnees/import-tcx/script_import_tcx.js",
-    "/plus/import-des-donnees/import-tp/import-trainingpeaks.html", "/plus/import-des-donnees/import-tp/script_import.js",    
+    "/plus/import-donnees/import-donnees.html", "/plus/import-donnees/script-import-generale.js",
+    "/plus/import-donnees/import-garmin/import-garmin.html", "/plus/import-donnees/import-garmin/script_import.js",
+    "/plus/import-donnees/import-gpx/import-gpx.html", "/plus/import-donnees/import-gpx/script_import_gpx.js",
+    "/plus/import-donnees/import-SPRINTIA/import-SPRINTIA.html", "/plus/import-donnees/import-SPRINTIA/script_import.js",
+    "/plus/import-donnees/import-tcx/import-tcx.html", "/plus/import-donnees/import-tcx/script_import_tcx.js",
+    "/plus/import-donnees/import-tp/import-trainingpeaks.html", "/plus/import-donnees/import-tp/script_import.js",    
     
     // PARAMETRES
     "/plus/parametres/parametres.html",
 
     "/plus/parametres/a-propos/a-propos.html",
-    "/plus/parametres/ameliorer-SPRINTIA/ameliorer-SPRINTIA.html", "/plus/parametres/ameliorer-SPRINTIA/script-feeback.js",
+    "/plus/parametres/ameliorer-SPRINTIA/ameliorer-SPRINTIA.html", "/plus/parametres/ameliorer-SPRINTIA/script-feedback.js",
     "/plus/parametres/confidentialite/confidentialite.html",
 
     "/plus/parametres/gestion-donnees/exporter-donnees.html", "/plus/parametres/gestion-donnees/nettoyage-donnees.html",
@@ -108,7 +108,7 @@ const fileInCache = [
 
     "/plus/parametres/jrm-coach/jrm-coach.html", "/plus/parametres/jrm-coach/script-jrm.js",
     "/plus/parametres/licence/licence.html",
-    "/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing.html", "/plus/parametres/SPRINTIA-briefing/script-ia-preferee.js","/plus/parametres/SPRINTIA-briefing/a-propos.html",
+    "/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing.html", "/plus/parametres/SPRINTIA-briefing/script-configuration-briefing.js","/plus/parametres/SPRINTIA-briefing/a-propos.html",
 
     "/plus/profil/modification-profil.html", "/plus/profil/profil.html",
 

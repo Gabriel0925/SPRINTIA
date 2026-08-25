@@ -3,8 +3,9 @@
 <head>
     <title>SPRINTIA - Entraînement</title>
     <meta charset="utf-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--on bloque les requetes fetch qui vont vers d'autres serveurs que le mien-->
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://vitals.vercel-insights.com;">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="assets/icons-SPRINTIA/icon-navigateur.png">

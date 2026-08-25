@@ -152,13 +152,13 @@ self.addEventListener("activate", (event) => {
     // on supprime les anciens caches quand ya une nouvelle version du sw qui prend le controle
     event.waitUntil((async () => {
         const keys = await caches.keys()
-        console.log("All : ", keys)
+        //console.log("All : ", keys)
         // on parcours chaque clé du cache et on suppr les anciens caches qui sont inutiles
         await Promise.all( // on attend que toutes les clés soit supprimée pour continuer
             keys.map((key) => {
-                console.log("Nom de la clé : ", key)
+                //console.log("Nom de la clé : ", key)
                 if (!key.includes(VERSION_CACHE)) {
-                    console.log("Clé suppr : ", key)
+                    // console.log("Clé suppr : ", key)
                     return caches.delete(key)
                 }
                 //console.log(keys)
@@ -174,12 +174,14 @@ self.addEventListener("fetch", (event) => {
     // lorsque qu'une page demande un file dans le cache
     event.respondWith((async () => { // respondWith attend une promesse
         try { // quand on est en ligne, on essaye de recup le fichier sur internet
+            //console.log("EN-LIGNE")
             const preloadResponse = await event.preloadResponse
             if (preloadResponse) {return preloadResponse}
 
-            return fetch(event.request)
+            return await fetch(event.request) // await pour attendre que la promesse renvoie le fichier et si il y a une erreur ça ira dans le catch
 
         } catch(e) { // quand on est hors ligne, on recup le fichier dans le cache
+            //console.log("HORS-LIGNE")
             const cache = await caches.open(VERSION_CACHE) // on ouvre le cache
             return await cache.match(event.request, {ignoreSearch: true})
         }

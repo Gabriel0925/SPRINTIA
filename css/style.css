@@ -2689,12 +2689,14 @@ input:not(:placeholder-shown) + .label-input {
 }
 .slider-name strong{
     font-weight: var(--FW_BUTTON);
+    color: #1fff80;
 }
 .slider-name span.RPE {
     font-weight: var(--FW_BOLD);
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: #1fff80;
     padding: 0.25rem var(--SPACE_S);
     margin: 0 var(--SPACE_XS);
+    color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
 }
 

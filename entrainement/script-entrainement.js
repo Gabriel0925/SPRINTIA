@@ -321,19 +321,6 @@ function afficherData(dataWorkout) {
 
     });
 
-    // dernière données moins importante transpiration et hydratation conseillé, si ya des datas on y affiche
-    if (dataWorkout.transpiration_estimee != undefined && dataWorkout.hydratation_estimee) {
-        structureHTML += `</section>
-
-            <section class="container-block"> 
-
-                <div class="container-block-data">
-                    <p class="container-block-data-header">Transpiration estimée</p>
-                    <p class="container-block-data-data">${dataWorkout.transpiration_estimee} <small>mL</small></p>
-                </div>
-        `
-    }
-
     structureHTML += `</section>` // on referme
 
     // nettoyage de la page pour les container-data-block vide, par exemple quand on remplit uniquement le champs "Muscles travaillés" et qu'il n'y a pas de data de FC
@@ -350,7 +337,8 @@ function afficherData(dataWorkout) {
     }
 
     // si il n'y a pas de stats détaillé
-    if (document.querySelector(".page-entrainement").innerHTML == `<section class="container-block"></section>`) {
+    if (document.querySelector(".page-entrainement").innerHTML == `<section class="container-block"></section>` ||
+        document.querySelector(".page-entrainement").innerHTML == ``) {
         document.getElementById("title-stats-detaillees").style.display = "none"
         document.querySelector(".page-entrainement").style.display = "none"
         document.querySelector("button.briefing").style.setProperty("margin-top", "var(--SPACE_L)")
@@ -359,6 +347,10 @@ function afficherData(dataWorkout) {
     // réhydratation conseillée
     if (dataWorkout.hydratation_estimee && dataWorkout.hydratation_estimee != undefined) {
         document.getElementById("rehydratation").innerHTML = dataWorkout.hydratation_estimee + " <small>mL</small>"
+    }
+    // transpiration estimée
+    if (dataWorkout.hydratation_estimee && dataWorkout.hydratation_estimee != undefined) {
+        document.getElementById("transpiration").innerHTML = dataWorkout.transpiration_estimee + " <small>mL</small>"
     }
 
     // on remplit le champs note entrainement si il y a du contenu dans la BDD

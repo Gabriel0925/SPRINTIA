@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.0.7"
+const VERSION_CACHE = "V1.0.8"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     // BASE DE L'APP
@@ -14,7 +14,7 @@ const fileInCache = [
     "/assets/fonts/zalando-sans-semiexpanded-v3-latin-700.woff2", "/assets/fonts/zalando-sans-semiexpanded-v3-latin-regular.woff2",
 
     // ICONS
-    "/assets/icons/Font-SPRINTIA-V1.0.0.eot", "/assets/icons/Font-SPRINTIA-V1.0.0.svg", "/assets/icons/Font-SPRINTIA-V1.0.0.ttf", "/assets/icons/Font-SPRINTIA-V1.0.0.woff",
+    "/assets/icons/Font-SPRINTIA.eot", "/assets/icons/Font-SPRINTIA.svg", "/assets/icons/Font-SPRINTIA.ttf", "/assets/icons/Font-SPRINTIA.woff",
     "/assets/icons/icon-fleche.svg",
 
     // ICONS MANIFEST
@@ -29,7 +29,7 @@ const fileInCache = [
 
 
     // ENTRAINEMENT
-    "/entrainement/a-propos-rehydratation.html", "/entrainement/ajouter-entrainement.html", "/entrainement/entrainement.html", 
+    "/entrainement/a-propos.html", "/entrainement/ajouter-entrainement.html", "/entrainement/entrainement.html", 
     "/entrainement/script-ajout-entrainement.js", "/entrainement/script-entrainement.js", "/entrainement/statistiques.html", 
 
 

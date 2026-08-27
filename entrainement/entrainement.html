@@ -137,14 +137,29 @@
         <div class="page-entrainement"></div>
         <button class="briefing" style="margin-bottom: var(--SPACE_L); margin-top: 0;" onclick="windowsBriefing('Approfondir l\'analyse')">Approfondir l'analyse</button>
 
-        <h2>Réhydratation conseillée</h2>
-        <div class="container-rehydratation">
-            <i class="icon_verre_eau"></i>
-            <p class="value" id="rehydratation" onclick="if (this.textContent == '-- mL') {
-                alert('Pour obtenir une estimation de réhydratation conseillée veuillez configurer votre profil.')
-            }">-- <small>mL</small></p>
-            <i class="icon_info" onclick="window.location.href = 'a-propos-rehydratation.html'"></i>
-        </div>
+        <section class="container-data-plus-entrainement">
+            <div>
+                <h2>Réhydratation conseillée</h2>
+                <div class="container-rehydratation">
+                    <i class="icon_verre_eau"></i>
+                    <p class="value" id="rehydratation" onclick="if (this.textContent == '-- mL') {
+                        alert('Pour obtenir une estimation de réhydratation conseillée veuillez configurer votre profil.')
+                    }">-- <small>mL</small></p>
+                    <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+                </div>
+            </div>
+        
+            <div>                
+                <h2>Transpiration estimée</h2>
+                <div class="container-rehydratation">
+                    <i class="icon_goutte_eau"></i>
+                    <p class="value" id="transpiration" onclick="if (this.textContent == '-- mL') {
+                        alert('Pour obtenir une estimation de votre transpiration veuillez configurer votre profil.')
+                    }">-- <small>mL</small></p>
+                    <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+                </div>
+            </div>
+        </section>
 
         <h2>Note</h2>
         <textarea id="note-entrainement" oninput="apparitionButton()" maxlength=500 placeholder="Note de l'entraînement"></textarea>

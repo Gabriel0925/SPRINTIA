@@ -380,7 +380,7 @@
             Progress.value = this.value
             Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + "<strong>" + dicoDescriptionRPE[this.value][0] + "</strong>"
             document.querySelector(".slider-name span.RPE").style.background = dicoDescriptionRPE[String(this.value)][1]
-            document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[String(this.value)][1]
+            document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[String(this.value)][1] 
         })
 
         let ChampDate = document.getElementById("date-entrainement-user")

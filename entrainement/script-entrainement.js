@@ -191,7 +191,7 @@ function afficherData(dataWorkout) {
         1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
         4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
         7:["Difficile", "#ff4b4c"], 8:["Difficile", "#ff4b4c"],
-        9:["Effort maximal", "#7b68ee"], 10:["Effort maximal", "#7b68ee"]
+        9:["Effort maximal", "#8477e5"], 10:["Effort maximal", "#8477e5"]
     }
 
     // ajout des datas aux éléments existant

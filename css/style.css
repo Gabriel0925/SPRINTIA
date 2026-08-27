@@ -1089,20 +1089,20 @@ textarea {
     font-family: var(--FONT_FAMILY);
     line-height: var(--LINE_HEIGHT_TEXT);
 
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     resize: vertical;
     transition: border ease-out var(--TIME_TRANSITION_FAST),
                 background-color ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     textarea:hover{
-        border: 2px solid var(--COLOR_ACCENT_TEXT);
+        border: 3px solid var(--COLOR_ACCENT_TEXT);
     }
 }
 textarea:focus {
     outline: none;
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    border: 2px solid var(--COLOR_ACCENT_TEXT);
+    border: 3px solid var(--COLOR_ACCENT_TEXT);
 }
 textarea::placeholder {
     color: var(--COLOR_TEXT_PRIMARY);
@@ -2261,7 +2261,7 @@ div.container-chargement div.chargement {
     border: 5px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-top-color: var(--COLOR_ACCENT_TEXT);
     border-radius: 50%;
-    animation: tourner_en_rond 0.8s infinite forwards;
+    animation: tourner_en_rond 0.8s infinite;
 }
 @keyframes finish_tourner_en_rond {
     0% {transform: scale(1);}

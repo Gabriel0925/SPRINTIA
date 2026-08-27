@@ -139,7 +139,6 @@
                     <optgroup label="AUTRES">
                         <option value="Corde à sauter">Sport : Corde à sauter</option>
                         <option value="Escalade">Sport : Escalade</option>
-                        <option value="Sport de chambre">Sport de chambre</option>
                     </optgroup>
 
             </select>
@@ -347,8 +346,13 @@
                 <input type="Number" id="nb-positions-entrainement-user" placeholder="Nombre de positions" autocomplete="off">
                 <div class="label-input">Nombre de positions</div>
             </div>
-                
-            <button id="button-sauvegarder" onclick="saveWorkout()">Sauvegarder</button>
+        </div>
+
+        <div style="width: 420px;">
+            <textarea id="note-entrainement" maxlength=500 placeholder="Note de l'entraînement"></textarea>
+            <div style=" display: flex; justify-content:center; margin: var(--SPACE_M) 0;">
+                <button class="size-block" id="button-sauvegarder" onclick="saveWorkout()">Sauvegarder</button>
+            </div>
         </div>
 
     </section>

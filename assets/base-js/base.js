@@ -131,7 +131,7 @@ window.onclick = function (event) { // on track les clicks sur la page complète
     }
 }
 window.addEventListener("click", (event) => {
-    if (event.target.id == "icon-menu-many-action") {
+    if (event.target.closest('#icon-menu-many-action')) {
         const menuButtonMore = document.querySelector(".menu-many-action")
         menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 

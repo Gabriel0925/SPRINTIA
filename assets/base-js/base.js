@@ -131,12 +131,16 @@ window.onclick = function (event) { // on track les clicks sur la page complète
     }
 }
 window.addEventListener("click", (event) => {
-    if (event.target.closest('#icon-menu-many-action')) {
+    if (event.target.closest('#icon-menu-many-action')) { // on remonte l'arbre du DOM pour voir si il y a une correspondance avec '#icon-menu-many-action'
         const menuButtonMore = document.querySelector(".menu-many-action")
         menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
         const isOpenMenuMore = menuButtonMore.classList.contains('open')
-        event.target.classList = isOpenMenuMore ? 'icon_fermer' : 'icon_plus'
+        if (isOpenMenuMore) {
+            event.target.closest('#icon-menu-many-action').classList.replace('icon_plus', 'icon_fermer')
+        } else {
+            event.target.closest('#icon-menu-many-action').classList.replace('icon_fermer', 'icon_plus')
+        }
     }
 })
 window.addEventListener("scroll", () => {

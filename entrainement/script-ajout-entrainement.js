@@ -33,12 +33,10 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
     "Snowboard": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
 
     "Corde à sauter": ["nb-tours-entrainement-user", "cadence-moy-entrainement-user", "serie-max-entrainement-user"],
-    "Escalade": ["voies-effectuees-entrainement-user", "difficulte-max-entrainement-user", "nb-chutes-entrainement-user"],
-    "Sport de chambre": ["nb-positions-entrainement-user", "cadence-moy-entrainement-user"],
+    "Escalade": ["voies-effectuees-entrainement-user", "difficulte-max-entrainement-user", "nb-chutes-entrainement-user"]
 }
 
 let IdEditWorkout = null // init variable globale
-let noteEntrainement = undefined
 
 async function VerificationParam() {
     const ParametreURL = window.location.search // on recherche si il y a un param dans l'URL (ex : ?edit=7)
@@ -77,6 +75,12 @@ async function VerificationParam() {
                     9:"Effort maximal",
                     10:"Effort maximal"
                 }
+                const dicoDescriptionRPE = {
+                    1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
+                    4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
+                    7:["Difficile", "#ff4b4c"], 8:["Difficile", "#ff4b4c"],
+                    9:["Effort maximal", "#9386f1"], 10:["Effort maximal", "#9386f1"]
+                }
 
                 // remplissage des champs qu'on ne peut pas remplir dans la boucle foreach
                 document.getElementById("profil-sport").value = WorkoutDB.sport
@@ -84,11 +88,13 @@ async function VerificationParam() {
                 // remettre le RPE sur bonne position
                 document.querySelector(".slider input").value = WorkoutDB.rpe
                 document.querySelector(".slider progress").value = WorkoutDB.rpe
-                document.querySelector(".slider-name").innerHTML = "RPE : <span class='RPE'>" + WorkoutDB.rpe + "</span>" + dicoRPE[WorkoutDB.rpe]
+                document.querySelector(".slider-name").innerHTML = "RPE : <span class='RPE'>" + WorkoutDB.rpe + "</span>" + " " + "<strong>" + dicoDescriptionRPE[WorkoutDB.rpe][0] + "</strong>"
+                document.querySelector(".slider-name span.RPE").style.background = dicoDescriptionRPE[WorkoutDB.rpe][1]
+                document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[WorkoutDB.rpe][1]
 
                 // ajout d'une data a la variable globale
-                if (WorkoutDB.note != undefined || WorkoutDB.note != "") {
-                    noteEntrainement = WorkoutDB.note
+                if (WorkoutDB.note != undefined && WorkoutDB.note != "") {
+                    document.getElementById("note-entrainement").value = WorkoutDB.note
                 }
 
                 // tableau des datas à ne pas rentrer dans un input
@@ -494,12 +500,18 @@ async function saveWorkout() {
                 
         }
     }
+
+    // on récup la note de l'entraînement si il y en a une
+    let noteWorkout = document.getElementById("note-entrainement").value.trim()
+    if (!noteWorkout || noteWorkout == "") {
+        workoutData["note"] = undefined
+    } else {
+        workoutData["note"] = noteWorkout
+    }
+
     // desactivation du bouton
     BoutonSauvegarde.disabled = true 
     BoutonSauvegarde.textContent = "Sauvegarde..."
-    
-    // variable pour gérer vers ou renvoyer
-    let modificationEntrainement = false
 
     // ajout des 2 stats moins importante mais présente
     workoutData["transpiration_estimee"] = TranspirationEstimee
@@ -512,7 +524,6 @@ async function saveWorkout() {
         idWorkout = IdEditWorkout
 
         workoutData["id"] = IdEditWorkout
-        workoutData["note"] = noteEntrainement
 
         if (dataWorkoutEdit) { // si ya des datas
             let pointGPS = dataWorkoutEdit["points_gps"]
@@ -521,8 +532,6 @@ async function saveWorkout() {
             }
         }
         await db.entrainement.put(workoutData)
-        // mise sur true pour renvoyer vers lentrainement directement
-        modificationEntrainement = true
     } else {
         idWorkout = await db.entrainement.add(workoutData)
     }

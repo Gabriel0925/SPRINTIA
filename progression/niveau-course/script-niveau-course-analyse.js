@@ -277,4 +277,10 @@ async function displayOnScreen() {
     document.getElementById("time-semi-marathon").innerHTML = tempsSemiMarathon
     document.getElementById("time-marathon").innerHTML = tempsMarathon
 
+    if (document.getElementById("rFTPw-estimee").textContent == "--  W") {
+        document.getElementById("rFTPw-estimee").addEventListener("click", () => {
+            alert("Pour avoir accès à votre rFTPw veuillez configurer votre profil.")
+        });
+    }
+
 }

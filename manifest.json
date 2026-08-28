@@ -55,7 +55,7 @@
             "name": "Importer des données",
             "short_name":"Import données",
             "description":"Accéder rapidement à la page d'import de données",
-            "url":"/plus/import-des-donnees/importer-donnees.html",
+            "url":"/plus/import-donnees/import-donnees.html",
             "icons": [{
                 "src": "/assets/icons-manifest/icon-import-file.png",
                 "sizes": "192x192",

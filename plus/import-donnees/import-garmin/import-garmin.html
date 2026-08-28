@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Fichier SPRINTIA</title>
+    <title>SPRINTIA - Fichier Garmin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -75,27 +75,38 @@
     </section>
     
     <div class="toolbar">
-        <h1>Fichier SPRINTIA</h1>
+        <h1>Fichier Garmin</h1>
     </div>
-    
+
     <p class="text">
-        Vous avez exporté les données de votre entraînement depuis SPRINTIA et vous voulez les importer, vous êtes au bon endroit !
+        Vous avez une montre Garmin et vous voulez importer votre historique d'entraînement sur SPRINTIA, vous êtes au bon endroit.
+        Pour importer vos données Garmin, veuillez télécharger le fichier CSV de votre historique d'entraînement disponible sur 
+        <a href="https://connect.garmin.com/app/activities" class="lien" target="_blank">Garmin Connect Web</a>.
+        Pour récupérer ce fichier, suivez les instructions :
     </p>
-
     <ul class="list-information">
-
         <li>
-            En plus d'importer votre entraînement, SPRINTIA nettoie les données de votre fichier pour avoir des données encore plus
-            propres.
+            Cliquez sur le lien ci-contre.
         </li>
-
+        <li>
+            Connectez-vous à votre compte Garmin.
+        </li>
+        <li>
+            La langue de Garmin Connect Web doit être le <strong>Français</strong> ou l'<strong>Anglais</strong>.
+        </li>
+        <li>
+            Cliquez sur "Export CSV" (ou "Exporter au format CSV") en haut à droite, le fichier CSV a dû se télécharger.
+        </li>
+        <li>
+            Désormais, vous n'avez plus qu'à importer ce fichier dans SPRINTIA.
+        </li>
     </ul>
 
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-json" accept=".json, .txt, text/plain" style="display: none;" onchange="uploadFileSPRINTIA(event)">
+        <input type="file" id="file-input-garmin" accept=".csv" style="display: none;" onchange="uploadFileGarmin(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input-json').click()" id="button-import-SPRINTIA">Importer fichier SPRINTIA</button>
+        <button class="size-block" onclick="document.getElementById('file-input-garmin').click()" id="button-import-garmin">Importer CSV</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>
@@ -103,10 +114,12 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
+    <script src="../../../assets/bibliotheques/papaparse.min.js"></script>
     <script src="script_import.js"></script>
     <script src="../script-import-generale.js"></script>
     
-    <script defer src="/_vercel/insights/script.js"></script>
+    
 
 </body>
 </html>

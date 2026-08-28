@@ -58,9 +58,6 @@ async function uploadFileTCX(event) {
             let workoutDenivele = 0
             let deniveleLastLap = undefined
 
-            let lapFcMoy= []
-            let lapFcMax = []
-            let lapMaximumSpeed = []
             let lapPointGps = []
 
             // Boucle qui parcoure tous les lap de l'entraînement et qui convertit par exemple des metres au km directement

@@ -1,3 +1,6 @@
+// le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" et "versionDB" donc on vérif si il y a plus d'une clé
+const nbClefInutileLocalStorage = 2
+
 async function createFileJSON() {
     let dicoDataLocalStorage = {} // ex structure dico : 'personnaliteCoachBriefing': 'true',...
     // boucle qui parcout tous ce qu'il y a d'enregistrer dans le local storage
@@ -28,8 +31,8 @@ async function createFileJSON() {
     }
 
     // si il n'y a pas de données on return false
-    // le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" donc on vérif si il y a plus d'une clé
-    if (Object.keys(dicoDataLocalStorage).length <= 1 && workoutDB.length === 0 && niveauCourseDB.length === 0 && 
+    // le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" et "versionDB" donc on vérif si il y a plus d'une clé
+    if (Object.keys(dicoDataLocalStorage).length <= nbClefInutileLocalStorage && workoutDB.length === 0 && niveauCourseDB.length === 0 && 
         jrmCoachDB.length === 0 && profilDB.length === 0 && recupDB.length === 0) {
         return false
     } else {
@@ -48,6 +51,7 @@ async function shareData(button) {
         // si txtDataUser vaut false c'est que ya pas de données à partager
         if (txtDataUser == false) {
             button.textContent = "Aucune donnée à partager"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } else {
             let fileUserData = new File([txtDataUser], "Sauvegarde-SPRINTIA.text", {type: "text/plain"}) // on crée le fichier (txt) car le navigateur bloque les fichiers JSON
 
@@ -57,12 +61,12 @@ async function shareData(button) {
                     title:"Sauvegarde SPRINTIA"})            
                 
                 button.textContent = "Partagé"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
             } else {
                 button.textContent = "Navigateur incompatible !"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
             }
         }
-        
-        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
 
     } catch(error) {
         if (error.name== "AbortError") { // ça veut dire que le user à fermer le menu de partage sans envoyer le fichier
@@ -86,7 +90,8 @@ async function downloadDatas(button) {
 
         // si txtDataUser vaut false c'est que ya pas de données à télécharger
         if (txtDataUser == false) {
-            button.textContent = "Aucune donnée à télécharger"
+            button.textContent = "Aucune donnée enregistrée"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } else {
             // création d'un objet nommé blob (=en gros on créer une URL temporaire)
             // au moins la navigateur c'est ou télécharger le "fichier"
@@ -98,9 +103,8 @@ async function downloadDatas(button) {
             baliseHTML.click() // on simule un click pour download
 
             button.textContent = "Téléchargé"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
         }
-
-        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
 
     } catch(error) {
         console.log(error) // affichage de l'erreur en console
@@ -128,7 +132,7 @@ async function restaurationDatas(event) {
 
             // si le fichier ne contient aucune donnée on affiche un message ds le btn
             // le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" donc on vérif si il y a plus d'une clé
-            if (Object.keys(dataFileLocalStorage).length <= 1 && dataFileIndexedDB.entrainement.length === 0 && 
+            if (Object.keys(dataFileLocalStorage).length <= nbClefInutileLocalStorage && dataFileIndexedDB.entrainement.length === 0 && 
                 dataFileIndexedDB.niveau_course.length === 0 && dataFileIndexedDB.JRM_Coach.length === 0 && 
                 dataFileIndexedDB.profil.length === 0 && dataFileIndexedDB.recuperation.length === 0) {
                 buttonRestoration.textContent = "Aucune donnée à restaurer"
@@ -183,15 +187,24 @@ async function nettoyerDatas(conserverDatas) { // conserverDatas vaut soit 30J/9
         
         try {
             let dateMoinsJours = createObjetDate(conserverDatas)
+
+            let nbOperation = 0
             for (const tableElt of db.tables) { // on parcourt chaque table de la bdd et on supprime
                 if (tableElt.name != "JRM_Coach" && tableElt.name != "profil") {
-                    await tableElt.where('date').below(dateMoinsJours).delete()
+                    // .delete() renvoie le nombre d'opération
+                    const nbSupprimer = await tableElt.where('date').below(dateMoinsJours).delete()
+                    nbOperation+=nbSupprimer
                 }
             }
             
-            buttonNettoyer.textContent = "Nettoyé"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-            logoDynamique("🧹 Grand ménage !")
+            if (nbOperation < 1) {
+                buttonNettoyer.textContent = "Rien à nettoyer"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+            } else {
+                buttonNettoyer.textContent = "Nettoyé"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+                logoDynamique("🧹 Grand ménage !")
+            }
         } catch(error) {
             console.log(error)
             buttonNettoyer.textContent = "Une erreur s'est produite"
@@ -210,15 +223,36 @@ async function suppressionDonnees() {
         buttonReinitialiser.disabled = true
         
         try {
-            localStorage.clear()
-            sessionStorage.clear()
-            for (const elt of db.tables) { // on parcourt chaque table de la bdd et on supprime
-                await elt.clear()
+            let dicoDataLocalStorage = {} // ex structure dico : 'personnaliteCoachBriefing': 'true',...
+            // boucle qui parcout tous ce qu'il y a d'enregistrer dans le local storage
+            for (let i=0; i < localStorage.length; i++) {
+                // on récup la clé de l'element du local storage et on l'ajoute au dico en recherchant la valeur de cette clé
+                dicoDataLocalStorage[localStorage.key(i)] = localStorage.getItem(localStorage.key(i))
             }
-            
-            buttonReinitialiser.textContent = "Supprimé"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-            window.location.href = "../../../index.html"
+
+            let nbOperation = 0
+            for (const tableElt of db.tables) { // on parcourt chaque table de la bdd
+                const dataTable = await tableElt.toArray()
+                if (dataTable.length < 1) {
+                    nbOperation+=dataTable
+                }
+            }
+
+            if (nbOperation<1 && Object.keys(dicoDataLocalStorage).length <=nbClefInutileLocalStorage) {
+                buttonReinitialiser.textContent = "Aucune donnée à supprimer"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+                
+            } else {
+                localStorage.clear()
+                sessionStorage.clear()
+                for (const elt of db.tables) { // on parcourt chaque table de la bdd et on supprime
+                    await elt.clear()
+                }
+                
+                buttonReinitialiser.textContent = "Supprimé"
+                await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+                window.location.href = "../../../index.html"
+            }
         } catch(error) {
             console.log(error)
             buttonReinitialiser.textContent = "Une erreur s'est produite"

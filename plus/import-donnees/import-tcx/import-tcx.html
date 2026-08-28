@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Fichier TrainingPeaks</title>
+    <title>SPRINTIA - Fichier TCX</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -75,43 +75,31 @@
     </section>
     
     <div class="toolbar">
-        <h1>Fichier TrainingPeaks</h1>
+        <h1>Fichier TCX</h1>
     </div>
 
     <p class="text">
-        Vous avez synchronisé votre montre (Apple Watch, Coros, Polar, Suunto...) avec TrainingPeaks. Vous pouvez grâce à cela importer 
-        votre historique d'entraînement sur SPRINTIA en important le fichier CSV que vous pouvez trouver sur le
-        <a href="https://app.trainingpeaks.com/" class="lien" target="_blank">site web de TrainingPeaks</a>.
-        Pour ce faire, suivez les instructions :
+        Vous voulez importer votre entraînement depuis un autre service comme Garmin, Coros, Strava,... Vous êtes au bon endroit !
+        Pour importer vos données, <strong>veuillez télécharger le fichier (.TCX)</strong> de votre entraînement depuis 
+        la plateforme que vous souhaitez.
     </p>
     <ul class="list-information">
         <li>
-            Cliquez sur le lien ci-contre.
+            Le format requis est (.TCX). Si le service que vous utilisez ne propose pas ce format, téléchargez vos données au format (.FIT)
+            puis utilisez un convertisseur de fichier FIT vers TCX. Je vous recommande celui-là
+            <a href="https://www.fitfiletools.com/convert" target="_blank" class="lien">FitFileTools</a>.
         </li>
         <li>
-            Connectez-vous à votre compte TrainingPeaks.
-        </li>
-        <li>
-            Allez dans les paramètres (cliquer sur votre photo de profil en haut à droite puis "Settings").
-        </li>
-        <li>
-            Rendez-vous dans "Export data".
-        </li>
-        <li>
-            Remplissez les champs de la catégorie "Workout Summary".
-        </li>
-        <li>
-            Appuyez sur "Exporter".
+            Le format TCX prend en compte les sports suivants : Course, Vélo et Autre. Si le sport de votre entraînement n'est pas pris en compte,
+            SPRINTIA l'importera en tant que sport "Libre" avec les données de base.
         </li>
     </ul>
-    <p class="text">
-        Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'workouts.csv' dans SPRINTIA.
-    </p>
+
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadFileTP(event)">
+        <input type="file" id="file-input-tcx" accept=".tcx" style="display: none;" onchange="uploadFileTCX(event)">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input-TP').click()" id="button-import-TP">Importer CSV</button>
+        <button class="size-block" onclick="document.getElementById('file-input-tcx').click()" id="button-import-tcx">Importer TCX</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>
@@ -119,12 +107,12 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
-    <script src="../../../assets/bibliotheques/papaparse.min.js"></script>
-    <script src="script_import.js"></script>
+    <!-- Import de la bibliothèque de filtrage de point GPS -->
+    <script src="../../../assets/bibliotheques/simplify.js"></script>
+    <script src="script_import_tcx.js"></script>
     <script src="../script-import-generale.js"></script>
     
-    <script defer src="/_vercel/insights/script.js"></script>
+    
 
 </body>
 </html>

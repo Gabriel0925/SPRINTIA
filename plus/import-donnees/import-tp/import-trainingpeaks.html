@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - Fichier GPX</title>
+    <title>SPRINTIA - Fichier TrainingPeaks</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -75,28 +75,43 @@
     </section>
     
     <div class="toolbar">
-        <h1>Fichier GPX</h1>
+        <h1>Fichier TrainingPeaks</h1>
     </div>
 
     <p class="text">
-        Vous voulez importer votre entraînement depuis un autre service comme Garmin, Coros, Strava,... Vous êtes au bon endroit !
-        Pour importer vos données, <strong>veuillez télécharger le fichier (.GPX)</strong> de votre entraînement depuis 
-        la plateforme que vous souhaitez.
+        Vous avez synchronisé votre montre (Apple Watch, Coros, Polar, Suunto...) avec TrainingPeaks. Vous pouvez grâce à cela importer 
+        votre historique d'entraînement sur SPRINTIA en important le fichier CSV que vous pouvez trouver sur le
+        <a href="https://app.trainingpeaks.com/" class="lien" target="_blank">site web de TrainingPeaks</a>.
+        Pour ce faire, suivez les instructions :
     </p>
     <ul class="list-information">
         <li>
-            L'avantage du format GPX c'est qu'il prend en compte bien plus de sport que le fichier TCX. Le format GPX
-            prend en compte : la course, le vélo, la marche, la randonnée, les sports d'hiver (ski,...) et les sports d'eau (natation,...) et plus encore.
+            Cliquez sur le lien ci-contre.
         </li>
         <li>
-            Si le sport de votre entraînement n'est pas pris en compte,
-            SPRINTIA l'importera en tant que sport "Libre" avec les données de base.
+            Connectez-vous à votre compte TrainingPeaks.
+        </li>
+        <li>
+            Allez dans les paramètres (cliquer sur votre photo de profil en haut à droite puis "Settings").
+        </li>
+        <li>
+            Rendez-vous dans "Export data".
+        </li>
+        <li>
+            Remplissez les champs de la catégorie "Workout Summary".
+        </li>
+        <li>
+            Appuyez sur "Exporter".
         </li>
     </ul>
-
+    <p class="text">
+        Pour finir, vous n'avez plus qu'à dézipper le dossier et importer le fichier CSV nommé 'workouts.csv' dans SPRINTIA.
+    </p>
     <div class="container-center-marge">
-        <input type="file" id="file-input-gpx" accept=".gpx" style="display: none;" onchange="uploadFileGPX(event)">
-        <button class="size-block" onclick="document.getElementById('file-input-gpx').click()" id="button-import-gpx">Importer GPX</button>
+        <!-- On n' affiche pas le input file -->
+        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadFileTP(event)">
+        <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
+        <button class="size-block" onclick="document.getElementById('file-input-TP').click()" id="button-import-TP">Importer CSV</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>
@@ -104,14 +119,12 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-
-    <!-- Import de la bibliothèque de filtrage de point GPS -->
-    <script src="../../../assets/bibliotheques/simplify.js"></script>
-    <script src="../../../assets/bibliotheques/GPXParser.min.js"></script> <!-- Import de la bibliothèque pour parser le GPX-->
-    <script src="script_import_gpx.js"></script>
+    <!-- Import de la bibliothèque papaparse pour analyser un fichier CSV beaucoup plus facilement qu'avec un .split(",") -->
+    <script src="../../../assets/bibliotheques/papaparse.min.js"></script>
+    <script src="script_import.js"></script>
     <script src="../script-import-generale.js"></script>
     
-    <script defer src="/_vercel/insights/script.js"></script>
+    
 
 </body>
 </html>

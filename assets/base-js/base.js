@@ -103,22 +103,25 @@ window.addEventListener("pageshow", (event) => {
 });
 
 
+// On active sur iOS le feedback ":active"
+document.addEventListener("touchstart", () => {}, true)
+
 
 // --- Menu plus ---
-document.addEventListener("touchstart", () => {}, true);
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { // à cause d'iOS (et Safari) on met un écouteur d'évenement global et on filtre à l'intérieur
+    // récup des elt du menu plus
     const iconMenu = document.getElementById("icon-menu-many-action")
     const menuButtonMore = document.querySelector(".menu-many-action")
 
     if (iconMenu && menuButtonMore) {
 
         iconMenu.addEventListener("click", (event) => {
-            event.stopPropagation()
+            event.stopPropagation() // on empeche le clic de fermer direct le menu dès l'ouverture
 
             menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
             const isOpenMenuMore = menuButtonMore.classList.contains('open')
-            if (isOpenMenuMore) {
+            if (isOpenMenuMore) { // si c'est ouvert on met la bonne icone, si c'est fermer idem
                 event.target.closest('#icon-menu-many-action').classList.replace('icon_plus', 'icon_fermer')
             } else {
                 event.target.closest('#icon-menu-many-action').classList.replace('icon_fermer', 'icon_plus')
@@ -126,9 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
         })
 
         document.addEventListener("click", (event) => {
+            // si le menu est ouvert et qu'il y a un clic sur l'écran autre part que dans le menu plus ".menu-many-action"
             if (menuButtonMore.classList.contains("open") && !event.target.closest(".menu-many-action")) {
-                    menuButtonMore.classList.remove("open")
-                    document.getElementById("icon-menu-many-action").classList.add("icon_plus")
+                // on ferme le menu plus et on remet la bouton icone dans le bouton dans la toolbar        
+                menuButtonMore.classList.remove("open")
+                document.getElementById("icon-menu-many-action").classList.add("icon_plus")
             }
         })
     }
@@ -138,7 +143,7 @@ window.addEventListener("scroll", () => {
     if (menuButtonMore) {
         // on referme le menu plus
         menuButtonMore.classList.remove("open")
-        // pour remettre l'icone plus
+        // et on remettre l'icone plus
         document.getElementById("icon-menu-many-action").classList.add("icon_plus")
     }
 })

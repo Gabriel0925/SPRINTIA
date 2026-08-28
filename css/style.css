@@ -1410,6 +1410,7 @@ div.menu-many-action {
     padding: var(--SPACE_XS);
     border-radius: var(--BORDER_BIG);
 
+    cursor: pointer;
     overflow: hidden;
     opacity: 1;
     z-index: 8000;

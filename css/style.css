@@ -218,6 +218,7 @@ i {
     -webkit-user-select: none;
     -moz-user-select: none;
     -webkit-tap-highlight-color: transparent;/* Pour désactiver le highlight bleu lors d'un clic sur les balises a majoritairement */
+    -webkit-touch-callout: none;
 }
 /* --- Reset du style pour les sliders */
 *::-webkit-scrollbar {width: 6px;}

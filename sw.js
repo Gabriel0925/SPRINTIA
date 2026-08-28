@@ -1,6 +1,8 @@
-const VERSION_CACHE = "V1.0.13"
+const VERSION_CACHE = "V1.0.14"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
+    "/",
+
     // BASE DE L'APP
     "/assets/base-js/base.js", "/assets/base-js/db-config.js", "/assets/base-js/SPRINTIA-briefing.js",
 
@@ -183,7 +185,14 @@ self.addEventListener("fetch", (event) => {
         } catch(e) { // quand on est hors ligne, on recup le fichier dans le cache
             //console.log("HORS-LIGNE")
             const cache = await caches.open(VERSION_CACHE) // on ouvre le cache
-            return await cache.match(event.request, {ignoreSearch: true})
+            const responseCache = await cache.match(event.request, {ignoreSearch: true})
+            if (responseCache) {return responseCache}
+
+            // si il n'y a rien dans le cache ce qui peut être lié à un oublie d'incrémentation ou de remplissage du tableau fileIinCache alors
+            // on revoie vers la page d'accueil de SPRINTIA qui elle sera tjrs accessible (le nom du fichier ne changera pas dans le temps)
+            if (event.request.mode == "navigate") {
+                return await cache.match("/index.html", {ignoreSearch: true})
+            }
         }
 
     })()) // on appelle direct la fonction async pour avoir la promesse

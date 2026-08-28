@@ -538,7 +538,7 @@ section.tab-bars {
     position: fixed;
     gap: 0.75rem;
     padding: 0 var(--SPACE_M);
-    padding-bottom: var(--SPACE_M);
+    padding-bottom: var(--SPACE_S);
     pointer-events: none;
     bottom: 0;
     left: 0;

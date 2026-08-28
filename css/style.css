@@ -86,8 +86,8 @@
     
     /* OTHER */
     --MAX_WIDTH: 1500px;
-    --TIME_TRANSITION: 0.2s;
-    --TIME_TRANSITION_FAST: 0.1s;
+    --TIME_TRANSITION: 0.3s;
+    --TIME_TRANSITION_FAST: 0.15s;
 
 
     /* URL flèche vers le bas pour les combobox */

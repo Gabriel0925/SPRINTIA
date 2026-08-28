@@ -105,6 +105,7 @@ window.addEventListener("pageshow", (event) => {
 
 
 // --- Menu plus ---
+document.addEventListener("touchstart", () => {}, true);
 document.addEventListener("DOMContentLoaded", () => {
     const iconMenu = document.getElementById("icon-menu-many-action")
     const menuButtonMore = document.querySelector(".menu-many-action")
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         iconMenu.addEventListener("click", (event) => {
             event.stopPropagation()
-            
+
             menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
             const isOpenMenuMore = menuButtonMore.classList.contains('open')

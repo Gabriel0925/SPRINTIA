@@ -548,7 +548,7 @@ section.tab-bars {
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
     max-width: 475px;
-    height: 70px;
+    height: 64px;
     flex-grow: 1;
 
     background: var(--COLOR_GLASSMORPHISM);

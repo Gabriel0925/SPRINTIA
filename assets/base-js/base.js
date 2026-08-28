@@ -105,11 +105,15 @@ window.addEventListener("pageshow", (event) => {
 
 
 // --- Menu plus ---
-window.addEventListener("click", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
+    const iconMenu = document.getElementById("icon-menu-many-action")
     const menuButtonMore = document.querySelector(".menu-many-action")
 
-    if (menuButtonMore) {
-        if (event.target.closest('#icon-menu-many-action')) { // on remonte l'arbre du DOM pour voir si il y a une correspondance avec '#icon-menu-many-action'
+    if (iconMenu && menuButtonMore) {
+
+        iconMenu.addEventListener("click", (event) => {
+            event.stopPropagation()
+            
             menuButtonMore.classList.toggle("open") // Ajoute la classe si elle est absente, et la supprime si elle est déjà présente.
 
             const isOpenMenuMore = menuButtonMore.classList.contains('open')
@@ -118,41 +122,15 @@ window.addEventListener("click", (event) => {
             } else {
                 event.target.closest('#icon-menu-many-action').classList.replace('icon_fermer', 'icon_plus')
             }
-        } else {
-            let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action")
+        })
 
-            if (TrackClickButtonInMenuMore) {
-                if (!event.target.closest(".menu-many-action")) {
+        document.addEventListener("click", (event) => {
+            if (menuButtonMore.classList.contains("open") && !event.target.closest(".menu-many-action")) {
                     menuButtonMore.classList.remove("open")
                     document.getElementById("icon-menu-many-action").classList.add("icon_plus")
-                }
             }
-        }
+        })
     }
-
-    // let TrackClickButtonMore = document.getElementById("icon-menu-many-action")
-    // let TrackClickButtonInMenuMore = document.querySelector(".menu-many-action") // pour tracker si le user click sur un li dans le menu du bouton plus
-     
-    // // si dans la page il y a le bouton plus alors on regarde si c'est sur lui qu'on a cliqué
-    // if (TrackClickButtonMore && TrackClickButtonInMenuMore) {
-    //     TrackClickButtonMore = TrackClickButtonMore.contains(event.target)
-    //     TrackClickButtonInMenuMore = TrackClickButtonInMenuMore.contains(event.target)
-    // } else { // sinon on met la variable sur false pour pas que ça plante la fermeture du burger menu dans le if suivant
-    //     TrackClickButtonMore = false
-    //     TrackClickButtonInMenuMore = false
-    // }
-    
-    // // si tu as cliqué autre part que ses 4 conditions alors on referme le menu burger et le menu plus 
-    // if (TrackClickButtonMore == false && TrackClickButtonInMenuMore == false) { 
-    //     // pour le menu plus
-    //     const menuButtonMore = document.querySelector(".menu-many-action")
-    //     if (menuButtonMore) {
-    //         // on referme le menu plus
-    //         menuButtonMore.classList.remove("open")
-    //         // pour remettre l'icone plus
-    //         document.getElementById("icon-menu-many-action").classList.add("icon_plus")
-    //     }
-    // }
 })
 window.addEventListener("scroll", () => {
     const menuButtonMore = document.querySelector(".menu-many-action")

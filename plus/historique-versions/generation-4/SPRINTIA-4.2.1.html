@@ -25,25 +25,23 @@
     
     <section class="header">
 
-        <a href="../../../index.html">
-            <div class="logo">SPRINTIA</div>
-        </a>
-        
+        <div class="logo">SPRINTIA</div>
+            
         <ul class="header-container-items">
 
-            <li class="header-items" onclick="window.location.href = '../../../index.html'">
+            <li class="header-items selected" data-onglet="Entraînement">
                 <i class="icon_entrainement"></i>
                 Entraînement
             </li>
-            <li class="header-items" onclick="window.location.href = '../../../progression/progression.html'">
+            <li class="header-items" data-onglet="Progression">
                 <i class="icon_progression"></i>
                 Progression
             </li>
-            <li class="header-items" onclick="window.location.href = '../../../outils/outils.html'">
+            <li class="header-items" data-onglet="Outils">
                 <i class="icon_outils"></i>
                 Outils
             </li>
-            <li class="header-items selected" onclick="window.location.href = '../../../plus/plus.html'">
+            <li class="header-items" data-onglet="Plus">
                 <i class="icon_plus"></i>
                 Plus
             </li>
@@ -55,19 +53,19 @@
 
         <ul class="tab-bars-container-items">
 
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Entraînement')">
+            <li class="tab-bars-items selected" data-onglet="Entraînement">
                 <i class="icon_entrainement"></i>
                 <p class="tab-bars-items-name">Entraînement</p>
             </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Progression')">
+            <li class="tab-bars-items" data-onglet="Progression">
                 <i class="icon_progression"></i>
                 <p class="tab-bars-items-name">Progression</p>
             </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Outils')">
+            <li class="tab-bars-items" data-onglet="Outils">
                 <i class="icon_outils"></i>
                 <p class="tab-bars-items-name">Outils</p>
             </li>
-            <li class="tab-bars-items selected" onclick="navigationLinks(this, 'tab-bar', 'profondeur3', 'Plus')">
+            <li class="tab-bars-items" data-onglet="Plus">
                 <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>

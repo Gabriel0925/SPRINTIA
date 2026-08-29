@@ -4,6 +4,11 @@
     <title>SPRINTIA - Entraînement</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
+    <!-- "Content-Security-Policy" -> on active la sécurité CSP -->
+    <!-- On donne les règles de sécurité dans le content -->
+    <!-- "default-src 'self;" -> on dit au navigateur de charger uniquement ce qui vient de mon propre site "self" -->
+    <!-- "script-src 'self;" -> on dit au navigateur de charger uniquement les fichier .js qui viennent de mon propre site "self" -->
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="assets/icons-SPRINTIA/icon-navigateur.png">
@@ -25,23 +30,23 @@
 
     <section class="header">
 
-        <div class="logo" onclick="navigationLinks(this, 'header', 'racine', 'Entraînement')">SPRINTIA</div>
+        <div class="logo">SPRINTIA</div>
             
         <ul class="header-container-items">
 
-            <li class="header-items selected">
+            <li class="header-items selected" data-onglet="Entraînement">
                 <i class="icon_entrainement"></i>
                 Entraînement
             </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'racine', 'Progression')">
+            <li class="header-items" data-onglet="Progression">
                 <i class="icon_progression"></i>
                 Progression
             </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'racine', 'Outils')">
+            <li class="header-items" data-onglet="Outils">
                 <i class="icon_outils"></i>
                 Outils
             </li>
-            <li class="header-items" onclick="navigationLinks(this, 'header', 'racine', 'Plus')">
+            <li class="header-items" data-onglet="Plus">
                 <i class="icon_plus"></i>
                 Plus
             </li>
@@ -53,19 +58,19 @@
 
         <ul class="tab-bars-container-items">
 
-            <li class="tab-bars-items selected">
+            <li class="tab-bars-items selected" data-onglet="Entraînement">
                 <i class="icon_entrainement"></i>
                 <p class="tab-bars-items-name">Entraînement</p>
             </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'racine', 'Progression')">
+            <li class="tab-bars-items" data-onglet="Progression">
                 <i class="icon_progression"></i>
                 <p class="tab-bars-items-name">Progression</p>
             </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'racine', 'Outils')">
+            <li class="tab-bars-items" data-onglet="Outils">
                 <i class="icon_outils"></i>
                 <p class="tab-bars-items-name">Outils</p>
             </li>
-            <li class="tab-bars-items" onclick="navigationLinks(this, 'tab-bar', 'racine', 'Plus')">
+            <li class="tab-bars-items" data-onglet="Plus">
                 <i class="icon_plus"></i>
                 <p class="tab-bars-items-name">Plus</p>
             </li>
@@ -82,7 +87,7 @@
         </div>
     </div>
         
-    <section class="container-invite-to-config" id="configurer-SPRINTIA" style="display: none;">
+    <section class="container-invite-to-config" id="configurer-SPRINTIA">
 
         <div class="icone">
             <i class="icon_profil"></i>
@@ -97,7 +102,7 @@
 
     </section>
 
-    <div class="visuel-information" id="aucune-data" style="display: none;">
+    <div class="visuel-information" id="aucune-data">
         <i class="icon_folder_open"></i>
         <h3>Aucun entraînement</h3>
         <p>
@@ -111,7 +116,7 @@
         <input type="search" id="input-search" placeholder="Rechercher un entraînement" autocomplete="off">
     </div>
 
-    <div class="visuel-information" id="aucun-resultat" style="display: none;">
+    <div class="visuel-information" id="aucun-resultat">
         <i class="icon_search_off"></i>
         <h3>Aucun résultat</h3>
     </div>
@@ -151,216 +156,8 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="assets/bibliotheques/dexie.js"></script>
     <script src="assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-
-    <!-- Configuration SPRINTIA -->
-    <script>
-        async function configSPRINTIA() { // permet d'enlever le panneau de configuration une fois que le user a configurer
-            const profilData = await db.profil.get(1)
-            const choixUserLocalStorage = localStorage.getItem("configurationProfil")
-
-            if (profilData == undefined && choixUserLocalStorage != "ignorer") {
-                document.getElementById("configurer-SPRINTIA").style.display = "block"
-            }
-        }
-
-        function ignoreConfigurationProfil() {
-            if (confirm("Êtes-vous sûr de vouloir ignorer la configuration de votre profil ?")) {
-                document.getElementById("configurer-SPRINTIA").style.display = "none"
-                localStorage.setItem("configurationProfil", "ignorer")
-            }
-        }
-
-        window.addEventListener("DOMContentLoaded", configSPRINTIA())
-    </script>
-
-    <!-- Historique d'entraînement -->
-    <script>
-        // Init for function Afficher data
-        let NbCardsWorkoutAfficher = 0
-        let NbTotalCardsWorkoutAfficher = parseInt(sessionStorage.getItem("NbCardHistoriqueSave")) || 12
-        let HistoriqueComplet = []
-
-        async function Init() {
-            // Recup de l'historique
-            let HistoriqueDB = await db.entrainement.toArray() // recup de toutes les datas
-            // Trier par date 
-            HistoriqueDB.sort((element1, element2) => { // En js on peut comparer 2 dates comme des maths
-                if (element1.date < element2.date) return 1
-                if (element1.date > element2.date) return -1
-            })
-
-            // animation du dynamic logo pour féliciter le user
-            verificationURL() // fonction dans base JS
-
-            SauvegardeHistorique(HistoriqueDB)
-            return
-        }
-
-        function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
-            let StructureHTML = `        
-            <a href="entrainement/entrainement.html?workout=${workout.id}">  
-                <div class="data-workout-column">
-                    <p class="name-workout">
-                        ${workout.nom}
-                    </p>
-                    <p class="sport-date-workout">
-                        ${workout.sport} · ${DateEuropeen}
-                    </p>
-                </div>
-                <div class="container-data-resume-workout">
-                    <p class="duree-workout">
-                        ${dureeWorkout}
-                    </p>
-                    <p class="charge-workout">
-                        ${workout.charge_entrainement} <small>CE</small>
-                    </p>
-                </div>
-            </a>
-            `
-
-            CardWorkout.innerHTML = StructureHTML 
-
-            let CardWorkoutHTML = CardWorkout
-
-            return CardWorkoutHTML
-        }
-
-        async function SauvegardeHistorique(HistoriqueDB) {
-            HistoriqueDB.forEach(element => {
-                HistoriqueComplet.push(element)
-            });
-            await initialisationAffichage()
-
-            return
-        }
-
-        async function initialisationAffichage() { // pour quand on recharge la page
-            if (HistoriqueComplet.length <= 0) {
-                document.getElementById("aucune-data").style.display = "flex"
-                document.querySelector(".input-search").style.display = "none"
-            } 
-            if (HistoriqueComplet.length <= 12) {
-                document.getElementById("button_afficher_plus").style.display = "none"
-            }
-
-            const ConteneurCardsWorkout = document.getElementById("liste-workouts")
-
-            let HistoriqueSauvegarder = HistoriqueComplet.slice(0, NbTotalCardsWorkoutAfficher)
-            
-            // Creation structure HTML
-            HistoriqueSauvegarder.forEach(workout => {
-                const CardWorkout = document.createElement("div")
-
-                CardWorkout.classList.add("cards-history-workout")
-
-                // Inversion de la date de "2026-01-8" à "8-01-2026"
-                let DateEuropeen = formatEuropeenDate(workout.date)
-                let dureeWorkout = dureeFormatee(workout.duree, "null") // on exige aucun format
-
-                let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
-                ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
-            }); 
-
-            // maj de la variable 
-            NbCardsWorkoutAfficher = NbTotalCardsWorkoutAfficher
-
-            // si il n'y a plus de cartes a ajouter on fais disparaitre le bouton voir plus
-            if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
-                document.getElementById("button_afficher_plus").style.display = "none"
-            } else {
-                document.getElementById("button_afficher_plus").style.display = "block"
-            }
-        }
-
-        async function AfficherData() { // lors d'un clic sur le bouton afficher plus
-            if (HistoriqueComplet.length <= 0) {
-                document.getElementById("aucune-data").style.display = "flex"
-                document.querySelector(".input-search").style.display = "none"
-            } 
-            // Cacher le bouton si il n'y a plus d'element a charger
-            if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
-                document.getElementById("button_afficher_plus").style.display = "none"
-            }
-            if (HistoriqueComplet.length <= 12) {
-                document.getElementById("button_afficher_plus").style.display = "none"
-            }
-
-            const ConteneurCardsWorkout = document.getElementById("liste-workouts")
-
-            // Coupage des datas pr le nb limite de cards
-            let HistoriqueNecessaire = HistoriqueComplet.slice(NbCardsWorkoutAfficher, NbCardsWorkoutAfficher+12)
-            NbCardsWorkoutAfficher += 12
-
-            // Creation structure HTML
-            HistoriqueNecessaire.forEach(workout => {
-                const CardWorkout = document.createElement("div")
-
-                CardWorkout.classList.add("cards-history-workout")
-
-                // Inversion de la date de "2026-01-8" à "8-01-2026"
-                let DateEuropeen = formatEuropeenDate(workout.date)
-                let dureeWorkout = dureeFormatee(workout.duree, "null") // on exige aucun format
-
-                let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
-                ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
-            }); 
-
-            if (NbCardsWorkoutAfficher > 12) {
-                sessionStorage.setItem("NbCardHistoriqueSave", NbCardsWorkoutAfficher)
-            }
-
-            // si il n'y a plus de card a afficher alors on enleve le bouton
-            if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
-                document.getElementById("button_afficher_plus").style.display = "none"
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", async () => {
-            await Init()
-        })
-
-        // Recherche d'entraînement
-        let inputSearch = document.getElementById("input-search")
-        inputSearch.addEventListener("input", () => { // on recup en temps réel ce que le user tape
-            let rechercheUser = inputSearch.value.toLowerCase()
-
-            if (rechercheUser.trim() == "") {
-                document.getElementById("aucun-resultat").style.display = "none"
-                document.getElementById("liste-workouts").innerHTML = ""
-                initialisationAffichage()
-            } else {
-                let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => workout.nom.toLowerCase().includes(rechercheUser))
-
-                document.getElementById("liste-workouts").innerHTML = ""
-                document.getElementById("button_afficher_plus").style.display = "none"
-
-                if (filteredHistoriqueComplet.length <= 0) {
-                    document.getElementById("aucun-resultat").style.display = "flex"
-                } else {
-                    document.getElementById("aucun-resultat").style.display = "none"
-
-                    filteredHistoriqueComplet.forEach(element => {
-                        const CardWorkout = document.createElement("div")
-                        CardWorkout.classList.add("cards-history-workout")
-
-                        // Inversion de la date de "2026-01-8" à "8-01-2026"
-                        let DateEuropeen = formatEuropeenDate(element.date)
-                        let dureeWorkout = dureeFormatee(element.duree, "null") // on exige aucun format
-
-                        let CardWorkoutHTML = HTMLCard(CardWorkout, element, DateEuropeen, dureeWorkout)
-                        document.getElementById("liste-workouts").appendChild(CardWorkoutHTML)
-                    });
-                }
-            }
-        })
-    </script>
-
-    <!-- SPRINTIA Briefing -->
+    <script src="index.js"></script>
     <script src="assets/base-js/SPRINTIA-briefing.js"></script>
-    
-    
 
 </body>
 </html>

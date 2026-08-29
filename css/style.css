@@ -722,6 +722,7 @@ div.container-logo-dynamique div.logo-dynamique.message.return {
 
 
 section.container-invite-to-config {
+    display: none;
     margin: var(--SPACE_XL) auto;
     height: 265px;
     z-index: 1;
@@ -777,7 +778,7 @@ section.container-invite-to-config div.container-button button#ignorer:active{
 }
 
 div.visuel-information {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;

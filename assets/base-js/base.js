@@ -18,32 +18,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // --- Navigation pour la tab-bar ---
 const dicoUrl = {
-    "racine": {
-        "Entraînement":  "index.html",
-        "Progression":   "progression/progression.html",
-        "Outils":        "outils/outils.html",
-        "Plus":          "plus/plus.html"
-    },
-    "profondeur1": {
-        "Entraînement":  "../index.html",
-        "Progression":   "../progression/progression.html",
-        "Outils":        "../outils/outils.html",
-        "Plus":          "../plus/plus.html"
-    },
-    "profondeur2": {
-        "Entraînement":  "../../index.html",
-        "Progression":   "../../progression/progression.html",
-        "Outils":        "../../outils/outils.html",
-        "Plus":          "../../plus/plus.html"
-    },
-    "profondeur3": {
-        "Entraînement":  "../../../index.html",
-        "Progression":   "../../../progression/progression.html",
-        "Outils":        "../../../outils/outils.html",
-        "Plus":          "../../../plus/plus.html"
-    },
+    "Entraînement":  "/index.html",
+    "Progression":   "/progression/progression.html",
+    "Outils":        "/outils/outils.html",
+    "Plus":          "/plus/plus.html"
 }
-function navigationLinks(elt, component, profondeur, onglet) {
+function navigationLinks(elt, component, onglet) {
     let classComponent = undefined
     if (component == "tab-bar") {classComponent = ".tab-bars-items.selected"} else {classComponent = ".header-items.selected"}
 
@@ -53,7 +33,7 @@ function navigationLinks(elt, component, profondeur, onglet) {
     elt.classList.add("selected")
 
     // on renvoie vers la nouvelle url pour changer de page de tab bar
-    window.location.href = dicoUrl[profondeur][onglet]
+    window.location.href = dicoUrl[onglet]
 }
 function selectedBFCache(ongletName) {
     const tabbarItems = document.querySelectorAll(".tab-bars-items")
@@ -71,6 +51,30 @@ function selectedBFCache(ongletName) {
         if (elt.textContent.includes(ongletName)) {elt.classList.add("selected")}
     }
 }
+document.addEventListener("DOMContentLoaded", () =>{
+    const logoInHeader = document.querySelector("section.header div.logo")
+    if (logoInHeader) {logoInHeader.addEventListener("click", () => {navigationLinks(this, 'header', 'Entraînement')})}
+
+    const eltHeader = document.querySelectorAll("ul.header-container-items li.header-items")
+    if (eltHeader) {
+        eltHeader.forEach(elt => {
+            elt.addEventListener("click", () => {
+                const onglet = elt.getAttribute("data-onglet")
+                if (onglet) {navigationLinks(elt, "header", onglet)}
+            })
+        })
+    }
+
+    const eltTabBars = document.querySelectorAll("ul.tab-bars-container-items li.tab-bars-items")
+    if (eltTabBars) {
+        eltTabBars.forEach(elt => {
+            elt.addEventListener("click", () => {
+                const onglet = elt.getAttribute("data-onglet")
+                if (onglet) {navigationLinks(elt, "tab-bar", onglet)}
+            })
+        })
+    }
+})
 
 
 

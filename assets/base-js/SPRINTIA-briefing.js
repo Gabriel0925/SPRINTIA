@@ -451,3 +451,11 @@ async function promptDiscussion() {
 window.addEventListener("DOMContentLoaded", () => {
     nameFavoriteIA()
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+    let iconFermer = document.querySelector("div.windows-SPRINTIA-briefing-head i.icon_fermer")
+    if (iconFermer) {iconFermer.addEventListener("click", closeWindows)}
+
+    let buttonCopierOuvrirIA = document.getElementById("button-open-ia")
+    if (buttonCopierOuvrirIA) {buttonCopierOuvrirIA.addEventListener("click", () => {openIA("vibe")})}
+})

@@ -82,8 +82,12 @@
     <div class="toolbar">
         <h1>Entraînement</h1>
         <div class="container-command">
-            <i class="icon_add" onclick="window.location.href = 'entrainement/ajouter-entrainement.html'"></i>
-            <i class="icon_statistiques" onclick="window.location.href = 'entrainement/statistiques.html'"></i>
+            <a href="entrainement/ajouter-entrainement.html">
+                <i class="icon_add"></i>
+            </a>
+            <a href="entrainement/statistiques.html">
+                <i class="icon_statistiques"></i>
+            </a>
         </div>
     </div>
         
@@ -96,8 +100,8 @@
             Pour débloquer l'étendue des fonctionnalités, veuillez <strong>configurer votre profil</strong>.
         </p>
         <div class="container-button">
-            <button id="ignorer" onclick="ignoreConfigurationProfil()">Ignorer</button>
-            <button onclick="location.href = 'plus/profil/modification-profil.html'">Configurer</button>
+            <button id="ignorer">Ignorer</button>
+            <button id="configurer">Configurer</button>
         </div>
 
     </section>
@@ -112,7 +116,7 @@
 
     <div class="input-search">
         <!-- pour un input on use pas "click()" on use "focus()" -->
-        <i class="icon_search" onclick="document.getElementById('input-search').focus()"></i>
+        <i class="icon_search"></i>
         <input type="search" id="input-search" placeholder="Rechercher un entraînement" autocomplete="off">
     </div>
 
@@ -123,7 +127,7 @@
 
     <section class="container-workout-cards" id="liste-workouts"></section>
         <div class="container-center-marge">
-            <button id="button_afficher_plus" onclick="AfficherData()">
+            <button id="button_afficher_plus">
                 Afficher plus
             </button>
         </div>
@@ -136,7 +140,7 @@
 
             <div class="windows-SPRINTIA-briefing-head">
                 <p class="title">SPRINTIA Briefing</p>
-                <i class="icon_fermer" onclick="closeWindows()"></i>
+                <i class="icon_fermer"></i>
             </div>
             <p class="explanation-briefing">
                 SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
@@ -144,7 +148,7 @@
                 <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
-                <button onclick="openIA('vibe')" id="button-open-ia">Copier & Ouvrir Vibe</button>
+                <button id="button-open-ia">Copier & Ouvrir Vibe</button>
             </div>
 
         </div>

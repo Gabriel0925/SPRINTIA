@@ -36,7 +36,10 @@ async function sendEmail(descriptionUser) {
     }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonSend = document.getElementById("button-envoyer")
+    if (buttonSend) {buttonSend.addEventListener("click", () => {sendEmail(document.getElementById('description-user').value.trim())})}
+
     // init
     emailjs.init({ // emailjs dispo depuis ce lien "https://dashboard.emailjs.com/admin"
         // la clé permet uniquement d'identifier mon projet depuis EmailJS donc personne peu me spam d'Email c'est pour ça qu'elle est écrit en clair

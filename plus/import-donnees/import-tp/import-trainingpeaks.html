@@ -4,6 +4,7 @@
     <title>SPRINTIA - Fichier TrainingPeaks</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -108,9 +109,9 @@
     </p>
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-TP" accept=".csv" style="display: none;" onchange="uploadFileTP(event)">
+        <input type="file" id="file-input-TP" accept=".csv">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input-TP').click()" id="button-import-TP">Importer CSV</button>
+        <button class="size-block" id="button-import-TP">Importer CSV</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>

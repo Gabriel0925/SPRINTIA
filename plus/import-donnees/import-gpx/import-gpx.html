@@ -4,6 +4,7 @@
     <title>SPRINTIA - Fichier GPX</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -94,8 +95,8 @@
     </ul>
 
     <div class="container-center-marge">
-        <input type="file" id="file-input-gpx" accept=".gpx" style="display: none;" onchange="uploadFileGPX(event)">
-        <button class="size-block" onclick="document.getElementById('file-input-gpx').click()" id="button-import-gpx">Importer GPX</button>
+        <input type="file" id="file-input-gpx" accept=".gpx" onchange="uploadFileGPX(event)">
+        <button class="size-block" id="button-import-gpx">Importer GPX</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>

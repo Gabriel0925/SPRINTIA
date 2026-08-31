@@ -4,6 +4,8 @@
     <title>SPRINTIA - Entraînement</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';
+        img-src 'self' data: https://*.tile.openstreetmap.org;"> <!--on autorise la bibliothèque Leaflet a chercher les tuiles de la carte gps-->
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -134,17 +136,17 @@
 
         <!-- La suite est rempli en JS -->
         <div class="page-entrainement"></div>
-        <button class="briefing" style="margin-bottom: var(--SPACE_L); margin-top: 0;" onclick="windowsBriefing('Approfondir l\'analyse')">Approfondir l'analyse</button>
+        <button class="briefing" id="briefing_entrainement">Approfondir l'analyse</button>
 
         <section class="container-data-plus-entrainement">
             <div>
                 <h2>Réhydratation conseillée</h2>
                 <div class="container-rehydratation">
                     <i class="icon_verre_eau"></i>
-                    <p class="value" id="rehydratation" onclick="if (this.textContent == '-- mL') {
-                        alert('Pour obtenir une estimation de réhydratation conseillée veuillez configurer votre profil.')
-                    }">-- <small>mL</small></p>
-                    <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+                    <p class="value" id="rehydratation">-- <small>mL</small></p>
+                    <a href="a-propos.html">
+                        <i class="icon_info"></i>
+                    </a>
                 </div>
             </div>
         
@@ -152,17 +154,17 @@
                 <h2>Transpiration estimée</h2>
                 <div class="container-rehydratation">
                     <i class="icon_goutte_eau"></i>
-                    <p class="value" id="transpiration" onclick="if (this.textContent == '-- mL') {
-                        alert('Pour obtenir une estimation de votre transpiration veuillez configurer votre profil.')
-                    }">-- <small>mL</small></p>
-                    <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+                    <p class="value" id="transpiration">-- <small>mL</small></p>
+                    <a href="a-propos.html">
+                        <i class="icon_info"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
         <h2>Note</h2>
-        <textarea id="note-entrainement" oninput="apparitionButton()" maxlength=500 placeholder="Note de l'entraînement"></textarea>
-        <button class="size-block" id="button-sauvegarder-note-workout" style="display: none; margin-left: 0;" onclick="saveDescription()">Sauvegarder la note</button>
+        <textarea id="note-entrainement" maxlength=500 placeholder="Note de l'entraînement"></textarea>
+        <button class="size-block" id="button-sauvegarder-note-workout">Sauvegarder la note</button>
     </main>
 
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
@@ -194,8 +196,6 @@
     <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-entrainement.js"></script>
     <script src="../assets/base-js/SPRINTIA-briefing.js"></script>
-    
-    
 
 </body>
 </html>

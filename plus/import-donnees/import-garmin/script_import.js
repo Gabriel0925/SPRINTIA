@@ -283,3 +283,11 @@ async function uploadFileGarmin(event) {
 
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputFileInvisible = document.getElementById("file-input-garmin")
+    if (inputFileInvisible) {inputFileInvisible.addEventListener("change", (event) => {uploadFileGarmin(event)})}
+    
+    const inputFile = document.getElementById("button-import-garmin")
+    if (inputFile) {inputFile.addEventListener("change", () => {document.getElementById('file-input-garmin').click()})}
+})

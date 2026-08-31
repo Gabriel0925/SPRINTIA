@@ -512,6 +512,32 @@ async function initialisation() {
     return
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonBriefing = document.getElementById("briefing_entrainement")
+    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing("Approfondir l'analyse")})}
+
+    const infoRehydratation = document.getElementById("rehydratation")
+    if (infoRehydratation) {
+        infoRehydratation.addEventListener("click", (event) => {
+            if (this.textContent == '-- mL') {
+                alert('Pour obtenir une estimation de réhydratation conseillée veuillez configurer votre profil.')
+            }
+        })
+    }
+    const infoTranspiration = document.getElementById("rehydratation")
+    if (infoTranspiration) {
+        infoTranspiration.addEventListener("click", () => {
+            if (this.textContent == '-- mL') {
+                alert('Pour obtenir une estimation de votre transpiration veuillez configurer votre profil.')
+            }
+        })
+    }
+
+    const noteEntrainement = document.getElementById("note-entrainement")
+    if (noteEntrainement) {noteEntrainement.addEventListener("click", apparitionButton)}
+
+    const buttonSaveNoteWorkout = document.getElementById("button-sauvegarder-note-workout")
+    if (buttonSaveNoteWorkout) {buttonSaveNoteWorkout.addEventListener("click", saveDescription)}
+
     initialisation()
 }) 

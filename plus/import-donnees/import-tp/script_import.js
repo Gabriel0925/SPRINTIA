@@ -194,3 +194,11 @@ async function uploadFileTP(event) {
     }
 
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputFileInvisible = document.getElementById("file-input-TP")
+    if (inputFileInvisible) {inputFileInvisible.addEventListener("change", (event) => {uploadFileTP(event)})}
+    
+    const inputFile = document.getElementById("button-import-TP")
+    if (inputFile) {inputFile.addEventListener("change", () => {document.getElementById('file-input-TP').click()})}
+})

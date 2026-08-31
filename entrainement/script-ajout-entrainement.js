@@ -627,7 +627,17 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
     }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const selectHtml = document.getElementById("profil-sport")
+    if (selectHtml) {selectHtml.addEventListener("change", (event) => {cacherInput(event.target.value)})}
+
+    const buttonPlusDatas = document.getElementById("plus-de-donnees")
+    if (buttonPlusDatas) {buttonPlusDatas.addEventListener("click", () => {dataSpecifique(document.getElementById('profil-sport').value)})}
+
+    const buttonSaveWorkout = document.getElementById("button-sauvegarder")
+    if (buttonSaveWorkout) {buttonSaveWorkout.addEventListener("click", saveWorkout)}
+
+
     cacherInput("") // pour cacher tout les champs de datas spécifique
     VerificationParam()
 })

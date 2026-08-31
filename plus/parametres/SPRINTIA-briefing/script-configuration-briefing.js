@@ -77,6 +77,31 @@ function restaureSettings() {
     document.getElementById("niveaux-analyse-user").value = niveauAnalyseUser
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const allItemIA = document.querySelectorAll(".choice-item")
+    if(allItemIA) {
+        let compteurAllItem = 0
+        let tableauOrdreIA = ["vibe", "gemini", "chat-gpt", "claude", "meta-ai", "perplexity", "grok", "copilot", "deepseek", "ia-locale"]
+
+        allItemIA.forEach(element => {
+            let iaAssocier = tableauOrdreIA[compteurAllItem]
+
+            element.addEventListener("click", () => {
+                favoriteIA(iaAssocier)
+            })
+
+            compteurAllItem+=1
+        });
+    }
+
+    const togglePersonnaliteCoach = document.getElementById("toggle-personnalite-coach")
+    if (togglePersonnaliteCoach) {togglePersonnaliteCoach.addEventListener("click", (event) => {personnaliteCoach(event)})}
+
+    const buttonReinitialiser = document.getElementById("reinitialiser-briefing")
+    if (buttonReinitialiser) {buttonReinitialiser.addEventListener("click", function() {reinitialiserBriefing(this)})}
+
+    const selectNiveauxAnalyse = document.getElementById("niveaux-analyse-user")
+    if (selectNiveauxAnalyse) {selectNiveauxAnalyse.addEventListener("change", () => {localStorage.setItem('niveauAnalyseIA', value)})}
+
     restaureSettings()
 })

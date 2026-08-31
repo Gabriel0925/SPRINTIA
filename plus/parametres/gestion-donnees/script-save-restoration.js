@@ -263,3 +263,23 @@ async function suppressionDonnees() {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonExporterEvent = document.getElementById("partager-button")
+    if (buttonExporterEvent) {buttonExporterEvent.addEventListener("click", function() {shareData(buttonExporterEvent)})}
+
+    const buttonDownloadEvent = document.getElementById("download-button")
+    if (buttonDownloadEvent) {buttonDownloadEvent.addEventListener("click", function() {downloadDatas(buttonDownloadEvent)})}
+
+    const buttonReinitialisationEvent = document.getElementById("reinitialiser-SPRINTIA")
+    if (buttonReinitialisationEvent) {buttonReinitialisationEvent.addEventListener("click", suppressionDonnees)}
+    
+    const buttonRestaurationEvent = document.getElementById("restoration-button")
+    if (buttonRestaurationEvent) {buttonRestaurationEvent.addEventListener("click", () => {document.getElementById('file-input').click()})}
+    
+    const buttonNettoyageEvent = document.getElementById("button-nettoyer")
+    if (buttonNettoyageEvent) {buttonNettoyageEvent.addEventListener("click", () => {nettoyerDatas(Number(document.getElementById('conserver-datas').value))})}
+
+    const selectConserverDatas = document.getElementById("conserver-datas")
+    if (selectConserverDatas) {selectConserverDatas.value="90"}
+})

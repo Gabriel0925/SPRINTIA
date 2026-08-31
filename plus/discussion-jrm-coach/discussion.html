@@ -4,6 +4,7 @@
     <title>SPRINTIA - JRM Coach</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -77,7 +78,9 @@
         <div class="toolbar">
             <h1 id="briefing">JRM Coach</h1>
             <div class="container-command">
-                <i class="icon_parametres" onclick="window.location.href = 'parametres.html'"></i>
+                <a href="parametres.html">
+                    <i class="icon_parametres"></i>
+                </a>
             </div>
         </div>
         
@@ -86,14 +89,8 @@
             permettra à votre IA préférée de répondre à votre interrogation.
         </p>
         <div class="container-discuter-coach">
-            <textarea id="promt-user" style="min-height: 300px;" placeholder="Une question ?" maxlength="500"></textarea>
-            <button class="briefing" id="button-SPRINTIA-briefing-ask" onclick="
-                        if (!document.getElementById('promt-user').value.trim()) {
-                            alert('Veuillez ajouter votre question dans le champs de texte avant de vouloir demander à une IA.')
-                        } else {
-                            windowsBriefing('Demander à Vibe')
-                        }">
-            Demander à Vibe</button>
+            <textarea id="promt-user" placeholder="Une question ?" maxlength="500"></textarea>
+            <button class="briefing" id="button-SPRINTIA-briefing-ask">Demander à Vibe</button>
         </div>
     </main>
     <!-- Fenetre flottante pour SPRINTIA Briefing -->
@@ -111,9 +108,7 @@
                 <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
             <div class="container-button-windows-SPRINTIA-briefing">
-                <button onclick="
-                    openIA('vibe')
-                    " id="button-open-ia">Copier & Ouvrir Vibe</button>
+                <button id="button-open-ia">Copier & Ouvrir Vibe</button>
             </div>
 
         </div>
@@ -125,23 +120,7 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script>
-        async function NomCoachInit() {
-            // Recup datas
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("briefing").innerHTML = NomCoach
-            }
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            NomCoachInit()
-        })
-    </script>
+    <script src="script-discussion.js"></script>
     <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
     
     

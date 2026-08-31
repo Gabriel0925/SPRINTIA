@@ -4,6 +4,7 @@
     <title>SPRINTIA - Nettoyage des données</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -86,15 +87,15 @@
         que je sauvegarde toutes vos données sur votre appareil (<a href="../confidentialite/confidentialite.html" class="lien">en savoir plus</a>).
     </p>
 
-    <h2 style="margin-bottom: 0;">Conserver vos données des :</h2>
-    <select style="width: 100%; margin: 0px; margin-top: var(--SPACE_S); max-width: 450px;" id="conserver-datas" autocomplete="off">
+    <h2 id="conserver-data">Conserver vos données des :</h2>
+    <select id="conserver-datas" autocomplete="off">
         <option value="30">30 derniers jours</option>
         <option value="90">90 derniers jours (Recommandé)</option>
         <option value="365">365 derniers jours</option>
     </select>
 
-    <div class="container-center-marge" style="justify-content: start; padding:0; margin-left: 0;">
-        <button style="margin: 0;" class="size-block" onclick="nettoyerDatas(Number(document.getElementById('conserver-datas').value))" id="button-nettoyer">Nettoyer</button>
+    <div class="container-center-marge left">
+        <button class="size-block left" id="button-nettoyer">Nettoyer</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>
@@ -102,15 +103,7 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-save-restoration.js"></script>
-    <script>
-        // init
-        window.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("conserver-datas").value = "90"
-        })
-    </script>
-
-    
+    <script src="script-save-restoration.js"></script>  
 
 </body>
 </html>

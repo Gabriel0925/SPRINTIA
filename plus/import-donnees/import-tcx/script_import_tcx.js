@@ -248,3 +248,11 @@ async function uploadFileTCX(event) {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputFileInvisible = document.getElementById("file-input-tcx")
+    if (inputFileInvisible) {inputFileInvisible.addEventListener("change", (event) => {uploadFileTCX(event)})}
+    
+    const inputFile = document.getElementById("button-import-tcx")
+    if (inputFile) {inputFile.addEventListener("change", () => {document.getElementById('file-input-tcx').click()})}
+})

@@ -4,6 +4,7 @@
     <title>SPRINTIA - Exporter vos données</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -82,7 +83,7 @@
         Partager vos données directement via AirDrop, Quick Share, WhatsApp, Google Drive,...
     </p>
     <div class="container-center-marge">
-        <button class="size-block" onclick="shareData(this)" id="partager-button">Partager vos données</button>
+        <button class="size-block" id="partager-button">Partager vos données</button>
     </div>
 
     <h2>Télécharger vos données</h2>
@@ -90,7 +91,7 @@
         Télécharger un fichier (JSON) qui contient les données que vous avez enregistrées sur SPRINTIA.
     </p>
     <div class="container-center-marge">
-        <button class="size-block" onclick="downloadDatas(this)" id="download-button">Télécharger le fichier</button>
+        <button class="size-block" id="download-button">Télécharger le fichier</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>
@@ -99,7 +100,6 @@
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-save-restoration.js"></script>
-    
 
 </body>
 </html>

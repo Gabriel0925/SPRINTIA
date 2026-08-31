@@ -4,6 +4,7 @@
     <title>SPRINTIA - Paramètres</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -160,27 +161,7 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script>
-        async function NomCoachInit() {
-            // Recup datas
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.getElementById("nom-coach").innerHTML = `Configurer <strong class="jrm-coach">${NomCoach}</strong>`
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            NomCoachInit()
-        })
-    </script>
-
-    
+    <script src="script-parametres.js"></script>
 
 </body>
 </html>

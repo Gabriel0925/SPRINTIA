@@ -4,6 +4,7 @@
     <title>SPRINTIA - Ajouter un entraînement</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -76,7 +77,9 @@
     <div class="toolbar">
         <h1 id="title-page">Ajouter un entraînement</h1>
         <div class="container-command">
-            <i class="icon_file" onclick="window.location.href = '../plus/import-donnees/import-donnees.html'"></i>
+            <a href="../plus/import-donnees/import-donnees.html">
+                <i class="icon_file"></i>
+            </a>
         </div>
     </div>
     
@@ -85,7 +88,7 @@
 
         <div class="form">
  
-            <select id="profil-sport" onchange="cacherInput(value)" autocomplete="off">
+            <select id="profil-sport" autocomplete="off">
                     <optgroup label="LIBRE"> 
                         <option value="Libre">Sport : Libre</option>
                     </optgroup>
@@ -181,7 +184,7 @@
             </div>
 
             <!-- Pour inciter le user a rentrer plus de datas -->
-            <div class="form-different-button" onclick="dataSpecifique(document.getElementById('profil-sport').value)">
+            <div class="form-different-button" id="plus-de-donnees">
                 <p class="form-different-button-text">Plus de données</p>
             </div>
 
@@ -347,10 +350,10 @@
             </div>
         </div>
 
-        <div style="width: 420px;">
+        <div class="container-note-save-workout">
             <textarea id="note-entrainement" maxlength=500 placeholder="Note de l'entraînement"></textarea>
-            <div style=" display: flex; justify-content:center; margin: var(--SPACE_M) 0;">
-                <button class="size-block" id="button-sauvegarder" onclick="saveWorkout()">Sauvegarder</button>
+            <div>
+                <button class="size-block" id="button-sauvegarder">Sauvegarder</button>
             </div>
         </div>
 
@@ -362,36 +365,7 @@
     <script src="../assets/bibliotheques/dexie.js"></script>
     <script src="../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-ajout-entrainement.js"></script> 
-
-    <!-- Pour le RPE -->
-    <script>
-        let Slider = document.querySelector(".slider input")
-        let Progress = document.querySelector(".slider progress")
-        let Display = document.querySelector(".slider-name")
-        const dicoDescriptionRPE = {
-            1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
-            4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
-            7:["Difficile", "#ff4b4c"], 8:["Difficile", "#ff4b4c"],
-            9:["Effort maximal", "#9386f1"], 10:["Effort maximal", "#9386f1"]
-        }
-
-        Slider.addEventListener("input", function() {
-            Progress.value = this.value
-            Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + "<strong>" + dicoDescriptionRPE[this.value][0] + "</strong>"
-            document.querySelector(".slider-name span.RPE").style.background = dicoDescriptionRPE[String(this.value)][1]
-            document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[String(this.value)][1] 
-        })
-
-        let ChampDate = document.getElementById("date-entrainement-user")
-        let DateActuelle = new Date().toISOString() // ça renvoie ça "2026-01-24T13:55:37.171Z"
-        // Enlever la partie qui nous interrese pas
-        DateActuelle = DateActuelle.split("T") // ['2026-01-24', '13:57:55.505Z']
-        DateActuelle = DateActuelle[0] // '2026-01-24'
-
-        ChampDate.max = DateActuelle // bloque la saisi de date dans le futur
-        ChampDate.value = DateActuelle
-    </script>
-    
+    <script src="script-rpe.js"></script>
     
 </body>
 </html>

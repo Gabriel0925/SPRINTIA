@@ -101,3 +101,11 @@ async function uploadFileSPRINTIA(event) {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputFileInvisible = document.getElementById("file-input-json")
+    if (inputFileInvisible) {inputFileInvisible.addEventListener("change", (event) => {uploadFileSPRINTIA(event)})}
+    
+    const inputFile = document.getElementById("button-import-SPRINTIA")
+    if (inputFile) {inputFile.addEventListener("change", () => {document.getElementById('file-input-json').click()})}
+})

@@ -4,6 +4,7 @@
     <title>SPRINTIA - Supprimer vos données</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -82,7 +83,7 @@
         plus récupérer vos données !
     </p>
     <div class="container-center-marge">
-        <button class="size-block" onclick="suppressionDonnees()" id="reinitialiser-SPRINTIA">Supprimer vos données</button>
+        <button class="size-block" id="reinitialiser-SPRINTIA">Supprimer vos données</button>
     </div> 
     
     <script src="../../../assets/base-js/base.js"></script>
@@ -91,7 +92,6 @@
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-save-restoration.js"></script>
-    
 
 </body>
 </html>

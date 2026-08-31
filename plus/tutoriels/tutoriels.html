@@ -4,6 +4,8 @@
     <title>SPRINTIA - Tutoriels</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';
+        frame-src https://www.youtube.com https://www.youtube-nocookie.com;"> <!-- on autorise les frames externes pour yt -->
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -99,14 +101,7 @@
     </div>
 
     <script src="../../assets/base-js/base.js"></script>
-    <script>
-        window.addEventListener("load", () => {
-            let divChargement = document.querySelector(".container-chargement")
-            
-            if (divChargement) {divChargement.classList.add("finish")}
-        })
-    </script>
+    <script src="script-tutoriels.js"></script>
     
-
 </body>
 </html>

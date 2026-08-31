@@ -4,6 +4,7 @@
     <title>SPRINTIA - Fichier SPRINTIA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -92,9 +93,9 @@
 
     <div class="container-center-marge">
         <!-- On n' affiche pas le input file -->
-        <input type="file" id="file-input-json" accept=".json, .txt, text/plain" style="display: none;" onchange="uploadFileSPRINTIA(event)">
+        <input type="file" id="file-input-json" accept=".json, .txt, text/plain">
         <!-- lors du click sur le bouton on simule un click sur le input file qui va appeller la fonction pour lire le fichier json -->
-        <button class="size-block" onclick="document.getElementById('file-input-json').click()" id="button-import-SPRINTIA">Importer fichier SPRINTIA</button>
+        <button class="size-block" id="button-import-SPRINTIA">Importer fichier SPRINTIA</button>
     </div>
     
     <script src="../../../assets/base-js/base.js"></script>

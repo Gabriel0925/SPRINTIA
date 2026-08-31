@@ -4,6 +4,7 @@
     <title>SPRINTIA - Configurer JRM Coach</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -85,17 +86,17 @@
     <section class="container-zone">
         <div class="form">
             <div class="container-input">
-                <input type="text" id="nom-coach" oninput="MajName(value)" placeholder="Nom" autocomplete="off" maxlength="20">
+                <input type="text" id="nom-coach" placeholder="Nom" autocomplete="off" maxlength="20">
                 <div class="label-input">Nom</div>
             </div>
 
-            <select id="style-coach" onchange="ChangeStyle(value)" autocomplete="off">
+            <select id="style-coach" autocomplete="off">
                 <option value="Bienveillant">Style : Bienveillant</option>
                 <option value="Strict-Motivant">Style : Strict & Motivant</option>
                 <option value="Copain">Style : Copain</option>
                 <option value="Go-muscu">Style : Go muscu</option>
             </select>
-            <select id="avatar-coach" onchange="ChangeAvatar(value)" autocomplete="off">
+            <select id="avatar-coach" autocomplete="off">
 
                 <optgroup label="Option">
                     <option value="">Avatar : Rien</option>
@@ -171,7 +172,7 @@
 
             </select>
 
-            <button onclick="SauvegardePreference()" id="bouton-save">Sauvegarder</button>
+            <button id="bouton-save">Sauvegarder</button>
         </div>
 
         <div class="zone-coach">
@@ -184,7 +185,7 @@
     </section>
 
     <div class="container-center-marge">
-        <button class="size-block" id="reinitialiser" onclick="Reinitialisation()">Réinitialiser votre coach</button>
+        <button class="size-block" id="reinitialiser">Réinitialiser votre coach</button>
     </div>
 
     <script src="../../../assets/base-js/base.js"></script>
@@ -192,35 +193,6 @@
     <script src="../../../assets/bibliotheques/dexie.js"></script>
     <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-jrm.js"></script>
-    <script>
-        async function NomCoachInit() {
-            // Recup datas
-            let CoachUserDB = await db.JRM_Coach.toArray()
-
-            if (CoachUserDB.length > 0) { // Si il y a des datas
-                let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-                let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-                document.querySelector("h1").innerHTML = `Configurer <strong id="briefing">${NomCoach}</strong>`
-            }
-
-            return
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            NomCoachInit()
-        })
-        
-        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-        let formKeyEntry = document.querySelector(".form")
-        formKeyEntry.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                SauvegardePreference()
-            }
-        })
-    </script>
-    
-    
 
 </body>
 </html>

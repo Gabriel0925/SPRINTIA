@@ -262,6 +262,9 @@ h1#briefing {
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
+h1.patch-note {
+    margin-top: var(--SPACE_M);
+}
 h1 strong#briefing {
     background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     -webkit-background-clip: text;
@@ -275,6 +278,9 @@ h2{
     line-height: var(--LINE_HEIGHT_TITLE);
     color: var(--COLOR_TEXT_PRIMARY);
     margin: var(--SPACE_M) 0;
+}
+h2#conserver-data {
+    margin-bottom: 0;
 }
 h3{
     font-size: var(--H3);
@@ -297,6 +303,9 @@ p.text {
 p.text.small {
     font-size: var(--P_SMALL);
 }
+p.text.italic {
+    font-style: italic;
+}
 
 
 strong {font-weight: var(--FW_BOLD);}
@@ -318,6 +327,14 @@ a.lien {
 a.lien:active{
     color: var(--COLOR_ACCENT_ACTIVE);
     letter-spacing: 1px;
+}
+
+
+div.separation-line {
+    width: 100%; 
+    height: 2px; 
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE); 
+    border-radius: var(--BORDER_BIG);
 }
 
 
@@ -393,6 +410,13 @@ button.table:active{
 }
 button.size-block { /* Pour les boutons dynamique */
     width: 270px;
+}
+button.size-block#button-sauvegarder-note-workout {
+    display: none;
+    margin-left: 0;
+}
+button.size-block.left {
+    margin: 0;
 }
 
 
@@ -561,14 +585,17 @@ section.tab-bars ul.tab-bars-container-items{
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     pointer-events: all;
-    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     section.tab-bars ul.tab-bars-container-items:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: scale(1.025);
     }
 }
 section.tab-bars ul.tab-bars-container-items:active{
+    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
     transform: scale(1.025);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
@@ -593,7 +620,6 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
 @media (hover: hover) and (pointer: fine) {
     section.tab-bars ul.tab-bars-container-items li.tab-bars-items:hover{
         background: var(--COLOR_GLASSMORPHISM_HOVER);
-        color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.06);
     }
     section.tab-bars ul.tab-bars-container-items:has(li.tab-bars-items:not(.selected):hover) li.tab-bars-items.selected{
@@ -604,12 +630,10 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items:active{
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.06);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected{
     background: var(--COLOR_GLASSMORPHISM_HOVER);
-    color: var(--COLOR_ACCENT_TEXT);
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items.selected:active{
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
@@ -1039,6 +1063,12 @@ section.container-block{
     gap: var(--SPACE_L);
     margin-top: var(--SPACE_L);
 }
+section.container-block.profil{
+    margin: var(--SPACE_M) 0;
+}
+section.container-block.patch-note{
+    margin-bottom: var(--SPACE_M);
+}
 section.container-block.with-container-global-zone {
     flex-direction: column;
 }
@@ -1097,6 +1127,12 @@ textarea {
     transition: border ease-out var(--TIME_TRANSITION_FAST),
                 background-color ease-out var(--TIME_TRANSITION);
 }
+textarea#id-prompt {
+    min-height: 300px;
+}
+textarea#description-user {
+    height: 350px;
+}
 @media (hover: hover) and (pointer: fine) {
     textarea:hover{
         border: 3px solid var(--COLOR_ACCENT_TEXT);
@@ -1146,6 +1182,10 @@ button.briefing:active::before {
 button.briefing:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
+}
+button.briefing#briefing_entrainement {
+    margin-bottom: var(--SPACE_L); 
+    margin-top: 0;
 }
 
 
@@ -2557,6 +2597,15 @@ input[type="date"]::placeholder,
 input[type="text"]::placeholder {
     color: transparent !important; /* Il faut mettre le !important sinon ça ne marche pas */
 }
+
+input#file-input,
+input#file-input-garmin,
+input#file-input-gpx,
+input#file-input-json,
+input#file-input-tcx,
+input#file-input-TP {
+    display: none;
+}
 /* Logique de l'animation */
 div.label-input {
     position: absolute;
@@ -2728,6 +2777,18 @@ select {
     transition: border ease-out var(--TIME_TRANSITION),
                 border-radius ease-out 0.3s;
 }
+select#niveaux-analyse-user{
+    width: 100%; 
+    margin: 0px; 
+    margin-top: var(--SPACE_S); 
+    max-width: 450px;
+}
+select#conserver-datas{
+    width: 100%; 
+    margin: 0px; 
+    margin-top: var(--SPACE_S); 
+    max-width: 450px;
+}
 @media (hover: hover) and (pointer: fine) {
     select:hover {
         border-radius: 4rem;
@@ -2871,6 +2932,7 @@ div.visuel-version p.visuel-version-date{
 }
 div.summary-version {
     background-color: transparent;
+    margin-top: var(--SPACE_M);
 }
 div.summary-version p.summary-version-title {
     margin-bottom: var(--SPACE_S);
@@ -2884,6 +2946,9 @@ div.summary-version p.summary-version-summary {
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     border-bottom: solid 2px var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+div.summary-version p.summary-version-summary.without-border {
+    border-bottom: 0px;
 }
 
 section.container-new-functionnality {
@@ -2998,6 +3063,11 @@ div.carousel-content div.card-releases p.description-maj {
     -webkit-line-clamp: 3;
     line-clamp: 3; 
     overflow: hidden;
+}
+div.carousel-content button {
+    scroll-snap-align: center; /*le button se centre dans le carousel*/
+    margin-left: var(--SPACE_M);
+    border-radius: var(--BORDER_BIG);
 }
 
 
@@ -3241,8 +3311,23 @@ div.container-center-marge {
     justify-content: center;
     display: flex;
 }
+div.container-center-marge.left {
+    justify-content: start; 
+    padding:0; 
+    margin-left: 0;
+}
 div.container-center-marge button{
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
+}
+
+
+div.container-note-save-workout {
+    width: 420px;
+}
+div.container-note-save-workout div{
+    display: flex; 
+    justify-content:center; 
+    margin: var(--SPACE_M) 0;
 }
 
 

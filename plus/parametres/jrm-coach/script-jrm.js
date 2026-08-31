@@ -174,6 +174,41 @@ async function Reinitialisation() {
     return
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+async function NomCoachInit() {
+    // Recup datas
+    let CoachUserDB = await db.JRM_Coach.toArray()
+
+    if (CoachUserDB.length > 0) { // Si il y a des datas
+        let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
+ 
+        document.querySelector("h1").innerHTML = `Configurer <strong id="briefing">${NomCoach}</strong>`
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputNomDuCoach = document.getElementById("nom-coach")
+    if (inputNomDuCoach) {inputNomDuCoach.addEventListener("input", (event) => {MajName(event.target.value)})}
+
+    const selectStyleCoach = document.getElementById("style-coach")
+    if (selectStyleCoach) {selectStyleCoach.addEventListener("change", (event) => {ChangeStyle(event.target.value)})}
+
+    const selectAvatarCoach = document.getElementById("avatar-coach")
+    if (selectAvatarCoach) {selectAvatarCoach.addEventListener("change", (event) => {ChangeAvatar(event.target.value)})}
+
+    const buttonSave = document.getElementById("bouton-save")
+    if (buttonSave) {buttonSave.addEventListener("click", SauvegardePreference)}
+
+    const buttonReinitialisation = document.getElementById("reinitialiser")
+    if (buttonReinitialisation) {buttonReinitialisation.addEventListener("click", Reinitialisation)}
+
     Initialisation()
+    NomCoachInit()
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            SauvegardePreference()
+        }
+    })
 })

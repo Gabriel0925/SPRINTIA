@@ -4,6 +4,7 @@
     <title>SPRINTIA - Entraînement du Jour</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -75,7 +76,7 @@
     
     <div class="toolbar">
         <h1>Entraînement du Jour</h1>
-        <div class="container-command" style="display: none;">
+        <div class="container-command display-none">
             <i class="icon_refresh" onclick="if(confirm('En générant un nouvel entraînement, celui-ci ne sera plus accessible. Êtes-vous sûr de vouloir continuer ?')){generationWorkout()}"></i>
         </div>
     </div>
@@ -87,10 +88,10 @@
             <h2>Quelle durée ?</h2>
             <section class="container-round-input">
                 
-                <div class="round-input-item duree selected" id="25" onclick="selectItem(this, '.round-input-item.duree')">
+                <div class="round-input-item duree selected" id="25">
                     <p>25</p>
                 </div>
-                <div class="round-input-item duree" id="50" onclick="selectItem(this, '.round-input-item.duree')">
+                <div class="round-input-item duree" id="50">
                     <p>50</p>
                 </div>
             
@@ -103,13 +104,13 @@
             <h2>Quel sport ?</h2>
             <section class="container-round-input">
                 
-                <div class="round-input-item sport selected" id="course" onclick="selectItem(this, '.round-input-item.sport')">
+                <div class="round-input-item sport selected" id="course" onclick="">
                     <i class="icon_entrainement"></i>
                 </div>
-                <div class="round-input-item sport" id="velo" onclick="selectItem(this, '.round-input-item.sport')">
+                <div class="round-input-item sport" id="velo">
                     <i class="icon_velo"></i>
                 </div>
-                <div class="round-input-item sport" id="natation" onclick="selectItem(this, '.round-input-item.sport')">
+                <div class="round-input-item sport" id="natation">
                     <i class="icon_natation"></i>
                 </div>
             
@@ -122,9 +123,9 @@
             <h2>Quelle intensité ?</h2>
             <section class="container-round-input">
                 
-                <div class="round-input-item intensity selected" id="facile" onclick="selectItem(this, '.round-input-item.intensity')">Facile</div>
-                <div class="round-input-item intensity" id="modere" onclick="selectItem(this, '.round-input-item.intensity')">Modéré</div>
-                <div class="round-input-item intensity" id="difficile" onclick="selectItem(this, '.round-input-item.intensity')">Difficile</div>
+                <div class="round-input-item intensity selected" id="facile">Facile</div>
+                <div class="round-input-item intensity" id="modere">Modéré</div>
+                <div class="round-input-item intensity" id="difficile">Difficile</div>
             
             </section>
 
@@ -133,13 +134,12 @@
     </section>
 
     <div class="container-center-marge">
-        <button id="button-generation-entrainements" class="size-block" onclick="generationWorkout()">Générer un entraînement</button>
+        <button id="button-generation-entrainements" class="size-block">Générer un entraînement</button>
     </div>
 
     <script src="../../../assets/base-js/base.js"></script>
     <script src="bdd-entrainement.js"></script>
     <script src="script-entrainement-du-jour.js"></script>
-    
     
 </body>
 </html>

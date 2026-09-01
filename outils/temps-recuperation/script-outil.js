@@ -42,3 +42,36 @@ function comboBox() {
 
     if (!isNaN(dureeUser) || !isNaN(valueRpeUser)) {estimationTempsRecuperation()} // si les champs sont remplit on lance direct les analyses
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const selectMethode = document.getElementById("methode-user")
+    if (selectMethode) {selectMethode.addEventListener("change", comboBox)}
+    
+    const buttonEstimer = document.getElementById("button-estimer")
+    if (buttonEstimer) {buttonEstimer.addEventListener("click", estimationTempsRecuperation)}
+
+    let Slider = document.querySelector(".slider input")
+    let Progress = document.querySelector(".slider progress")
+    let Display = document.querySelector(".slider-name")
+    const dicoDescriptionRPE = {
+        1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
+        4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
+        7:["Difficile", "#ff4b4c"], 8:["Difficile", "#ff4b4c"],
+        9:["Effort maximal", "#9386f1"], 10:["Effort maximal", "#9386f1"]
+    }
+
+    Slider.addEventListener("input", function() {
+        Progress.value = this.value
+        Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + "<strong>" + dicoDescriptionRPE[this.value][0] + "</strong>"
+        document.querySelector(".slider-name span.RPE").style.background = dicoDescriptionRPE[String(this.value)][1]
+        document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[String(this.value)][1]
+    })
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            estimationTempsRecuperation()
+        }
+    })
+})

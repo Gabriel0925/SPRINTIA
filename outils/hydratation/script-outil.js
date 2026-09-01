@@ -37,3 +37,22 @@ function CalculGeneral() {
     document.querySelector(".zone-result-interpretation").innerHTML = Interpretation
     return
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const buttonEstimer = document.getElementById("button-estimer")
+    if (buttonEstimer) {buttonEstimer.addEventListener("click", CalculGeneral)}
+
+    await remplissageChamps(["poids-user"])
+
+    if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
+        document.getElementById("button-estimer").click()
+    }
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            CalculGeneral()
+        }
+    })
+})

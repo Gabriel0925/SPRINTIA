@@ -4,6 +4,7 @@
     <title>SPRINTIA - Convertisseur</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -76,7 +77,9 @@
     <div class="toolbar">
         <h1>Convertisseur</h1>
         <div class="container-command">
-            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+            <a href="a-propos.html">
+                <i class="icon_info"></i>
+            </a>
         </div>
     </div>
 
@@ -84,12 +87,12 @@
 
         <div class="form">
             <div class="container-input">
-                <input type="number" id="kilometres" placeholder="Saisis les kilomètres" oninput="KmMiles()" autocomplete="off">
+                <input type="number" id="kilometres" placeholder="Saisis les kilomètres" autocomplete="off">
                 <div class="label-input">Saisis les kilomètres</div>
             </div>
                     
             <div class="container-input">
-                <input type="number" id="miles" placeholder="Ou saisis les miles" oninput="MilesKm()" autocomplete="off">
+                <input type="number" id="miles" placeholder="Ou saisis les miles" autocomplete="off">
                 <div class="label-input">Ou saisis les miles</div>
             </div>
         </div>
@@ -98,8 +101,6 @@
 
     <script src="../../assets/base-js/base.js"></script>
     <script src="script-outil.js"></script>
-    
-    
 
 </body>
 </html>

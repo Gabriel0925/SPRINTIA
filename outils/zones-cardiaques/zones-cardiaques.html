@@ -4,6 +4,7 @@
     <title>SPRINTIA - Zones Cardiaques</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -77,7 +78,9 @@
     <div class="toolbar">
         <h1>Zones Cardiaques</h1>
         <div class="container-command">
-            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+            <a href="a-propos.html">
+                <i class="icon_info"></i>
+            </a>
         </div>
     </div>
 
@@ -85,7 +88,7 @@
 
         <div class="form">
 
-            <select id="methode-user" onchange="comboBox(value)" autocomplete="off">
+            <select id="methode-user" autocomplete="off">
                 <option value="Reserve">Méthode : RFC (recommandé)</option>
                 <option value="Max">Méthode : FC max</option>
             </select>
@@ -105,7 +108,7 @@
                 <div class="label-input">FC max (optionnelle)</div>
             </div>
 
-            <button id="button-calcul" onclick="verificationInputBase()">Calculer</button>
+            <button id="button-calcul">Calculer</button>
 
         </div>
 
@@ -177,25 +180,6 @@
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-outil.js"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", async () => {
-            await remplissageChamps(["age-user", "fc-repos-user"])
-
-            if (document.getElementById("age-user").value && document.getElementById("fc-repos-user").value && !isNaN(document.getElementById("age-user").value) && !isNaN(document.getElementById("fc-repos-user").value)) {
-                document.getElementById("button-calcul").click()
-            }
-        })
-
-        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-        let formKeyEntry = document.querySelector(".form")
-        formKeyEntry.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                verificationInputBase()
-            }
-        })
-    </script>
-    
-    
     
 </body>
 </html>

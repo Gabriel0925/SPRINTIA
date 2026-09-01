@@ -4,6 +4,7 @@
     <title>SPRINTIA - Outils</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -81,16 +82,18 @@
     <div class="carousel">
         <div class="carousel-content">
 
-            <div class="card-tool first"  onclick="window.location.href = 'generation-intelligente/entrainement-du-jour/entrainement-du-jour.html'">
-                <div class="icone">
-                    <i class="icon_entrainement_du_jour"></i>
-                    <p class="title">Entraînement du Jour</p>
+            <a href="generation-intelligente/entrainement-du-jour/entrainement-du-jour.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_entrainement_du_jour"></i>
+                        <p class="title">Entraînement du Jour</p>
+                    </div>
+                    <p>
+                        Générez un entraînement en fonction de l'intensité et de la durée que vous souhaitez puis envoyez directement cet
+                        entraînement sur votre montre COROS.
+                    </p>
                 </div>
-                <p>
-                    Générez un entraînement en fonction de l'intensité et de la durée que vous souhaitez puis envoyez directement cet
-                    entraînement sur votre montre COROS.
-                </p>
-            </div>
+            </a>
 
         </div>
     </div>
@@ -99,29 +102,35 @@
     <div class="carousel">
         <div class="carousel-content">
 
-            <div class="card-tool first"  onclick="window.location.href = 'zones-cardiaques/zones-cardiaques.html'">
-                <div class="icone">
-                    <i class="icon_zones_cardiaques"></i>
-                    <p class="title">Zones Cardiaques</p>
+            <a href="zones-cardiaques/zones-cardiaques.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_zones_cardiaques"></i>
+                        <p class="title">Zones Cardiaques</p>
+                    </div>
+                    <p>Découvrez vos zones de fréquence cardiaque pour adapter l'intensité de vos entraînements.</p>
                 </div>
-                <p>Découvrez vos zones de fréquence cardiaque pour adapter l'intensité de vos entraînements.</p>
-            </div>
-            <div class="card-tool" onclick="window.location.href = 'metabolisme-base/metabolisme-base.html'">
-                <div class="icone">
-                    <i class="icon_metabolisme_base"></i>
-                    <p class="title">Métabolisme de Base</p>
+            </a>
+            <a href="metabolisme-base/metabolisme-base.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_metabolisme_base"></i>
+                        <p class="title">Métabolisme de Base</p>
+                    </div>
+                    <p>
+                        Calculez l'énergie de base nécessaire à votre corps pour construire un plan nutritionnel.
+                    </p>
                 </div>
-                <p>
-                    Calculez l'énergie de base nécessaire à votre corps pour construire un plan nutritionnel.
-                </p>
-            </div>
-            <div class="card-tool" onclick="window.location.href = 'calculateur-imc/calculateur-imc.html'">
-                <div class="icone">
-                    <i class="icon_IMC"></i>
-                    <p class="title">Calculateur IMC</p>
+            </a>
+            <a href="calculateur-imc/calculateur-imc.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_IMC"></i>
+                        <p class="title">Calculateur IMC</p>
+                    </div>
+                    <p>Calculez votre IMC et obtenez une interprétation de votre IMC.</p>
                 </div>
-                <p>Calculez votre IMC et obtenez une interprétation de votre IMC.</p>
-            </div>
+            </a>
 
         </div>
     </div>
@@ -130,22 +139,26 @@
     <div class="carousel">
         <div class="carousel-content">
             
-            <div class="card-tool" onclick="window.location.href = 'estimation-1rm/estimation-1RM.html'">
-                <div class="icone">
-                    <i class="icon_RM"></i>
-                    <p class="title">Estimation 1RM</p>
+            <a href="estimation-1rm/estimation-1RM.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_RM"></i>
+                        <p class="title">Estimation 1RM</p>
+                    </div>
+                    <p>Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.</p>
                 </div>
-                <p>Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.</p>
-            </div>
-            <div class="card-tool" onclick="window.location.href = 'proteines-quotidiennes/proteines-quotidienne.html'">
-                <div class="icone">
-                    <i class="icon_proteines"></i>
-                    <p class="title">Protéines Quotidiennes</p>
+            </a>
+            <a href="proteines-quotidiennes/proteines-quotidienne.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_proteines"></i>
+                        <p class="title">Protéines Quotidiennes</p>
+                    </div>
+                    <p>
+                        Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.
+                    </p>
                 </div>
-                <p>
-                    Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.
-                </p>
-            </div>
+            </a>
 
         </div>
     </div>
@@ -154,35 +167,40 @@
     <div class="carousel">
         <div class="carousel-content">
     
-            <div class="card-tool first" onclick="window.location.href = 'temps-recuperation/temps-recuperation.html'">
-                <div class="icone">
-                    <i class="icon_temps_recup"></i>
-                    <p class="title">Temps de Récupération</p>
+            <a href="temps-recuperation/temps-recuperation.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_temps_recup"></i>
+                        <p class="title">Temps de Récupération</p>
+                    </div>
+                    <p>Estimez le temps de récupération optimal pour récupérer de votre dernier entraînement.</p>
                 </div>
-                <p>Estimez le temps de récupération optimal pour récupérer de votre dernier entraînement.</p>
-            </div>
-            <div class="card-tool"  onclick="window.location.href = 'hydratation/hydratation.html'">
-                <div class="icone">
-                    <i class="icon_hydratation"></i>
-                    <p class="title">Hydratation</p>
+            </a>
+            <a href="hydratation/hydratation.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_hydratation"></i>
+                        <p class="title">Hydratation</p>
+                    </div>
+                    <p>
+                        Calculez la quantité d'eau dont votre corps a besoin au quotidien.
+                    </p>
                 </div>
-                <p>
-                    Calculez la quantité d'eau dont votre corps a besoin au quotidien.
-                </p>
-            </div>
-            <div class="card-tool" onclick="window.location.href = 'convertisseur/convertisseur.html'">
-                <div class="icone">
-                    <i class="icon_conversion"></i>
-                    <p class="title">Convertisseur</p>
-                </div>
-                <p>Convertissez une distance des kilomètres en miles ou inversement.</p>
-            </div> 
+            </a>
+            <a href="convertisseur/convertisseur.html">
+                <div class="card-tool">
+                    <div class="icone">
+                        <i class="icon_conversion"></i>
+                        <p class="title">Convertisseur</p>
+                    </div>
+                    <p>Convertissez une distance des kilomètres en miles ou inversement.</p>
+                </div> 
+            </a>
 
         </div>
     </div>
 
     <script src="../assets/base-js/base.js"></script>
-    
     
 </body>
 </html>

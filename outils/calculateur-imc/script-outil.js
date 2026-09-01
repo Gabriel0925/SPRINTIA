@@ -45,3 +45,22 @@ function calculIMC() {
 
     return
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await remplissageChamps(["taille-user", "poids-user"])
+
+    if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && !isNaN(document.getElementById("taille-user").value) && !isNaN(document.getElementById("poids-user").value)) {
+        document.getElementById("button-calcul-imc").click()
+    }
+
+    const buttonCalcul = document.getElementById("button-calcul-imc")
+    if (buttonCalcul) {buttonCalcul.addEventListener("click", calculIMC)}
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            calculIMC()
+        }
+    })
+})

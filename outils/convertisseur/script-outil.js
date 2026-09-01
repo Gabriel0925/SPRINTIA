@@ -13,3 +13,11 @@ function KmMiles() {
     document.getElementById("miles").value = Miles.toFixed(2)
     return
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputKm = document.getElementById("kilometres")
+    if (inputKm) {inputKm.addEventListener("input", KmMiles)}
+
+    const inputMiles = document.getElementById("miles")
+    if (inputMiles) {inputMiles.addEventListener("input", MilesKm)}
+})

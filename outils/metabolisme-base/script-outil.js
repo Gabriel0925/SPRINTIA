@@ -39,3 +39,23 @@ function runAnalyse() {
     // affichage
     document.getElementById("resultat-mb").innerHTML = mbUser + " kcal/j"
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const buttonCalcul = document.getElementById("button-calcul-mb")
+    if (buttonCalcul) {buttonCalcul.addEventListener("click", runAnalyse)}
+
+    await remplissageChamps(["sexe-user", "age-user","taille-user", "poids-user"])
+
+    if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && 
+        document.getElementById("age-user").value) {
+        document.getElementById("button-calcul-mb").click()
+    }
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            runAnalyse()
+        }
+    })
+})

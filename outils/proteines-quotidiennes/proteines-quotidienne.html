@@ -4,6 +4,7 @@
     <title>SPRINTIA - Protéines Quotidiennes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -77,7 +78,9 @@
     <div class="toolbar">
         <h1>Protéines Quotidiennes</h1>
         <div class="container-command">
-            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+            <a href="a-propos.html">
+                <i class="icon_info"></i>
+            </a>
         </div>
     </div>
 
@@ -86,7 +89,7 @@
         <div class="form">
             <p id="zone-error" class="indication"></p>
 
-            <select id="objectif-user" onchange="estimationProteines()" autocomplete="off">
+            <select id="objectif-user" autocomplete="off">
                 <option value="perte-poids">Objectif : Perte de poids</option>
                 <option value="minimum">Objectif : Minimum vital</option>
                 <option value="meilleure">Objectif : Meilleure santé</option>
@@ -95,8 +98,7 @@
             </select>
                 
             <div class="container-input">
-                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off" 
-                oninput="estimationProteines()">
+                <input type="number" id="poids-user" placeholder="Poids (kg)" autocomplete="off">
                 <div class="label-input">Poids (kg)</div>
             </div>
 
@@ -116,26 +118,6 @@
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
     <script src="script-outil.js"></script>
-    <script>        
-        window.addEventListener("DOMContentLoaded", async () => {
-            await remplissageChamps(["poids-user"])
-
-            if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
-                estimationProteines()
-            }
-        })
-
-        window.addEventListener("DOMContentLoaded", remplissageChamps(["poids-user"]))
-        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-        let formKeyEntry = document.querySelector(".form")
-        formKeyEntry.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                estimationProteines()
-            }
-        })
-    </script>
-
-    
     
 </body>
 </html>

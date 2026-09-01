@@ -103,3 +103,25 @@ function comboBox(methodeCalcul) { // pour gérer les inputs certains doivent di
     document.getElementById("fc-repos-user").style.display = dico[methodeCalcul]["inputFcRepos"]
     document.getElementById("label-fc-user").style.display = dico[methodeCalcul]["inputFcRepos"]
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const selectMethode = document.getElementById("methode-user")
+    if (selectMethode) {selectMethode.addEventListener("change", (event) => {comboBox(event.target.value)})}
+    
+    const buttonCalcul = document.getElementById("button-calcul")
+    if (buttonCalcul) {buttonCalcul.addEventListener("click", verificationInputBase)}
+
+    await remplissageChamps(["age-user", "fc-repos-user"])
+
+    if (document.getElementById("age-user").value && document.getElementById("fc-repos-user").value && !isNaN(document.getElementById("age-user").value) && !isNaN(document.getElementById("fc-repos-user").value)) {
+        document.getElementById("button-calcul").click()
+    }
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            verificationInputBase()
+        }
+    })
+})

@@ -37,3 +37,25 @@ function estimationProteines() {
 
     return
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const selectObjectif = document.getElementById("objectif-user")
+    if (selectObjectif) {selectObjectif.addEventListener("change", estimationProteines)}
+    
+    const inputPoids = document.getElementById("poids-user")
+    if (inputPoids) {inputPoids.addEventListener("input", estimationProteines)}
+
+    await remplissageChamps(["poids-user"])
+
+    if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
+        estimationProteines()
+    }
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            estimationProteines()
+        }
+    })
+})

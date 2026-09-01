@@ -326,3 +326,27 @@ async function generationWorkout() {
         button.disabled = false
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    let duree25 = document.getElementById("25")
+    if (duree25) {duree25.addEventListener("click", function() {selectItem(duree25, '.round-input-item.duree')})}
+    let duree50 = document.getElementById("50")
+    if (duree50) {duree50.addEventListener("click", function() {selectItem(duree50, '.round-input-item.duree')})}
+    
+    let sportCourse = document.getElementById("course")
+    if (sportCourse) {sportCourse.addEventListener("click", function() {selectItem(this, '.round-input-item.sport')})}
+    let sportVelo = document.getElementById("velo")
+    if (sportVelo) {sportVelo.addEventListener("click", function() {selectItem(this, '.round-input-item.sport')})}
+    let sportNatation = document.getElementById("natation")
+    if (sportNatation) {sportNatation.addEventListener("click", function() {selectItem(this, '.round-input-item.sport')})}
+    
+    let intensiterFacile = document.getElementById("facile")
+    if (intensiterFacile) {intensiterFacile.addEventListener("click", function() {selectItem(this, '.round-input-item.intensity')})}
+    let intensiterModere = document.getElementById("modere")
+    if (intensiterModere) {intensiterModere.addEventListener("click", function() {selectItem(this, '.round-input-item.intensity')})}
+    let intensiterDifficile = document.getElementById("difficile")
+    if (intensiterDifficile) {intensiterDifficile.addEventListener("click", function() {selectItem(this, '.round-input-item.intensity')})}
+    
+    let buttonGeneration = document.getElementById("button-generation-entrainements")
+    if (buttonGeneration) {buttonGeneration.addEventListener("click", generationWorkout)}
+})

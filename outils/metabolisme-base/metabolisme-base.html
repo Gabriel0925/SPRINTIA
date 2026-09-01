@@ -4,6 +4,7 @@
     <title>SPRINTIA - Métabolisme de Base</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -76,7 +77,9 @@
     <div class="toolbar">
         <h1>Métabolisme de Base</h1>
         <div class="container-command">
-            <i class="icon_info" onclick="window.location.href = 'a-propos.html'"></i>
+            <a href="a-propos.html">
+                <i class="icon_info"></i>
+            </a>
         </div>
     </div>
 
@@ -108,7 +111,7 @@
 
             </div>
 
-            <button id="button-calcul-mb" onclick="runAnalyse()">Calculer</button>
+            <button id="button-calcul-mb">Calculer</button>
 
         </div>
 
@@ -124,28 +127,7 @@
     <script src="../../assets/base-js/base.js"></script>
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> 
-
     <script src="script-outil.js"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", async () => {
-            await remplissageChamps(["sexe-user", "age-user","taille-user", "poids-user"])
-
-            if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && 
-                    document.getElementById("age-user").value) {
-                document.getElementById("button-calcul-mb").click()
-            }
-        })
-        
-        // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-        let formKeyEntry = document.querySelector(".form")
-        formKeyEntry.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                runAnalyse()
-            }
-        })
-    </script>
-
-    
     
 </body>
 </html>

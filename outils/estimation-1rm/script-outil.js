@@ -40,3 +40,19 @@ function MethodeChoisie() {
     EstimationOneRep()
     return
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonEstimer = document.getElementById("button-estimer")
+    if (buttonEstimer) {buttonEstimer.addEventListener("click", EstimationOneRep)}
+
+    const selectMethode = document.getElementById("methode-user")
+    if (selectMethode) {selectMethode.addEventListener("change", MethodeChoisie)}
+
+    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
+    let formKeyEntry = document.querySelector(".form")
+    formKeyEntry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            EstimationOneRep()
+        }
+    })
+})

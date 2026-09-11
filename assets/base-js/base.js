@@ -53,7 +53,7 @@ function selectedBFCache(ongletName) {
 }
 document.addEventListener("DOMContentLoaded", () =>{
     const logoInHeader = document.querySelector("section.header div.logo")
-    if (logoInHeader) {logoInHeader.addEventListener("click", () => {navigationLinks(this, 'header', 'Entraînement')})}
+    if (logoInHeader) {logoInHeader.addEventListener("click", () => {navigationLinks(logoInHeader, 'header', 'Entraînement')})}
 
     const eltHeader = document.querySelectorAll("ul.header-container-items li.header-items")
     if (eltHeader) {

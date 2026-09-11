@@ -54,7 +54,6 @@ function openIA(favoriteIA) {
         })
 
     } else {
-        console.log("ici")
         alert("Aucun prompt n'a été créé car SPRINTIA n'a pas assez de données pour en générer un !")
         return
     }
@@ -96,6 +95,8 @@ function nameFavoriteIA() {
         if (buttonEnDessousTextarea) {
             buttonEnDessousTextarea.textContent = "Demander à " + dicoIA[favoriteIA]
         }
+    } else {
+        document.getElementById("button-open-ia").addEventListener("click", () => {openIA("vibe")})
     }
 }
 

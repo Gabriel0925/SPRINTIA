@@ -1494,6 +1494,7 @@ div.menu-many-action.open {
     transition: all ease-out 0.21s;
 }
 div.menu-many-action.open:active {
+    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
     transform: translate(0, -22px) scale(1.025);
 }
 div.menu-many-action li {
@@ -1527,17 +1528,16 @@ div.menu-many-action.open li:nth-child(5) {
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action.open:hover {
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: translate(0, -22px) scale(1.025);
     }
     div.menu-many-action li:hover {
         background: var(--COLOR_GLASSMORPHISM_HOVER);
-        color: var(--COLOR_ACCENT_TEXT);
         transform: scale(1.06);
     }
 }
 div.menu-many-action li:active{
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    color: var(--COLOR_ACCENT_TEXT);
     transform: scale(1.06);
 }
 div.menu-many-action li i{

@@ -1,4 +1,3 @@
-
 async function NomCoachInit() {
     // Recup datas
     let CoachUserDB = await db.JRM_Coach.toArray()
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (allCardPatchNote) {
         allCardPatchNote.forEach(element => {
             element.addEventListener("click", () => {
-                clickPatchNote(this)
+                clickPatchNote(element)
             })
         });
     }

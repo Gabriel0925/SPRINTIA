@@ -15,7 +15,11 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.verce
 | ![Interface de la page des statistiques](/images-readme/statistiques.JPG) | ![Interface de la page de progression](/images-readme/progression.JPG) |
 
 ## Philosophie
-J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'est pour cela que l'application **vous accompagne avant et après vos entraînements, mais pas pendant !** Lorsque l'athlète pratique son sport, il doit être concentré sur sa performance, sur son effort ou encore sur son plaisir, et non sur son smartphone ou sur ses statistiques. Ce qui prime lors de vos entraînements, c'est de laisser parler votre instinct, vos sensations et non vos données ! C'est pour cela que SPRINTIA ne tracke aucunes données en temps réel, **SPRINTIA préfère se nourrir de vos données après vos entraînements** grâce à des fichiers **TCX**, **GPX** ou même grâce à la **saisie manuelle** intégrée à l'application. SPRINTIA est donc **un outil d'analyse et de suivi**, **pas un outil de tracking en temps réel**.
+J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'est pour cela que l'application **vous accompagne avant et après vos entraînements, mais pas pendant !** Lorsque l'athlète pratique son sport, il doit être concentré sur sa performance, sur son effort ou encore sur son plaisir, et non sur son smartphone ou sur ses statistiques. Ce qui prime lors de vos entraînements, c'est de laisser parler votre instinct, vos sensations et non vos données ! C'est pour cela que SPRINTIA ne tracke aucunes données en temps réel.
+
+SPRINTIA se nourrit des données que votre montre (Garmin, COROS, Suunto,...) ou votre application (Strava, Nike Run Club,...) ont collectées lors de vos entraînements. À la fin de votre entraînement, vous n'avez plus qu'à exporter les données de votre entraînement via un fichier **TCX** ou **GPX** et à les importer dans SPRINTIA. Vous pouvez également saisir vos entraînements manuellement si vous n'avez pas de montre ou d'application pour les enregistrer.
+
+Pour finir, j'ai couçu SPRINTIA pour rendre accessible des algorithmes disponibles sur des montres haut de gamme ou des applications payantes. Cela veut dire que vous pouvez utiliser SPRINTIA avec n'importe quelle montre (entrée de gamme, milieu de gamme, haut de gamme) et si vous n'avez pas de montre, vous pouvez utiliser Strava ou Nike Run Club pour enregistrer vos entraînements et ensuite les importer dans SPRINTIA **grâce à un fichier TCX ou GPX**. Cela veut dire que vous pouvez utiliser SPRINTIA **même si vous n'avez pas de montre connectée**.
 
 ## Fonctionnalités
 
@@ -45,7 +49,6 @@ J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'
 (Attention : ces algorithmes sont un guide, ils sont là pour vous aider à progresser mais vos sensations et votre instinct restent les plus importants !)
 
 ### Fonctionnalité d'analyse en profondeur (IA) & Génération intelligente
-
 * **SPRINTIA Briefing** : Générateur de prompt (contenant vos données d'entraînement) pour votre IA préférée : Vibe, Gemini, ChatGPT,... Cette fonctionnalité vous permet **d'analyser vos données d'entraînement en profondeur pour vous améliorer**.
     * Analyser vos tendances d'entraînement
     * Analyser votre entraînement
@@ -67,17 +70,34 @@ J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'
     * De plus, si vous avez une montre de la marque COROS, vous pouvez envoyer cet entraînement sur votre compte COROS en un seul clic ! Par la suite, vous n'avez plus qu'à l'envoyer sur votre montre et à le suivre.
 
 ### Personnalisation & Coaching
-
 * **JRM Coach** : c'est le coach intégré dans l'application. C'est lui qui va interpréter vos données dans les algorithmes. Vous pouvez le personnaliser pour avoir le coach qui vous correspond le mieux.
     * Choisissez son nom
     * Choisissez son style (Bienveillant, Strict & Motivant, Copain, Go muscu)
     * Choisissez son avatar (émoji)
 
-## Fonctionnalités clés
-* Statistiques : Durée totale d'entraînement, Nb entraînement, Charge d'entraînement totale sur la période sélectionnée (7J, 30J, 90J, 365J), Sports pratiqués en pourcentage, Statistiques par sport (Course, Vélo, Natation).
+### Autres fonctionnalités
+* Statistiques : visualisez vos données d'entraînement sur une période sélectionnée (7J, 30J, 90J, 365J), vous pouvez consulter les statistiques suivantes sur cette période :
+    * Durée totale d'entraînement
+    * Nombre d'entraînement
+    * Charge d'entraînement totale
+    * Graphique en camembert des sports pratiqués en pourcentage
+    * Temps, distance et nombre d'entraînement par sport (Course, Vélo, Natation)
 
-## Analyse
-* Des outils rapides (Zones Cardiaques, Métabolisme de base, IMC, Estimation 1RM, Protéines Quotidiennes, Temps de Récupération, Hydratation, Convertisseur km/miles,...)
+### Outils rapides
+* Zones Cardiaques : Découvrez vos zones de fréquence cardiaque pour adapter l'intensité de vos entraînements.
+* Métabolisme de base : Calculez l'énergie de base nécessaire à votre corps pour construire un plan d'entraînement.
+* Calculateur IMC : Calculez votre IMC et obtenez une interprétation de votre résultat.
+* Estimation 1RM (One Repetition Maximum) : Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.
+* Protéines Quotidiennes : Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.
+* Temps de Récupération : Estimez le temps de récupération optimal pour récupérer de votre dernier entraînement.
+* Hydratation : Calculez la quantité d'eau dont votre corps a besoin au quotidien.
+* Convertisseur km/miles : Convertissez une distance des kilomètres en miles ou inversement.
+
+## Partage d'entraînement
+Si vous allez courir avec un ami et que vous utilisez tous les deux SPRINTIA, vous pouvez vous simplifier la vie. Au lieu de saisir chacun de votre côté votre entraînement, vous pouvez simplement le partager à votre ami. C'est relativement simple, une fois l'entraînement bouclé, l'un de vous importe le fichier TCX ou GPX dans SPRINTIA et ensuite en cliquant sur le détail de l'entraînement, puis "Plus" et enfin "Partager", vous pouvez partager le fichier de l'entraînement via Airdrop, WhatsApp,... et votre ami n'a plus qu'à l'importer dans SPRINTIA pour avoir le même entraînement que vous.
+
+## Import des données
+Vous pouvez importer vos données d'un entraînement, grâce à un fichier **TCX** ou **GPX**. De plus, vous pouvez importer votre historique d'entraînement grâce à un fichier **CSV** de Garmin ou de TrainingPeaks.
 
 ## Confidentialité
 **Je n'ai pas conçu SPRINTIA pour collecter vos donnnées personnelles**, au contraire, pour moi j'essaie d'appliquer des principes du quotidien. Est-ce que dans la rue vous donneriez vos données personnelles à un inconnu pour qu'il les revende ? Pour la majorité des gens, la réponse est non. C'est pour cela que SPRINTIA enregistre vos **données en local**, c'est à dire dans votre navigateur, et non sur un serveur. C'est aussi pour cela qu'il n'y a **aucun cookie** intégrée dans la PWA (Progressive Web App) (=site web installable en tant qu'appli). Pour finir, ça veut dire que **même moi qui suis le développeur de SPRINTIA, je n'ai pas accès à vos données**.

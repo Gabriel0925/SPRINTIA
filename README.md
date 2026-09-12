@@ -105,10 +105,14 @@ Si vous allez courir avec un ami et que vous utilisez tous les deux SPRINTIA, vo
 ## Import des données
 Vous pouvez importer vos données d'un entraînement, grâce à un fichier **TCX** ou **GPX**. De plus, vous pouvez importer votre historique d'entraînement grâce à un fichier **CSV** de Garmin ou de TrainingPeaks.
 
-Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous pouvez visionnez mes tutos Youtube : 
+Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous pouvez visionnez mes tutos : 
 * [Importer un entraînement de Strava à SPRINTIA](https://youtu.be/q9cG8EUAMwE?si=GNQzX39XpZQvfL-2)
 * [Importer un entraînement de COROS à SPRINTIA](https://youtu.be/OTOc0AO8TD8?si=CZBkTGLxH8IQzhvL)
 * [Importer un entraînement de n'importe quelle plateforme à SPRINTIA](https://youtu.be/IvygdF1oLqQ?si=hREvlepVsqZEoyJk)
+
+## Réseaux
+* [Le compte Instagram](https://www.instagram.com/sprintia09?igsh=MXV5N2NiaHRvdTF1bQ%3D%3D)
+* [La chaîne YouTube](https://www.youtube.com/@SPRINTIA-09)
 
 ## Confidentialité
 **Je n'ai pas conçu SPRINTIA pour collecter vos donnnées personnelles**, au contraire, pour moi j'essaie d'appliquer des principes du quotidien. Est-ce que dans la rue vous donneriez vos données personnelles à un inconnu pour qu'il les revende ? Pour la majorité des gens, la réponse est non. C'est pour cela que SPRINTIA enregistre vos **données en local**, c'est à dire dans votre navigateur, et non sur un serveur. C'est aussi pour cela qu'il n'y a **aucun cookie** intégrée dans la PWA (Progressive Web App) (=site web installable en tant qu'appli). Pour finir, ça veut dire que **même moi qui suis le développeur de SPRINTIA, je n'ai pas accès à vos données**.

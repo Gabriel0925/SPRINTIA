@@ -30,6 +30,7 @@ Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponib
     * Charge aiguë/chronique
     * Suivi de la charge d'entraînement sur 4 semaines
     * Interprétation et Statut (Désentraînement, Maintien, Productif, Surentraînement)
+    * Basé sur la méthode calcul sRPE (prouvée scientifiquement)
 
 * **Niveau de course** : découvrez ci-dessous toutes les statistiques dont vous avez besoin pour progresser en course à pied grâce à un test de seulement 12 minutes.
     * Estimation de la VMA, VO2max, Allure au seuil, rFTPw

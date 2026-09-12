@@ -60,14 +60,20 @@ J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'
 
     (Attention : en utilisant cette fonctionnalité, vous acceptez le transfert de vos données à l'IA que vous aurez choisie dans les paramètre de SPRINTIA Briefing (IA par défaut : Vibe))
 
-* Entraînement du jour : vous n'avez pas d'idée d'entraînement pour aujourd'hui ? Ou alors vous n'avez pas eu le temps d'en préparer un ? La fonctionnalité "Entraînement du jour" est faite pour vous ! Vous pouvez générer un entraînement en fonction de :
+* **Entraînement du jour** : vous n'avez pas d'idée d'entraînement pour aujourd'hui ? Ou alors vous n'avez pas eu le temps d'en préparer un ? La fonctionnalité "Entraînement du jour" est faite pour vous ! Vous pouvez générer un entraînement en fonction de :
     * L'intensité que vous souhaitez (Facile, Modéré, Difficile)
     * La durée que vous souhaitez (25min, 50min)
     * Le sport que vous souhaitez pratiquer (Course à pied, Vélo, Natation)
     * De plus, si vous avez une montre de la marque COROS, vous pouvez envoyer cet entraînement sur votre compte COROS en un seul clic ! Par la suite, vous n'avez plus qu'à l'envoyer sur votre montre et à le suivre.
 
+### Personnalisation & Coaching
+
+* **JRM Coach** : c'est le coach intégré dans l'application. C'est lui qui va interpréter vos données dans les algorithmes. Vous pouvez le personnaliser pour avoir le coach qui vous correspond le mieux.
+    * Choisissez son nom
+    * Choisissez son style (Bienveillant, Strict & Motivant, Copain, Go muscu)
+    * Choisissez son avatar (émoji)
+
 ## Fonctionnalités clés
-* Créez votre propre coach : choisissez son nom, son style et même son avatar.
 * Statistiques : Durée totale d'entraînement, Nb entraînement, Charge d'entraînement totale sur la période sélectionnée (7J, 30J, 90J, 365J), Sports pratiqués en pourcentage, Statistiques par sport (Course, Vélo, Natation).
 
 ## Analyse

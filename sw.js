@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.2"
+const VERSION_CACHE = "V1.1.3"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     "/",
@@ -32,7 +32,8 @@ const fileInCache = [
 
     // ENTRAINEMENT
     "/entrainement/a-propos.html", "/entrainement/ajouter-entrainement.html", "/entrainement/entrainement.html", 
-    "/entrainement/script-ajout-entrainement.js", "/entrainement/script-entrainement.js", "/entrainement/statistiques.html", 
+    "/entrainement/script-ajout-entrainement.js", "/entrainement/script-entrainement.js", "/entrainement/script-rpe.js",
+    "/entrainement/script-statistiques.js", "/entrainement/statistiques.html",
 
 
 
@@ -54,12 +55,13 @@ const fileInCache = [
 
 
     // PLUS
-    "/plus/plus.html",
+    "/plus/plus.html", "/plus/script-plus.js",
 
-    "/plus/discussion-jrm-coach/discussion.html", "/plus/discussion-jrm-coach/parametres.html",
+    "/plus/discussion-jrm-coach/discussion.html", "/plus/discussion-jrm-coach/parametres.html", 
+    "/plus/discussion-jrm-coach/script-discussion.js", "/plus/discussion-jrm-coach/script-parametres-discussion.js",
 
     // HISTORIQUE VERSIONS
-    "/plus/historique-versions/historique-versions.html",
+    "/plus/historique-versions/historique-versions.html", "/plus/historique-versions/script-historique-versions.js",
     // gen1
     "/plus/historique-versions/generation-1/SPRINTIA-1.html", "/plus/historique-versions/generation-1/SPRINTIA-1.1.html", 
     "/plus/historique-versions/generation-1/SPRINTIA-1.2.html", "/plus/historique-versions/generation-1/SPRINTIA-1.3.html", 
@@ -112,13 +114,13 @@ const fileInCache = [
     "/plus/parametres/licence/licence.html",
     "/plus/parametres/SPRINTIA-briefing/SPRINTIA-briefing.html", "/plus/parametres/SPRINTIA-briefing/script-configuration-briefing.js","/plus/parametres/SPRINTIA-briefing/a-propos.html",
 
-    "/plus/profil/modification-profil.html", "/plus/profil/profil.html",
+    "/plus/profil/modification-profil.html", "/plus/profil/profil.html", "/plus/profil/script-modification-profil.js", "/plus/profil/script-profil.js",
 
-    "/plus/tutoriels/tutoriels.html",
+    "/plus/tutoriels/tutoriels.html", "/plus/tutoriels/script-tutoriels.js",
 
 
     // PROGRESSION
-    "/progression/progression.html",
+    "/progression/progression.html", "/progression/progression.js",
 
     "/progression/charge-entrainement/a-propos.html", "/progression/charge-entrainement/charge-entrainement.html", "/progression/charge-entrainement/script-charge-entrainement.js",
     

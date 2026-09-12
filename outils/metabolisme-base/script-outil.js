@@ -37,7 +37,7 @@ function runAnalyse() {
     const mbUser = calculMB(poidsUser, tailleUser, ageUser, sexeUser)
 
     // affichage
-    document.getElementById("resultat-mb").innerHTML = mbUser + " kcal/j"
+    document.getElementById("resultat-mb").textContent = mbUser + " kcal/j"
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

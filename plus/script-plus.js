@@ -4,8 +4,8 @@ async function NomCoachInit() {
 
     if (CoachUserDB.length > 0) { // Si il y a des datas
         let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)            
-        document.getElementById("nom-coach").innerHTML = `<strong class="jrm-coach">${NomCoach}</strong>`
-    }
+        document.querySelector("strong.jrm-coach").textContent = NomCoach
+    } 
 }
 
 function derniereMajView() {

@@ -196,14 +196,15 @@ function afficherData(dataWorkout) {
 
     // ajout des datas aux éléments existant
     document.getElementById("nom-workout").textContent = dataWorkout.nom
-    document.querySelector(".detail-entrainement").innerHTML = `<strong>${dataWorkout.sport}</strong><br>${formatEuropeenDate(dataWorkout.date)}`
+    document.getElementById("sport-workout").textContent = dataWorkout.sport
+    document.getElementById("date-workout").textContent = formatEuropeenDate(dataWorkout.date)
 
-    document.getElementById("duree").innerHTML = dureeFormatee(dataWorkout.duree)
-    document.getElementById("charge").innerHTML = dataWorkout.charge_entrainement + "<small>CE</small>"
+    document.getElementById("duree").textContent = dureeFormatee(dataWorkout.duree)
+    document.getElementById("charge").textContent = dataWorkout.charge_entrainement
 
-    document.getElementById("value-rpe").innerHTML = dataWorkout.rpe
+    document.getElementById("value-rpe").textContent = dataWorkout.rpe
     document.getElementById("value-rpe").style.background = dicoDescriptionRPE[dataWorkout.rpe][1]
-    document.getElementById("description-rpe").innerHTML = dicoDescriptionRPE[dataWorkout.rpe][0]
+    document.getElementById("description-rpe").textContent = dicoDescriptionRPE[dataWorkout.rpe][0]
     document.getElementById("description-rpe").style.color = dicoDescriptionRPE[dataWorkout.rpe][1]
 
     // Structure de base de la page entrainement
@@ -346,11 +347,11 @@ function afficherData(dataWorkout) {
 
     // réhydratation conseillée
     if (dataWorkout.hydratation_estimee && dataWorkout.hydratation_estimee != undefined) {
-        document.getElementById("rehydratation").innerHTML = dataWorkout.hydratation_estimee + " <small>mL</small>"
+        document.getElementById("rehydratation").textContent = dataWorkout.hydratation_estimee
     }
     // transpiration estimée
     if (dataWorkout.hydratation_estimee && dataWorkout.hydratation_estimee != undefined) {
-        document.getElementById("transpiration").innerHTML = dataWorkout.transpiration_estimee + " <small>mL</small>"
+        document.getElementById("transpiration").textContent = dataWorkout.transpiration_estimee
     }
 
     // on remplit le champs note entrainement si il y a du contenu dans la BDD
@@ -402,10 +403,10 @@ async function dicoWithoutID(dico) {
     })
 }
 async function exporterData(dataWorkout) {
-    let button = document.getElementById("button-partager-entrainement")
+    let button = document.getElementById("li-partage-entrainement")
     
     if (dataWorkout) {
-        button.innerHTML = "<i class='icon_partage'></i> En cours..."
+        button.textContent = "En cours..."
         button.disabled = true
 
         try {
@@ -437,7 +438,7 @@ async function exporterData(dataWorkout) {
                 await navigator.share({files:[fileWorkoutData], // on met dans un tableau car navigator.share peut permettre d'envoyer plusieurs fichier [fichier1, fichier2,...]
                     title:"Sauvegarde SPRINTIA"})            
                 
-                button.innerHTML = "<i class='icon_partage'></i> Partagé"
+                button.textContent = "Partagé"
             } else {
                 alert("Votre navigateur est incompatible avec le partage de fichier !")
             }
@@ -446,14 +447,14 @@ async function exporterData(dataWorkout) {
 
         } catch(error) {
             if (error.name== "AbortError") { // ça veut dire que le user à fermer le menu de partage sans envoyer le fichier
-                button.innerHTML = "<i class='icon_partage'></i> Annulé"
+                button.textContent = "Annulé"
             } else {
                 console.log(error) // affichage de l'erreur en console
-                button.innerHTML = "<i class='icon_partage'></i> Erreur !"
+                button.textContent = "Erreur !"
             }
             await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
         } finally {
-            button.innerHTML = "<i class='icon_partage'></i> Partager l'entraî."
+            button.textContent = "Partager l'entraî."
             button.disabled = false 
         }
     }
@@ -519,7 +520,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const infoRehydratation = document.getElementById("rehydratation")
     if (infoRehydratation) {
         infoRehydratation.addEventListener("click", function() {
-            if (infoRehydratation.textContent == '-- mL') {
+            if (infoRehydratation.textContent == '--') {
                 alert('Pour obtenir une estimation de réhydratation conseillée veuillez configurer votre profil.')
             }
         })
@@ -527,7 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const infoTranspiration = document.getElementById("transpiration")
     if (infoTranspiration) {
         infoTranspiration.addEventListener("click", function() {
-            if (infoTranspiration.textContent == '-- mL') {
+            if (infoTranspiration.textContent == '--') {
                 alert('Pour obtenir une estimation de votre transpiration veuillez configurer votre profil.')
             }
         })

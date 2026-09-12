@@ -4,7 +4,7 @@ async function NomCoachInit() {
 
     if (CoachUserDB.length > 0) { // Si il y a des datas
         let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-        document.getElementById("briefing").innerHTML = NomCoach
+        document.getElementById("briefing").textContent = NomCoach
     }
 }
 

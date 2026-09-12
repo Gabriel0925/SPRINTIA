@@ -44,9 +44,11 @@ async function statistiquesParSport(sportForFunction) {
 
     if (sportDemandee == "Natation") { // si c'est de la natation alors on met en metre
         compteurDistance = compteurDistance*1000
-        document.getElementById("distance-sport").innerHTML = compteurDistance.toFixed(1).replace(".", ",") + ' <small>m</small>'
+        document.getElementById("distance-sport").textContent = compteurDistance.toFixed(1).replace(".", ",")
+        document.getElementById("unite-distance-sport").textContent = "<small>m</small>"
     } else {
-        document.getElementById("distance-sport").innerHTML = compteurDistance.toFixed(2).replace(".", ",") + ' <small>km</small>'
+        document.getElementById("distance-sport").textContent = compteurDistance.toFixed(2).replace(".", ",")
+        document.getElementById("unite-distance-sport").textContent = "<small>km</small>"
     }
 }
         
@@ -106,7 +108,7 @@ async function init(dateChoisie) {
             // remplissage des champs
             document.getElementById("duree").textContent = dureeEntrainementUser
             // .toLocaleString('fr-FR') pour passer de 10000 -> 10 000
-            document.getElementById("charge-entrainement").innerHTML = chargeEntrainementUser.toLocaleString('fr-FR') + ' <small>CE</small>'
+            document.getElementById("charge-entrainement").textContent = chargeEntrainementUser.toLocaleString('fr-FR')
             document.getElementById("nb-entrainement").textContent = tableauDuree.length.toLocaleString('fr-FR')
             
             let DicoNbEntrainementSport = {} // init pour les futures boucles ex : {"Course":3} 3 pour le nb d'entrainement en course

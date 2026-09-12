@@ -52,8 +52,8 @@ function createUiEchauffement(instruction_echauffement, containerWorkoutGenerate
     timeEchauffement.classList.add("instruction-label")
 
     // remplissage des elt
-    textEchauffement.innerHTML = "Échauffement"
-    timeEchauffement.innerHTML = instruction_echauffement["volume"][0] + " " + instruction_echauffement["volume"][1]
+    textEchauffement.textContent = "Échauffement"
+    timeEchauffement.textContent = instruction_echauffement["volume"][0] + " " + instruction_echauffement["volume"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionEchauffement)
@@ -71,8 +71,8 @@ function createUiRetourAuCalme(instruction_retour_au_calme, containerWorkoutGene
     timeRetourAuCalme.classList.add("instruction-label")
 
     // remplissage des elt
-    textRetourAuCalme.innerHTML = "Retour au calme"
-    timeRetourAuCalme.innerHTML = instruction_retour_au_calme["volume"][0] + " " + instruction_retour_au_calme["volume"][1]
+    textRetourAuCalme.textContent = "Retour au calme"
+    timeRetourAuCalme.textContent = instruction_retour_au_calme["volume"][0] + " " + instruction_retour_au_calme["volume"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionRetourAuCalme)
@@ -101,8 +101,8 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
 
                 // remplissage des elt
                 paragrapheRepetition.innerHTML = "Répéter <strong>" + element["nombre_repetitions"] + "</strong> fois"
-                paragrapheDureeRep.innerHTML = element["volume_effort"][0] + " " + element["volume_effort"][1] + " (effort)"
-                paragrapheDureeRecup.innerHTML = element["volume_recuperation"][0] + " " + element["volume_recuperation"][1] + " (récupération)"
+                paragrapheDureeRep.textContent = element["volume_effort"][0] + " " + element["volume_effort"][1] + " (effort)"
+                paragrapheDureeRecup.textContent = element["volume_recuperation"][0] + " " + element["volume_recuperation"][1] + " (récupération)"
 
                 // ajout sur la page
                 containerWorkoutGenerate.appendChild(sectionFractionne)
@@ -128,8 +128,8 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
 
         // remplissage des elt
         paragrapheRepetition.innerHTML = "Répéter " + instruction_fractionne["nombre_repetitions"] + " fois"
-        paragrapheDureeRep.innerHTML = instruction_fractionne["volume_effort"][0] + " " + instruction_fractionne["volume_effort"][1] + " (effort)"
-        paragrapheDureeRecup.innerHTML = instruction_fractionne["volume_recuperation"][0] + " " + instruction_fractionne["volume_recuperation"][1] + " (récupération)"
+        paragrapheDureeRep.textContent = instruction_fractionne["volume_effort"][0] + " " + instruction_fractionne["volume_effort"][1] + " (effort)"
+        paragrapheDureeRecup.textContent = instruction_fractionne["volume_recuperation"][0] + " " + instruction_fractionne["volume_recuperation"][1] + " (récupération)"
 
         // ajout sur la page
         containerWorkoutGenerate.appendChild(sectionFractionne)
@@ -151,8 +151,8 @@ function createUiEffort(instruction_repetition, containerWorkoutGenerate) {
     timeEffort.classList.add("phase-effort")
 
     // remplissage des elt
-    textEffort.innerHTML = "Effort"
-    timeEffort.innerHTML = instruction_repetition["volume_effort"][0] + " " + instruction_repetition["volume_effort"][1]
+    textEffort.textContent = "Effort"
+    timeEffort.textContent = instruction_repetition["volume_effort"][0] + " " + instruction_repetition["volume_effort"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionEffort)
@@ -171,8 +171,8 @@ function createUiRecuperation(instruction_recuperation, containerWorkoutGenerate
     timeRecuperation.classList.add("phase-recuperation")
 
     // remplissage des elt
-    textRecuperation.innerHTML = "Récupération"
-    timeRecuperation.innerHTML = instruction_recuperation["volume_recuperation"][0] + " " + instruction_recuperation["volume_recuperation"][1]
+    textRecuperation.textContent = "Récupération"
+    timeRecuperation.textContent = instruction_recuperation["volume_recuperation"][0] + " " + instruction_recuperation["volume_recuperation"][1]
 
     // ajout sur la page
     containerWorkoutGenerate.appendChild(sectionRecuperation)
@@ -186,7 +186,7 @@ function interfaceWorkout(selectedWorkout) {
     if (lastContainerStructureWorkout) {
         lastContainerStructureWorkout.remove()
     }
-    document.querySelector("h1").innerHTML = ""
+    document.querySelector("h1").textContent = ""
     if (document.querySelectorAll("h2").length > 0) { // si il y a des h2 on les supprime
         document.querySelectorAll("h2").forEach(elt => {
             elt.remove()
@@ -205,10 +205,10 @@ function interfaceWorkout(selectedWorkout) {
     document.body.appendChild(containerWorkoutGenerate)
     
     // ajout du titre et de la description de l'entrainement
-    document.querySelector("h1").innerHTML = selectedWorkout["title"]
+    document.querySelector("h1").textContent = selectedWorkout["title"]
     let descriptionWorkout = document.createElement("p")
     descriptionWorkout.classList.add("text")
-    descriptionWorkout.innerHTML = selectedWorkout["description"]
+    descriptionWorkout.textContent = selectedWorkout["description"]
     containerWorkoutGenerate.appendChild(descriptionWorkout)
     
     // ajout d'un h2 pour structurer la page
@@ -268,7 +268,7 @@ function interfaceWorkout(selectedWorkout) {
 
     let buttonCOROS = document.createElement("button") // bouton Open in COROS
     buttonCOROS.classList.add("size-block")
-    buttonCOROS.innerHTML = "Ouvrir dans COROS"
+    buttonCOROS.textContent = "Ouvrir dans COROS"
     buttonCOROS.addEventListener("click", () => {
         window.open(selectedWorkout["lien"], '_blank')  
     })

@@ -6,7 +6,7 @@ async function saveNiveauCourse() {
     let button = document.getElementById("button-sauvegarde-niveau")
     let dateNiveauUser = document.getElementById("date-niveau-course").value
     let distanceUser = Number(document.getElementById("distance-user").value).toFixed(2)
-    let niveauCourseUser = parseFloat(document.querySelector(".large-zone-result-result").innerHTML.trim().replace(",", "."))
+    let niveauCourseUser = parseFloat(document.querySelector(".large-zone-result-result").textContent.trim().replace(",", ".")) 
 
     try {
         // Recup de la date

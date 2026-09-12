@@ -166,8 +166,8 @@ async function RecupData() {
 
     // on aditionne toutes les variables pour avoir la distance sur 28j pour comparer la semaine actuelle a l'ancienne
     Distance28J = Distance7J+Distance14J+Distance21J+Distance28J
-    // affichage de la somme des distances sur 28 derniers jours
-    document.getElementById("somme-28J").innerHTML = Number(Distance28J).toFixed(2).replace(".", ",") + " <small>km</small>"
+    // affichage de la somme des distances sur 28 derniers jours 
+    document.getElementById("somme-28J").textContent = Number(Distance28J).toFixed(2).replace(".", ",")
 
     return {Distance7J, Distance28J, nbSemaine}
 }
@@ -188,7 +188,7 @@ async function CalculIndulgence() {
     Distance28J = Number(Distance28J)/nbSemaine
 
     // affichage
-    document.getElementById("km-par-semaine").innerHTML = Number(Distance28J).toFixed(2).replace(".", ",") + " <small>km</small>"
+    document.getElementById("km-par-semaine").textContent = Number(Distance28J).toFixed(2).replace(".", ",")
 
     // Analyse pour avoir la fouchette de distance conseillée (les coef sont diférent en fonction de la distance)
     if (Distance28J <= 10) {
@@ -211,7 +211,7 @@ async function CalculIndulgence() {
     let ResultIndulgenceCourse = Number(IndulgenceDeCourseDebut).toFixed(1).replace(".", ",") + " - " + Number(IndulgenceDeCourseFin).toFixed(1).replace(".", ",") + " km"
 
     // Affichage du résultat
-    document.getElementById("reponse-algo-indulgence").innerHTML = ResultIndulgenceCourse
+    document.getElementById("reponse-algo-indulgence").textContent = ResultIndulgenceCourse
 
     return {Distance7J, Distance28J, IndulgenceDeCourseFin}
 }

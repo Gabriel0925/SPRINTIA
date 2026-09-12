@@ -95,8 +95,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
             ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul()
     // affichage des valeurs
-    document.getElementById("charge-7j").innerHTML = chargeTotale7j + " <small>CE</small>"
-    document.getElementById("statut-charge-entrainement").innerHTML = statutUser
+    document.getElementById("charge-7j").textContent = chargeTotale7j
+    document.getElementById("statut-charge-entrainement").textContent = statutUser 
 
     // --- Récupération ---
     const tableauLastRecuperation = await db.recuperation
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .toArray()
     let lastRecuperation = "--"
     if (tableauLastRecuperation.length > 0) {lastRecuperation = tableauLastRecuperation[0].fc_repos}
-    document.getElementById("data-recuperation").innerHTML = lastRecuperation + " <small>bpm</small>"
+    document.getElementById("data-recuperation").textContent = lastRecuperation
 
 
     // --- Indulgence de course ---
@@ -121,12 +121,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         }
     }
-    document.getElementById("data-dist-7j").innerHTML = sommeDist7j.toFixed(1).replace(".", ",") + " <small>km</small>"
+    document.getElementById("data-dist-7j").textContent = sommeDist7j.toFixed(1).replace(".", ",")
 
     // --- Niveau de course ---
     const lastLevelUser = await lastLevel()
     const zoneLevelUser = zoneLevel(lastLevelUser)
-    document.getElementById("dernier-niveau-course").innerHTML = lastLevelUser.toString().replace(".", ",") + " <small>/100</small>"
-    document.getElementById("zone-dernier-niveau-course").innerHTML = zoneLevelUser
+    document.getElementById("dernier-niveau-course").textContent = lastLevelUser.toString().replace(".", ",")
+    document.getElementById("zone-dernier-niveau-course").textContent = zoneLevelUser
 
 })

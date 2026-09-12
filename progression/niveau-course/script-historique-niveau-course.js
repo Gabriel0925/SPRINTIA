@@ -128,8 +128,8 @@ async function remplirTableau() {
                 const zoneLevelUser = zoneLevel(lastLevelUser)
 
                 // affichage du dernier niveau de course et de la zone
-                document.getElementById("last-level-run").innerHTML = lastLevelUser.toString().replace(".", ",")
-                document.getElementById("zone-last-level-run").innerHTML = zoneLevelUser
+                document.getElementById("last-level-run").textContent = lastLevelUser.toString().replace(".", ",")
+                document.getElementById("zone-last-level-run").textContent = zoneLevelUser
 
                 let dataTableau = document.querySelectorAll("td") // Recup des lignes pour savoir quand il faut cacher le tableau
                 let tableau = document.getElementById("tableau-historique") // recup du tableau
@@ -166,8 +166,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const zoneLevelUser = zoneLevel(lastLevelUser)
 
     // affichage du dernier niveau de course et de la zone
-    document.getElementById("last-level-run").innerHTML = lastLevelUser.toString().replace(".", ",")
-    document.getElementById("zone-last-level-run").innerHTML = zoneLevelUser
+    document.getElementById("last-level-run").textContent = lastLevelUser.toString().replace(".", ",")
+    document.getElementById("zone-last-level-run").textContent = zoneLevelUser
 
     graph()
     await remplirTableau()

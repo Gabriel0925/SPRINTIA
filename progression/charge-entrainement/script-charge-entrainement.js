@@ -234,12 +234,12 @@ async function displayOnScreenCE() {
         document.getElementById("reponse-coach-indulgence").innerHTML =  `Statut : <strong id="statut-ce">${statutUser}</strong><br>${analyse}`
 
         // affichage de la cible et de la charge 7j et 28j
-        document.getElementById("cible-charge-7j").innerHTML = "Cible : " + parseInt(cibleUserMin) + " - " + parseInt(cibleUserMax)
+        document.getElementById("cible-charge-7j").textContent = "Cible : " + parseInt(cibleUserMin) + " - " + parseInt(cibleUserMax)
     }
     
     // affichage de la charge 7j et 28j
-    document.getElementById("charge-7j").innerHTML = parseInt(chargeTotale7j)
-    document.getElementById("charge-28j").innerHTML = parseInt(chargeTotale28j)
+    document.getElementById("charge-7j").textContent = parseInt(chargeTotale7j)
+    document.getElementById("charge-28j").textContent = parseInt(chargeTotale28j)
 
 };
 

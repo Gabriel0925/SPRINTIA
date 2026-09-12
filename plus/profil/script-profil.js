@@ -4,19 +4,19 @@ async function remplirPlaceProfil() {
     if (data.length > 0) {
         data = data[0] // on recup le dico des datas
 
-        document.getElementById("sexe-place").innerHTML = data.sexe
-        document.getElementById("age-place").innerHTML = data.age + " <small>ans</small>"
-        document.getElementById("taille-place").innerHTML = data.taille + " <small>cm</small>"
-        document.getElementById("poids-place").innerHTML = data.poids.replace(".", ",") + " <small>kg</small>"
-        document.getElementById("fc-repos-place").innerHTML = data.fc_repos + " <small>bpm</small>"
+        document.getElementById("sexe-place").textContent = data.sexe
+        document.getElementById("age-place").textContent = data.age
+        document.getElementById("taille-place").textContent = data.taille
+        document.getElementById("poids-place").textContent = data.poids.replace(".", ",")
+        document.getElementById("fc-repos-place").textContent = data.fc_repos
         document.getElementById("modifier-profil").textContent = "Modifier mon profil"
-            } else { // on réinitialise tout les champs au moins si le user restaure son compte ça met à jour le tableau
+    } else { // on réinitialise tout les champs au moins si le user restaure son compte ça met à jour le tableau
 
-        document.getElementById("sexe-place").innerHTML = "--"
-        document.getElementById("age-place").innerHTML = "-- <small>ans</small>"
-        document.getElementById("taille-place").innerHTML = "-- <small>cm</small>"
-        document.getElementById("poids-place").innerHTML = "-- <small>kg</small>"
-        document.getElementById("fc-repos-place").innerHTML = "-- <small>bpm</small>"
+        document.getElementById("sexe-place").textContent = "--"
+        document.getElementById("age-place").textContent = "--"
+        document.getElementById("taille-place").textContent = "--"
+        document.getElementById("poids-place").textContent = "--"
+        document.getElementById("fc-repos-place").textContent = "--"
         document.getElementById("modifier-profil").textContent = "Configurer mon profil"
     }
 }

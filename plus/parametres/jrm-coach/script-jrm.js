@@ -63,13 +63,13 @@ function ChangeStyle(value) {
     let ZoneJRM = document.getElementById("JRM-coach")
 
     if (value == "Bienveillant") {
-        ZoneJRM.innerHTML = DicoPhraseExemple["Bienveillant"]
+        ZoneJRM.textContent = DicoPhraseExemple["Bienveillant"]
     } else if (value == "Strict-Motivant") {
-        ZoneJRM.innerHTML = DicoPhraseExemple["Strict-Motivant"]
+        ZoneJRM.textContent = DicoPhraseExemple["Strict-Motivant"]
     } else if (value == "Copain") {
-        ZoneJRM.innerHTML = DicoPhraseExemple["Copain"]
+        ZoneJRM.textContent = DicoPhraseExemple["Copain"]
     } else {
-        ZoneJRM.innerHTML = DicoPhraseExemple["Go-muscu"]
+        ZoneJRM.textContent = DicoPhraseExemple["Go-muscu"]
     }
 
     return
@@ -129,10 +129,10 @@ async function Initialisation() {
 
         // Remplissage des zones
         ZoneNameBox.innerHTML = TableauAvatar[0] + " " + "<strong>" + TableauName[0] + "</strong>" // Le nom du coach
-        ZoneJRMBox.innerHTML = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
+        ZoneJRMBox.textContent = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
 
     } else {
-        ZoneJRMBox.innerHTML = DicoPhraseExemple["Bienveillant"]
+        ZoneJRMBox.textContent = DicoPhraseExemple["Bienveillant"]
     }
 
     return
@@ -158,7 +158,7 @@ async function Reinitialisation() {
         document.getElementById("style-coach").value = "Bienveillant"
         document.getElementById("avatar-coach").value = ""
         document.getElementById("NomCoach").innerHTML = "<strong>JRM Coach</strong>"
-        document.getElementById("JRM-coach").innerHTML = DicoPhraseExemple["Bienveillant"]
+        document.getElementById("JRM-coach").textContent = DicoPhraseExemple["Bienveillant"]
 
         // confirmation sauvegarde
         Button.textContent = "Réinitialisé"

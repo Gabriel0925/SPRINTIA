@@ -94,8 +94,8 @@ async function jrmCoach() {
         });
         let moyenne30J = Math.round(sommeFcRepos/historiqueData30J.length)
 
-        // affichage de la moyenne des 30 derniers jours
-        document.getElementById("fc-repos-moyenne-30j").innerHTML = `${moyenne30J}  <small>bpm</small>`
+        // affichage de la moyenne des 30 derniers jours 
+        document.getElementById("fc-repos-moyenne-30j").textContent = moyenne30J
 
         // on regarde si on peut mettre à jour la FC repos du user
         const profilDB = await db.profil.toArray()
@@ -156,7 +156,7 @@ async function jrmCoach() {
             }
         }
     } else {
-        document.getElementById("fc-repos-moyenne-30j").innerHTML = `--  <small>bpm</small>`
+        document.getElementById("fc-repos-moyenne-30j").textContent = "--"
     }
 
     return
@@ -168,7 +168,7 @@ async function remplissageTableau() {
     const historiqueDataUser = await db.recuperation.where("date").above(dateMoins7J).toArray()
 
     // Pr vider toutes les lignes du tableau (sauf lentete)
-    document.querySelector("tbody").innerHTML = ""
+    document.querySelector("tbody").textContent = ""
 
     historiqueDataUser.reverse() // on inverse pour que ça soit du plus récent au plus ancien
 
@@ -298,7 +298,7 @@ async function init(role) {
     } else {
         fcReposToday = "--"
     }
-    document.getElementById("fc-repos-today").innerHTML = `${fcReposToday}  <small>bpm</small>`
+    document.getElementById("fc-repos-today").textContent = fcReposToday
 
     // generation du graphique
     genererGraphiqueLine(thisWeekForGraphic, tableauFcReposComplete)

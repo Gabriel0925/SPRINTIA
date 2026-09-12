@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let Slider = document.querySelector(".slider input")
     let Progress = document.querySelector(".slider progress")
-    let Display = document.querySelector(".slider-name")
     const dicoDescriptionRPE = {
         1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
         4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
@@ -61,8 +60,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     Slider.addEventListener("input", function() {
-        Progress.value = this.value
-        Display.innerHTML = "RPE : " + "<span class='RPE'>" + String(this.value) + "</span>" + " " + "<strong>" + dicoDescriptionRPE[this.value][0] + "</strong>"
+        Progress.value = this.value 
+        document.querySelector("span.RPE").textContent = this.value
+        document.getElementById("description-rpe").textContent = dicoDescriptionRPE[this.value][0]
         document.querySelector(".slider-name span.RPE").style.background = dicoDescriptionRPE[String(this.value)][1]
         document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[String(this.value)][1]
     })

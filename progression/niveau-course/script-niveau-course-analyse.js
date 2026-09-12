@@ -264,23 +264,23 @@ async function displayOnScreenLevelRun () {
         temps400m, temps800m, temps1km, temps5km, temps10km, tempsSemiMarathon, tempsMarathon] = await manageAnalyse()
 
     // affichage du dernier niveau de course et de la zone
-    document.getElementById("last-level-run").innerHTML = lastLevelUser.toString().replace(".", ",")
-    document.getElementById("zone-last-level-run").innerHTML = zoneLevelUser
+    document.getElementById("last-level-run").textContent = lastLevelUser.toString().replace(".", ",")
+    document.getElementById("zone-last-level-run").textContent = zoneLevelUser
 
     // affichage des métriques de base
     document.getElementById("vma-estimee").innerHTML = vmaEstimee.toString().replace(".", ",") + "  <small>km/h</small>"
-    document.getElementById("vo2max-estimee").innerHTML = vo2maxEstimee.toString().replace(".", ",") 
+    document.getElementById("vo2max-estimee").textContent = vo2maxEstimee.toString().replace(".", ",") 
     document.getElementById("rFTPw-estimee").innerHTML = rFTPwEstimee.toString().replace(".", ",") + "  <small>W</small>"
     document.getElementById("allure-seuil-estimee").innerHTML = allureSeuilEstimee + "  <small>/km</small>"
 
     // affichage des temps prédit pour les différentes distance
-    document.getElementById("time-400m").innerHTML = temps400m
-    document.getElementById("time-800m").innerHTML = temps800m
-    document.getElementById("time-1km").innerHTML = temps1km
-    document.getElementById("time-5km").innerHTML = temps5km
-    document.getElementById("time-10km").innerHTML = temps10km
-    document.getElementById("time-semi-marathon").innerHTML = tempsSemiMarathon
-    document.getElementById("time-marathon").innerHTML = tempsMarathon
+    document.getElementById("time-400m").textContent = temps400m
+    document.getElementById("time-800m").textContent = temps800m
+    document.getElementById("time-1km").textContent = temps1km
+    document.getElementById("time-5km").textContent = temps5km
+    document.getElementById("time-10km").textContent = temps10km
+    document.getElementById("time-semi-marathon").textContent = tempsSemiMarathon
+    document.getElementById("time-marathon").textContent = tempsMarathon
 
     if (document.getElementById("rFTPw-estimee").textContent == "--  W") {
         document.getElementById("rFTPw-estimee").addEventListener("click", () => {

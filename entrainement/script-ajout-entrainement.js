@@ -87,8 +87,9 @@ async function VerificationParam() {
                 document.getElementById("duree-entrainement-user").value = dureeFormatee(WorkoutDB.duree, "hh:mm:ss") // on exige le format "hh:mm:ss"
                 // remettre le RPE sur bonne position
                 document.querySelector(".slider input").value = WorkoutDB.rpe
-                document.querySelector(".slider progress").value = WorkoutDB.rpe
-                document.querySelector(".slider-name").innerHTML = "RPE : <span class='RPE'>" + WorkoutDB.rpe + "</span>" + " " + "<strong>" + dicoDescriptionRPE[WorkoutDB.rpe][0] + "</strong>"
+                document.querySelector(".slider progress").value = WorkoutDB.rpe 
+                document.querySelector(".slider-name span.RPE").textContent = WorkoutDB.rpe
+                document.getElementById("description-rpe").textContent = dicoDescriptionRPE[WorkoutDB.rpe][0]
                 document.querySelector(".slider-name span.RPE").style.background = dicoDescriptionRPE[WorkoutDB.rpe][1]
                 document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[WorkoutDB.rpe][1]
 

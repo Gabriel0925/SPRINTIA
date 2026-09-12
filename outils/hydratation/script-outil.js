@@ -27,15 +27,10 @@ function CalculGeneral() {
         return
     }
 
-    // Mise en variable pour passez à l'affichage
-    let HydratationToday = "Hydratation du jour : " + "<strong>" + Math.round(CalculHydratationTotale(PoidsUser)) + " mL" + "</strong>"
-    let Interpretation = "<strong>Petit conseil :</strong> ne buvez pas tout d'un coup, essayer de boire un verre toutes les 1 à 2 heures."
-
     // Affichage du result
-    document.querySelector(".zone-result-name-result").innerHTML = HydratationToday
+    document.getElementById("hydratation-day").textContent = Math.round(CalculHydratationTotale(PoidsUser)) + " mL"
     // Maj de l'interpretation
-    document.querySelector(".zone-result-interpretation").innerHTML = Interpretation
-    return
+    document.querySelector(".zone-result-interpretation").textContent = "Petit conseil : ne buvez pas tout d'un coup, essayer de boire un verre toutes les 1 à 2 heures."
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

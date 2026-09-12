@@ -26,19 +26,31 @@ function calculIMC() {
 
     // détermination de l'interpretation
     const palierInterpretation = [
-        {"imcMax":18.5, "interpretation":"<strong>Zone maigreur :</strong><br>D'après l'IMC vous êtes super actif·ve mais si vous vous sentez mal le mieux serait de consulter un médecin !"},
-        {"imcMax":25, "interpretation":"<strong>Zone de corpulence normale :</strong><br>Parfait, d'après l'IMC vous êtes équilibré·e, continuez comme ça !"},
-        {"imcMax":30, "interpretation":"<strong>Zone de surpoids :</strong><br>D'après l'IMC vous êtes en surpoids mais je suis sûr que vous avez juste trop de muscles et ça l'IMC ne peut pas le savoir !"},
-        {"imcMax":35, "interpretation":"<strong>Zone obésité modérée :</strong><br> Un petit changement d'habitude aujourd'hui fera une grande différence demain ! Si vous vous sentez mal le mieux serait de consulter un médecin !"},
-        {"imcMax":40, "interpretation":"<strong>Zone d'obésité sévère :</strong><br>Si vous vous sentez bien c'est le plus important, ne vous comparez pas aux autres comparez-vous à la personne que vous étiez hier !"},
-        {"imcMax":Infinity, "interpretation":"<strong>Zone d'obésité morbide :</strong><br>Vous vous améliorez de jour en jour mais si vous vous sentez mal le mieux serait de consulter un médecin !"}
+        {"imcMax":18.5, "title":"Zone maigreur : ", "interpretation":"D'après l'IMC vous êtes super actif·ve mais si vous vous sentez mal le mieux serait de consulter un médecin !"},
+        {"imcMax":25, "title":"Zone de corpulence normale : ", "interpretation":"Parfait, d'après l'IMC vous êtes équilibré·e, continuez comme ça !"},
+        {"imcMax":30, "title":"Zone de surpoids : ", "interpretation":"D'après l'IMC vous êtes en surpoids mais je suis sûr que vous avez juste trop de muscles et ça l'IMC ne peut pas le savoir !"},
+        {"imcMax":35, "title":"Zone obésité modérée : ", "interpretation":"Un petit changement d'habitude aujourd'hui fera une grande différence demain ! Si vous vous sentez mal le mieux serait de consulter un médecin !"},
+        {"imcMax":40, "title":"Zone d'obésité sévère : ", "interpretation":"Si vous vous sentez bien c'est le plus important, ne vous comparez pas aux autres comparez-vous à la personne que vous étiez hier !"},
+        {"imcMax":Infinity, "title":"Zone d'obésité morbide : ", "interpretation":"Vous vous améliorez de jour en jour mais si vous vous sentez mal le mieux serait de consulter un médecin !"}
     ]
 
-    // parcours du tableau de dico
+    // parcours du tableau de dico 
     for (const palier of palierInterpretation) {
         if (imcResult <= palier["imcMax"]) { // si l'imc est inf aux palier alors on affiche les résultats (resultat imc + interpretation)
-            document.querySelector(".zone-result-name-result").innerHTML = "Votre IMC : <strong>" + imcResult.toFixed(1).replace(".", ",") + "</strong>"
-            document.querySelector(".zone-result-interpretation").innerHTML = palier["interpretation"]
+            document.getElementById("imc-result").textContent = imcResult.toFixed(1).replace(".", ",")
+
+            const zoneInterpretation = document.querySelector(".zone-result-interpretation")
+
+            // on enleve le text de base et on met les resultats
+            zoneInterpretation.textContent = ""
+            
+            let titreStrong = document.createElement("strong")
+            titreStrong.textContent = palier["title"]
+            zoneInterpretation.appendChild(titreStrong)
+
+            let intrepretationElement = document.createElement("p")
+            intrepretationElement.textContent = palier["interpretation"]
+            zoneInterpretation.appendChild(intrepretationElement)
             break
         }
     }

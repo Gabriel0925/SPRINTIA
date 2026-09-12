@@ -61,6 +61,8 @@ Pour finir, j'ai couçu SPRINTIA pour rendre accessible des algorithmes disponib
         * "Compare ma séance de course d'aujourd'hui avec celle de la semaine dernière. Est-ce que mon endurance s'améliore ?"
         * "Donne-moi 3 exercices de récupération active à faire aujourd'hui, adaptés à ma récupération."
 
+    Pour en savoir plus sur cette fonctionnalité, vous pouvez visionner le tuto YouTube que j'ai réalisé : [Comment utiliser SPRINTIA Briefing ?](https://youtu.be/6dx8cqwIkbk?si=roJGDWf_lrA27re_)
+
     (Attention : en utilisant cette fonctionnalité, vous acceptez le transfert de vos données à l'IA que vous aurez choisie dans les paramètre de SPRINTIA Briefing (IA par défaut : Vibe))
 
 * **Entraînement du jour** : vous n'avez pas d'idée d'entraînement pour aujourd'hui ? Ou alors vous n'avez pas eu le temps d'en préparer un ? La fonctionnalité "Entraînement du jour" est faite pour vous ! Vous pouvez générer un entraînement en fonction de :

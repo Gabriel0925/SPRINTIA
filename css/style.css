@@ -1933,7 +1933,6 @@ section.container-round-input div.round-input-item.selected{
     color: var(--COLOR_BACKGROUND);
     border-radius: 50%;
     font-weight: var(--FW_BUTTON);
-    border: 3px solid var(--COLOR_TEXT_PRIMARY);
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-round-input div.round-input-item.selected:hover{

@@ -15,8 +15,7 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.verce
 | ![Interface de la page des statistiques](/images-readme/statistiques.JPG) | ![Interface de la page de progression](/images-readme/progression.JPG) |
 
 ## Philosophie
-J'ai conçu SPRINTIA pour aider les athlètes à s'entraîner, c'est pour cela que l'application vous accompagne avant et après vos entraînements, mais pas pendant ! Lorsque l'athlète
-pratique son sport, il doit être concentré sur sa performance, sur son effort ou encore sur son plaisir, et non sur son smartphone ou sur ses statistiques. Ce qui prime lors de vos entraînements, c'est de laisser parler votre instinct, vos sensations et non vos données ! C'est pour cela que SPRINTIA ne tracke aucunes données en temps réel, SPRINTIA préfère se nourrir de vos données après vos entraînements grâce à des fichiers TCX, GPX ou même grâce à la saisie manuelle de vos entraînements. SPRINTIA est donc un outil d'analyse et de suivi, mais pas un outil de tracking en temps réel.
+J'ai conçu SPRINTIA pour aider les sportifs (comme moi) à s'entraîner, c'est pour cela que l'application vous accompagne avant et après vos entraînements, mais pas pendant ! Lorsque l'athlète pratique son sport, il doit être concentré sur sa performance, sur son effort ou encore sur son plaisir, et non sur son smartphone ou sur ses statistiques. Ce qui prime lors de vos entraînements, c'est de laisser parler votre instinct, vos sensations et non vos données ! C'est pour cela que SPRINTIA ne tracke aucunes données en temps réel, SPRINTIA préfère se nourrir de vos données après vos entraînements grâce à des fichiers TCX, GPX ou même grâce à la saisie manuelle de vos entraînements. SPRINTIA est donc un outil d'analyse et de suivi, mais pas un outil de tracking en temps réel.
 
 ## Fonctionnalités clés
 * SPRINTIA Briefing : exportez vos données d'entraînement vers votre IA préférée et obtenez des analyses précises et pertinentes en quelques clics.
@@ -32,10 +31,10 @@ pratique son sport, il doit être concentré sur sa performance, sur son effort 
 * Des outils rapides (Zones Cardiaques, Métabolisme de base, IMC, Estimation 1RM, Protéines Quotidiennes, Temps de Récupération, Hydratation, Convertisseur km/miles,...)
 
 ## Confidentialité
-Toutes les données que vous enregistrez dans SPRINTIA sont stockées dans votre navigateur, donc même moi qui suis le développeur de SPRINTIA, je n'ai pas accès aux données que vous enregistrez dans l'application.
+**Je n'ai pas conçu SPRINTIA pour collecter vos donnnées personnelles**, au contraire, pour moi j'essaie d'appliquer des principes du quotidien. Est-ce que dans la rue vous donneriez vos données personnelles à un inconnu pour qu'il les revende ? Pour la majorité des gens, la réponse est non. C'est pour cela que SPRINTIA enregistre vos **données en local**, c'est à dire dans votre navigateur, et non sur un serveur. C'est aussi pour cela qu'il n'y a **aucun cookie** intégrée dans la PWA (Progressive Web App) (=site web installable en tant qu'appli). Pour finir, ça veut dire que **même moi qui suis le développeur de SPRINTIA, je n'ai pas accès à vos données**.
 
 ## Local-First
-L'objectif du projet est de faire uniquement du front-end, pas de back-end ! Pourquoi ? Parce que je ne veux pas payer l'hébergement de SPRINTIA, je suis sur le plan hobby de Vercel et ce forfait impose une limite sur les requêtes au serveur. Moi je n'ai pas envie de me dire qu'il y a une limite, par conséquent, je fais mon maximum pour que tout reste en front-end et donc en local sur votre appareil.
+L'objectif du projet est de faire **uniquement du front-end**, pas de back-end ! Pourquoi ? Parce que **je ne veux pas payer l'hébergement de SPRINTIA**, pour moi SPRINTIA c'est un projet à temps perdu, ça veut dire que ce n'est pas ma priorité et donc par conséquent je ne veux pas payer un abonnement par mois pour héberger l'application. De plus, je suis sur le plan hobby de Vercel et ce forfait impose une limite sur les requêtes au serveur. Moi je n'ai pas envie de me dire qu'il y a une limite, par conséquent, je fais mon maximum pour que tout reste en front-end et donc en local sur votre appareil.
 
 ## Licence
 Ce projet est sous licence [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0).

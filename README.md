@@ -10,11 +10,11 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.verce
 | ![SPRINTIA sur smartphone](/images-readme/smartphone.JPG) | ![SPRINTIA sur tablette](/images-readme/tablette.JPG) | ![SPRINTIA sur ordinateur portable](/images-readme/ordinateur_portable.JPG) |
 
 ## Aperçu visuel
-| Page Entraînement | Page Progression |
+| **Carte GPS** | **Import des données** |
 | :---: | :---: |
-| ![Interface de la page entraînement de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-entrainement.png) | ![Interface de la page de progression de SPRINTIA](/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png) |
-| **Génération d'entraînement** | **SPRINTIA Briefing** |
-| ![Interface de la fonctionnalité de génération d'entraînement](/plus/historique-versions/generation-5/images-gen-5/v5.2-entrainement-du-jour.png) | ![Interface de la fonctionnalité SPRINTIA Briefing qui crée un raccourci entre SPRINTIA et les IA grands publics](/plus/historique-versions/generation-5/images-gen-5/v5.1-SPRINTIA_briefing_parametres.png) |
+| ![Interface du détail d'un entraînement](/images-readme/detail_entrainement.JPG) | ![Interface de l'import des données](/images-readme/import_donnees.JPG) |
+| **Statisques** | **Progression** |
+| ![Interface de la page des statistiques](/images-readme/statistiques.JPG) | ![Interface de la page de progression](/images-readme/progression.JPG) |
 
 ## Fonctionnalités clés
 * SPRINTIA Briefing : exportez vos données d'entraînement vers votre IA préférée et obtenez des analyses précises et pertinentes en quelques clics.

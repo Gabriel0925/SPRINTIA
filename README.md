@@ -4,6 +4,11 @@
 SPRINTIA est conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
 Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
+## Installable sur tous vos appareils
+![SPRINTIA sur smartphone](smartphone.JPG)
+![SPRINTIA sur tablette](tablette.JPG)
+![SPRINTIA sur ordinateur portable](ordinateur_portable.JPG)
+
 ## Aperçu visuel
 | Page Entraînement | Page Progression |
 | :---: | :---: |

@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.3"
+const VERSION_CACHE = "V1.1.4"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     "/",
@@ -132,7 +132,7 @@ const fileInCache = [
     "/progression/recuperation/a-propos.html", "/progression/recuperation/ajouter-recuperation.html", "/progression/recuperation/historique-recuperation.html",
     "/progression/recuperation/recuperation.html", "/progression/recuperation/script-recuperation.js",
 
-    "/index.html", "/manifest.json"
+    "/index.html", "/index.js","/manifest.json"
 ]
 
 // script que le navigateur fais tourner en arrière plan, séparement de ma page web

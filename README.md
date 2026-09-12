@@ -6,6 +6,7 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.verce
 
 ## Installable sur tous vos appareils
 | Sur smartphone | Sur tablette | Sur ordinateur portable |
+| :---: | :---: | :---: |
 | ![SPRINTIA sur smartphone](/images-readme/smartphone.JPG) | ![SPRINTIA sur tablette](/images-readme/tablette.JPG) | ![SPRINTIA sur ordinateur portable](/images-readme/ordinateur_portable.JPG) |
 
 ## Aperçu visuel

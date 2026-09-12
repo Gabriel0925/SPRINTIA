@@ -625,7 +625,7 @@ function errorInput(messageError) {
     let zoneError = document.getElementById("zone-error")
     
     zoneError.classList.add("visible")
-    zoneError.innerHTML = messageError 
+    zoneError.textContent = messageError 
 }
 // --- fin de pou déclencher une animation pour une erreur ---
 

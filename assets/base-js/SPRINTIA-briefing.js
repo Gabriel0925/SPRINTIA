@@ -69,26 +69,22 @@ function nameFavoriteIA() {
     let favoriteIA = localStorage.getItem("iaFavorite")
 
     if (favoriteIA != null) { // si il y a des datas
-        if (favoriteIA == "ia-locale") {
-            // pas exactement le meme texte pour l'IA locale car les données tournent en local sur l'appareil
-            document.querySelector(".explanation-briefing").innerHTML = `
-                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                le transfert de vos données à ${dicoIA[favoriteIA]}</strong>.
-                <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
-            `
-            document.getElementById("button-open-ia").textContent = "Copier"
-
-        } else {
-            // changement du nom de l'IA dans le texte explicatif
-            document.querySelector(".explanation-briefing").innerHTML = `
-                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton ci-dessous vous acceptez
-                le transfert de vos données à ${dicoIA[favoriteIA]}</strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de ${dicoIA[favoriteIA]}.
-                <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
-            `
-            document.getElementById("button-open-ia").textContent = "Copier & Ouvrir " + dicoIA[favoriteIA]
-
+        const spanIaFavorite = document.querySelectorAll(".explanation-briefing .ia-favorite")
+        if (spanIaFavorite) {
+            spanIaFavorite.forEach(element => {
+                element.textContent = dicoIA[favoriteIA]
+            });
         }
-        document.getElementById("button-open-ia").addEventListener("click", () => {openIA(favoriteIA)})
+
+        let buttonOpenIa = document.getElementById("button-open-ia")
+        let textInButton = "Copier & Ouvrir " + dicoIA[favoriteIA]
+
+        if (buttonOpenIa) {
+            if (favoriteIA == "ia-locale") {textInButton = "Copier le prompt"}
+
+            buttonOpenIa.textContent = textInButton
+            buttonOpenIa.addEventListener("click", () => {openIA(favoriteIA)})
+        }
 
         // le bouton dans discuter avec le coach
         let buttonEnDessousTextarea = document.getElementById("button-SPRINTIA-briefing-ask")

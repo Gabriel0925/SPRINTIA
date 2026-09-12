@@ -661,7 +661,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-ba
     border-radius: 50%;
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
-    font-size: 1.5rem;
+    font-size: 1.65rem;
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items p.tab-bars-items-name{
     font-size: 0.55rem;
@@ -678,7 +678,7 @@ div.container-logo-dynamique {
     max-width: var(--MAX_WIDTH);
     pointer-events: none;
     position: fixed;
-    z-index: 15000;
+    z-index: 22000;
 }
 div.container-logo-dynamique div.logo-dynamique {
     display: none;
@@ -2331,7 +2331,7 @@ div.container-chargement {
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_LAYOUT)) blur(var(--BLUR_GLASSMORPHISM_LAYOUT));
     width: 100%;
     height: 100%;
-    z-index: 20000;
+    z-index: 24000;
     transition: opacity ease-out 0.6s;
 }
 div.container-chargement.finish {

@@ -17,11 +17,11 @@ Vous ne savez pas comment installer l'application ? Ou encore vous ne savez pas 
 | ![Interface de la page des statistiques](/images-readme/statistiques.JPG) | ![Interface de la page de progression](/images-readme/progression.JPG) |
 
 ## Philosophie
-J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'est pour cela que l'application **vous accompagne avant et après vos entraînements, mais pas pendant !** Lorsque l'athlète pratique son sport, il doit être concentré sur sa performance, sur son effort ou encore sur son plaisir, et non sur son smartphone ou sur ses statistiques. Ce qui prime lors de vos entraînements, c'est de laisser parler votre instinct, vos sensations et non vos données ! C'est pour cela que SPRINTIA ne tracke aucunes données en temps réel.
+J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'est pour cela que l'application **vous accompagne avant et après vos entraînements, mais pas pendant !** Lorsque l'athlète pratique son sport, il doit être concentré sur sa performance, sur son effort ou encore sur son plaisir, et non sur son smartphone ou sur ses statistiques. Ce qui prime lors de vos entraînements, c'est de laisser parler votre instinct, vos sensations et non vos données ! C'est pour cela que SPRINTIA ne tracke aucune donnée en temps réel.
 
 SPRINTIA se nourrit des données que votre montre (Garmin, COROS, Suunto,...) ou votre application (Strava, Nike Run Club,...) ont collectées lors de vos entraînements. À la fin de votre entraînement, vous n'avez plus qu'à exporter les données de votre entraînement via un fichier **TCX** ou **GPX** et à les importer dans SPRINTIA. Vous pouvez également saisir vos entraînements manuellement si vous n'avez pas de montre ou d'application pour les enregistrer.
 
-Pour finir, j'ai couçu SPRINTIA pour rendre accessible des algorithmes disponibles sur des montres haut de gamme ou des applications payantes. Cela veut dire que vous pouvez utiliser SPRINTIA avec n'importe quelle montre (entrée de gamme, milieu de gamme, haut de gamme) et si vous n'avez pas de montre, vous pouvez utiliser Strava ou Nike Run Club pour enregistrer vos entraînements et ensuite les importer dans SPRINTIA **grâce à un fichier TCX ou GPX**. Cela veut dire que vous pouvez utiliser SPRINTIA **même si vous n'avez pas de montre connectée**.
+Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponibles sur des montres haut de gamme ou des applications payantes. Cela veut dire que vous pouvez utiliser SPRINTIA avec n'importe quelle montre (entrée de gamme, milieu de gamme, haut de gamme) et si vous n'avez pas de montre, vous pouvez utiliser Strava ou Nike Run Club pour enregistrer vos entraînements et ensuite les importer dans SPRINTIA **grâce à un fichier TCX ou GPX**. Cela veut dire que vous pouvez utiliser SPRINTIA **même si vous n'avez pas de montre connectée**.
 
 ## Fonctionnalités
 
@@ -105,7 +105,7 @@ Si vous allez courir avec un ami et que vous utilisez tous les deux SPRINTIA, vo
 ## Import des données
 Vous pouvez importer vos données d'un entraînement, grâce à un fichier **TCX** ou **GPX**. De plus, vous pouvez importer votre historique d'entraînement grâce à un fichier **CSV** de Garmin ou de TrainingPeaks.
 
-Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous pouvez visionnez mes tutos : 
+Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous pouvez visionner mes tutos : 
 * [Importer un entraînement de Strava à SPRINTIA](https://youtu.be/q9cG8EUAMwE?si=GNQzX39XpZQvfL-2)
 * [Importer un entraînement de COROS à SPRINTIA](https://youtu.be/OTOc0AO8TD8?si=CZBkTGLxH8IQzhvL)
 * [Importer un entraînement de n'importe quelle plateforme à SPRINTIA](https://youtu.be/IvygdF1oLqQ?si=hREvlepVsqZEoyJk)
@@ -115,10 +115,10 @@ Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous
 * [La chaîne YouTube](https://www.youtube.com/@SPRINTIA-09)
 
 ## Confidentialité
-**Je n'ai pas conçu SPRINTIA pour collecter vos donnnées personnelles**, au contraire, pour moi j'essaie d'appliquer des principes du quotidien. Est-ce que dans la rue vous donneriez vos données personnelles à un inconnu pour qu'il les revende ? Pour la majorité des gens, la réponse est non. C'est pour cela que SPRINTIA enregistre vos **données en local**, c'est à dire dans votre navigateur, et non sur un serveur. C'est aussi pour cela qu'il n'y a **aucun cookie** intégrée dans la PWA (Progressive Web App) (=site web installable en tant qu'appli). Pour finir, ça veut dire que **même moi qui suis le développeur de SPRINTIA, je n'ai pas accès à vos données**.
+**Je n'ai pas conçu SPRINTIA pour collecter vos données personnelles**, au contraire, pour moi j'essaie d'appliquer des principes du quotidien. Est-ce que dans la rue vous donneriez vos données personnelles à un inconnu pour qu'il les revende ? Pour la majorité des gens, la réponse est non. C'est pour cela que SPRINTIA enregistre vos **données en local**, c'est à dire dans votre navigateur, et non sur un serveur. C'est aussi pour cela qu'il n'y a **aucun cookie** intégrés dans la PWA (Progressive Web App) (=site web installable en tant qu'appli). Pour finir, ça veut dire que **même moi qui suis le développeur de SPRINTIA, je n'ai pas accès à vos données**.
 
 ## Local-First
-L'objectif du projet est de faire **uniquement du front-end**, pas de back-end ! Pourquoi ? Parce que **je ne veux pas payer l'hébergement de SPRINTIA**, pour moi SPRINTIA c'est un projet à temps perdu, ça veut dire que ce n'est pas ma priorité et donc par conséquent je ne veux pas payer un abonnement par mois pour héberger l'application. De plus, je suis sur le plan hobby de Vercel et ce forfait impose une limite sur les requêtes au serveur. Moi je n'ai pas envie de me dire qu'il y a une limite, par conséquent, je fais mon maximum pour que tout reste en front-end et donc en local sur votre appareil.
+L'objectif du projet est de faire **uniquement du front-end**, pas de back-end ! Pourquoi ? Parce que **je ne veux pas payer l'hébergement de SPRINTIA**, je suis sur le plan hobby de Vercel et ce forfait impose une limite sur les requêtes au serveur. Moi je n'ai pas envie de me dire qu'il y a une limite, par conséquent, je fais mon maximum pour que tout reste en front-end et donc en local sur votre appareil.
 
 ## Licence
 Ce projet est sous licence [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0).

@@ -17,7 +17,7 @@
 
 
     /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(38, 38, 40, 0.6);
+    --COLOR_GLASSMORPHISM: rgba(38, 38, 40, 0.45);
     --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.12);
     --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.20);
 
@@ -1420,21 +1420,24 @@ div.toolbar div.container-command {
 
     padding: var(--SPACE_XXS);
     margin-left: auto;
-    gap: var(--SPACE_XXS);
+    gap: var(--SPACE_XS);
     flex-shrink: 0;
 
-    transition: transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 div.toolbar div.container-command.display-none {
     display: none;
 }
 @media (hover: hover) and (pointer: fine) {
     div.toolbar div.container-command:hover {
-        transform: scale(var(--SCALE_SUP));
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+        transform: scale(1.1);
     }
 }
 div.toolbar div.container-command:active {
-    transform: scale(var(--SCALE_SUP));
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: scale(1.1);
 }
 div.toolbar div.container-command i{
     display: flex;
@@ -1442,14 +1445,11 @@ div.toolbar div.container-command i{
     align-items: center;
     cursor: pointer;
 
-    font-size: var(--H1);
+    font-size: 2.05rem;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     flex-shrink: 0;
-
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
     div.toolbar div.container-command i:hover{
@@ -1458,7 +1458,6 @@ div.toolbar div.container-command i{
 }
 div.toolbar div.container-command i:active{
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    transform: scale(var(--SCALE_SUP));
 }
 
 

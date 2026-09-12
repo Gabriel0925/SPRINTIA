@@ -2,6 +2,8 @@
 SPRINTIA est conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
 Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
+Vous ne savez pas comment installer l'application ? Ou encore vous ne savez pas comment configurer SPRINTIA ? Pas de panique, j'ai réalisé un tuto YouTube pour vous aider : [Guide de démarrage - Installation & Configuration](https://youtu.be/S3B5Tm9ssRQ?si=fC1sXdjjDnKKtwbz)
+
 ## Installable sur tous vos appareils
 | Sur smartphone | Sur tablette | Sur ordinateur portable |
 | :---: | :---: | :---: |
@@ -71,6 +73,8 @@ Pour finir, j'ai couçu SPRINTIA pour rendre accessible des algorithmes disponib
     * Le sport que vous souhaitez pratiquer (Course à pied, Vélo, Natation)
     * De plus, si vous avez une montre de la marque COROS, vous pouvez envoyer cet entraînement sur votre compte COROS en un seul clic ! Par la suite, vous n'avez plus qu'à l'envoyer sur votre montre et à le suivre.
 
+    Pour apprendre à utiliser cette fonctionnalité, vous pouvez visionner ma vidéo Youtube : [Comment utiliser l'outil Entraînement du Jour ?](https://youtu.be/eu8c4BxBBlU?si=xMtSDKkeHsbAvQTv)
+
 ### Personnalisation & Coaching
 * **JRM Coach** : c'est le coach intégré dans l'application. C'est lui qui va interpréter vos données dans les algorithmes. Vous pouvez le personnaliser pour avoir le coach qui vous correspond le mieux.
     * Choisissez son nom
@@ -100,6 +104,11 @@ Si vous allez courir avec un ami et que vous utilisez tous les deux SPRINTIA, vo
 
 ## Import des données
 Vous pouvez importer vos données d'un entraînement, grâce à un fichier **TCX** ou **GPX**. De plus, vous pouvez importer votre historique d'entraînement grâce à un fichier **CSV** de Garmin ou de TrainingPeaks.
+
+Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous pouvez visionnez mes tutos Youtube : 
+* [Importer un entraînement de Strava à SPRINTIA](https://youtu.be/q9cG8EUAMwE?si=GNQzX39XpZQvfL-2)
+* [Importer un entraînement de COROS à SPRINTIA](https://youtu.be/OTOc0AO8TD8?si=CZBkTGLxH8IQzhvL)
+* [Importer un entraînement de n'importe quelle plateforme à SPRINTIA](https://youtu.be/IvygdF1oLqQ?si=hREvlepVsqZEoyJk)
 
 ## Confidentialité
 **Je n'ai pas conçu SPRINTIA pour collecter vos donnnées personnelles**, au contraire, pour moi j'essaie d'appliquer des principes du quotidien. Est-ce que dans la rue vous donneriez vos données personnelles à un inconnu pour qu'il les revende ? Pour la majorité des gens, la réponse est non. C'est pour cela que SPRINTIA enregistre vos **données en local**, c'est à dire dans votre navigateur, et non sur un serveur. C'est aussi pour cela qu'il n'y a **aucun cookie** intégrée dans la PWA (Progressive Web App) (=site web installable en tant qu'appli). Pour finir, ça veut dire que **même moi qui suis le développeur de SPRINTIA, je n'ai pas accès à vos données**.

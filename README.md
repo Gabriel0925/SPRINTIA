@@ -76,7 +76,7 @@ Pour finir, j'ai couçu SPRINTIA pour rendre accessible des algorithmes disponib
     * Choisissez son avatar (émoji)
 
 ### Autres fonctionnalités
-* Statistiques : visualisez vos données d'entraînement sur une période sélectionnée (7J, 30J, 90J, 365J), vous pouvez consulter les statistiques suivantes sur cette période :
+* **Statistiques** : visualisez vos données d'entraînement sur une période sélectionnée (7J, 30J, 90J, 365J), vous pouvez consulter les statistiques suivantes sur cette période :
     * Durée totale d'entraînement
     * Nombre d'entraînement
     * Charge d'entraînement totale
@@ -84,14 +84,14 @@ Pour finir, j'ai couçu SPRINTIA pour rendre accessible des algorithmes disponib
     * Temps, distance et nombre d'entraînement par sport (Course, Vélo, Natation)
 
 ### Outils rapides
-* Zones Cardiaques : Découvrez vos zones de fréquence cardiaque pour adapter l'intensité de vos entraînements.
-* Métabolisme de base : Calculez l'énergie de base nécessaire à votre corps pour construire un plan d'entraînement.
-* Calculateur IMC : Calculez votre IMC et obtenez une interprétation de votre résultat.
-* Estimation 1RM (One Repetition Maximum) : Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.
-* Protéines Quotidiennes : Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.
-* Temps de Récupération : Estimez le temps de récupération optimal pour récupérer de votre dernier entraînement.
-* Hydratation : Calculez la quantité d'eau dont votre corps a besoin au quotidien.
-* Convertisseur km/miles : Convertissez une distance des kilomètres en miles ou inversement.
+* **Zones Cardiaques** : Découvrez vos zones de fréquence cardiaque pour adapter l'intensité de vos entraînements.
+* **Métabolisme de base** : Calculez l'énergie de base nécessaire à votre corps pour construire un plan d'entraînement.
+* **Calculateur IMC** : Calculez votre IMC et obtenez une interprétation de votre résultat.
+* **Estimation 1RM (One Repetition Maximum)** : Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.
+* **Protéines Quotidiennes** : Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.
+* **Temps de Récupération** : Estimez le temps de récupération optimal pour récupérer de votre dernier entraînement.
+* **Hydratation** : Calculez la quantité d'eau dont votre corps a besoin au quotidien.
+* **Convertisseur km/miles** : Convertissez une distance des kilomètres en miles ou inversement.
 
 ## Partage d'entraînement
 Si vous allez courir avec un ami et que vous utilisez tous les deux SPRINTIA, vous pouvez vous simplifier la vie. Au lieu de saisir chacun de votre côté votre entraînement, vous pouvez simplement le partager à votre ami. C'est relativement simple, une fois l'entraînement bouclé, l'un de vous importe le fichier TCX ou GPX dans SPRINTIA et ensuite en cliquant sur le détail de l'entraînement, puis "Plus" et enfin "Partager", vous pouvez partager le fichier de l'entraînement via Airdrop, WhatsApp,... et votre ami n'a plus qu'à l'importer dans SPRINTIA pour avoir le même entraînement que vous.

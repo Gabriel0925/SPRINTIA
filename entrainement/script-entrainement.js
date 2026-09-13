@@ -208,7 +208,9 @@ function afficherData(dataWorkout) {
     document.getElementById("description-rpe").style.color = dicoDescriptionRPE[dataWorkout.rpe][1]
 
     // Structure de base de la page entrainement
-    let structureHTML = `<section class="container-block">`
+    let listElementPage = []
+    const sectionContainerBlock = document.createElement("section")
+    sectionContainerBlock.classList.add("container-block")
 
     // initialisation de 2 tableaux
     const tableauDataNotDisplay = ["id", "Nom", "Sport", "Date", "Durée", "RPE", "Charge d'entraînement", "Transpiration estimée", "Réhydratation conseillée"]
@@ -288,32 +290,54 @@ function afficherData(dataWorkout) {
                 if (tableauDataNotDisplay.includes(nomData)) { 
                     // pass
                 } else {
-                    if (tableauDataSeule.includes(nomData)) { // on check si c'est une data qu'on doit afficher seul ou pas 
-                        //si il y a que une seule data  dans l'entraînement alors on met direct dans le container data qu'on a crée au tout début
-                        // je sais pas comment le faire ??!! 
+                    if (tableauDataSeule.includes(nomData)) { // on check si c'est une data qu'on doit afficher seul ou pas
+                        // on créer un nouveau container block si la data est seule, comme les muscles travaillés
+                        const sectionContainerBlockV2 = document.createElement("section")
+                        sectionContainerBlockV2.classList.add("container-block")
 
+                        const divContainerBlockData = document.createElement("div")
+                        divContainerBlockData.classList.add("container-block-data")
 
+                        const paragrapheHeader = document.createElement("p")
+                        paragrapheHeader.classList.add("container-block-data-header")
+                        paragrapheHeader.textContent = nomData
 
-                        // on referme d'abord la section container-block on la rouvre puis on la referme
-                        structureHTML += `</section>
+                        const paragrapheData = document.createElement("p")
+                        paragrapheData.classList.add("container-block-data-data")
+                        paragrapheData.textContent = valeur
+                        const baliseSmallUnite = document.createElement("small")
+                        baliseSmallUnite.textContent = uniteData
+                        paragrapheData.appendChild(baliseSmallUnite)
 
-                            <section class="container-block">
-                                <div class="container-block-data">
-                                    <p class="container-block-data-header">${nomData}</p>
-                                    <p class="container-block-data-data">${valeur} <small>${uniteData}</small></p>
-                                </div>
-                            </section>
+                        divContainerBlockData.appendChild(paragrapheHeader)
+                        divContainerBlockData.appendChild(paragrapheData)
 
-                            <section class="container-block">`
+                        sectionContainerBlockV2.appendChild(divContainerBlockData)
+
+                        listElementPage.push(sectionContainerBlockV2) // ajout dans la liste pour l'ajouter dans la page par la suite
 
                     } else {
                         // si c'est un data normal alors on met la div correspondante
-                        structureHTML += `
-                            <div class="container-block-data">
-                                <p class="container-block-data-header">${nomData}</p>
-                                <p class="container-block-data-data">${valeur} <small>${uniteData}</small></p>
-                            </div>
-                        `
+                        const divContainerBlockData = document.createElement("div")
+                        divContainerBlockData.classList.add("container-block-data")
+
+                        const paragrapheHeader = document.createElement("p")
+                        paragrapheHeader.classList.add("container-block-data-header")
+                        paragrapheHeader.textContent = nomData
+
+                        const paragrapheData = document.createElement("p")
+                        paragrapheData.classList.add("container-block-data-data")
+                        paragrapheData.textContent = valeur
+                        const baliseSmallUnite = document.createElement("small")
+                        baliseSmallUnite.textContent = uniteData
+                        paragrapheData.appendChild(baliseSmallUnite)
+
+                        divContainerBlockData.appendChild(paragrapheHeader)
+                        divContainerBlockData.appendChild(paragrapheData)
+
+                        sectionContainerBlock.appendChild(divContainerBlockData)
+
+                        listElementPage.push(sectionContainerBlock) // ajout dans la liste pour l'ajouter dans la page par la suite
                     }
                 }
 
@@ -322,27 +346,22 @@ function afficherData(dataWorkout) {
 
     });
 
-    structureHTML += `</section>` // on referme
-
-    // nettoyage de la page pour les container-data-block vide, par exemple quand on remplit uniquement le champs "Muscles travaillés" et qu'il n'y a pas de data de FC
-    structureHTML = structureHTML.replaceAll(`<section class="container-block"></section>`, "")
-
     // on ajoute au conteneur
-    document.querySelector(".page-entrainement").innerHTML = structureHTML
+    if (listElementPage.length <= 0) {
+        document.getElementById("title-stats-detaillees").style.display = "none"
+        document.querySelector(".page-entrainement").style.display = "none"
+        document.querySelector("button.briefing").style.setProperty("margin-top", "var(--SPACE_L)")
+    } else {
+        listElementPage.forEach(element => {
+            document.querySelector(".page-entrainement").appendChild(element)
+        });
+    }
 
     // on affiche iniquement si il y a des relevées gps
     if (latlngs != null) {
         carteGPS(dataWorkout, latlngs)
     } else {
         document.getElementById("map").style.display = "none"
-    }
-
-    // si il n'y a pas de stats détaillé
-    if (document.querySelector(".page-entrainement").innerHTML == `<section class="container-block"></section>` ||
-        document.querySelector(".page-entrainement").innerHTML == ``) {
-        document.getElementById("title-stats-detaillees").style.display = "none"
-        document.querySelector(".page-entrainement").style.display = "none"
-        document.querySelector("button.briefing").style.setProperty("margin-top", "var(--SPACE_L)")
     }
 
     // réhydratation conseillée

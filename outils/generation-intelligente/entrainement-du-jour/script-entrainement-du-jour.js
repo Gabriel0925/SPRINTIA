@@ -100,7 +100,7 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
                 paragrapheDureeRecup.classList.add("duree-recuperation")
 
                 // remplissage des elt
-                paragrapheRepetition.innerHTML = "Répéter <strong>" + element["nombre_repetitions"] + "</strong> fois"
+                paragrapheRepetition.textContent = "Répéter " + element["nombre_repetitions"] + " fois"
                 paragrapheDureeRep.textContent = element["volume_effort"][0] + " " + element["volume_effort"][1] + " (effort)"
                 paragrapheDureeRecup.textContent = element["volume_recuperation"][0] + " " + element["volume_recuperation"][1] + " (récupération)"
 
@@ -127,7 +127,7 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
         paragrapheDureeRecup.classList.add("duree-recuperation")
 
         // remplissage des elt
-        paragrapheRepetition.innerHTML = "Répéter " + instruction_fractionne["nombre_repetitions"] + " fois"
+        paragrapheRepetition.textContent = "Répéter " + instruction_fractionne["nombre_repetitions"] + " fois"
         paragrapheDureeRep.textContent = instruction_fractionne["volume_effort"][0] + " " + instruction_fractionne["volume_effort"][1] + " (effort)"
         paragrapheDureeRecup.textContent = instruction_fractionne["volume_recuperation"][0] + " " + instruction_fractionne["volume_recuperation"][1] + " (récupération)"
 
@@ -216,26 +216,38 @@ function interfaceWorkout(selectedWorkout) {
     titleH2.textContent = "Résumé de l'entraînement"
     containerWorkoutGenerate.appendChild(titleH2)
 
-    // ajout des données de base de l'entrainement : durée + charge d'entraînement
-    let structureHTML = `
-        <section class="container-block">
+    const tableauDatas = [
+        {"title": "Durée", "data" :selectedWorkout["informations"]["duree_totale"], "unite": ""},
+        {"title": "RPE", "data" :selectedWorkout["informations"]["rpe"], "unite": "/10"},
+        {"title": "Charge d'entraînement", "data" : "~ " + selectedWorkout["informations"]["charge_entrainement"], "unite": "CE"}
+    ]
 
-                <div class="container-block-data">
-                    <p class="container-block-data-header">Durée</p>
-                    <p class="container-block-data-data">${selectedWorkout["informations"]["duree_totale"]}</p>
-                </div>
-                <div class="container-block-data">
-                    <p class="container-block-data-header">RPE</p>
-                    <p class="container-block-data-data">${selectedWorkout["informations"]["rpe"]} <small>/10</small></p>
-                </div>
-                <div class="container-block-data">
-                    <p class="container-block-data-header">Charge d'entraînement</p>
-                    <p class="container-block-data-data">~ ${selectedWorkout["informations"]["charge_entrainement"]} <small>CE</small></p>
-                </div>
+    const sectionContainerBlock = document.createElement("section")
+    sectionContainerBlock.classList.add("container-block")
 
-        </section>
-    `
-    containerWorkoutGenerate.innerHTML += structureHTML // ajout des datas de base dans le body html
+    for (let i=0; i<3 ;i++) {
+        const divContainerBlockData = document.createElement("div")
+        divContainerBlockData.classList.add("container-block-data")
+        sectionContainerBlock.appendChild(divContainerBlockData)
+
+        const paragrapheHeader = document.createElement("p")
+        paragrapheHeader.classList.add("container-block-data-header")
+        paragrapheHeader.textContent = tableauDatas[i]["title"]
+        divContainerBlockData.appendChild(paragrapheHeader)
+        
+        const paragrapheData = document.createElement("p")
+        paragrapheData.classList.add("container-block-data-data")
+        paragrapheData.textContent = tableauDatas[i]["data"]
+
+        const smallUnite = document.createElement("small")
+        smallUnite.textContent = tableauDatas[i]["unite"]
+        paragrapheData.appendChild(smallUnite)
+
+        divContainerBlockData.appendChild(paragrapheData)
+
+        sectionContainerBlock.appendChild(divContainerBlockData)
+    }
+    containerWorkoutGenerate.appendChild(sectionContainerBlock) // ajout des datas de base dans le body html
 
     // ajout d'un h2 pour structurer la page
     let titleH2Num2 = document.createElement("h2")

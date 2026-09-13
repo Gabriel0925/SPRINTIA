@@ -39,32 +39,51 @@ async function Init() {
 }
 
 function HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout) {
-    let StructureHTML = `        
-        <a href="entrainement/entrainement.html?workout=${workout.id}">  
-            <div class="data-workout-column">
-                <p class="name-workout">
-                    ${workout.nom}
-                </p>
-                <p class="sport-date-workout">
-                    ${workout.sport} · ${DateEuropeen}
-                </p>
-            </div>
-            <div class="container-data-resume-workout">
-                <p class="duree-workout">
-                    ${dureeWorkout}
-                </p>
-                <p class="charge-workout">
-                    ${workout.charge_entrainement} <small>CE</small>
-                </p>
-            </div>
-        </a>
-    `
+    const baliseA = document.createElement("a")
+    baliseA.href = `entrainement/entrainement.html?workout=${workout.id}`
 
-    CardWorkout.innerHTML = StructureHTML 
+    // <div class="data-workout-column">
+    const divDataColumn = document.createElement("div")
+    divDataColumn.classList.add("data-workout-column")
 
-    let CardWorkoutHTML = CardWorkout
+    const paragrapheNameWorkout = document.createElement("p")
+    paragrapheNameWorkout.classList.add("name-workout")
+    paragrapheNameWorkout.textContent = workout.nom
 
-    return CardWorkoutHTML
+    const paragrapheSportDateWorkout = document.createElement("p")
+    paragrapheSportDateWorkout.classList.add("sport-date-workout")
+    paragrapheSportDateWorkout.textContent = workout.sport + " · " + DateEuropeen
+
+    divDataColumn.appendChild(paragrapheNameWorkout)
+    divDataColumn.appendChild(paragrapheSportDateWorkout)
+
+    // <div class="container-data-resume-workout">
+    const divDataResumeWorkout = document.createElement("div")
+    divDataResumeWorkout.classList.add("container-data-resume-workout")
+
+    const paragrapheDureeWorkout = document.createElement("p")
+    paragrapheDureeWorkout.classList.add("duree-workout")
+    paragrapheDureeWorkout.textContent = dureeWorkout
+
+    const paragrapheChargeWorkout = document.createElement("p")
+    paragrapheChargeWorkout.classList.add("charge-workout")
+    paragrapheChargeWorkout.textContent = workout.charge_entrainement
+
+    const baliseSmallUnite = document.createElement("small") //<small>CE</small>
+    baliseSmallUnite.textContent = "CE"
+    paragrapheChargeWorkout.appendChild(baliseSmallUnite)
+
+    divDataResumeWorkout.appendChild(paragrapheDureeWorkout)
+    divDataResumeWorkout.appendChild(paragrapheChargeWorkout)
+
+    // Ajout des 2 div à la balise a
+    baliseA.appendChild(divDataColumn)
+    baliseA.appendChild(divDataResumeWorkout)
+
+    // Ajout de la balise "a" à la card workout
+    CardWorkout.appendChild(baliseA)
+
+    return CardWorkout
 }
 
 async function SauvegardeHistorique(HistoriqueDB) {

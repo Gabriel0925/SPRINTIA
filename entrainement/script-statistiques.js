@@ -45,10 +45,10 @@ async function statistiquesParSport(sportForFunction) {
     if (sportDemandee == "Natation") { // si c'est de la natation alors on met en metre
         compteurDistance = compteurDistance*1000
         document.getElementById("distance-sport").textContent = compteurDistance.toFixed(1).replace(".", ",")
-        document.getElementById("unite-distance-sport").textContent = "<small>m</small>"
+        document.getElementById("unite-distance-sport").textContent = "m"
     } else {
         document.getElementById("distance-sport").textContent = compteurDistance.toFixed(2).replace(".", ",")
-        document.getElementById("unite-distance-sport").textContent = "<small>km</small>"
+        document.getElementById("unite-distance-sport").textContent = "km"
     }
 }
         

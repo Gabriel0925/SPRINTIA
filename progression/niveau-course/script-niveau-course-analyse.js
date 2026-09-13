@@ -197,10 +197,10 @@ function zonesPuissance(rFTPwEstimee) {
 
     if (rFTPwEstimee == "--") {
         // renvoie ça si il ya des datas : '255,6  W' si ya pas de datas (et donc que le user n'a pas config son profil) "--"
-        rFTPwEstimee = document.getElementById("rFTPw-estimee").textContent // '255,6  W'
+        rFTPwEstimee = document.getElementById("rFTPw-estimee").textContent // '255,6  W' 
 
-        if (rFTPwEstimee != "--  W") {
-            rFTPwEstimee = Number(rFTPwEstimee.split(" ")[0].replace(",", ".")) // 255.6 en number
+        if (rFTPwEstimee != "--W") {
+            rFTPwEstimee = Number(rFTPwEstimee.replace(",", ".").replace("W", "")) // 255.6 en number
         } else {
             alert("Pour accéder à vos zones de puissance, veuillez configuer votre profil ou ajouter des données dans le niveau de course.")
             // remise à 0 de cette partie de la page pour pas que le user accede au zone de puissance alors qu'il n'a pas config son profil
@@ -293,7 +293,7 @@ async function displayOnScreenLevelRun () {
     document.getElementById("time-semi-marathon").textContent = tempsSemiMarathon
     document.getElementById("time-marathon").textContent = tempsMarathon
 
-    if (document.getElementById("rFTPw-estimee").textContent == "--  W") {
+    if (document.getElementById("rFTPw-estimee").textContent == "--W") {
         document.getElementById("rFTPw-estimee").addEventListener("click", () => {
             alert("Pour avoir accès à votre rFTPw veuillez configurer votre profil.")
         });

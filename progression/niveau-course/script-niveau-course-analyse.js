@@ -268,10 +268,21 @@ async function displayOnScreenLevelRun () {
     document.getElementById("zone-last-level-run").textContent = zoneLevelUser
 
     // affichage des métriques de base
-    document.getElementById("vma-estimee").innerHTML = vmaEstimee.toString().replace(".", ",") + "  <small>km/h</small>"
+    document.getElementById("vma-estimee").textContent = vmaEstimee.toString().replace(".", ",")
+    const small1 = document.createElement("small")
+    small1.textContent = "km/h"
+    document.getElementById("vma-estimee").appendChild(small1)
+
     document.getElementById("vo2max-estimee").textContent = vo2maxEstimee.toString().replace(".", ",") 
-    document.getElementById("rFTPw-estimee").innerHTML = rFTPwEstimee.toString().replace(".", ",") + "  <small>W</small>"
-    document.getElementById("allure-seuil-estimee").innerHTML = allureSeuilEstimee + "  <small>/km</small>"
+    document.getElementById("rFTPw-estimee").textContent = rFTPwEstimee.toString().replace(".", ",")
+    const small2 = document.createElement("small")
+    small2.textContent = "W"
+    document.getElementById("rFTPw-estimee").appendChild(small2)
+
+    document.getElementById("allure-seuil-estimee").textContent = allureSeuilEstimee
+    const small3 = document.createElement("small")
+    small3.textContent = "/km"
+    document.getElementById("allure-seuil-estimee").appendChild(small3)
 
     // affichage des temps prédit pour les différentes distance
     document.getElementById("time-400m").textContent = temps400m

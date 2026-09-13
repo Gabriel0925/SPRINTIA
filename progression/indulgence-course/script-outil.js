@@ -1,27 +1,27 @@
 // dico des interpretation
 const InterpretationBienveillant = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
-    "2": "Tu cours <strong>moins depuis 7 jours</strong>, c'est dommage ! Si c'est un choix profite-en pour te reposer ou travailler d'autres aspects de la course comme le <strong>renforcement</strong> ou de la <strong>mobilité</strong>.", 
-    "3": "Parfait ! <strong>Tu progresses</strong> grâce à ta <strong>régularité</strong> ainsi qu'à ta discipline, continue comme ça pour booster tes performances. Pour maximiser ta progression, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
-    "4": "Attention, tu cours <strong>bien plus que d'habitude</strong> ! Si tu continues sur ce rythme tu risques de te <strong>blesser</strong>. P'tit conseil, <strong>réduis</strong> ton volume d'entraînement."
+    "1": "Je n'ai pas encore assez de données pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton premier entraînement de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
+    "2": "Tu cours moins depuis 7 jours, c'est dommage ! Si c'est un choix profite-en pour te reposer ou travailler d'autres aspects de la course comme le renforcement ou de la mobilité.", 
+    "3": "Parfait ! Tu progresses grâce à ta régularité ainsi qu'à ta discipline, continue comme ça pour booster tes performances. Pour maximiser ta progression, pense toujours à varier tes allures d'entraînement.", 
+    "4": "Attention, tu cours bien plus que d'habitude ! Si tu continues sur ce rythme tu risques de te blesser. P'tit conseil, réduis ton volume d'entraînement."
 }
 const InterpretationStrictMotivant = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
-    "2": "Tu cours <strong>moins depuis 7 jours</strong>. Fais attention si tu continues sur cette voie, tu risques de perdre du niveau rapidement ! Petit conseil pour limiter la casse, fais du <strong>renforcement</strong>.", 
-    "3": "Parfait ! <strong>Tu progresses</strong> grâce à ta <strong>régularité</strong>. La régularité c'est la clé de la réussite donc, continue comme ça pour progresser. Mais attention, le plus dur n'est pas de progresser mais de continuer à progresser.", 
-    "4": "Tu cours <strong>bien plus que d'habitude</strong> ! Si tu veux te <strong>blesser</strong>, tu es sur la bonne voie, ne joue pas avec le feu, arrête de courir pendant quelques jours, pour revenir plus fort."
+    "1": "Je n'ai pas encore assez de données pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton premier entraînement de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
+    "2": "Tu cours moins depuis 7 jours. Fais attention si tu continues sur cette voie, tu risques de perdre du niveau rapidement ! Petit conseil pour limiter la casse, fais du renforcement.", 
+    "3": "Parfait ! Tu progresses grâce à ta régularité. La régularité c'est la clé de la réussite donc, continue comme ça pour progresser. Mais attention, le plus dur n'est pas de progresser mais de continuer à progresser.", 
+    "4": "Tu cours bien plus que d'habitude ! Si tu veux te blesser, tu es sur la bonne voie, ne joue pas avec le feu, arrête de courir pendant quelques jours, pour revenir plus fort."
 }
 const InterpretationCopain = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
-    "2": "Tu cours <strong>moins depuis 7 jours</strong>. Essaie de courir un peu plus, ne te relâche pas, sinon tu vas finir par perdre tout ton niveau et crois moi, tu vas t'en vouloir une fois qu'il sera trop tard.", 
-    "3": "Bravo ! <strong>Tu progresses</strong> grâce à ton sérieux, ta concentration et ta détermination à toujours donner le meilleur de toi-même. Pour continuer à progresser, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
-    "4": "Attention, tu cours <strong>bien plus que d'habitude</strong> ! J'ai l'impression que tu aimes un peu trop courir en ce moment, c'est bien, mais attention : sans progressivité, plus tu risques de te blesser."
+    "1": "Je n'ai pas encore assez de données pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton premier entraînement de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
+    "2": "Tu cours moins depuis 7 jours. Essaie de courir un peu plus, ne te relâche pas, sinon tu vas finir par perdre tout ton niveau et crois moi, tu vas t'en vouloir une fois qu'il sera trop tard.", 
+    "3": "Bravo ! Tu progresses grâce à ton sérieux, ta concentration et ta détermination à toujours donner le meilleur de toi-même. Pour continuer à progresser, pense toujours à varier tes allures d'entraînement.", 
+    "4": "Attention, tu cours bien plus que d'habitude ! J'ai l'impression que tu aimes un peu trop courir en ce moment, c'est bien, mais attention : sans progressivité, plus tu risques de te blesser."
 }
 const InterpretationGoMuscu = {
-    "1": "Je n'ai <strong>pas encore assez de données</strong> pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton <strong>premier entraînement</strong> de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
-    "2": "Tu cours <strong>moins depuis 7 jours</strong>, attention, la course à pied c'est comme la musculation ça demande de la <strong>régularité</strong>. Ton coeur, c'est un muscle, il faut le travailler pour qu'il devienne meilleur.", 
-    "3": "<strong>Tu progresses</strong>, parfait ! En plus de travailler tes muscles, tu travailles ton coeur, bien joué ! Pour continuer à progresser, pense toujours à <strong>varier tes allures</strong> d'entraînement.", 
-    "4": "Tu cours <strong>bien plus que d'habitude</strong> ! Fais attention, si tu continues sur ce rythme tu risques de te <strong>blesser</strong> donc réduis ton volume kilométrique."
+    "1": "Je n'ai pas encore assez de données pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton premier entraînement de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
+    "2": "Tu cours moins depuis 7 jours, attention, la course à pied c'est comme la musculation ça demande de la régularité. Ton coeur, c'est un muscle, il faut le travailler pour qu'il devienne meilleur.", 
+    "3": "Tu progresses, parfait ! En plus de travailler tes muscles, tu travailles ton coeur, bien joué ! Pour continuer à progresser, pense toujours à varier tes allures d'entraînement.", 
+    "4": "Tu cours bien plus que d'habitude ! Fais attention, si tu continues sur ce rythme tu risques de te blesser donc réduis ton volume kilométrique."
 }
 const dicoFouchetteIndulgence = { // pour les coefficients des tranches pr la distance hebdo conseillée
     "occasionnel": [
@@ -241,14 +241,14 @@ async function InterpretationJRM(Distance7J, Distance28J, IndulgenceDeCourseFin)
     if (Distance28J > 0) {
         // en fonction du résultat des calculs, attribution d'une interpretation
         if (Distance28J <= Distance7J && Distance7J <= IndulgenceDeCourseFin) {
-            InterpretationParagraphe.innerHTML = Interpretation["3"]
+            InterpretationParagraphe.textContent = Interpretation["3"]
         } else if (Distance7J > IndulgenceDeCourseFin) {
-            InterpretationParagraphe.innerHTML = Interpretation["4"]
+            InterpretationParagraphe.textContent = Interpretation["4"]
         } else {
-            InterpretationParagraphe.innerHTML = Interpretation["2"]
+            InterpretationParagraphe.textContent = Interpretation["2"]
         }
     } else {
-        InterpretationParagraphe.innerHTML = Interpretation["1"]
+        InterpretationParagraphe.textContent = Interpretation["1"]
     }
 
 }
@@ -269,7 +269,8 @@ async function JRMCoachUser() {
         let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
         let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
-        document.getElementById("nom-coach").innerHTML =  AvatarCoach + " " + "<strong>" + NomCoach + "</strong>"
+        document.getElementById("avatar-coach").textContent = AvatarCoach
+        document.getElementById("nom-coach").textContent = NomCoach
     }
 }
 

@@ -51,8 +51,8 @@ async function SauvegardePreference() {
         BoutonSauvegarde.disabled = false 
     }, 1300);
 
-    // Changement du titre du h1
-    document.querySelector("h1").innerHTML = `Configurer <strong id='briefing'>${NameCoach}</strong>`
+    // Changement du titre du h1 
+    document.getElementById("briefing").textContent = NameCoach
 
     logoDynamique(`${AvatarCoach} C'est parti !`)
 
@@ -77,7 +77,6 @@ function ChangeStyle(value) {
 
 function ChangeAvatar(value) {
     // Recup de la zone du nom du coach
-    let ZoneNameJRM = document.getElementById("NomCoach")
     let NameJRM = document.getElementById("nom-coach").value
 
     if (!NameJRM) { // Si il y a rien dans le champs name alors on met en variable le nom de base pour que quand ça passera dans le else le nom de base sera mis
@@ -85,19 +84,19 @@ function ChangeAvatar(value) {
     }
 
     // maj de l'avatar dans la zone du coach
-    ZoneNameJRM.innerHTML = value + " " + "<strong>" + NameJRM + "</strong>"
+    document.getElementById("zone-coach-avatar").textContent = value
+    document.getElementById("zone-coach-nom").textContent = NameJRM
 
     return
 }
 
 function MajName(value) {
-    let NameJRM = document.getElementById("NomCoach")
-    let AvatarCoach = document.getElementById("avatar-coach").value
-
-    if (value == "" || value == " ") { // Si le champs est vide alors on met JRM coach dans la box JRM Coach
-        NameJRM.innerHTML = AvatarCoach + " " + "<strong>JRM Coach</strong>"
+    if (value == "" || value == " ") { // Si le champs est vide alors on met JRM coach dans la box JRM Coach        
+        document.getElementById("zone-coach-avatar").textContent = AvatarCoach
+        document.getElementById("zone-coach-nom").textContent = "JRM Coach"
     } else {
-        NameJRM.innerHTML = AvatarCoach + " " + "<strong>" + value + "</strong>"
+        document.getElementById("zone-coach-avatar").textContent = AvatarCoach
+        document.getElementById("zone-coach-nom").textContent = value
     } 
 
     return
@@ -106,7 +105,6 @@ function MajName(value) {
 async function Initialisation() {
     // Zone de message du JRM
     let ZoneJRMBox = document.getElementById("JRM-coach")
-    let ZoneNameBox = document.getElementById("NomCoach")
     // Input JRM Coach
     let InputName = document.getElementById("nom-coach")
     let InputStyle = document.getElementById("style-coach")
@@ -128,7 +126,8 @@ async function Initialisation() {
         InputAvatar.value = TableauAvatar[0]
 
         // Remplissage des zones
-        ZoneNameBox.innerHTML = TableauAvatar[0] + " " + "<strong>" + TableauName[0] + "</strong>" // Le nom du coach
+        document.getElementById("zone-coach-avatar").textContent = TableauAvatar[0]
+        document.getElementById("zone-coach-nom").textContent = TableauName[0]
         ZoneJRMBox.textContent = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
 
     } else {
@@ -153,11 +152,11 @@ async function Reinitialisation() {
         await new Promise(r => setTimeout(r, 650))
 
         // on remet tout de base sur la page premierement les input
-        document.querySelector("h1").innerHTML = "Configurer <strong id='briefing'>JRM Coach</strong>"
+        document.getElementById("briefing").textContent = "JRM Coach"
         document.getElementById("nom-coach").value = ""
         document.getElementById("style-coach").value = "Bienveillant"
         document.getElementById("avatar-coach").value = ""
-        document.getElementById("NomCoach").innerHTML = "<strong>JRM Coach</strong>"
+        document.getElementById("zone-coach-nom").textContent = "JRM Coach"
         document.getElementById("JRM-coach").textContent = DicoPhraseExemple["Bienveillant"]
 
         // confirmation sauvegarde
@@ -181,7 +180,7 @@ async function NomCoachInit() {
     if (CoachUserDB.length > 0) { // Si il y a des datas
         let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
  
-        document.querySelector("h1").innerHTML = `Configurer <strong id="briefing">${NomCoach}</strong>`
+        document.getElementById("briefing").textContent = NomCoach
     }
 }
 

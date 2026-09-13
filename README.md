@@ -128,7 +128,7 @@ Bien que vos données restent stockées sur votre appareil, vous gardez le contr
 ### Sécurité de l'application
 Pour protéger l'application et vos données j'ai intégré à SPRINTIA :
 * **Content Security Policy (CSP)** : j'ai autorisé l'application à uniquement exécuter les scripts, les ressources qui proviennent de l'application (self) ce qui bloque tout script tiers.
-* **Protection contre les injections (XSS)** : dans tout le code de l'application il n'y a pas un seul ".innerHTML" ce qui bloque l'injection de code malveillant.
+* **Protection contre les injections (XSS)** : je n'utilise pas ".innerHTML" ce qui bloque l'injection de script malveillant.
 
 ## Local-First
 L'objectif du projet est de faire **uniquement du front-end**, pas de back-end ! Pourquoi ? Parce que **je ne veux pas payer l'hébergement de SPRINTIA**, je suis sur le plan hobby de Vercel et ce forfait impose une limite sur les requêtes au serveur. Moi je n'ai pas envie de me dire qu'il y a une limite, par conséquent, je fais mon maximum pour que tout reste en front-end et donc en local sur votre appareil.

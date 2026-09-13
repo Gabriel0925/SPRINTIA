@@ -52,6 +52,10 @@ function verificationInputBase() {
         alert("Erreur de saisie : le champ 'âge' doit être rempli.");
         return
     }
+    if (methodeCalcul == "Reserve" && fcReposUser == undefined) {
+        alert("Erreur de saisie : le champ 'FC repos' doit être rempli.");
+        return
+    }
     if (ageUser <= 0) {
         alert("Valeur non valide, l'âge doit être supérieur à 0.")
         return

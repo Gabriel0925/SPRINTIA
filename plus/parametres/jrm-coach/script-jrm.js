@@ -80,7 +80,7 @@ function ChangeAvatar(value) {
     let NameJRM = document.getElementById("nom-coach").value
 
     if (!NameJRM) { // Si il y a rien dans le champs name alors on met en variable le nom de base pour que quand ça passera dans le else le nom de base sera mis
-        NameJRM = "<strong>JRM Coach</strong>"
+        NameJRM = "JRM Coach"
     }
 
     // maj de l'avatar dans la zone du coach

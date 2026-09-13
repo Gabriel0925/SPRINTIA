@@ -168,12 +168,12 @@ inputSearch.addEventListener("input", () => { // on recup en temps réel ce que 
 
     if (rechercheUser.trim() == "") {
         document.getElementById("aucun-resultat").style.display = "none"
-        document.getElementById("liste-workouts").innerHTML = ""
+        document.getElementById("liste-workouts").textContent = ""
         initialisationAffichage()
     } else {
         let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => workout.nom.toLowerCase().includes(rechercheUser))
 
-        document.getElementById("liste-workouts").innerHTML = ""
+        document.getElementById("liste-workouts").textContent = ""
         document.getElementById("button_afficher_plus").style.display = "none"
 
         if (filteredHistoriqueComplet.length <= 0) {

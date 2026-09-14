@@ -2094,7 +2094,8 @@ div.my-control i {
     background: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
+                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H2);

@@ -79,7 +79,7 @@ async function jrmCoach() {
         let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
                 
         document.getElementById("avatar-coach").textContent =  AvatarCoach
-        document.getElementById("nom-coach").textContent =  NomCoach
+        document.getElementById("nom-coach").textContent =  NomCoach 
     }
 
     // recup des 30 derniers jours de datas

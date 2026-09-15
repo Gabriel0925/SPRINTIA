@@ -62,7 +62,7 @@ async function init(dateChoisie) {
     // quand il n'y a pas de datas
     if (historiqueDB.length <= 0) {
         document.querySelector(".sports-pratiques").style.display = "none"
-        document.getElementById("message-not-datas").style.display = "block"
+        document.getElementById("aucune-data").style.display = "flex"
         document.getElementById("message-tips-graph").style.display = "none"
 
         // remise à 0 des champs pr éviter d'avoir des anciennes datas lors d'une autre période
@@ -81,7 +81,7 @@ async function init(dateChoisie) {
         // si le user n'a pas de datas sur les 7 derniers jours et qu'il veut afficher les stats des 30j 
         // il faut remettre le graph et le message visible sinon le graph ne sera pas là
         document.querySelector(".sports-pratiques").style.display = "block"
-        document.getElementById("message-not-datas").style.display = "none"
+        document.getElementById("aucune-data").style.display = "none"
         document.getElementById("message-tips-graph").style.display = "block"
         document.getElementById("barCanvas").style.display = "block"
     }
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // on cache le message comme quoi il n'y a pas de données
-    const messagePasDatas = document.getElementById("message-not-datas")
+    const messagePasDatas = document.getElementById("aucune-data")
     if (messagePasDatas) {messagePasDatas.style.display="none"}
 
     init(dateMoins7J)

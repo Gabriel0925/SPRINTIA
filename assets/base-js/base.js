@@ -296,6 +296,8 @@ async function genererGraphiqueDoughnut(label, listePourcentage) {
     let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
     const barCanvas = document.getElementById("barCanvas")
+    const containerGraphique = document.querySelector(".chart-container.skeleton")
+    if (containerGraphique) {containerGraphique.classList.remove("skeleton")}
 
     if (barChart) { // si il y a deja un graphique on le suppr
         barChart.destroy()

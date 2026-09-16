@@ -67,13 +67,13 @@ async function init(dateChoisie) {
 
         // remise à 0 des champs pr éviter d'avoir des anciennes datas lors d'une autre période
         document.getElementById("duree").textContent = "00:00"
-        document.getElementById("charge-entrainement").textContent = "0 CE"
+        document.getElementById("charge-entrainement").textContent = "0"
         document.getElementById("nb-entrainement").textContent = "0"
 
         // pareil pour les datas dans les sports spé
         document.getElementById("duree-sport").textContent = "00:00"
         document.getElementById("nb-entrainement-sport").textContent = "0"
-        document.getElementById("distance-sport").textContent = "0 km"
+        document.getElementById("distance-sport").textContent = "0,00"
 
         document.getElementById("barCanvas").style.display = "none"
         return

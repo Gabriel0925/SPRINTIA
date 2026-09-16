@@ -1307,8 +1307,7 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
 }
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut.skeleton{
     display: inline-block;
-    min-width: 80px;
-    max-width: 180px;
+    width: 160px;
     height: 26px;
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_SMALL);

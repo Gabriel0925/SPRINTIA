@@ -1785,7 +1785,7 @@ section.background-SPRINTIA-briefing {
     z-index: 20000;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
-    background-color: rgba(38, 38, 40, 0.85);
+    background-color: rgba(38, 38, 40, 0.825);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
 

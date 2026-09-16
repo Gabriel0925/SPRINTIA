@@ -1295,6 +1295,7 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     height: 30px;
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
     color: transparent !important; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
     animation: skeleton_animation 1s ease-out infinite;
 }
@@ -1318,6 +1319,7 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     height: 26px;
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
     color: transparent; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
     animation: skeleton_animation 1s ease-out infinite;
 }
@@ -2932,7 +2934,8 @@ div.chart-container {
 }
 div.chart-container.skeleton {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    border-radius: var(--BORDER_SMALL);
+    border-radius: var(--BORDER_BIG);
+    overflow: hidden;
     animation: skeleton_animation 1s ease-out infinite;
 }
 

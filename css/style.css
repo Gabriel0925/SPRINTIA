@@ -2928,6 +2928,12 @@ div.button-group div.button-group-button{
 div.chart-container {
     display: block;
     margin: var(--SPACE_L) var(--SPACE_XXS);
+    min-height: 151px;
+}
+div.chart-container.skeleton {
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    animation: skeleton_animation 1s ease-out infinite;
 }
 
 

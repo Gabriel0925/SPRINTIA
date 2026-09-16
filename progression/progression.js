@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul()
     // affichage des valeurs
     document.getElementById("charge-7j").textContent = chargeTotale7j
-    document.querySelector(".widget-charge-entrainement-score.skeleton").classList.remove("skeleton") // on enleve l'animation de chargement
+    document.querySelector(".widget-charge-entrainement-score span.skeleton").classList.remove("skeleton") // on enleve l'animation de chargement
     document.getElementById("statut-charge-entrainement").textContent = statutUser
     document.getElementById("statut-charge-entrainement").classList.remove("skeleton") // on enleve l'animation de chargement
 

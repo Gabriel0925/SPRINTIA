@@ -1289,12 +1289,13 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
 }
-section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score.skeleton{
-    max-width: 65px;
-    height: 38px;
+section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score span.skeleton{
+    display: inline-block;
+    width: 60px;
+    height: 34px;
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_SMALL);
-    color: transparent; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
+    color: transparent !important; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
     animation: skeleton_animation 1s ease-out infinite;
 }
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score small{

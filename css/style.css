@@ -455,7 +455,6 @@ section.header div.logo {
 }
 @media (hover: hover) and (pointer: fine) {
     section.header div.logo:hover {
-        background: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: scale(var(--SCALE_SUP));
     }
 }
@@ -479,18 +478,15 @@ section.header ul.header-container-items {
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
 
     border-radius: 1.50rem;
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     section.header ul.header-container-items:hover {
-        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-        transform: scale(1.008);
+        transform: scale(1.01);
     }
 }
 section.header ul.header-container-items:active {
-    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-    transform: scale(1.008);
+    transform: scale(1.01);
 }
 section.header ul.header-container-items li.header-items{
     display: flex;
@@ -588,18 +584,15 @@ section.tab-bars ul.tab-bars-container-items{
     padding: var(--SPACE_XXS);
     gap: var(--SPACE_XXS);
     pointer-events: all;
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     section.tab-bars ul.tab-bars-container-items:hover{
-        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-        transform: scale(1.025);
+        transform: scale(1.04);
     }
 }
 section.tab-bars ul.tab-bars-container-items:active{
-    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-    transform: scale(1.025);
+    transform: scale(1.04); /*1.025*/
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     display: flex;

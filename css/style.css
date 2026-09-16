@@ -1289,6 +1289,14 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
 }
+section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score.skeleton{
+    min-width: 80px;
+    max-width: 160px;
+    height: 26px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    animation: skeleton_animation 1s ease-out infinite;
+}
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score small{
     font-weight: var(--FW_REGULAR);
     font-size: var(--P_SMALL);
@@ -1303,9 +1311,8 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     margin-top: var(--SPACE_S);
 }
 section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut.skeleton{
-    min-width: 80px;
-    max-width: 160px;
-    height: 26px;
+    max-width: 65px;
+    height: 38px;
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_SMALL);
     animation: skeleton_animation 1s ease-out infinite;

@@ -1320,6 +1320,8 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_SMALL);
     overflow: hidden;
+    margin-top: calc(var(--SPACE_S) * -1);
+    margin-bottom: -0.4rem;
     color: transparent; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
     animation: skeleton_animation 1s ease-out infinite;
 }

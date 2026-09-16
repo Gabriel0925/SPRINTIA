@@ -130,5 +130,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const zoneLevelUser = zoneLevel(lastLevelUser)
     document.getElementById("dernier-niveau-course").textContent = lastLevelUser.toString().replace(".", ",")
     document.getElementById("zone-dernier-niveau-course").textContent = zoneLevelUser
+    document.getElementById("zone-dernier-niveau-course").classList.remove("skeleton")
 
 })

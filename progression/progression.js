@@ -96,7 +96,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul()
     // affichage des valeurs
     document.getElementById("charge-7j").textContent = chargeTotale7j
-    document.getElementById("statut-charge-entrainement").textContent = statutUser 
+    document.getElementById("statut-charge-entrainement").textContent = statutUser
+    document.getElementById("statut-charge-entrainement").classList.remove("skeleton") // on enleve l'animation de chargement
 
     // --- Récupération ---
     const tableauLastRecuperation = await db.recuperation

@@ -1506,8 +1506,7 @@ div.menu-many-action.open {
     transition: all ease-out 0.21s;
 }
 div.menu-many-action.open:active {
-    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-    transform: translate(0, -22px) scale(1.025);
+    transform: translate(0, -22px) scale(1.06);
 }
 div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
@@ -1540,8 +1539,7 @@ div.menu-many-action.open li:nth-child(5) {
 }
 @media (hover: hover) and (pointer: fine) {
     div.menu-many-action.open:hover {
-        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-        transform: translate(0, -22px) scale(1.025);
+        transform: translate(0, -22px) scale(1.06);
     }
     div.menu-many-action li:hover {
         background: var(--COLOR_GLASSMORPHISM_HOVER);
@@ -2094,7 +2092,7 @@ div#map.map-normal *, #map.map-fullscreen * {
 /* modification du style de base sur les class de la bibliotheque */
 .leaflet-right .leaflet-control {
     margin-top: var(--SPACE_S) !important;
-    margin-right: var(--SPACE_S) !important;
+    margin-right: var(--SPACE_M) !important;
 }
 div.my-control {
     display: flex;
@@ -2132,15 +2130,13 @@ div.my-control i {
 }
 @media (hover: hover) and (pointer: fine) {
     div.my-control i:hover {
-        color: var(--COLOR_BACKGROUND);
-        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-        transform: scale(var(--SCALE_SUP));
+        transform: scale(1.12);
     }
 }
 div.my-control i:active {
     color: var(--COLOR_BACKGROUND);
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    transform: scale(var(--SCALE_SUP));
+    transform: scale(1.12);
 }
 
 

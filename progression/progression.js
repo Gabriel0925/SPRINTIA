@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let lastRecuperation = "--"
     if (tableauLastRecuperation.length > 0) {lastRecuperation = tableauLastRecuperation[0].fc_repos}
     document.getElementById("data-recuperation").textContent = lastRecuperation
+    document.getElementById("data-recuperation").classList.remove("skeleton")
 
 
     // --- Indulgence de course ---
@@ -124,6 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
     document.getElementById("data-dist-7j").textContent = sommeDist7j.toFixed(1).replace(".", ",")
+    document.getElementById("data-dist-7j").classList.remove("skeleton")
 
     // --- Niveau de course ---
     const lastLevelUser = await lastLevel()

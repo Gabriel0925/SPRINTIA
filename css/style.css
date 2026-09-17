@@ -73,6 +73,7 @@
     --SCALE_SMALL: 0.975;
     --SCALE_NORMAL: 0.95;
     --SCALE_SUP: 1.05;
+    --SCALE_MAX: 1.12;
 
 
     /* MARGE */
@@ -588,11 +589,11 @@ section.tab-bars ul.tab-bars-container-items{
 }
 @media (hover: hover) and (pointer: fine) {
     section.tab-bars ul.tab-bars-container-items:hover{
-        transform: scale(1.04);
+        transform: scale(var(--SCALE_SUP));
     }
 }
 section.tab-bars ul.tab-bars-container-items:active{
-    transform: scale(1.04); /*1.025*/
+    transform: scale(var(--SCALE_SUP));
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     display: flex;
@@ -1452,7 +1453,7 @@ div.toolbar div.container-command.display-none {
 @media (hover: hover) and (pointer: fine) {
     div.toolbar div.container-command:hover {
         background-color: var(--COLOR_GLASSMORPHISM_HOVER);
-        transform: scale(1.1);
+        transform: scale(var(--SCALE_MAX));
     }
 }
 div.toolbar div.container-command:active {
@@ -1506,7 +1507,7 @@ div.menu-many-action.open {
     transition: all ease-out 0.21s;
 }
 div.menu-many-action.open:active {
-    transform: translate(0, -22px) scale(1.06);
+    transform: translate(0, -22px) scale(var(--SCALE_SUP));
 }
 div.menu-many-action li {
     border-radius: var(--BORDER_NORMAL);
@@ -2130,13 +2131,13 @@ div.my-control i {
 }
 @media (hover: hover) and (pointer: fine) {
     div.my-control i:hover {
-        transform: scale(1.12);
+        transform: scale(var(--SCALE_MAX));
     }
 }
 div.my-control i:active {
     color: var(--COLOR_BACKGROUND);
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    transform: scale(1.12);
+    transform: scale(var(--SCALE_MAX));
 }
 
 

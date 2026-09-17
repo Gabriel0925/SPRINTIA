@@ -1,41 +1,43 @@
 :root {
-    /* ACCENT */
+    /* ACCENT (Tes couleurs d'origine strictement conservées) */
     --COLOR_ACCENT: #5A97F2;
     --COLOR_ACCENT_HOVER: #75a7f0;
     --COLOR_ACCENT_ACTIVE: #8fb3e9;
     --COLOR_ACCENT_TEXT: #8eccff;
 
+    /* CONTENEURS M3 (Dérivés de ton bleu pour les badges/cartes actives) */
+    --COLOR_PRIMARY_CONTAINER: rgba(90, 151, 242, 0.20);
+    --COLOR_ON_PRIMARY_CONTAINER: #B3D1FF;
 
-    /* BASE */
-    --COLOR_BACKGROUND: #000000;
-    --COLOR_BACKGROUND_CARD: #232222;
-    --COLOR_BACKGROUND_CARD_HOVER: #373636;
-    --COLOR_BACKGROUND_CARD_ACTIVE: #474646;
+    /* BASE (Conservation du fond très sombre, avec micro-teinte M3) */
+    --COLOR_BACKGROUND: #0B0E11;        /* Maintient l'aspect très sombre/proche du noir */
+    --COLOR_BACKGROUND_CARD: #181C20;   /* Surface Container : plus lisible et moderne que le gris plat */
+    --COLOR_BACKGROUND_CARD_HOVER: #22272E;
+    --COLOR_BACKGROUND_CARD_ACTIVE: #2C323B;
 
-    --COLOR_TEXT_PRIMARY: #F0F4F8;
-    --COLOR_TEXT_SECONDARY: #BDBDBD;
+    /* TYPOGRAPHIE (Gris enrichis M3 pour maximiser la lisibilité) */
+    --COLOR_TEXT_PRIMARY: #F0F4F8;     /* Ta valeur d'origine */
+    --COLOR_TEXT_SECONDARY: #C3C7CE;   /* Lisibilité accrue sur les données */
 
-
-    /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(38, 38, 40, 0.45);
+    /* GLASSMORPHISM (Ajusté sur tes opacités d'origine) */
+    --COLOR_GLASSMORPHISM: rgba(24, 28, 32, 0.55);
     --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.12);
     --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.20);
 
-    --BLUR_GLASSMORPHISM_BARS: 12px; /* tab-bars, nav-bar */
+    --BLUR_GLASSMORPHISM_BARS: 12px;
     --SATURATE_GLASSMORPHISM_BARS: 190%;
 
-    --BLUR_GLASSMORPHISM_PANELS: 18px; /* menu flottant */
+    --BLUR_GLASSMORPHISM_PANELS: 18px;
     --SATURATE_GLASSMORPHISM_PANELS: 160%;
 
-    --BLUR_GLASSMORPHISM_BUTTON: 22px; /* petit boutons flottants */
+    --BLUR_GLASSMORPHISM_BUTTON: 22px;
     --SATURATE_GLASSMORPHISM_BUTTON: 130%;
 
-    --BLUR_GLASSMORPHISM_LAYOUT: 4px; /* layouts */
+    --BLUR_GLASSMORPHISM_LAYOUT: 4px;
     --COLOR_LAYOUT: rgba(0, 0, 0, 0.3);
     --SATURATE_GLASSMORPHISM_LAYOUT: 140%;
 
-
-    /* BRIEFING */
+    /* BRIEFING (Tes valeurs d'origine) */
     --COLOR_BRIEFING_START: #4689ef;
     --COLOR_BRIEFING_END: #94b8ef;
 

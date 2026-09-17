@@ -246,7 +246,10 @@ main {
     transform-origin: top center; /*pour que le scale se fasse à partir du centre de l'écran*/
     transition: transform ease-out var(--TIME_TRANSITION);
 }
-main.briefing-open {transform: scale(0.95);}
+main.briefing-open,
+main.loading {
+    transform: scale(0.95);
+}
 
 
 h1{

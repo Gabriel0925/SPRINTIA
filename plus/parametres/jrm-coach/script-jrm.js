@@ -71,6 +71,8 @@ function ChangeStyle(value) {
     } else {
         ZoneJRM.textContent = DicoPhraseExemple["Go-muscu"]
     }
+    
+    document.getElementById("JRM-coach").classList.remove("skeleton")
 
     return
 }
@@ -129,6 +131,7 @@ async function Initialisation() {
         document.getElementById("zone-coach-avatar").textContent = TableauAvatar[0]
         document.getElementById("zone-coach-nom").textContent = TableauName[0]
         ZoneJRMBox.textContent = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
+        ZoneJRMBox.classList.remove("skeleton")
 
     } else {
         ZoneJRMBox.textContent = DicoPhraseExemple["Bienveillant"]
@@ -158,6 +161,7 @@ async function Reinitialisation() {
         document.getElementById("avatar-coach").value = ""
         document.getElementById("zone-coach-nom").textContent = "JRM Coach"
         document.getElementById("JRM-coach").textContent = DicoPhraseExemple["Bienveillant"]
+        document.getElementById("JRM-coach").classList.remove("skeleton")
 
         // confirmation sauvegarde
         Button.textContent = "Réinitialisé"

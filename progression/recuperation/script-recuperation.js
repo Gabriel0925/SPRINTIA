@@ -159,6 +159,8 @@ async function jrmCoach() {
         document.getElementById("fc-repos-moyenne-30j").textContent = "--"
     }
 
+    zoneReponseCoach.classList.remove("skeleton")
+
     return
 }
 async function remplissageTableau() {

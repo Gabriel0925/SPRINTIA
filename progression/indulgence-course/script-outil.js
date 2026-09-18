@@ -251,6 +251,8 @@ async function InterpretationJRM(Distance7J, Distance28J, IndulgenceDeCourseFin)
         InterpretationParagraphe.textContent = Interpretation["1"]
     }
 
+    InterpretationParagraphe.classList.remove("skeleton")
+
 }
 
 async function Initialisation() {

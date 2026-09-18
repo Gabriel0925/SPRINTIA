@@ -1823,6 +1823,7 @@ div.zone-coach p.zone-coach-name strong{
 }
 div.zone-coach p.zone-coach-interpretation.skeleton {
     display: inline-block;
+    width: 100%;
     height: 68px;
     background: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     border-radius: var(--BORDER_SMALL);

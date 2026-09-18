@@ -2678,6 +2678,14 @@ div.input-search i{
     padding: var(--SPACE_XS);
     cursor: pointer;
 }
+input#input-cacher {
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
 div.input-search input[type="search"]{
     background-color: var(--COLOR_BACKGROUND_CARD);
     border: 0;

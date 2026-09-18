@@ -1,4 +1,20 @@
 async function sendEmail(descriptionUser) {
+    let inputCacher = document.getElementById("input-cacher").value
+    if (inputCacher.length > 0) {return} /* protection contre les Honeypot (= les bots qui remplisse tous les inputs d'une page et qui peuvent me spammer de mail) */
+
+    // on vérifie si le user n'a pas déjà envoyé un mail ses dernieres heures
+    let lastEmailJsSend = localStorage.getItem("emailJSLastSend")
+    if (lastEmailJsSend!=null) {
+        lastEmailJsSend = lastEmailJsSend
+
+        const tempsEcoule = Date.now() - Number(lastEmailJsSend)
+
+        if (tempsEcoule < 3600000) { // une heure -> 3 600 000 ms car 60*60*1000
+            alert("Vous avez déjà envoyé un email récemment. Veuillez attendre une heure pour envoyé un nouveau mail, merci de votre compréhension.")
+            return
+        }
+    }
+
     let buttonEnvoie = document.getElementById("button-envoyer")
     if (descriptionUser == "") {return alert("Veuillez remplir la zone de texte avant d'envoyer votre retour pour améliorer SPRINTIA.")}
 
@@ -17,6 +33,9 @@ async function sendEmail(descriptionUser) {
         try {
             // envoie (ma clé/la clé du template/les datas)
             await emailjs.send("service_km3fv8k", "template_sspnl2v", emailTemplates)
+
+            // on note dans le local storage a quelle heure le user a envoyé le mail
+            localStorage.setItem("emailJSLastSend", Date.now())
             
             setTimeout(() => {
                 buttonEnvoie.textContent = "Envoyé"

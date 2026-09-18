@@ -196,11 +196,17 @@ function afficherData(dataWorkout) {
 
     // ajout des datas aux éléments existant
     document.getElementById("nom-workout").textContent = dataWorkout.nom
+    document.getElementById("nom-workout").classList.remove("skeleton")
+
     document.getElementById("sport-workout").textContent = dataWorkout.sport
+    document.getElementById("sport-workout").classList.remove("skeleton")
     document.getElementById("date-workout").textContent = formatEuropeenDate(dataWorkout.date)
+    document.getElementById("date-workout").classList.remove("skeleton")
 
     document.getElementById("duree").textContent = dureeFormatee(dataWorkout.duree)
+    document.getElementById("duree").classList.remove("skeleton")
     document.getElementById("charge").textContent = dataWorkout.charge_entrainement
+    document.getElementById("charge").classList.remove("skeleton")
 
     document.getElementById("value-rpe").textContent = dataWorkout.rpe
     document.getElementById("value-rpe").style.background = dicoDescriptionRPE[dataWorkout.rpe][1]
@@ -367,10 +373,12 @@ function afficherData(dataWorkout) {
     // réhydratation conseillée
     if (dataWorkout.hydratation_estimee && dataWorkout.hydratation_estimee != undefined) {
         document.getElementById("rehydratation").textContent = dataWorkout.hydratation_estimee
+        document.getElementById("rehydratation").classList.remove("skeleton")
     }
     // transpiration estimée
     if (dataWorkout.hydratation_estimee && dataWorkout.hydratation_estimee != undefined) {
         document.getElementById("transpiration").textContent = dataWorkout.transpiration_estimee
+        document.getElementById("transpiration").classList.remove("skeleton")
     }
 
     // on remplit le champs note entrainement si il y a du contenu dans la BDD

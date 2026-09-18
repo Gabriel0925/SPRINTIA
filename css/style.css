@@ -269,6 +269,16 @@ h1#briefing {
 h1.patch-note {
     margin-top: var(--SPACE_M);
 }
+h1.skeleton {
+    display: inline-block;
+    width: 300px;
+    height: 29px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
+}
 h1 strong#briefing {
     background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
     -webkit-background-clip: text;
@@ -1443,6 +1453,17 @@ div.toolbar p.detail-entrainement strong{
     font-size: var(--H3);
     font-weight: var(--FW_BOLD_SMALL);
 }
+div.toolbar p.detail-entrainement strong.skeleton,    
+div.toolbar p.detail-entrainement span.skeleton{    
+    display: inline-block;
+    width: 125px;
+    height: 24px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
+}
 div.toolbar div.container-command {
     display: flex;
     justify-content: center;
@@ -1598,6 +1619,18 @@ section.resume-stats-workout div.container-data div.data p.value-data{
     font-weight: var(--FW_BUTTON);
     color: var(--COLOR_TEXT_PRIMARY);
 }
+section.resume-stats-workout div.container-data div.data p.value-data.skeleton,
+section.resume-stats-workout div.container-data div.data p.value-data span.skeleton{
+    display: inline-block;
+    width: 95px;
+    height: 25px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    color: transparent !important;
+    margin-top: var(--SPACE_XXS);
+    animation: skeleton_animation 1s ease-out infinite;
+}
 section.resume-stats-workout div.container-data div.data p.value-data#duree{
     font-weight: var(--FW_BOLD);
     color: var(--COLOR_ACCENT);
@@ -1699,6 +1732,17 @@ div.container-rehydratation p.value{
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
     margin-right: auto;
+}
+div.container-rehydratation p.value span.skeleton{
+    display: inline-block;
+    width: 80px;
+    height: 33px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    margin-bottom: calc(var(--SPACE_XXS) * -1);
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
 }
 div.container-rehydratation p.value small{
     font-size: var(--P);

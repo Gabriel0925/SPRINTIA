@@ -1821,6 +1821,15 @@ div.zone-coach p.zone-coach-name strong{
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
+div.zone-coach p.zone-coach-interpretation.skeleton {
+    display: inline-block;
+    height: 68px;
+    background: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
+}
 div.zone-coach button {
     margin: 0;
     margin-top: var(--SPACE_M);

@@ -265,33 +265,52 @@ async function displayOnScreenLevelRun () {
 
     // affichage du dernier niveau de course et de la zone
     document.getElementById("last-level-run").textContent = lastLevelUser.toString().replace(".", ",")
+    document.getElementById("last-level-run").classList.remove("skeleton")
     document.getElementById("zone-last-level-run").textContent = zoneLevelUser
+    document.getElementById("zone-last-level-run").classList.remove("skeleton")
 
     // affichage des métriques de base
     document.getElementById("vma-estimee").textContent = vmaEstimee.toString().replace(".", ",")
+    document.getElementById("vma-estimee").classList.remove("skeleton")
     const small1 = document.createElement("small")
     small1.textContent = "km/h"
     document.getElementById("vma-estimee").appendChild(small1)
 
     document.getElementById("vo2max-estimee").textContent = vo2maxEstimee.toString().replace(".", ",") 
+    document.getElementById("vo2max-estimee").classList.remove("skeleton")
     document.getElementById("rFTPw-estimee").textContent = rFTPwEstimee.toString().replace(".", ",")
+    document.getElementById("rFTPw-estimee").classList.remove("skeleton")
     const small2 = document.createElement("small")
     small2.textContent = "W"
     document.getElementById("rFTPw-estimee").appendChild(small2)
 
     document.getElementById("allure-seuil-estimee").textContent = allureSeuilEstimee
+    document.getElementById("allure-seuil-estimee").classList.remove("skeleton")
     const small3 = document.createElement("small")
     small3.textContent = "/km"
     document.getElementById("allure-seuil-estimee").appendChild(small3)
 
     // affichage des temps prédit pour les différentes distance
     document.getElementById("time-400m").textContent = temps400m
+    document.getElementById("time-400m").classList.remove("skeleton")
+    
     document.getElementById("time-800m").textContent = temps800m
+    document.getElementById("time-800m").classList.remove("skeleton")
+
     document.getElementById("time-1km").textContent = temps1km
+    document.getElementById("time-1km").classList.remove("skeleton")
+
     document.getElementById("time-5km").textContent = temps5km
+    document.getElementById("time-5km").classList.remove("skeleton")
+
     document.getElementById("time-10km").textContent = temps10km
+    document.getElementById("time-10km").classList.remove("skeleton")
+
     document.getElementById("time-semi-marathon").textContent = tempsSemiMarathon
+    document.getElementById("time-semi-marathon").classList.remove("skeleton")
+
     document.getElementById("time-marathon").textContent = tempsMarathon
+    document.getElementById("time-marathon").classList.remove("skeleton")
 
     if (document.getElementById("rFTPw-estimee").textContent == "--W") {
         document.getElementById("rFTPw-estimee").addEventListener("click", () => {

@@ -19,6 +19,12 @@ async function remplirPlaceProfil() {
         document.getElementById("fc-repos-place").textContent = "--"
         document.getElementById("modifier-profil").textContent = "Configurer mon profil"
     }
+
+    document.getElementById("sexe-place").classList.remove("skeleton")
+    document.getElementById("age-place").classList.remove("skeleton")
+    document.getElementById("taille-place").classList.remove("skeleton")
+    document.getElementById("poids-place").classList.remove("skeleton")
+    document.getElementById("fc-repos-place").classList.remove("skeleton")
 }
  
 async function toggleMajAuto(event) {

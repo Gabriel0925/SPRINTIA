@@ -272,23 +272,17 @@ async function displayOnScreenLevelRun () {
     // affichage des métriques de base
     document.getElementById("vma-estimee").textContent = vmaEstimee.toString().replace(".", ",")
     document.getElementById("vma-estimee").classList.remove("skeleton")
-    const small1 = document.createElement("small")
-    small1.textContent = "km/h"
-    document.getElementById("vma-estimee").appendChild(small1)
+    document.getElementById("unite-vma").textContent = "km/h"
 
     document.getElementById("vo2max-estimee").textContent = vo2maxEstimee.toString().replace(".", ",") 
     document.getElementById("vo2max-estimee").classList.remove("skeleton")
     document.getElementById("rFTPw-estimee").textContent = rFTPwEstimee.toString().replace(".", ",")
     document.getElementById("rFTPw-estimee").classList.remove("skeleton")
-    const small2 = document.createElement("small")
-    small2.textContent = "W"
-    document.getElementById("rFTPw-estimee").appendChild(small2)
+    document.getElementById("unite-rFTPw").textContent = "W"
 
     document.getElementById("allure-seuil-estimee").textContent = allureSeuilEstimee
     document.getElementById("allure-seuil-estimee").classList.remove("skeleton")
-    const small3 = document.createElement("small")
-    small3.textContent = "/km"
-    document.getElementById("allure-seuil-estimee").appendChild(small3)
+    document.getElementById("unite-allure-seuil").textContent = "/km"
 
     // affichage des temps prédit pour les différentes distance
     document.getElementById("time-400m").textContent = temps400m

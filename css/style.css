@@ -1669,9 +1669,26 @@ section.resume-stats-workout div.data-rpe div.container-value-rpe div.value{
     background: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_BACKGROUND);
 }
+section.resume-stats-workout div.data-rpe div.container-value-rpe div.skeleton{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    overflow: hidden;
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
+}
 section.resume-stats-workout div.data-rpe div.container-value-rpe div.description{
     font-size: var(--H3);
     font-weight: var(--FW_BUTTON);
+}
+section.resume-stats-workout div.data-rpe div.container-value-rpe div.description.skeleton{
+    display: inline-block;
+    width: 110px;
+    height: 40px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    color: transparent !important;
+    /* margin-top: var(--SPACE_XXS); */
+    animation: skeleton_animation 1s ease-out infinite;
 }
 
 div.page-entrainement {

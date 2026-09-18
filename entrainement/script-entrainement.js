@@ -209,9 +209,11 @@ function afficherData(dataWorkout) {
     document.getElementById("charge").classList.remove("skeleton")
 
     document.getElementById("value-rpe").textContent = dataWorkout.rpe
+    document.getElementById("value-rpe").classList.remove("skeleton")
     document.getElementById("value-rpe").style.background = dicoDescriptionRPE[dataWorkout.rpe][1]
     document.getElementById("description-rpe").textContent = dicoDescriptionRPE[dataWorkout.rpe][0]
     document.getElementById("description-rpe").style.color = dicoDescriptionRPE[dataWorkout.rpe][1]
+    document.getElementById("description-rpe").classList.remove("skeleton")
 
     // Structure de base de la page entrainement
     let listElementPage = []

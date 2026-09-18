@@ -1959,7 +1959,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
     font-weight: var(--FW_BOLD);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i{
-    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     font-size: var(--H1);
@@ -1976,7 +1976,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
 }
 @media (hover: hover) and (pointer: fine) {
     section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:hover{
-        background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+        background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     }
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:active{
@@ -2254,11 +2254,11 @@ div.my-control i {
 }
 @media (hover: hover) and (pointer: fine) {
     div.my-control i:hover {
+        background: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: scale(var(--SCALE_MAX));
     }
 }
 div.my-control i:active {
-    color: var(--COLOR_BACKGROUND);
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_MAX));
 }

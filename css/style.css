@@ -21,16 +21,16 @@
     --COLOR_GLASSMORPHISM_HOVER: rgba(61, 63, 67, 0.5);
     --COLOR_GLASSMORPHISM_ACTIVE: rgba(61, 63, 67, 0.8);
 
-    --BLUR_GLASSMORPHISM_BARS: 12px; /* tab-bars, nav-bar */
+    --BLUR_GLASSMORPHISM_BARS: 16px; /* tab-bars, nav-bar */
     --SATURATE_GLASSMORPHISM_BARS: 190%;
 
-    --BLUR_GLASSMORPHISM_PANELS: 18px; /* menu flottant */
+    --BLUR_GLASSMORPHISM_PANELS: 22px; /* menu flottant */
     --SATURATE_GLASSMORPHISM_PANELS: 160%;
 
-    --BLUR_GLASSMORPHISM_BUTTON: 22px; /* petit boutons flottants */
+    --BLUR_GLASSMORPHISM_BUTTON: 26px; /* petit boutons flottants */
     --SATURATE_GLASSMORPHISM_BUTTON: 130%;
 
-    --BLUR_GLASSMORPHISM_LAYOUT: 4px; /* layouts */
+    --BLUR_GLASSMORPHISM_LAYOUT: 8px; /* layouts */
     --COLOR_LAYOUT: rgba(0, 0, 0, 0.3);
     --SATURATE_GLASSMORPHISM_LAYOUT: 140%;
 

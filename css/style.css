@@ -990,7 +990,6 @@ section.container-workout-cards {
     justify-content: left;
     gap: var(--SPACE_L);
     margin: var(--SPACE_L) 0;
-    transition: all ease-out var(--TIME_TRANSITION);
 }
 section.container-workout-cards.skeleton {
     display: inline-block;

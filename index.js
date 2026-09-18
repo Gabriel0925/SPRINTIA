@@ -120,6 +120,8 @@ async function initialisationAffichage() { // pour quand on recharge la page
         ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
     }); 
 
+    ConteneurCardsWorkout.classList.remove("skeleton")
+
     // maj de la variable 
     NbCardsWorkoutAfficher = NbTotalCardsWorkoutAfficher
 
@@ -163,6 +165,7 @@ async function AfficherData() { // lors d'un clic sur le bouton afficher plus
         let CardWorkoutHTML = HTMLCard(CardWorkout, workout, DateEuropeen, dureeWorkout)
         ConteneurCardsWorkout.appendChild(CardWorkoutHTML)
     }); 
+    ConteneurCardsWorkout.classList.remove("skeleton")
 
     if (NbCardsWorkoutAfficher > 12) {
         sessionStorage.setItem("NbCardHistoriqueSave", NbCardsWorkoutAfficher)
@@ -211,6 +214,8 @@ inputSearch.addEventListener("input", () => { // on recup en temps réel ce que 
                 let CardWorkoutHTML = HTMLCard(CardWorkout, element, DateEuropeen, dureeWorkout)
                 document.getElementById("liste-workouts").appendChild(CardWorkoutHTML)
             });
+            
+            document.getElementById("liste-workouts").classList.remove("skeleton")
         }
     }
 })

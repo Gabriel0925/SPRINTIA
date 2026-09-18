@@ -18,8 +18,8 @@
 
     /* GLASSMORPHISM */
     --COLOR_GLASSMORPHISM: rgba(21, 25, 31, 0.45);
-    --COLOR_GLASSMORPHISM_HOVER: rgb(30, 36, 45, 0.12);
-    --COLOR_GLASSMORPHISM_ACTIVE: rgba(40, 48, 60, 0.2);
+    --COLOR_GLASSMORPHISM_HOVER: rgba(61, 62, 66, 0.45);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(61, 62, 66, 0.75);
 
     --BLUR_GLASSMORPHISM_BARS: 12px; /* tab-bars, nav-bar */
     --SATURATE_GLASSMORPHISM_BARS: 190%;
@@ -3083,7 +3083,7 @@ div.carousel-content div.card-releases {
     padding: var(--SPACE_S);
     border-radius: var(--BORDER_BIG);
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
-    margin: var(--SPACE_XS);
+    margin: var(--SPACE_XS) 0;
 
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);

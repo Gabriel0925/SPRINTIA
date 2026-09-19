@@ -1901,7 +1901,7 @@ div.zone-coach button:active::before {
 div.zone-coach button:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
-}
+} 
 
 
 /* --- Fenetre pour SPRITNIA Briefing --- */

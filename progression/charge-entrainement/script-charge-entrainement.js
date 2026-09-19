@@ -233,7 +233,7 @@ async function displayOnScreenCE() {
                     3 entraînements sur les 28 derniers jours. J'attends avec impatience tes premiers entraînements.`
         document.getElementById("reponse-coach-charge-entrainement").classList.remove("skeleton")
 
-    } else {
+    } else { 
         // affichage + mise en forme de l'analyse
         const zoneResponse = document.getElementById("reponse-coach-charge-entrainement")
         zoneResponse.style.whiteSpace = "pre-line" // pr transformer les "\n" en saut de ligne

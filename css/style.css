@@ -3211,6 +3211,15 @@ div.carousel-content {
 div.carousel-content.table {
     display: block;
 }
+div.carousel-content.table td span.skeleton {
+    display: inline-block;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    width: 70%;
+    height: 20px;
+    margin-top: var(--SPACE_XXS);
+    border-radius: var(--BORDER_SMALL);
+    animation: skeleton_animation 1s ease-out infinite;
+}
 div.carousel-content div.card-releases {
     width: 240px;
     background-color: var(--COLOR_BACKGROUND_CARD);

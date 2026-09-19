@@ -78,76 +78,77 @@ async function remplirTableau() {
 
     if (dataDB.length > 0) {
         document.getElementById("aucune-data").style.display = "none"
+
+        document.getElementById("first-line-table").style.display="none"
+        for (const data of dataDB) {
+            // data contient le dico ex : {niveau_course_user: 72, date: '2026-01-25', id: 1}
+            const newLine = tableauHistorique.insertRow()
+            const colDate = newLine.insertCell(0)
+            const colNiveau = newLine.insertCell(1)
+            const colDistance = newLine.insertCell(2)
+            const colAction = newLine.insertCell(3)
+
+            // Remplir ligne
+            colDate.textContent = ReturnDate(data.date)
+            colNiveau.textContent = data.niveau_course_user.toString().replace(".", ",") // ne pas oublier de le mettre en str avant le replace
+            if (data.distance != undefined) {
+                colDistance.textContent = data.distance.toString().replace(".", ",")
+            } else {
+                colDistance.textContent = "-"
+            }
+
+            // Create button
+            let btnModifier = document.createElement("button")
+            btnModifier.textContent = "Modifier"
+            colAction.appendChild(btnModifier)
+            // Ajout de la class
+            btnModifier.classList.add("table")
+            
+            let btnSupprimer = document.createElement("button")
+            btnSupprimer.textContent = "Supprimer"
+            colAction.appendChild(btnSupprimer)
+
+            // Ajout de la class
+            btnSupprimer.classList.add("table")
+
+            // Ajout de la logique pour la suppresion
+            btnSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
+                // confirmation avant suppression
+                if (confirm("Supprimer ce niveau de course ?")) {
+                    await db.niveau_course.delete(data.id) // supprimer la data de la bdd
+                    await newLine.remove() // supprimer la ligne
+
+                    graph()
+
+                    // on recup les datas et on les affiche pour la zone pour le dernier niveau de course
+                    const lastLevelUser = await lastLevel()
+                    const zoneLevelUser = zoneLevel(lastLevelUser)
+
+                    // affichage du dernier niveau de course et de la zone
+                    document.getElementById("last-level-run").textContent = lastLevelUser.toString().replace(".", ",")
+                    document.getElementById("zone-last-level-run").textContent = zoneLevelUser
+
+                    let dataTableau = document.querySelectorAll("td") // Recup des lignes pour savoir quand il faut cacher le tableau
+                    let tableau = document.getElementById("tableau-historique") // recup du tableau
+
+                    if (dataTableau.length <= 0) {
+                        // On cache tout
+                        tableau.style.display = "none"
+                        // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
+                        document.getElementById("aucune-data").style.display = "flex"
+                    } 
+                    
+                    logoDynamique("Supprimé 🗑️")
+                }
+            })
+            btnModifier.addEventListener("click", async () => {
+                // on l'envoie à ajouter-recup mais avec un param
+                window.location.href = `ajouter-niveau-course.html?edit=${data.id}`
+            })
+        }
     } else {
         document.getElementById("aucune-data").style.display = "flex"
         tableauHistorique.style.display = 'none'
-    }
-
-    for (const data of dataDB) {
-        // data contient le dico ex : {niveau_course_user: 72, date: '2026-01-25', id: 1}
-        const newLine = tableauHistorique.insertRow()
-        const colDate = newLine.insertCell(0)
-        const colNiveau = newLine.insertCell(1)
-        const colDistance = newLine.insertCell(2)
-        const colAction = newLine.insertCell(3)
-
-        // Remplir ligne
-        colDate.textContent = ReturnDate(data.date)
-        colNiveau.textContent = data.niveau_course_user.toString().replace(".", ",") // ne pas oublier de le mettre en str avant le replace
-        if (data.distance != undefined) {
-            colDistance.textContent = data.distance.toString().replace(".", ",")
-        } else {
-            colDistance.textContent = "-"
-        }
-
-        // Create button
-        let btnModifier = document.createElement("button")
-        btnModifier.textContent = "Modifier"
-        colAction.appendChild(btnModifier)
-        // Ajout de la class
-        btnModifier.classList.add("table")
-        
-        let btnSupprimer = document.createElement("button")
-        btnSupprimer.textContent = "Supprimer"
-        colAction.appendChild(btnSupprimer)
-
-        // Ajout de la class
-        btnSupprimer.classList.add("table")
-
-        // Ajout de la logique pour la suppresion
-        btnSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
-            // confirmation avant suppression
-            if (confirm("Supprimer ce niveau de course ?")) {
-                await db.niveau_course.delete(data.id) // supprimer la data de la bdd
-                await newLine.remove() // supprimer la ligne
-
-                graph()
-
-                // on recup les datas et on les affiche pour la zone pour le dernier niveau de course
-                const lastLevelUser = await lastLevel()
-                const zoneLevelUser = zoneLevel(lastLevelUser)
-
-                // affichage du dernier niveau de course et de la zone
-                document.getElementById("last-level-run").textContent = lastLevelUser.toString().replace(".", ",")
-                document.getElementById("zone-last-level-run").textContent = zoneLevelUser
-
-                let dataTableau = document.querySelectorAll("td") // Recup des lignes pour savoir quand il faut cacher le tableau
-                let tableau = document.getElementById("tableau-historique") // recup du tableau
-
-                if (dataTableau.length <= 0) {
-                    // On cache tout
-                    tableau.style.display = "none"
-                    // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
-                    document.getElementById("aucune-data").style.display = "flex"
-                } 
-                
-                logoDynamique("Supprimé 🗑️")
-            }
-        })
-        btnModifier.addEventListener("click", async () => {
-            // on l'envoie à ajouter-recup mais avec un param
-            window.location.href = `ajouter-niveau-course.html?edit=${data.id}`
-        })
     }
 }
 

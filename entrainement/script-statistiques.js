@@ -40,7 +40,9 @@ async function statistiquesParSport(sportForFunction) {
 
     // remplissage des champs
     document.getElementById("duree-sport").textContent = dureeFormatee(compteurDuree, null)
+    document.getElementById("duree-sport").classList.remove("skeleton")
     document.getElementById("nb-entrainement-sport").textContent = compteurNbEntrainement.toLocaleString('fr-FR')
+    document.getElementById("nb-entrainement-sport").classList.remove("skeleton")
 
     if (sportDemandee == "Natation") { // si c'est de la natation alors on met en metre
         compteurDistance = compteurDistance*1000
@@ -50,6 +52,7 @@ async function statistiquesParSport(sportForFunction) {
         document.getElementById("distance-sport").textContent = compteurDistance.toFixed(2).replace(".", ",")
         document.getElementById("unite-distance-sport").textContent = "km"
     }
+    document.getElementById("distance-sport").classList.remove("skeleton")
 }
         
 async function init(dateChoisie) {
@@ -72,8 +75,13 @@ async function init(dateChoisie) {
 
         // pareil pour les datas dans les sports spé
         document.getElementById("duree-sport").textContent = "00:00"
+        document.getElementById("duree-sport").classList.remove("skeleton")
+
         document.getElementById("nb-entrainement-sport").textContent = "0"
+        document.getElementById("nb-entrainement-sport").classList.remove("skeleton")
+
         document.getElementById("distance-sport").textContent = "0,00"
+        document.getElementById("distance-sport").classList.remove("skeleton")
 
         document.getElementById("barCanvas").style.display = "none"
         return

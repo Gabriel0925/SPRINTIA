@@ -2336,7 +2336,7 @@ ol.container-list-choice li.choice-item#ia-locale{background-color: #4a4a4a;}
 section.container-etudes-scientifiques {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--SPACE_L);
+    gap: var(--SPACE_M);
 }
 @media (max-width: 1210px) {
     section.container-etudes-scientifiques {
@@ -2348,13 +2348,30 @@ section.container-etudes-scientifiques {
         grid-template-columns: repeat(1, 1fr);
     }
 }
+section.container-etudes-scientifiques a{
+    padding: var(--SPACE_S);
+    padding-bottom: var(--SPACE_M);
+    border-top-left-radius: var(--BORDER_BIG);
+    border-top-right-radius: var(--BORDER_BIG);
+    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
 section.container-etudes-scientifiques div.etudes-scientifiques{
     display: flex;
     height: auto;
-    padding-bottom: var(--SPACE_M);
-    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_ACTIVE);
     flex-direction: column;
     gap: var(--SPACE_XS);
+    cursor: pointer;
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-etudes-scientifiques a:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+section.container-etudes-scientifiques a:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
 }
 section.container-etudes-scientifiques div.etudes-scientifiques div.header{
     display: flex;

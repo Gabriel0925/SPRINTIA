@@ -17,7 +17,7 @@
 
 
     /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(25, 30, 37, 0.5);
+    --COLOR_GLASSMORPHISM: rgba(25, 30, 37, 0.6);
     --COLOR_GLASSMORPHISM_HOVER: rgba(61, 63, 67, 0.5);
     --COLOR_GLASSMORPHISM_ACTIVE: rgba(61, 63, 67, 0.8);
 
@@ -496,11 +496,11 @@ section.header ul.header-container-items {
 }
 @media (hover: hover) and (pointer: fine) {
     section.header ul.header-container-items:hover {
-        transform: scale(1.01);
+        transform: scale(1.025);
     }
 }
 section.header ul.header-container-items:active {
-    transform: scale(1.01);
+    transform: scale(1.025);
 }
 section.header ul.header-container-items li.header-items{
     display: flex;
@@ -1959,7 +1959,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
     font-weight: var(--FW_BOLD);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     font-size: var(--H1);
@@ -1976,11 +1976,11 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
 }
 @media (hover: hover) and (pointer: fine) {
     section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:hover{
-        background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+        background-color: #4b4c4ecc;
     }
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:active{
-    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    background-color: #626363cc;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation-briefing {
     font-size: var(--P_SMALL);
@@ -2338,16 +2338,6 @@ section.container-etudes-scientifiques {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--SPACE_M);
 }
-@media (max-width: 1210px) {
-    section.container-etudes-scientifiques {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 805px) {
-    section.container-etudes-scientifiques {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
 section.container-etudes-scientifiques a{
     padding: var(--SPACE_S);
     padding-bottom: var(--SPACE_M);
@@ -2398,6 +2388,19 @@ section.container-etudes-scientifiques div.etudes-scientifiques p.date{
 section.container-etudes-scientifiques div.etudes-scientifiques p.description{
     font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
+}
+@media (max-width: 1210px) {
+    section.container-etudes-scientifiques {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 805px) {
+    section.container-etudes-scientifiques {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    section.container-etudes-scientifiques a{
+        border-radius: 0;
+    }
 }
 
 

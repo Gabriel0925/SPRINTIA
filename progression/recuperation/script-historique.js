@@ -21,6 +21,8 @@ async function remplissageTableau() {
         document.getElementById("aucune-data").style.display = "flex"
         return
     }
+    
+    document.getElementById("first-line-table").style.display="none"
 
     historiqueDataUser.forEach(elt => {
         // Structure du tableau

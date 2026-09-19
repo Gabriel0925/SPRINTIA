@@ -1505,7 +1505,8 @@ div.toolbar div.container-command {
     overflow: hidden;
 
     background-color: var(--COLOR_GLASSMORPHISM);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4), 
+                    inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
     border-radius: var(--BORDER_BIG);
 
     padding: var(--SPACE_XXS);

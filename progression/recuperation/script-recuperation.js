@@ -188,6 +188,8 @@ async function remplissageTableau() {
 
         return
     }
+    
+    document.getElementById("first-line-table").style.display="none"
 
     historiqueDataUser.forEach(elt => {
         // Structure du tableau

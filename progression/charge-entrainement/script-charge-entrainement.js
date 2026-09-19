@@ -246,7 +246,9 @@ async function displayOnScreenCE() {
     
     // affichage de la charge 7j et 28j
     document.getElementById("charge-7j").textContent = parseInt(chargeTotale7j)
+    document.getElementById("charge-7j").classList.remove("skeleton")
     document.getElementById("charge-28j").textContent = parseInt(chargeTotale28j)
+    document.getElementById("charge-28j").classList.remove("skeleton")
 
 };
 

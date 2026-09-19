@@ -163,11 +163,13 @@ async function RecupData() {
 
     // Affichage dans "Distance réel sur 7J"
     document.getElementById("reponse-algo-allure").textContent = Number(Distance7J).toFixed(1).replace(".", ",") + " km"
+    document.getElementById("reponse-algo-allure").classList.remove("skeleton")
 
     // on aditionne toutes les variables pour avoir la distance sur 28j pour comparer la semaine actuelle a l'ancienne
     Distance28J = Distance7J+Distance14J+Distance21J+Distance28J
     // affichage de la somme des distances sur 28 derniers jours 
     document.getElementById("somme-28J").textContent = Number(Distance28J).toFixed(2).replace(".", ",")
+    document.getElementById("somme-28J").classList.remove("skeleton")
 
     return {Distance7J, Distance28J, nbSemaine}
 }
@@ -189,6 +191,7 @@ async function CalculIndulgence() {
 
     // affichage
     document.getElementById("km-par-semaine").textContent = Number(Distance28J).toFixed(2).replace(".", ",")
+    document.getElementById("km-par-semaine").classList.remove("skeleton")
 
     // Analyse pour avoir la fouchette de distance conseillée (les coef sont diférent en fonction de la distance)
     if (Distance28J <= 10) {
@@ -212,6 +215,7 @@ async function CalculIndulgence() {
 
     // Affichage du résultat
     document.getElementById("reponse-algo-indulgence").textContent = ResultIndulgenceCourse
+    document.getElementById("reponse-algo-indulgence").classList.remove("skeleton")
 
     return {Distance7J, Distance28J, IndulgenceDeCourseFin}
 }

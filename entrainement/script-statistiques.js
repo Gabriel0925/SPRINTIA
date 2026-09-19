@@ -145,6 +145,11 @@ async function init(dateChoisie) {
 
     // remplissage des stats par sport
     await statistiquesParSport(sportDemandee)
+
+    // on enleve les skeletons
+    document.getElementById("duree").classList.remove("skeleton")
+    document.getElementById("nb-entrainement").classList.remove("skeleton")
+    document.getElementById("charge-entrainement").classList.remove("skeleton")
 }
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';
-        img-src 'self' data: https://*.tile.openstreetmap.org;"> <!--on autorise la bibliothèque Leaflet a chercher les tuiles de la carte gps-->
+        img-src 'self' data: https://*.tile.openstreetmap.org https://server.arcgisonline.com https://services.arcgisonline.com;"> <!--on autorise la bibliothèque Leaflet a chercher les tuiles de la carte gps standard et satellite-->
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -149,7 +149,7 @@
                     <i class="icon_verre_eau"></i>
                     <p class="value"><span id="rehydratation" class="skeleton"></span> <small>mL</small></p>
                     <a href="a-propos.html">
-                        <i class="icon_info"></i>
+                        <i class="icon_info"></i> 
                     </a>
                 </div>
             </div>

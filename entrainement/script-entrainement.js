@@ -64,11 +64,73 @@ function carteGPS(data, latlngs) {
             touchZoom: false
         }).setView([17.387140, 78.491684], 13);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors",
+        const layerOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: "&copy; <a href='https://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap</a>",
             maxZoom: 22, // on limite le user sur le zoom
             maxNativeZoom: 19 // pr éviter que Leaflet fasse des requetes pour recharger la carte alors qu'il n'y a plus de carte à afficher
-        }).addTo(map);
+        });
+
+        const layerSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: "Tiles &copy; <a href='https://www.esri.com/' target='_blank'>Esri</a>",
+            maxZoom: 22,
+            maxNativeZoom: 19
+        });
+
+        // Récupération de la préférence de fond de carte
+        let isSatellite = localStorage.getItem("carte_fond_satellite") === "true";
+        if (isSatellite) {
+            layerSatellite.addTo(map);
+        } else {
+            layerOSM.addTo(map);
+        }
+
+        // SVGs vectoriels pour les icônes satellite et plan standard
+        const svgSatellite = '<svg viewBox="0 0 24 24"><path d="M13 7 9 3 5 7l4 4"/><path d="m17 11 4 4-4 4-4-4"/><path d="m8 12 4 4 6-6-4-4Z"/><path d="m16 8 3-3"/><path d="M9 21a6 6 0 0 0-6-6"/></svg>';
+        const svgPlan = '<svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>';
+
+        // Définition du bouton "Fond de carte (Satellite / Standard)"
+        let ControlFondCarte = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd: function(map) {
+                var div = L.DomUtil.create('div', 'my-control');
+                div.id = 'btn-container-fond-carte';
+                div.setAttribute('role', 'button');
+                div.title = isSatellite ? 'Afficher la carte standard' : 'Afficher la vue satellite';
+
+                var iconInDiv = L.DomUtil.create('i', '', div);
+                iconInDiv.id = 'icon-fond-carte';
+                iconInDiv.innerHTML = isSatellite ? svgPlan : svgSatellite;
+
+                if (isSatellite) {
+                    div.classList.add('active');
+                }
+
+                L.DomEvent.disableClickPropagation(div);
+                L.DomEvent.on(div, 'click', function(e) {
+                    L.DomEvent.stopPropagation(e);
+
+                    if (isSatellite) {
+                        map.removeLayer(layerSatellite);
+                        map.addLayer(layerOSM);
+                        isSatellite = false;
+                        iconInDiv.innerHTML = svgSatellite;
+                        div.title = 'Afficher la vue satellite';
+                        div.classList.remove('active');
+                        localStorage.setItem("carte_fond_satellite", "false");
+                    } else {
+                        map.removeLayer(layerOSM);
+                        map.addLayer(layerSatellite);
+                        isSatellite = true;
+                        iconInDiv.innerHTML = svgPlan;
+                        div.title = 'Afficher la carte standard';
+                        div.classList.add('active');
+                        localStorage.setItem("carte_fond_satellite", "true");
+                    }
+                });
+
+                return div;
+            }
+        });
 
         // Définition du bouton "Centrer"
         let CenterTace = L.Control.extend({
@@ -173,6 +235,7 @@ function carteGPS(data, latlngs) {
         });
 
         let ControlBoutonExitMap = new BouttonFullscreen().addTo(map);
+        let ControlBoutonFondCarte = new ControlFondCarte().addTo(map);
         let ControlCenterTace = new CenterTace().addTo(map);
 
         // Traçage du relevé gps
@@ -428,7 +491,7 @@ async function dicoWithoutID(dico) {
     return dico.map((workout) =>{
         // on sépare l'id du reste des données de l'entrainement
         const {id, ...autreStats} = workout
-        return autreStats
+        return autreStats 
     })
 }
 async function exporterData(dataWorkout) {

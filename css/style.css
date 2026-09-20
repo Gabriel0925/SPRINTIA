@@ -2322,6 +2322,20 @@ div.my-control i:active {
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_MAX));
 }
+div.my-control i svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    display: block;
+    pointer-events: none;
+}
+div.my-control.active i {
+    color: var(--COLOR_ACCENT);
+    box-shadow: 0 0 12px var(--COLOR_ACCENT);
+}
+
 
 
 /* --- Choisir son IA préférée --- */

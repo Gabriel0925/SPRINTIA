@@ -13,7 +13,7 @@
     --COLOR_BACKGROUND_CARD_ACTIVE: #37393c;
 
     --COLOR_TEXT_PRIMARY: #F0F4F8;
-    --COLOR_TEXT_SECONDARY: #BDBDBD;
+    --COLOR_TEXT_SECONDARY: #BDBDBD; 
 
 
     /* GLASSMORPHISM */
@@ -884,11 +884,71 @@ section.segmented-button div.segmented-button-button:active {
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    font-weight: var(--FW_BOLD_SMALL);
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
+section.segmented-button.duree {
+    margin-bottom: var(--SPACE_S);
+}
+
+div.periode-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--SPACE_S);
+    margin: 0 auto var(--SPACE_L) auto;
+    width: fit-content;
+}
+div.periode-select button.btn-periode {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_TEXT_PRIMARY);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    min-width: unset;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST),
+                opacity ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.periode-select button.btn-periode:not(:disabled):hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+div.periode-select button.btn-periode:not(:disabled):active {
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
+}
+div.periode-select button.btn-periode:disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+}
+div.periode-select button.btn-periode i {
+    font-size: 0.95rem;
+}
+div.periode-select button.btn-periode i.icon-precedent {
+    transform: rotate(180deg);
+    display: inline-block;
+}
+div.periode-select span.periode-label {
+    color: var(--COLOR_TEXT_PRIMARY);
+    font-size: var(--P_SMALL);
+    font-weight: var(--FW_BUTTON);
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    min-width: 175px;
+}
+
 
 
 

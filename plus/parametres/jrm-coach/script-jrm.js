@@ -94,10 +94,10 @@ function ChangeAvatar(value) {
 
 function MajName(value) {
     if (value == "" || value == " ") { // Si le champs est vide alors on met JRM coach dans la box JRM Coach        
-        document.getElementById("zone-coach-avatar").textContent = AvatarCoach
+        document.getElementById("zone-coach-avatar").textContent = document.getElementById("avatar-coach").value
         document.getElementById("zone-coach-nom").textContent = "JRM Coach"
     } else {
-        document.getElementById("zone-coach-avatar").textContent = AvatarCoach
+        document.getElementById("zone-coach-avatar").textContent = document.getElementById("avatar-coach").value
         document.getElementById("zone-coach-nom").textContent = value
     } 
 
@@ -131,11 +131,12 @@ async function Initialisation() {
         document.getElementById("zone-coach-avatar").textContent = TableauAvatar[0]
         document.getElementById("zone-coach-nom").textContent = TableauName[0]
         ZoneJRMBox.textContent = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
-        ZoneJRMBox.classList.remove("skeleton")
 
     } else {
         ZoneJRMBox.textContent = DicoPhraseExemple["Bienveillant"]
     }
+    
+    ZoneJRMBox.classList.remove("skeleton")
 
     return
 }

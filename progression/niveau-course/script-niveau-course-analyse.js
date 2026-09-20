@@ -73,7 +73,7 @@ async function estimateRFTPW(vo2maxEstimee) {
 
         rFTPw = Number((rFTPw*poidsUser).toFixed(1))
         if (rFTPw == 0) {return "--"} else {return rFTPw}
-    } else {return "--"}
+    } else {return "--"} 
 }
 function estimateAllureSeuil(vmaEstimee) {
     if (vmaEstimee == "--") {return "--:--"} // quand il n'y a pas de datas on return la valeur de base du HTML
@@ -133,19 +133,19 @@ const baliseTrancheAllure = document.querySelectorAll(".container-box.zone-allur
 function zonesAllure(vmaEstimee) {
     containerBaliseTranchePuissance.style.display = "none"
     containerBaliseTrancheAllure.style.display = "flex"
- 
+
     if (vmaEstimee == "--") {
         // renvoie ça si il ya des datas : '16 km/h' si ya pas de datas (et donc que le user n'a pas config son profil) "--"
         vmaEstimee = document.getElementById("vma-estimee").textContent // '16 km/h'
 
-        if (vmaEstimee != "--  km/h") {
-            vmaEstimee = Number(vmaEstimee.split(" ")[0].replace(",", ".")) // 16 en number
+        if (vmaEstimee != "--") {
+            vmaEstimee = Number(vmaEstimee.replace(",", ".")) // 16 en number
         } else {
             return
         }
     }
 
-    if (vmaEstimee == "--") {return} // quand il n'y a pas de datas on return rien car ça laisse la base qu'il y avait dans le HTML
+    if (vmaEstimee == "--" || vmaEstimee == 0) {return} // quand il n'y a pas de datas on return rien car ça laisse la base qu'il y avait dans le HTML
 
     // init des variables pr la boucle
     const tableauCoef = [0.65, 0.75, 0.85, 0.95, 0.95] // coef pr la boucle (même coef pour les 2 derniers elt car par ex : zone 6 = 346-384W/zone 7 = > 348W)
@@ -199,8 +199,8 @@ function zonesPuissance(rFTPwEstimee) {
         // renvoie ça si il ya des datas : '255,6  W' si ya pas de datas (et donc que le user n'a pas config son profil) "--"
         rFTPwEstimee = document.getElementById("rFTPw-estimee").textContent // '255,6  W' 
 
-        if (rFTPwEstimee != "--W") {
-            rFTPwEstimee = Number(rFTPwEstimee.replace(",", ".").replace("W", "")) // 255.6 en number
+        if (rFTPwEstimee != "--") {
+            rFTPwEstimee = Number(rFTPwEstimee.replace(",", ".")) // 255.6 en number
         } else {
             alert("Pour accéder à vos zones de puissance, veuillez configuer votre profil ou ajouter des données dans le niveau de course.")
             // remise à 0 de cette partie de la page pour pas que le user accede au zone de puissance alors qu'il n'a pas config son profil

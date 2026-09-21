@@ -4,6 +4,13 @@ Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.verce
 
 Vous ne savez pas comment installer l'application ? Ou encore vous ne savez pas comment configurer SPRINTIA ? Pas de panique, j'ai réalisé un tuto YouTube pour vous aider : [Guide de démarrage - Installation & Configuration](https://youtu.be/S3B5Tm9ssRQ?si=fC1sXdjjDnKKtwbz)
 
+## Dernière info
+La v26.10 (Octobre 2026) de SPRINTIA sera l'une des dernières mises à jour de l'application et j'en suis fier. Je vais énormément ralentir les mises à jour, peut-être qu'il y aura une mise à jour en février 2027, peut-être qu'il n'y aura plus jamais de mise à jour, qui sait ? Personne même pas moi.
+
+Le projet arrive enfin à maturité (de mon point de vue), l'application possède désormais 90% des fonctionnalités que j'imaginais à son lancement. SPRINTIA résout exactement les problèmes que je voulais résoudre.
+
+La PWA reste totalement accessible et fonctionnelle mais elle ne recevra plus de mise à jours régulières.
+
 ## Installable sur tous vos appareils
 | Sur smartphone | Sur tablette | Sur ordinateur portable |
 | :---: | :---: | :---: |
@@ -114,7 +121,6 @@ Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous
 * [Importer un entraînement de n'importe quelle plateforme à SPRINTIA](https://youtu.be/IvygdF1oLqQ?si=hREvlepVsqZEoyJk)
 
 ## Réseaux
-* [Le compte Instagram](https://www.instagram.com/sprintia09?igsh=MXV5N2NiaHRvdTF1bQ%3D%3D)
 * [La chaîne YouTube](https://www.youtube.com/@SPRINTIA-09)
 
 ## La sécurité, un principe à ne pas négliger

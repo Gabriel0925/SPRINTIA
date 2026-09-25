@@ -17,18 +17,18 @@
 
 
     /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(32, 37, 46, 0.6);
-    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.14);
-    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.24);
+    --COLOR_GLASSMORPHISM: rgba(32, 37, 46, 0.5);
+    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.16);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.26);
 
-    --BLUR_GLASSMORPHISM_BARS: 18px; /* tab-bars, nav-bar */
+    --BLUR_GLASSMORPHISM_BARS: 22px; /* tab-bars, nav-bar */
     --SATURATE_GLASSMORPHISM_BARS: 180%;
 
     --BLUR_GLASSMORPHISM_PANELS: 15px; /* menu flottant */
     --SATURATE_GLASSMORPHISM_PANELS: 170%;
 
-    --BLUR_GLASSMORPHISM_BUTTON: 9px; /* petit boutons flottants */
-    --SATURATE_GLASSMORPHISM_BUTTON: 160%;
+    --BLUR_GLASSMORPHISM_BUTTON: 16px; /* petit boutons flottants */
+    --SATURATE_GLASSMORPHISM_BUTTON: 140%;
 
     --BLUR_GLASSMORPHISM_LAYOUT: 6px; /* layouts */
     --COLOR_LAYOUT: rgba(0, 0, 0, 0.3);
@@ -1926,7 +1926,7 @@ section.background-SPRINTIA-briefing {
     z-index: 20000;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
-    background-color: rgba(38, 38, 40, 0.85);
+    background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
 
@@ -1961,7 +1961,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
     font-weight: var(--FW_BOLD);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i{
-    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     font-size: var(--H1);
@@ -1978,11 +1978,11 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
 }
 @media (hover: hover) and (pointer: fine) {
     section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:hover{
-        background-color: #4b4c4ecc;
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     }
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:active{
-    background-color: #626363cc;
+background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation-briefing {
     font-size: var(--P_SMALL);

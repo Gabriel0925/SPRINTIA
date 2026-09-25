@@ -21,7 +21,7 @@
     --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.14);
     --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.24);
 
-    --BLUR_GLASSMORPHISM_BARS: 16px; /* tab-bars, nav-bar */
+    --BLUR_GLASSMORPHISM_BARS: 6px; /* tab-bars, nav-bar */
     --SATURATE_GLASSMORPHISM_BARS: 190%;
 
     --BLUR_GLASSMORPHISM_PANELS: 22px; /* menu flottant */

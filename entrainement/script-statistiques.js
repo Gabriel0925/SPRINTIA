@@ -72,6 +72,10 @@ async function init(dateChoisie) {
         document.getElementById("duree").textContent = "00:00"
         document.getElementById("charge-entrainement").textContent = "0"
         document.getElementById("nb-entrainement").textContent = "0"
+        // on enleve les skeleton
+        document.getElementById("duree").classList.remove("skeleton")
+        document.getElementById("nb-entrainement").classList.remove("skeleton")
+        document.getElementById("charge-entrainement").classList.remove("skeleton")
 
         // pareil pour les datas dans les sports spé
         document.getElementById("duree-sport").textContent = "00:00"

@@ -8,18 +8,21 @@
 
     /* BASE */
     --COLOR_BACKGROUND: #000000;
-    --COLOR_BACKGROUND_CARD: #191e25;
-    --COLOR_BACKGROUND_CARD_HOVER: #282c31;
-    --COLOR_BACKGROUND_CARD_ACTIVE: #37393c;
+    --COLOR_BACKGROUND_CARD: #20252e;
+    --COLOR_BACKGROUND_CARD_HOVER: #363c48;
+    --COLOR_BACKGROUND_CARD_ACTIVE: #4d5461;
 
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
 
     /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(25, 30, 37, 0.5);
+    /* --COLOR_GLASSMORPHISM: rgba(25, 30, 37, 0.5);
     --COLOR_GLASSMORPHISM_HOVER: rgba(61, 63, 67, 0.5);
-    --COLOR_GLASSMORPHISM_ACTIVE: rgba(61, 63, 67, 0.8);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(61, 63, 67, 0.8); */
+    --COLOR_GLASSMORPHISM: rgba(32, 37, 46, 0.55);
+    --COLOR_GLASSMORPHISM_HOVER: rgba(54, 60, 72, 0.65);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(77, 84, 97, 0.65);
 
     --BLUR_GLASSMORPHISM_BARS: 16px; /* tab-bars, nav-bar */
     --SATURATE_GLASSMORPHISM_BARS: 190%;
@@ -883,12 +886,10 @@ section.segmented-button div.segmented-button-button#segmented-button-watts {
 }
 section.segmented-button div.segmented-button-button:active {
     transform: scale(var(--SCALE_NORMAL));
-    font-weight: var(--FW_BOLD_SMALL);
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-    font-weight: var(--FW_BOLD_SMALL);
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
@@ -1532,7 +1533,7 @@ div.toolbar div.container-command.display-none {
 }
 div.toolbar div.container-command:active {
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    transform: scale(1.1);
+    transform: scale(var(--SCALE_MAX));
 }
 div.toolbar div.container-command i{
     display: flex;

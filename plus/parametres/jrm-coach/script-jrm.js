@@ -95,6 +95,7 @@ async function init() {
         document.getElementById("zone-coach-nom").textContent = coachUserSave.nom
         zoneInterpretationJRM.textContent = dicoPhraseExemple[coachUserSave.style]
     } else {
+        inputNameCoach.value = "JRM Coach"
         zoneInterpretationJRM.textContent = dicoPhraseExemple["Bienveillant"]
     }
 

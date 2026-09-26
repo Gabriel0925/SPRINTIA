@@ -95,7 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (togglePersonnaliteCoach) {togglePersonnaliteCoach.addEventListener("click", (event) => {personnaliteCoach(event)})}
 
     const containerTogglePersonnaliteCoach = document.getElementById("container-toggle-personnalite-coach")
-    if (containerTogglePersonnaliteCoach) {containerTogglePersonnaliteCoach.addEventListener("click", () => {togglePersonnaliteCoach.click()})}
+    if (containerTogglePersonnaliteCoach) {containerTogglePersonnaliteCoach.addEventListener("click", (event) => {
+        if (event.target !== togglePersonnaliteCoach) { // si le clic est déjà sur le toggle pas besoin de faire un clic superficiel sur le toggle vu qu'il à déjà un event pour ça
+            togglePersonnaliteCoach.click()
+        }
+    })}
 
     const buttonReinitialiser = document.getElementById("reinitialiser-briefing")
     if (buttonReinitialiser) {buttonReinitialiser.addEventListener("click", async function() {await reinitialiserBriefing(buttonReinitialiser)})}

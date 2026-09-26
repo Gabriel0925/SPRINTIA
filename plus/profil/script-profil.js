@@ -57,8 +57,13 @@ function init() {
 window.addEventListener("DOMContentLoaded", () => {
     const toggleMajAutomatique = document.getElementById("toggle-banniere")
     if (toggleMajAutomatique) {toggleMajAutomatique.addEventListener("click", (event) => {toggleMajAuto(event)})}
+
     const containerToggleMajAutomatique = document.getElementById("container-toggle-maj-auto")
-    if (containerToggleMajAutomatique) {containerToggleMajAutomatique.addEventListener("click", () => {toggleMajAutomatique.click()})}
+    if (containerToggleMajAutomatique) {containerToggleMajAutomatique.addEventListener("click", (event) => {
+        if (event.target !== toggleMajAutomatique) { // si le clic est déjà sur le toggle pas besoin de faire un clic superficiel sur le toggle vu qu'il à déjà un event pour ça
+            toggleMajAutomatique.click()
+        }
+    })}
 
     const buttonModifProfil = document.getElementById("modifier-profil")
     if (buttonModifProfil) {buttonModifProfil.addEventListener("click", () => {window.location.href = 'modification-profil.html'})}

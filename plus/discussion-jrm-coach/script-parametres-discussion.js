@@ -34,6 +34,13 @@ async function restoreToggle() {
 document.addEventListener("DOMContentLoaded", async () => {
     const togglePartageData = document.getElementById("toggle-partage-profil")
     if (togglePartageData) {togglePartageData.addEventListener("click", (event) => {shareDataProfil(event)})}
+    
+    const containerTogglePartageData = document.getElementById("container-toggle-partage-profil")
+    if (containerTogglePartageData) {containerTogglePartageData.addEventListener("click", (event) => {
+        if (event.target !== togglePartageData) { // si le clic est déjà sur le toggle pas besoin de faire un clic superficiel sur le toggle vu qu'il à déjà un event pour ça
+            togglePartageData.click()
+        }
+    })}
 
     await restoreToggle()
 })

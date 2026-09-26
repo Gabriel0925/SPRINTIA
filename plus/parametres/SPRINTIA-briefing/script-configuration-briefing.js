@@ -94,6 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const togglePersonnaliteCoach = document.getElementById("toggle-personnalite-coach")
     if (togglePersonnaliteCoach) {togglePersonnaliteCoach.addEventListener("click", (event) => {personnaliteCoach(event)})}
 
+    const containerTogglePersonnaliteCoach = document.getElementById("container-toggle-personnalite-coach")
+    if (containerTogglePersonnaliteCoach) {containerTogglePersonnaliteCoach.addEventListener("click", () => {togglePersonnaliteCoach.click()})}
+
     const buttonReinitialiser = document.getElementById("reinitialiser-briefing")
     if (buttonReinitialiser) {buttonReinitialiser.addEventListener("click", async function() {await reinitialiserBriefing(buttonReinitialiser)})}
 

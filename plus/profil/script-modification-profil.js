@@ -38,37 +38,37 @@ async function saveProfil() {
     // conversion
     poidsUser = Number(poidsUser).toFixed(1)
 
-    // desactivation
-    button.textContent = "Sauvegarde..."
     button.disabled = true
+    button.textContent = "Sauvegarde..."
 
-    // sauvegarde dans indexed db
-    await db.profil.put({
-        id: 1,
-        sexe: sexeUser,
-        age: ageUser,
-        taille: tailleUser,
-        poids: poidsUser,
-        fc_repos: fcReposUser
-    })
+    try {
+        await db.profil.put({
+            id: 1,
+            sexe: sexeUser,
+            age: ageUser,
+            taille: tailleUser,
+            poids: poidsUser,
+            fc_repos: fcReposUser
+        })
 
-    let majAutoUser = localStorage.getItem("majAutoProfil")
-    if (majAutoUser != "False") {
-        // sauvegarde local storage pour la maj auto du profil
-        localStorage.setItem("majAutoProfil", "True")
-    }
-
-    setTimeout(() => {
+        let majAutoUser = localStorage.getItem("majAutoProfil")
+        if (majAutoUser != "False") {
+            // sauvegarde local storage pour la maj auto du profil
+            localStorage.setItem("majAutoProfil", "True")
+        }
+        
         button.textContent = "Sauvegardé"
-    }, 650);
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+        window.location.href = "profil.html"
 
-    setTimeout(() => {
+    } catch(error) {
+        console.log(error)
+        button.textContent = "Une erreur s'est produite"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+    } finally {
         button.textContent = "Sauvegarder"
         button.disabled = false
-        window.location.href = "profil.html"
-    }, 1300);
-
-    return
+    }
 }
 
 async function remplirChamps() {
@@ -87,19 +87,18 @@ async function remplirChamps() {
 
 async function supprimerProfil() {
     if (confirm("Êtes-vous sûr de vouloir supprimer votre profil ?")) {
+        document.getElementById("button-supprimer").disabled = true
+        document.getElementById("button-supprimer").textContent = "Suppression..."
+
         await db.profil.clear() // suppression du profil dans indexed db
         localStorage.removeItem("majAutoProfil")
 
-        document.getElementById("button-supprimer").textContent = "Suppression..."
-
-        setTimeout(() => {
-            document.getElementById("button-supprimer").textContent = "Supprimé"
-        }, 650);
-    
-        setTimeout(() => {
-            document.getElementById("button-supprimer").textContent = "Supprimer mon profil"
-            window.location.href = "profil.html"
-        }, 1300);
+        document.getElementById("button-supprimer").textContent = "Supprimé"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+        
+        document.getElementById("button-supprimer").textContent = "Supprimer mon profil"
+        document.getElementById("button-supprimer").disabled = false
+        window.location.href = "profil.html"
     }
 }
 

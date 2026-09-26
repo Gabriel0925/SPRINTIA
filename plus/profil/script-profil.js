@@ -57,6 +57,8 @@ function init() {
 window.addEventListener("DOMContentLoaded", () => {
     const toggleMajAutomatique = document.getElementById("toggle-banniere")
     if (toggleMajAutomatique) {toggleMajAutomatique.addEventListener("click", (event) => {toggleMajAuto(event)})}
+    const containerToggleMajAutomatique = document.getElementById("container-toggle-maj-auto")
+    if (containerToggleMajAutomatique) {containerToggleMajAutomatique.addEventListener("click", () => {toggleMajAutomatique.click()})}
 
     const buttonModifProfil = document.getElementById("modifier-profil")
     if (buttonModifProfil) {buttonModifProfil.addEventListener("click", () => {window.location.href = 'modification-profil.html'})}

@@ -12,10 +12,10 @@ function favoriteIA(idElement) {
     
 }
 
-function reinitialiserBriefing(btn) {
+async function reinitialiserBriefing(btn) {
     if (confirm("Êtes-vous sur de vouloir restaurer les paramètres par défaut de SPRINTIA Briefing ?")) {
-        btn.textContent = "Réinitialisation..."
         btn.disabled = true
+        btn.textContent = "Réinitialisation..."
         
         // --- IA Favorite ---
         localStorage.removeItem("iaFavorite") // on supprimer de la bdd
@@ -31,15 +31,12 @@ function reinitialiserBriefing(btn) {
         // restauration du select en modere
         document.getElementById("niveaux-analyse-user").value = "modere"
         localStorage.removeItem("niveauAnalyseIA") // maj dans le local storage
+
+        btn.textContent = "Réinitialisé"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
         
-        setTimeout(() => {
-            btn.textContent = "Réinitialisé"
-        }, 650);
-        
-        setTimeout(() => {
-            btn.textContent = "Réinitialisation Briefing"
-            btn.disabled = false
-        }, 1300);
+        btn.textContent = "Réinitialisation Briefing"
+        btn.disabled = false
     }
 }
 
@@ -98,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (togglePersonnaliteCoach) {togglePersonnaliteCoach.addEventListener("click", (event) => {personnaliteCoach(event)})}
 
     const buttonReinitialiser = document.getElementById("reinitialiser-briefing")
-    if (buttonReinitialiser) {buttonReinitialiser.addEventListener("click", function() {reinitialiserBriefing(this)})}
+    if (buttonReinitialiser) {buttonReinitialiser.addEventListener("click", async function() {await reinitialiserBriefing(buttonReinitialiser)})}
 
     const selectNiveauxAnalyse = document.getElementById("niveaux-analyse-user")
     if (selectNiveauxAnalyse) {selectNiveauxAnalyse.addEventListener("change", (event) => {localStorage.setItem('niveauAnalyseIA', event.target.value)})}

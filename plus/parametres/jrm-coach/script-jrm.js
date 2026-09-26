@@ -1,5 +1,4 @@
-// Initialisation
-const DicoPhraseExemple = {
+const dicoPhraseExemple = {
     "Bienveillant": `Tu commences le sport, tu t'y remets ou alors tu es un·e passionné·e de sport ?
                     Dans tous les cas, je serai là pour t'aider à devenir meilleur·e et à t'apprendre de nouvelles choses, 
                     sauf si tu connais déjà tout ! Mon objectif ? Te motiver et toujours voir le positif même dans les moments difficiles.`,
@@ -14,205 +13,148 @@ const DicoPhraseExemple = {
                 je vois toujours le positif. En revanche, j'ai une personnalité de go-muscu comme on dit, mais bon je suis sympa !`
 }
 
-async function SauvegardePreference() {
-    // Recup datas
-    let NameCoach = document.getElementById("nom-coach").value
-    let StyleCoach = document.getElementById("style-coach").value
-    let AvatarCoach = document.getElementById("avatar-coach").value
+async function sauvegardePreference(buttonSave) {
+    let nameCoach = document.getElementById("nom-coach").value.trim()
+    let styleCoach = document.getElementById("style-coach").value
+    let avatarCoach = document.getElementById("avatar-coach").value
 
-    // recup bouton
-    let BoutonSauvegarde = document.getElementById("bouton-save")
+    buttonSave.disabled=true
+    buttonSave.textContent= "Sauvegarde..."
 
-    // Desactivation du bouton pour éviter le double clic
-    BoutonSauvegarde.disabled = true
-    BoutonSauvegarde.textContent = "Sauvegarde..."
+    if (nameCoach == "") {nameCoach = "JRM Coach"} // petite vérif pr stocker la bonne valeur
 
-    // Nettoyage des données
-    if (!NameCoach) {
-        NameCoach = "JRM Coach"
+    try {
+        await db.JRM_Coach.put({
+            id: 1,
+            nom: nameCoach,
+            style: styleCoach,
+            avatar: avatarCoach
+        })
+
+        const nameCoachInH1 = document.getElementById("briefing")
+        if (nameCoachInH1) {nameCoachInH1.textContent = nameCoach}
+
+        logoDynamique(`${avatarCoach} C'est parti !`)
+
+        buttonSave.textContent = "Sauvegardé"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+    } catch(error) {
+        console.log(error)
+        buttonSave.textContent = "Une erreur s'est produite"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+    } finally {
+        buttonSave.textContent = "Sauvegarde"
+        buttonSave.disabled = false
     }
+}
+
+function changeStyle(value) {
+    const zoneInterpretationJRM = document.getElementById("JRM-coach")
+    if (zoneInterpretationJRM) {zoneInterpretationJRM.textContent = dicoPhraseExemple[value]}
+
+    document.getElementById("JRM-coach").classList.remove("skeleton") // on enleve l'effet de chargement
+}
+function changeAvatar(avatarCoachUser, nameCoachUser) {
+    if (nameCoachUser == "") {nameCoachUser="JRM Coach"}
+
+    document.getElementById("zone-coach-avatar").textContent = avatarCoachUser
+    document.getElementById("zone-coach-nom").textContent = nameCoachUser
+}
+function majNameCoach(nameCoachUser) {
+    if (nameCoachUser == "") {nameCoachUser = "JRM Coach"}
     
-    // Utilisation de put pr mettre a jour la ligne dans la BDD
-    await db.JRM_Coach.put({
-        id: 1,
-        nom: NameCoach,
-        style: StyleCoach,
-        avatar: AvatarCoach
-    })    
-    
-    setTimeout(() => {
-        // transimission du message
-        BoutonSauvegarde.textContent = "Sauvegardé"
-    }, 650);
-
-    setTimeout(() => {
-        // remise etat normal
-        BoutonSauvegarde.textContent = "Sauvegarder"
-        BoutonSauvegarde.disabled = false 
-    }, 1300);
-
-    // Changement du titre du h1 
-    document.getElementById("briefing").textContent = NameCoach
-
-    logoDynamique(`${AvatarCoach} C'est parti !`)
-
-    return
+    document.getElementById("zone-coach-avatar").textContent = document.getElementById("avatar-coach").value
+    document.getElementById("zone-coach-nom").textContent = nameCoachUser
+    document.getElementById("briefing").textContent = nameCoachUser // on met à jour le nom du coach dans le h1
 }
 
-function ChangeStyle(value) {
-    let ZoneJRM = document.getElementById("JRM-coach")
-
-    if (value == "Bienveillant") {
-        ZoneJRM.textContent = DicoPhraseExemple["Bienveillant"]
-    } else if (value == "Strict-Motivant") {
-        ZoneJRM.textContent = DicoPhraseExemple["Strict-Motivant"]
-    } else if (value == "Copain") {
-        ZoneJRM.textContent = DicoPhraseExemple["Copain"]
-    } else {
-        ZoneJRM.textContent = DicoPhraseExemple["Go-muscu"]
-    }
-    
-    document.getElementById("JRM-coach").classList.remove("skeleton")
-
-    return
-}
-
-function ChangeAvatar(value) {
-    // Recup de la zone du nom du coach
-    let NameJRM = document.getElementById("nom-coach").value
-
-    if (!NameJRM) { // Si il y a rien dans le champs name alors on met en variable le nom de base pour que quand ça passera dans le else le nom de base sera mis
-        NameJRM = "JRM Coach"
-    }
-
-    // maj de l'avatar dans la zone du coach
-    document.getElementById("zone-coach-avatar").textContent = value
-    document.getElementById("zone-coach-nom").textContent = NameJRM
-
-    return
-}
-
-function MajName(value) {
-    if (value == "" || value == " ") { // Si le champs est vide alors on met JRM coach dans la box JRM Coach        
-        document.getElementById("zone-coach-avatar").textContent = document.getElementById("avatar-coach").value
-        document.getElementById("zone-coach-nom").textContent = "JRM Coach"
-    } else {
-        document.getElementById("zone-coach-avatar").textContent = document.getElementById("avatar-coach").value
-        document.getElementById("zone-coach-nom").textContent = value
-    } 
-
-    return
-}
-
-async function Initialisation() {
+async function init() {
     // Zone de message du JRM
-    let ZoneJRMBox = document.getElementById("JRM-coach")
-    // Input JRM Coach
-    let InputName = document.getElementById("nom-coach")
-    let InputStyle = document.getElementById("style-coach")
-    let InputAvatar = document.getElementById("avatar-coach")
+    let zoneInterpretationJRM = document.getElementById("JRM-coach")
 
-    // Remise à l'ancien coach
-    const JRMCoachDB = await db.JRM_Coach.toArray()
-    
-    if (JRMCoachDB.length > 0) {
-        // Recup des datas
-        let TableauName = JRMCoachDB.map(elementDB => elementDB.nom)
-        let TableauStyle = JRMCoachDB.map(elementDB => elementDB.style)
-        let TableauAvatar = JRMCoachDB.map(elementDB => elementDB.avatar)
- 
-        // Remplissage des inputs
-        if (TableauName[0] == "JRM Coach") {InputName.value = ""} // si c'est la valeur de base alors on met rien dans le input
-        else {InputName.value = TableauName[0]}
-        InputStyle.value = TableauStyle[0]
-        InputAvatar.value = TableauAvatar[0]
+    const inputNameCoach = document.getElementById("nom-coach")
+    const selectStyleCoach = document.getElementById("style-coach")
+    const selectAvatarCoach = document.getElementById("avatar-coach")
 
-        // Remplissage des zones
-        document.getElementById("zone-coach-avatar").textContent = TableauAvatar[0]
-        document.getElementById("zone-coach-nom").textContent = TableauName[0]
-        ZoneJRMBox.textContent = DicoPhraseExemple[TableauStyle[0]] // Le message du coach
+    const coachUserSave = await db.JRM_Coach.get(1)
+    if (coachUserSave != undefined) {
+        // petite vérif -> si dans la bdd on a le nom qui est égale à "" alors on met la valeur de base
+        if (coachUserSave.nom == "") {
+            inputNameCoach.value = "JRM Coach"
+            document.getElementById("briefing").textContent = "JRM Coach" // on met à jour le nom du coach dans le h1
+        } else {
+            inputNameCoach.value = coachUserSave.nom
+            document.getElementById("briefing").textContent = coachUserSave.nom // on met à jour le nom du coach dans le h1
+        }
+        // on met le style et l'avatar correspondant
+        selectStyleCoach.value = coachUserSave.style
+        selectAvatarCoach.value = coachUserSave.avatar
 
+        // on met à jour l'interface
+        document.getElementById("zone-coach-avatar").textContent = coachUserSave.avatar
+        document.getElementById("zone-coach-nom").textContent = coachUserSave.nom
+        zoneInterpretationJRM.textContent = dicoPhraseExemple[coachUserSave.style]
     } else {
-        ZoneJRMBox.textContent = DicoPhraseExemple["Bienveillant"]
+        zoneInterpretationJRM.textContent = dicoPhraseExemple["Bienveillant"]
     }
-    
-    ZoneJRMBox.classList.remove("skeleton")
 
-    return
+    zoneInterpretationJRM.classList.remove("skeleton")
 }
 
-async function Reinitialisation() {
+async function reinitialisation(buttonReinitialisation) {
     // Demande de confirmation avant
     if (confirm("Êtes-vous sur de vouloir réinitialiser votre coach ?")) {
-        let Button = document.getElementById("reinitialiser")
-        // Desactivation du button
-        Button.disabled = true
-        Button.textContent = "Réinitialisation..."
+        buttonReinitialisation.disabled = true
+        buttonReinitialisation.textContent = "Réinitialisation..."
 
-        // Recup data dans BDD
-        db.JRM_Coach.clear()
+        try {
+            db.JRM_Coach.clear() // on supprime les datas de la database
 
-        // Légère pause
-        await new Promise(r => setTimeout(r, 650))
+            // on remet tout de base sur la page premierement les input
+            document.getElementById("briefing").textContent = "JRM Coach"
+            document.getElementById("nom-coach").value = ""
+            document.getElementById("style-coach").value = "Bienveillant"
+            document.getElementById("avatar-coach").value = ""
+            document.getElementById("zone-coach-nom").textContent = "JRM Coach"
+            document.getElementById("zone-coach-avatar").textContent = ""
+            document.getElementById("JRM-coach").textContent = dicoPhraseExemple["Bienveillant"]
 
-        // on remet tout de base sur la page premierement les input
-        document.getElementById("briefing").textContent = "JRM Coach"
-        document.getElementById("nom-coach").value = ""
-        document.getElementById("style-coach").value = "Bienveillant"
-        document.getElementById("avatar-coach").value = ""
-        document.getElementById("zone-coach-nom").textContent = "JRM Coach"
-        document.getElementById("JRM-coach").textContent = DicoPhraseExemple["Bienveillant"]
-        document.getElementById("JRM-coach").classList.remove("skeleton")
-
-        // confirmation sauvegarde
-        Button.textContent = "Réinitialisé"
-
-        // Pause
-        await new Promise(r => setTimeout(r, 650))
-
-        // remise etat normal
-        Button.textContent = "Réinitialiser votre coach"
-        Button.disabled = false 
-    }
-
-    return
-}
-
-async function NomCoachInit() {
-    // Recup datas
-    let CoachUserDB = await db.JRM_Coach.toArray()
-
-    if (CoachUserDB.length > 0) { // Si il y a des datas
-        let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
- 
-        document.getElementById("briefing").textContent = NomCoach
+            buttonReinitialisation.textContent = "Réinitialisé"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+        } catch(error) {
+            console.log(error)
+            buttonRestoration.textContent = "Une erreur s'est produite"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        } finally {
+            buttonReinitialisation.textContent = "Réinitialiser votre coach"
+            buttonReinitialisation.disabled = false
+        }
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const inputNomDuCoach = document.getElementById("nom-coach")
-    if (inputNomDuCoach) {inputNomDuCoach.addEventListener("input", (event) => {MajName(event.target.value)})}
+    if (inputNomDuCoach) {inputNomDuCoach.addEventListener("input", (event) => {majNameCoach(event.target.value)})}
 
     const selectStyleCoach = document.getElementById("style-coach")
-    if (selectStyleCoach) {selectStyleCoach.addEventListener("change", (event) => {ChangeStyle(event.target.value)})}
+    if (selectStyleCoach) {selectStyleCoach.addEventListener("change", (event) => {changeStyle(event.target.value)})}
 
     const selectAvatarCoach = document.getElementById("avatar-coach")
-    if (selectAvatarCoach) {selectAvatarCoach.addEventListener("change", (event) => {ChangeAvatar(event.target.value)})}
+    if (selectAvatarCoach) {selectAvatarCoach.addEventListener("change", (event) => {changeAvatar(event.target.value, inputNomDuCoach.value)})}
 
-    const buttonSave = document.getElementById("bouton-save")
-    if (buttonSave) {buttonSave.addEventListener("click", SauvegardePreference)}
+    const buttonSave = document.getElementById("button-save")
+    if (buttonSave) {buttonSave.addEventListener("click", function() {sauvegardePreference(buttonSave)})}
 
     const buttonReinitialisation = document.getElementById("reinitialiser")
-    if (buttonReinitialisation) {buttonReinitialisation.addEventListener("click", Reinitialisation)}
+    if (buttonReinitialisation) {buttonReinitialisation.addEventListener("click", function(){reinitialisation(buttonReinitialisation)})}
 
-    Initialisation()
-    NomCoachInit()
+    init()
 
     // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
     let formKeyEntry = document.querySelector(".form")
     formKeyEntry.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            SauvegardePreference()
+            sauvegardePreference(document.getElementById("button-save"))
         }
     })
 })

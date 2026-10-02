@@ -459,7 +459,7 @@ section.header div.logo {
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     padding: var(--SPACE_S);
     margin: var(--SPACE_XS) 0;
@@ -497,7 +497,7 @@ section.header ul.header-container-items {
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     border-radius: 1.50rem;
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
@@ -601,7 +601,7 @@ section.tab-bars ul.tab-bars-container-items{
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     border-radius: 2rem;
     padding: var(--SPACE_XXS);
@@ -718,7 +718,7 @@ div.container-logo-dynamique div.logo-dynamique {
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     pointer-events: none;
     transition: transform ease-out 0.6s,
@@ -811,7 +811,7 @@ section.container-invite-to-config div.container-button button#ignorer{
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
     box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
     color: var(--COLOR_TEXT_PRIMARY);
 }
 @media (hover: hover) and (pointer: fine) {    
@@ -1516,7 +1516,7 @@ div.toolbar div.container-command {
     background-color: var(--COLOR_GLASSMORPHISM);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4), 
                     inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
     border-radius: var(--BORDER_BIG);
 
     padding: var(--SPACE_XXS);
@@ -1569,7 +1569,7 @@ div.menu-many-action {
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     margin-top: var(--SPACE_M);
     margin-right: var(--SPACE_L);
@@ -1942,7 +1942,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
     border-radius: var(--BORDER_BIG);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     display: none;
     flex-direction: column;
@@ -2261,7 +2261,7 @@ div.my-control i {
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
-                inset 0px -1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H2);

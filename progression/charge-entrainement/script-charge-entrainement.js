@@ -229,16 +229,18 @@ async function displayOnScreenCE() {
 
     if (nbEntrainement28j < 3) {
         // affichage + mise en forme de l'analyse
-        document.getElementById("reponse-coach-charge-entrainement").textContent =  `Je n'ai pas assez de données pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
+        document.getElementById("interpretation").textContent =  `Je n'ai pas assez de données pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
                     3 entraînements sur les 28 derniers jours. J'attends avec impatience tes premiers entraînements.`
         document.getElementById("reponse-coach-charge-entrainement").classList.remove("skeleton")
 
     } else {
         // affichage + mise en forme de l'analyse
-        const zoneResponse = document.getElementById("reponse-coach-charge-entrainement")
+        const zoneResponse = document.getElementById("interpretation")
         zoneResponse.style.whiteSpace = "pre-line" // pr transformer les "\n" en saut de ligne
-        zoneResponse.textContent =  `Statut : ${statutUser}\n${analyse}`
-        zoneResponse.classList.remove("skeleton")
+        zoneResponse.textContent =  `\n${analyse}`
+        document.getElementById("reponse-coach-charge-entrainement").classList.remove("skeleton")
+
+        document.getElementById("statut-ce").textContent = `Statut : ${statutUser}`
 
         // affichage de la cible et de la charge 7j et 28j
         document.getElementById("cible-charge-7j").textContent = "Cible : " + parseInt(cibleUserMin) + " - " + parseInt(cibleUserMax)

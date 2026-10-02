@@ -50,7 +50,7 @@ function closeWindows() {
 
 async function copyPrompt() {
     let buttonCopyName = document.getElementById("copy")
-    if (buttonCopyName) {
+    if (buttonCopyName) { 
         promptForIA = await buttonFonction[buttonCopyName.name]() // on créer le prompt
         clickOnButtonCopy = true
 
@@ -247,7 +247,7 @@ Données d'entraînement :\n`
     prompt += `
         
 Voici ce que SPRINTIA a interpreté :
-Statut : ${document.getElementById("statut-ce").textContent}
+Statut : '${document.getElementById("statut-ce").textContent}'
 Charge aiguë (7J) : ${Number(document.getElementById("charge-7j").textContent)} CE (=charge entraînement)
 Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}
 Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textContent)} CE

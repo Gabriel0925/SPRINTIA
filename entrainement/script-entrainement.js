@@ -64,11 +64,18 @@ function carteGPS(data, latlngs) {
             touchZoom: false
         }).setView([17.387140, 78.491684], 13);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        let coucheClassique = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: "&copy; <a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors",
             maxZoom: 22, // on limite le user sur le zoom
             maxNativeZoom: 19 // pr éviter que Leaflet fasse des requetes pour recharger la carte alors qu'il n'y a plus de carte à afficher
-        }).addTo(map);
+        })
+        let coucheSattelite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+            maxZoom: 19
+        })
+
+        coucheClassique.addTo(map)
+        let modeSatellite = false
 
         // Définition du bouton "Centrer"
         let CenterTace = L.Control.extend({
@@ -148,6 +155,36 @@ function carteGPS(data, latlngs) {
             }
         });
 
+        let buttonCoucheMap = L.Control.extend({  
+            options: {position: 'topright'},
+
+            onAdd: function (map) {
+                var divButtonCarte = L.DomUtil.create('div', 'my-control my-button-class');
+                var iconInDiv = L.DomUtil.create("i", "icon_carte_satellite", divButtonCarte);
+                iconInDiv.id = 'btn-switch-carte';
+
+                L.DomEvent.on(divButtonCarte, 'click', function(e) {
+                    L.DomEvent.stopPropagation(e);
+
+                    if (modeSatellite == false) {// pour mettre la carte satellite
+                        map.removeLayer(coucheClassique);
+                        map.addLayer(coucheSattelite);
+                        modeSatellite = true
+                        document.getElementById("btn-switch-carte").classList.remove("icon_carte_satellite")
+                        document.getElementById("btn-switch-carte").classList.add("icon_carte_plan")
+                    } else { // pour mettre la carte par défaut
+                        map.removeLayer(coucheSattelite);
+                        map.addLayer(coucheClassique);
+                        modeSatellite = false
+                        document.getElementById("btn-switch-carte").classList.remove("icon_carte_plan")
+                        document.getElementById("btn-switch-carte").classList.add("icon_carte_satellite")
+                    }
+                });
+
+                return divButtonCarte;
+            }
+        });
+
         map.on('click', function(e) {
             if (fullscreen == false && !e.originalEvent.target.closest('.my-button-class')) {
                 mapElement.className = 'map-fullscreen';
@@ -173,6 +210,7 @@ function carteGPS(data, latlngs) {
         });
 
         let ControlBoutonExitMap = new BouttonFullscreen().addTo(map);
+        let ControlSwitchCarte = new buttonCoucheMap().addTo(map);
         let ControlCenterTace = new CenterTace().addTo(map);
 
         // Traçage du relevé gps

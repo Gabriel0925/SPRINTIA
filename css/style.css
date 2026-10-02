@@ -43,6 +43,7 @@
     /* 3D */
     --COLOR_BORDER_FLOATING_BUTTON: rgba(230, 242, 255, 0.35);
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.2);
+    --COLOR_BORDER_FLOATING_COMPONENT_DARK: rgba(0, 0, 0, 0.1);
 
 
     /* FONT */
@@ -456,7 +457,8 @@ section.header div.logo {
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
-                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+                inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     padding: var(--SPACE_S);
     margin: var(--SPACE_XS) 0;
@@ -493,7 +495,8 @@ section.header ul.header-container-items {
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
-                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+                inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     border-radius: 1.50rem;
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
@@ -596,7 +599,8 @@ section.tab-bars ul.tab-bars-container-items{
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BARS)) blur(var(--BLUR_GLASSMORPHISM_BARS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
-                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+                inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     border-radius: 2rem;
     padding: var(--SPACE_XXS);
@@ -712,7 +716,8 @@ div.container-logo-dynamique div.logo-dynamique {
     background: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    box-shadow: inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     pointer-events: none;
     transition: transform ease-out 0.6s,
@@ -803,7 +808,8 @@ section.container-invite-to-config div.container-button button#ignorer{
     background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+    box-shadow: inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
     color: var(--COLOR_TEXT_PRIMARY);
 }
 @media (hover: hover) and (pointer: fine) {    
@@ -1508,7 +1514,8 @@ div.toolbar div.container-command {
 
     background-color: var(--COLOR_GLASSMORPHISM);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4), 
-                    inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+                    inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
     border-radius: var(--BORDER_BIG);
 
     padding: var(--SPACE_XXS);
@@ -1560,7 +1567,8 @@ div.menu-many-action {
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_PANELS)) blur(var(--BLUR_GLASSMORPHISM_PANELS));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
-                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+                inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     margin-top: var(--SPACE_M);
     margin-right: var(--SPACE_L);
@@ -1932,7 +1940,8 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
 
     border-radius: var(--BORDER_BIG);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
-                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+                inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     display: none;
     flex-direction: column;
@@ -2232,7 +2241,8 @@ div.my-control i {
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
-                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT);
+                inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
 
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H2);
@@ -2249,14 +2259,11 @@ div.my-control i {
 }
 @media (hover: hover) and (pointer: fine) {
     div.my-control i:hover {
-        background: var(--COLOR_GLASSMORPHISM_HOVER);
-        color: var(--COLOR_BACKGROUND);
         transform: scale(var(--SCALE_MAX));
     }
 }
 div.my-control i:active {
-    background: var(--COLOR_GLASSMORPHISM_ACTIVE);
-    color: var(--COLOR_BACKGROUND);
+    background: rgba(32, 37, 46, 0.2);
     transform: scale(var(--SCALE_MAX));
 }
 

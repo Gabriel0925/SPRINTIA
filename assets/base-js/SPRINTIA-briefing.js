@@ -62,6 +62,9 @@ async function copyPrompt() {
             .catch(error => {
                 alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.", error)
             })
+        } else {
+            alert("Aucun prompt n'a été créé car SPRINTIA n'a pas assez de données pour en générer un !")
+            return
         }
     }
 }
@@ -70,11 +73,8 @@ function openIA(favoriteIA) {
     if (promptForIA != undefined && clickOnButtonCopy == true) { // si il y a des données et qu'il y a eu un clic sur le button copy alors on ouvre l'IA
         window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
 
-    } else if (clickOnButtonCopy == false) { // si le user n'a pas copié le prompt
+    } else { // si le user n'a pas copié le prompt
         alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")||"Vibe"]}.`)
-        return
-    } else {
-        alert("Aucun prompt n'a été créé car SPRINTIA n'a pas assez de données pour en générer un !")
         return
     }
 }

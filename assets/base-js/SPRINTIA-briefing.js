@@ -71,7 +71,7 @@ function openIA(favoriteIA) {
         window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
 
     } else if (clickOnButtonCopy == false) { // si le user n'a pas copié le prompt
-        alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")]}.`)
+        alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")||"Vibe"]}.`)
         return
     } else {
         alert("Aucun prompt n'a été créé car SPRINTIA n'a pas assez de données pour en générer un !")

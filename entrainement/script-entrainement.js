@@ -75,8 +75,13 @@ function carteGPS(data, latlngs) {
             maxNativeZoom: 19 // pr éviter que Leaflet fasse des requetes pour recharger la carte alors qu'il n'y a plus de carte à afficher
         })
 
-        coucheClassique.addTo(map)
-        let modeSatellite = false
+        let modeSatellite = JSON.parse(localStorage.getItem("modeSatellite")) || false
+        const preferenceCarteSatteliteUser = {
+            true: coucheSattelite,
+            false: coucheClassique
+        }
+
+        preferenceCarteSatteliteUser[modeSatellite].addTo(map) // on charge la carte qu'il faut en fonction du choix du user
 
         // Définition du bouton "Centrer"
         let CenterTace = L.Control.extend({
@@ -170,13 +175,19 @@ function carteGPS(data, latlngs) {
                     if (modeSatellite == false) {// pour mettre la carte satellite
                         map.removeLayer(coucheClassique);
                         map.addLayer(coucheSattelite);
+
                         modeSatellite = true
+                        localStorage.setItem("modeSatellite", true)
+
                         document.getElementById("btn-switch-carte").classList.remove("icon_carte_satellite")
                         document.getElementById("btn-switch-carte").classList.add("icon_carte_plan")
                     } else { // pour mettre la carte par défaut
                         map.removeLayer(coucheSattelite);
                         map.addLayer(coucheClassique);
+
                         modeSatellite = false
+                        localStorage.setItem("modeSatellite", false)
+
                         document.getElementById("btn-switch-carte").classList.remove("icon_carte_plan")
                         document.getElementById("btn-switch-carte").classList.add("icon_carte_satellite")
                     }

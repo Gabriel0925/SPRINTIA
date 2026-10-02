@@ -855,6 +855,9 @@ section.segmented-button {
     gap: var(--SPACE_XXS);
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
+section.segmented-button.duree {
+    margin-bottom: var(--SPACE_S);
+}
 section.segmented-button#segmented-button-niveau-course {
     margin-top: var(--SPACE_L);
 }
@@ -898,6 +901,43 @@ section.segmented-button div.segmented-button-button.actif {
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+}
+
+
+section.container-change-periode {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: var(--SPACE_XL);
+    margin-bottom: var(--SPACE_L);
+}
+section.container-change-periode i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_S);
+    border-radius: 50%;
+    font-size: var(--H3);
+
+    cursor: pointer;
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-change-periode i:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+section.container-change-periode i:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
+}
+section.container-change-periode p{
+    min-width: 148px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 

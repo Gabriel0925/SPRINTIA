@@ -1,4 +1,20 @@
 let promptForIA = undefined
+let clickOnButtonCopy = false
+
+const dicoIA = {
+    "vibe":"Vibe", "gemini":"Gemini", "chat-gpt":"ChatGPT", "claude":"Claude",
+    "grok":"Grok", "meta-ai":"Meta AI", "deepseek":"DeepSeek", "copilot":"Copilot",
+    "perplexity": "Perplexity", 
+    "ia-locale": "l'IA locale de votre choix" // on le met quand meme dans le dico pour : ".explanation-briefing"
+}
+const dicoLienIA = {
+    "vibe":"https://chat.mistral.ai/", "gemini":"https://gemini.google.com/", 
+    "chat-gpt":"https://chatgpt.com/", "claude":"https://claude.ai/",
+    "grok":"https://grok.com/", "meta-ai":"https://www.meta.ai/", 
+    "deepseek":"https://chat.deepseek.com/", "copilot":"https://copilot.microsoft.com/",
+    "perplexity": "https://www.perplexity.ai/"
+}
+
 const buttonFonction  = {
     "Analyser mes tendances": promptTendances,
     "Analyser ma CE": promptCE,
@@ -14,7 +30,6 @@ async function windowsBriefing(textInButton) {
     document.querySelector("body").classList.add("briefing-open") 
     document.querySelector("main").classList.add("briefing-open")
 
-    promptForIA = await buttonFonction[textInButton]() // on créer le prompt
     if (promptForIA != undefined) { // si le début de prompt a été généré
         promptForIA = await addPromptContrainte(promptForIA) // on ajoute les contraintes
     }
@@ -32,39 +47,36 @@ function closeWindows() {
     }, 150);
 }
 
-const dicoLienIA = {
-    "vibe":"https://chat.mistral.ai/", "gemini":"https://gemini.google.com/", 
-    "chat-gpt":"https://chatgpt.com/", "claude":"https://claude.ai/",
-    "grok":"https://grok.com/", "meta-ai":"https://www.meta.ai/", 
-    "deepseek":"https://chat.deepseek.com/", "copilot":"https://copilot.microsoft.com/",
-    "perplexity": "https://www.perplexity.ai/"
-}
-function openIA(favoriteIA) {
+
+async function copyPrompt() {
+    promptForIA = await buttonFonction[textInButton]() // on créer le prompt
+    clickOnButtonCopy = true
+
     if (promptForIA != undefined) {
         navigator.clipboard.writeText(promptForIA)
         .then(() => {
-            if (favoriteIA == "ia-locale") {
-                logoDynamique("📋 Copié !")
-            } else {
-                window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
-            }
+            logoDynamique("📋 Copié !")
         })
         .catch(error => {
             alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.", error)
         })
+    }
+}
 
+function openIA(favoriteIA) {
+    if (promptForIA != undefined && clickOnButtonCopy == true) { // si il y a des données et qu'il y a eu un clic sur le button copy alors on ouvre l'IA
+        window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
+
+    } else if (clickOnButtonCopy == false) { // si le user n'a pas copié le prompt
+        alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")]}`)
+        return
     } else {
         alert("Aucun prompt n'a été créé car SPRINTIA n'a pas assez de données pour en générer un !")
         return
     }
 }
 
-const dicoIA = {
-    "vibe":"Vibe", "gemini":"Gemini", "chat-gpt":"ChatGPT", "claude":"Claude",
-    "grok":"Grok", "meta-ai":"Meta AI", "deepseek":"DeepSeek", "copilot":"Copilot",
-    "perplexity": "Perplexity", 
-    "ia-locale": "l'IA locale de votre choix" // on le met quand meme dans le dico pour : ".explanation-briefing"
-}
+
 function nameFavoriteIA() {
     let favoriteIA = localStorage.getItem("iaFavorite")
 
@@ -77,7 +89,7 @@ function nameFavoriteIA() {
         }
 
         let buttonOpenIa = document.getElementById("button-open-ia")
-        let textInButton = "Copier & Ouvrir " + dicoIA[favoriteIA]
+        let textInButton = "Ouvrir " + dicoIA[favoriteIA]
 
         if (buttonOpenIa) {
             if (favoriteIA == "ia-locale") {textInButton = "Copier le prompt"}
@@ -451,4 +463,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (iconFermer) {iconFermer.addEventListener("click", closeWindows)}
 
     nameFavoriteIA()
-})
+}) 

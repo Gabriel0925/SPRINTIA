@@ -161,54 +161,55 @@ i {
 .icon_coach:before {content: "\e906";}
 .icon_confidentialite:before {content: "\e907";}
 .icon_conversion:before {content: "\e908";}
-.icon_discussion:before {content: "\e909";}
-.icon_entrainement:before {content: "\e90a";}
-.icon_entrainement_du_jour:before {content: "\e90b";}
-.icon_fermer:before {content: "\e90c";}
-.icon_file:before {content: "\e90d";}
-.icon_file_csv:before {content: "\e90e";}
-.icon_file_json:before {content: "\e90f";}
-.icon_fleche_droite:before {content: "\e910";}
-.icon_fleche_gauche:before {content: "\e911";}
-.icon_flight:before {content: "\e912";}
-.icon_folder_open:before {content: "\e913";}
-.icon_fullscreen:before {content: "\e914";}
-.icon_fullscreen_exit:before {content: "\e915";}
-.icon_goutte_eau:before {content: "\e916";}
-.icon_gpx:before {content: "\e917";}
-.icon_hydratation:before {content: "\e918";}
-.icon_IMC:before {content: "\e919";}
-.icon_indulgence_course:before {content: "\e91a";}
-.icon_info:before {content: "\e91b";}
-.icon_licence:before {content: "\e91c";}
-.icon_mail:before {content: "\e91d";}
-.icon_metabolisme_base:before {content: "\e91e";}
-.icon_modifier:before {content: "\e91f";}
-.icon_natation:before {content: "\e920";}
-.icon_niveau_course:before {content: "\e921";}
-.icon_outils:before {content: "\e922";}
-.icon_parametres:before {content: "\e923";}
-.icon_partage:before {content: "\e924";}
-.icon_pause:before {content: "\e925";}
-.icon_plus:before {content: "\e926";}
-.icon_position:before {content: "\e927";}
-.icon_profil:before {content: "\e928";}
-.icon_progression:before {content: "\e929";}
-.icon_proteines:before {content: "\e92a";}
-.icon_recuperation:before {content: "\e92b";}
-.icon_refresh:before {content: "\e92c";}
-.icon_RM:before {content: "\e92d";}
-.icon_search:before {content: "\e92e";}
-.icon_search_off:before {content: "\e92f";}
-.icon_SPRINTIA_briefing:before {content: "\e930";}
-.icon_statistiques:before {content: "\e931";}
-.icon_supprimer:before {content: "\e932";}
-.icon_telephone:before {content: "\e933";}
-.icon_temps_recup:before {content: "\e934";}
-.icon_velo:before {content: "\e935";}
-.icon_verre_eau:before {content: "\e936";}
-.icon_video:before {content: "\e937";}
-.icon_zones_cardiaques:before {content: "\e938";}
+.icon_copy:before {content: "\e909";}
+.icon_discussion:before {content: "\e90a";}
+.icon_entrainement:before {content: "\e90b";}
+.icon_entrainement_du_jour:before {content: "\e90c";}
+.icon_fermer:before {content: "\e90d";}
+.icon_file:before {content: "\e90e";}
+.icon_file_csv:before {content: "\e90f";}
+.icon_file_json:before {content: "\e910";}
+.icon_fleche_droite:before {content: "\e911";}
+.icon_fleche_gauche:before {content: "\e912";}
+.icon_flight:before {content: "\e913";}
+.icon_folder_open:before {content: "\e914";}
+.icon_fullscreen:before {content: "\e915";}
+.icon_fullscreen_exit:before {content: "\e916";}
+.icon_goutte_eau:before {content: "\e917";}
+.icon_gpx:before {content: "\e918";}
+.icon_hydratation:before {content: "\e919";}
+.icon_IMC:before {content: "\e91a";}
+.icon_indulgence_course:before {content: "\e91b";}
+.icon_info:before {content: "\e91c";}
+.icon_licence:before {content: "\e91d";}
+.icon_mail:before {content: "\e91e";}
+.icon_metabolisme_base:before {content: "\e91f";}
+.icon_modifier:before {content: "\e920";}
+.icon_natation:before {content: "\e921";}
+.icon_niveau_course:before {content: "\e922";}
+.icon_outils:before {content: "\e923";}
+.icon_parametres:before {content: "\e924";}
+.icon_partage:before {content: "\e925";}
+.icon_pause:before {content: "\e926";}
+.icon_plus:before {content: "\e927";}
+.icon_position:before {content: "\e928";}
+.icon_profil:before {content: "\e929";}
+.icon_progression:before {content: "\e92a";}
+.icon_proteines:before {content: "\e92b";}
+.icon_recuperation:before {content: "\e92c";}
+.icon_refresh:before {content: "\e92d";}
+.icon_RM:before {content: "\e92e";}
+.icon_search:before {content: "\e92f";}
+.icon_search_off:before {content: "\e930";}
+.icon_SPRINTIA_briefing:before {content: "\e931";}
+.icon_statistiques:before {content: "\e932";}
+.icon_supprimer:before {content: "\e933";}
+.icon_telephone:before {content: "\e934";}
+.icon_temps_recup:before {content: "\e935";}
+.icon_velo:before {content: "\e936";}
+.icon_verre_eau:before {content: "\e937";}
+.icon_video:before {content: "\e938";}
+.icon_zones_cardiaques:before {content: "\e939";}
 
 * {
     margin: 0;
@@ -1986,11 +1987,11 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-S
 }
 @media (hover: hover) and (pointer: fine) {
     section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:hover{
-    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+        background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     }
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.windows-SPRINTIA-briefing-head i:active{
-background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    background-color: rgba(255, 255, 255, 0.36);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation-briefing {
     font-size: var(--P_SMALL);
@@ -1998,7 +1999,8 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing p.explanation
     color: var(--COLOR_TEXT_SECONDARY);
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--SPACE_S);
     margin-top: var(--SPACE_XS);
 }
@@ -2010,8 +2012,19 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button:active{
     transform: scale(1);
 }
-section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-copy{
-    width: fit-content;
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-open-ia{
+    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+    -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
+    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-open-ia:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    }
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-open-ia:active{
+    background-color: rgba(255, 255, 255, 0.36);
 }
 
 

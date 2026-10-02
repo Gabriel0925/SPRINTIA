@@ -35,7 +35,7 @@ async function reinitialiserBriefing(btn) {
         btn.textContent = "Réinitialisé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
         
-        btn.textContent = "Réinitialisation Briefing"
+        btn.textContent = "Réinitialiser Briefing"
         btn.disabled = false
     }
 }

@@ -95,10 +95,13 @@ function nameFavoriteIA() {
         let textInButton = "Ouvrir " + dicoIA[favoriteIA]
 
         if (buttonOpenIa) {
-            if (favoriteIA == "ia-locale") {textInButton = "Copier le prompt"}
-
-            buttonOpenIa.textContent = textInButton
-            buttonOpenIa.addEventListener("click", () => {openIA(favoriteIA)})
+            if (favoriteIA == "ia-locale") {
+                buttonOpenIa.style.display = "none"
+                document.querySelector("div.container-button-windows-SPRINTIA-briefing").style.display = "flex"
+            } else {
+                buttonOpenIa.textContent = textInButton
+                buttonOpenIa.addEventListener("click", () => {openIA(favoriteIA)})
+            }
         }
 
         // le bouton dans discuter avec le coach

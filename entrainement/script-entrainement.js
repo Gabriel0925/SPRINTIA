@@ -166,7 +166,12 @@ function carteGPS(data, latlngs) {
 
             onAdd: function (map) {
                 var divButtonCarte = L.DomUtil.create('div', 'my-control my-button-class');
-                var iconInDiv = L.DomUtil.create("i", "icon_carte_satellite", divButtonCarte);
+
+                if (modeSatellite == true) {
+                    var iconInDiv = L.DomUtil.create("i", "icon_carte_satellite", divButtonCarte);
+                } else {
+                    var iconInDiv = L.DomUtil.create("i", "icon_carte_plan", divButtonCarte);
+                }
                 iconInDiv.id = 'btn-switch-carte';
 
                 L.DomEvent.on(divButtonCarte, 'click', function(e) {

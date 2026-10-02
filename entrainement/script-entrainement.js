@@ -70,8 +70,9 @@ function carteGPS(data, latlngs) {
             maxNativeZoom: 19 // pr éviter que Leaflet fasse des requetes pour recharger la carte alors qu'il n'y a plus de carte à afficher
         })
         let coucheSattelite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-            maxZoom: 19
+            attribution: "Tiles &copy; <a href='https://www.esri.com/'  target='_blank'>Esri</a> &mdash; Source: Esri, i-cubed, USDA, USGS",
+            maxZoom: 22, // on limite le user sur le zoom
+            maxNativeZoom: 19 // pr éviter que Leaflet fasse des requetes pour recharger la carte alors qu'il n'y a plus de carte à afficher
         })
 
         coucheClassique.addTo(map)

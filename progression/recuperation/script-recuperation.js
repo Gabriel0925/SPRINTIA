@@ -329,7 +329,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (buttonPlus) {buttonPlus.addEventListener("click", () => {window.location.href = 'historique-recuperation.html'})}
 
     const buttonBriefing = document.getElementById("button-SPRINTIA-briefing")
-    if (buttonBriefing){buttonBriefing.addEventListener("click", () => {windowsBriefing('Analyser ma récupération')})}
+    if (buttonBriefing){buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+    const buttonCopy = document.getElementById("copy")
+    if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 
     init("init")
 })

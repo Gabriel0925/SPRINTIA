@@ -257,7 +257,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // si on est dans la page de charge d'entrainement (et donc pas dans la page de progression) on ajoute les addEvenLister
     if (window.location.pathname == "/progression/charge-entrainement/charge-entrainement.html") {
         const buttonBriefing = document.getElementById("button-SPRINTIA-briefing")
-        if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing("Analyser ma CE")})}
+        if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+        const buttonCopy = document.getElementById("copy")
+        if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 
         displayOnScreenCE()
     }

@@ -87,7 +87,9 @@ window.addEventListener("pageshow", (event) => {
 document.addEventListener("DOMContentLoaded", async () => {
     // écouteur d'event
     const buttonBriefing = document.querySelector("button.briefing")
-    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing("Analyser mes tendances")})}
+    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+    const buttonCopy = document.getElementById("copy")
+    if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 
 
     // --- Charge d'entrainement ---

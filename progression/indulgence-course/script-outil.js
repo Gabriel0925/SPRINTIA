@@ -282,7 +282,9 @@ async function JRMCoachUser() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const buttonBriefing = document.getElementById("button-SPRINTIA-briefing")
-    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing("Analyser mon indulgence")})}
+    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+    const buttonCopy = document.getElementById("copy")
+    if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 
     Initialisation()
     JRMCoachUser()

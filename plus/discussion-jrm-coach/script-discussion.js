@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     }
+    const buttonCopy = document.getElementById("copy")
+    if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 
     NomCoachInit()
 })

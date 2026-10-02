@@ -24,7 +24,7 @@ const buttonFonction  = {
     "Demander à Vibe": promptDiscussion
 }
 
-async function windowsBriefing(textInButton) {
+async function windowsBriefing() {
     document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
     document.querySelector("body").classList.add("briefing-open") 
@@ -49,17 +49,20 @@ function closeWindows() {
 
 
 async function copyPrompt() {
-    promptForIA = await buttonFonction[textInButton]() // on créer le prompt
-    clickOnButtonCopy = true
+    let buttonCopyName = document.getElementById("copy")
+    if (buttonCopyName) {
+        promptForIA = await buttonFonction[buttonCopyName.name]() // on créer le prompt
+        clickOnButtonCopy = true
 
-    if (promptForIA != undefined) {
-        navigator.clipboard.writeText(promptForIA)
-        .then(() => {
-            logoDynamique("📋 Copié !")
-        })
-        .catch(error => {
-            alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.", error)
-        })
+        if (promptForIA != undefined) {
+            navigator.clipboard.writeText(promptForIA)
+            .then(() => {
+                logoDynamique("📋 Copié !")
+            })
+            .catch(error => {
+                alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.", error)
+            })
+        }
     }
 }
 
@@ -68,7 +71,7 @@ function openIA(favoriteIA) {
         window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
 
     } else if (clickOnButtonCopy == false) { // si le user n'a pas copié le prompt
-        alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")]}`)
+        alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")]}.`)
         return
     } else {
         alert("Aucun prompt n'a été créé car SPRINTIA n'a pas assez de données pour en générer un !")

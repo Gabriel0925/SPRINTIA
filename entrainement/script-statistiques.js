@@ -86,7 +86,8 @@ function cleanPeriodeDate(dateDebutPeriode, dateFinPeriode) {
 
     console.log([tableauDebutJJMMAAAA, tableauFinJJMMAAAA])
     
-    if (tableauDebutJJMMAAAA[1] == tableauFinJJMMAAAA[1]) { // si c'est le même mois alors on la met qu'une fois
+    // si c'est le même mois et la même année alors on la met qu'une fois
+    if (tableauDebutJJMMAAAA[1] == tableauFinJJMMAAAA[1] && tableauDebutJJMMAAAA[0] == tableauFinJJMMAAAA[0]) {
         return `${tableauDebutJJMMAAAA[2]} - ${tableauFinJJMMAAAA[2]} ${dicoMois[tableauFinJJMMAAAA[1]]} ${tableauFinJJMMAAAA[0]}`
 
     } else if (tableauDebutJJMMAAAA[0] == tableauFinJJMMAAAA[0]) { // si c'est la même année alors on la met qu'une fois

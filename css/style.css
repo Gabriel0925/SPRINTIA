@@ -945,6 +945,7 @@ section.container-change-periode i:active{
 section.container-change-periode p.date-periode{
     font-size: var(--P_SMALL);
     width: 182px;
+    min-height: 20px;
     text-align: center;
 }
 section.container-change-periode p.date-periode.skeleton{

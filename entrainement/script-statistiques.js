@@ -9,10 +9,14 @@ let dateDebutPeriode = dateMoins7J
 let numberDebutPeriode = 7
 let dateFinPeriode = createObjetDate(0)
 let numberFinPeriode = 0
-// ajout d'une variable globale pour savoir si c'est la première fois que la page est chargée
-let pageChargee = false
+
+// var globale pour pouvoir faire -30J si la période -30J est select
+let nbDaysToAdd = 7
 
 let sportDemandee = "Course"
+
+// ajout d'une variable globale pour savoir si c'est la première fois que la page est chargée
+let pageChargee = false
 
 async function statistiquesParSport(sportForFunction) {
     // recup data des derniers jours en fonction de la date
@@ -195,7 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
         segmentedButtonSemaine.addEventListener("click", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('semaine').classList.add('actif')
-            init(dateMoins7J, dateActuelle, 0)
+            init(dateMoins7J, dateActuelle, 0)            
+            // on met à jour la var globale pr savoir combien de J on doit ajouter ou enlever pour changer de période
+            nbDaysToAdd = 7
+            numberDebutPeriode = 7
+            numberFinPeriode = 0
         })
     }
     const segmentedButtonMois = document.getElementById("mois")
@@ -204,6 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('mois').classList.add('actif')
             init(dateMoins30J, dateActuelle, 0)
+            // on met à jour la var globale pr savoir combien de J on doit ajouter ou enlever pour changer de période
+            nbDaysToAdd = 30
+            numberDebutPeriode = 30
+            numberFinPeriode = 0
         })
     }
     const segmentedButton3Mois = document.getElementById("trois-mois")
@@ -212,6 +224,10 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('trois-mois').classList.add('actif')
             init(dateMoins90J, dateActuelle, 0)
+            // on met à jour la var globale pr savoir combien de J on doit ajouter ou enlever pour changer de période
+            nbDaysToAdd = 90
+            numberDebutPeriode = 90
+            numberFinPeriode = 0
         })
     }
     const segmentedButtonAnnee = document.getElementById("annee")
@@ -220,6 +236,10 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('annee').classList.add('actif')
             init(dateMoins365J, dateActuelle, 0)
+            // on met à jour la var globale pr savoir combien de J on doit ajouter ou enlever pour changer de période
+            nbDaysToAdd = 365
+            numberDebutPeriode = 365
+            numberFinPeriode = 0
         })
     }
 
@@ -227,13 +247,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonFlecheGauche = document.getElementById("last-periode")
     if (buttonFlecheGauche) {
         buttonFlecheGauche.addEventListener("click", () => {
-            init(createObjetDate(numberDebutPeriode+7), createObjetDate(numberFinPeriode+7), 7)
+            init(createObjetDate(numberDebutPeriode+nbDaysToAdd), createObjetDate(numberFinPeriode+nbDaysToAdd), nbDaysToAdd)
         })
     }
     const buttonFlecheDroite = document.getElementById("next-periode")
     if (buttonFlecheDroite) {
         buttonFlecheDroite.addEventListener("click", () => {
-            init(createObjetDate(numberDebutPeriode-7), createObjetDate(numberFinPeriode-7), -7)
+            init(createObjetDate(numberDebutPeriode-nbDaysToAdd), createObjetDate(numberFinPeriode-nbDaysToAdd), -nbDaysToAdd)
         })
     }
 

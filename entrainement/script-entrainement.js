@@ -599,7 +599,9 @@ async function initialisation() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const buttonBriefing = document.getElementById("briefing_entrainement")
-    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing("Approfondir l'analyse")})}
+    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+    const buttonCopy = document.getElementById("copy")
+    if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 
     const infoRehydratation = document.getElementById("rehydratation")
     if (infoRehydratation) {
@@ -611,6 +613,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     }
+
     const infoTranspiration = document.getElementById("transpiration")
     if (infoTranspiration) {
         infoTranspiration.classList.remove("skeleton")

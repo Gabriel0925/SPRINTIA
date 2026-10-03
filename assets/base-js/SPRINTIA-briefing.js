@@ -79,7 +79,7 @@ function openIA(favoriteIA) {
     }
 }
 
-
+ 
 function nameFavoriteIA() {
     let favoriteIA = localStorage.getItem("iaFavorite")
 

@@ -908,7 +908,7 @@ section.container-change-periode {
     display: flex;
     justify-self: center;
     align-items: center;
-    gap: var(--SPACE_XL);
+    gap: var(--SPACE_M);
     margin-bottom: var(--SPACE_L);
 }
 section.container-change-periode i{
@@ -943,9 +943,9 @@ section.container-change-periode i:active{
 }
 section.container-change-periode p{
     font-size: var(--P_SMALL);
-    min-width: 148px;
+    width: 182px;
     text-align: center;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 

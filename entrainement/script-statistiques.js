@@ -83,8 +83,6 @@ const dicoMois = {
 function cleanPeriodeDate(dateDebutPeriode, dateFinPeriode) {
     let tableauDebutJJMMAAAA = dateDebutPeriode.split("-") // ["2026", "09", "26"]
     let tableauFinJJMMAAAA = dateFinPeriode.split("-") // ["2026", "09", "26"]
-
-    console.log([tableauDebutJJMMAAAA, tableauFinJJMMAAAA])
     
     // si c'est le même mois et la même année alors on la met qu'une fois
     if (tableauDebutJJMMAAAA[1] == tableauFinJJMMAAAA[1] && tableauDebutJJMMAAAA[0] == tableauFinJJMMAAAA[0]) {
@@ -120,7 +118,6 @@ async function init(debutPeriode, finPeriode, numberDateAjout) {
     // on met à jour le texte de la période affichée
     let cleanDate = cleanPeriodeDate(dateDebutPeriode, dateFinPeriode)
     document.getElementById("date-periode").textContent = cleanDate
-    console.log(`${dateDebutPeriode} - ${dateFinPeriode}`)
 
     // on met à jour les variables globales pour la date de début et de fin de période
     numberDebutPeriode += numberDateAjout

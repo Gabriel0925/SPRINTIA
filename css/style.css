@@ -906,10 +906,9 @@ section.segmented-button div.segmented-button-button.actif:active {
 
 section.container-change-periode {
     display: flex;
-    justify-self: center;
+    justify-content: center;
     align-items: center;
     gap: var(--SPACE_M);
-    margin: 0 auto;
     margin-bottom: var(--SPACE_L);
 }
 section.container-change-periode i{

@@ -1,17 +1,24 @@
-
+let dateActuelle = createObjetDate(0)
 let dateMoins7J = createObjetDate(7)
 let dateMoins30J = createObjetDate(30)
 let dateMoins90J = createObjetDate(90)
 let dateMoins365J = createObjetDate(365)
 
 // var globale pour la date et le sport
-let dateDemandee = dateMoins7J
+let dateDebutPeriode = dateMoins7J
+let numberDebutPeriode = 7
+let dateFinPeriode = createObjetDate(0)
+let numberFinPeriode = 0
+// ajout d'une variable globale pour savoir si c'est la première fois que la page est chargée
+let pageChargee = false
+
 let sportDemandee = "Course"
 
 async function statistiquesParSport(sportForFunction) {
     // recup data des derniers jours en fonction de la date
-    const historiqueDBStats = await db.entrainement.where("date").aboveOrEqual(dateDemandee).toArray() // la var dateChoisie change en fonction du selected dans l'interface
-
+    const historiqueDBStats = await db.entrainement.where("date")
+                                                .between(dateDebutPeriode, dateFinPeriode, true, true) // true, true pour inclure les dates de début et de fin
+                                                .toArray()
     // maj de la variable globale
     sportDemandee = sportForFunction
 
@@ -55,12 +62,30 @@ async function statistiquesParSport(sportForFunction) {
     document.getElementById("distance-sport").classList.remove("skeleton")
 }
         
-async function init(dateChoisie) {
+async function init(debutPeriode, finPeriode, numberDateAjout) {
+    // ajout d'une sécurité pour désactiver le bouton fleche droite si on est sur la période actuelle (pour pas aller ds le futur)
+    if (numberFinPeriode+numberDateAjout <= 0 && pageChargee == true) {
+        document.getElementById("next-periode").classList.add("stop")
+    }
+    // on réactive le bouton fleche droite pour pouvoir revenir sur une période plus récente
+    if (numberFinPeriode+numberDateAjout > 0 && pageChargee == true) {
+        document.getElementById("next-periode").classList.remove("stop")
+    }
+
     // recup data des derniers jours en fonction de la date
-    const historiqueDB = await db.entrainement.where("date").aboveOrEqual(dateChoisie).toArray() // la var dateChoisie change en fonction du selected dans l'interface
+    const historiqueDB = await db.entrainement.where("date")
+                                                .between(debutPeriode, finPeriode, true, true) // true, true pour inclure les dates de début et de fin
+                                                .toArray()
 
     // maj de la var global
-    dateDemandee = dateChoisie
+    dateDebutPeriode = debutPeriode
+    dateFinPeriode = finPeriode
+
+    // on met à jour les variables globales pour la date de début et de fin de période
+    numberDebutPeriode += numberDateAjout
+    numberFinPeriode += numberDateAjout 
+    
+    console.log([historiqueDB, debutPeriode, finPeriode, numberDebutPeriode, numberFinPeriode])
 
     // quand il n'y a pas de datas
     if (historiqueDB.length <= 0) {
@@ -170,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
         segmentedButtonSemaine.addEventListener("click", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('semaine').classList.add('actif')
-            init(dateMoins7J)
+            init(dateMoins7J, dateActuelle, 0)
         })
     }
     const segmentedButtonMois = document.getElementById("mois")
@@ -178,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         segmentedButtonMois.addEventListener("click", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('mois').classList.add('actif')
-            init(dateMoins30J)
+            init(dateMoins30J, dateActuelle, 0)
         })
     }
     const segmentedButton3Mois = document.getElementById("trois-mois")
@@ -186,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         segmentedButton3Mois.addEventListener("click", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('trois-mois').classList.add('actif')
-            init(dateMoins90J)
+            init(dateMoins90J, dateActuelle, 0)
         })
     }
     const segmentedButtonAnnee = document.getElementById("annee")
@@ -194,7 +219,21 @@ document.addEventListener("DOMContentLoaded", () => {
         segmentedButtonAnnee.addEventListener("click", () => {
             document.querySelector('.segmented-button.duree .segmented-button-button.actif').classList.remove('actif')
             document.getElementById('annee').classList.add('actif')
-            init(dateMoins365J)
+            init(dateMoins365J, dateActuelle, 0)
+        })
+    }
+
+
+    const buttonFlecheGauche = document.getElementById("last-periode")
+    if (buttonFlecheGauche) {
+        buttonFlecheGauche.addEventListener("click", () => {
+            init(createObjetDate(numberDebutPeriode+7), createObjetDate(numberFinPeriode+7), 7)
+        })
+    }
+    const buttonFlecheDroite = document.getElementById("next-periode")
+    if (buttonFlecheDroite) {
+        buttonFlecheDroite.addEventListener("click", () => {
+            init(createObjetDate(numberDebutPeriode-7), createObjetDate(numberFinPeriode-7), -7)
         })
     }
 
@@ -228,5 +267,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const messagePasDatas = document.getElementById("aucune-data")
     if (messagePasDatas) {messagePasDatas.style.display="none"}
 
-    init(dateMoins7J)
+    init(dateMoins7J, dateActuelle, 0)
+    pageChargee = true // on met à jour la variable globale pour dire que la page a été chargée
 })

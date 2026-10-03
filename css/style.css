@@ -922,8 +922,15 @@ section.container-change-periode i{
     font-size: var(--H3);
 
     cursor: pointer;
+    pointer-events: all;
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                opacity ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
+}
+section.container-change-periode i.stop{
+    opacity: 0.5;
+    cursor: no-drop;
+    pointer-events: none;
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-change-periode i:hover{

@@ -942,12 +942,12 @@ section.container-change-periode i:active{
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
-section.container-change-periode p{
+section.container-change-periode p.date-periode{
     font-size: var(--P_SMALL);
     width: 182px;
     text-align: center;
 }
-section.container-change-periode p.skeleton{
+section.container-change-periode p.date-periode.skeleton{
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: var(--BORDER_SMALL);
     overflow: hidden;

@@ -113,7 +113,7 @@ async function reinitialisation(buttonReinitialisation) {
 
             // on remet tout de base sur la page premierement les input
             document.getElementById("briefing").textContent = "JRM Coach"
-            document.getElementById("nom-coach").value = ""
+            document.getElementById("nom-coach").value = "JRM Coach"
             document.getElementById("style-coach").value = "Bienveillant"
             document.getElementById("avatar-coach").value = ""
             document.getElementById("zone-coach-nom").textContent = "JRM Coach"

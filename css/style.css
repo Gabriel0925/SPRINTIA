@@ -942,6 +942,7 @@ section.container-change-periode i:active{
     transform: scale(var(--SCALE_NORMAL));
 }
 section.container-change-periode p{
+    font-size: var(--P_SMALL);
     min-width: 148px;
     text-align: center;
     white-space: nowrap;

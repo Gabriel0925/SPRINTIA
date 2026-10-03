@@ -65,6 +65,37 @@ async function statistiquesParSport(sportForFunction) {
     }
     document.getElementById("distance-sport").classList.remove("skeleton")
 }
+
+const dicoMois = {
+    "01": "Jan.",
+    "02": "Fév.",
+    "03": "Mars",
+    "04": "Avr.",
+    "05": "Mai",
+    "06": "Juin",
+    "07": "Juil.",
+    "08": "Août",
+    "09": "Sep.",
+    "10": "Oct.",
+    "11": "Nov.",
+    "12": "Déc."
+}
+function cleanPeriodeDate(dateDebutPeriode, dateFinPeriode) {
+    let tableauDebutJJMMAAAA = dateDebutPeriode.split("-") // ["2026", "09", "26"]
+    let tableauFinJJMMAAAA = dateFinPeriode.split("-") // ["2026", "09", "26"]
+
+    console.log([tableauDebutJJMMAAAA, tableauFinJJMMAAAA])
+    
+    if (tableauDebutJJMMAAAA[1] == tableauFinJJMMAAAA[1]) { // si c'est le même mois alors on la met qu'une fois
+        return `${tableauDebutJJMMAAAA[2]} - ${tableauFinJJMMAAAA[2]} ${dicoMois[tableauFinJJMMAAAA[1]]} ${tableauFinJJMMAAAA[0]}`
+
+    } else if (tableauDebutJJMMAAAA[0] == tableauFinJJMMAAAA[0]) { // si c'est la même année alors on la met qu'une fois
+        return `${tableauDebutJJMMAAAA[2]} ${dicoMois[tableauDebutJJMMAAAA[1]]} - ${tableauFinJJMMAAAA[2]} ${dicoMois[tableauFinJJMMAAAA[1]]} ${tableauFinJJMMAAAA[0]}`
+    
+    } else {
+        return `${tableauDebutJJMMAAAA[2]} ${dicoMois[tableauDebutJJMMAAAA[1]]} ${tableauDebutJJMMAAAA[0]} - ${tableauFinJJMMAAAA[2]} ${dicoMois[tableauFinJJMMAAAA[1]]} ${tableauFinJJMMAAAA[0]}`
+    }
+}
         
 async function init(debutPeriode, finPeriode, numberDateAjout) {
     // ajout d'une sécurité pour désactiver le bouton fleche droite si on est sur la période actuelle (pour pas aller ds le futur)
@@ -85,11 +116,14 @@ async function init(debutPeriode, finPeriode, numberDateAjout) {
     dateDebutPeriode = debutPeriode
     dateFinPeriode = finPeriode
 
+    // on met à jour le texte de la période affichée
+    let cleanDate = cleanPeriodeDate(dateDebutPeriode, dateFinPeriode)
+    document.getElementById("date-periode").textContent = cleanDate
+    console.log(`${dateDebutPeriode} - ${dateFinPeriode}`)
+
     // on met à jour les variables globales pour la date de début et de fin de période
     numberDebutPeriode += numberDateAjout
-    numberFinPeriode += numberDateAjout 
-    
-    console.log([historiqueDB, debutPeriode, finPeriode, numberDebutPeriode, numberFinPeriode])
+    numberFinPeriode += numberDateAjout
 
     // quand il n'y a pas de datas
     if (historiqueDB.length <= 0) {

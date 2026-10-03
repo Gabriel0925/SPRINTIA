@@ -118,6 +118,9 @@ async function init(debutPeriode, finPeriode, numberDateAjout) {
     // on met à jour le texte de la période affichée
     let cleanDate = cleanPeriodeDate(dateDebutPeriode, dateFinPeriode)
     document.getElementById("date-periode").textContent = cleanDate
+    if (document.getElementById("date-periode").classList.contains("skeleton")) {
+        document.getElementById("date-periode").classList.remove("skeleton")
+    }
 
     // on met à jour les variables globales pour la date de début et de fin de période
     numberDebutPeriode += numberDateAjout

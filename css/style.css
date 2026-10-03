@@ -909,6 +909,7 @@ section.container-change-periode {
     justify-self: center;
     align-items: center;
     gap: var(--SPACE_M);
+    margin: 0 auto;
     margin-bottom: var(--SPACE_L);
 }
 section.container-change-periode i{
@@ -945,7 +946,6 @@ section.container-change-periode p{
     font-size: var(--P_SMALL);
     width: 182px;
     text-align: center;
-    /* white-space: nowrap; */
 }
 
 

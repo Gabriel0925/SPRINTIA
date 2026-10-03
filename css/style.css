@@ -857,6 +857,7 @@ section.segmented-button {
 }
 section.segmented-button.duree {
     margin-bottom: var(--SPACE_S);
+    margin-top: var(--SPACE_S);
 }
 section.segmented-button#segmented-button-niveau-course {
     margin-top: var(--SPACE_L);

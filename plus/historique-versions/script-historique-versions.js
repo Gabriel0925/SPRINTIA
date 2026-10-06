@@ -14,7 +14,7 @@ function clickPatchNote(elt, url) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const lastBoxPatchNote = document.querySelector(".box-last-maj")
-    if (lastBoxPatchNote) {lastBoxPatchNote.addEventListener("click", function() {clickPatchNote(lastBoxPatchNote, 'generation-26/v26.10.html')})}
+    if (lastBoxPatchNote) {lastBoxPatchNote.addEventListener("click", function() {clickPatchNote(lastBoxPatchNote, 'generation-26/v26.11.html')})}
 
     derniereMajView()
 })

@@ -84,7 +84,26 @@
             </div>
         </div>
 
-        <section class="container-zone">
+        <section class="container-content-algorithme">
+
+            <div class="widget-jauge">
+
+                <div class="part-jauge" id="desentrainement"><span class="score"></span> <small class="unit"></small></div>
+                <div class="part-jauge selected" id="maintien"><span class="score">508</span> <small class="unit">ce</small></div>
+                <div class="part-jauge" id="productif"><span class="score"></span> <small class="unit"></small></div>
+                <div class="part-jauge" id="surentrainement"><span class="score"></span> <small class="unit"></small></div>
+
+            </div>
+
+            <div class="widget-analyse">
+                <p class="title">Productif</p>
+                <p class="interpretation">Ceci est une interprétation, tu en penses quoi? Ceci est une interprétation, tu en penses quoi? Ceci est une interprétation, tu en penses quoi?</p>
+                <button id="button-SPRINTIA-briefing">Analyser ma CE</button>
+            </div>
+
+        </section>
+
+        <!-- <section class="container-zone">
 
             <div class="zone-coach">
                 <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
@@ -117,7 +136,7 @@
                 </div>
             </div>
             
-        </section>
+        </section> -->
 
         <h2>Suivi de la charge d'entraînement</h2>
         <div class="chart-container skeleton" id="conteneur-graphique">
@@ -227,7 +246,7 @@
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
 
-    <script src="script-charge-entrainement.js"></script>
+    <!-- <script src="script-charge-entrainement.js"></script> -->
     <!-- SPRINTIA Briefing -->
     <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
 

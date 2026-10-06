@@ -29,10 +29,6 @@ async function windowsBriefing() {
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
     document.querySelector("body").classList.add("briefing-open") 
     document.querySelector("main").classList.add("briefing-open")
-
-    if (promptForIA != undefined) { // si le début de prompt a été généré
-        promptForIA = await addPromptContrainte(promptForIA) // on ajoute les contraintes
-    }
 }
 function closeWindows() {
     document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
@@ -55,6 +51,8 @@ async function copyPrompt() {
         clickOnButtonCopy = true
 
         if (promptForIA != undefined) {
+            promptForIA += await addPromptContrainte(promptForIA) // on ajoute les contraintes
+            
             navigator.clipboard.writeText(promptForIA)
             .then(() => {
                 logoDynamique("📋 Copié !")
@@ -114,6 +112,44 @@ function nameFavoriteIA() {
     }
 }
 
+function convertToCSV(dataJSON) {
+    // on init une variable qui contiendra les entetes et les datas
+    let datasInCSV = "|"
+
+    for (const key in dataJSON[0]) {
+        datasInCSV += key+"|"
+    }
+
+    datasInCSV = datasInCSV.replace("duree", "duree (min)")
+                            .replace("fc_moy", "fc_moy (bpm)")
+                            .replace("fc_max", "fc_max (bpm)")
+                            .replace("distance", "distance (km)")
+                            .replace("denivele", "denivele (m)")
+                            .replace("allure_moy", "allure_moy (min/km)")
+                            .replace("fc_repos", "fc_repos (bpm)")
+
+    // on recup les datas et on les met en ligne
+    for (const data of dataJSON) {
+        datasInCSV += "\n|"
+        for (const key in data) {
+            if (data[key] != undefined  && data[key] != null) { // si la valeur est undefined ou null on met rien
+                if (key == "note") { // si la clé est les notes d'entrainement
+                    // on remplace les saut de ligne par un espace pour pas que ça casse le CSV
+                    let noteSansSautDeLigne = data[key].replace(/\n/g, " ")
+                    datasInCSV += noteSansSautDeLigne+"|"
+                } else {
+                    datasInCSV += data[key]+"|"
+                }
+
+            } else {
+                datasInCSV += "-|"
+            }
+        }
+    }
+
+    return datasInCSV
+}
+
 function cleanEntrainementForIA(allWorkout) {
     return allWorkout.map((workout) =>{
         // on sépare les points gps du reste des données de l'entrainement car on n'envoie pas les points GPS à l'IA!
@@ -127,6 +163,7 @@ function cleanRecuperationForIA(allRecuperation) {
         "fc_repos": elt.fc_repos
     }))
 }
+
 
 async function coachUser() {
     let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
@@ -220,7 +257,7 @@ Données d'entraînement :\n`
     }
 
     // ajout des données au prompt
-    prompt += JSON.stringify(historiqueData, null, 2)
+    prompt += convertToCSV(historiqueData)
 
     return prompt
 }
@@ -235,26 +272,40 @@ Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
 Données d'entraînement :\n`
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(28)).toArray()
-    historiqueData = cleanEntrainementForIA(historiqueData)
 
-    if (historiqueData.length <= 3) {
+    const dataEntrainements = historiqueData.map(workout => ({
+        // on recup uniquement les datas importantes
+        "sport": workout.sport,
+        "date": workout.date,
+        "nom": workout.nom,
+        "duree": workout.duree,
+        "rpe": workout.rpe,
+
+        // on sécurise au cas ou il n'y a pas de fc_moy/max dans la bdd
+        "fc_moy": workout?.fc_moy??undefined,
+        "fc_max": workout?.fc_max??undefined,
+
+        "charge_entrainement": workout.charge_entrainement,
+        "note": workout?.note??undefined
+    }))
+
+    if (dataEntrainements.length <= 3) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
         // une IA alors qu'il n'y a pas de data
         return undefined
     }
 
     // ajout des données au prompt
-    prompt += JSON.stringify(historiqueData, null, 2)
+    prompt += convertToCSV(dataEntrainements)
 
     // ajout de l'interpretation de SPRINTIA
     prompt += `
-        
+    
 Voici ce que SPRINTIA a interpreté :
-Statut : '${document.getElementById("statut-ce").textContent}'
-Charge aiguë (7J) : ${Number(document.getElementById("charge-7j").textContent)} CE (=charge entraînement)
-Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}
-Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textContent)} CE
-    `
+    Statut : "${document.getElementById("statut-ce").textContent}"
+    Charge aiguë (7J) : ${Number(document.getElementById("charge-7j").textContent)} CE (=charge entraînement)
+    Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}
+    Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textContent)} CE`
 
     return prompt
 }
@@ -269,9 +320,30 @@ Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
 Données d'entraînement :\n`
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(28)).toArray()
-    historiqueData = cleanEntrainementForIA(historiqueData)
+    const dataEntrainements = historiqueData.map(workout => ({
+        // on recup uniquement les datas importantes
+        "sport": workout.sport,
+        "date": workout.date,
+        "nom": workout.nom,
+        "duree": workout.duree,
+        "rpe": workout.rpe,
 
-    if (historiqueData.length <= 0) {
+        // on sécurise au cas ou il n'y a pas de fc_moy/max dans la bdd
+        "fc_moy": workout?.fc_moy??undefined,
+        "fc_max": workout?.fc_max??undefined,
+
+        // on rajoute la distance/denivele/allure_moy/vitesse_max/cadence_moy
+        "distance": workout?.distance??undefined,
+        "denivele": workout?.denivele??undefined,
+        "allure_moy": workout?.allure_moy??undefined,
+        "vitesse_max": workout?.vitesse_max??undefined,
+        "cadence_moy": workout?.cadence_moy??undefined,
+
+        "charge_entrainement": workout.charge_entrainement,
+        "note": workout?.note??undefined
+    }))
+
+    if (dataEntrainements.length <= 0) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
         // une IA alors qu'il n'y a pas de data
         return undefined
@@ -283,7 +355,7 @@ Données d'entraînement :\n`
     }
 
     // ajout des données au prompt
-    prompt += JSON.stringify(historiqueData, null, 2)
+    prompt += convertToCSV(dataEntrainements)
 
     // ajout de l'interpretation de SPRINTIA
     const dicoTypeCoureur = {
@@ -293,14 +365,14 @@ Données d'entraînement :\n`
     }
     let typeCoureur = dicoTypeCoureur[localStorage.getItem("typeCoureur")]
     if (typeCoureur == null) {typeCoureur = "Occasionnel·le"}
+    
     prompt += `
-        
+    
 Voici ce que SPRINTIA a interpreté :
-L'analyse du coach de SPRINTIA : ${document.getElementById("reponse-coach-indulgence").textContent}
-Distance réel sur 7J : ${document.getElementById("reponse-algo-allure").textContent}
-Distance hebdomadaire conseillée : ${document.getElementById("reponse-algo-indulgence").textContent}
-Type de coureur·euse (séléctionné par l'utilisateur dans les paramètres) : ${typeCoureur}
-    `
+    L'analyse du coach de SPRINTIA : "${document.getElementById("reponse-coach-indulgence").textContent}"
+    Distance réel sur 7J : ${document.getElementById("reponse-algo-allure").textContent}
+    Distance hebdomadaire conseillée : ${document.getElementById("reponse-algo-indulgence").textContent}
+    Type de coureur·euse (séléctionné par l'utilisateur dans les paramètres) : ${typeCoureur}`
 
     return prompt
 }
@@ -333,25 +405,37 @@ Données d'entraînement :\n`
         return undefined
     }
 
-    // on enleve les datas des points gps
-    historiqueData = cleanEntrainementForIA(historiqueData)
+    const dataEntrainements = historiqueData.map(workout => ({
+        // on recup uniquement les datas importantes
+        "sport": workout.sport,
+        "date": workout.date,
+        "nom": workout.nom,
+        "duree": workout.duree,
+        "rpe": workout.rpe,
+
+        // on sécurise au cas ou il n'y a pas de fc_moy/max dans la bdd
+        "fc_moy": workout?.fc_moy??undefined,
+        "fc_max": workout?.fc_max??undefined,
+
+        "charge_entrainement": workout.charge_entrainement,
+        "note": workout?.note??undefined
+    }))
 
     // ajout des données au prompt
-    prompt += JSON.stringify(historiqueData, null, 2)
+    prompt += convertToCSV(dataEntrainements)
 
     // ajout de la recup
     prompt += "\n\nDonnées de récupération :\n"
     historiqueRecuperationData = cleanRecuperationForIA(historiqueRecuperationData)
-    prompt += JSON.stringify(historiqueRecuperationData, null, 2)
+    prompt += convertToCSV(historiqueRecuperationData)
 
     // ajout de l'interpretation de SPRINTIA
     prompt += `
         
 Voici ce que SPRINTIA a interpreté :
-L'analyse du coach de SPRINTIA : ${document.getElementById("reponse-coach").textContent}
-FC repos du jour : ${document.getElementById("fc-repos-today").textContent}
-Moyenne 30J : ${document.getElementById("fc-repos-moyenne-30j").textContent}
-    `
+    L'analyse du coach de SPRINTIA : "${document.getElementById("reponse-coach").textContent}"
+    FC repos du jour : ${document.getElementById("fc-repos-today").textContent} bpm
+    Moyenne 30J : ${document.getElementById("fc-repos-moyenne-30j").textContent} bpm`
 
     return prompt
 }
@@ -394,7 +478,7 @@ Données :\n`
     }
 
     // ajout des données au prompt
-    prompt += JSON.stringify(historiqueData, null, 2)
+    prompt += convertToCSV(historiqueData)
 
     return prompt
 }
@@ -435,17 +519,17 @@ async function promptDiscussion() {
     }
 
     // on enleve les datas des points gps
-    historiqueDataWorkout = cleanEntrainementForIA(historiqueDataWorkout)
+    historiqueDataWorkout = convertToCSV(cleanEntrainementForIA(historiqueDataWorkout))
 
     // les datas des entrainements des users
     prompt += "\n\nL'historique d'entrainement de l'utilisateur :\n"
-    prompt += JSON.stringify(historiqueDataWorkout, null, 2)
+    prompt += historiqueDataWorkout
 
     if (historiqueDataRecuperation.length > 0) { // si le user à enregistré des données de récupération on ajoute ses datas dans le prompt
         // le profil de l'utilisateur
         prompt += "\n\nLes données de récupération de l'utilisateur :\n"
         historiqueDataRecuperation = cleanRecuperationForIA(historiqueDataRecuperation)
-        prompt += JSON.stringify(historiqueDataRecuperation, null, 2)
+        prompt += convertToCSV(historiqueDataRecuperation)
 
         // calcul de la baseline
         let sommeFcRepos = 0
@@ -459,7 +543,8 @@ async function promptDiscussion() {
     }
 
     // ajout du prompt de l'utilisateur (pr info on a déjà vérifié si le textearea était vide dans le html)
-    prompt += `\n\nVoici la question que l'utilisateur a posé à SPRINTIA : '${document.getElementById("promt-user").value}'\n`
+    // on remplace les \n par des espaces pr économiser des tokens
+    prompt += `\n\nVoici la question que l'utilisateur a posé à SPRINTIA : "${document.getElementById("promt-user").value.replace(/\n/g, " ")}"`
 
     return prompt
 }

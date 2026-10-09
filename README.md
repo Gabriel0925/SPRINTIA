@@ -7,14 +7,14 @@ Vous ne savez pas comment installer l'application ? Ou encore vous ne savez pas 
 ## Installable sur tous vos appareils
 | Sur smartphone | Sur tablette | Sur ordinateur portable |
 | :---: | :---: | :---: |
-| ![SPRINTIA sur smartphone](/images-readme/smartphone.JPG) | ![SPRINTIA sur tablette](/images-readme/tablette.JPG) | ![SPRINTIA sur ordinateur portable](/images-readme/ordinateur_portable.JPG) |
+| ![SPRINTIA sur smartphone](/images-readme/smartphone.png) | ![SPRINTIA sur tablette](/images-readme/tablette.png) | ![SPRINTIA sur ordinateur portable](/images-readme/ordinateur_portable.png) |
 
 ## Aperçu visuel
 | **Carte GPS** | **Import des données** |
 | :---: | :---: |
-| ![Interface du détail d'un entraînement](/images-readme/detail_entrainement.JPG) | ![Interface de l'import des données](/images-readme/import_donnees.JPG) |
+| ![Interface du détail d'un entraînement](/images-readme/detail_entrainement.png) | ![Interface de l'import des données](/images-readme/import_donnees.png) |
 | **Statistiques** | **Progression** |
-| ![Interface de la page des statistiques](/images-readme/statistiques.JPG) | ![Interface de la page de progression](/images-readme/progression.JPG) |
+| ![Interface de la page des statistiques](/images-readme/statistiques.png) | ![Interface de la page de progression](/images-readme/progression.png) |
 
 ## Philosophie
 J'ai conçu SPRINTIA pour **aider les sportifs** (comme moi) à s'entraîner, c'est pour cela que l'application **vous accompagne avant et après vos entraînements, mais pas pendant !** Lorsque l'athlète pratique son sport, il doit être concentré sur sa performance, sur son effort ou encore sur son plaisir, et non sur son smartphone ou sur ses statistiques. Ce qui prime lors de vos entraînements, c'est de laisser parler votre instinct, vos sensations et non vos données ! C'est pour cela que SPRINTIA ne tracke aucune donnée en temps réel.
@@ -115,6 +115,7 @@ Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous
 
 ## Réseaux
 * [La chaîne YouTube](https://www.youtube.com/@SPRINTIA-09)
+* [Le instagram](https://www.instagram.com/sprintia09?igsh=MXV5N2NiaHRvdTF1bQ%3D%3D)
 
 ## La sécurité, un principe à ne pas négliger
 

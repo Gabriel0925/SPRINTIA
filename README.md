@@ -115,6 +115,7 @@ Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous
 
 ## Réseaux
 * [La chaîne YouTube](https://www.youtube.com/@SPRINTIA-09)
+* [Le instagram](https://www.instagram.com/sprintia09?igsh=MXV5N2NiaHRvdTF1bQ%3D%3D)
 
 ## La sécurité, un principe à ne pas négliger
 

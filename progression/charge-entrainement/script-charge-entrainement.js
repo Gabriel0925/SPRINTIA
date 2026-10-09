@@ -170,23 +170,17 @@ async function interpretation(statutUser) {
     // initialisation si il n'y a pas de données
     let analyse = `Je n'ai <strong>pas assez de données</strong> pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
                     <strong>3 entraînements sur les 28 derniers jours</strong>. J'attends avec impatience tes premiers entraînements.`;
-
+    
     // pour la partie gestion de la personnalité du coach de l'utilisateur
     let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
     let styleCoachUser = "Bienveillant"; // on init sur Bienveillant si le user a laisser le choix de base
-    let avatarCoach = "";
-    let nameCoach = "JRM Coach";
     if (coachUserDB != undefined) {
         styleCoachUser = coachUserDB.style; // attribution du coach choisi par le user à la variable nommé "styleCoachUser"
-
-        // attribution du nom pour pouvoir l'afficher dans une autre fonction et éviter de faire une autre requete
-        nameCoach = coachUserDB.nom;
-        avatarCoach = coachUserDB.avatar
     };
 
     if (statutUser != statutAvailable[4]) {analyse = dicoAnalyse[styleCoachUser][statutUser]};
  
-    return [analyse, avatarCoach, nameCoach]; // on return aussi le nom/avatar du coach pour l'afficher ensuite
+    return [analyse]; // on return aussi le nom/avatar du coach pour l'afficher ensuite
 };
 
 // c'est la fonction qui permet de récupérer toutes les datas nécéssaire pour l'affichage, c'est elle qui lance toutes les fonctions
@@ -205,53 +199,38 @@ async function manageCalcul(graphique) {
 
     // partie francais avec le statut et l'interpretation
     const statutUser = statut(ratioChargeUser, nbEntrainement28j);
-    const [analyse, avatarCoach, nameCoach] = await interpretation(statutUser);
+    const [analyse] = await interpretation(statutUser);
 
     if (graphique == true) {
         // on balance les valeurs dans le graphique
         genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [periodeChargeTotale28j, periodeChargeTotale21j, periodeChargeTotale14j, chargeTotale7j])
     }
     
-    return [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse, avatarCoach, nameCoach];
+    return [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse];
 };
 
 
 async function displayOnScreenCE() {
     // recup de toutes les données
     const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
-        ratioChargeUser, statutUser, analyse, avatarCoach, nameCoach] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
+        ratioChargeUser, statutUser, analyse] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
 
-    // affichage du nom et de l'avatar du coach
-    document.getElementById("nom-coach").textContent = avatarCoach + " "
-    let strongNameCoach = document.createElement("strong")
-    strongNameCoach.textContent = nameCoach
-    document.getElementById("nom-coach").appendChild(strongNameCoach)
-
-    if (nbEntrainement28j < 3) {
-        // affichage + mise en forme de l'analyse
-        document.getElementById("interpretation").textContent =  `Je n'ai pas assez de données pour analyser ta charge d'entraînement. Tu as juste besoin d'ajouter au moins 
-                    3 entraînements sur les 28 derniers jours. J'attends avec impatience tes premiers entraînements.`
-        document.getElementById("reponse-coach-charge-entrainement").classList.remove("skeleton")
-
-    } else {
-        // affichage + mise en forme de l'analyse
-        const zoneResponse = document.getElementById("interpretation")
-        zoneResponse.style.whiteSpace = "pre-line" // pr transformer les "\n" en saut de ligne
-        zoneResponse.textContent =  `\n${analyse}`
-        document.getElementById("reponse-coach-charge-entrainement").classList.remove("skeleton")
-
-        document.getElementById("statut-ce").textContent = `Statut : ${statutUser}`
-
-        // affichage de la cible et de la charge 7j et 28j
-        document.getElementById("cible-charge-7j").textContent = "Cible : " + parseInt(cibleUserMin) + " - " + parseInt(cibleUserMax)
+    // on commence par select la bonne zone dans la jauge pour la statut
+    let idHtmlStatut = {
+        "Désentraînement": "desentrainement",
+        "Maintien": "maintien",
+        "Productif": "productif",
+        "Surentraînement": "surentrainement",
+        "Pas de statut": "pas-de-statut"
     }
-    
-    // affichage de la charge 7j et 28j
-    document.getElementById("charge-7j").textContent = parseInt(chargeTotale7j)
-    document.getElementById("charge-7j").classList.remove("skeleton")
-    document.getElementById("charge-28j").textContent = parseInt(chargeTotale28j)
-    document.getElementById("charge-28j").classList.remove("skeleton")
+    document.getElementById(idHtmlStatut[statutUser]).classList.add("selected");
+    // on affiche la valeur de la CE des 7 derniers jours dans l'enfant de la jauge
+    document.getElementById(idHtmlStatut[statutUser]).querySelector(".score").textContent = chargeTotale7j;
+    document.getElementById(idHtmlStatut[statutUser]).querySelector(".unit").textContent = "ce";
 
+    // affichage du statut et de l'analyse
+    document.getElementById("statut").textContent = statutUser;
+    document.getElementById("interpretation").innerHTML = analyse;
 };
 
 

@@ -89,54 +89,19 @@
             <div class="widget-jauge">
 
                 <div class="part-jauge" id="desentrainement"><span class="score"></span> <small class="unit"></small></div>
-                <div class="part-jauge selected" id="maintien"><span class="score">508</span> <small class="unit">ce</small></div>
+                <div class="part-jauge" id="maintien"><span class="score"></span> <small class="unit"></small></div>
                 <div class="part-jauge" id="productif"><span class="score"></span> <small class="unit"></small></div>
                 <div class="part-jauge" id="surentrainement"><span class="score"></span> <small class="unit"></small></div>
 
             </div>
 
             <div class="widget-analyse">
-                <p class="title">Productif</p>
-                <p class="interpretation">Ceci est une interprétation, tu en penses quoi? Ceci est une interprétation, tu en penses quoi? Ceci est une interprétation, tu en penses quoi?</p>
+                <p class="title" id="statut"></p>
+                <p class="interpretation" id="interpretation"></p>
                 <button id="button-SPRINTIA-briefing">Analyser ma CE</button>
             </div>
 
         </section>
-
-        <!-- <section class="container-zone">
-
-            <div class="zone-coach">
-                <p class="zone-coach-name" id="nom-coach"><strong>JRM Coach</strong></p>
-                <p class="zone-coach-interpretation skeleton" id="reponse-coach-charge-entrainement">
-                    <span id="statut-ce"></span><span id="interpretation"></span>
-                </p> 
-                <button id="button-SPRINTIA-briefing">Analyser ma CE</button>
-            </div>
-
-        </section>
-        
-        <section class="container-box">
-
-            <div class="small-zone-result">
-                <p class="small-zone-result-name">Charge 7J</p>
-                <p class="small-zone-result-indication" id="cible-charge-7j">Charge aiguë</p>
-
-                <div class="container-result">
-                    <p class="small-zone-result-result skeleton" id="charge-7j"></p>
-                    <p class="small-zone-result-unit">CE</p>
-                </div>
-            </div>
-            <div class="small-zone-result">
-                <p class="small-zone-result-name">Charge 28J</p>
-                <p class="small-zone-result-indication">Charge chronique</p>
-
-                <div class="container-result">
-                    <p class="small-zone-result-result skeleton" id="charge-28j"></p>
-                    <p class="small-zone-result-unit">CE</p>
-                </div>
-            </div>
-            
-        </section> -->
 
         <h2>Suivi de la charge d'entraînement</h2>
         <div class="chart-container skeleton" id="conteneur-graphique">
@@ -246,7 +211,7 @@
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
 
-    <!-- <script src="script-charge-entrainement.js"></script> -->
+    <script src="script-charge-entrainement.js"></script>
     <!-- SPRINTIA Briefing -->
     <script src="../../assets/base-js/SPRINTIA-briefing.js"></script>
 

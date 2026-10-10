@@ -206,14 +206,13 @@ async function manageCalcul(graphique) {
         genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [periodeChargeTotale28j, periodeChargeTotale21j, periodeChargeTotale14j, chargeTotale7j])
     }
     
-    return [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, ratioChargeUser, statutUser, analyse];
+    return [chargeTotale7j, statutUser, analyse];
 };
 
 
 async function displayOnScreenCE() {
     // recup de toutes les données
-    const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
-        ratioChargeUser, statutUser, analyse] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
+    const [chargeTotale7j, statutUser, analyse] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
 
     // on commence par select la bonne zone dans la jauge pour la statut
     let idHtmlStatut = {
@@ -224,15 +223,17 @@ async function displayOnScreenCE() {
     }
     
     // on enleve le skeleton
-    document.querySelector("div.widget-jauge.skeleton").classList.remove("skeleton")
+    const trancheJauge = document.querySelectorAll(".part-jauge")
+
+    for (const tranche of trancheJauge) {
+        tranche.classList.remove("skeleton")
+    }
     if (statutUser != "Pas de statut") {
         document.getElementById(idHtmlStatut[statutUser]).classList.add("selected");
         // on affiche la valeur de la CE des 7 derniers jours dans l'enfant de la jauge
         document.getElementById(idHtmlStatut[statutUser]).querySelector(".score").textContent = chargeTotale7j;
         document.getElementById(idHtmlStatut[statutUser]).querySelector(".unit").textContent = "CE";
     } else {
-        const trancheJauge = document.querySelectorAll(".part-jauge")
-
         for (const tranche of trancheJauge) {
             tranche.classList.add("disabled")
         }
@@ -240,7 +241,9 @@ async function displayOnScreenCE() {
 
     // affichage du statut et de l'analyse
     document.getElementById("statut").textContent = statutUser;
+    document.getElementById("statut").classList.remove("skeleton");
     document.getElementById("interpretation").innerHTML = analyse;
+    document.getElementById("interpretation").classList.remove("skeleton");
 };
 
 

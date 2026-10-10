@@ -78,7 +78,7 @@ function openIA(favoriteIA) {
         window.open(dicoLienIA[favoriteIA], '_blank') // ouverture de l'IA préféré du user
 
     } else { // si le user n'a pas copié le prompt
-        alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")||"Vibe"]}.`)
+        alert(`Veuillez copier le prompt pour pouvoir ensuite le coller dans ${dicoIA[localStorage.getItem("iaFavorite")]||"Vibe"}.`)
         return
     }
 }
@@ -296,7 +296,7 @@ Données d'entraînement :\n`
         "note": workout?.note??undefined
     }))
 
-    if (dataEntrainements.length <= 3) {
+    if (dataEntrainements.length < 3) {
         // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
         // une IA alors qu'il n'y a pas de data
         return undefined
@@ -310,8 +310,8 @@ Données d'entraînement :\n`
     
 Voici ce que SPRINTIA a interpreté :
     Statut : "${document.getElementById("statut").textContent}"
-    Charge aiguë (7J) : ${Number(document.querySelector("div.part-jauge.selected span.score").textContent)} CE (=charge entraînement)
-    Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}`
+    Charge aiguë (7J) : ${Number(document.querySelector("div.part-jauge.selected span.score").textContent)} CE (=charge entraînement)`
+    //à voir si j'y ré-ajoute un jour -> Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}
 
     return prompt
 }
@@ -392,24 +392,21 @@ Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
 Données d'entraînement :\n`
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(7)).toArray()
-    let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(7)).toArray()
+    let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(30)).toArray()
     let recuperationUserToday = await db.recuperation.where("date").aboveOrEqual(createObjetDate(0)).toArray()
 
     // on vérifie d'abord si l'utilisateur a saisi sa FC repos du jour avant de faire le prompt
     if (recuperationUserToday.length <= 0) {return undefined} // pour pas qu'on génère le prompt
+    
+    if (historiqueRecuperationData.length < 7) {return undefined}
+    if (historiqueRecuperationData.length > 7) { // si ya trop de donnée on en prend moins
+        historiqueRecuperationData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    }
 
     if (historiqueData.length < 2) {
         historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
     }
-    if (historiqueRecuperationData.length < 3) {
-        historiqueRecuperationData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
-    }
-
-    if (historiqueData.length <= 0 || historiqueRecuperationData.length <= 0) {
-        // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
-        // une IA alors qu'il n'y a pas de data
-        return undefined
-    }
+    if (historiqueData.length <= 0) {return undefined}
 
     const dataEntrainements = historiqueData.map(workout => ({
         // on recup uniquement les datas importantes

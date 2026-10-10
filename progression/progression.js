@@ -94,8 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // --- Charge d'entrainement ---
     // recup des valeurs grâce au fichier "script-charge-entrainement.js"
-    const [chargeTotale7j, chargeTotale28j, nbEntrainement28j, nombreWeekLissage, cibleUserMin, cibleUserMax, 
-            ratioChargeUser, statutUser, analyse, nameCoach, avatarCoach] = await manageCalcul()
+    const [chargeTotale7j, statutUser, analyse] = await manageCalcul()
     // affichage des valeurs
     document.getElementById("charge-7j").textContent = chargeTotale7j
     document.querySelector(".widget-charge-entrainement-score span.skeleton").classList.remove("skeleton") // on enleve l'animation de chargement

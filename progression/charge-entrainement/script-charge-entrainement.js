@@ -226,7 +226,7 @@ async function displayOnScreenCE() {
     document.getElementById(idHtmlStatut[statutUser]).classList.add("selected");
     // on affiche la valeur de la CE des 7 derniers jours dans l'enfant de la jauge
     document.getElementById(idHtmlStatut[statutUser]).querySelector(".score").textContent = chargeTotale7j;
-    document.getElementById(idHtmlStatut[statutUser]).querySelector(".unit").textContent = "ce";
+    document.getElementById(idHtmlStatut[statutUser]).querySelector(".unit").textContent = "CE";
 
     // affichage du statut et de l'analyse
     document.getElementById("statut").textContent = statutUser;

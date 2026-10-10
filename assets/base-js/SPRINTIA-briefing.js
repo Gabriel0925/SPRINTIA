@@ -302,10 +302,9 @@ Données d'entraînement :\n`
     prompt += `
     
 Voici ce que SPRINTIA a interpreté :
-    Statut : "${document.getElementById("statut-ce").textContent}"
-    Charge aiguë (7J) : ${Number(document.getElementById("charge-7j").textContent)} CE (=charge entraînement)
-    Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}
-    Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textContent)} CE`
+    Statut : "${document.getElementById("statut").textContent}"
+    Charge aiguë (7J) : ${Number(document.querySelector("div.part-jauge.selected span.score").textContent)} CE (=charge entraînement)
+    Cible pour rester en statut productif : ${document.getElementById("cible-charge-7j").textContent}`
 
     return prompt
 }

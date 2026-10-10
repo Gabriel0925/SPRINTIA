@@ -51,11 +51,17 @@ async function copyPrompt() {
         clickOnButtonCopy = true
 
         if (promptForIA != undefined) {
-            promptForIA += await addPromptContrainte(promptForIA) // on ajoute les contraintes
+            promptForIA = await addPromptContrainte(promptForIA) // on ajoute les contraintes
             
             navigator.clipboard.writeText(promptForIA)
-            .then(() => {
-                logoDynamique("📋 Copié !")
+            .then(async() => {
+                buttonCopyName.textContent = "Prompt copié !"
+                buttonCopyName.classList.add("unselected")
+
+                const buttonOpenIa = document.getElementById("button-open-ia")
+                if (buttonOpenIa && !buttonOpenIa.classList.contains("selected")) {
+                    buttonOpenIa.classList.add("selected")
+                }
             })
             .catch(error => {
                 alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.", error)
@@ -168,7 +174,7 @@ function cleanRecuperationForIA(allRecuperation) {
 async function coachUser() {
     let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
     let styleCoachUser = "Bienveillant"; // on init sur Bienveillant si le user a laisser le choix de base
-    let avatarCoach = "";
+    let avatarCoach = undefined; // au lieu de le init à "" on le init à undefined pour que la fonction convertToCSV mette "-" dans le CSV si il n'y a pas d'avatar
     let nameCoach = "JRM Coach";
 
     if (coachUserDB != undefined) {
@@ -177,9 +183,11 @@ async function coachUser() {
         // attribution du nom pour pouvoir l'afficher dans une autre fonction et éviter de faire une autre requete
         nameCoach = coachUserDB.nom;
         avatarCoach = coachUserDB.avatar
+        // petite vérif
+        if (avatarCoach.trim() == "") {avatarCoach = undefined}
     };
 
-    return JSON.stringify({"nom_coach_user": nameCoach, "avatar_coach_user": avatarCoach, "style_coach_user": styleCoachUser}, null, 2)
+    return {"nom_coach": nameCoach, "avatar_coach": avatarCoach, "style_coach": styleCoachUser}
 }
 async function addPromptContrainte(prompt) {
     // --- Recup personnalisation des prompts ---
@@ -191,14 +199,13 @@ async function addPromptContrainte(prompt) {
     if (niveauAnalyseIaUser == null) {niveauAnalyseIaUser="modere"} // si pas de datas on met sur le niveau modéré
 
     // --- commencement des contraintes pour l'IA ---
-    let promptWithContrainte = prompt
     
     // --- Personnalisation des prompts ---
     if (personnaliteCoachBriefingUser == "true") { // si le user a activé le duplication du style du coach de SPRINTIA à son IA alors
-        promptWithContrainte += "\nVoici le coach que l'utilisateur a configuré dans la PWA SPRINTIA :\n"
-        promptWithContrainte += await coachUser() // ajout du dico contenant le nom, l'avatar et le style du coach
+        prompt += "\nVoici le coach que l'utilisateur a configuré dans la PWA SPRINTIA :\n"
+        prompt += convertToCSV([await coachUser()]) // ajout du dico contenant le nom, l'avatar et le style du coach
         
-        promptWithContrainte += `
+        prompt += `
 
 Contraintes :
 - Reprend exactement le style du coach que l'utilisateur a configuré dans SPRINTIA
@@ -207,7 +214,7 @@ Contraintes :
     toi (le coach de SPRINTIA) et l'utilisateur.`
 
     } else {
-        promptWithContrainte += `
+        prompt += `
 
 Contraintes :
 - Adopte une posture de coach sportif neutre, factuelle et objective
@@ -218,13 +225,13 @@ Contraintes :
 
     // --- Niveaux d'analyse ---
     if (niveauAnalyseIaUser == "essentiel") {
-        promptWithContrainte += "\n\nExplique les concepts avec des mots simples, évite le jargon technique, privilégie la pédagogie."
+        prompt += "\n\nExplique les concepts avec des mots simples, évite le jargon technique, privilégie la pédagogie."
     } else if (niveauAnalyseIaUser == "expert") {
-        promptWithContrainte += "\n\nUtilise des termes techniques et physiologiques précis. L'utilisateur est un athlète expérimenté qui comprend les métriques de charge avancées."
+        prompt += "\n\nUtilise des termes techniques et physiologiques précis. L'utilisateur est un athlète expérimenté qui comprend les métriques de charge avancées."
     }
     // si le user a choisi modéré on ne change rien car les IA sont déjà dans une forme de neutralité
 
-    return promptWithContrainte
+    return prompt
 }
 
 async function promptTendances() {

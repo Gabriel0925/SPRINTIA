@@ -41,7 +41,6 @@
 
 
     /* 3D */
-    --COLOR_BORDER_FLOATING_BUTTON: rgba(230, 242, 255, 0.35);
     --COLOR_BORDER_FLOATING_COMPONENT: rgba(255, 255, 255, 0.2);
     --COLOR_BORDER_FLOATING_COMPONENT_DARK: rgba(0, 0, 0, 0.1);
 
@@ -803,7 +802,7 @@ section.container-invite-to-config div.container-button{
     justify-content: center;
 }
 section.container-invite-to-config div.container-button button{
-    box-shadow: inset 1px 2px 3px var(--COLOR_BORDER_FLOATING_BUTTON),
+    box-shadow: inset 1px 2px 3px rgba(230, 242, 255, 0.35),
                 inset -1px -2px 3px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK); 
 }
 section.container-invite-to-config div.container-button button#ignorer{
@@ -1936,7 +1935,6 @@ div.zone-coach p.zone-coach-interpretation.skeleton {
 div.zone-coach button {
     margin: 0;
     margin-top: var(--SPACE_M);
-    box-shadow: inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_BUTTON);
 
     color: var(--COLOR_BACKGROUND);
     background-color: transparent;
@@ -2072,6 +2070,14 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
     white-space: nowrap;
     overflow: hidden;
 }
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button.unselected#copy{
+    background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+    -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
+    backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
+    color: var(--COLOR_TEXT_PRIMARY);
+    opacity: 0.7;
+    cursor: no-drop;
+}
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button:active{
     transform: scale(1);
 }
@@ -2088,6 +2094,21 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button#button-open-ia:active{
     background-color: rgba(255, 255, 255, 0.36);
+}
+/*quand le user à copié le prompt on lui montre que désormais il peut ouvrir son IA*/
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button.selected#button-open-ia{
+    background-color: var(--COLOR_ACCENT);
+    -webkit-backdrop-filter: blur(0) saturate(0);
+    backdrop-filter: blur(0) saturate(0);
+    color: var(--COLOR_BACKGROUND);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button.selected#button-open-ia:hover{
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+}
+section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button.selected#button-open-ia:active{
+    background-color: var(--COLOR_ACCENT_ACTIVE);
 }
 
 
@@ -3701,6 +3722,13 @@ section.container-content-algorithme div.widget-jauge{
     align-items: center;
     padding: var(--SPACE_S) var(--SPACE_XL);
     gap: var(--SPACE_XXS);
+    min-height: 210px;
+}
+section.container-content-algorithme div.widget-jauge.skeleton{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_BIG);
+    overflow: hidden;
+    animation: skeleton_animation 1s ease-out infinite;
 }
 section.container-content-algorithme div.widget-jauge div.part-jauge{
     display: flex;
@@ -3718,6 +3746,10 @@ section.container-content-algorithme div.widget-jauge div.part-jauge#desentraine
 section.container-content-algorithme div.widget-jauge div.part-jauge#maintien{background-color: #e7e625;}
 section.container-content-algorithme div.widget-jauge div.part-jauge#productif{background-color: #1fff80;}
 section.container-content-algorithme div.widget-jauge div.part-jauge#surentrainement{background-color: #ff4b4c;}
+section.container-content-algorithme div.widget-jauge div.part-jauge.disabled{
+    opacity: 1;
+    background-color: var(--COLOR_BACKGROUND_CARD) !important;
+}
 section.container-content-algorithme div.widget-jauge div.part-jauge.selected{
     width: 110px;
     height: 70px;
@@ -3814,6 +3846,7 @@ section.container-content-algorithme div.widget-analyse button:active {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         padding: 3rem var(--SPACE_S);
+        width: 90%;
     }
     section.container-content-algorithme div.widget-jauge div.part-jauge{
         width: 100%;

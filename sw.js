@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.41" 
+const VERSION_CACHE = "V1.1.43" 
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [
     "/",
@@ -44,7 +44,8 @@ const fileInCache = [
     "/outils/convertisseur/a-propos.html", "/outils/convertisseur/convertisseur.html", "/outils/convertisseur/script-outil.js",
     "/outils/estimation-1rm/a-propos.html", "/outils/estimation-1rm/estimation-1RM.html", "/outils/estimation-1rm/script-outil.js",
 
-    "/outils/generation-intelligente/entrainement-du-jour/bdd-entrainement.js", "/outils/generation-intelligente/entrainement-du-jour/entrainement-du-jour.html", "/outils/generation-intelligente/entrainement-du-jour/script-entrainement-du-jour.js",
+    "/outils/preparation/entrainement-du-jour/bdd-entrainement.js", "/outils/preparation/entrainement-du-jour/entrainement-du-jour.html", "/outils/preparation/entrainement-du-jour/script-entrainement-du-jour.js",
+    "/outils/preparation/flow/flow.html", "/outils/preparation/flow/script-flow.js",
     
     "/outils/hydratation/a-propos.html", "/outils/hydratation/hydratation.html", "/outils/hydratation/script-outil.js",
     "/outils/metabolisme-base/a-propos.html", "/outils/metabolisme-base/metabolisme-base.html", "/outils/metabolisme-base/script-outil.js",

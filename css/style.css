@@ -2077,6 +2077,7 @@ section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container
     color: var(--COLOR_TEXT_PRIMARY);
     opacity: 0.7;
     cursor: no-drop;
+    pointer-events: none;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing div.container-button-windows-SPRINTIA-briefing button:active{
     transform: scale(1);

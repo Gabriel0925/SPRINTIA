@@ -3936,6 +3936,93 @@ div.container-note-save-workout div{
 
 
 
+section.container-button-start {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section.container-button-start button.start-echauffement{
+    background-color: var(--COLOR_ACCENT);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 2.2rem;
+    font-weight: 1000;
+    transition: background-color var(--TIME_TRANSITION),
+                border-radius var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-button-start button.start-echauffement:hover{
+        background-color: var(--COLOR_ACCENT_HOVER);
+        transform: scale(var(--SCALE_SUP));
+    }
+}
+section.container-button-start button.start-echauffement:active{
+    background-color: var(--COLOR_ACCENT_ACTIVE);
+    transform: scale(var(--SCALE_MAX));
+}
+@keyframes animation_button_pret {
+    0% {
+        transform: rotate(0deg) scale(1); 
+        border-radius: 50%;
+        background-color: var(--COLOR_ACCENT);
+    }
+    35% {
+        transform: rotate(180deg) scale(1); 
+        border-radius: 30% 75%;
+        background-color: var(--COLOR_ACCENT_ACTIVE);
+    }
+    70% {
+        transform: rotate(320deg) scale(1); 
+        border-radius: 15%;
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+    100% {
+        transform: rotate(360deg) scale(1); 
+        border-radius: 50%;
+        background-color: var(--COLOR_ACCENT);
+    }
+}
+section.container-button-start button.start-echauffement.animation-button-pret{
+    border-radius: var(--BORDER_BIG);
+    animation: animation_button_pret 1.5s ease-out infinite;
+}
+@keyframes animation_button_pret_finish {
+    0% {
+        transform: rotate(0deg) scale(1); 
+        border-radius: 50%;
+        background-color: var(--COLOR_ACCENT);
+        opacity: 1;
+    }
+    35% {
+        transform: rotate(180deg) scale(1.33); 
+        border-radius: 30% 75%;
+        background-color: var(--COLOR_ACCENT_ACTIVE);
+        opacity: 0.66;
+    }
+    70% {
+        transform: rotate(320deg) scale(1.66); 
+        border-radius: 15%;
+        background-color: var(--COLOR_ACCENT_HOVER);
+        opacity: 0.33;
+    }
+    100% {
+        transform: rotate(360deg) scale(2); 
+        opacity: 0;
+        border-radius: 50%;
+        background-color: var(--COLOR_ACCENT);
+    }
+}
+section.container-button-start button.start-echauffement.animation-button-pret.finish{
+    animation: animation_button_pret_finish 1.5s ease-out forwards;
+}
+
+
+
+
 /* ----- RESPONSIVE ----- */
 @media (max-width: 490px) {
     div.form div.side-by-side {

@@ -3736,7 +3736,7 @@ section.container-content-algorithme div.widget-jauge div.part-jauge{
     width: 60px;
     height: 40px;
     border-radius: 8px;
-    opacity: 0.6;
+    opacity: 0.5;
     z-index: 1;
     transition: width ease-out var(--TIME_TRANSITION),
                 height ease-out var(--TIME_TRANSITION),
@@ -3791,6 +3791,36 @@ section.container-content-algorithme div.widget-jauge div.part-jauge:nth-last-ch
     border-bottom-right-radius: var(--BORDER_BIG);
 }
 
+
+section.container-content-algorithme div.widget-feu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    min-width: 325px;
+}
+section.container-content-algorithme div.widget-feu div.partie-widget-feu {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    display: flex;
+    align-items: center;
+    gap: var(--SPACE_XXS);
+    padding: var(--SPACE_XXS);
+    border-radius: 2.8rem;
+}
+section.container-content-algorithme div.widget-feu span.part-feu{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+section.container-content-algorithme div.widget-feu span.part-feu#rouge{background-color: #ff4b4c;}
+section.container-content-algorithme div.widget-feu span.part-feu#bleu{background-color: #3dbaf9;}
+section.container-content-algorithme div.widget-feu span.part-feu#vert{background-color: #1fff80;}
+section.container-content-algorithme div.widget-feu span.part-feu.selected{
+    opacity: 1;
+}
+
 section.container-content-algorithme div.widget-analyse{
     display: flex;
     justify-content: start;
@@ -3818,7 +3848,8 @@ section.container-content-algorithme div.widget-analyse p.interpretation{
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
 }
-section.container-content-algorithme div.widget-analyse p.interpretation.skeleton{    display: inline-block;
+section.container-content-algorithme div.widget-analyse p.interpretation.skeleton{    
+    display: inline-block;
     width: 100%;
     height: 88px;
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
@@ -3872,6 +3903,9 @@ section.container-content-algorithme div.widget-analyse button:active {
     section.container-content-algorithme div.widget-analyse{
         max-width: 325px;
     }
+    section.container-content-algorithme div.widget-feu {
+        max-width: 354px;
+    }
 }
 @media (max-width: 764px) {    
     section.container-content-algorithme div.widget-analyse {
@@ -3892,6 +3926,10 @@ section.container-content-algorithme div.widget-analyse button:active {
         padding: var(--SPACE_S) var(--SPACE_XL);
         height: 80px;
     }
+
+    section.container-content-algorithme div.widget-feu {
+        padding: 3rem var(--SPACE_S);
+    }
 }
 @media (max-width: 625px) {   
     section.container-content-algorithme div.widget-jauge div.part-jauge.selected{
@@ -3909,7 +3947,6 @@ section.container-content-algorithme div.widget-analyse button:active {
         min-width: 0px;
     }
 }
-
 
 
 div.container-center-marge {

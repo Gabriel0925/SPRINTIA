@@ -1,13 +1,3 @@
-async function NomCoachInit() {
-    // Recup datas
-    let CoachUserDB = await db.JRM_Coach.toArray()
-
-    if (CoachUserDB.length > 0) { // Si il y a des datas
-        let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)            
-        document.querySelector("strong.jrm-coach").textContent = NomCoach
-    } 
-}
-
 function derniereMajView() {
     let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
 
@@ -33,6 +23,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonToutVoir = document.getElementById("historique-versions")
     if (buttonToutVoir) {buttonToutVoir.addEventListener("click", () => {window.location.href = 'historique-versions/historique-versions.html'})}
 
-    NomCoachInit()
     derniereMajView()
 })

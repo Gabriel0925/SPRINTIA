@@ -1,13 +1,3 @@
-async function NomCoachInit() {
-    // Recup datas
-    let CoachUserDB = await db.JRM_Coach.toArray()
-
-    if (CoachUserDB.length > 0) { // Si il y a des datas
-        let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-        document.getElementById("briefing").textContent = NomCoach
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     const buttonBriefing = document.getElementById("button-SPRINTIA-briefing-ask")
     if (buttonBriefing) {
@@ -21,6 +11,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
-
-    NomCoachInit()
 })

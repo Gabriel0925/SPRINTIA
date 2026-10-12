@@ -31,9 +31,6 @@ async function sauvegardePreference(buttonSave) {
             avatar: avatarCoach
         })
 
-        const nameCoachInH1 = document.getElementById("briefing")
-        if (nameCoachInH1) {nameCoachInH1.textContent = nameCoach}
-
         logoDynamique(`${avatarCoach} C'est parti !`)
 
         buttonSave.textContent = "Sauvegardé"
@@ -51,51 +48,17 @@ async function sauvegardePreference(buttonSave) {
 function changeStyle(value) {
     const zoneInterpretationJRM = document.getElementById("JRM-coach")
     if (zoneInterpretationJRM) {zoneInterpretationJRM.textContent = dicoPhraseExemple[value]}
-
-    document.getElementById("JRM-coach").classList.remove("skeleton") // on enleve l'effet de chargement
-}
-function changeAvatar(avatarCoachUser, nameCoachUser) {
-    if (nameCoachUser == "") {nameCoachUser="JRM Coach"}
-
-    document.getElementById("zone-coach-avatar").textContent = avatarCoachUser
-    document.getElementById("zone-coach-nom").textContent = nameCoachUser
-}
-function majNameCoach(nameCoachUser) {
-    if (nameCoachUser == "") {nameCoachUser = "JRM Coach"}
-    
-    document.getElementById("zone-coach-avatar").textContent = document.getElementById("avatar-coach").value
-    document.getElementById("zone-coach-nom").textContent = nameCoachUser
-    document.getElementById("briefing").textContent = nameCoachUser // on met à jour le nom du coach dans le h1
 }
 
 async function init() {
     // Zone de message du JRM
     let zoneInterpretationJRM = document.getElementById("JRM-coach")
 
-    const inputNameCoach = document.getElementById("nom-coach")
-    const selectStyleCoach = document.getElementById("style-coach")
-    const selectAvatarCoach = document.getElementById("avatar-coach")
-
     const coachUserSave = await db.JRM_Coach.get(1)
     if (coachUserSave != undefined) {
-        // petite vérif -> si dans la bdd on a le nom qui est égale à "" alors on met la valeur de base
-        if (coachUserSave.nom == "") {
-            inputNameCoach.value = "JRM Coach"
-            document.getElementById("briefing").textContent = "JRM Coach" // on met à jour le nom du coach dans le h1
-        } else {
-            inputNameCoach.value = coachUserSave.nom
-            document.getElementById("briefing").textContent = coachUserSave.nom // on met à jour le nom du coach dans le h1
-        }
-        // on met le style et l'avatar correspondant
-        selectStyleCoach.value = coachUserSave.style
-        selectAvatarCoach.value = coachUserSave.avatar
-
         // on met à jour l'interface
-        document.getElementById("zone-coach-avatar").textContent = coachUserSave.avatar
-        document.getElementById("zone-coach-nom").textContent = coachUserSave.nom
         zoneInterpretationJRM.textContent = dicoPhraseExemple[coachUserSave.style]
     } else {
-        inputNameCoach.value = "JRM Coach"
         zoneInterpretationJRM.textContent = dicoPhraseExemple["Bienveillant"]
     }
 
@@ -112,7 +75,6 @@ async function reinitialisation(buttonReinitialisation) {
             db.JRM_Coach.clear() // on supprime les datas de la database
 
             // on remet tout de base sur la page premierement les input
-            document.getElementById("briefing").textContent = "JRM Coach"
             document.getElementById("nom-coach").value = "JRM Coach"
             document.getElementById("style-coach").value = "Bienveillant"
             document.getElementById("avatar-coach").value = ""
@@ -134,14 +96,8 @@ async function reinitialisation(buttonReinitialisation) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const inputNomDuCoach = document.getElementById("nom-coach")
-    if (inputNomDuCoach) {inputNomDuCoach.addEventListener("input", (event) => {majNameCoach(event.target.value)})}
-
     const selectStyleCoach = document.getElementById("style-coach")
     if (selectStyleCoach) {selectStyleCoach.addEventListener("change", (event) => {changeStyle(event.target.value)})}
-
-    const selectAvatarCoach = document.getElementById("avatar-coach")
-    if (selectAvatarCoach) {selectAvatarCoach.addEventListener("change", (event) => {changeAvatar(event.target.value, inputNomDuCoach.value)})}
 
     const buttonSave = document.getElementById("button-save")
     if (buttonSave) {buttonSave.addEventListener("click", function() {sauvegardePreference(buttonSave)})}

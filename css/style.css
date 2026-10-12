@@ -1934,7 +1934,7 @@ div.zone-coach p.title span.indicateur{
     display: block;
     width: 18px;
     height: 18px;
-    background-color: var(--COLOR_BACKGROUND_CARD);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: 50%;
 }
 div.zone-coach p.title span.indicateur.reposer{background-color: #3dbaf9;}

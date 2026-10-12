@@ -246,15 +246,25 @@ async function InterpretationJRM(Distance7J, Distance28J, IndulgenceDeCourseFin)
         // en fonction du résultat des calculs, attribution d'une interpretation
         if (Distance28J <= Distance7J && Distance7J <= IndulgenceDeCourseFin) {
             InterpretationParagraphe.textContent = Interpretation["3"]
+            document.getElementById("statut").textContent = "Volume kilométrique optimal"
+            document.getElementById("indicateur").classList.add("optimale")
+
         } else if (Distance7J > IndulgenceDeCourseFin) {
             InterpretationParagraphe.textContent = Interpretation["4"]
-        } else {
+            document.getElementById("statut").textContent = "Laisse du repos à tes jambes"
+            document.getElementById("indicateur").classList.add("fatiguer")
+
+        } else { // quand le user a couru moins que d'habitude
             InterpretationParagraphe.textContent = Interpretation["2"]
+            document.getElementById("statut").textContent = "Tes jambes sont prêtes"
+            document.getElementById("indicateur").classList.add("reposer")
         }
     } else {
+        document.getElementById("statut").textContent = "Pas de statut"
         InterpretationParagraphe.textContent = Interpretation["1"]
     }
 
+    document.querySelector("p.title.skeleton").classList.remove("skeleton")
     InterpretationParagraphe.classList.remove("skeleton")
 
 }
@@ -266,20 +276,6 @@ async function Initialisation() {
     return
 }
 
-async function JRMCoachUser() {
-    // Recup data
-    let HistoriqueDB = await db.entrainement.toArray()
-    let CoachUserDB = await db.JRM_Coach.toArray()
-
-    if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
-        let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-        let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-        document.getElementById("avatar-coach").textContent = AvatarCoach
-        document.getElementById("nom-coach").textContent = NomCoach
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     const buttonBriefing = document.getElementById("button-SPRINTIA-briefing")
     if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
@@ -287,7 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 
     Initialisation()
-    JRMCoachUser()
 })
 
 // Pour recharger le graphique si c'est dans le BFCache

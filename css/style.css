@@ -1937,9 +1937,18 @@ div.zone-coach p.title span.indicateur{
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     border-radius: 50%;
 }
-div.zone-coach p.title span.indicateur.reposer{background-color: #3dbaf9;}
-div.zone-coach p.title span.indicateur.optimale{background-color: #1fff80;}
-div.zone-coach p.title span.indicateur.fatiguer{background-color: #ff4b4c;}
+div.zone-coach p.title span.indicateur.reposer{
+    background-color: #3dbaf9;
+    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
+}
+div.zone-coach p.title span.indicateur.optimale{
+    background-color: #1fff80;
+    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
+}
+div.zone-coach p.title span.indicateur.fatiguer{
+    background-color: #ff4b4c;
+    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
+}
 div.zone-coach p.zone-coach-interpretation.skeleton {
     display: inline-block;
     width: 100%;

@@ -71,16 +71,7 @@ async function jrmCoach() {
     
     let interpretation = dicoInterpretation["Bienveillant"][0] // quand il n'y a pas de data
     zoneReponseCoach.textContent = interpretation // init
-    
-    // pr le nom du coach
-    let CoachUserDB = await db.JRM_Coach.toArray()
-    if (CoachUserDB.length > 0) { // Si il y a des datas on recup le nom et l'avatar et on l'affiche dans le coach JRM
-        let NomCoach = CoachUserDB.map(elementDB => elementDB.nom)
-        let AvatarCoach = CoachUserDB.map(elementDB => elementDB.avatar)
-                
-        document.getElementById("avatar-coach").textContent =  AvatarCoach
-        document.getElementById("nom-coach").textContent =  NomCoach 
-    }
+    document.getElementById("statut").textContent = "Pas de statut"
 
     // recup des 30 derniers jours de datas
     const historiqueData30J = await db.recuperation.where("date").aboveOrEqual(dateMoins30J).toArray()
@@ -143,12 +134,20 @@ async function jrmCoach() {
                 // calcul de l'écart
                 let ecartToday = parseInt(fcReposToday-moyenne30J)
 
-                if (ecartToday <= -3) { // inf ou egale à -3
+                if (ecartToday <= -3) {
                     interpretation = dicoInterpretation[styleCoach][1]
-                } else if (ecartToday >= 4) { // si ecart est entre ]-3;4] -> normale
+                    document.getElementById("statut").textContent = "Totalement reposé"
+                    document.getElementById("indicateur").classList.add("reposer")
+
+                } else if (ecartToday >= 4) {
                     interpretation = dicoInterpretation[styleCoach][3]
-                } else { // si plus grand que 4 alors fatigue ou surentrainement
+                    document.getElementById("statut").textContent = "Ton corps a besoin de repos"
+                    document.getElementById("indicateur").classList.add("fatiguer")
+
+                } else {
                     interpretation = dicoInterpretation[styleCoach][2]
+                    document.getElementById("statut").textContent = "Récupération optimale"
+                    document.getElementById("indicateur").classList.add("optimale")
                 }
 
                 zoneReponseCoach.textContent = interpretation
@@ -158,7 +157,8 @@ async function jrmCoach() {
     } else {
         document.getElementById("fc-repos-moyenne-30j").textContent = "--"
     }
-
+    
+    document.querySelector("p.title.skeleton").classList.remove("skeleton")
     zoneReponseCoach.classList.remove("skeleton")
 
     return

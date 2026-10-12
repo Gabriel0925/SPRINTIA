@@ -1897,6 +1897,10 @@ div.zone-coach {
     margin: var(--SPACE_XS) 0;
     height: auto;
     min-height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--SPACE_XS);
 }
 div.zone-coach::before {
     content: "";
@@ -1909,20 +1913,33 @@ div.zone-coach::before {
     filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
 }
-div.zone-coach p.zone-coach-name {
-    font-size: var(--H3);
-    margin-bottom: var(--SPACE_S);
-    font-weight: var(--FW_BOLD);
-    margin-left: 0.12rem;
-    color: var(--COLOR_TEXT_PRIMARY);
+div.zone-coach p.title {
+    display: flex;
+    align-items: center;
+    gap: var(--SPACE_XS);
+    font-size: var(--H2);
+    font-weight: var(--FW_BOLD_SMALL);
 }
-div.zone-coach p.zone-coach-name strong{
-    background-image: radial-gradient(circle, var(--COLOR_BRIEFING_START), var(--COLOR_BRIEFING_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+div.zone-coach p.title.skeleton{
+    display: inline-block;
+    width: 160px;
+    height: 30px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    color: transparent !important; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
+    animation: skeleton_animation 1s ease-out infinite;
 }
+div.zone-coach p.title span.indicateur{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: 50%;
+}
+div.zone-coach p.title span.indicateur.reposer{background-color: #3dbaf9;}
+div.zone-coach p.title span.indicateur.optimale{background-color: #1fff80;}
+div.zone-coach p.title span.indicateur.fatiguer{background-color: #ff4b4c;}
 div.zone-coach p.zone-coach-interpretation.skeleton {
     display: inline-block;
     width: 100%;
@@ -1935,7 +1952,7 @@ div.zone-coach p.zone-coach-interpretation.skeleton {
 }
 div.zone-coach button {
     margin: 0;
-    margin-top: var(--SPACE_M);
+    margin: var(--SPACE_XS) 0;
 
     color: var(--COLOR_BACKGROUND);
     background-color: transparent;
@@ -3791,36 +3808,6 @@ section.container-content-algorithme div.widget-jauge div.part-jauge:nth-last-ch
     border-bottom-right-radius: var(--BORDER_BIG);
 }
 
-
-section.container-content-algorithme div.widget-feu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    min-width: 325px;
-}
-section.container-content-algorithme div.widget-feu div.partie-widget-feu {
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    display: flex;
-    align-items: center;
-    gap: var(--SPACE_XXS);
-    padding: var(--SPACE_XXS);
-    border-radius: 2.8rem;
-}
-section.container-content-algorithme div.widget-feu span.part-feu{
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    opacity: 0.5;
-}
-section.container-content-algorithme div.widget-feu span.part-feu#rouge{background-color: #ff4b4c;}
-section.container-content-algorithme div.widget-feu span.part-feu#bleu{background-color: #3dbaf9;}
-section.container-content-algorithme div.widget-feu span.part-feu#vert{background-color: #1fff80;}
-section.container-content-algorithme div.widget-feu span.part-feu.selected{
-    opacity: 1;
-}
-
 section.container-content-algorithme div.widget-analyse{
     display: flex;
     justify-content: start;
@@ -3829,6 +3816,19 @@ section.container-content-algorithme div.widget-analyse{
     min-width: 350px;
     padding: var(--SPACE_S) 0;
     gap: var(--SPACE_XS);
+    z-index: 1;
+    position: relative;
+}
+section.container-content-algorithme div.widget-analyse::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    filter: blur(30px) brightness(0.7) saturate(120%);
+    z-index: -1;
 }
 section.container-content-algorithme div.widget-analyse p.title{
     font-size: var(--H2);

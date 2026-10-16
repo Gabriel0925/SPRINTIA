@@ -970,7 +970,7 @@ div.carousel {
 }
 div.carousel.coach {
     padding: 3rem 2rem;
-    margin: var(--SPACE_XXS);
+    margin: 0;
 }
 div.carousel.table {
     display: block;
@@ -4076,6 +4076,11 @@ svg {
     height: 300px;
     overflow: visible;
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
+}
+svg.no-element {
+    width: 200px;
+    height: 300px;
+    scroll-snap-align: none;
 }
 svg#bienveillant circle.cercle-lumineux {
     cx: 50;

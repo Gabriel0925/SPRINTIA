@@ -1,117 +1,28 @@
-const dicoPhraseExemple = {
-    "Bienveillant": `Tu commences le sport, tu t'y remets ou alors tu es un·e passionné·e de sport ?
-                    Dans tous les cas, je serai là pour t'aider à devenir meilleur·e et à t'apprendre de nouvelles choses, 
-                    sauf si tu connais déjà tout ! Mon objectif ? Te motiver et toujours voir le positif même dans les moments difficiles.`,
-    "Strict-Motivant": `Je suis un coach sévère, juste, mais surtout motivant. Je suis là pour te pousser à te dépasser. Comme on dit, c'est quand on est dans le dur
-                    qu'on progresse réellement ! Je te challengerai au quotidien. Avec moi, tu peux être sûr·e que 
-                    je te dirai les choses telles qu'elles sont ! Alors, tu es prêt·e à progresser ?`,
-    "Copain": `Alors, je dois te prévenir tout de suite : mon but, c'est d'être ton pote ! Et franchement, j'ai l'impression qu'on va super bien s'entendre.
-                Je m'adapte peu importe ton niveau. Mon but ? Te motiver, te dire les choses clairement et te faire voir que tu peux toujours aller un peu plus loin mais sans te
-                prendre la tête, promis. Alors, prêt·e à me choisir ?!`,
-    "Go-muscu": `Que tu sois là pour devenir énorme et sec·he ou juste pour ne plus avoir le souffle coupé en montant de simples escaliers. 
-                Avec moi, tu vas apprendre des choses sur la muscu ! Je suis ton coach qui a toujours de l'énergie sache que
-                je vois toujours le positif. En revanche, j'ai une personnalité de go-muscu comme on dit, mais bon je suis sympa !`
-}
-
-async function sauvegardePreference(buttonSave) {
-    let nameCoach = document.getElementById("nom-coach").value.trim()
-    let styleCoach = document.getElementById("style-coach").value
-    let avatarCoach = document.getElementById("avatar-coach").value
-
-    buttonSave.disabled=true
-    buttonSave.textContent= "Sauvegarde..."
-
-    if (nameCoach == "") {nameCoach = "JRM Coach"} // petite vérif pr stocker la bonne valeur
-
-    try {
-        await db.JRM_Coach.put({
-            id: 1,
-            nom: nameCoach,
-            style: styleCoach,
-            avatar: avatarCoach
-        })
-
-        logoDynamique(`${avatarCoach} C'est parti !`)
-
-        buttonSave.textContent = "Sauvegardé"
-        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-    } catch(error) {
-        console.log(error)
-        buttonSave.textContent = "Une erreur s'est produite"
-        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
-    } finally {
-        buttonSave.textContent = "Sauvegarde"
-        buttonSave.disabled = false
+function choiceCoach(buttonCoach) {
+    // on recup la personnalité du coach
+    const conversionNomCoach = {
+        "bienveillant": "Bienveillant",
+        "strict-motivant": "Strict-Motivant",
+        "copain": "Copain"
     }
-}
+    const nameCoachConvertit = conversionNomCoach[buttonCoach.name]
 
-function changeStyle(value) {
-    const zoneInterpretationJRM = document.getElementById("JRM-coach")
-    if (zoneInterpretationJRM) {zoneInterpretationJRM.textContent = dicoPhraseExemple[value]}
-}
-
-async function init() {
-    // Zone de message du JRM
-    let zoneInterpretationJRM = document.getElementById("JRM-coach")
-
-    const coachUserSave = await db.JRM_Coach.get(1)
-    if (coachUserSave != undefined) {
-        // on met à jour l'interface
-        zoneInterpretationJRM.textContent = dicoPhraseExemple[coachUserSave.style]
-    } else {
-        zoneInterpretationJRM.textContent = dicoPhraseExemple["Bienveillant"]
+    // on déséléctionne l'ancien bouton et on selectionne le nouveau bouton du coach choisi
+    const buttonSelected = document.querySelector("div.personnaliter-coach button.button-coach.selected")
+    if (buttonSelected) {
+        buttonSelected.classList.remove("selected")
     }
-
-    zoneInterpretationJRM.classList.remove("skeleton")
+    buttonCoach.classList.add("selected")
+    buttonCoach.textContent = "Sélectionné"
 }
 
-async function reinitialisation(buttonReinitialisation) {
-    // Demande de confirmation avant
-    if (confirm("Êtes-vous sur de vouloir réinitialiser votre coach ?")) {
-        buttonReinitialisation.disabled = true
-        buttonReinitialisation.textContent = "Réinitialisation..."
-
-        try {
-            db.JRM_Coach.clear() // on supprime les datas de la database
-
-            // on remet tout de base sur la page premierement les input
-            document.getElementById("nom-coach").value = "JRM Coach"
-            document.getElementById("style-coach").value = "Bienveillant"
-            document.getElementById("avatar-coach").value = ""
-            document.getElementById("zone-coach-nom").textContent = "JRM Coach"
-            document.getElementById("zone-coach-avatar").textContent = ""
-            document.getElementById("JRM-coach").textContent = dicoPhraseExemple["Bienveillant"]
-
-            buttonReinitialisation.textContent = "Réinitialisé"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        } catch(error) {
-            console.log(error)
-            buttonRestoration.textContent = "Une erreur s'est produite"
-            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
-        } finally {
-            buttonReinitialisation.textContent = "Réinitialiser votre coach"
-            buttonReinitialisation.disabled = false
+document.addEventListener("DOMContentLoaded", () =>{
+    const buttonCoach = document.querySelectorAll("div.personnaliter-coach button.button-coach")
+    if (buttonCoach) {
+        for (const button of buttonCoach) {
+            button.addEventListener("click", () => {
+                choiceCoach(button)
+            })
         }
     }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const selectStyleCoach = document.getElementById("style-coach")
-    if (selectStyleCoach) {selectStyleCoach.addEventListener("change", (event) => {changeStyle(event.target.value)})}
-
-    const buttonSave = document.getElementById("button-save")
-    if (buttonSave) {buttonSave.addEventListener("click", function() {sauvegardePreference(buttonSave)})}
-
-    const buttonReinitialisation = document.getElementById("reinitialiser")
-    if (buttonReinitialisation) {buttonReinitialisation.addEventListener("click", function(){reinitialisation(buttonReinitialisation)})}
-
-    init()
-
-    // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
-    let formKeyEntry = document.querySelector(".form")
-    formKeyEntry.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            sauvegardePreference(document.getElementById("button-save"))
-        }
-    })
 })

@@ -4099,7 +4099,7 @@ div.personnaliter-coach p.description-coach{
     min-height: 92px;
     color: var(--COLOR_TEXT_SECONDARY);
 }
-div.personnaliter-coach button{
+div.personnaliter-coach button.button-coach{
     width: 130px;
 }
 div.personnaliter-coach button.selected{

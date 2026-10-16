@@ -4185,6 +4185,23 @@ svg#copain circle.yeux-droit {
     fill: var(--COLOR_TEXT_PRIMARY);
 }
 
+div.carousel-points {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--SPACE_XS);
+    margin: var(--SPACE_M) 0;
+}
+div.carousel-points span.point{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--COLOR_BACKGROUND_CARD);
+}
+div.carousel-points span.point:nth-child(1).selected{background-color: var(--COLOR_ACCENT);}
+div.carousel-points span.point:nth-child(2).selected{background-color: #bc5af2;}
+div.carousel-points span.point:nth-child(3).selected{background-color: #5af2ce;}
+
 
 
 

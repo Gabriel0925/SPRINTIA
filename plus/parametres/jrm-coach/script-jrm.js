@@ -11,6 +11,7 @@ function choiceCoach(buttonCoach) {
     const buttonSelected = document.querySelector("div.personnaliter-coach button.button-coach.selected")
     if (buttonSelected) {
         buttonSelected.classList.remove("selected")
+        buttonSelected.textContent = "Choisir"
     }
     buttonCoach.classList.add("selected")
     buttonCoach.textContent = "Sélectionné"

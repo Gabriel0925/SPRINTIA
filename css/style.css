@@ -969,7 +969,9 @@ div.carousel {
     scroll-behavior: smooth;
 }
 div.carousel.coach {
-    padding: 3rem 2rem;
+    padding: var(--SPACE_M) 0;
+    padding-left: 3rem;
+    padding-right: 3rem;
     margin: var(--SPACE_M) 0;
 }
 div.carousel.table {
@@ -3420,6 +3422,9 @@ div.carousel-content {
     display: inline-flex;
     align-items: center;
 }
+div.carousel-content.coach {
+    gap: var(--SPACE_M);
+}
 div.carousel-content.table {
     display: block;
 }
@@ -4077,17 +4082,13 @@ div.personnaliter-coach {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 400px;
+    gap: var(--SPACE_M);
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
-}
-div.personnaliter-coach.no-element {
-    scroll-snap-align: none;
 }
 
 div.personnaliter-coach span.title-coach{
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
-    margin-bottom: var(--SPACE_M);
     text-align: center;
     color: var(--COLOR_TEXT_PRIMARY);
 }

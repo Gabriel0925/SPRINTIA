@@ -968,6 +968,10 @@ div.carousel {
     scroll-snap-type: x mandatory; /* Force l'arrêt sur une carte */
     scroll-behavior: smooth;
 }
+div.carousel.coach {
+    padding: 3rem 2rem;
+    margin: var(--SPACE_XS);
+}
 div.carousel.table {
     display: block;
     scroll-snap-type: none; /* on le désactive car dans les carrousels des tableaux il n'y a pas de a */
@@ -4071,6 +4075,7 @@ svg {
     width: 100%;
     height: 300px;
     overflow: visible;
+    scroll-snap-align: center; /*la carte se centre dans le carousel*/
 }
 svg#bienveillant circle.cercle-lumineux {
     cx: 50;

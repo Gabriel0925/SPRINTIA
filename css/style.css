@@ -4078,7 +4078,7 @@ svg {
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
 }
 svg.no-element {
-    width: 100px;
+    width: 50px;
     height: 100px;
     scroll-snap-align: none;
 }

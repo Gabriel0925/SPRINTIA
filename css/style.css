@@ -4096,7 +4096,18 @@ div.personnaliter-coach p.description-coach{
     font-size: var(--P);
     font-weight: normal;
     text-align: center;
+    min-height: 92px;
     color: var(--COLOR_TEXT_SECONDARY);
+}
+div.personnaliter-coach button{
+    width: 130px;
+}
+div.personnaliter-coach button.selected{
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_TEXT_PRIMARY);
+    opacity: 0.5;
+    cursor: no-drop;
+    pointer-events: none;
 }
 
 svg {

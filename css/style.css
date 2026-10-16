@@ -970,7 +970,7 @@ div.carousel {
 }
 div.carousel.coach {
     padding: 3rem 2rem;
-    margin: 0;
+    margin-bottom: var(--SPACE_XL);
 }
 div.carousel.table {
     display: block;
@@ -4071,16 +4071,39 @@ section.container-button-start button.start-echauffement.animation-button-pret.f
 }
 
 
-svg {
+div.personnaliter-coach {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 380px;
+    scroll-snap-align: center; /*la carte se centre dans le carousel*/
+}
+div.personnaliter-coach.no-element {
+    scroll-snap-align: none;
+}
+
+div.personnaliter-coach span.title-coach{
+    font-size: var(--H1);
+    font-weight: var(--FW_BOLD_SMALL);
+    margin-bottom: var(--SPACE_M);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+div.personnaliter-coach p.description-coach{
+    font-size: var(--P);
+    font-weight: normal;
+    margin-bottom: 3rem;
+    color: var(--COLOR_TEXT_SECONDARY);
+}
+
+svg {
     height: 300px;
     overflow: visible;
-    scroll-snap-align: center; /*la carte se centre dans le carousel*/
 }
 svg.no-element {
     width: 50px;
     height: 100px;
-    scroll-snap-align: none;
 }
 svg#bienveillant circle.cercle-lumineux {
     cx: 50;

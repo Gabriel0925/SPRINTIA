@@ -970,7 +970,7 @@ div.carousel {
 }
 div.carousel.coach {
     padding: 3rem 2rem;
-    margin-bottom: var(--SPACE_XL);
+    margin: var(--SPACE_M) 0;
 }
 div.carousel.table {
     display: block;

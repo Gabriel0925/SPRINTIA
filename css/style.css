@@ -4078,8 +4078,8 @@ svg {
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
 }
 svg.no-element {
-    width: 200px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     scroll-snap-align: none;
 }
 svg#bienveillant circle.cercle-lumineux {

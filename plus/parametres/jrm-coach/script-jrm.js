@@ -1,4 +1,4 @@
-function choiceCoach(buttonCoach) {
+async function choiceCoach(buttonCoach) {
     // on recup la personnalité du coach
     const conversionNomCoach = {
         "bienveillant": "Bienveillant",
@@ -15,15 +15,55 @@ function choiceCoach(buttonCoach) {
     }
     buttonCoach.classList.add("selected")
     buttonCoach.textContent = "Sélectionné"
+
+    // enregistrement dans la bdd
+    try {
+        await db.JRM_Coach.put({
+            id:1,
+            style: nameCoachConvertit
+        })
+    } catch(e) {
+        console.log(error)
+        buttonCoach.textContent = "Erreur"
+        buttonCoach.style.background = "red"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+    }
 }
 
-document.addEventListener("DOMContentLoaded", () =>{
+async function init() {
+    // on regarde les datas dans la bdd
+    const dataBdd = await db.JRM_Coach.get(1)
+    let styleCoachUser = "Bienveillant"
+
+    if (dataBdd != undefined) { // si ya des datas dans la bdd on modife la var
+        styleCoachUser = dataBdd.style
+    }
+
+    // maintenant on convertit la valeur à l'attribut name du bouton
+    const conversionNameBdd = {
+        "Bienveillant": "bienveillant",
+        "Strict-Motivant": "strict-motivant",
+        "Copain": "copain"
+    }
+    const nameAttributButton = conversionNameBdd[styleCoachUser]
+
     const buttonCoach = document.querySelectorAll("div.personnaliter-coach button.button-coach")
     if (buttonCoach) {
         for (const button of buttonCoach) {
-            button.addEventListener("click", () => {
-                choiceCoach(button)
+            // on selectionne le bouton du coach que le user avait choisi
+            if (button.name == nameAttributButton) {
+                button.classList.add("selected")
+                button.textContent = "Sélectionné"
+            }
+
+            // on ajoute le onclick du button
+            button.addEventListener("click", async () => {
+                await choiceCoach(button)
             })
         }
     }
+}
+
+document.addEventListener("DOMContentLoaded",async () =>{
+    await init()
 })

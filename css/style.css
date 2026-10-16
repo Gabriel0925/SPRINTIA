@@ -4100,11 +4100,9 @@ div.personnaliter-coach p.description-coach{
     color: var(--COLOR_TEXT_SECONDARY);
 }
 div.personnaliter-coach button.button-coach{
-    border-radius: var(--BORDER_SMALL);
     width: 130px;
 }
 div.personnaliter-coach button.selected{
-    border-radius: var(--BORDER_BIG);
     background-color: var(--COLOR_BACKGROUND_CARD);
     color: var(--COLOR_TEXT_PRIMARY);
     opacity: 0.5;

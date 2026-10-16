@@ -72,7 +72,6 @@ async function init() {
     const pointsCoach = document.querySelectorAll("span.point")
     if (pointsCoach) {
         for (const points of pointsCoach) {
-            console.log(points.id, conversionNameBddToPoints[styleCoachUser])
             if (points.id == conversionNameBddToPoints[styleCoachUser]) {
                 document.querySelector("span.point.selected").classList.remove("selected")
                 points.classList.add("selected")

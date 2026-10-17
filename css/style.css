@@ -4132,9 +4132,10 @@ div.personnaliter-coach p.description-coach{
 div.personnaliter-coach button.button-coach{
     width: 130px;
 }
+div.personnaliter-coach button.button-coach#button-coach-bienveillant{background-color: var(--COLOR_ACCENT);}
+div.personnaliter-coach button.button-coach#button-coach-strict-motivant{background-color: #bc5af2;}
+div.personnaliter-coach button.button-coach#button-coach-copain{background-color: #5af2ce;}
 div.personnaliter-coach button.selected{
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    color: var(--COLOR_TEXT_PRIMARY);
     opacity: 0.5;
     cursor: no-drop;
     pointer-events: none;

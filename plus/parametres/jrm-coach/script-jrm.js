@@ -1,3 +1,9 @@
+const conversionNameBddToPoints = {
+    "Bienveillant": "point-bienveillant",
+    "Strict-Motivant": "point-strict-motivant",
+    "Copain": "point-copain"
+}
+
 async function choiceCoach(buttonCoach) {
     // on recup la personnalité du coach
     const conversionNomCoach = {
@@ -15,6 +21,11 @@ async function choiceCoach(buttonCoach) {
     }
     buttonCoach.classList.add("selected")
     buttonCoach.textContent = "Sélectionné"
+
+    // on selectionne le nouveau point en fonction du coach
+    document.querySelector("span.point.selected").classList.remove("selected")
+    const nomAttributPoint = conversionNameBddToPoints[nameCoachConvertit]
+    document.getElementById(nomAttributPoint).classList.add("selected")
 
     // enregistrement dans la bdd
     try {
@@ -64,15 +75,10 @@ async function init() {
     }
 
     // on selectionne le point du coach select
-    const conversionNameBddToPoints = {
-        "Bienveillant": "point-bienveillant",
-        "Strict-Motivant": "point-strict-motivant",
-        "Copain": "point-copain"
-    }
     const pointsCoach = document.querySelectorAll("span.point")
     if (pointsCoach) {
         for (const points of pointsCoach) {
-            if (points.id == conversionNameBddToPoints[styleCoachUser]) {
+            if (points.id == conversionNameBddToPoints[styleCoachUser]) { // le dico "conversionNameBddToPoints" est def au début du file
                 document.querySelector("span.point.selected").classList.remove("selected")
                 points.classList.add("selected")
             }

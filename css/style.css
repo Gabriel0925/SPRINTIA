@@ -4085,6 +4085,36 @@ div.personnaliter-coach {
     gap: var(--SPACE_M);
     scroll-snap-align: center; /*la carte se centre dans le carousel*/
 }
+@media (max-width: 1100px) {
+    div.personnaliter-coach {
+        width: 634px;
+    }
+}
+@media (max-width: 970px) {
+    div.personnaliter-coach {
+        width: 555px;
+    }
+}
+@media (max-width: 860px) {
+    div.personnaliter-coach {
+        width: 480px;
+    }
+}
+@media (max-width: 740px) {
+    div.personnaliter-coach {
+        width: 400px;
+    }
+}
+@media (max-width: 630px) {
+    div.personnaliter-coach {
+        width: 350px;
+    }
+}
+@media (max-width: 530px) {
+    div.personnaliter-coach {
+        width: 100%;
+    }
+}
 
 div.personnaliter-coach span.title-coach{
     font-size: var(--H1);
@@ -4148,11 +4178,7 @@ svg#copain circle.yeux-droit {
 }
 
 div.carousel-points {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--SPACE_XS);
-    margin: var(--SPACE_M) 0;
+    display: none;
 }
 div.carousel-points span.point{
     width: 10px;
@@ -4163,6 +4189,15 @@ div.carousel-points span.point{
 div.carousel-points span.point:nth-child(1).selected{background-color: var(--COLOR_ACCENT);}
 div.carousel-points span.point:nth-child(2).selected{background-color: #bc5af2;}
 div.carousel-points span.point:nth-child(3).selected{background-color: #5af2ce;}
+@media (max-width: 1100px) {
+    div.carousel-points {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--SPACE_XS);
+        margin: var(--SPACE_M) 0;
+    }   
+}
 
 
 

@@ -4114,29 +4114,14 @@ svg {
     height: 300px;
     overflow: visible;
 }
-svg.no-element {
-    width: 50px;
-    height: 100px;
-}
 svg#bienveillant circle.cercle-lumineux {
-    cx: 50;
-    cy: 50;
-    r: 35;
     fill: var(--COLOR_ACCENT);
     filter: drop-shadow(0px 0px 14px var(--COLOR_ACCENT));
 }
 svg#bienveillant circle.yeux-gauche {
-    cx: 35;
-    cy: 30;
-    r: 6;
-    transform: scale(1.1, 1.4);
     fill: var(--COLOR_TEXT_PRIMARY);
 }
 svg#bienveillant circle.yeux-droit {
-    cx: 57;
-    cy: 30;
-    r: 6;
-    transform: scale(1.1, 1.4);
     fill: var(--COLOR_TEXT_PRIMARY);
 }
 

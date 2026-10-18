@@ -98,8 +98,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // affichage des valeurs
     document.getElementById("charge-7j").textContent = chargeTotale7j
     document.querySelector(".widget-charge-entrainement-score span.skeleton").classList.remove("skeleton") // on enleve l'animation de chargement
+    
+    const colorStatut = {
+        "Désentraînement": "#3dbaf9",
+        "Maintien": "#e7e625",
+        "Productif": "#1fff80",
+        "Surentraînement": "#ff4b4c"
+    }
     document.getElementById("statut-charge-entrainement").textContent = statutUser
+    document.getElementById("statut-charge-entrainement").style.color = colorStatut[statutUser]
     document.getElementById("statut-charge-entrainement").classList.remove("skeleton") // on enleve l'animation de chargement
+
 
     // --- Récupération ---
     const tableauLastRecuperation = await db.recuperation

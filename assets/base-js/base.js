@@ -1,5 +1,5 @@
 // VARIABLE GLOBALE A TOUTES LES PAGES SPRINTIA
-const VERSION_SPRINTIA = "v26.11 b1"
+const VERSION_SPRINTIA = "v26.11 b2"
 
 function newMajPointBleu() {
     let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
@@ -453,11 +453,19 @@ async function majLocalStorage(versionLocalStorageStockee) {
         localStorage.setItem("VersionLocalStorage", "5")
         localStorage.removeItem("themeUser") // on supprime les thèmes
     }
+        
+    // migration de 5 à 26.11
+    if (versionLocalStorageStockee == "5") {
+        localStorage.removeItem("personnaliteCoachBriefing")
+        localStorage.removeItem("niveauAnalyseIA")
+
+        localStorage.setItem("VersionLocalStorage", "26.11")
+    }
 
     return
 }
 
-const versionLocalStorageActuelle = "5"
+const versionLocalStorageActuelle = "26.11"
 let versionLocalStorageStockee = localStorage.getItem("VersionLocalStorage") || "4.0.0"
 if (versionLocalStorageStockee != versionLocalStorageActuelle) {
     majLocalStorage(versionLocalStorageStockee)

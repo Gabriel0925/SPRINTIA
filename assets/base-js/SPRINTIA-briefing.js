@@ -171,65 +171,16 @@ function cleanRecuperationForIA(allRecuperation) {
 }
 
 
-async function coachUser() {
-    let coachUserDB = await db.JRM_Coach.get(1); // si ya pas de data ça renvoie undefined
-    let styleCoachUser = "Bienveillant"; // on init sur Bienveillant si le user a laisser le choix de base
-    let avatarCoach = undefined; // au lieu de le init à "" on le init à undefined pour que la fonction convertToCSV mette "-" dans le CSV si il n'y a pas d'avatar
-    let nameCoach = "JRM Coach";
-
-    if (coachUserDB != undefined) {
-        styleCoachUser = coachUserDB.style; // attribution du coach choisi par le user à la variable nommé "styleCoachUser"
-
-        // attribution du nom pour pouvoir l'afficher dans une autre fonction et éviter de faire une autre requete
-        nameCoach = coachUserDB.nom;
-        avatarCoach = coachUserDB.avatar
-        // petite vérif
-        if (avatarCoach.trim() == "") {avatarCoach = undefined}
-    };
-
-    return {"nom_coach": nameCoach, "avatar_coach": avatarCoach, "style_coach": styleCoachUser}
-}
 async function addPromptContrainte(prompt) {
-    // --- Recup personnalisation des prompts ---
-    let personnaliteCoachBriefingUser = localStorage.getItem("personnaliteCoachBriefing")
-    if (personnaliteCoachBriefingUser == null) {personnaliteCoachBriefingUser="true"} // si pas de datas on autorise de base
+    const dataCoach = await db.JRM_Coach.get(1).style || "Bienveillant"
+    prompt += `
 
-    // --- Recup niveaux d'analyse ---
-    let niveauAnalyseIaUser = localStorage.getItem("niveauAnalyseIA")
-    if (niveauAnalyseIaUser == null) {niveauAnalyseIaUser="modere"} // si pas de datas on met sur le niveau modéré
-
-    // --- commencement des contraintes pour l'IA ---
-    
-    // --- Personnalisation des prompts ---
-    if (personnaliteCoachBriefingUser == "true") { // si le user a activé le duplication du style du coach de SPRINTIA à son IA alors
-        prompt += "\nVoici le coach que l'utilisateur a configuré dans la PWA SPRINTIA :\n"
-        prompt += convertToCSV([await coachUser()]) // ajout du dico contenant le nom, l'avatar et le style du coach
-        
-        prompt += `
+Voici le style de coach que l'utilisateur a choisis : ${dataCoach}
 
 Contraintes :
 - Reprend exactement le style du coach que l'utilisateur a configuré dans SPRINTIA
 - Tutoie l'utilisateur et répond en français
-- N'hésite pas à lui poser une question pour continuer la discussion et renforcer le lien entre
-    toi (le coach de SPRINTIA) et l'utilisateur.`
-
-    } else {
-        prompt += `
-
-Contraintes :
-- Adopte une posture de coach sportif neutre, factuelle et objective
-- Tutoie l'utilisateur et répond en français
-- Pose lui quelques questions à la fin de l'analyse pour continuer la discussion et renforcer ce lien entre
-    toi (le coach de SPRINTIA) et l'utilisateur.`
-    }
-
-    // --- Niveaux d'analyse ---
-    if (niveauAnalyseIaUser == "essentiel") {
-        prompt += "\n\nExplique les concepts avec des mots simples, évite le jargon technique, privilégie la pédagogie."
-    } else if (niveauAnalyseIaUser == "expert") {
-        prompt += "\n\nUtilise des termes techniques et physiologiques précis. L'utilisateur est un athlète expérimenté qui comprend les métriques de charge avancées."
-    }
-    // si le user a choisi modéré on ne change rien car les IA sont déjà dans une forme de neutralité
+- N'hésite pas à lui poser une question pour continuer la discussion et renforcer le lien entre toi (le coach de SPRINTIA) et l'utilisateur.`
 
     return prompt
 }
@@ -392,21 +343,24 @@ Information temporelle : nous sommes aujourd'hui le ${createObjetDate(0)}.
 
 Données d'entraînement :\n`
     let historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(7)).toArray()
-    let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(30)).toArray()
+    let historiqueRecuperationData = await db.recuperation.where("date").aboveOrEqual(createObjetDate(7)).toArray()
     let recuperationUserToday = await db.recuperation.where("date").aboveOrEqual(createObjetDate(0)).toArray()
 
     // on vérifie d'abord si l'utilisateur a saisi sa FC repos du jour avant de faire le prompt
     if (recuperationUserToday.length <= 0) {return undefined} // pour pas qu'on génère le prompt
-    
-    if (historiqueRecuperationData.length < 7) {return undefined}
-    if (historiqueRecuperationData.length > 7) { // si ya trop de donnée on en prend moins
-        historiqueRecuperationData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
-    }
 
     if (historiqueData.length < 2) {
         historiqueData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
     }
-    if (historiqueData.length <= 0) {return undefined}
+    if (historiqueRecuperationData.length < 3) {
+        historiqueRecuperationData = await db.entrainement.where("date").aboveOrEqual(createObjetDate(14)).toArray()
+    }
+
+    if (historiqueData.length <= 0 || historiqueRecuperationData.length <= 0) {
+        // on return undefined au moins la var prompt sera égale à undefined car il n'y pas assez de données et ça bloquera l'utilisateur d'ouvrir 
+        // une IA alors qu'il n'y a pas de data
+        return undefined
+    }
 
     const dataEntrainements = historiqueData.map(workout => ({
         // on recup uniquement les datas importantes
@@ -518,7 +472,7 @@ async function promptDiscussion() {
     if (dataProfil != undefined && choiceUserToShareData == "true") { // si le user à configurer son profil alors on ajoute ses datas dans le prompt
         // le profil de l'utilisateur
         prompt += "\nLe profil de l'utilisateur :\n"
-        prompt += JSON.stringify(dataProfil, null, 2)
+        prompt += convertToCSV([dataProfil]) // on envoie dans la fonction un tableau or quand on fait .get et pas toArray on a un dico donc on met ce dico dans le tableau [{dico}]
     }
 
     // on enleve les datas des points gps

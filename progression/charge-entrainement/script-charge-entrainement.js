@@ -206,13 +206,13 @@ async function manageCalcul(graphique) {
         genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [periodeChargeTotale28j, periodeChargeTotale21j, periodeChargeTotale14j, chargeTotale7j])
     }
     
-    return [chargeTotale7j, statutUser, analyse];
+    return [chargeTotale7j, statutUser, analyse, cibleUserMin, cibleUserMax, chargeTotale28j];
 };
 
 
 async function displayOnScreenCE() {
     // recup de toutes les données
-    const [chargeTotale7j, statutUser, analyse] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
+    const [chargeTotale7j, statutUser, analyse, cibleUserMin, cibleUserMax, chargeTotale28j] = await manageCalcul(true); // true pour dire que ça lance la fonction pour le graphique
 
     // on commence par select la bonne zone dans la jauge pour la statut
     let idHtmlStatut = {
@@ -244,6 +244,14 @@ async function displayOnScreenCE() {
     document.getElementById("statut").classList.remove("skeleton");
     document.getElementById("interpretation").innerHTML = analyse;
     document.getElementById("interpretation").classList.remove("skeleton");
+
+    // on affiche la cible
+    document.getElementById("cible").textContent = Math.floor(cibleUserMin) + " - " + Math.floor(cibleUserMax)
+    document.getElementById("cible").classList.remove("skeleton")
+
+    // on affiche la charge des 28j
+    document.getElementById("charge-28j").textContent = Math.floor(chargeTotale28j)
+    document.getElementById("charge-28j").classList.remove("skeleton")
 };
 
 

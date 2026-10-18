@@ -4173,13 +4173,37 @@ section.container-coach p.description-coach{
     }
 }
 
+@keyframes animation_avatars {
+    0% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0px 0px 15px var(--COLOR_ITEM));
+    }
+    50% {
+        transform: translateY(-8px) scale(1.04);
+        filter: drop-shadow(0px 0px 30px var(--COLOR_ITEM));
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0px 0px 15px var(--COLOR_ITEM));
+    }
+}
 svg {
     height: 180px;
     overflow: visible;
+    animation: animation_avatars 4s ease-in-out infinite;
 }
-svg#bienveillant {filter: drop-shadow(0px 0px 15px var(--COLOR_ACCENT));}
-svg#strict-motivant{filter: drop-shadow(0px 0px 15px #bc5af2);}
-svg#copain{filter: drop-shadow(0px 0px 15px #5af2cedb);}
+svg#bienveillant {
+    --COLOR_ITEM: var(--COLOR_ACCENT);
+    filter: drop-shadow(0px 0px 15px var(--COLOR_ACCENT));
+}
+svg#strict-motivant{
+    --COLOR_ITEM: #bc5af2;
+    filter: drop-shadow(0px 0px 15px #bc5af2);
+}
+svg#copain{
+    --COLOR_ITEM: #5af2cedb;
+    filter: drop-shadow(0px 0px 15px #5af2cedb);
+}
 
 svg#bienveillant circle.cercle-lumineux {fill: var(--COLOR_ACCENT);}
 svg#strict-motivant rect.carre-lumineux {fill: #bc5af2;}

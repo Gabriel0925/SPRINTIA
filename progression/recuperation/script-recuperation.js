@@ -158,7 +158,10 @@ async function jrmCoach() {
         document.getElementById("fc-repos-moyenne-30j").textContent = "--"
     }
     
-    document.querySelector("p.title.skeleton").classList.remove("skeleton")
+    const ptitle = document.querySelector("p.title.skeleton")
+    if (ptitle) {
+        ptitle.classList.remove("skeleton")
+    }
     zoneReponseCoach.classList.remove("skeleton")
 
     return
@@ -189,7 +192,7 @@ async function remplissageTableau() {
         return
     }
     
-    document.getElementById("first-line-table").style.display="none"
+    document.getElementById("first-line-table").remove()
 
     historiqueDataUser.forEach(elt => {
         // Structure du tableau
@@ -227,7 +230,7 @@ async function remplissageTableau() {
                 await init("graph")
 
                 let dataTableau = document.querySelectorAll("td") // Recup des lignes pour savoir quand il faut cacher le tableau
-                let tableau = document.getElementById("tableau-historique") // recup du tableau
+                let tableau = document.getElementById("tableau-historique") // recup du tableau 
 
                 if (dataTableau.length <= 0) {
                     // On cache tout
@@ -328,8 +331,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonPlus = document.getElementById("button_plus")
     if (buttonPlus) {buttonPlus.addEventListener("click", () => {window.location.href = 'historique-recuperation.html'})}
 
-    const buttonBriefing = document.getElementById("button-SPRINTIA-briefing")
-    if (buttonBriefing){buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+    const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse")
+    if (buttonAnalyse){buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

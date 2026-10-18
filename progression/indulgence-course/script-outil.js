@@ -277,8 +277,8 @@ async function Initialisation() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const buttonBriefing = document.getElementById("button-SPRINTIA-briefing")
-    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+    const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse")
+    if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

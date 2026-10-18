@@ -413,7 +413,7 @@ function afficherData(dataWorkout) {
     if (listElementPage.length <= 0) {
         document.getElementById("title-stats-detaillees").style.display = "none"
         document.querySelector(".page-entrainement").style.display = "none"
-        document.querySelector("button.briefing").style.setProperty("margin-top", "var(--SPACE_L)")
+        document.querySelector("button.analyse").style.setProperty("margin-top", "var(--SPACE_L)")
     } else {
         listElementPage.forEach(element => {
             document.querySelector(".page-entrainement").appendChild(element)
@@ -598,8 +598,8 @@ async function initialisation() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const buttonBriefing = document.getElementById("analyse_entrainement")
-    if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+    const buttonAnalyse = document.getElementById("analyse_entrainement")
+    if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

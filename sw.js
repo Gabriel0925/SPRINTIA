@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.46" 
+const VERSION_CACHE = "V1.1.48" 
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
@@ -58,8 +58,8 @@ const fileInCache = [
     // PLUS
     "/plus/plus.html", "/plus/script-plus.js",
 
-    "/plus/discussion-jrm-coach/discussion.html", "/plus/discussion-jrm-coach/parametres.html", 
-    "/plus/discussion-jrm-coach/script-discussion.js", "/plus/discussion-jrm-coach/script-parametres-discussion.js",
+    "/plus/discussion/discussion.html", "/plus/discussion/parametres.html", 
+    "/plus/discussion/script-discussion.js", "/plus/discussion/script-parametres-discussion.js",
 
     // HISTORIQUE VERSIONS
     "/plus/historique-versions/historique-versions.html", "/plus/historique-versions/script-historique-versions.js",

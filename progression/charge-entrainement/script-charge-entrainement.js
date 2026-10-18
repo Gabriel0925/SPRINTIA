@@ -250,8 +250,8 @@ async function displayOnScreenCE() {
 document.addEventListener("DOMContentLoaded", () => {
     // si on est dans la page de charge d'entrainement (et donc pas dans la page de progression) on ajoute les addEvenLister
     if (window.location.pathname == "/progression/charge-entrainement/charge-entrainement.html") {
-        const buttonBriefing = document.getElementById("button-SPRINTIA-briefing")
-        if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
+        const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse")
+        if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
         const buttonCopy = document.getElementById("copy")
         if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

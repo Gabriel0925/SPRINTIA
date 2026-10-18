@@ -24,7 +24,7 @@ const buttonFonction  = {
     "Demander à Vibe": promptDiscussion
 }
 
-async function windowsBriefing() {
+async function windowsAnalyse() {
     document.querySelector("section.background-SPRINTIA-analyse").style.display = "flex"
     document.querySelector("div.windows-SPRINTIA-analyse").classList.add("open")
     document.querySelector("body").classList.add("analyse-open") 
@@ -109,7 +109,7 @@ function nameFavoriteIA() {
         }
 
         // le bouton dans discuter avec le coach
-        let buttonEnDessousTextarea = document.getElementById("button-SPRINTIA-briefing-ask")
+        let buttonEnDessousTextarea = document.getElementById("button-SPRINTIA-analyse-ask")
         if (buttonEnDessousTextarea) {
             buttonEnDessousTextarea.textContent = "Demander à " + dicoIA[favoriteIA]
         }

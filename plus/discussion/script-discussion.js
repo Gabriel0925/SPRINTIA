@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const buttonBriefing = document.getElementById("button-SPRINTIA-briefing-ask")
-    if (buttonBriefing) {
-        buttonBriefing.addEventListener("click", () => {
+    const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse-ask")
+    if (buttonAnalyse) {
+        buttonAnalyse.addEventListener("click", () => {
             if (!document.getElementById('promt-user').value.trim()) {
                 alert('Veuillez ajouter votre question dans le champs de texte avant de vouloir demander à une IA.')
             } else {
-                windowsBriefing('Demander à Vibe')
+                windowsAnalyse('Demander à Vibe')
             }
         })
     }

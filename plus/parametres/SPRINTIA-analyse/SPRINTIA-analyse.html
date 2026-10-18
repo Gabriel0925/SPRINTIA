@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>SPRINTIA - SPRINTIA Briefing</title>
+    <title>SPRINTIA - SPRINTIA Analyse</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
@@ -75,18 +75,90 @@
     </section>
     
     <div class="toolbar">
-        <h1>SPRINTIA Briefing</h1>
+        <h1>SPRINTIA Analyse</h1>
         <div class="container-command">
             <a href="a-propos.html">
                 <i class="icon_info"></i>
             </a>
         </div>
     </div>
+    
+    <h2>Style du coach</h2>
+    <section class="container-coach">
 
-    <h2>IA favorite</h2>
+        <div class="card-coach" id="coach-bienveillant">
+
+            <div class="avatar">
+                <svg id="bienveillant" viewBox="0 0 100 100">
+
+                    <circle class="cercle-lumineux" cx="50" cy="50" r="35"/>
+
+                    <circle class="yeux-gauche" cx="35" cy="30" r="6" transform="scale(1.1, 1.4)"/>
+                    <circle class="yeux-droit" cx="57" cy="30" r="6" transform="scale(1.1, 1.4)"/>
+
+                </svg>
+            </div>
+
+            <div class="information-coach">
+                <span class="title-coach">Bienveillant</span>
+                <p class="description-coach">
+                    Je suis là pour t'aider à devenir meilleur·e et toujours voir le positif même dans les moments difficiles.
+                </p>
+            </div>
+            
+        </div>
+        
+        <div class="card-coach" id="coach-strict-motivant">
+
+            <div class="avatar">
+                <svg id="strict-motivant" viewBox="0 0 100 100">
+
+                    <rect class="carre-lumineux" x="15" y="15" rx="12" width="70" height="70"/>
+
+                    <circle class="yeux-gauche" cx="37" cy="36" r="8"/>
+                    <circle class="yeux-droit" cx="63" cy="36" r="8"/>
+
+                </svg>
+            </div>
+
+            <div class="information-coach">
+                <span class="title-coach">Strict & Motivant</span>
+                <p class="description-coach">
+                    Je suis là pour te pousser à te dépasser, comme on dit : "C'est quand on est dans le dur qu'on progresse réellement !"
+                </p>
+            </div>
+            
+        </div>
+
+        <div class="card-coach" id="coach-copain">
+
+            <div class="avatar">
+                <svg id="copain" viewBox="0 0 100 100">
+                    
+                    <circle class="rectangle-arrondi-lumineux" cx="42" cy="50" r="35" transform="scale(1.2, 0.9)"/>
+
+                    <circle class="yeux-gauche" cx="35" cy="26" r="6" transform="scale(1.1, 1.4)"/>
+                    <circle class="yeux-droit" cx="58" cy="26" r="6" transform="scale(1.1, 1.4)"/>
+
+                </svg>
+            </div>
+
+            <div class="information-coach">
+                <span class="title-coach">Copain</span>
+                <p class="description-coach">
+                    Je suis là pour te motiver, te dire les choses clairement et te faire voir que tu peux toujours aller un peu plus loin mais sans
+                    te prendre la tête.
+                </p>
+            </div>
+            
+        </div>
+
+    </section>
+
+    <h2>IA préférée</h2>
     <p class="text">
-        Choisissez l'IA que vous utilisez au quotidien, votre préférée ! Ce choix sera sauvegardé pour que SPRINTIA Briefing
-        ouvre directement votre IA favorite pour pousser les analyses du coach de SPRINTIA (nommé par défaut : JRM Coach) encore plus loin.
+        Choisissez l'IA que vous utilisez au quotidien, votre préférée ! Ce choix sera sauvegardé pour que SPRINTIA Analyse
+        ouvre directement votre IA préférée pour pousser les analyses du coach encore plus loin !
     </p>
     <ol class="container-list-choice">
 
@@ -106,47 +178,15 @@
 
     </ol>
 
-    <h2>Personnalisation des prompts</h2>
-    <p class="text">
-        Par défaut, votre IA favorite va essayer de prendre la personnalité et le nom du coach que vous avez configuré dans les paramètres de SPRINTIA
-        mais si ça ne vous convient pas vous pouvez le désactiver.
-    </p>
-    <div class="banner-toggle" id="container-toggle-personnalite-coach">
-        <i class="icon_coach"></i>
-        <p>Personnalité du coach</p>
-        <input class="toggle" type="checkbox" id="toggle-personnalite-coach">
-    </div>
-
-    <h2>Niveaux d'analyse</h2>
-    <p class="text">
-        Adaptez le niveau d'analyse de ton IA préférée :
-    </p>
-    <ul class="list-information">
-
-        <li>
-            <strong>Essentiel</strong> : Utilisation de mots simples et vulgarisation des termes pour un aspect sans fioriture.
-        </li>
-        <li>
-            <strong>Modéré</strong> : Le juste milieu (par défaut).
-        </li>
-        <li>
-            <strong>Expert</strong> : Analyse poussée, utilisation de termes techniques et avancés.
-        </li>
-
-    </ul>
-    <select id="niveaux-analyse-user" autocomplete="off">
-        <option value="essentiel">Essentiel</option>
-        <option value="modere">Modéré</option>
-        <option value="expert">Expert</option>
-    </select>
-
-
     <div class="container-center-marge">
-        <button class="size-block" id="reinitialiser-briefing">Réinitialiser Briefing</button>
+        <button class="size-block" id="reinitialiser-analyse">Réinitialiser Analyse</button>
     </div>
-    
+
     <script src="../../../assets/base-js/base.js"></script>
-    <script src="script-configuration-briefing.js"></script>
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="../../../assets/bibliotheques/dexie.js"></script>
+    <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="script-SPRINTIA-analyse.js"></script>
 
 </body>
 </html>

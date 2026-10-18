@@ -4231,7 +4231,7 @@ div.container-bar-chat textarea{
     display: flex;
     flex-grow: 1;
     max-width: 600px;
-    min-height: 30px;
+    min-height: 50px;
     height: 50px;
     max-height: 190px;
 }
@@ -4268,7 +4268,7 @@ div.container-bar-chat i:active{
         padding: 0 3rem;
     }
     div.container-bar-chat textarea{
-        height: 100px;
+        min-height: 100px;
         max-height: 240px;
     }
 }
@@ -4277,7 +4277,7 @@ div.container-bar-chat i:active{
         padding: 0 var(--SPACE_L);
     }
     div.container-bar-chat textarea{
-        height: 140px;
+        min-height: 140px;
         max-height: 250px;
     }
 }
@@ -4286,7 +4286,7 @@ div.container-bar-chat i:active{
         padding: 0;
     }
     div.container-bar-chat textarea{
-        height: 160px;
+        min-height: 160px;
     }
     div.container-bar-chat i{
         font-size: 2rem;
@@ -4299,6 +4299,7 @@ div.container-bar-chat i:active{
     div.container-bar-chat textarea{
         height: 180px;
         max-height: 350px;
+        min-height: 70px;
     }
     div.container-bar-chat i{
         font-size: 2.1rem;
@@ -4309,7 +4310,7 @@ div.container-bar-chat i:active{
 }
 @media (max-width: 380px) {
     div.container-bar-chat textarea{
-        height: 180px;
+        min-height: 180px;
         max-height: 500px;
     }
     div.container-bar-chat i{

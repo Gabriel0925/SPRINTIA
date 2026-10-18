@@ -4128,8 +4128,8 @@ section.container-coach div.card-coach:active{
     transform: scale(var(--SCALE_NORMAL));
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-section.container-coach div.card-coach.selected{
-    background-color: var(--COLOR_BACKGROUND_CARD);
+section.container-coach div.card-coach.selected#coach-bienveillant{
+    background-color: #20252e;
     border: 2px solid var(--COLOR_ACCENT);
 }
 section.container-coach div.card-coach.selected:active{transform: scale(1);} /*on empeche le selected de bouger lors d'un clic*/
@@ -4219,6 +4219,107 @@ svg circle.yeux-gauche {fill: var(--COLOR_TEXT_PRIMARY);}
 svg circle.yeux-droit {fill: var(--COLOR_TEXT_PRIMARY);}
 
 
+div.container-bar-chat {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-top: auto;
+    gap: var(--SPACE_S);
+    padding: 0 3rem;
+}
+div.container-bar-chat textarea{
+    display: flex;
+    flex-grow: 1;
+    max-width: 600px;
+    min-height: 30px;
+    height: 50px;
+    max-height: 190px;
+}
+div.container-bar-chat i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(315deg);
+
+    background: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
+    color: var(--COLOR_BACKGROUND);
+    font-size: var(--H1);
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: var(--SPACE_XS);
+    cursor: pointer;
+
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.container-bar-chat i:hover{
+        background: radial-gradient(circle, var(--COLOR_ACCENT_HOVER), var(--COLOR_ACCENT_HOVER));
+    }
+}
+div.container-bar-chat i:active{
+    transform: scale(var(--SCALE_NORMAL)) rotate(315deg);
+    background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
+}
+@media (max-width: 800px) {
+    div.container-bar-chat {
+        padding: 0 3rem;
+    }
+    div.container-bar-chat textarea{
+        height: 100px;
+        max-height: 240px;
+    }
+}
+@media (max-width: 650px) {
+    div.container-bar-chat {
+        padding: 0 var(--SPACE_L);
+    }
+    div.container-bar-chat textarea{
+        height: 140px;
+        max-height: 250px;
+    }
+}
+@media (max-width: 550px) {
+    div.container-bar-chat {
+        padding: 0;
+    }
+    div.container-bar-chat textarea{
+        height: 160px;
+    }
+    div.container-bar-chat i{
+        font-size: 2rem;
+        width: 60px;
+        min-width: 60px;
+        height: 60px;
+    }
+}
+@media (max-width: 460px) {
+    div.container-bar-chat textarea{
+        height: 180px;
+        max-height: 350px;
+    }
+    div.container-bar-chat i{
+        font-size: 2.1rem;
+        width: 65px;
+        min-width: 65px;
+        height: 65px;
+    }
+}
+@media (max-width: 380px) {
+    div.container-bar-chat textarea{
+        height: 180px;
+        max-height: 500px;
+    }
+    div.container-bar-chat i{
+        font-size: 1.85rem;
+        width: 55px;
+        min-width: 55px;
+        height: 55px;
+    }
+}
+
 
 
 /* ----- RESPONSIVE ----- */
@@ -4260,5 +4361,10 @@ svg circle.yeux-droit {fill: var(--COLOR_TEXT_PRIMARY);}
     }
     section.tab-bars {
         display: flex;
+    }
+}
+@media (max-width: 650px) {
+    section.tab-bars {
+        justify-content: center;
     }
 }

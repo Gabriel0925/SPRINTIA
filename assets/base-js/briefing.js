@@ -109,9 +109,9 @@ function nameFavoriteIA() {
         }
 
         // le bouton dans discuter avec le coach
-        let buttonEnDessousTextarea = document.getElementById("button-SPRINTIA-analyse-ask")
-        if (buttonEnDessousTextarea) {
-            buttonEnDessousTextarea.textContent = "Demander à " + dicoIA[favoriteIA]
+        let textArea = document.getElementById("promt-user")
+        if (textArea) {
+            textArea.placeholder = "Posez n'importe quelle question à " + dicoIA[favoriteIA] + "..."
         }
     } else {
         document.getElementById("button-open-ia").addEventListener("click", () => {openIA("vibe")})

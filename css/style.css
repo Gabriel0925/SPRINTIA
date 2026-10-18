@@ -1475,10 +1475,32 @@ section.container-small-widget-progression section.small-widget p.small-widget-t
     margin-top: var(--SPACE_XS);
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data{
+    display: flex;
+    align-items: center;
+    gap: var(--SPACE_XS);
     margin-top: var(--SPACE_XS);
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
 }
+/* section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur{
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: 50%;
+}
+section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.reposer{
+    background-color: #3dbaf9;
+    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
+}
+section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.optimale{
+    background-color: #1fff80;
+    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
+}
+section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.fatiguer{
+    background-color: #ff4b4c;
+    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
+} */
 section.container-small-widget-progression section.small-widget p.small-widget-data span.skeleton{
     display: inline-block;
     width: 60px;
@@ -1501,6 +1523,22 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
         min-height: 44px;
     }
 }
+
+
+div.container-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--SPACE_M) 0;
+}
+div.container-avatar svg{
+    display: none;
+    height: 225px;
+    filter: drop-shadow(0px 0px 15px var(--COLOR_ACCENT));
+}
+div.container-avatar svg#strict-motivant{filter: drop-shadow(0px 0px 15px #bc5af2);}
+div.container-avatar svg#copain{filter: drop-shadow(0px 0px 15px #5af2cedb);}
+
 
 
 div.toolbar {
@@ -4139,6 +4177,10 @@ svg {
     height: 180px;
     overflow: visible;
 }
+svg#bienveillant {filter: drop-shadow(0px 0px 15px var(--COLOR_ACCENT));}
+svg#strict-motivant{filter: drop-shadow(0px 0px 15px #bc5af2);}
+svg#copain{filter: drop-shadow(0px 0px 15px #5af2cedb);}
+
 svg#bienveillant circle.cercle-lumineux {fill: var(--COLOR_ACCENT);}
 svg#strict-motivant rect.carre-lumineux {fill: #bc5af2;}
 svg#copain circle.rectangle-arrondi-lumineux {fill: #5af2cedb;}

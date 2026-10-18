@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // --- Charge d'entrainement ---
     // recup des valeurs grâce au fichier "script-charge-entrainement.js"
-    const [chargeTotale7j, statutUser, analyse] = await manageCalcul()
+    const [chargeTotale7j, statutUser, analyse, cibleUserMin, cibleUserMax, chargeTotale28j] = await manageCalcul()
     // affichage des valeurs
     document.getElementById("charge-7j").textContent = chargeTotale7j
     document.querySelector(".widget-charge-entrainement-score span.skeleton").classList.remove("skeleton") // on enleve l'animation de chargement
@@ -106,7 +106,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         "Surentraînement": "#ff4b4c"
     }
     document.getElementById("statut-charge-entrainement").textContent = statutUser
-    document.getElementById("statut-charge-entrainement").style.color = colorStatut[statutUser]
+    // si le statut est bien dans le dico on change la couleur par contre si le statut c'est "Pas de statut" alors on ne touche pas à la couleur
+    if (colorStatut[statutUser]) {
+        document.getElementById("statut-charge-entrainement").style.color = colorStatut[statutUser]   
+    }
     document.getElementById("statut-charge-entrainement").classList.remove("skeleton") // on enleve l'animation de chargement
 
 

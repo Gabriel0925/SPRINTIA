@@ -77,11 +77,12 @@
     <div class="toolbar">
         <h1>Configurer <strong id="briefing">JRM Coach</strong></h1>
     </div>
+    
+    <section class="container-coach">
 
-    <div class="carousel coach">
-        <div class="carousel-content coach">
+        <div class="card-coach" id="coach-bienveillant">
 
-            <div class="personnaliter-coach">
+            <div class="avatar">
                 <svg id="bienveillant" viewBox="0 0 100 100">
 
                     <circle class="cercle-lumineux" cx="50" cy="50" r="35"/>
@@ -90,18 +91,20 @@
                     <circle class="yeux-droit" cx="57" cy="30" r="6" transform="scale(1.1, 1.4)"/>
 
                 </svg>
+            </div>
 
+            <div class="information-coach">
                 <span class="title-coach">Bienveillant</span>
-
                 <p class="description-coach">
                     Je suis là pour t'aider à devenir meilleur·e et toujours voir le positif même dans les moments difficiles.
                 </p>
-
-                <button class="button-coach" id="button-coach-bienveillant" name="bienveillant">Choisir</button>
-
             </div>
+            
+        </div>
+        
+        <div class="card-coach" id="coach-strict-motivant">
 
-            <div class="personnaliter-coach">
+            <div class="avatar">
                 <svg id="strict-motivant" viewBox="0 0 100 100">
 
                     <rect class="carre-lumineux" x="15" y="15" rx="12" width="70" height="70"/>
@@ -110,17 +113,20 @@
                     <circle class="yeux-droit" cx="63" cy="36" r="8"/>
 
                 </svg>
+            </div>
 
+            <div class="information-coach">
                 <span class="title-coach">Strict & Motivant</span>
-
                 <p class="description-coach">
                     Je suis là pour te pousser à te dépasser, comme on dit : "C'est quand on est dans le dur qu'on progresse réellement !"
                 </p>
-
-                <button class="button-coach" id="button-coach-strict-motivant" name="strict-motivant">Choisir</button>
             </div>
-                
-            <div class="personnaliter-coach">
+            
+        </div>
+
+        <div class="card-coach" id="coach-copain">
+
+            <div class="avatar">
                 <svg id="copain" viewBox="0 0 100 100">
                     
                     <circle class="rectangle-arrondi-lumineux" cx="42" cy="50" r="35" transform="scale(1.2, 0.9)"/>
@@ -129,25 +135,19 @@
                     <circle class="yeux-droit" cx="58" cy="26" r="6" transform="scale(1.1, 1.4)"/>
 
                 </svg>
+            </div>
 
+            <div class="information-coach">
                 <span class="title-coach">Copain</span>
-
                 <p class="description-coach">
                     Je suis là pour te motiver, te dire les choses clairement et te faire voir que tu peux toujours aller un peu plus loin mais sans
                     te prendre la tête.
                 </p>
-
-                <button class="button-coach" id="button-coach-copain" name="copain">Choisir</button>
             </div>
-        
+            
         </div>
-    </div>
 
-    <div class="carousel-points">
-        <span class="point selected" id="point-bienveillant"></span>
-        <span class="point" id="point-strict-motivant"></span>
-        <span class="point" id="point-copain"></span>
-    </div>
+    </section>
 
     <script src="../../../assets/base-js/base.js"></script>
     <!-- Import bibliothèque pour simplifier le code de indexed db -->

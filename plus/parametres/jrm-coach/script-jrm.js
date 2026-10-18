@@ -1,42 +1,30 @@
-const conversionNameBddToPoints = {
-    "Bienveillant": "point-bienveillant",
-    "Strict-Motivant": "point-strict-motivant",
-    "Copain": "point-copain"
-}
-
-async function choiceCoach(buttonCoach) {
-    // on recup la personnalité du coach
-    const conversionNomCoach = {
-        "bienveillant": "Bienveillant",
-        "strict-motivant": "Strict-Motivant",
-        "copain": "Copain"
+async function selectCoach(item) {
+    // on désactive l'item qui est selected si il y en a un
+    const itemSelect = document.querySelector("div.card-coach.selected")
+    if (itemSelect) {
+        itemSelect.classList.remove("selected")
     }
-    const nameCoachConvertit = conversionNomCoach[buttonCoach.name]
 
-    // on déséléctionne l'ancien bouton et on selectionne le nouveau bouton du coach choisi
-    const buttonSelected = document.querySelector("div.personnaliter-coach button.button-coach.selected")
-    if (buttonSelected) {
-        buttonSelected.classList.remove("selected")
-        buttonSelected.textContent = "Choisir"
+    // on select le nouveau item
+    item.classList.add("selected")
+
+    // style du coach
+    const convertisseurIdName = {
+        "coach-bienveillant": "Bienveillant",
+        "coach-strict-motivant": "Strict-Motivant",
+        "coach-copain": "Copain"
     }
-    buttonCoach.classList.add("selected")
-    buttonCoach.textContent = "Sélectionné"
-
-    // on selectionne le nouveau point en fonction du coach
-    document.querySelector("span.point.selected").classList.remove("selected")
-    const nomAttributPoint = conversionNameBddToPoints[nameCoachConvertit]
-    document.getElementById(nomAttributPoint).classList.add("selected")
+    const styleCoach = convertisseurIdName[convertisseurIdName]
 
     // enregistrement dans la bdd
     try {
         await db.JRM_Coach.put({
             id:1,
-            style: nameCoachConvertit
+            style: styleCoach
         })
     } catch(e) {
         console.log(error)
-        buttonCoach.textContent = "Erreur"
-        buttonCoach.style.background = "red"
+        alert("Une erreur s'est produite lors de l'enregistrement du style de votre coach !")
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
     }
 }
@@ -50,42 +38,27 @@ async function init() {
         styleCoachUser = dataBdd.style
     }
 
-    // maintenant on convertit la valeur à l'attribut name du bouton
     const conversionNameBdd = {
-        "Bienveillant": "bienveillant",
-        "Strict-Motivant": "strict-motivant",
-        "Copain": "copain"
+        "Bienveillant": "coach-bienveillant",
+        "Strict-Motivant": "coach-strict-motivant",
+        "Copain": "coach-copain"
     }
-    const nameAttributButton = conversionNameBdd[styleCoachUser]
+    const idItem = conversionNameBdd[styleCoachUser]
+    const itemSelect = document.getElementById(idItem)
+    if (itemSelect) {
+        itemSelect.classList.add("selected")
+    }
+}
 
-    const buttonCoach = document.querySelectorAll("div.personnaliter-coach button.button-coach")
-    if (buttonCoach) {
-        for (const button of buttonCoach) {
-            // on selectionne le bouton du coach que le user avait choisi
-            if (button.name == nameAttributButton) {
-                button.classList.add("selected")
-                button.textContent = "Sélectionné"
-            }
-
-            // on ajoute le onclick du button
-            button.addEventListener("click", async () => {
-                await choiceCoach(button)
+document.addEventListener("DOMContentLoaded", () => {
+    const allCardCoach = document.querySelectorAll("div.card-coach")
+    if (allCardCoach.length > 0 && allCardCoach) {
+        for (const elt of allCardCoach) {
+            elt.addEventListener("click", async() => {
+                await selectCoach(elt)
             })
         }
     }
 
-    // on selectionne le point du coach select
-    const pointsCoach = document.querySelectorAll("span.point")
-    if (pointsCoach) {
-        for (const points of pointsCoach) {
-            if (points.id == conversionNameBddToPoints[styleCoachUser]) { // le dico "conversionNameBddToPoints" est def au début du file
-                document.querySelector("span.point.selected").classList.remove("selected")
-                points.classList.add("selected")
-            }
-        }
-    }
-}
-
-document.addEventListener("DOMContentLoaded",async () =>{
-    await init()
+    init()
 })

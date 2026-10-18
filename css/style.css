@@ -968,12 +968,6 @@ div.carousel {
     scroll-snap-type: x mandatory; /* Force l'arrêt sur une carte */
     scroll-behavior: smooth;
 }
-div.carousel.coach {
-    padding: var(--SPACE_M) 0;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    margin: var(--SPACE_M) 0;
-}
 div.carousel.table {
     display: block;
     scroll-snap-type: none; /* on le désactive car dans les carrousels des tableaux il n'y a pas de a */
@@ -3422,9 +3416,6 @@ div.carousel-content {
     display: inline-flex;
     align-items: center;
 }
-div.carousel-content.coach {
-    gap: var(--SPACE_M);
-}
 div.carousel-content.table {
     display: block;
 }
@@ -4076,129 +4067,70 @@ section.container-button-start button.start-echauffement.animation-button-pret.f
 }
 
 
-div.personnaliter-coach {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+section.container-coach {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--SPACE_M);
-    scroll-snap-align: center; /*la carte se centre dans le carousel*/
 }
-@media (max-width: 1100px) {
-    div.personnaliter-coach {
-        width: 634px;
+section.container-coach div.card-coach{
+    display: flex;
+    border-radius: var(--BORDER_BIG);
+    padding: var(--SPACE_XS);
+    gap: var(--SPACE_S);
+    cursor: pointer;
+    border: 2px solid var(--COLOR_BACKGROUND);
+
+    transition: all ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-coach div.card-coach:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD);
     }
 }
-@media (max-width: 970px) {
-    div.personnaliter-coach {
-        width: 555px;
-    }
+section.container-coach div.card-coach:active{
+    transform: scale(var(--SCALE_NORMAL));
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
 }
-@media (max-width: 860px) {
-    div.personnaliter-coach {
-        width: 480px;
-    }
+section.container-coach div.card-coach.selected{
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border: 2px solid var(--COLOR_ACCENT);
 }
-@media (max-width: 740px) {
-    div.personnaliter-coach {
-        width: 400px;
-    }
+section.container-coach div.card-coach.selected:active{transform: scale(1);} /*on empeche le selected de bouger lors d'un clic*/
+section.container-coach div.card-coach.selected#coach-strict-motivant{
+    background-color: #29202e;
+    border: 2px solid #bc5af2;
 }
-@media (max-width: 630px) {
-    div.personnaliter-coach {
-        width: 350px;
-    }
-}
-@media (max-width: 530px) {
-    div.personnaliter-coach {
-        width: 100%;
-    }
+section.container-coach div.card-coach.selected#coach-copain{
+    background-color: #202e2c;
+    border: 2px solid #5af2ce;
 }
 
-div.personnaliter-coach span.title-coach{
+section.container-coach div.information-coach {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--SPACE_S);
+}
+section.container-coach span.title-coach{
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
-    text-align: center;
     color: var(--COLOR_TEXT_PRIMARY);
 }
-div.personnaliter-coach p.description-coach{
+section.container-coach p.description-coach{
     font-size: var(--P);
     font-weight: normal;
-    text-align: center;
-    min-height: 92px;
     color: var(--COLOR_TEXT_SECONDARY);
-}
-div.personnaliter-coach button.button-coach{
-    width: 130px;
-}
-div.personnaliter-coach button.button-coach#button-coach-bienveillant{background-color: var(--COLOR_ACCENT);}
-div.personnaliter-coach button.button-coach#button-coach-strict-motivant{background-color: #bc5af2;}
-div.personnaliter-coach button.button-coach#button-coach-copain{background-color: #5af2ce;}
-div.personnaliter-coach button.selected{
-    opacity: 0.5;
-    cursor: no-drop;
-    pointer-events: none;
 }
 
 svg {
-    height: 300px;
+    height: 180px;
     overflow: visible;
 }
-svg#bienveillant circle.cercle-lumineux {
-    fill: var(--COLOR_ACCENT);
-    filter: drop-shadow(0px 0px 14px var(--COLOR_ACCENT));
-}
-svg#bienveillant circle.yeux-gauche {
-    fill: var(--COLOR_TEXT_PRIMARY);
-}
-svg#bienveillant circle.yeux-droit {
-    fill: var(--COLOR_TEXT_PRIMARY);
-}
-
-svg#strict-motivant rect.carre-lumineux {
-    fill: #bc5af2;
-    filter: drop-shadow(0px 0px 14px #bc5af2);
-}
-svg#strict-motivant circle.yeux-gauche {
-    fill: var(--COLOR_TEXT_PRIMARY);
-}
-svg#strict-motivant circle.yeux-droit {
-    fill: var(--COLOR_TEXT_PRIMARY);
-}
-
-svg#copain circle.rectangle-arrondi-lumineux {
-    fill: #5af2ce;
-    filter: drop-shadow(0px 0px 14px #5af2ce);
-}
-svg#copain circle.yeux-gauche {
-    fill: var(--COLOR_TEXT_PRIMARY);
-}
-svg#copain circle.yeux-droit {
-    fill: var(--COLOR_TEXT_PRIMARY);
-}
-
-div.carousel-points {
-    display: none;
-}
-div.carousel-points span.point{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--COLOR_BACKGROUND_CARD);
-}
-div.carousel-points span.point:nth-child(1).selected{background-color: var(--COLOR_ACCENT);}
-div.carousel-points span.point:nth-child(2).selected{background-color: #bc5af2;}
-div.carousel-points span.point:nth-child(3).selected{background-color: #5af2ce;}
-@media (max-width: 1100px) {
-    div.carousel-points {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: var(--SPACE_XS);
-        margin: var(--SPACE_M) 0;
-    }   
-}
+svg#bienveillant circle.cercle-lumineux {fill: var(--COLOR_ACCENT);}
+svg#strict-motivant rect.carre-lumineux {fill: #bc5af2;}
+svg#copain circle.rectangle-arrondi-lumineux {fill: #5af2ce;}
+svg circle.yeux-gauche {fill: var(--COLOR_TEXT_PRIMARY);}
+svg circle.yeux-droit {fill: var(--COLOR_TEXT_PRIMARY);}
 
 
 

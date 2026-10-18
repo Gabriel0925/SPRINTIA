@@ -4186,7 +4186,7 @@ section.container-coach p.description-coach{
         filter: drop-shadow(0px 0px 15px var(--COLOR_ITEM));
     }
     50% {
-        transform: translateY(-8px) scale(1.04);
+        transform: translateY(-10px) scale(1.04);
         filter: drop-shadow(0px 0px 30px var(--COLOR_ITEM));
     }
     100% {

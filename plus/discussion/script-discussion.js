@@ -18,6 +18,7 @@ async function affichageStyleCoach() {
         "Copain": "copain",
     }
     document.getElementById(convertisseurNameId[styleCoach]).style.display = "block"    
+    document.querySelector(".container-avatar.skeleton").classList.remove("skeleton")
 }
 
 document.addEventListener("DOMContentLoaded", async() => {

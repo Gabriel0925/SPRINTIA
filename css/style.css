@@ -1531,6 +1531,13 @@ div.container-avatar {
     align-items: center;
     margin: var(--SPACE_M) 0;
 }
+div.container-avatar.skeleton {
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_BIG);
+    min-height: 225px;
+    overflow: hidden;
+    animation: skeleton_animation 1s ease-out infinite;
+}
 div.container-avatar svg{
     display: none;
     height: 225px;

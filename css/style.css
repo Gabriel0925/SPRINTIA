@@ -4080,7 +4080,8 @@ section.container-coach div.card-coach{
     cursor: pointer;
     border: 2px solid var(--COLOR_BACKGROUND);
 
-    transition: all ease-out var(--TIME_TRANSITION_FAST);
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-coach div.card-coach:hover{
@@ -4120,6 +4121,27 @@ section.container-coach p.description-coach{
     font-size: var(--P);
     font-weight: normal;
     color: var(--COLOR_TEXT_SECONDARY);
+}
+@media (max-width: 1060px) {
+    section.container-coach {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 580px) {
+    section.container-coach div.card-coach{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    section.container-coach div.card-coach div.information-coach{
+        align-items: center;
+    }
+    section.container-coach div.card-coach div.information-coach p.description-coach{
+        padding: var(--SPACE_M);
+        text-align: center;
+    }
 }
 
 svg {

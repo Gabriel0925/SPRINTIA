@@ -14,7 +14,7 @@ async function selectCoach(item) {
         "coach-strict-motivant": "Strict-Motivant",
         "coach-copain": "Copain"
     }
-    const styleCoach = convertisseurIdName[convertisseurIdName]
+    const styleCoach = convertisseurIdName[item.id]
 
     // enregistrement dans la bdd
     try {

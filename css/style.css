@@ -4094,7 +4094,7 @@ section.container-coach div.card-coach.selected#coach-strict-motivant{
 }
 section.container-coach div.card-coach.selected#coach-copain{
     background-color: #202e2c;
-    border: 2px solid #5af2ce;
+    border: 2px solid #5af2cedb;
 }
 
 section.container-coach div.information-coach {
@@ -4141,7 +4141,7 @@ svg {
 }
 svg#bienveillant circle.cercle-lumineux {fill: var(--COLOR_ACCENT);}
 svg#strict-motivant rect.carre-lumineux {fill: #bc5af2;}
-svg#copain circle.rectangle-arrondi-lumineux {fill: #5af2ce;}
+svg#copain circle.rectangle-arrondi-lumineux {fill: #5af2cedb;}
 svg circle.yeux-gauche {fill: var(--COLOR_TEXT_PRIMARY);}
 svg circle.yeux-droit {fill: var(--COLOR_TEXT_PRIMARY);}
 

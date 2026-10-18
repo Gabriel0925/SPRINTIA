@@ -76,7 +76,7 @@
 
     <main>
         <div class="toolbar">
-            <h1 id="briefing">JRM Coach</h1>
+            <h1 id="title-analyse">Discussion</h1>
             <div class="container-command">
                 <a href="parametres.html">
                     <i class="icon_parametres"></i>
@@ -85,29 +85,29 @@
         </div>
         
         <p class="text">
-            Posez une question et ensuite SPRINTIA génèrera un prompt contenant : vos données récentes ainsi qu'une question ce qui
+            Posez une question et ensuite SPRINTIA génèrera un prompt contenant : vos données récentes ainsi que votre question ce qui
             permettra à votre IA préférée de répondre à votre interrogation.
         </p>
         <div class="container-discuter-coach">
             <textarea id="promt-user" placeholder="Une question ?" maxlength="500"></textarea>
-            <button class="briefing" id="button-SPRINTIA-briefing-ask">Demander à Vibe</button>
+            <button class="analyse" id="button-SPRINTIA-briefing-ask">Demander à Vibe</button>
         </div>
     </main>
-    <!-- Fenetre flottante pour SPRINTIA Briefing -->
-    <section class="background-SPRINTIA-briefing">
+    <!-- Fenetre flottante pour SPRINTIA Analyse -->
+    <section class="background-SPRINTIA-analyse">
         
-        <div class="windows-SPRINTIA-briefing">
+        <div class="windows-SPRINTIA-analyse">
 
-            <div class="windows-SPRINTIA-briefing-head">
-                <p class="title">SPRINTIA Briefing</p>
+            <div class="windows-SPRINTIA-analyse-head">
+                <p class="title">SPRINTIA Analyse</p>
                 <i class="icon_fermer"></i>
             </div>
-            <p class="explanation-briefing">
-                SPRINTIA a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton "Ouvrir" vous acceptez
+            <p class="explanation-analyse">
+                SPRINTIA Analyse a généré un prompt qui contient certaines données que vous avez enregistrées dans l'application. <strong>En cliquant sur le bouton "Ouvrir" vous acceptez
                 le transfert de vos données à <span class="ia-favorite">Vibe</span></strong>. Vos données quitteront SPRINTIA et seront donc soumises aux conditions de <span class="ia-favorite">Vibe</span>.
                 <a href="/plus/parametres/SPRINTIA-briefing/a-propos.html" class="lien">En savoir plus</a>.
             </p>
-            <div class="container-button-windows-SPRINTIA-briefing">
+            <div class="container-button-windows-SPRINTIA-analyse">
                 <button id="copy" name="Demander à Vibe">Copier le prompt</button>
                 <button id="button-open-ia">Ouvrir Vibe</button>
             </div>

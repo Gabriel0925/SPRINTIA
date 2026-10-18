@@ -598,7 +598,7 @@ async function initialisation() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const buttonBriefing = document.getElementById("briefing_entrainement")
+    const buttonBriefing = document.getElementById("analyse_entrainement")
     if (buttonBriefing) {buttonBriefing.addEventListener("click", () => {windowsBriefing()})}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}

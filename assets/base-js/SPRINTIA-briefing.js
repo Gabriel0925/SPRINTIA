@@ -5,7 +5,7 @@ const dicoIA = {
     "vibe":"Vibe", "gemini":"Gemini", "chat-gpt":"ChatGPT", "claude":"Claude",
     "grok":"Grok", "meta-ai":"Meta AI", "deepseek":"DeepSeek", "copilot":"Copilot",
     "perplexity": "Perplexity", 
-    "ia-locale": "l'IA locale de votre choix" // on le met quand meme dans le dico pour : ".explanation-briefing"
+    "ia-locale": "l'IA locale de votre choix" // on le met quand meme dans le dico pour : ".explanation-analyse"
 }
 const dicoLienIA = {
     "vibe":"https://chat.mistral.ai/", "gemini":"https://gemini.google.com/", 
@@ -25,21 +25,21 @@ const buttonFonction  = {
 }
 
 async function windowsBriefing() {
-    document.querySelector("section.background-SPRINTIA-briefing").style.display = "flex"
-    document.querySelector("div.windows-SPRINTIA-briefing").classList.add("open")
-    document.querySelector("body").classList.add("briefing-open") 
-    document.querySelector("main").classList.add("briefing-open")
+    document.querySelector("section.background-SPRINTIA-analyse").style.display = "flex"
+    document.querySelector("div.windows-SPRINTIA-analyse").classList.add("open")
+    document.querySelector("body").classList.add("analyse-open") 
+    document.querySelector("main").classList.add("analyse-open")
 }
 function closeWindows() {
-    document.querySelector("div.windows-SPRINTIA-briefing").classList.add("close")
-    document.querySelector("body").classList.remove("briefing-open")
-    document.querySelector("main").classList.remove("briefing-open")
+    document.querySelector("div.windows-SPRINTIA-analyse").classList.add("close")
+    document.querySelector("body").classList.remove("analyse-open")
+    document.querySelector("main").classList.remove("analyse-open")
 
     setTimeout(() => {
-        document.querySelector("section.background-SPRINTIA-briefing").style.display = "none"
+        document.querySelector("section.background-SPRINTIA-analyse").style.display = "none"
 
-        document.querySelector("div.windows-SPRINTIA-briefing").classList.remove("close")
-        document.querySelector("div.windows-SPRINTIA-briefing").classList.remove("open")
+        document.querySelector("div.windows-SPRINTIA-analyse").classList.remove("close")
+        document.querySelector("div.windows-SPRINTIA-analyse").classList.remove("open")
     }, 150);
 }
 
@@ -88,7 +88,7 @@ function nameFavoriteIA() {
     let favoriteIA = localStorage.getItem("iaFavorite")
 
     if (favoriteIA != null) { // si il y a des datas
-        const spanIaFavorite = document.querySelectorAll(".explanation-briefing .ia-favorite")
+        const spanIaFavorite = document.querySelectorAll(".explanation-analyse .ia-favorite")
         if (spanIaFavorite) {
             spanIaFavorite.forEach(element => {
                 element.textContent = dicoIA[favoriteIA]
@@ -101,7 +101,7 @@ function nameFavoriteIA() {
         if (buttonOpenIa) {
             if (favoriteIA == "ia-locale") {
                 buttonOpenIa.style.display = "none"
-                document.querySelector("div.container-button-windows-SPRINTIA-briefing").style.display = "flex"
+                document.querySelector("div.container-button-windows-SPRINTIA-analyse").style.display = "flex"
             } else {
                 buttonOpenIa.textContent = textInButton
                 buttonOpenIa.addEventListener("click", () => {openIA(favoriteIA)})
@@ -553,7 +553,7 @@ async function promptDiscussion() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let iconFermer = document.querySelector("div.windows-SPRINTIA-briefing-head i.icon_fermer")
+    let iconFermer = document.querySelector("div.windows-SPRINTIA-analyse-head i.icon_fermer")
     if (iconFermer) {iconFermer.addEventListener("click", closeWindows)}
 
     nameFavoriteIA()

@@ -1,9 +1,9 @@
 const ideasQuestions = {
     "recuperation": [
-        "Pourquoi je suis fatigué aujourd'hui?",
+        "Pourquoi suis-je fatigué·e aujourd'hui?",
         "Analyse ma récupération du jour",
         "Ma FC de repos est-elle bonne?",
-        "Est-ce que je suis assez reposé pour m'entraîner?",
+        "Suis-je assez reposé·e pour m'entraîner?",
         "Comment accélérer ma récupération aujourd'hui?",
         "Donne-moi des conseils pour mieux dormir ce soir.",
         "Douche chaude ou froide après mon entraînement?"
@@ -19,8 +19,8 @@ const ideasQuestions = {
         "Comment améliorer mon endurance?",
         "Donne-moi 3 conseils pour améliorer ma VMA.",
         "C'est quoi la VMA et à quoi ça sert?",
-        "Créer un entraînement basé sur ma récupération.",
-        "Quels exercices de renforcement faire pour devenir plus rapide?"
+        "Crée un entraînement basé sur ma récupération.",
+        "Suggère-moi des exercices de renforcement pour devenir plus rapide."
     ],
     "conseils": [
         "Donne-moi 3 exercices de récupération active.",
@@ -28,7 +28,7 @@ const ideasQuestions = {
         "Quelles sont les erreurs à ne pas faire le jour d'une course?",
         "Quels aliments manger avant un entraînement?",
         "Puis-je m'entraîner en étant malade?",
-        "Motive moi à aller m'entraîner aujourd'hui!"
+        "Motive-moi à aller m'entraîner aujourd'hui!"
     ]
 }
 

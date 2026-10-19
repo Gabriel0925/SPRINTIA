@@ -4238,10 +4238,24 @@ div.container-idee-prompt div.idee-prompt{
     font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     text-align: center;
+
+    /*les min-width et min-height sont importants!*/
+    min-width: none;
+    min-height: none;
     cursor: pointer;
 
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 transform ease-out var(--TIME_TRANSITION_FAST);
+}
+div.container-idee-prompt div.idee-prompt.skeleton{
+    color: transparent !important;
+    min-width: 180px;
+    min-height: 43px;
+    overflow: hidden;
+    animation: skeleton_animation 1s ease-out infinite;
+}
+div.container-idee-prompt div.idee-prompt.skeleton:nth-child(2){
+    min-width: 300px;
 }
 @media (hover: hover) and (pointer: fine) {
     div.container-idee-prompt div.idee-prompt:hover{

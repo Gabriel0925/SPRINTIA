@@ -19,6 +19,7 @@ const ideasQuestions = {
         "Comment améliorer mon endurance?",
         "Donne-moi 3 conseils pour améliorer ma VMA.",
         "C'est quoi la VMA et à quoi ça sert?",
+        "Créer un entraînement basé sur ma récupération.",
         "Quels exercices de renforcement faire pour devenir plus rapide?"
     ],
     "conseils": [
@@ -27,7 +28,7 @@ const ideasQuestions = {
         "Quelles sont les erreurs à ne pas faire le jour d'une course?",
         "Quels aliments manger avant un entraînement?",
         "Puis-je m'entraîner en étant malade?",
-        "Motive moi à aller m'entraîner aujourd'hui."
+        "Motive moi à aller m'entraîner aujourd'hui!"
     ]
 }
 
@@ -42,19 +43,24 @@ function generateNbAleatoire() {
 function raccourciPrompt() {
     const tableauNbAleatoire = generateNbAleatoire() // ça renvoie un tableau avec le nombre aléatoire pour [recuperation, entrainement, conseils]
 
+    // on va cherche les phrases correspondante dans le dico
     const ideasForRecup = ideasQuestions["recuperation"][tableauNbAleatoire[0]]
     const ideasForEntrainement = ideasQuestions["entrainement"][tableauNbAleatoire[1]]
     const ideasForConseils = ideasQuestions["conseils"][tableauNbAleatoire[2]]
 
+    // création d'un tableau pour ensuite pouvoir chercher avec un compteur ses phrases dans la boucle for
     const tableauIdeas = [ideasForRecup, ideasForEntrainement, ideasForConseils]
 
     const allIdeePrompt = document.querySelectorAll(".idee-prompt")
     if (allIdeePrompt) {
         let compteur = 0
         for (const elt of allIdeePrompt) {
-            elt.textContent = tableauIdeas[compteur]
+            elt.classList.remove("skeleton") // on enleve les loaders
+            elt.textContent = tableauIdeas[compteur] // on attribue une phrase à un element
+
             compteur+=1
         }
+
     }
 }
 

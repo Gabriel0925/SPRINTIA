@@ -55,8 +55,25 @@ function raccourciPrompt() {
     if (allIdeePrompt) {
         let compteur = 0
         for (const elt of allIdeePrompt) {
+            const ideasCorrespondante = tableauIdeas[compteur]
+
             elt.classList.remove("skeleton") // on enleve les loaders
-            elt.textContent = tableauIdeas[compteur] // on attribue une phrase à un element
+            elt.textContent = ideasCorrespondante // on attribue une phrase à un element
+
+            // on ajoute un onclick
+            elt.addEventListener("click", () => {
+                const inputForPrompt = document.getElementById("promt-user")
+                if (inputForPrompt) {
+                    if (inputForPrompt.value != "") { // si le user a déjà mis qqch dans le textarea
+                        // pour éviter d'effacer le prompt que le user était potentiellement en train de taper
+                        if (confirm("Êtes-vous sur de vouloir continuer car le prompt que vous étiez en train d'écrire va être effacé ?")) {
+                            inputForPrompt.value = ideasCorrespondante // on met le texte de l'élement dans l'input (enfin le textarea)
+                        }
+                    } else {
+                        inputForPrompt.value = ideasCorrespondante // on met le texte de l'élement dans l'input (enfin le textarea)
+                    }
+                }
+            })
 
             compteur+=1
         }

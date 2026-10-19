@@ -4250,6 +4250,7 @@ div.container-idee-prompt div.idee-prompt{
 div.container-idee-prompt div.idee-prompt.skeleton{
     color: transparent !important;
     min-width: 180px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE) !important;
     min-height: 43px;
     overflow: hidden;
     animation: skeleton_animation 1s ease-out infinite;

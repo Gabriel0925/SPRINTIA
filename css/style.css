@@ -159,23 +159,23 @@ i {
 .icon_charge_entrainement:before {content: "\e905";}
 .icon_confidentialite:before {content: "\e906";}
 .icon_conversion:before {content: "\e907";}
-.icon_copy:before {content: "\e908";}
-.icon_discussion:before {content: "\e909";}
-.icon_entrainement:before {content: "\e90a";}
-.icon_entrainement_du_jour:before {content: "\e90b";}
-.icon_fermer:before {content: "\e90c";}
-.icon_file:before {content: "\e90d";}
-.icon_file_csv:before {content: "\e90e";}
-.icon_file_json:before {content: "\e90f";}
-.icon_fleche_droite:before {content: "\e910";}
-.icon_fleche_gauche:before {content: "\e911";}
-.icon_flight:before {content: "\e912";}
-.icon_flow:before {content: "\e913";}
-.icon_folder_open:before {content: "\e914";}
-.icon_fullscreen:before {content: "\e915";}
-.icon_fullscreen_exit:before {content: "\e916";}
-.icon_goutte_eau:before {content: "\e917";}
-.icon_gpx:before {content: "\e918";}
+.icon_discussion:before {content: "\e908";}
+.icon_entrainement:before {content: "\e909";}
+.icon_entrainement_du_jour:before {content: "\e90a";}
+.icon_fermer:before {content: "\e90b";}
+.icon_file:before {content: "\e90c";}
+.icon_file_csv:before {content: "\e90d";}
+.icon_file_json:before {content: "\e90e";}
+.icon_fleche_droite:before {content: "\e90f";}
+.icon_fleche_gauche:before {content: "\e910";}
+.icon_flight:before {content: "\e911";}
+.icon_flow:before {content: "\e912";}
+.icon_folder_open:before {content: "\e913";}
+.icon_fullscreen:before {content: "\e914";}
+.icon_fullscreen_exit:before {content: "\e915";}
+.icon_goutte_eau:before {content: "\e916";}
+.icon_gpx:before {content: "\e917";}
+.icon_historique:before {content: "\e918";}
 .icon_hydratation:before {content: "\e919";}
 .icon_IMC:before {content: "\e91a";}
 .icon_indulgence_course:before {content: "\e91b";}
@@ -1083,17 +1083,10 @@ section.container-workout-cards div.cards-history-workout {
     section.container-workout-cards div.cards-history-workout:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
-    section.container-workout-cards div.cards-history-workout.not-click:hover {
-        background-color: var(--COLOR_BACKGROUND_CARD);
-    }
 }
 section.container-workout-cards div.cards-history-workout:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
-}
-section.container-workout-cards div.cards-history-workout.not-click:active {
-    background-color: var(--COLOR_BACKGROUND_CARD);
-    transform: scale(1);
 }
 section.container-workout-cards div.cards-history-workout a {
     display: flex;
@@ -4266,6 +4259,61 @@ div.container-idee-prompt div.idee-prompt.skeleton:nth-child(2){
 div.container-idee-prompt div.idee-prompt:active{
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
+}
+
+
+div.container-card-prompt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: var(--SPACE_L);
+    margin: var(--SPACE_L) 0;
+}
+div.container-card-prompt div.card-prompt{
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: var(--BORDER_BIG);
+    min-height: 160px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    
+    width: 340px;
+    flex-grow: 1;
+    padding: var(--SPACE_XS);
+    cursor: pointer;
+    transition: transform ease-out var(--TIME_TRANSITION_FAST), background-color ease-out var(--TIME_TRANSITION);
+}
+@media (hover: hover) and (pointer: fine) {
+    div.container-card-prompt div.card-prompt:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+div.container-card-prompt div.card-prompt:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
+}
+div.container-card-prompt div.card-prompt p.prompt{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6; /* Limite à 6 lignes */
+    line-clamp: 6; /* Je met également ça pour que ça assure la compatibilité avec tous les navigateurs */
+    overflow: hidden;
+    font-weight: var(--P);
+    color: var(--COLOR_TEXT_PRIMARY);
+
+    border-right: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+    padding: var(--SPACE_XXS);
+    margin-bottom: 2px; /*pour cacher la phrase en dessous des "..."*/
+    flex-grow: 1;
+}
+div.container-card-prompt div.card-prompt p.date{
+    color: var(--COLOR_ACCENT);
+    padding: var(--SPACE_XXS);
+    font-size: var(--P_SMALL);
+    font-weight: var(--FW_BUTTON);
+    min-width: 130px;
+    text-align: center;
 }
 
 

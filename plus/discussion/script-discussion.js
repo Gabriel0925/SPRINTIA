@@ -104,6 +104,18 @@ async function affichageStyleCoach() {
     document.querySelector(".container-avatar.skeleton").classList.remove("skeleton")
 }
 
+function paramURL() {
+    const settingURL = window.location.search // on check si il y a des params dans l'url
+
+    if (settingURL) {
+        const tableauSeparation = settingURL.split("=") // ["?question", "Analyse ma recup"]
+        const question = tableauSeparation[1] // Analyse ma recup
+
+        let textarea = document.getElementById("promt-user")
+        if (textarea) {textarea.value = question}
+    }
+}
+
 document.addEventListener("DOMContentLoaded", async() => {
     const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse-ask")
     if (buttonAnalyse) {
@@ -120,4 +132,5 @@ document.addEventListener("DOMContentLoaded", async() => {
 
     await affichageStyleCoach()
     raccourciPrompt()
+    paramURL()
 })

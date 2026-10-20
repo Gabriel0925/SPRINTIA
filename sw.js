@@ -1,10 +1,10 @@
-const VERSION_CACHE = "V1.1.50" 
+const VERSION_CACHE = "V1.1.51" 
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
 
     // BASE DE L'APP
-    "/assets/base-js/base.js", "/assets/base-js/db-config.js", "/assets/base-js/briefing.js",
+    "/assets/base-js/base.js", "/assets/base-js/db-config.js", "/assets/base-js/SPRINTIA-analyse.js",
 
     // BIBLIOTHEQUES
     "/assets/bibliotheques/chart.min.js", "/assets/bibliotheques/dexie.js", "/assets/bibliotheques/email.min.js",  "/assets/bibliotheques/GPXParser.min.js",
@@ -112,7 +112,7 @@ const fileInCache = [
     "/plus/parametres/gestion-donnees/script-save-restoration.js",
 
     "/plus/parametres/licence/licence.html",
-    "/plus/parametres/SPRINTIA-analyse/SPRINTIA-analyse.html", "/plus/parametres/SPRINTIA-analyse/a-propos.html", "/plus/parametres/SPRINTIA-analyse/script-SPRINTIA-analyse.js",
+    "/plus/parametres/SPRINTIA-analyse/SPRINTIA-analyse.html", "/plus/parametres/SPRINTIA-analyse/a-propos.html", "/plus/parametres/SPRINTIA-analyse/config-SPRINTIA-analyse.js",
 
     "/plus/profil/modification-profil.html", "/plus/profil/profil.html", "/plus/profil/script-modification-profil.js", "/plus/profil/script-profil.js",
 

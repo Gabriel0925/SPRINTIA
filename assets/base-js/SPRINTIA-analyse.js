@@ -52,6 +52,19 @@ async function copyPrompt() {
 
         if (promptForIA != undefined) {
             promptForIA = await addPromptContrainte(promptForIA) // on ajoute les contraintes
+
+            // on save dans la bdd
+            try {
+                await db.discussion.add({
+                    date: createObjetDate(0),
+                    question: document.getElementById("promt-user").value.replace(/\n/g, " "),
+                    prompt: promptForIA
+                })
+            } catch(error) {
+                console.log(error)
+                alert("Une erreur s'est produite lors d'une opération dans la base de données.")
+                return
+            }
             
             navigator.clipboard.writeText(promptForIA)
             .then(async() => {
@@ -100,7 +113,7 @@ function nameFavoriteIA() {
 
         if (buttonOpenIa) {
             if (favoriteIA == "ia-locale") {
-                buttonOpenIa.style.display = "none"
+                buttonOpenIa.style.display = "none" 
                 document.querySelector("div.container-button-windows-SPRINTIA-analyse").style.display = "flex"
             } else {
                 buttonOpenIa.textContent = textInButton

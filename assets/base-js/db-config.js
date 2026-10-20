@@ -27,6 +27,17 @@ async function majIndexedDB(versionDbStockee) {
     } else if (versionDbStockee == "26.09") {
         // on supprime l'avatar et le nom du coach de la bdd car je m'en sert plus en revanche on garde le style du coach
         await db.JRM_Coach.update(1, {nom: undefined, avatar: undefined})
+
+        // on a supprimé le coach "Go muscu" donc on enleve
+        const dataCoachUser = await db.JRM_Coach.get(1)
+        if (dataCoachUser != undefined && dataCoachUser.style == "Go-muscu") {
+            // on remplace le Go muscu par le bienveillant
+            await db.JRM_Coach.put({
+                id: 1,
+                style: "Bienveillant"
+            })
+        }
+
         localStorage.setItem("versionDB", "26.11") // maj de la version
     }
 

@@ -20,6 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
 const dicoUrl = {
     "Entraînement":  "/index.html",
     "Progression":   "/progression/progression.html",
+    "Discussion":   "/discussion/discussion.html",
     "Outils":        "/outils/outils.html",
     "Plus":          "/plus/plus.html"
 }
@@ -97,6 +98,7 @@ window.addEventListener("pageshow", (event) => {
 
         if (urlPage.includes("plus")) {selectedBFCache("Plus")}
         else if (urlPage.includes("progression")) {selectedBFCache("Progression")}
+        else if (urlPage.includes("discussion")) {selectedBFCache("Discussion")}
         else if (urlPage.includes("outils")) {selectedBFCache("Outils")}
         else {
             // bien mettre entrainement dans le else car dans la page index c'est index puis avec le dossier entrainement rien n'est cohérent donc si c'est ni plus ni progression

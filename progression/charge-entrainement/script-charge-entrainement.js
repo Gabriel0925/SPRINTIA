@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (document.getElementById("statut").textContent != "Pas de statut") {
                 // l'URL
-                window.location.href = `../../plus/discussion/discussion.html?question=Analyse ma charge d'entraînement en interprétant ce que 
+                window.location.href = `../../discussion/discussion.html?question=Analyse ma charge d'entraînement en interprétant ce que 
 SPRINTIA a analysé mais en apportant une plus-value qu'un algorithme ne peut pas comprendre. De plus, tu vas me suggérer un conseil 
 actionnable pour mon prochain entraînement et propose-moi un type d'entraînement à privilégier (en précisant le RPE cible (de 1 à 10) cohérent 
 avec l'état de ma charge d'entraînement).?data=true` // on met data true pour que ensuite le code aille cherché les datas dans le localstorage

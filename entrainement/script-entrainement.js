@@ -600,7 +600,7 @@ async function initialisation() {
 document.addEventListener("DOMContentLoaded", () => {
     const buttonAnalyse = document.getElementById("analyse_entrainement")
     if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {
-        window.location.href = "../../plus/discussion/discussion.html?question=Analyse en profondeur le dernier entraînement que j'ai réalisé. Donne-moi une phrase de motivation, une insight clé de mon entraînement et compare cet entraînement à mes précédents."
+        window.location.href = "../../discussion/discussion.html?question=Analyse en profondeur le dernier entraînement que j'ai réalisé. Donne-moi une phrase de motivation, une insight clé de mon entraînement et compare cet entraînement à mes précédents."
     })}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}

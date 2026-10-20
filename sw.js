@@ -30,6 +30,12 @@ const fileInCache = [
 
 
 
+    // DISCUSSION
+    "/discussion/discussion.html", "/discussion/parametres.html", "/discussion/a-propos.html",  "/discussion/historique.html",
+    "/discussion/script-SPRINTIA-Analyse.js", "/discussion/config-SPRINTIA-analyse.js",
+
+
+
     // ENTRAINEMENT
     "/entrainement/a-propos.html", "/entrainement/ajouter-entrainement.html", "/entrainement/entrainement.html", 
     "/entrainement/script-ajout-entrainement.js", "/entrainement/script-entrainement.js", "/entrainement/script-rpe.js",
@@ -57,9 +63,6 @@ const fileInCache = [
 
     // PLUS
     "/plus/plus.html", "/plus/script-plus.js",
-
-    "/plus/discussion/discussion.html", "/plus/discussion/parametres.html", "/plus/discussion/a-propos.html",  "/plus/discussion/historique.html",
-    "/plus/discussion/script-SPRINTIA-Analyse.js", "/plus/discussion/config-SPRINTIA-analyse.js",
 
     // HISTORIQUE VERSIONS
     "/plus/historique-versions/historique-versions.html", "/plus/historique-versions/script-historique-versions.js",

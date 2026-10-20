@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (document.getElementById("statut").textContent != "Pas de statut") {
                 // l'URL
-                window.location.href = `../../plus/discussion/discussion.html?question=Analyse mon indulgence de course en interprétant ce que 
+                window.location.href = `../../discussion/discussion.html?question=Analyse mon indulgence de course en interprétant ce que 
 SPRINTIA a analysé mais ne te contente pas de valider la distance cible calculée par SPRINTIA, explique moi comment diviser intelligemment ce volume. Suggère-moi
  un entraînement que je pourrais effectué aujourd'hui ou dans la semaine.?data=true` // on met data true pour que ensuite le code aille cherché les datas dans le localstorage
 

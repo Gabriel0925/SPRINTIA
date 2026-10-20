@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
         buttonAnalyse.addEventListener("click", () => {
             const fcReposToday = document.getElementById("fc-repos-today")
             if (fcReposToday && fcReposToday.textContent != "--") { // si il y a des datas on renvoie à discussion
-                window.location.href = "../../plus/discussion/discussion.html?question=Analyse ma récupération du jour pour que je sache si je suis en forme pour faire un entraînement, trouve des corrélations avec mes entraînements récents et suggère-moi un entraînement en fonction de mes entraînements récents et de ma récupération."
+                window.location.href = "../../discussion/discussion.html?question=Analyse ma récupération du jour pour que je sache si je suis en forme pour faire un entraînement, trouve des corrélations avec mes entraînements récents et suggère-moi un entraînement en fonction de mes entraînements récents et de ma récupération."
             } else { // sinon on previent le user
                 alert("Pour analyser votre récupération, veuillez enregistrer votre FC repos du jour !")
             }

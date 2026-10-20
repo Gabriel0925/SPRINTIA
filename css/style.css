@@ -1363,7 +1363,7 @@ section.container-widget-progression section.widget-charge-entrainement:active {
     transform: scale(var(--SCALE_NORMAL));
 }
 @media (max-width: 643px) {
-    section.container-widget-progression section.widget-charge-entrainement {
+    section.container-widget-progression a {
         max-width: none;
     }
 }

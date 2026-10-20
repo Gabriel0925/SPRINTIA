@@ -163,53 +163,54 @@ i {
 .icon_discussion:before {content: "\e909";}
 .icon_entrainement:before {content: "\e90a";}
 .icon_entrainement_du_jour:before {content: "\e90b";}
-.icon_fermer:before {content: "\e90c";}
-.icon_file:before {content: "\e90d";}
-.icon_file_csv:before {content: "\e90e";}
-.icon_file_json:before {content: "\e90f";}
-.icon_fleche_droite:before {content: "\e910";}
-.icon_fleche_gauche:before {content: "\e911";}
-.icon_flight:before {content: "\e912";}
-.icon_flow:before {content: "\e913";}
-.icon_folder_open:before {content: "\e914";}
-.icon_fullscreen:before {content: "\e915";}
-.icon_fullscreen_exit:before {content: "\e916";}
-.icon_goutte_eau:before {content: "\e917";}
-.icon_gpx:before {content: "\e918";}
-.icon_historique:before {content: "\e919";}
-.icon_hydratation:before {content: "\e91a";}
-.icon_IMC:before {content: "\e91b";}
-.icon_indulgence_course:before {content: "\e91c";}
-.icon_info:before {content: "\e91d";}
-.icon_licence:before {content: "\e91e";}
-.icon_mail:before {content: "\e91f";}
-.icon_metabolisme_base:before {content: "\e920";}
-.icon_modifier:before {content: "\e921";}
-.icon_natation:before {content: "\e922";}
-.icon_niveau_course:before {content: "\e923";}
-.icon_outils:before {content: "\e924";}
-.icon_parametres:before {content: "\e925";}
-.icon_partage:before {content: "\e926";}
-.icon_pause:before {content: "\e927";}
-.icon_plus:before {content: "\e928";}
-.icon_position:before {content: "\e929";}
-.icon_profil:before {content: "\e92a";}
-.icon_progression:before {content: "\e92b";}
-.icon_proteines:before {content: "\e92c";}
-.icon_recuperation:before {content: "\e92d";}
-.icon_refresh:before {content: "\e92e";}
-.icon_RM:before {content: "\e92f";}
-.icon_search:before {content: "\e930";}
-.icon_search_off:before {content: "\e931";}
-.icon_SPRINTIA_analyse:before {content: "\e932";}
-.icon_statistiques:before {content: "\e933";}
-.icon_supprimer:before {content: "\e934";}
-.icon_telephone:before {content: "\e935";}
-.icon_temps_recup:before {content: "\e936";}
-.icon_velo:before {content: "\e937";}
-.icon_verre_eau:before {content: "\e938";}
-.icon_video:before {content: "\e939";}
-.icon_zones_cardiaques:before {content: "\e93a";}
+.icon_envoyer:before {content: "\e90c";}
+.icon_fermer:before {content: "\e90d";}
+.icon_file:before {content: "\e90e";}
+.icon_file_csv:before {content: "\e90f";}
+.icon_file_json:before {content: "\e910";}
+.icon_fleche_droite:before {content: "\e911";}
+.icon_fleche_gauche:before {content: "\e912";}
+.icon_flight:before {content: "\e913";}
+.icon_flow:before {content: "\e914";}
+.icon_folder_open:before {content: "\e915";}
+.icon_fullscreen:before {content: "\e916";}
+.icon_fullscreen_exit:before {content: "\e917";}
+.icon_goutte_eau:before {content: "\e918";}
+.icon_gpx:before {content: "\e919";}
+.icon_historique:before {content: "\e91a";}
+.icon_hydratation:before {content: "\e91b";}
+.icon_IMC:before {content: "\e91c";}
+.icon_indulgence_course:before {content: "\e91d";}
+.icon_info:before {content: "\e91e";}
+.icon_licence:before {content: "\e91f";}
+.icon_mail:before {content: "\e920";}
+.icon_metabolisme_base:before {content: "\e921";}
+.icon_modifier:before {content: "\e922";}
+.icon_natation:before {content: "\e923";}
+.icon_niveau_course:before {content: "\e924";}
+.icon_outils:before {content: "\e925";}
+.icon_parametres:before {content: "\e926";}
+.icon_partage:before {content: "\e927";}
+.icon_pause:before {content: "\e928";}
+.icon_plus:before {content: "\e929";}
+.icon_position:before {content: "\e92a";}
+.icon_profil:before {content: "\e92b";}
+.icon_progression:before {content: "\e92c";}
+.icon_proteines:before {content: "\e92d";}
+.icon_recuperation:before {content: "\e92e";}
+.icon_refresh:before {content: "\e92f";}
+.icon_RM:before {content: "\e930";}
+.icon_search:before {content: "\e931";}
+.icon_search_off:before {content: "\e932";}
+.icon_SPRINTIA_analyse:before {content: "\e933";}
+.icon_statistiques:before {content: "\e934";}
+.icon_supprimer:before {content: "\e935";}
+.icon_telephone:before {content: "\e936";}
+.icon_temps_recup:before {content: "\e937";}
+.icon_velo:before {content: "\e938";}
+.icon_verre_eau:before {content: "\e939";}
+.icon_video:before {content: "\e93a";}
+.icon_zones_cardiaques:before {content: "\e93b";}
 
 * {
     margin: 0;
@@ -507,12 +508,12 @@ section.header ul.header-container-items li.header-items{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--SPACE_XXS);
+    gap: var(--SPACE_XS);
     background-color: transparent;
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--P);
     border-radius: var(--BORDER_NORMAL);
-    width: 145px;
+    width: 150px;
     padding: var(--SPACE_S);
     cursor: pointer;
     -webkit-user-select: none;
@@ -560,7 +561,7 @@ section.header ul.header-container-items li.header-items.point-bleu-header::befo
     width: 5px;
     height: 5px;
     margin-top: var(--SPACE_S);
-    margin-right: 2.8rem;
+    margin-right: 2.25rem;
 
     background-color: var(--COLOR_ACCENT);
     border-radius: 50%;
@@ -667,7 +668,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-ba
     width: 6px;
     height: 6px;
     margin-top: var(--SPACE_XS);
-    margin-right: var(--SPACE_L);
+    margin-right: 1.25rem;
 
     background-color: var(--COLOR_ACCENT);
     border-radius: 50%;
@@ -4350,7 +4351,6 @@ div.container-bar-chat i{
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(315deg);
 
     background: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
     color: var(--COLOR_BACKGROUND);
@@ -4371,7 +4371,7 @@ div.container-bar-chat i{
     }
 }
 div.container-bar-chat i:active{
-    transform: scale(var(--SCALE_NORMAL)) rotate(315deg);
+    transform: scale(var(--SCALE_NORMAL));
     background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
 @media (max-width: 800px) {

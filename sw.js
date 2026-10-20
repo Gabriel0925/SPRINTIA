@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.53" 
+const VERSION_CACHE = "V1.1.54" 
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
@@ -58,8 +58,8 @@ const fileInCache = [
     // PLUS
     "/plus/plus.html", "/plus/script-plus.js",
 
-    "/plus/discussion/discussion.html", "/plus/discussion/parametres.html",  "/plus/discussion/historique.html",
-    "/plus/discussion/script-SPRINTIA-Analyse.js", "/plus/discussion/script-parametres-discussion.js",
+    "/plus/discussion/discussion.html", "/plus/discussion/parametres.html", "/plus/discussion/a-propos.html",  "/plus/discussion/historique.html",
+    "/plus/discussion/script-SPRINTIA-Analyse.js", "/plus/discussion/config-SPRINTIA-analyse.js",
 
     // HISTORIQUE VERSIONS
     "/plus/historique-versions/historique-versions.html", "/plus/historique-versions/script-historique-versions.js",
@@ -112,7 +112,6 @@ const fileInCache = [
     "/plus/parametres/gestion-donnees/script-save-restoration.js",
 
     "/plus/parametres/licence/licence.html",
-    "/plus/parametres/SPRINTIA-analyse/SPRINTIA-analyse.html", "/plus/parametres/SPRINTIA-analyse/a-propos.html", "/plus/parametres/SPRINTIA-analyse/config-SPRINTIA-analyse.js",
 
     "/plus/profil/modification-profil.html", "/plus/profil/profil.html", "/plus/profil/script-modification-profil.js", "/plus/profil/script-profil.js",
 

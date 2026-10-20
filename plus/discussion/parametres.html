@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
-    <link rel="manifest" href="../../manifest.json">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" type="image/png" href="../../../assets/icons-SPRINTIA/icon-navigateur.png">
+    <link rel="manifest" href="../../../manifest.json">
 
     <meta name="theme-color" content="#000000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
-    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
+    <link rel="apple-touch-icon" href="../../../assets/icons-SPRINTIA/icon-192.png">
 
 </head>
 
@@ -75,52 +75,117 @@
     </section>
     
     <div class="toolbar">
-        <h1>Paramètres</h1>
+        <h1 id="title-analyse">Paramètres</h1>
+        <!-- <div class="container-command">
+            <a href="a-propos.html">
+                <i class="icon_info"></i>
+            </a>
+        </div> -->
     </div>
     
+    <h2>Style du coach</h2>
+    <section class="container-coach">
 
+        <div class="card-coach" id="coach-bienveillant">
+
+            <div class="avatar">
+                <svg id="bienveillant" viewBox="0 0 100 100">
+
+                    <circle class="cercle-lumineux" cx="50" cy="50" r="35"/>
+
+                    <line class="yeux-gauche" x1="39" x2="39" y1="38" y2="42" stroke="white" stroke-width="10" stroke-linecap="round"/>
+                    <line class="yeux-droit" x1="61" x2="61" y1="38" y2="42" stroke="white" stroke-width="10" stroke-linecap="round"/>
+
+                </svg>
+            </div>
+
+            <div class="information-coach">
+                <span class="title-coach">Bienveillant</span>
+                <p class="description-coach">
+                    Je suis là pour t'aider à devenir meilleur·e et toujours voir le positif même dans les moments difficiles.
+                </p>
+            </div>
+            
+        </div>
+        
+        <div class="card-coach" id="coach-strict-motivant">
+
+            <div class="avatar">
+                <svg id="strict-motivant" viewBox="0 0 100 100">
+
+                    <rect class="carre-lumineux" x="15" y="15" rx="12" width="70" height="70"/>
+
+                    <circle class="yeux-gauche" cx="37" cy="36" r="8"/>
+                    <circle class="yeux-droit" cx="63" cy="36" r="8"/>
+
+                </svg>
+            </div>
+
+            <div class="information-coach">
+                <span class="title-coach">Strict & Motivant</span>
+                <p class="description-coach">
+                    Je suis là pour te pousser à te dépasser, comme on dit : "C'est quand on est dans le dur qu'on progresse réellement !"
+                </p>
+            </div>
+            
+        </div>
+
+        <div class="card-coach" id="coach-copain">
+
+            <div class="avatar">
+                <svg id="copain" viewBox="0 0 100 100">
+                    
+                    <circle class="rectangle-arrondi-lumineux" cx="42" cy="50" r="35" transform="scale(1.2, 0.9)"/>
+
+                    <circle class="yeux-gauche" cx="35" cy="26" r="6" transform="scale(1.1, 1.4)"/>
+                    <circle class="yeux-droit" cx="58" cy="26" r="6" transform="scale(1.1, 1.4)"/>
+
+                </svg>
+            </div>
+
+            <div class="information-coach">
+                <span class="title-coach">Copain</span>
+                <p class="description-coach">
+                    Je suis là pour te motiver, te dire les choses clairement et te faire voir que tu peux toujours aller un peu plus loin mais sans
+                    te prendre la tête.
+                </p>
+            </div>
+            
+        </div>
+
+    </section>
+
+    <h2>Briefing</h2>
     <p class="text">
-        Lorsque vous discutez avec votre coach, SPRINTIA crée un prompt avec :
+        Choisissez l'IA que vous utilisez au quotidien (votre favorite) !
     </p>
-    <ul class="list-information">
-        <li>
-            Vos données récentes (pour donner le contexte à l'IA)
-        </li>
-        <li>
-            Votre question
-        </li>
-        <li>
-            Des instructions pour personnaliser l'expérience de discussion entre votre IA favorite et vous
-        </li>
-    </ul>
+    <ol class="container-list-choice">
 
-    <p class="text">
-        Le problème c'est que quand vous analysez vos tendances, votre entraînement ou votre récupération SPRINTIA ne fournit pas les données de votre
-        profil (sexe, âge, taille, poids, FC repos) mais quand vous discutez avec le coach, SPRINTIA fournit dans le prompt toutes vos données récentes
-        d'entraînement, de récupération et également de votre profil.
-        <br><br>
-        Or vous n'avez peut-être pas envie que Gemini (ou ChatGPT ou autre IA) connaisse votre poids, votre taille,... ce qui est totalement compréhensible
-        c'est pour ça que 
-        <strong>vous pouvez désactiver le partage de vos données de profil (sexe, âge, taille, poids, FC repos) dans le prompt que SPRINTIA
-        génére.</strong>
-    </p>
+        <li class="choice-item" id="vibe">Vibe</li>
+        <li class="choice-item" id="gemini">Gemini</li>
+        <li class="choice-item" id="chat-gpt">ChatGPT</li>
 
-    <div class="banner-toggle" id="container-toggle-partage-profil">
-        <i class="icon_partage"></i> 
-        <p>Partager mon profil</p>
-        <input class="toggle" type="checkbox" id="toggle-partage-profil">
+        <li class="choice-item" id="claude">Claude</li>
+        <li class="choice-item" id="meta-ai">Meta AI</li>
+        <li class="choice-item" id="perplexity">Perplexity</li>
+
+        <li class="choice-item" id="grok">Grok</li>
+        <li class="choice-item" id="copilot">Copilot</li>
+        <li class="choice-item" id="deepseek">DeepSeek</li>
+
+        <li class="choice-item" id="ia-locale">IA Locale</li>
+
+    </ol>
+
+    <div class="container-center-marge">
+        <button class="size-block" id="reinitialiser-analyse">Réinitialiser Analyse</button>
     </div>
-    <p class="text">
-        En activant la fonctionnalité ci-dessus, SPRINTIA ajoutera les données de votre profil dans le prompt qu'il générera ce qui permettra à l'IA
-        d'être plus précise car le prompt lui donnera davantage de contexte mais ce n'est clairement pas obligatoire si vous ne souhaitez pas partager
-        les données de votre profil.
-    </p>
 
-    <script src="../../assets/base-js/base.js"></script>
+    <script src="../../../assets/base-js/base.js"></script>
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
-    <script src="../../assets/bibliotheques/dexie.js"></script>
-    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-parametres-discussion.js"></script>
+    <script src="../../../assets/bibliotheques/dexie.js"></script>
+    <script src="../../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="config-SPRINTIA-analyse.js"></script>
 
 </body>
 </html>

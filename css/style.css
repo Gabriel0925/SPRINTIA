@@ -506,12 +506,12 @@ section.header ul.header-container-items li.header-items{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--SPACE_XS);
+    gap: var(--SPACE_XXS);
     background-color: transparent;
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--P);
     border-radius: var(--BORDER_NORMAL);
-    width: 160px;
+    width: 145px;
     padding: var(--SPACE_S);
     cursor: pointer;
     -webkit-user-select: none;
@@ -584,7 +584,7 @@ section.tab-bars {
 }
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
-    max-width: 475px;
+    max-width: 525px;
     height: 64px;
     flex-grow: 1;
 
@@ -677,6 +677,17 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items p.tab-bars-items-name{
     font-size: 0.55rem;
 }
+@media (max-width: 455px) {
+    section.tab-bars ul.tab-bars-container-items {
+        gap: 0;
+    }
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items i {
+        font-size: 1.5rem;
+    }
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items p.tab-bars-items-name {
+        font-size: 0.48rem;
+    }
+}
 
 
 
@@ -724,7 +735,7 @@ div.container-logo-dynamique div.logo-dynamique {
 div.container-logo-dynamique div.logo-dynamique:active {
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
-@media (max-width: 1050px) {
+@media (max-width: 1140px) {
     div.container-logo-dynamique {
         justify-content: center;
     }
@@ -1546,7 +1557,7 @@ div.toolbar {
     align-items: center;
     margin-bottom: var(--SPACE_M);
 }
-@media (max-width: 1050px) {
+@media (max-width: 1140px) {
     div.toolbar {
         position: sticky;
         top: 0;
@@ -4455,7 +4466,7 @@ div.container-bar-chat i:active{
 
 
 /* --- Gérer l'affichage du header/tab-bars en fonction de l'appareil --- */
-@media (max-width: 1050px) {
+@media (max-width: 1140px) {
     section.header {
         display: none;
     }
@@ -4463,7 +4474,7 @@ div.container-bar-chat i:active{
         display: flex;
     }
 }
-@media (max-width: 650px) {
+@media (max-width: 770px) {
     section.tab-bars {
         justify-content: center;
     }

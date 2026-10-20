@@ -253,7 +253,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // si on est dans la page de charge d'entrainement (et donc pas dans la page de progression) on ajoute les addEvenLister
     if (window.location.pathname == "/progression/charge-entrainement/charge-entrainement.html") {
         const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse")
-        if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
+        if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {
+            
+            if (document.getElementById("statut").textContent != "Pas de statut") {
+                // l'URL
+                window.location.href = `../../plus/discussion/discussion.html?question=Analyse ma charge d'entraînement en interprétant ce que 
+SPRINTIA a analysé mais en apportant une plus-value qu'un algorithme ne peut pas comprendre. De plus, tu vas me suggérer un conseil 
+actionnable pour mon prochain entraînement et propose-moi un type d'entraînement à privilégier (en précisant le RPE cible (de 1 à 10) cohérent 
+avec l'état de ma charge d'entraînement).?data=true` // on met data true pour que ensuite le code aille cherché les datas dans le localstorage
+
+                const dataAlgorithmeEphemere = `Voici ce que SPRINTIA a interpreté : 
+Statut : ${document.getElementById("statut").textContent}
+Charge aiguë (7J) : ${Number(document.querySelector("div.part-jauge.selected span.score").textContent)} CE (=charge entraînement)
+Charge chronique (28J) : ${Number(document.getElementById("charge-28j").textContent)} CE
+Cible pour être productif : ${document.getElementById("cible").textContent} CE`
+                // on y met dans le local storage pour pouvoir ensuite aller le chercher
+                localStorage.setItem("dataAlgorithmeEphemere", dataAlgorithmeEphemere)
+            } else {
+                alert("Pas assez de données pour analyser votre charge d'entraînement !")
+            }
+
+        })}
         const buttonCopy = document.getElementById("copy")
         if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

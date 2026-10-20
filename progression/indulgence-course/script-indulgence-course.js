@@ -270,7 +270,35 @@ async function Initialisation() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse")
-    if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
+    if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {
+
+            if (document.getElementById("statut").textContent != "Pas de statut") {
+                // l'URL
+                window.location.href = `../../plus/discussion/discussion.html?question=Analyse mon indulgence de course en interprétant ce que 
+SPRINTIA a analysé mais ne te contente pas de valider la distance cible calculée par SPRINTIA, explique moi comment diviser intelligemment ce volume. Suggère-moi
+ un entraînement que je pourrais effectué aujourd'hui ou dans la semaine.?data=true` // on met data true pour que ensuite le code aille cherché les datas dans le localstorage
+
+                const dicoTypeCoureur = {
+                    "occasionnel": "Occasionnel·le",
+                    "regulier": "Régulier·ère",
+                    "confirme": "Confirmé·e",
+                }
+                let typeCoureur = dicoTypeCoureur[localStorage.getItem("typeCoureur")]
+                if (typeCoureur == null) {typeCoureur = "Occasionnel·le"}
+
+
+                const dataAlgorithmeEphemere = `Voici ce que SPRINTIA a interpreté :
+Statut : "${document.getElementById("statut").textContent}"
+Distance réel sur 7J : ${document.getElementById("reponse-algo-allure").textContent}
+Distance hebdomadaire conseillée : ${document.getElementById("reponse-algo-indulgence").textContent}
+Type de coureur·euse (séléctionné par l'utilisateur dans les paramètres) : ${typeCoureur}`
+                // on y met dans le local storage pour pouvoir ensuite aller le chercher
+                localStorage.setItem("dataAlgorithmeEphemere", dataAlgorithmeEphemere)
+            } else {
+                alert("Pas assez de données pour analyser votre charge d'entraînement !")
+            }
+
+    })}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

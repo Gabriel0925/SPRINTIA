@@ -458,6 +458,7 @@ async function majLocalStorage(versionLocalStorageStockee) {
     if (versionLocalStorageStockee == "5") {
         localStorage.removeItem("personnaliteCoachBriefing")
         localStorage.removeItem("niveauAnalyseIA")
+        localStorage.removeItem("shareProfilDataInPrompt")
 
         localStorage.setItem("VersionLocalStorage", "26.11")
     }

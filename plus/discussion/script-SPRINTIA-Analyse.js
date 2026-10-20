@@ -20,6 +20,7 @@ const dicoStyleCoach = {
 const iaFavoriteUser = dicoIA[localStorage.getItem("iaFavorite")] || "Vibe"
 let promptGenerate = undefined
 let clickOnButtonCopy = false
+let dataInLocalStorage = false
 
 
 // --- Raccourcis/Idées prompt ---
@@ -144,18 +145,20 @@ function paramURL() {
         for (const elt of newTableauSeparation) {
             const tableauKeyValue = elt.split("=") // ex =['question', 'test']
             // on ajoute au dico la clé et la valeur
-            dicoParametres[tableauKeyValue[0]] = tableauKeyValue[1]
+            // "decodeURIComponent" pour enlever les %20 qui est un espace,... exemple on passe de ça "Analyse%20ma%20r%C3%A9cup%C3%A9ration" -> "Analyser ma récupération"
+            dicoParametres[tableauKeyValue[0]] = decodeURIComponent(tableauKeyValue[1])
         }
 
         if (dicoParametres.question) { // si il y a une question alors on le met dans le textarea
             let textarea = document.getElementById("promt-user")
             if (textarea) {
-                // pour enlever les %20 qui est un espace,... exemple on passe de ça "Analyse%20ma%20r%C3%A9cup%C3%A9ration" -> "Analyser ma récupération"
-                textarea.value = decodeURIComponent(dicoParametres.question)
+                textarea.value = dicoParametres.question
             }
         }
 
-        console.log(dicoParametres)
+        if (dicoParametres.data && dicoParametres.data == "true") {
+            dataInLocalStorage = true
+        }
 
 
     }
@@ -328,8 +331,7 @@ async function generatePrompt() {
     }
 
     // Consigne de base
-    promptGenerate = `Tu es le coach sportif expert de l'application SPRINTIA. L'utilisateur va te poser une question, ton but ? Répondre à ses questions de manière fluide et 
-précise en te basant sur les données qu'il a enregistré dans l'application. Information temporelle : aujourd'hui nous sommes le ${createObjetDate(0)}.`
+    promptGenerate = `Tu es le coach sportif expert de l'application SPRINTIA. L'utilisateur va te poser une question, ton but ? Répondre à ses questions de manière fluide et précise en te basant sur les données qu'il a enregistré dans l'application. Information temporelle : aujourd'hui nous sommes le ${createObjetDate(0)}.`
 
     if (dataWorkout != undefined) {
         promptGenerate += "\n\nL'historique d'entrainement :\n" + convertToCSV(dataWorkout)
@@ -345,6 +347,17 @@ précise en te basant sur les données qu'il a enregistré dans l'application. I
     // ajout de la question du user (pr info on a déjà vérifié si le textearea était vide dans le html)
     // on remplace les \n par des espaces pr économiser des tokens
     promptGenerate += `\n\nVoici la question que l'utilisateur a posé à SPRINTIA : "${document.getElementById("promt-user").value.replace(/\n/g, " ")}"`
+
+    // on regarde si on a pas passé des datas dans le localStorage depuis la CE ou l'indulgence de course
+    if (dataInLocalStorage == true) {
+        const dataAlgorithme = localStorage.getItem("dataAlgorithmeEphemere")
+        if (dataAlgorithme != null) {
+            promptGenerate += "\n\n" + dataAlgorithme
+        }
+
+        dataInLocalStorage = false
+        localStorage.removeItem("dataAlgorithmeEphemere")
+    }
 
     let styleCoachUser = await styleCoach()
     if (styleCoachUser == undefined) {styleCoachUser = "Bienveillant"}

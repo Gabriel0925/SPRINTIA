@@ -1,10 +1,10 @@
-const VERSION_CACHE = "V1.1.51" 
+const VERSION_CACHE = "V1.1.53" 
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
 
     // BASE DE L'APP
-    "/assets/base-js/base.js", "/assets/base-js/db-config.js", "/assets/base-js/SPRINTIA-analyse.js",
+    "/assets/base-js/base.js", "/assets/base-js/db-config.js",
 
     // BIBLIOTHEQUES
     "/assets/bibliotheques/chart.min.js", "/assets/bibliotheques/dexie.js", "/assets/bibliotheques/email.min.js",  "/assets/bibliotheques/GPXParser.min.js",
@@ -59,7 +59,7 @@ const fileInCache = [
     "/plus/plus.html", "/plus/script-plus.js",
 
     "/plus/discussion/discussion.html", "/plus/discussion/parametres.html",  "/plus/discussion/historique.html",
-    "/plus/discussion/script-discussion.js", "/plus/discussion/script-parametres-discussion.js",
+    "/plus/discussion/script-SPRINTIA-Analyse.js", "/plus/discussion/script-parametres-discussion.js",
 
     // HISTORIQUE VERSIONS
     "/plus/historique-versions/historique-versions.html", "/plus/historique-versions/script-historique-versions.js",
@@ -124,7 +124,7 @@ const fileInCache = [
 
     "/progression/charge-entrainement/charge-entrainement.html", "/progression/charge-entrainement/script-charge-entrainement.js",
     
-    "/progression/indulgence-course/indulgence-course.html", "/progression/indulgence-course/parametres.html", "/progression/indulgence-course/script-outil.js",
+    "/progression/indulgence-course/indulgence-course.html", "/progression/indulgence-course/parametres.html", "/progression/indulgence-course/script-indulgence-course.js",
     "/progression/indulgence-course/script-parametres.js",
 
     "/progression/niveau-course/a-propos.html", "/progression/niveau-course/ajouter-niveau-course.html", "/progression/niveau-course/niveau-course-analyse.html", "/progression/niveau-course/niveau-course-evolution.html", 

@@ -17,12 +17,6 @@ const dicoAnalyse = {
         "Maintien": "Tranquille tu maintiens ton niveau actuel, c'est une bonne chose ! Pour passer en statut productif il te suffit d'augmenter un tout petit peu ta charge d'entraînement des 7 derniers jours.",
         "Productif": "Bravo, tu progresses ! Tous tes efforts sont en train de payer, continue de t'entraîner de cette façon, ça semble être positif pour ta progression.",
         "Surentraînement": "Tu t'entraînes plus que d'habitude, ton corps semble galérer à se régénérer. Petit conseil, fais une pause de quelques jours."
-    },
-    "Go-muscu": {
-        "Désentraînement": "Tu régresses là ! Il ne faut pas hésiter à faire 1 ou 2 répétitions en plus sur tes séries pour pouvoir augmenter ton RPE et par conséquent ta charge d'entraînement.",
-        "Maintien": "Attention tu es en pleine zone de confort ! Monte un peu les poids ou rajoute plus d'intensité si tu veux aller chercher le statut productif.",
-        "Productif": "GG, tu progresses, je vois que tu mets une bonne intensité pendant tes séances, continue comme ça. Tu n'as presque plus besoin de moi.",
-        "Surentraînement": "Ton corps n'arrive pas à bien récupérer de tes entraînements récents, n'oublie jamais que le muscle se construit au repos, pas à la salle, repose-toi un peu avant d'aller à la salle."
     }
 }
 

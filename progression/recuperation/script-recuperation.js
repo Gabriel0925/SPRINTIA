@@ -31,12 +31,6 @@ const dicoInterpretation = {
         "Ta FC repos du jour est bien basse, franchement c'est top ! Tu pètes la forme, c'est le moment idéal pour aller te donner à fond, rien ne peut t'arrêter aujourd'hui.",
         "Ta FC repos est dans la normale. C'est cool, ça veut dire que tu as bien récupéré de tes efforts passés. Tu peux aller t'entraîner sans problème si tu avez prévu une séance aujourd'hui.",
         "Ta FC repos du jour est un peu haute. Je pense que ton corps a besoin de repos. Prends une journée de repos, pour aider ton corps à se régénérer, c'est plus prudent et ça te permettra de revenir plus fort·e !"
-    ],
-    "Go-muscu": [
-        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
-        "Ta FC repos est super basse ! Ton cardio est au top et ton système nerveux est prêt·e à pousser lourd. C'est le moment de tout casser à la salle, profite de cette énergie pour aller à l'échec !",
-        "Ta FC repos est stable, c'est carré ! Ton corps a bien récupéré, tu peux aller t'entraîner sereinement. N'oublie pas, la régularité c'est ce qui te permettra de prendre du muscle sur le long terme.",
-        "Ta FC repos est un peu haute aujourd'hui. Ton corps galère à récupérer. N'oublie pas que le muscle se construit quand tu te reposes et aujourd'hui, ça semble être le jour parfait pour te reposer."
     ]
 }
 
@@ -332,7 +326,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (buttonPlus) {buttonPlus.addEventListener("click", () => {window.location.href = 'historique-recuperation.html'})}
 
     const buttonAnalyse = document.getElementById("button-SPRINTIA-analyse")
-    if (buttonAnalyse){buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
+    if (buttonAnalyse){
+
+        buttonAnalyse.addEventListener("click", () => {
+            const fcReposToday = document.getElementById("fc-repos-today")
+            if (fcReposToday && fcReposToday.textContent != "--") { // si il y a des datas on renvoie à discussion
+                window.location.href = "../../plus/discussion/discussion.html?question=Analyse ma récupération du jour pour que je sache si je suis en forme pour faire un entraînement, trouve des corrélations avec mes entraînements récents et suggère-moi un entraînement en fonction de mes entraînements récents et de ma récupération."
+            } else { // sinon on previent le user
+                alert("Pour analyser votre récupération, veuillez enregistrer votre FC repos du jour !")
+            }
+        })
+    }
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

@@ -149,7 +149,10 @@ function paramURL() {
 
         if (dicoParametres.question) { // si il y a une question alors on le met dans le textarea
             let textarea = document.getElementById("promt-user")
-            if (textarea) {textarea.value = dicoParametres.question}
+            if (textarea) {
+                // pour enlever les %20 qui est un espace,... exemple on passe de ça "Analyse%20ma%20r%C3%A9cup%C3%A9ration" -> "Analyser ma récupération"
+                textarea.value = decodeURIComponent(dicoParametres.question)
+            }
         }
 
         console.log(dicoParametres)
@@ -322,15 +325,15 @@ async function generatePrompt() {
     // si ya pas de données d'entrainement ou/et de récup alors on genere rien du tout
     if (dataWorkout == undefined && dataRecup == undefined) {
         return undefined
-    } else if (dataWorkout == undefined) {
-        return undefined
     }
 
     // Consigne de base
     promptGenerate = `Tu es le coach sportif expert de l'application SPRINTIA. L'utilisateur va te poser une question, ton but ? Répondre à ses questions de manière fluide et 
 précise en te basant sur les données qu'il a enregistré dans l'application. Information temporelle : aujourd'hui nous sommes le ${createObjetDate(0)}.`
 
-    promptGenerate += "\n\nL'historique d'entrainement :\n" + convertToCSV(dataWorkout)
+    if (dataWorkout != undefined) {
+        promptGenerate += "\n\nL'historique d'entrainement :\n" + convertToCSV(dataWorkout)
+    }
 
     if (dataRecup != undefined) {
         promptGenerate += "\n\nL'historique de récupération :\n" + convertToCSV(dataRecup)

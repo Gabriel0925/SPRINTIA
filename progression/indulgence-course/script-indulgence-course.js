@@ -17,12 +17,6 @@ const InterpretationCopain = {
     "3": "Bravo ! Tu progresses grâce à ton sérieux, ta concentration et ta détermination à toujours donner le meilleur de toi-même. Pour continuer à progresser, pense toujours à varier tes allures d'entraînement.", 
     "4": "Attention, tu cours bien plus que d'habitude ! J'ai l'impression que tu aimes un peu trop courir en ce moment, c'est bien, mais attention : sans progressivité, plus tu risques de te blesser."
 }
-const InterpretationGoMuscu = {
-    "1": "Je n'ai pas encore assez de données pour calculer ton indulgence de course. J'ai hâte que tu enregistres ton premier entraînement de course (en enregistrant une distance) dans SPRINTIA pour qu'on analyse ça ensemble.", 
-    "2": "Tu cours moins depuis 7 jours, attention, la course à pied c'est comme la musculation ça demande de la régularité. Ton coeur, c'est un muscle, il faut le travailler pour qu'il devienne meilleur.", 
-    "3": "Tu progresses, parfait ! En plus de travailler tes muscles, tu travailles ton coeur, bien joué ! Pour continuer à progresser, pense toujours à varier tes allures d'entraînement.", 
-    "4": "Tu cours bien plus que d'habitude ! Fais attention, si tu continues sur ce rythme tu risques de te blesser donc réduis ton volume kilométrique."
-}
 const dicoFouchetteIndulgence = { // pour les coefficients des tranches pr la distance hebdo conseillée
     "occasionnel": [
         // très prudent pour les occasionnels car les articulations et les tendons ne sont pas habitués
@@ -234,11 +228,9 @@ async function InterpretationJRM(Distance7J, Distance28J, IndulgenceDeCourseFin)
             Interpretation = InterpretationBienveillant
         } else if (TableauStyleCoach[0] == "Strict-Motivant") {
             Interpretation = InterpretationStrictMotivant
-        } else if (TableauStyleCoach[0] == "Copain") {
-            Interpretation = InterpretationCopain
         } else {
-            Interpretation = InterpretationGoMuscu
-        }
+            Interpretation = InterpretationCopain
+        } 
     }
 
     // quand il y a pas de données

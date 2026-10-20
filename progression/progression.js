@@ -87,7 +87,9 @@ window.addEventListener("pageshow", (event) => {
 document.addEventListener("DOMContentLoaded", async () => {
     // écouteur d'event
     const buttonAnalyse = document.querySelector("button.analyse")
-    if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {windowsAnalyse()})}
+    if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {
+        window.location.href = "../../plus/discussion/discussion.html?question=Analyse mes tendances d'entraînements en me donnant 3 insights clés, un conseil actionnable pour mon prochain entraînement et compare les statistiques de mes 7 derniers jours d'entraînement aux semaines précédentes."
+    })}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}
 

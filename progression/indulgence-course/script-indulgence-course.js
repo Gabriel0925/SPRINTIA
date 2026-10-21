@@ -295,7 +295,7 @@ Type de coureur·euse (séléctionné par l'utilisateur dans les paramètres) : 
                 // on y met dans le local storage pour pouvoir ensuite aller le chercher
                 localStorage.setItem("dataAlgorithmeEphemere", dataAlgorithmeEphemere)
             } else {
-                alert("Pas assez de données pour analyser votre charge d'entraînement !")
+                alert("Pas assez de données pour analyser votre indulgence de course ! Veuillez enregistrer un entraînement de course (avec une distance) sur les 28 derniers jours.")
             }
 
     })}

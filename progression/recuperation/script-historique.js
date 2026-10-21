@@ -22,7 +22,7 @@ async function remplissageTableau() {
         return
     }
     
-    document.getElementById("first-line-table").style.display="none"
+    document.getElementById("first-line-table").remove()
 
     historiqueDataUser.forEach(elt => {
         // Structure du tableau

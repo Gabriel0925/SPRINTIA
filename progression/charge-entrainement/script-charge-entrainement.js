@@ -227,10 +227,19 @@ async function displayOnScreenCE() {
         // on affiche la valeur de la CE des 7 derniers jours dans l'enfant de la jauge
         document.getElementById(idHtmlStatut[statutUser]).querySelector(".score").textContent = chargeTotale7j;
         document.getElementById(idHtmlStatut[statutUser]).querySelector(".unit").textContent = "CE";
+
+        document.getElementById("container-block-data-charge-7j").style.display = "none" // on enleve le bloc de la charge des 7J car on l'affiche dans la jauge
     } else {
         for (const tranche of trancheJauge) {
             tranche.classList.add("disabled")
         }
+        
+        // on affiche la charge des 7j dans un bloc différent qu'il n'y a pas de statut
+        document.getElementById("charge-7j").textContent = Math.floor(chargeTotale7j)
+        document.getElementById("charge-7j").classList.remove("skeleton")
+
+        // on cache la cible car ya pas de statut
+        document.getElementById("block-data-cible").style.display = "none"
     }
 
     // affichage du statut et de l'analyse
@@ -270,7 +279,7 @@ Cible pour être productif : ${document.getElementById("cible").textContent} CE`
                 // on y met dans le local storage pour pouvoir ensuite aller le chercher
                 localStorage.setItem("dataAlgorithmeEphemere", dataAlgorithmeEphemere)
             } else {
-                alert("Pas assez de données pour analyser votre charge d'entraînement !")
+                alert("Pas assez de données pour analyser votre charge d'entraînement ! Veuillez enregistrer au moins 3 entraînements sur les 28 derniers jours.")
             }
 
         })}

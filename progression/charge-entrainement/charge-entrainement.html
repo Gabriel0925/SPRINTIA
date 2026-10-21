@@ -85,11 +85,6 @@
     <main>    
         <div class="toolbar">
             <h1>Charge d'entraînement</h1>
-            <div class="container-command">
-                <a href="/entrainement/ajouter-entrainement.html">
-                    <i class="icon_add"></i>
-                </a>
-            </div>
         </div>
 
         <section class="container-content-algorithme">
@@ -116,9 +111,17 @@
             <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
             <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
         </div>
-        <section class="container-block"> 
+        <section class="container-block" id="container-block-data-charge-7j"> 
 
             <div class="container-block-data">
+                <p class="container-block-data-header">Charge aiguë (7J)</p>
+                <p class="container-block-data-data"><span id="charge-7j" class="skeleton"></span><small>CE</small></p>
+            </div>
+
+        </section>
+        <section class="container-block"> 
+
+            <div class="container-block-data" id="block-data-cible">
                 <p class="container-block-data-header">Cible</p>
                 <p class="container-block-data-data"><span id="cible" class="skeleton"></span><small>CE</small></p>
             </div>

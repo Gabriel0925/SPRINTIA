@@ -79,7 +79,7 @@ async function remplirTableau() {
     if (dataDB.length > 0) {
         document.getElementById("aucune-data").style.display = "none"
 
-        document.getElementById("first-line-table").style.display="none"
+        document.getElementById("first-line-table").remove()
         for (const data of dataDB) {
             // data contient le dico ex : {niveau_course_user: 72, date: '2026-01-25', id: 1}
             const newLine = tableauHistorique.insertRow()

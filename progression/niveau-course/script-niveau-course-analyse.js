@@ -306,7 +306,7 @@ async function displayOnScreenLevelRun () {
     document.getElementById("time-marathon").textContent = tempsMarathon
     document.getElementById("time-marathon").classList.remove("skeleton")
 
-    if (document.getElementById("rFTPw-estimee").textContent == "--W") {
+    if (document.getElementById("rFTPw-estimee").textContent == "--") {
         document.getElementById("rFTPw-estimee").addEventListener("click", () => {
             alert("Pour avoir accès à votre rFTPw veuillez configurer votre profil.")
         });

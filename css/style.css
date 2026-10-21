@@ -4469,6 +4469,17 @@ section.container-question-prompt div.part-name-data span.data{
     font-weight: normal;
     white-space: pre-wrap; /*pour que le prompt s'affiche bien avec les retour à la ligne '\n' */
 }
+section.container-question-prompt div.part-name-data span.data.skeleton{
+    display: inline-block;
+    width: 300px;
+    height: 29px;
+    margin-top: var(--SPACE_M);
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_SMALL);
+    overflow: hidden;
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
+}
 
 
 

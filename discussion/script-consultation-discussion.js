@@ -8,10 +8,44 @@ async function init(id) {
     }
 
     document.getElementById("date").textContent = dataOfThisDiscussion.date
-    document.getElementById("question").textContent = dataOfThisDiscussion.question
-    document.getElementById("prompt").textContent = dataOfThisDiscussion.prompt
+    document.getElementById("date").classList.remove("skeleton")
 
-    console.log(dataOfThisDiscussion)
+    document.getElementById("question").textContent = dataOfThisDiscussion.question
+    document.getElementById("question").classList.remove("skeleton")
+
+    document.getElementById("prompt").textContent = dataOfThisDiscussion.prompt
+    document.getElementById("prompt").classList.remove("skeleton")
+
+    // on donne un role au suppr et au copier
+    const buttonToolbarSuprr = document.querySelector("i.icon_supprimer")
+    if (buttonToolbarSuprr) {
+        buttonToolbarSuprr.addEventListener("click",async () => {
+            if (confirm("Êtes-vous sûr de vouloir supprimer cette question ?")) {
+                try {
+                    await db.discussion.delete(id)
+
+                    window.location.href = "historique.html"
+                } catch(error) {
+                    console.log(error)
+                    alert("Une erreur s'est produite lors de la suppression de cette question.")
+                }
+            }
+        })
+    }
+
+    const buttonCopy = document.querySelector("i.icon_copy")
+    if (buttonCopy) {
+        buttonCopy.addEventListener("click",async () => {
+            navigator.clipboard.writeText(dataOfThisDiscussion.prompt)
+            .then(async() => {
+                logoDynamique("📋 Copié !")
+            }).catch(error => {
+                console.log(error)
+                alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.")
+                return
+            })
+        })
+    }
 }
 
 window.addEventListener("DOMContentLoaded", async () => {

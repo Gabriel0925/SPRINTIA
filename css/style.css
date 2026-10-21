@@ -1296,6 +1296,7 @@ button.analyse {
     color: var(--COLOR_BACKGROUND);
     background-color: transparent;
     overflow: hidden;
+    box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
     position: relative;
 
     width: 100%;
@@ -2024,6 +2025,8 @@ div.zone-coach button {
     margin: var(--SPACE_XS) 0;
 
     color: var(--COLOR_BACKGROUND);
+    
+    box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
     background-color: transparent;
     overflow: hidden;
     position: relative;
@@ -3931,6 +3934,8 @@ section.container-content-algorithme div.widget-analyse button{
     margin: var(--SPACE_XS) 0;
 
     color: var(--COLOR_BACKGROUND);
+    
+    box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
     background-color: transparent;
     overflow: hidden;
     position: relative;
@@ -4276,6 +4281,40 @@ div.container-idee-prompt div.idee-prompt{
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
+@keyframes animation_ideas_question {
+    0% {
+        color: var(--COLOR_TEXT_SECONDARY);
+        background-color: var(--COLOR_BACKGROUND_CARD);
+        transform: translateY(-15px) scale(0.8);
+    }
+    40% {
+        color: var(--COLOR_TEXT_PRIMARY);
+        background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+        transform: translateY(4px) scale(1.05);
+    }
+    70% {
+        color: var(--COLOR_TEXT_PRIMARY);
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+        transform: translateY(-4px) scale(0.9);
+    }
+    100% {
+        color: var(--COLOR_TEXT_SECONDARY);
+        background-color: var(--COLOR_BACKGROUND_CARD);
+        transform: translateY(0px) scale(1);
+    }
+}
+div.container-idee-prompt div.idee-prompt.generate{
+    animation: animation_ideas_question 0.45s ease-out backwards;
+}
+div.container-idee-prompt div.idee-prompt.generate:nth-child(1){
+    animation-delay: 0.03s;
+}
+div.container-idee-prompt div.idee-prompt.generate:nth-child(2){
+    animation-delay: 0.07s;
+}
+div.container-idee-prompt div.idee-prompt.generate:nth-child(3){
+    animation-delay: 0.12s;
+}
 div.container-idee-prompt div.idee-prompt.skeleton{
     color: transparent !important;
     min-width: 180px;
@@ -4370,7 +4409,7 @@ div.container-bar-chat textarea{
     height: 50px;
     max-height: 190px;
 }
-@keyframes buttonSend {
+@keyframes button_SPRINTIA_Analyse {
     0% {
         background-color: var(--COLOR_ANALYSE_START);
         box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
@@ -4401,19 +4440,10 @@ div.container-bar-chat i{
     padding-left: 13px; /*pour bien centrée l'icone*/
     cursor: pointer;
 
-    animation: buttonSend 4s infinite ease-in-out;
+    animation: button_SPRINTIA_Analyse 4s infinite ease-in-out;
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 box-shadow ease-out var(--TIME_TRANSITION)
                 transform ease-out var(--TIME_TRANSITION_FAST);
-}
-@media (hover: hover) and (pointer: fine) {
-    div.container-bar-chat i:hover{
-        background: radial-gradient(circle, var(--COLOR_ACCENT_HOVER), var(--COLOR_ACCENT_HOVER));
-    }
-}
-div.container-bar-chat i:active{
-    transform: scale(var(--SCALE_NORMAL));
-    background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
 @media (max-width: 800px) {
     div.container-bar-chat {

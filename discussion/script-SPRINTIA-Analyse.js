@@ -82,6 +82,7 @@ function raccourciPrompt() {
             const ideasCorrespondante = tableauIdeas[compteur]
 
             elt.classList.remove("skeleton") // on enleve les loaders
+            elt.classList.add("generate")
             elt.textContent = ideasCorrespondante // on attribue une phrase à un element
 
             // on ajoute un onclick

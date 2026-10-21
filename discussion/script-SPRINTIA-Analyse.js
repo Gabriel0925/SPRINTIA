@@ -173,6 +173,13 @@ async function windowsAnalyse() {
     document.querySelector("div.windows-SPRINTIA-analyse").classList.add("open")
     document.querySelector("body").classList.add("analyse-open") 
     document.querySelector("main").classList.add("analyse-open")
+
+    // on met un écouteur d'event pour refermer la fenetre si ya un clic sur le background
+    document.querySelector("section.background-SPRINTIA-analyse").addEventListener("click", (event) => {
+        if (document.querySelector(".windows-SPRINTIA-analyse.open") && !event.target.closest(".windows-SPRINTIA-analyse.open")) {
+            closeWindows()   
+        }
+    })
 }
 function closeWindows() {
     document.querySelector("div.windows-SPRINTIA-analyse").classList.add("close")

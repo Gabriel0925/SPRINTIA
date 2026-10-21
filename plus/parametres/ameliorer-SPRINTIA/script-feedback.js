@@ -58,6 +58,12 @@ async function sendEmail(descriptionUser) {
 function calculCaracRestant(interface, nbCaracEcrit) {
     const caracRestant = 2000-nbCaracEcrit
     interface.textContent = caracRestant
+
+    if (caracRestant <= 250) {
+        interface.style.color = getComputedStyle(document.documentElement).getPropertyValue("--COLOR_RED")
+    } else if (caracRestant <= 500) {
+        interface.style.color = getComputedStyle(document.documentElement).getPropertyValue("--COLOR_JAUNE")
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -230,7 +230,6 @@ function interfaceWorkout(selectedWorkout) {
     sectionResumeStatsWorkout.appendChild(divContainerData)
     
     for (let i=0; i<2 ;i++) { // pour la durée et la charge
-
         const divData = document.createElement("div")
         divData.classList.add("data")
         divContainerData.appendChild(divData)

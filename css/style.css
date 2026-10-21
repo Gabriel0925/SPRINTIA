@@ -45,6 +45,11 @@
     --COLOR_BORDER_FLOATING_COMPONENT_DARK: rgba(0, 0, 0, 0.1);
 
 
+    /* Autre couleur */
+    --COLOR_RED: #ff4b4c;
+    --COLOR_VERT: #1fff80;
+    --COLOR_JAUNE: #e7e625;
+
     /* FONT */
     --H1: 1.78rem;
     --FW_BOLD: 700;
@@ -415,7 +420,7 @@ button.table { /* Pour les boutons dans un tableau */
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 button.table.table-supprimer { /* Pour les boutons dans un tableau */
-    color: #ff4b4c;
+    color: var(--COLOR_RED);
 }
 @media (hover: hover) and (pointer: fine) {
     button.table:hover{
@@ -437,7 +442,7 @@ button.size-block.left {
     margin: 0;
 }
 button.supprimer {
-    background-color: #ff4b4c;
+    background-color: var(--COLOR_RED);
 }
 @media (hover: hover) and (pointer: fine) {
     button.supprimer:hover {
@@ -1516,11 +1521,11 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
     animation: selected_jauge var(--TIME_TRANSITION) ease-out;
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.optimale{
-    background-color: #1fff80;
+    background-color: var(--COLOR_VERT);
     animation: selected_jauge var(--TIME_TRANSITION) ease-out;
 }
 section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.fatiguer{
-    background-color: #ff4b4c;
+    background-color: var(--COLOR_RED);
     animation: selected_jauge var(--TIME_TRANSITION) ease-out;
 } */
 section.container-small-widget-progression section.small-widget p.small-widget-data span.skeleton{
@@ -1668,7 +1673,7 @@ div.toolbar div.container-command i{
     flex-shrink: 0;
 }
 div.toolbar div.container-command i.icon_supprimer{
-    color: #ff4b4c;
+    color: var(--COLOR_RED);
 }
 
 
@@ -1720,7 +1725,7 @@ div.menu-many-action li {
                 transform ease-out var(--TIME_TRANSITION);
 }
 div.menu-many-action li#button-supprimer {
-    color: #ff4b4c;
+    color: var(--COLOR_RED);
 }
 div.menu-many-action.open li {
     animation: animation_menu_li 0.4s ease-out backwards; /* backwards c'est pour que l'animation commence à sa position initiale */
@@ -2007,11 +2012,11 @@ div.zone-coach p.title span.indicateur.reposer{
     animation: selected_jauge var(--TIME_TRANSITION) ease-out;
 }
 div.zone-coach p.title span.indicateur.optimale{
-    background-color: #1fff80;
+    background-color: var(--COLOR_VERT);
     animation: selected_jauge var(--TIME_TRANSITION) ease-out;
 }
 div.zone-coach p.title span.indicateur.fatiguer{
-    background-color: #ff4b4c;
+    background-color: var(--COLOR_RED);
     animation: selected_jauge var(--TIME_TRANSITION) ease-out;
 }
 div.zone-coach p.zone-coach-interpretation.skeleton {
@@ -2694,10 +2699,10 @@ div.small-zone-result.charge{
     height: 188px;
 }
 div.small-zone-result.color-zone:nth-child(1) {border: solid 2px #3dbaf9;}
-div.small-zone-result.color-zone:nth-child(2) {border: solid 2px #1fff80;}
-div.small-zone-result.color-zone:nth-child(3) {border: solid 2px #e7e625;}
+div.small-zone-result.color-zone:nth-child(2) {border: solid 2px var(--COLOR_VERT);}
+div.small-zone-result.color-zone:nth-child(3) {border: solid 2px var(--COLOR_JAUNE);}
 div.small-zone-result.color-zone:nth-child(4) {border: solid 2px #ff781e;}
-div.small-zone-result.color-zone:nth-child(5) {border: solid 2px #ff4b4c;}
+div.small-zone-result.color-zone:nth-child(5) {border: solid 2px var(--COLOR_RED);}
 div.small-zone-result.color-zone:nth-child(6) {border: solid 2px #d672ff;}
 div.small-zone-result.color-zone:nth-child(7) {border: solid 2px #9386f1;}
 div.small-zone-result p.small-zone-result-name {
@@ -3211,11 +3216,11 @@ input:not(:placeholder-shown) + .label-input {
 }
 .slider-name strong{
     font-weight: var(--FW_BUTTON);
-    color: #1fff80;
+    color: var(--COLOR_VERT);
 }
 .slider-name span.RPE {
     font-weight: var(--FW_BOLD);
-    background-color: #1fff80;
+    background-color: var(--COLOR_VERT);
     padding: 0.25rem var(--SPACE_S);
     margin: 0 var(--SPACE_XS);
     color: var(--COLOR_BACKGROUND);
@@ -3844,9 +3849,9 @@ section.container-content-algorithme div.widget-jauge div.part-jauge.skeleton{
     animation: skeleton_animation 1s ease-out infinite;
 }
 section.container-content-algorithme div.widget-jauge div.part-jauge#desentrainement{background-color: #3dbaf9;}
-section.container-content-algorithme div.widget-jauge div.part-jauge#maintien{background-color: #e7e625;}
-section.container-content-algorithme div.widget-jauge div.part-jauge#productif{background-color: #1fff80;}
-section.container-content-algorithme div.widget-jauge div.part-jauge#surentrainement{background-color: #ff4b4c;}
+section.container-content-algorithme div.widget-jauge div.part-jauge#maintien{background-color: var(--COLOR_JAUNE);}
+section.container-content-algorithme div.widget-jauge div.part-jauge#productif{background-color: var(--COLOR_VERT);}
+section.container-content-algorithme div.widget-jauge div.part-jauge#surentrainement{background-color: var(--COLOR_RED);}
 section.container-content-algorithme div.widget-jauge div.part-jauge.disabled{
     opacity: 1;
     background-color: var(--COLOR_BACKGROUND_CARD) !important;
@@ -4294,12 +4299,12 @@ div.container-idee-prompt div.idee-prompt{
     40% {
         color: var(--COLOR_TEXT_PRIMARY);
         background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-        transform: translateY(4px) scale(1.05);
+        transform: translateY(5px) scale(1.1);
     }
     70% {
         color: var(--COLOR_TEXT_PRIMARY);
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
-        transform: translateY(-4px) scale(0.9);
+        transform: translateY(-5px) scale(0.88);
     }
     100% {
         color: var(--COLOR_TEXT_SECONDARY);
@@ -4308,7 +4313,7 @@ div.container-idee-prompt div.idee-prompt{
     }
 }
 div.container-idee-prompt div.idee-prompt.generate{
-    animation: animation_ideas_question 0.55s ease-out backwards;
+    animation: animation_ideas_question 0.5s ease-out backwards;
 }
 div.container-idee-prompt div.idee-prompt.generate:nth-child(1){
     animation-delay: 0.03s;

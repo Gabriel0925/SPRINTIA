@@ -25,7 +25,7 @@ function calculZone(methodeCalcul, baliseTranche, ageUser, fcMaxUser, fcMax, fcR
         }
 
         let resultFinZone = 0
-        if (methodeCalcul == "Max") {
+        if (methodeCalcul == "FC-max") {
             resultFinZone = Math.round(fcMax*elt) // calcul de la fin de la zone concernée grâce au tableau
         } else { // si c'est la réserve de fc
             resultFinZone = Math.round(fcReposUser+(fcReserve*elt)) // calcul de la fin de la zone concernée grâce au tableau
@@ -43,17 +43,14 @@ function calculZone(methodeCalcul, baliseTranche, ageUser, fcMaxUser, fcMax, fcR
 function verificationInputBase() {
     // Récupérer la valeur des champs
     let methodeCalcul = document.getElementById("methode-user").value
-    let ageUser = parseInt(document.getElementById("age-user").value)
-    let fcMaxUser = parseInt(document.getElementById("fc-max-user").value)
+    let ageUser = parseInt(document.getElementById("age-user").value) || undefined
+    let fcMaxUser = parseInt(document.getElementById("fc-max-user").value) || undefined
     let fcReposUser = parseInt(document.getElementById("fc-repos-user").value) || undefined
 
-    // Vérification des champs
-    if (isNaN(ageUser)) {
+
+    // l'age on le vérifie peut importe la méthode
+    if (ageUser == undefined) {
         alert("Erreur de saisie : le champ 'âge' doit être rempli.");
-        return
-    }
-    if (methodeCalcul == "Reserve" && fcReposUser == undefined) {
-        alert("Erreur de saisie : le champ 'FC repos' doit être rempli.");
         return
     }
     if (ageUser <= 0) {
@@ -64,30 +61,36 @@ function verificationInputBase() {
         alert("Valeur non valide, l'âge ne doit pas dépasser 120 ans.")
         return
     }
-    if (!isNaN(fcReposUser) && fcReposUser <= 15) {
+
+    if (fcReposUser == undefined && methodeCalcul == "RFC") {
+        alert("Erreur de saisie : le champ 'FC repos' doit être rempli.");
+        return
+    }
+    if (fcReposUser !=undefined && fcReposUser <= 15) {
         alert("Valeur non valide, la FC repos doit être supérieur à 15 bpm.")
         return
     }
-    if (!isNaN(fcReposUser) && fcReposUser >= 150) {
+    if (fcReposUser !=undefined && fcReposUser >= 150) {
         alert("Valeur non valide, la FC repos doit être inférieur à 150 bpm.")
         return
     }
+
     
     // détermination de la FC max en la calculant de différente manière suivant ce que le user à remplit dans le form
     let fcMax = 0
-    if (isNaN(fcMaxUser)) {
-        // Formule de Tanaka
-        fcMax = Math.round(208-0.7*ageUser)
-    } else {
+    if (fcMaxUser != undefined) {
         if (fcMaxUser <= 50 || fcMaxUser >= 250) {
             alert("Valeur non valide, la FC max doit être comprise entre 50 et 250 bpm.")
             return
         }
-        if (!isNaN(fcReposUser) && fcReposUser >= fcMaxUser) {
+        if (fcReposUser!=undefined && fcReposUser >= fcMaxUser) {
             alert("Valeur non valide, la FC repos ne peut pas être supérieur à la FC max.")
             return
         }
         fcMax = fcMaxUser
+    } else {
+        // Formule de Tanaka
+        fcMax = Math.round(208-0.7*ageUser)
     }
 
     // recupération de toutes les box de résultats
@@ -98,14 +101,30 @@ function verificationInputBase() {
 }
 function comboBox(methodeCalcul) { // pour gérer les inputs certains doivent disparaître d'autre doivent apparaitre
     const dico = { // toutes les valeurs genre display block,none sont dans ce dico
-        "Max":{"inputFcMax":"block", "inputFcRepos":"none"},
-        "Reserve":{"inputFcMax":"block", "inputFcRepos":"block"}
+        "FC-max":{"inputFcMax":"block", "inputFcRepos":"none"},
+        "RFC":{"inputFcMax":"block", "inputFcRepos":"block"}
     }
 
     // on va chercher par la suite dans le dico et on affiche ou on cache les inputs en fonction de la méthode de calcul choisi
     document.getElementById("fc-max-user").style.display = dico[methodeCalcul]["inputFcMax"]
     document.getElementById("fc-repos-user").style.display = dico[methodeCalcul]["inputFcRepos"]
     document.getElementById("label-fc-user").style.display = dico[methodeCalcul]["inputFcRepos"]
+
+    let onPeutLancerFunction = false
+    const inputAge = parseInt(document.getElementById("age-user").value) || undefined
+    if (inputAge!=undefined) {
+        onPeutLancerFunction = true
+    }
+    if (methodeCalcul == "RFC") {
+        const inputFcRepos = parseInt(document.getElementById("fc-repos-user").value) || undefined
+        if (inputFcRepos==undefined) {
+            onPeutLancerFunction = false
+        }
+    }
+
+    if (onPeutLancerFunction == true) {
+        verificationInputBase()
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

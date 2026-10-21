@@ -41,19 +41,19 @@ function majEnDirect(poidsUser) {
 
 document.addEventListener("DOMContentLoaded", async () => {
     const inputPoids = document.getElementById("poids-user")
-    if (inputPoids) {inputPoids.addEventListener("input", () => {majEnDirect(parseInt(inputPoids.value.trim().replace(",", ".")) ||undefined)})}
+    if (inputPoids) {inputPoids.addEventListener("input", () => {majEnDirect(parseFloat(inputPoids.value.trim().replace(",", ".")) ||undefined)})}
 
     await remplissageChamps(["poids-user"])
 
     if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
-        majEnDirect(parseInt(inputPoids.value.trim().replace(",", ".")) ||undefined)
+        majEnDirect(parseFloat(inputPoids.value.trim().replace(",", ".")) ||undefined)
     }
 
     // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
     let formKeyEntry = document.querySelector(".form")
     formKeyEntry.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            majEnDirect(parseInt(inputPoids.value.trim().replace(",", ".")) ||undefined)
+            majEnDirect(parseFloat(inputPoids.value.trim().replace(",", ".")) ||undefined)
         }
     })
 })

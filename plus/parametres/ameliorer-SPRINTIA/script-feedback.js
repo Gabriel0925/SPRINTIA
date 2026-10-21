@@ -55,7 +55,22 @@ async function sendEmail(descriptionUser) {
     }
 }
 
+function calculCaracRestant(interface, nbCaracEcrit) {
+    const caracRestant = 2000-nbCaracEcrit
+    interface.textContent = caracRestant
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    const textarea = document.getElementById("description-user")
+    if (textarea) {
+        textarea.addEventListener("input", () => {
+            const caracRestantUI = document.querySelector("span.nb-carac-restant")
+            if (caracRestantUI) {
+                calculCaracRestant(caracRestantUI, textarea.value.length)
+            }
+        })
+    }
+
     const buttonSend = document.getElementById("button-envoyer")
     if (buttonSend) {buttonSend.addEventListener("click", () => {sendEmail(document.getElementById('description-user').value.trim())})}
 

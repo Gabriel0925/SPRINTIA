@@ -4457,6 +4457,29 @@ div.container-bar-chat i:active{
 
 
 
+div.container-compteur-caractere {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--SPACE_M);
+    margin-top: -9px;
+}
+div.container-compteur-caractere span.title{
+    color: var(--COLOR_TEXT_PRIMARY);
+    font-weight: var(--FW_BUTTON);
+}
+div.container-compteur-caractere span.nb-carac-restant{
+    padding: var(--SPACE_XS);
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: var(--BORDER_BIG);
+    color: var(--COLOR_ACCENT_TEXT);
+    font-weight: var(--FW_BOLD_SMALL);
+    width: 75px;
+    text-align: center;
+}
+
+
+
 /* ----- RESPONSIVE ----- */
 @media (max-width: 490px) {
     div.form div.side-by-side {

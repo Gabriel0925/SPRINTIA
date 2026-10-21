@@ -4370,7 +4370,7 @@ div.container-bar-chat textarea{
     height: 50px;
     max-height: 190px;
 }
-@keyframes test {
+@keyframes buttonSend {
     0% {
         background-color: var(--COLOR_ANALYSE_START);
         box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
@@ -4401,7 +4401,7 @@ div.container-bar-chat i{
     padding-left: 13px; /*pour bien centrée l'icone*/
     cursor: pointer;
 
-    animation: test 2s infinite ease-in-out;
+    animation: buttonSend 4s infinite ease-in-out;
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 box-shadow ease-out var(--TIME_TRANSITION)
                 transform ease-out var(--TIME_TRANSITION_FAST);

@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     await remplissageChamps(["poids-user"])
 
     if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
-        majEnDirect()
+        majEnDirect(parseInt(inputPoids.value.trim().replace(",", ".")) ||undefined)
     }
 
     // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée
     let formKeyEntry = document.querySelector(".form")
     formKeyEntry.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            majEnDirect()
+            majEnDirect(parseInt(inputPoids.value.trim().replace(",", ".")) ||undefined)
         }
     })
 })

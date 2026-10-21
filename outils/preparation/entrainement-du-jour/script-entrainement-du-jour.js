@@ -87,7 +87,7 @@ function createUiFractionne(instruction_fractionne, containerWorkoutGenerate) {
             if (element["type"] == "recuperation") { // phase de récup entre les blocs
                 createUiRecuperation(element, containerWorkoutGenerate) //appelle à la fonction qui va créer l'interface
             } else { // la phase d'effort
-                // création des elt
+                // création des elt 
                 let sectionFractionne = document.createElement("section")
                 sectionFractionne.classList.add("fractionne-workout-day")
                 let paragrapheRepetition = document.createElement("p")
@@ -218,36 +218,78 @@ function interfaceWorkout(selectedWorkout) {
 
     const tableauDatas = [
         {"title": "Durée", "data" :selectedWorkout["informations"]["duree_totale"], "unite": ""},
-        {"title": "RPE", "data" :selectedWorkout["informations"]["rpe"], "unite": "/10"},
-        {"title": "Charge d'entraînement", "data" : "~ " + selectedWorkout["informations"]["charge_entrainement"], "unite": "CE"}
+        {"title": "Charge d'entraînement", "data" : "~ " + selectedWorkout["informations"]["charge_entrainement"], "unite": "CE"},
+        {"title": "RPE", "data" :selectedWorkout["informations"]["rpe"], "unite": ""} // on met pas d'unité pour le RPE
     ]
 
-    const sectionContainerBlock = document.createElement("section")
-    sectionContainerBlock.classList.add("container-block")
+    const sectionResumeStatsWorkout = document.createElement("section")
+    sectionResumeStatsWorkout.classList.add("resume-stats-workout")
+    
+    const divContainerData = document.createElement("div")
+    divContainerData.classList.add("container-data")
+    sectionResumeStatsWorkout.appendChild(divContainerData)
+    
+    for (let i=0; i<2 ;i++) { // pour la durée et la charge
 
-    for (let i=0; i<3 ;i++) {
-        const divContainerBlockData = document.createElement("div")
-        divContainerBlockData.classList.add("container-block-data")
-        sectionContainerBlock.appendChild(divContainerBlockData)
+        const divData = document.createElement("div")
+        divData.classList.add("data")
+        divContainerData.appendChild(divData)
 
-        const paragrapheHeader = document.createElement("p")
-        paragrapheHeader.classList.add("container-block-data-header")
-        paragrapheHeader.textContent = tableauDatas[i]["title"]
-        divContainerBlockData.appendChild(paragrapheHeader)
+        const paragrapheTitleData = document.createElement("p")
+        paragrapheTitleData.classList.add("title-data")
+        paragrapheTitleData.textContent = tableauDatas[i]["title"]
+        divData.appendChild(paragrapheTitleData)
         
-        const paragrapheData = document.createElement("p")
-        paragrapheData.classList.add("container-block-data-data")
-        paragrapheData.textContent = tableauDatas[i]["data"]
+        const paragrapheValueData = document.createElement("p")
+        paragrapheValueData.classList.add("value-data")
+        paragrapheValueData.textContent = tableauDatas[i]["data"]
 
         const smallUnite = document.createElement("small")
         smallUnite.textContent = tableauDatas[i]["unite"]
-        paragrapheData.appendChild(smallUnite)
+        paragrapheValueData.appendChild(smallUnite)
 
-        divContainerBlockData.appendChild(paragrapheData)
+        divData.appendChild(paragrapheValueData)
 
-        sectionContainerBlock.appendChild(divContainerBlockData)
+        sectionResumeStatsWorkout.appendChild(divContainerData)
     }
-    containerWorkoutGenerate.appendChild(sectionContainerBlock) // ajout des datas de base dans le body html
+
+    // pour le rpe
+    const dicoDescriptionRPE = {
+        1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
+        4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
+        7:["Difficile", "#ff4b4c"], 8:["Difficile", "#ff4b4c"],
+        9:["Effort maximal", "#9386f1"], 10:["Effort maximal", "#9386f1"]
+    }
+
+    const divDataRPE = document.createElement("div")
+    divDataRPE.classList.add("data-rpe")
+
+    const paragrapheTitle = document.createElement("p")
+    paragrapheTitle.classList.add("title")
+    paragrapheTitle.textContent = tableauDatas[2]["title"]
+
+    const divContainerValueRPE = document.createElement("div")
+    divContainerValueRPE.classList.add("container-value-rpe")
+
+    const divValue = document.createElement("div")
+    divValue.classList.add("value")
+    divValue.textContent = tableauDatas[2]["data"]
+    divValue.style.background = dicoDescriptionRPE[tableauDatas[2]["data"]][1]
+
+    const divDescription = document.createElement("div")
+    divDescription.classList.add("description")
+    divDescription.textContent = dicoDescriptionRPE[tableauDatas[2]["data"]][0]
+    divDescription.style.color = dicoDescriptionRPE[tableauDatas[2]["data"]][1]
+
+    divContainerValueRPE.appendChild(divValue)
+    divContainerValueRPE.appendChild(divDescription)
+
+    divDataRPE.appendChild(paragrapheTitle)
+    divDataRPE.appendChild(divContainerValueRPE)    
+
+    sectionResumeStatsWorkout.appendChild(divDataRPE)
+
+    containerWorkoutGenerate.appendChild(sectionResumeStatsWorkout) // ajout des datas de base dans le body html
 
     // ajout d'un h2 pour structurer la page
     let titleH2Num2 = document.createElement("h2")

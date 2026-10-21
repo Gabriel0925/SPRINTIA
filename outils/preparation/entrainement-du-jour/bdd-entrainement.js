@@ -5,7 +5,7 @@ const bddSeancesCourseFacile = {
             "description": `Un entraînement très accessible pour commencer le fractionné court et dynamiser votre foulée en douceur sans accumuler de fatigue.`,
             "informations": {
                 "duree_totale": "26:00",
-                "rpe": "3-4",
+                "rpe": 3,
                 "charge_entrainement": 24
             },
             "structure": {
@@ -68,7 +68,7 @@ const bddSeancesCourseFacile = {
             "description": `Un entraînement alternant 1 minute un peu plus soutenue et 1 minute de footing lent. Le but est de varier les rythmes sans brusquer le corps.`,
             "informations": {
                 "duree_totale": "26:00",
-                "rpe": "3-4",
+                "rpe": 3,
                 "charge_entrainement": 24
             },
             "structure": {
@@ -94,7 +94,7 @@ const bddSeancesCourseFacile = {
             "description": `Le but de cet entraînement est de développer votre aisance respiratoire. Je sais que c'est dur mais veuillez rester en zone 2 de fréquence cardiaque.`,
             "informations": {
                 "duree_totale": "50:00",
-                "rpe": "2-3",
+                "rpe": 3,
                 "charge_entrainement": 28
             },
             "structure": {
@@ -532,7 +532,7 @@ const bddSeancesCourseDifficile = {
             "description": `Un entraînement conçue pour développer votre VMA. À réaliser avec une allure régulière mais soutenue.`,
             "informations": {
                 "duree_totale": "25:00",
-                "rpe": "8-9",
+                "rpe": 8,
                 "charge_entrainement": 134
             },
             "structure": {
@@ -706,7 +706,7 @@ const bddSeancesVeloFacile = {
             "description": `Un entraînement très accessible qui permet de faire tourner rapidement les jambes pendant 15 secondes sans mettre de résistance, puis de dérouler plus tranquillement le reste du temps.`,
             "informations": {
                 "duree_totale": "29:00",
-                "rpe": "2-3",
+                "rpe": 2,
                 "charge_entrainement": 16
             },
             "structure": {
@@ -943,7 +943,7 @@ const bddSeancesVeloModere = {
             "description": `Cet entraînement permet de travailler votre cardio et gérer votre effort sur la durée. C'est un format progressif et accessible pour casser la routine du pédalage.`,
             "informations": {
                 "duree_totale": "27:00",
-                "rpe": "5-6",
+                "rpe": 6,
                 "charge_entrainement": 53
             },
             "structure": {
@@ -1161,7 +1161,7 @@ const bddSeancesVeloDifficile = {
             "description": `Travail d'explosivité et de vitesse pure. Chaque répétition doit être un sprint maximal, soyez régulier !`,
             "informations": {
                 "duree_totale": "26:00",
-                "rpe": "8-9",
+                "rpe": 8,
                 "charge_entrainement": 278
             },
             "structure": {
@@ -1342,7 +1342,7 @@ const bddSeancesNatationFacile = {
             "description": `Un entraînement court axé sur le travail de la technique. L'objectif est de chercher à faire le moins de coups de bras possible par longueur sans accélérer le rythme.`,
             "informations": {
                 "duree_totale": "~ 25:00",
-                "rpe": "2-3",
+                "rpe": 3,
                 "charge_entrainement": 14
             },
             "structure": {
@@ -1740,7 +1740,7 @@ const bddSeancesNatationModere = {
             "description": `Un entraînement orienté cardio sur moyenne distance. L'objectif est d'adopter un rythme modéré mais soutenu sans faiblir sur les derniers mètres de chaque 200m.`,
             "informations": {
                 "duree_totale": "~ 52:00",
-                "rpe": "5-6",
+                "rpe": 5,
                 "charge_entrainement": 101
             },
             "structure": {
@@ -1855,7 +1855,7 @@ const bddSeancesNatationDifficile = {
             "description": `Un travail de relance d'allure. Chaque 50m démarre à rythme modéré pour se finir en sprint maximal sur les 25 derniers mètres.`,
             "informations": {
                 "duree_totale": "~ 24:00",
-                "rpe": "7-8",
+                "rpe": 7,
                 "charge_entrainement": 92
             },
             "structure": {
@@ -1998,7 +1998,7 @@ const bddSeancesNatationDifficile = {
             "description": `Cet entraînement permet de travailler votre cardio et gérer votre effort sur la durée. C'est un format progressif et accessible pour casser la routine de nage.`,
             "informations": {
                 "duree_totale": "~ 52:00",
-                "rpe": "8-9",
+                "rpe": 9,
                 "charge_entrainement": 278
             },
             "structure": {
@@ -2045,7 +2045,7 @@ const bddSeancesNatationDifficile = {
             "description": `Cet entraînement vise à développer votre endurance à haute intensité et votre capacité à maintenir une bonne technique de nage avec de la fatigue.`,
             "informations": {
                 "duree_totale": "~ 50:00",
-                "rpe": "9-10",
+                "rpe": 10,
                 "charge_entrainement": 368
             },
             "structure": {

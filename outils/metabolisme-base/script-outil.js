@@ -6,13 +6,13 @@ function calculMB(poidsUser, tailleUser, ageUser, sexeUser) {
 }
 function runAnalyse() {
     // recup des datas
-    let poidsUser = document.getElementById("poids-user").value
-    let tailleUser = document.getElementById("taille-user").value
-    let ageUser = parseInt(document.getElementById("age-user").value)
+    let poidsUser = document.getElementById("poids-user").value || undefined
+    let tailleUser = document.getElementById("taille-user").value || undefined
+    let ageUser = parseInt(document.getElementById("age-user").value) || undefined
     let sexeUser = document.getElementById("sexe-user").value
 
     // vérification des champs
-    if (isNaN(poidsUser)|| isNaN(tailleUser) || isNaN(ageUser)) {
+    if (poidsUser==undefined|| tailleUser==undefined|| ageUser==undefined) {
         alert("Erreur de saisie : tous les champs doivent être remplis.")
         return
     }
@@ -40,10 +40,37 @@ function runAnalyse() {
     document.getElementById("resultat-mb").textContent = mbUser + " kcal/j"
 }
 
+function valueIsOkay(poidsUser, tailleUser, ageUser) {
+    if (poidsUser <= 0 || tailleUser <= 0 || ageUser <= 0) {return false}
+    if (ageUser >= 120) {return false}
+    if (poidsUser >= 1000) {return false}
+    if (tailleUser >= 350) {return false}
+
+    return true
+}
+
+function sexeChange() {
+    let poidsUser = document.getElementById("poids-user").value || undefined
+    let tailleUser = document.getElementById("taille-user").value || undefined
+    let ageUser = parseInt(document.getElementById("age-user").value) ||undefined
+
+    if (poidsUser!=undefined && tailleUser != undefined && ageUser != undefined) {
+        const itsOkkay = valueIsOkay(poidsUser, tailleUser, ageUser)
+        if (itsOkkay == true) {
+            runAnalyse()
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
     const buttonCalcul = document.getElementById("button-calcul-mb")
     if (buttonCalcul) {buttonCalcul.addEventListener("click", runAnalyse)}
 
+    const selectSexe = document.getElementById("sexe-user")
+    if (selectSexe) {
+        selectSexe.addEventListener("change", sexeChange)
+    }
+ 
     await remplissageChamps(["sexe-user", "age-user","taille-user", "poids-user"])
 
     if (document.getElementById("taille-user").value && document.getElementById("poids-user").value && 

@@ -99,6 +99,21 @@ function verificationInputBase() {
     // envoie à la fonction
     calculZone(methodeCalcul, baliseTranche, ageUser, fcMaxUser, fcMax, fcReposUser)
 }
+
+function valueIsOkay(inputAge, inputFcRepos, inputFcMax, methodeCalcul) {
+    if (inputAge <= 0) {return false}
+    if (inputAge >= 120) {return false}
+    if (inputFcRepos == undefined && methodeCalcul == "RFC") {return false}
+    if (inputFcRepos !=undefined && inputFcRepos <= 15) {return false}
+    if (inputFcRepos !=undefined && inputFcRepos >= 150) {return false}
+    if (inputFcMax != undefined) {
+        if (inputFcMax <= 50 || inputFcMax >= 250) {return false}
+        if (inputFcRepos!=undefined && inputFcRepos >= inputFcMax) {return false}
+    }
+
+    return true
+    
+}
 function comboBox(methodeCalcul) { // pour gérer les inputs certains doivent disparaître d'autre doivent apparaitre
     const dico = { // toutes les valeurs genre display block,none sont dans ce dico
         "FC-max":{"inputFcMax":"block", "inputFcRepos":"none"},
@@ -112,18 +127,23 @@ function comboBox(methodeCalcul) { // pour gérer les inputs certains doivent di
 
     let onPeutLancerFunction = false
     const inputAge = parseInt(document.getElementById("age-user").value) || undefined
+    const inputFcRepos = parseInt(document.getElementById("fc-repos-user").value) || undefined
+    const inputFcMax = parseInt(document.getElementById("fc-max-user").value) || undefined
+
     if (inputAge!=undefined) {
         onPeutLancerFunction = true
     }
     if (methodeCalcul == "RFC") {
-        const inputFcRepos = parseInt(document.getElementById("fc-repos-user").value) || undefined
         if (inputFcRepos==undefined) {
             onPeutLancerFunction = false
         }
     }
 
     if (onPeutLancerFunction == true) {
-        verificationInputBase()
+        const itsOkkay = valueIsOkay(inputAge, inputFcRepos, inputFcMax, methodeCalcul)
+        if (itsOkkay == true) {
+            verificationInputBase()
+        }
     }
 }
 

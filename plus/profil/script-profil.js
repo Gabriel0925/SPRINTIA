@@ -1,3 +1,12 @@
+function reinitialiseUI() {
+    document.getElementById("sexe-place").textContent = "--"
+    document.getElementById("age-place").textContent = "--"
+    document.getElementById("taille-place").textContent = "--"
+    document.getElementById("poids-place").textContent = "--"
+    document.getElementById("fc-repos-place").textContent = "--"
+    document.getElementById("modifier-profil").textContent = "Configurer" 
+}
+
 async function remplirPlaceProfil() {
     let data = await db.profil.toArray()
 
@@ -9,15 +18,8 @@ async function remplirPlaceProfil() {
         document.getElementById("taille-place").textContent = data.taille
         document.getElementById("poids-place").textContent = data.poids.replace(".", ",")
         document.getElementById("fc-repos-place").textContent = data.fc_repos
-        document.getElementById("modifier-profil").textContent = "Modifier mon profil"
     } else { // on réinitialise tout les champs au moins si le user restaure son compte ça met à jour le tableau
-
-        document.getElementById("sexe-place").textContent = "--"
-        document.getElementById("age-place").textContent = "--"
-        document.getElementById("taille-place").textContent = "--"
-        document.getElementById("poids-place").textContent = "--"
-        document.getElementById("fc-repos-place").textContent = "--"
-        document.getElementById("modifier-profil").textContent = "Configurer mon profil"
+        reinitialiseUI()
     }
 
     document.getElementById("sexe-place").classList.remove("skeleton")
@@ -54,6 +56,34 @@ function init() {
     remplirPlaceProfil()
 }
 
+async function supprimerProfil(button, toggleMajAutomatique) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer votre profil ?")) {
+        button.disabled = true
+        button.textContent = "Suppression..."
+
+        try {
+            // on clique sur le toggle avant de clear la db sinon ça marchera pas
+            toggleMajAutomatique.click()
+            localStorage.removeItem("majAutoProfil")
+
+            await db.profil.clear() // suppression du profil dans indexed db
+            reinitialiseUI()
+
+
+            button.textContent = "Supprimé"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+        }catch(error) {
+            console.log(error)
+            button.textContent = "Erreur"
+            await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+        } finally {
+            button.textContent = "Supprimer"
+            button.disabled = false
+        }
+
+    }
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     const toggleMajAutomatique = document.getElementById("toggle-banniere")
     if (toggleMajAutomatique) {toggleMajAutomatique.addEventListener("click", (event) => {toggleMajAuto(event)})}
@@ -67,6 +97,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const buttonModifProfil = document.getElementById("modifier-profil")
     if (buttonModifProfil) {buttonModifProfil.addEventListener("click", () => {window.location.href = 'modification-profil.html'})}
+
+    const buttonSupprProfil = document.getElementById("supprimer-profil")
+    if (buttonSupprProfil) {buttonSupprProfil.addEventListener("click", () => {supprimerProfil(buttonSupprProfil, toggleMajAutomatique)})}
 
     init()
 })

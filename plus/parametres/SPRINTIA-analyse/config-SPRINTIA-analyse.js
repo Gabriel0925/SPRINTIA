@@ -45,7 +45,7 @@ function favoriteIA(idElement) {
 async function reinitialiserAnalyse(btn) {
     if (confirm("Êtes-vous sur de vouloir restaurer les paramètres par défaut de SPRINTIA Analyse ?")) {
         btn.disabled = true
-        btn.textContent = "Réinitialisation..."
+        btn.textContent = "Restauration..."
 
         // style du coach
         try {
@@ -67,10 +67,10 @@ async function reinitialiserAnalyse(btn) {
 
         await init() // on relance la fonction init
 
-        btn.textContent = "Réinitialisé"
+        btn.textContent = "Restauré"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
         
-        btn.textContent = "Réinitialiser Analyse"
+        btn.textContent = "Restaurer valeurs par défaut"
         btn.disabled = false
     }
 }

@@ -49,6 +49,7 @@ async function remplissageTableau() {
         colonneAction.appendChild(btnSupprimer)
         // Ajout de la class
         btnSupprimer.classList.add("table")
+        btnSupprimer.classList.add("table-supprimer")
 
         // on lie les boutons à des actions
         btnSupprimer.addEventListener("click", async () => {

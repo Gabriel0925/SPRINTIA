@@ -110,6 +110,7 @@ async function remplirTableau() {
 
             // Ajout de la class
             btnSupprimer.classList.add("table")
+            btnSupprimer.classList.add("table-supprimer")
 
             // Ajout de la logique pour la suppresion
             btnSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton

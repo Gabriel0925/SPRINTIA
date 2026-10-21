@@ -85,23 +85,6 @@ async function remplirChamps() {
     }
 }
 
-async function supprimerProfil() {
-    if (confirm("Êtes-vous sûr de vouloir supprimer votre profil ?")) {
-        document.getElementById("button-supprimer").disabled = true
-        document.getElementById("button-supprimer").textContent = "Suppression..."
-
-        await db.profil.clear() // suppression du profil dans indexed db
-        localStorage.removeItem("majAutoProfil")
-
-        document.getElementById("button-supprimer").textContent = "Supprimé"
-        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        
-        document.getElementById("button-supprimer").textContent = "Supprimer mon profil"
-        document.getElementById("button-supprimer").disabled = false
-        window.location.href = "profil.html"
-    }
-}
-
 async function init() {
     const dataProfilUser = await db.profil.toArray()
 
@@ -110,10 +93,7 @@ async function init() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const buttonSupprimerProfil = document.getElementById("button-supprimer")
-    if (buttonSupprimerProfil) {buttonSupprimerProfil.addEventListener("click", () => {supprimerProfil()})}
-    
+document.addEventListener("DOMContentLoaded", () => {    
     const buttonpProfilSave = document.getElementById("button-save")
     if (buttonpProfilSave) {buttonpProfilSave.addEventListener("click", () => {saveProfil()})}
 

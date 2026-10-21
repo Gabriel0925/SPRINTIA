@@ -413,6 +413,9 @@ button.table { /* Pour les boutons dans un tableau */
     transition: color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
+button.table.table-supprimer { /* Pour les boutons dans un tableau */
+    color: #ff4b4c;
+}
 @media (hover: hover) and (pointer: fine) {
     button.table:hover{
         color: var(--COLOR_ACCENT_HOVER);
@@ -431,6 +434,17 @@ button.size-block#button-sauvegarder-note-workout {
 }
 button.size-block.left {
     margin: 0;
+}
+button.supprimer {
+    background-color: #ff4b4c;
+}
+@media (hover: hover) and (pointer: fine) {
+    button.supprimer:hover {
+        background-color: #fe6d6d;
+    }
+}
+button.supprimer:active {
+    background-color: #ff8585;
 }
 
 
@@ -1699,6 +1713,9 @@ div.menu-many-action li {
     cursor: pointer;
     transition: background-color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
+}
+div.menu-many-action li#button-supprimer {
+    color: #ff4b4c;
 }
 div.menu-many-action.open li {
     animation: animation_menu_li 0.4s ease-out backwards; /* backwards c'est pour que l'animation commence à sa position initiale */
@@ -4005,6 +4022,12 @@ div.container-center-marge {
     margin: var(--SPACE_M) 0;
     justify-content: center;
     display: flex;
+}
+div.container-center-marge button#supprimer-profil{
+    width: 150px;
+}
+div.container-center-marge button#modifier-profil{
+    width: 150px;
 }
 div.container-center-marge.left {
     justify-content: start; 

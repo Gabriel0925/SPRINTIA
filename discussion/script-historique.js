@@ -1,6 +1,9 @@
-function createCard(date, question) {
+function createCard(date, question, id) {
     const divCard = document.createElement("div")
     divCard.classList.add("card-prompt")
+    divCard.addEventListener("click", () => {
+        window.location.href = `consultation-discussion.html?discussion=${id}`
+    })
 
     const paragrapheQuestion = document.createElement("p")
     paragrapheQuestion.classList.add("question-user")
@@ -31,8 +34,12 @@ async function init() {
 
     if (historiqueDiscussion.length > 0) { // si ya des datas
         historiqueDiscussion.forEach(dataDiscussion => {
-            createCard(dataDiscussion.date, dataDiscussion.question)
+            createCard(dataDiscussion.date, dataDiscussion.question, dataDiscussion.id)
         });
+    } else {
+        document.getElementById("aucune-data").style.display = "flex" // on affiche le visuel quand ya aucune ancienne discussion
+        document.querySelector("div.input-search").style.display = "none" // on cache la barre de recherche
+        document.querySelector("div.container-card-prompt.skeleton").style.display = "none" // on cache le conteneur de card
     }
 }
 

@@ -266,10 +266,10 @@ async function dataRecuperation() {
 
 function convertToCSV(dataJSON) {
     // on init une variable qui contiendra les entetes et les datas
-    let datasInCSV = "|"
+    let datasInCSV = "| "
 
     for (const key in dataJSON[0]) {
-        datasInCSV += key+"|"
+        datasInCSV += key+" | "
     }
 
     datasInCSV = datasInCSV.replace("duree", "duree (min)")
@@ -291,13 +291,13 @@ function convertToCSV(dataJSON) {
                 if (key == "note") { // si la clé est les notes d'entrainement
                     // on remplace les saut de ligne par un espace pour pas que ça casse le CSV
                     let noteSansSautDeLigne = data[key].replace(/\n/g, " ")
-                    datasInCSV += noteSansSautDeLigne+"|"
+                    datasInCSV += noteSansSautDeLigne+" | "
                 } else {
-                    datasInCSV += data[key]+"|"
+                    datasInCSV += data[key]+" | "
                 }
 
             } else {
-                datasInCSV += "-|"
+                datasInCSV += "- | "
             }
         }
     }

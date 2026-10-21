@@ -160,57 +160,58 @@ i {
 .icon_coach:before {content: "\e906";}
 .icon_confidentialite:before {content: "\e907";}
 .icon_conversion:before {content: "\e908";}
-.icon_discussion:before {content: "\e909";}
-.icon_entrainement:before {content: "\e90a";}
-.icon_entrainement_du_jour:before {content: "\e90b";}
-.icon_envoyer:before {content: "\e90c";}
-.icon_fermer:before {content: "\e90d";}
-.icon_file:before {content: "\e90e";}
-.icon_file_csv:before {content: "\e90f";}
-.icon_file_json:before {content: "\e910";}
-.icon_fleche_droite:before {content: "\e911";}
-.icon_fleche_gauche:before {content: "\e912";}
-.icon_flight:before {content: "\e913";}
-.icon_flow:before {content: "\e914";}
-.icon_folder_open:before {content: "\e915";}
-.icon_fullscreen:before {content: "\e916";}
-.icon_fullscreen_exit:before {content: "\e917";}
-.icon_goutte_eau:before {content: "\e918";}
-.icon_gpx:before {content: "\e919";}
-.icon_historique:before {content: "\e91a";}
-.icon_hydratation:before {content: "\e91b";}
-.icon_IMC:before {content: "\e91c";}
-.icon_indulgence_course:before {content: "\e91d";}
-.icon_info:before {content: "\e91e";}
-.icon_licence:before {content: "\e91f";}
-.icon_mail:before {content: "\e920";}
-.icon_metabolisme_base:before {content: "\e921";}
-.icon_modifier:before {content: "\e922";}
-.icon_natation:before {content: "\e923";}
-.icon_niveau_course:before {content: "\e924";}
-.icon_outils:before {content: "\e925";}
-.icon_parametres:before {content: "\e926";}
-.icon_partage:before {content: "\e927";}
-.icon_pause:before {content: "\e928";}
-.icon_plus:before {content: "\e929";}
-.icon_position:before {content: "\e92a";}
-.icon_profil:before {content: "\e92b";}
-.icon_progression:before {content: "\e92c";}
-.icon_proteines:before {content: "\e92d";}
-.icon_recuperation:before {content: "\e92e";}
-.icon_refresh:before {content: "\e92f";}
-.icon_RM:before {content: "\e930";}
-.icon_search:before {content: "\e931";}
-.icon_search_off:before {content: "\e932";}
-.icon_SPRINTIA_analyse:before {content: "\e933";}
-.icon_statistiques:before {content: "\e934";}
-.icon_supprimer:before {content: "\e935";}
-.icon_telephone:before {content: "\e936";}
-.icon_temps_recup:before {content: "\e937";}
-.icon_velo:before {content: "\e938";}
-.icon_verre_eau:before {content: "\e939";}
-.icon_video:before {content: "\e93a";}
-.icon_zones_cardiaques:before {content: "\e93b";}
+.icon_copy:before {content: "\e909";}
+.icon_discussion:before {content: "\e90a";}
+.icon_entrainement:before {content: "\e90b";}
+.icon_entrainement_du_jour:before {content: "\e90c";}
+.icon_envoyer:before {content: "\e90d";}
+.icon_fermer:before {content: "\e90e";}
+.icon_file:before {content: "\e90f";}
+.icon_file_csv:before {content: "\e910";}
+.icon_file_json:before {content: "\e911";}
+.icon_fleche_droite:before {content: "\e912";}
+.icon_fleche_gauche:before {content: "\e913";}
+.icon_flight:before {content: "\e914";}
+.icon_flow:before {content: "\e915";}
+.icon_folder_open:before {content: "\e916";}
+.icon_fullscreen:before {content: "\e917";}
+.icon_fullscreen_exit:before {content: "\e918";}
+.icon_goutte_eau:before {content: "\e919";}
+.icon_gpx:before {content: "\e91a";}
+.icon_historique:before {content: "\e91b";}
+.icon_hydratation:before {content: "\e91c";}
+.icon_IMC:before {content: "\e91d";}
+.icon_indulgence_course:before {content: "\e91e";}
+.icon_info:before {content: "\e91f";}
+.icon_licence:before {content: "\e920";}
+.icon_mail:before {content: "\e921";}
+.icon_metabolisme_base:before {content: "\e922";}
+.icon_modifier:before {content: "\e923";}
+.icon_natation:before {content: "\e924";}
+.icon_niveau_course:before {content: "\e925";}
+.icon_outils:before {content: "\e926";}
+.icon_parametres:before {content: "\e927";}
+.icon_partage:before {content: "\e928";}
+.icon_pause:before {content: "\e929";}
+.icon_plus:before {content: "\e92a";}
+.icon_position:before {content: "\e92b";}
+.icon_profil:before {content: "\e92c";}
+.icon_progression:before {content: "\e92d";}
+.icon_proteines:before {content: "\e92e";}
+.icon_recuperation:before {content: "\e92f";}
+.icon_refresh:before {content: "\e930";}
+.icon_RM:before {content: "\e931";}
+.icon_search:before {content: "\e932";}
+.icon_search_off:before {content: "\e933";}
+.icon_SPRINTIA_analyse:before {content: "\e934";}
+.icon_statistiques:before {content: "\e935";}
+.icon_supprimer:before {content: "\e936";}
+.icon_telephone:before {content: "\e937";}
+.icon_temps_recup:before {content: "\e938";}
+.icon_velo:before {content: "\e939";}
+.icon_verre_eau:before {content: "\e93a";}
+.icon_video:before {content: "\e93b";}
+.icon_zones_cardiaques:before {content: "\e93c";}
 
 * {
     margin: 0;
@@ -1665,6 +1666,9 @@ div.toolbar div.container-command i{
     width: 40px;
     height: 40px;
     flex-shrink: 0;
+}
+div.toolbar div.container-command i.icon_supprimer{
+    color: #ff4b4c;
 }
 
 
@@ -4304,7 +4308,7 @@ div.container-idee-prompt div.idee-prompt{
     }
 }
 div.container-idee-prompt div.idee-prompt.generate{
-    animation: animation_ideas_question 0.45s ease-out backwards;
+    animation: animation_ideas_question 0.55s ease-out backwards;
 }
 div.container-idee-prompt div.idee-prompt.generate:nth-child(1){
     animation-delay: 0.03s;
@@ -4402,6 +4406,68 @@ div.container-card-prompt div.card-prompt p.date{
     font-weight: var(--FW_BUTTON);
     min-width: 130px;
     text-align: center;
+}
+
+
+section.container-question-prompt {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--SPACE_M);
+}
+@media (max-width: 880px) {
+    section.container-question-prompt {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+section.container-question-prompt div.part-name-data{
+    display: flex;
+    flex-direction: column;
+}
+section.container-question-prompt div.part-name-data div.name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+    padding: var(--SPACE_XS) 0;
+}
+section.container-question-prompt div.part-name-data div.name span.title{
+    font-size: var(--H2);
+    font-weight: var(--FW_BOLD_SMALL);
+}
+section.container-question-prompt div.part-name-data div.name i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    background-color: var(--COLOR_GLASSMORPHISM);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4), 
+                    inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+
+    font-size: var(--H1);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+
+    transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-question-prompt div.part-name-data div.name i:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+        transform: scale(var(--SCALE_MAX));
+    }
+}
+section.container-question-prompt div.part-name-data div.name i:active{
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: scale(var(--SCALE_MAX));
+}
+section.container-question-prompt div.part-name-data span.data{
+    font-size: var(--P);
+    padding: var(--SPACE_XS) 0;
+    font-weight: normal;
+    white-space: pre-wrap; /*pour que le prompt s'affiche bien avec les retour à la ligne '\n' */
 }
 
 

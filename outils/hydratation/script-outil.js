@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await remplissageChamps(["poids-user"])
 
     if (document.getElementById("poids-user").value && !isNaN(document.getElementById("poids-user").value)) {
-        document.getElementById("button-estimer").click()
+        majEnDirect()
     }
 
     // pour détecter si lorsqu'on est dans le formulaire il y a un appuie sur la touche entrée

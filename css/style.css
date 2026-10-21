@@ -4344,6 +4344,19 @@ div.container-card-prompt {
     gap: var(--SPACE_L);
     margin: var(--SPACE_L) 0;
 }
+div.container-card-prompt.skeleton {
+    display: inline-block;
+    width: 100%;
+    height: 280px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_BIG);
+    overflow: hidden;
+    margin: 0;
+    margin-top: var(--SPACE_XS);
+    margin-bottom: calc(var(--SPACE_S) * -1);
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
+}
 div.container-card-prompt div.card-prompt{
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
@@ -4368,7 +4381,7 @@ div.container-card-prompt div.card-prompt:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
-div.container-card-prompt div.card-prompt p.prompt{
+div.container-card-prompt div.card-prompt p.question-user{
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6; /* Limite à 6 lignes */

@@ -1,5 +1,5 @@
 // VARIABLE GLOBALE A TOUTES LES PAGES SPRINTIA
-const VERSION_SPRINTIA = "v26.11 b2"
+const VERSION_SPRINTIA = "v26.11 b3"
 
 function newMajPointBleu() {
     let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"

@@ -10,32 +10,38 @@ function CalculHydratationTotale(PoidsUser) {
     return HydratationRecommandee
 }
 
-function CalculGeneral() {
-    let PoidsUser = parseFloat(document.getElementById("poids-user").value.trim().replace(",", "."))
-
-    // Vérification des champs
-    if (isNaN(PoidsUser)) {
-        alert("Erreur de saisie : tous les champs doivent être remplis.");
-        return
-    }
-    if (PoidsUser <= 0) {
-        alert("Valeur non valide, le poids doit être un nombre supérieur à 0.")
-        return
-    }
-    if (PoidsUser >= 1000) {
-        alert("Valeur non valide, le poids doit être un nombre inférieur à 1000.")
-        return
-    }
-
+function affichageResult(poidsUser) {
     // Affichage du result
-    document.getElementById("hydratation-day").textContent = Math.round(CalculHydratationTotale(PoidsUser)) + " mL"
+    document.getElementById("hydratation-day").textContent = Math.round(CalculHydratationTotale(poidsUser)) + " mL"
     // Maj de l'interpretation
     document.querySelector(".zone-result-interpretation").textContent = "Petit conseil : ne buvez pas tout d'un coup, essayer de boire un verre toutes les 1 à 2 heures."
 }
 
+function majEnDirect(poidsUser) {
+    let itsOkkay = true
+    if (poidsUser == undefined) {itsOkkay = false}
+
+    if (poidsUser <= 0) {
+        errorInput("Poids positif requis !")
+        itsOkkay = false
+    } else if (poidsUser >= 1000) {
+        errorInput("Poids inférieur à 1000 requis !")
+        itsOkkay = false
+    } else {
+        document.querySelector(".indication").classList.remove("visible")
+    }
+    
+    if (itsOkkay == true) {
+        affichageResult(poidsUser)
+    } else {
+        document.getElementById("hydratation-day").textContent = "-- mL"
+        document.querySelector(".zone-result-interpretation").textContent = "Veuillez rentrer votre poids pour avoir une interprétation."
+    }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
-    const buttonEstimer = document.getElementById("button-estimer")
-    if (buttonEstimer) {buttonEstimer.addEventListener("click", CalculGeneral)}
+    const inputPoids = document.getElementById("poids-user")
+    if (inputPoids) {inputPoids.addEventListener("input", () => {majEnDirect(parseInt(inputPoids.value.trim().replace(",", ".")) ||undefined)})}
 
     await remplissageChamps(["poids-user"])
 
@@ -47,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let formKeyEntry = document.querySelector(".form")
     formKeyEntry.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            CalculGeneral()
+            majEnDirect()
         }
     })
 })

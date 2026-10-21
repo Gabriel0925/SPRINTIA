@@ -38,7 +38,6 @@ function MethodeChoisie() {
     }
 
     EstimationOneRep()
-    return
 }
 
 document.addEventListener("DOMContentLoaded", () => {

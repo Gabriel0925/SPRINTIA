@@ -37,10 +37,10 @@ function estimationTempsRecuperation() {
 
 function comboBox() {
     // Recup valeur des champs
-    let dureeUser = parseInt(document.getElementById("duree-entrainement-user").value.trim())
-    let valueRpeUser = parseInt(document.querySelector(".slider progress").value)
+    let dureeUser = parseInt(document.getElementById("duree-entrainement-user").value.trim()) || undefined
+    let valueRpeUser = parseInt(document.querySelector(".slider progress").value) || undefined
 
-    if (!isNaN(dureeUser) || !isNaN(valueRpeUser)) {estimationTempsRecuperation()} // si les champs sont remplit on lance direct les analyses
+    if (dureeUser != undefined && valueRpeUser != undefined) {estimationTempsRecuperation()} // si les champs sont remplit on lance direct les analyses
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

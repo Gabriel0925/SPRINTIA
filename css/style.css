@@ -4370,12 +4370,26 @@ div.container-bar-chat textarea{
     height: 50px;
     max-height: 190px;
 }
+@keyframes test {
+    0% {
+        background-color: var(--COLOR_ANALYSE_START);
+        box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
+    }
+    50% {
+        background-color: var(--COLOR_ANALYSE_END);
+        box-shadow: 0 0 20px var(--COLOR_ANALYSE_END);
+    }
+    100% {
+        background-color: var(--COLOR_ANALYSE_START);
+        box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
+    }
+}
 div.container-bar-chat i{
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
+    background-color: var(--COLOR_ANALYSE_START);
     color: var(--COLOR_BACKGROUND);
     font-size: var(--H1);
     width: 50px;
@@ -4383,9 +4397,13 @@ div.container-bar-chat i{
     height: 50px;
     border-radius: 50%;
     padding: var(--SPACE_XS);
+    box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
+    padding-left: 13px; /*pour bien centrée l'icone*/
     cursor: pointer;
 
+    animation: test 2s infinite ease-in-out;
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
+                box-shadow ease-out var(--TIME_TRANSITION)
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -4427,6 +4445,7 @@ div.container-bar-chat i:active{
         width: 60px;
         min-width: 60px;
         height: 60px;
+        padding-left: 14px; /*pour bien centrée l'icone*/
     }
 }
 @media (max-width: 460px) {
@@ -4440,6 +4459,7 @@ div.container-bar-chat i:active{
         width: 65px;
         min-width: 65px;
         height: 65px;
+        padding-left: 15px; /*pour bien centrée l'icone*/
     }
 }
 @media (max-width: 380px) {
@@ -4452,6 +4472,7 @@ div.container-bar-chat i:active{
         width: 55px;
         min-width: 55px;
         height: 55px;
+        padding-left: 14px; /*pour bien centrée l'icone*/
     }
 }
 

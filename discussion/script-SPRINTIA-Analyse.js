@@ -102,6 +102,12 @@ function raccourciPrompt() {
                         }
                     } else {
                         inputForPrompt.value = ideasCorrespondante // on met le texte de l'élement dans l'input (enfin le textarea)
+                        
+                        const eltSelected = document.querySelector(".idee-prompt.selected")
+                        if (eltSelected) {
+                            eltSelected.classList.remove("selected")
+                        }
+                        elt.classList.add("selected")
                     }
                 }
             })

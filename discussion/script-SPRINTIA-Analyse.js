@@ -93,17 +93,17 @@ function raccourciPrompt() {
                         // pour éviter d'effacer le prompt que le user était potentiellement en train de taper
                         if (confirm("Êtes-vous sur de vouloir continuer car le prompt que vous étiez en train d'écrire va être effacé ?")) {
                             inputForPrompt.value = ideasCorrespondante // on met le texte de l'élement dans l'input (enfin le textarea)
+
+                            const eltSelected = document.querySelector(".idee-prompt.selected")
+                            if (eltSelected) {
+                                eltSelected.classList.remove("selected")
+                            }
+                            elt.classList.add("selected")
                         }
                     } else {
                         inputForPrompt.value = ideasCorrespondante // on met le texte de l'élement dans l'input (enfin le textarea)
                     }
                 }
-
-                const eltSelected = document.querySelector(".idee-prompt.selected")
-                if (eltSelected) {
-                    eltSelected.classList.remove("selected")
-                }
-                elt.classList.add("selected")
             })
 
             compteur+=1

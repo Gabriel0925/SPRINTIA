@@ -7,7 +7,7 @@ async function init(id) {
         return
     }
 
-    document.getElementById("date").textContent = dataOfThisDiscussion.date
+    document.getElementById("date").textContent = formatEuropeenDate(dataOfThisDiscussion.date)
     document.getElementById("date").classList.remove("skeleton")
 
     document.getElementById("question").textContent = dataOfThisDiscussion.question

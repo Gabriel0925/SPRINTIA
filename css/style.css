@@ -273,13 +273,6 @@ h1{
     color: var(--COLOR_TEXT_PRIMARY);
     margin-bottom: var(--SPACE_L);
 }
-h1#title-analyse {
-    background-image: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
 h1.patch-note {
     margin-top: var(--SPACE_M);
 }
@@ -3605,14 +3598,6 @@ div.action-list i{
 div.action-list div.action-list-item p{
     margin-left: var(--SPACE_M);
     font-size: var(--H3);
-}
-div.action-list div.action-list-item p#SPRINTIA-analyse{
-    background-image: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    font-weight: var(--FW_BOLD);
 }
 
 

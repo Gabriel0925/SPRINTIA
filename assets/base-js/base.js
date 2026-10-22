@@ -678,29 +678,3 @@ navigator.serviceWorker.register("/sw.js").then(enregistrement => { // service w
     console.log(error)
 })
 // --- Fin de la configuration du service worker ---
-
-
-
-// --- Changement de couleur de certaines variables pour SPRINTIA Analyse ---
-async function styleCoachColor() {
-    const styleCoach = await db.JRM_Coach.get(1)
-    const dicoStyleCoachColor = {
-        "Strict-Motivant": ["#bc5af2", "#d4a3ef"],
-        "Copain": ["#5af2cedb", "#d6fff5db"]
-    }
-    if (styleCoach=="Bienveillant") {
-        document.documentElement.style.removeProperty("--COLOR_ANALYSE_START")
-        document.documentElement.style.removeProperty("--COLOR_ANALYSE_END")
-        document.documentElement.style.removeProperty("--COLOR_GLOW")
-    } else {
-        document.documentElement.style.setProperty("--COLOR_ANALYSE_START", dicoStyleCoachColor[styleCoach.style][0])
-        document.documentElement.style.setProperty("--COLOR_GLOW", dicoStyleCoachColor[styleCoach.style][0])
-        document.documentElement.style.setProperty("--COLOR_ANALYSE_END", dicoStyleCoachColor[styleCoach.style][1])
-    }
-}
-
-window.addEventListener("DOMContentLoaded", async() => {
-    await styleCoachColor()
-})
-
-// --- Fin changement de couleur de certaines variables pour SPRINTIA Analyse ---

@@ -130,6 +130,21 @@ async function affichageStyleCoach() {
     }
     document.getElementById(convertisseurNameId[styleCoach]).style.display = "block"    
     document.querySelector(".container-avatar.skeleton").classList.remove("skeleton")
+
+
+    const dicoStyleCoachColor = {
+        "Strict-Motivant": ["#bc5af2", "#d4a3ef"],
+        "Copain": ["#5af2cedb", "#d6fff5db"]
+    }
+    if (styleCoach=="Bienveillant") {
+        document.documentElement.style.removeProperty("--COLOR_ANALYSE_START")
+        document.documentElement.style.removeProperty("--COLOR_ANALYSE_END")
+        document.documentElement.style.removeProperty("--COLOR_GLOW")
+    } else {
+        document.documentElement.style.setProperty("--COLOR_ANALYSE_START", dicoStyleCoachColor[dataCoach.style][0])
+        document.documentElement.style.setProperty("--COLOR_GLOW", dicoStyleCoachColor[dataCoach.style][0])
+        document.documentElement.style.setProperty("--COLOR_ANALYSE_END", dicoStyleCoachColor[dataCoach.style][1])
+    }
 }
 // --- Fin changement de l'avatar SVG en fonction du choix de l'utilisateur ---
 

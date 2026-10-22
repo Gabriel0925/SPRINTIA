@@ -89,7 +89,14 @@ function raccourciPrompt() {
             elt.addEventListener("click", () => {
                 const inputForPrompt = document.getElementById("promt-user")
                 if (inputForPrompt) {
-                    if (inputForPrompt.value != "") { // si le user a déjà mis qqch dans le textarea
+                    // si le texte du raccourci est égale à ce qu'il y a dans le textarea alors on déselectionne le raccourci et on vide le textarea
+                    if (elt.textContent == inputForPrompt.value) {
+                        const eltSelected = document.querySelector(".idee-prompt.selected")
+                        if (eltSelected) {
+                            eltSelected.classList.remove("selected")
+                        }
+                        inputForPrompt.value = ""
+                    } else if (inputForPrompt.value != "") { // si le user a déjà mis qqch dans le textarea
                         // pour éviter d'effacer le prompt que le user était potentiellement en train de taper
                         if (confirm("Êtes-vous sur de vouloir continuer car le prompt que vous étiez en train d'écrire va être effacé ?")) {
                             inputForPrompt.value = ideasCorrespondante // on met le texte de l'élement dans l'input (enfin le textarea)

@@ -4509,7 +4509,7 @@ div.container-bar-chat i{
     border-radius: 50%;
     padding: var(--SPACE_XS);
     box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
-    padding-left: 13px; /*pour bien centrée l'icone*/
+    transform: rotate(315deg);
     cursor: pointer;
 
     animation: button_SPRINTIA_Analyse 4s infinite ease-in-out;
@@ -4561,7 +4561,6 @@ div.container-bar-chat i{
         width: 65px;
         min-width: 65px;
         height: 65px;
-        padding-left: 15px; /*pour bien centrée l'icone*/
     }
 }
 @media (max-width: 380px) {
@@ -4574,7 +4573,6 @@ div.container-bar-chat i{
         width: 55px;
         min-width: 55px;
         height: 55px;
-        padding-left: 14px; /*pour bien centrée l'icone*/
     }
 }
 

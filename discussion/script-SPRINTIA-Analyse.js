@@ -133,8 +133,8 @@ async function affichageStyleCoach() {
 
 
     const dicoStyleCoachColor = {
-        "Strict-Motivant": ["#bc5af2", "#d4a3ef", "#ff8efe"],
-        "Copain": ["#5af2cedb", "#d6fff5db", "#8effe8"]
+        "Strict-Motivant": ["#bc5af2", "#d4a3ef", "#ffa7fe"],
+        "Copain": ["#5af2cedb", "#d6fff5db", "#8dffe8"]
     }
     if (styleCoach=="Bienveillant") {
         document.documentElement.style.removeProperty("--COLOR_ANALYSE_START")

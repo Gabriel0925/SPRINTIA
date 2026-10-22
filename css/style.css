@@ -8,16 +8,16 @@
 
     /* BASE */
     --COLOR_BACKGROUND: #000000;
-    --COLOR_BACKGROUND_CARD: #20252e;
-    --COLOR_BACKGROUND_CARD_HOVER: #363c48;
-    --COLOR_BACKGROUND_CARD_ACTIVE: #4d5461;
+    --COLOR_BACKGROUND_CARD: #25272d;
+    --COLOR_BACKGROUND_CARD_HOVER: #3f434b;
+    --COLOR_BACKGROUND_CARD_ACTIVE: #5e636d;
 
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
 
     /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(32, 37, 46, 0.5);
+    --COLOR_GLASSMORPHISM: rgba(43, 46, 46, 0.5);
     --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.16);
     --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.26);
 
@@ -36,6 +36,7 @@
 
 
     /* SPRINTIA Analyse */
+    --COLOR_GLOW: var(--COLOR_ACCENT);
     --COLOR_ANALYSE_START: #4689ef;
     --COLOR_ANALYSE_END: #94b8ef;
 
@@ -1979,7 +1980,7 @@ div.zone-coach::before {
     top: 0%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    background: radial-gradient(circle, var(--COLOR_GLOW), var(--COLOR_BACKGROUND));
     filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
 }
@@ -3405,12 +3406,7 @@ div.visuel-version {
 div.visuel-version p.visuel-version-title{
     font-size: var(--H1);
     font-weight: var(--FW_BOLD);
-    
-    background-image: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 div.visuel-version p.visuel-version-date{
     font-size: var(--P);
@@ -3906,7 +3902,7 @@ section.container-content-algorithme div.widget-analyse::before {
     top: 0%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
+    background: radial-gradient(circle, var(--COLOR_GLOW), var(--COLOR_BACKGROUND));
     filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
 }

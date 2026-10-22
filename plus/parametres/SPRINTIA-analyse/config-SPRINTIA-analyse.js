@@ -27,6 +27,9 @@ async function selectCoach(item) {
         alert("Une erreur s'est produite lors de l'enregistrement du style de votre coach !")
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
     }
+
+    // maintenant on change la valeur des variables de SPRINTIA Briefing
+    
 }
 
 function favoriteIA(idElement) {

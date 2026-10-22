@@ -79,7 +79,7 @@ const dicoMois = {
     "10": "Oct.",
     "11": "Nov.",
     "12": "Déc."
-}
+} 
 function cleanPeriodeDate(dateDebutPeriode, dateFinPeriode) {
     let tableauDebutJJMMAAAA = dateDebutPeriode.split("-") // ["2026", "09", "26"]
     let tableauFinJJMMAAAA = dateFinPeriode.split("-") // ["2026", "09", "26"]

@@ -1,3 +1,23 @@
+const dicoMois = {
+    "01": "Jan.",
+    "02": "Fév.",
+    "03": "Mars",
+    "04": "Avr.",
+    "05": "Mai",
+    "06": "Juin",
+    "07": "Juil.",
+    "08": "Août",
+    "09": "Sep.",
+    "10": "Oct.",
+    "11": "Nov.",
+    "12": "Déc."
+}
+
+function cleanDate(date) {
+    let datePropre = date.split("-") // [22, 10, 2026]
+    return datePropre[0] + " " + dicoMois[datePropre[1]] + " " + datePropre[2]
+}
+
 async function init(id) {
     const dataOfThisDiscussion = await db.discussion.get(id)
 
@@ -7,7 +27,8 @@ async function init(id) {
         return
     }
 
-    document.getElementById("date").textContent = formatEuropeenDate(dataOfThisDiscussion.date)
+    let date = formatEuropeenDate(dataOfThisDiscussion.date)
+    document.getElementById("date").textContent = cleanDate(date)
     document.getElementById("date").classList.remove("skeleton")
 
     document.getElementById("question").textContent = dataOfThisDiscussion.question

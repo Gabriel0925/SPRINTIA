@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.66" 
+const VERSION_CACHE = "V1.1.67" 
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",

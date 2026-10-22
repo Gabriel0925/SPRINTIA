@@ -47,7 +47,7 @@ function affichageCard(debutSlice, finSlice) {
 
     let historiqueSaveForAfficher = historiqueComplet.slice(debutSlice, finSlice)
     historiqueSaveForAfficher.forEach(dataDiscussion => {
-        createCard(dataDiscussion.date, dataDiscussion.question, dataDiscussion.id)
+        createCard(formatEuropeenDate(dataDiscussion.date), dataDiscussion.question, dataDiscussion.id)
     })
 
     if (nbCardsAfficher > 12) {

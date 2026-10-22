@@ -37,7 +37,7 @@
 
     /* SPRINTIA Analyse */
     --COLOR_GLOW: var(--COLOR_ACCENT);
-    --COLOR_ANALYSE_START: #4689ef;
+    --COLOR_ANALYSE_START: var(--COLOR_ACCENT);
     --COLOR_ANALYSE_END: #94b8ef;
 
 
@@ -332,15 +332,24 @@ a.lien {
     text-decoration: underline;
     transition: letter-spacing ease-out var(--TIME_TRANSITION_FAST);
 }
+a.lien.SPRINTIA-analyse {
+    color: var(--COLOR_ANALYSE_START);
+}
 @media (hover: hover) and (pointer: fine) {
     a.lien:hover{
         color: var(--COLOR_ACCENT_HOVER);
         letter-spacing: 1px;
     }
+    a.lien.SPRINTIA-analyse:hover {
+        color: var(--COLOR_ANALYSE_START);
+    }
 }
 a.lien:active{
     color: var(--COLOR_ACCENT_ACTIVE);
     letter-spacing: 1px;
+}
+a.lien.SPRINTIA-analyse:active {
+    color: var(--COLOR_ANALYSE_START);
 }
 
 
@@ -2131,6 +2140,7 @@ section.background-SPRINTIA-analyse div.windows-SPRINTIA-analyse div.container-b
     padding: var(--SPACE_M);
     flex-grow: 1;
     display: -webkit-box;
+    background-color: var(--COLOR_ANALYSE_START);
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     line-clamp: 1;
@@ -2165,18 +2175,18 @@ section.background-SPRINTIA-analyse div.windows-SPRINTIA-analyse div.container-b
 }
 /*quand le user à copié le prompt on lui montre que désormais il peut ouvrir son IA*/
 section.background-SPRINTIA-analyse div.windows-SPRINTIA-analyse div.container-button-windows-SPRINTIA-analyse button.selected#button-open-ia{
-    background-color: var(--COLOR_ACCENT);
+    background-color: var(--COLOR_ANALYSE_START);
     -webkit-backdrop-filter: blur(0) saturate(0);
     backdrop-filter: blur(0) saturate(0);
     color: var(--COLOR_BACKGROUND);
 }
 @media (hover: hover) and (pointer: fine) {
     section.background-SPRINTIA-analyse div.windows-SPRINTIA-analyse div.container-button-windows-SPRINTIA-analyse button.selected#button-open-ia:hover{
-        background-color: var(--COLOR_ACCENT_HOVER);
+        background-color: var(--COLOR_ANALYSE_END);
     }
 }
 section.background-SPRINTIA-analyse div.windows-SPRINTIA-analyse div.container-button-windows-SPRINTIA-analyse button.selected#button-open-ia:active{
-    background-color: var(--COLOR_ACCENT_ACTIVE);
+    background-color: var(--COLOR_ANALYSE_END);
 }
 
 

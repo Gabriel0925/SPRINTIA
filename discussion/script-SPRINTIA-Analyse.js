@@ -145,7 +145,7 @@ async function affichageStyleCoach() {
 
 
     const dicoStyleCoachColor = {
-        "Strict-Motivant": ["#bc5af2", "#d4a3ef", "#ffa7fe"],
+        "Strict-Motivant": ["#ca6dfc", "#e0b3f8", "#ffa7fe"],
         "Copain": ["#5af2cedb", "#d6fff5db", "#8dffe8"]
     }
     if (styleCoach=="Bienveillant") {

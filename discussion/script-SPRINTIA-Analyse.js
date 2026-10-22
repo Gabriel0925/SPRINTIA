@@ -520,6 +520,22 @@ document.addEventListener("DOMContentLoaded", async() => {
     const buttonOpenIa = document.getElementById("button-open-ia")
     if (buttonOpenIa) {buttonOpenIa.addEventListener("click", () => {openIA()})}
 
+    const textareaQuestionUser = document.getElementById("promt-user")
+    if (textareaQuestionUser) {
+        textareaQuestionUser.addEventListener("input", () => {
+
+            const allShorcut = document.querySelectorAll("div.idee-prompt")
+            for (const elt of allShorcut) {
+                if (textareaQuestionUser.value.trim() == elt.textContent) {
+                    document.querySelector(".idee-prompt.selected").classList.remove("selected")
+                    elt.classList.add("selected")
+                }
+            }
+
+        })
+
+    }
+
 
     await affichageStyleCoach()
     raccourciPrompt()

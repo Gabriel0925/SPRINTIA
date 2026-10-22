@@ -4347,9 +4347,8 @@ div.container-idee-prompt div.idee-prompt:active{
 
 
 div.container-card-prompt {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--SPACE_L);
     margin: var(--SPACE_L) 0;
 }
@@ -4374,9 +4373,6 @@ div.container-card-prompt div.card-prompt{
 
     display: flex;
     justify-content: space-between;
-    
-    width: 340px;
-    flex-grow: 1;
     padding: var(--SPACE_XS);
     cursor: pointer;
     transition: transform ease-out var(--TIME_TRANSITION_FAST), background-color ease-out var(--TIME_TRANSITION);
@@ -4399,18 +4395,52 @@ div.container-card-prompt div.card-prompt p.question-user{
     font-weight: var(--P);
     color: var(--COLOR_TEXT_PRIMARY);
 
-    border-right: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
     padding: var(--SPACE_XXS);
+    padding-left: var(--SPACE_S);
     margin-bottom: 2px; /*pour cacher la phrase en dessous des "..."*/
     flex-grow: 1;
 }
 div.container-card-prompt div.card-prompt p.date{
+    display: flex;
+    justify-content: center;
+
     color: var(--COLOR_ACCENT);
     padding: var(--SPACE_XXS);
-    font-size: var(--P_SMALL);
-    font-weight: var(--FW_BUTTON);
-    min-width: 130px;
+    font-size: var(--H3);
+    font-weight: var(--FW_BOLD);
+    min-width: 150px;
     text-align: center;
+    border-right: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
+}
+@media (max-width:1250px) {
+    div.container-card-prompt {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width:800px) {
+    div.container-card-prompt {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    div.container-card-prompt div.card-prompt{
+        min-height: 0;
+        height: 110px;
+    }
+    div.container-card-prompt div.card-prompt p.question-user{
+        -webkit-line-clamp: 4; /* Limite à 4 lignes */
+        line-clamp: 4; /* Je met également ça pour que ça assure la compatibilité avec tous les navigateurs */
+        overflow: hidden;
+    }
+}
+@media (max-width:550px) {
+    div.container-card-prompt div.card-prompt{
+        min-height: 0;
+        height: 160px;
+    }
+    div.container-card-prompt div.card-prompt p.question-user{
+        -webkit-line-clamp: 6; /* Limite à 6 lignes */
+        line-clamp: 6; /* Je met également ça pour que ça assure la compatibilité avec tous les navigateurs */
+        overflow: hidden;
+    }
 }
 
 
@@ -4470,6 +4500,7 @@ section.container-question-prompt div.part-name-data div.name i:active{
 }
 section.container-question-prompt div.part-name-data span.data{
     font-size: var(--P);
+    color: var(--COLOR_TEXT_SECONDARY);
     padding: var(--SPACE_XS) 0;
     font-weight: normal;
     white-space: pre-wrap; /*pour que le prompt s'affiche bien avec les retour à la ligne '\n' */

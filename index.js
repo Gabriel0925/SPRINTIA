@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", configSPRINTIA())
 
 
 // Init for function Afficher data
-let NbCardsWorkoutAfficher = 0
+let NbCardsWorkoutAfficher = 0 
 let NbTotalCardsWorkoutAfficher = parseInt(sessionStorage.getItem("NbCardHistoriqueSave")) || 12
 let HistoriqueComplet = []
 

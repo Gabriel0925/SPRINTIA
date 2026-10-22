@@ -14,6 +14,7 @@ async function createFileJSON() {
     let workoutDB = await db.entrainement.toArray()
     let niveauCourseDB = await db.niveau_course.toArray()
     let jrmCoachDB = await db.JRM_Coach.toArray()
+    let discussionDB = await db.discussion.toArray()
     let profilDB = await db.profil.toArray()
     let recupDB = await db.recuperation.toArray()
 
@@ -25,6 +26,7 @@ async function createFileJSON() {
             entrainement: workoutDB,
             niveau_course: niveauCourseDB,
             JRM_Coach: jrmCoachDB,
+            discussion: discussionDB,
             profil: profilDB,
             recuperation:recupDB
         }
@@ -33,7 +35,7 @@ async function createFileJSON() {
     // si il n'y a pas de données on return false
     // le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" et "versionDB" donc on vérif si il y a plus d'une clé
     if (Object.keys(dicoDataLocalStorage).length <= nbClefInutileLocalStorage && workoutDB.length === 0 && niveauCourseDB.length === 0 && 
-        jrmCoachDB.length === 0 && profilDB.length === 0 && recupDB.length === 0) {
+        jrmCoachDB.length === 0 && discussionDB.length === 0 && profilDB.length === 0 && recupDB.length === 0) {
         return false
     } else {
         // transformation du dico en txt JSON, avec 2 tab comme identation et null pr appliquer aucun filtre
@@ -133,8 +135,8 @@ async function restaurationDatas(event) {
             // si le fichier ne contient aucune donnée on affiche un message ds le btn
             // le dico localStorage contient toujours une clé qui est nommé : "VersionLocalStorage" donc on vérif si il y a plus d'une clé
             if (Object.keys(dataFileLocalStorage).length <= nbClefInutileLocalStorage && dataFileIndexedDB.entrainement.length === 0 && 
-                dataFileIndexedDB.niveau_course.length === 0 && dataFileIndexedDB.JRM_Coach.length === 0 && 
-                dataFileIndexedDB.profil.length === 0 && dataFileIndexedDB.recuperation.length === 0) {
+                dataFileIndexedDB.niveau_course.length === 0 && dataFileIndexedDB.JRM_Coach.length === 0 && dataFileIndexedDB.discussion.length === 0
+                && dataFileIndexedDB.profil.length === 0 && dataFileIndexedDB.recuperation.length === 0) {
                 buttonRestoration.textContent = "Aucune donnée à restaurer"
                 await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
 

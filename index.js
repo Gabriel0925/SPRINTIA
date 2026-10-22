@@ -214,8 +214,6 @@ inputSearch.addEventListener("input", () => { // on recup en temps réel ce que 
                 let CardWorkoutHTML = HTMLCard(CardWorkout, element, DateEuropeen, dureeWorkout)
                 document.getElementById("liste-workouts").appendChild(CardWorkoutHTML)
             });
-            
-            document.getElementById("liste-workouts").classList.remove("skeleton")
         }
     }
 })

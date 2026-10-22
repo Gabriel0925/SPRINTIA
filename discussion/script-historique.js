@@ -49,16 +49,22 @@ function affichageCard(debutSlice, finSlice) {
     historiqueSaveForAfficher.forEach(dataDiscussion => {
         createCard(formatEuropeenDate(dataDiscussion.date), dataDiscussion.question, dataDiscussion.id)
     })
-
+ 
     if (nbCardsAfficher > 12) {
         sessionStorage.setItem("nbCardDiscussionSave", nbCardsAfficher)
     }
 }
 
 async function init() {
+    // réinitialisation des variables
+    historiqueComplet = []
+    nbCardsAfficher = 0
+    document.getElementById("liste-question").textContent = ""
+
     const historiqueDiscussion = await db.discussion.toArray()
 
     if (historiqueDiscussion.length > 0) { // si ya des datas
+
         historiqueDiscussion.forEach(elt => {
             historiqueComplet.push(elt) // on ajoute tout dans un tableau pour éviter de faire trop de requete à la bdd
         });
@@ -81,6 +87,38 @@ window.addEventListener("DOMContentLoaded", async() =>{
         buttonAfficherPlus.addEventListener("click", () => {
             affichageCard(nbCardsAfficher, nbCardsAfficher+12)
             nbCardsAfficher += 12
+        })
+    }
+    
+    // RECHERCHE ENTRAINEMENT
+    let iconRecherche = document.querySelector("i.icon_search")
+    if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}
+
+    let inputSearch = document.getElementById("input-search")
+    if (inputSearch) {
+        inputSearch.addEventListener("input", async() => {
+            let rechercheUser = inputSearch.value.toLowerCase()
+
+            if (rechercheUser.trim() == "") {
+                await init()
+            } else {
+                let filteredHistoriqueComplet = historiqueComplet.filter(discussion => discussion.question.toLowerCase().includes(rechercheUser))
+
+                document.getElementById("liste-question").textContent = ""
+                document.getElementById("button_afficher_plus").style.display = "none"
+
+                if (filteredHistoriqueComplet.length <= 0) {
+                    document.getElementById("aucun-resultat").style.display = "flex"
+                } else {
+                    document.getElementById("aucun-resultat").style.display = "none"
+
+                    filteredHistoriqueComplet.forEach(element => {
+                        createCard(formatEuropeenDate(element.date), element.question, element.id)
+                    });
+                }
+
+            }
+
         })
     }
 

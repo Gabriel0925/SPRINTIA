@@ -1294,36 +1294,23 @@ button.analyse {
     margin: var(--SPACE_XS) 0;
 
     color: var(--COLOR_BACKGROUND);
-    background-color: transparent;
+    background-color: var(--COLOR_ACCENT);
     overflow: hidden;
-    box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
+    box-shadow: 0 0 10px var(--COLOR_ACCENT);
     position: relative;
 
     width: 100%;
     max-width: 450px;
 }
-button.analyse::before {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    transform: scale(1.35);
-    background: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
-    z-index: -1;
-}
 @media (hover: hover) and (pointer: fine) {
     button.analyse:hover {
         background-color: var(--COLOR_ACCENT_HOVER);
+        box-shadow: 0 0 10px var(--COLOR_ACCENT_HOVER);
     }
-}
-button.analyse:active::before {
-    background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
 button.analyse:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
+    box-shadow: 0 0 10px var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 button.analyse#analyse_entrainement {
@@ -2029,35 +2016,22 @@ div.zone-coach button {
 
     color: var(--COLOR_BACKGROUND);
     
-    box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
-    background-color: transparent;
+    box-shadow: 0 0 10px var(--COLOR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     overflow: hidden;
     position: relative;
 
     width: 100%;
 }
-div.zone-coach button::before {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    transform: scale(1.35);
-    background: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
-    z-index: -1;
-}
 @media (hover: hover) and (pointer: fine) {
     div.zone-coach button:hover {
         background-color: var(--COLOR_ACCENT_HOVER);
+        box-shadow: 0 0 10px var(--COLOR_ACCENT_HOVER);
     }
-}
-div.zone-coach button:active::before {
-    background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
 div.zone-coach button:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
+    box-shadow: 0 0 10px var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 
@@ -3924,36 +3898,22 @@ section.container-content-algorithme div.widget-analyse button{
     margin: var(--SPACE_XS) 0;
 
     color: var(--COLOR_BACKGROUND);
-    
-    box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
-    background-color: transparent;
+    box-shadow: 0 0 10px var(--COLOR_ACCENT);
+    background-color: var(--COLOR_ACCENT);
     overflow: hidden;
     position: relative;
 
     width: 100%;
 }
-section.container-content-algorithme div.widget-analyse button::before {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    transform: scale(1.35);
-    background: radial-gradient(circle, var(--COLOR_ANALYSE_START), var(--COLOR_ANALYSE_END));
-    z-index: -1;
-}
 @media (hover: hover) and (pointer: fine) {
     section.container-content-algorithme div.widget-analyse button:hover {
         background-color: var(--COLOR_ACCENT_HOVER);
+        box-shadow: 0 0 10px var(--COLOR_ACCENT_HOVER);
     }
-}
-section.container-content-algorithme div.widget-analyse button:active::before {
-    background: radial-gradient(circle, var(--COLOR_ACCENT_ACTIVE), var(--COLOR_ACCENT_ACTIVE));
 }
 section.container-content-algorithme div.widget-analyse button:active {
     background-color: var(--COLOR_ACCENT_ACTIVE);
+    box-shadow: 0 0 10px var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 

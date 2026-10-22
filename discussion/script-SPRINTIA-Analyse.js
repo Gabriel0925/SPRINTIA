@@ -133,17 +133,17 @@ async function affichageStyleCoach() {
 
 
     const dicoStyleCoachColor = {
-        "Strict-Motivant": ["#bc5af2", "#d4a3ef"],
-        "Copain": ["#5af2cedb", "#d6fff5db"]
+        "Strict-Motivant": ["#bc5af2", "#d4a3ef", "#ff8efe"],
+        "Copain": ["#5af2cedb", "#d6fff5db", "#8effe8"]
     }
     if (styleCoach=="Bienveillant") {
         document.documentElement.style.removeProperty("--COLOR_ANALYSE_START")
         document.documentElement.style.removeProperty("--COLOR_ANALYSE_END")
-        document.documentElement.style.removeProperty("--COLOR_GLOW")
+        document.documentElement.style.removeProperty("--COLOR_ACCENT_TEXT")
     } else {
         document.documentElement.style.setProperty("--COLOR_ANALYSE_START", dicoStyleCoachColor[dataCoach.style][0])
-        document.documentElement.style.setProperty("--COLOR_GLOW", dicoStyleCoachColor[dataCoach.style][0])
         document.documentElement.style.setProperty("--COLOR_ANALYSE_END", dicoStyleCoachColor[dataCoach.style][1])
+        document.documentElement.style.setProperty("--COLOR_ACCENT_TEXT", dicoStyleCoachColor[dataCoach.style][2])
     }
 }
 // --- Fin changement de l'avatar SVG en fonction du choix de l'utilisateur ---

@@ -86,9 +86,9 @@ function raccourciPrompt() {
             elt.textContent = ideasCorrespondante // on attribue une phrase à un element
 
             // on ajoute un onclick
-            elt.addEventListener("click", () => {
-                const inputForPrompt = document.getElementById("promt-user")
-                if (inputForPrompt) {
+            const inputForPrompt = document.getElementById("promt-user")
+            if (inputForPrompt) {
+                elt.addEventListener("click", () => {
                     // si le texte du raccourci est égale à ce qu'il y a dans le textarea alors on déselectionne le raccourci et on vide le textarea
                     if (elt.textContent == inputForPrompt.value) {
                         const eltSelected = document.querySelector(".idee-prompt.selected")
@@ -109,15 +109,31 @@ function raccourciPrompt() {
                         }
                     } else {
                         inputForPrompt.value = ideasCorrespondante // on met le texte de l'élement dans l'input (enfin le textarea)
-                        
+                            
                         const eltSelected = document.querySelector(".idee-prompt.selected")
                         if (eltSelected) {
                             eltSelected.classList.remove("selected")
                         }
                         elt.classList.add("selected")
                     }
-                }
-            })
+                })
+
+                inputForPrompt.addEventListener("input", () => {
+                    const raccourciSelected = document.querySelector(".idee-prompt.selected")
+                    if (raccourciSelected) {
+                        if (inputForPrompt.value.trim() != raccourciSelected.textContent) {
+                            raccourciSelected.classList.remove("selected")
+                        }
+                    }
+
+                    const allRaccourci = document.querySelectorAll(".idee-prompt")
+                    for (const elt2 of allRaccourci) {
+                        if (inputForPrompt.value == elt2.textContent) {
+                            elt2.classList.add("selected")
+                        }
+                    }
+                })
+            }
 
             compteur+=1
         }
@@ -519,23 +535,6 @@ document.addEventListener("DOMContentLoaded", async() => {
 
     const buttonOpenIa = document.getElementById("button-open-ia")
     if (buttonOpenIa) {buttonOpenIa.addEventListener("click", () => {openIA()})}
-
-    const textareaQuestionUser = document.getElementById("promt-user")
-    if (textareaQuestionUser) {
-        textareaQuestionUser.addEventListener("input", () => {
-
-            const allShorcut = document.querySelectorAll("div.idee-prompt")
-            for (const elt of allShorcut) {
-                if (textareaQuestionUser.value.trim() == elt.textContent) {
-                    document.querySelector(".idee-prompt.selected").classList.remove("selected")
-                    elt.classList.add("selected")
-                }
-            }
-
-        })
-
-    }
-
 
     await affichageStyleCoach()
     raccourciPrompt()

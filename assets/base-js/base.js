@@ -222,7 +222,7 @@ async function genererGraphiqueLine(listeX, listeY) {
     let StyleCSS = getComputedStyle(RootCSS)
     // Recup variable css
     let CouleurAccent = StyleCSS.getPropertyValue("--COLOR_ACCENT")
-    let CouleurAccentText = StyleCSS.getPropertyValue("--COLOR_ACCENT_TEXT")
+    let CouleurAccentText = StyleCSS.getPropertyValue("--COLOR_BACKGROUND")
     let CouleurTextPrincipal = StyleCSS.getPropertyValue("--COLOR_TEXT_PRIMARY")
 
     const barCanvas = document.getElementById("barCanvas")

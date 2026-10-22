@@ -1,6 +1,5 @@
 // variable globale
-let nbCardsAfficher = 0 
-let nbTotalCardsAfficher = parseInt(sessionStorage.getItem("nbCardDiscussionSave")) || 12
+let nbCardsAfficher = 0
 let historiqueComplet = []
 
 function createCard(date, question, id) {
@@ -34,25 +33,22 @@ function createCard(date, question, id) {
     }
 }
 
-function affichageCard() {
+function affichageCard(debutSlice, finSlice) {
     // si ya moins de 12 discussions on affiche pas le button plus
     if (historiqueComplet.length <= 12) {
         document.getElementById("button_afficher_plus").style.display = "none"
     }
     // si il n'y a plus de cartes a ajouter on fais disparaitre le bouton voir plus
-    if (historiqueComplet.length <= nbCardsAfficher) {
+    if (historiqueComplet.length <= finSlice) {
         document.getElementById("button_afficher_plus").style.display = "none"
     } else {
         document.getElementById("button_afficher_plus").style.display = "block"
     }
 
-    let historiqueSaveForAfficher = historiqueComplet.slice(nbCardsAfficher, nbTotalCardsAfficher)
+    let historiqueSaveForAfficher = historiqueComplet.slice(debutSlice, finSlice)
     historiqueSaveForAfficher.forEach(dataDiscussion => {
         createCard(dataDiscussion.date, dataDiscussion.question, dataDiscussion.id)
     })
-        
-    // maj de la variable 
-    nbCardsAfficher = nbTotalCardsAfficher
 
     if (nbCardsAfficher > 12) {
         sessionStorage.setItem("nbCardDiscussionSave", nbCardsAfficher)
@@ -67,7 +63,9 @@ async function init() {
             historiqueComplet.push(elt) // on ajoute tout dans un tableau pour éviter de faire trop de requete à la bdd
         });
 
-        affichageCard()
+        let nbCardAuDebut = parseInt(sessionStorage.getItem("nbCardDiscussionSave")) || 12
+        affichageCard(0, nbCardAuDebut)
+        nbCardsAfficher+=nbCardAuDebut
 
     } else {
         document.getElementById("aucune-data").style.display = "flex" // on affiche le visuel quand ya aucune ancienne discussion
@@ -81,8 +79,8 @@ window.addEventListener("DOMContentLoaded", async() =>{
     const buttonAfficherPlus = document.getElementById("button_afficher_plus")
     if (buttonAfficherPlus) {
         buttonAfficherPlus.addEventListener("click", () => {
+            affichageCard(nbCardsAfficher, nbCardsAfficher+12)
             nbCardsAfficher += 12
-            affichageCard()
         })
     }
 

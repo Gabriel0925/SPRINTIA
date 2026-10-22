@@ -4222,6 +4222,7 @@ div.container-idee-prompt div.idee-prompt{
     font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     text-align: center;
+    border: 2px solid var(--COLOR_BACKGROUND);
 
     /*les min-width et min-height sont importants!*/
     min-width: none;
@@ -4255,6 +4256,10 @@ div.container-idee-prompt div.idee-prompt{
 }
 div.container-idee-prompt div.idee-prompt.generate{
     animation: animation_ideas_question 0.5s ease-out backwards;
+}
+div.container-idee-prompt div.idee-prompt.selected{
+    border: 2px solid var(--COLOR_ACCENT_TEXT);
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 div.container-idee-prompt div.idee-prompt.generate:nth-child(1){
     animation-delay: 0.03s;

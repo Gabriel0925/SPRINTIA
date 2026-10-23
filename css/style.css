@@ -2458,7 +2458,7 @@ ol.container-list-choice li.choice-item {
     align-items: center;
     overflow: hidden;
     cursor: pointer;
-    opacity: 0.75;
+    opacity: 0.6;
     
     font-size: var(--P);
     padding: var(--SPACE_XS) var(--SPACE_M);
@@ -2467,7 +2467,6 @@ ol.container-list-choice li.choice-item {
     transition: transform ease-out var(--TIME_TRANSITION_FAST),
                 opacity ease-out var(--TIME_TRANSITION_FAST),
                 border-radius ease-out var(--TIME_TRANSITION),
-                outline ease-out var(--TIME_TRANSITION),
                 font-weight ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -2480,7 +2479,6 @@ ol.container-list-choice li.choice-item:active{
     transform: scale(var(--SCALE_NORMAL));
 }
 ol.container-list-choice li.choice-item.selected{
-    outline: 3px solid var(--COLOR_TEXT_PRIMARY);
     opacity: 1;
     border-radius: var(--BORDER_BIG);
     font-weight: var(--FW_BUTTON);

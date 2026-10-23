@@ -12,7 +12,6 @@ SPRINTIA est une PWA, par conséquent elle est disponible sur tous vos appareils
 | :---: | :---: |
 | ![Interface de l'historique d'entraînement](/images-readme/historique_entrainement.png) | ![Interface du détail d'un entraînement](/images-readme/detail_entrainement.png) |
 | **SPRINTIA Analyse** | **Import des données** |
-| :---: | :---: |
 | ![Interface des discussions](/images-readme/discussion.png) | ![Interface de l'import des données](/images-readme/import_donnees.png) |
 | **Statistiques** | **Progression** |
 | ![Interface de la page des statistiques](/images-readme/statistiques.png) | ![Interface de la page de progression](/images-readme/progression.png) |

@@ -51,8 +51,10 @@ Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponib
 
 (Attention : ces algorithmes sont un guide, ils sont là pour vous aider à progresser mais vos sensations et votre instinct restent les plus importants !)
 
-### Fonctionnalité d'analyse en profondeur (IA) & Génération intelligente
-* **SPRINTIA Briefing** : Générateur de prompt (contenant vos données d'entraînement) pour votre IA préférée : Vibe, Gemini, ChatGPT,... Cette fonctionnalité vous permet **d'analyser vos données d'entraînement en profondeur pour vous améliorer**.
+### Fonctionnalité d'analyse en profondeur (IA) & Génération
+* **SPRINTIA Analyse** : C'est la fonctionnalité qui gère toutes les analyses du coach de l'application. Grâce à SPRINTIA Analyse, vous pouvez choisir le style
+        des analyses de ce coach (Bienveillant, Strict & Motivant, Copain). De plus, SPRINTIA Analyse c'est le coeur même de la fonctionnalité de discussion, car c'est elle
+        qui génère un prompt pour analyser en profondeur vos données d'entraînement via votre IA préférée.
     * Analyser vos tendances d'entraînement
     * Analyser votre entraînement
     * Analyser votre récupération
@@ -75,12 +77,6 @@ Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponib
     * De plus, si vous avez une montre de la marque COROS, vous pouvez envoyer cet entraînement sur votre compte COROS en un seul clic ! Par la suite, vous n'avez plus qu'à l'envoyer sur votre montre et à le suivre.
 
     Pour apprendre à utiliser cette fonctionnalité, vous pouvez visionner ma vidéo Youtube : [Comment utiliser l'outil Entraînement du Jour ?](https://youtu.be/eu8c4BxBBlU?si=xMtSDKkeHsbAvQTv)
-
-### Personnalisation & Coaching
-* **JRM Coach** : c'est le coach intégré dans l'application. C'est lui qui va interpréter vos données dans les algorithmes. Vous pouvez le personnaliser pour avoir le coach qui vous correspond le mieux.
-    * Choisissez son nom
-    * Choisissez son style (Bienveillant, Strict & Motivant, Copain, Go muscu)
-    * Choisissez son avatar (émoji)
 
 ### Autres fonctionnalités
 * **Statistiques** : visualisez vos données d'entraînement sur une période sélectionnée (7J, 30J, 90J, 365J), vous pouvez consulter les statistiques suivantes sur cette période :

@@ -64,6 +64,7 @@ async function init() {
     const historiqueDiscussion = await db.discussion.toArray()
 
     if (historiqueDiscussion.length > 0) { // si ya des datas
+        historiqueDiscussion.reverse() // on met du plus récent au plus ancien
 
         historiqueDiscussion.forEach(elt => {
             historiqueComplet.push(elt) // on ajoute tout dans un tableau pour éviter de faire trop de requete à la bdd

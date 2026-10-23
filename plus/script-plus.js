@@ -1,13 +1,18 @@
 function derniereMajView() {
     let lastViewVersion = localStorage.getItem("lastViewVersion") || "SPRINTIA 5.2"
 
+    // elt html
+    const spanPointBleu = document.querySelector("span.point-bleu")
+    const spanPointBleuTabBars = document.querySelector("section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-bars")
+    const spanPointBleuHeader = document.querySelector("section.header ul.header-container-items li.header-items.point-bleu-header")
+
     // si le user n'a pas regardé le patch note de la maj alorsil y aura un point rouge
     if (lastViewVersion != VERSION_SPRINTIA) {
-        document.querySelector("span.point-bleu").classList.add("visible")
+        if (spanPointBleu) {spanPointBleu.classList.add("visible")}
     } else {
-        document.querySelector("span.point-bleu").classList.remove("visible")
-        document.querySelector("section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-bars").classList.remove("point-bleu-tab-bars")
-        document.querySelector("section.header ul.header-container-items li.header-items.point-bleu-header").classList.remove("point-bleu-header")
+        if (spanPointBleu) {spanPointBleu.classList.remove("visible")}
+        if (spanPointBleuTabBars) {spanPointBleuTabBars.classList.remove("point-bleu-tab-bars")}
+        if (spanPointBleuHeader) {spanPointBleuHeader.classList.remove("point-bleu-header")}
     }
 }
 function clickPatchNote(elt) {

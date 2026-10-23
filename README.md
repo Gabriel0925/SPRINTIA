@@ -1,18 +1,19 @@
 # SPRINTIA
-SPRINTIA est conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
+SPRINTIA c'est une PWA d'algrithmes de sport conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
 Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
-Vous ne savez pas comment installer l'application ? Ou encore vous ne savez pas comment configurer SPRINTIA ? Pas de panique, j'ai réalisé un tuto YouTube pour vous aider : [Guide de démarrage - Installation & Configuration](https://youtu.be/S3B5Tm9ssRQ?si=fC1sXdjjDnKKtwbz)
+Vous ne savez pas comment installer l'application ? Ou encore vous ne savez pas comment configurer SPRINTIA ? Pas de panique, j'ai réalisé une vidéo YouTube pour vous aider : [Guide de démarrage - Installation & Configuration](https://youtu.be/S3B5Tm9ssRQ?si=fC1sXdjjDnKKtwbz)
 
-## Installable sur tous vos appareils
-| Sur smartphone | Sur tablette | Sur ordinateur portable |
-| :---: | :---: | :---: |
-| ![SPRINTIA sur smartphone](/images-readme/smartphone.png) | ![SPRINTIA sur tablette](/images-readme/tablette.png) | ![SPRINTIA sur ordinateur portable](/images-readme/ordinateur_portable.png) |
+## Compatibilité
+SPRINTIA est une PWA, par conséquent elle est disponible sur tous vos appareils (smartphone, tablette, ordinateur portable).
 
 ## Aperçu visuel
-| **Carte GPS** | **Import des données** |
+| **Historique d'entraînement** | **Carte GPS** |
 | :---: | :---: |
-| ![Interface du détail d'un entraînement](/images-readme/detail_entrainement.png) | ![Interface de l'import des données](/images-readme/import_donnees.png) |
+| ![Interface de l'historique d'entraînement](/images-readme/historique_entrainement.png) | ![Interface du détail d'un entraînement](/images-readme/detail_entrainement.png) |
+| **SPRINTIA Analyse** | **Import des données** |
+| :---: | :---: |
+| ![Interface des discussions](/images-readme/discussion.png) | ![Interface de l'import des données](/images-readme/import_donnees.png) |
 | **Statistiques** | **Progression** |
 | ![Interface de la page des statistiques](/images-readme/statistiques.png) | ![Interface de la page de progression](/images-readme/progression.png) |
 

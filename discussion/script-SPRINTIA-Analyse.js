@@ -254,7 +254,9 @@ function paramURL() {
             dataInLocalStorage = true
         }
 
-
+        return true // il y avait des choses dans l'url donc on return true pour pas lancer les raccourcis
+    } else {
+        return false
     }
 }
 // -- Fin recup des paramètres dans l'URL (methode get) ---
@@ -580,7 +582,26 @@ document.addEventListener("DOMContentLoaded", async() => {
     if (buttonOpenIa) {buttonOpenIa.addEventListener("click", () => {openIA()})}
 
     await affichageStyleCoach()
-    await raccourciPrompt()
+
+    const paramInUrl = paramURL()
+    if (paramInUrl != true) {
+        await raccourciPrompt()
+    } else {
+        document.getElementById("container-button-afficher-suggestion").style.display = "flex"
+        document.querySelector("div.container-idee-prompt").style.display = "none"
+
+        const buttonAfficherSuggestion = document.getElementById("afficher-suggestion")
+        if (buttonAfficherSuggestion) {
+
+            buttonAfficherSuggestion.addEventListener("click", async() => {
+                document.getElementById("container-button-afficher-suggestion").classList.add("destroy")
+
+                document.querySelector("div.container-idee-prompt").style.display = "flex"
+                await raccourciPrompt()
+            })
+            
+        }
+    }
+
     init()
-    paramURL()
 })

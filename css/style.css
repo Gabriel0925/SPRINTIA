@@ -3988,6 +3988,24 @@ div.container-center-marge {
     justify-content: center;
     display: flex;
 }
+div.container-center-marge#container-button-afficher-suggestion {
+    display: none;
+    min-height: 170px;
+    align-items: center;
+}
+
+@keyframes animation_container_destroy {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+div.container-center-marge.destroy#container-button-afficher-suggestion {
+    animation: animation_container_destroy 0.01s ease-out forwards;
+}
 div.container-center-marge button#supprimer-profil{
     width: 150px;
 }
@@ -4272,13 +4290,13 @@ div.container-idee-prompt div.idee-prompt.selected{
     color: var(--COLOR_TEXT_PRIMARY);
 }
 div.container-idee-prompt div.idee-prompt.generate:nth-child(1){
-    animation-delay: 0.03s;
+    animation-delay: 0.04s;
 }
 div.container-idee-prompt div.idee-prompt.generate:nth-child(2){
-    animation-delay: 0.07s;
+    animation-delay: 0.08s;
 }
 div.container-idee-prompt div.idee-prompt.generate:nth-child(3){
-    animation-delay: 0.12s;
+    animation-delay: 0.13s;
 }
 div.container-idee-prompt div.idee-prompt.skeleton{
     color: transparent !important;
@@ -4297,6 +4315,23 @@ div.container-idee-prompt div.idee-prompt.skeleton:nth-child(2){
     }
 }
 div.container-idee-prompt div.idee-prompt:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
+}
+button#afficher-suggestion {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    color: var(--COLOR_TEXT_SECONDARY);
+    padding: var(--SPACE_S);
+    border-radius: var(--BORDER_BIG);
+    font-size: var(--P_SMALL);
+    height: fit-content;
+}
+@media (hover: hover) and (pointer: fine) {
+    button#afficher-suggestion:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+button#afficher-suggestion:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }

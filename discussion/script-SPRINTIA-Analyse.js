@@ -81,14 +81,14 @@ function choiceRaccourci(dataWorkout, dataRecup) {
     let tableauIdeas = []
 
     // quand ya pas de données de recup ni de workout alors on génère 3 raccourcis "conseils"
-    if (dataRecup.length <= 0 && dataWorkout.length <= 0) {
+    if (dataRecup==undefined && dataWorkout==undefined) {
         tableauNbAleatoire = generateNbAleatoire("conseils", 3)
 
         tableauIdeas.push(ideasQuestions["conseils"][tableauNbAleatoire[0]])
         tableauIdeas.push(ideasQuestions["conseils"][tableauNbAleatoire[1]])
         tableauIdeas.push(ideasQuestions["conseils"][tableauNbAleatoire[2]])
 
-    } else if (dataRecup.length <= 0) { // quand ya pas de données de récup on généré 2 raccourcis en conseils et 1 en entrainement
+    } else if (dataRecup==undefined) { // quand ya pas de données de récup on généré 2 raccourcis en conseils et 1 en entrainement
         tableauIdeas.push(ideasQuestions["entrainement"][generateNbAleatoire("entrainement", 1)[0]])
 
         tableauNbAleatoire = generateNbAleatoire("conseils", 2)
@@ -96,7 +96,7 @@ function choiceRaccourci(dataWorkout, dataRecup) {
             tableauIdeas.push(ideasQuestions["conseils"][elt])
         }
 
-    } else if (dataWorkout.length <= 0) { // quand ya pas de données d'entrainement alors on genere un raccourci de recup et 2 conseils
+    } else if (dataWorkout==undefined) { // quand ya pas de données d'entrainement alors on genere un raccourci de recup et 2 conseils
         tableauIdeas.push(ideasQuestions["recuperation"][generateNbAleatoire("recuperation", 1)[0]])
 
         tableauNbAleatoire = generateNbAleatoire("conseils", 2)
@@ -113,8 +113,8 @@ function choiceRaccourci(dataWorkout, dataRecup) {
     return tableauIdeas
 }
 async function raccourciPrompt() {
-    const dataWorkout = await db.entrainement.toArray()
-    const dataRecup = await db.recuperation.toArray()
+    const dataWorkout = await dataEntrainement()
+    const dataRecup = await dataRecuperation()
 
     const tableauIdeas = choiceRaccourci(dataWorkout, dataRecup)
 
@@ -510,7 +510,7 @@ async function copyPrompt(buttonCopy) {
 
         clickOnButtonCopy = true
     } else {
-        alert("Aucun prompt n'a été généré car SPRINTIA n'a pas assez de données pour en générer un !")
+        alert("Aucun prompt n'a été généré car SPRINTIA n'a pas assez de données (sur les 2 derniers mois) pour en générer un !")
         return 
     }
 }

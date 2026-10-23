@@ -107,7 +107,7 @@ function choiceRaccourci(dataWorkout, dataRecup) {
     } else {
         tableauIdeas.push(ideasQuestions["entrainement"][generateNbAleatoire("entrainement", 1)[0]])
         tableauIdeas.push(ideasQuestions["recuperation"][generateNbAleatoire("recuperation", 1)[0]])
-        tableauIdeas.push(ideasQuestions["conseils"][generateNbAleatoire("conseils", 1)][0])
+        tableauIdeas.push(ideasQuestions["conseils"][generateNbAleatoire("conseils", 1)[0]])
     }
 
     return tableauIdeas

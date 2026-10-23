@@ -57,23 +57,66 @@ const ideasQuestions = {
         "Motive-moi à aller m'entraîner aujourd'hui!"
     ]
 }
-function generateNbAleatoire() {
-    const nbAleatoireForRecuperation = Math.floor(Math.random() * ideasQuestions["recuperation"].length)
-    const nbAleatoireForEntrainement = Math.floor(Math.random() * ideasQuestions["entrainement"].length)
-    const nbAleatoireForConseils = Math.floor(Math.random() * ideasQuestions["conseils"].length)
+function generateNbAleatoire(categorie, nbGeneration) {
+    const tableauNbAleatoire = []
+    let lastNbAleatoire = undefined
+    for (let i=0; i< nbGeneration; i++) {
+        let nbAleatoire = Math.floor(Math.random() * ideasQuestions[categorie].length)
 
-    return [nbAleatoireForRecuperation, nbAleatoireForEntrainement, nbAleatoireForConseils]
+        if (lastNbAleatoire!=undefined) {
+            while (lastNbAleatoire == nbAleatoire) {
+                nbAleatoire = Math.floor(Math.random() * ideasQuestions[categorie].length)
+            }
+        }
+
+        tableauNbAleatoire.push(nbAleatoire)
+        
+        lastNbAleatoire = nbAleatoire
+    }
+
+    return tableauNbAleatoire
 }
-function raccourciPrompt() {
-    const tableauNbAleatoire = generateNbAleatoire() // ça renvoie un tableau avec le nombre aléatoire pour [recuperation, entrainement, conseils]
+function choiceRaccourci(dataWorkout, dataRecup) {
+    let tableauNbAleatoire = []
+    let tableauIdeas = []
 
-    // on va cherche les phrases correspondante dans le dico
-    const ideasForRecup = ideasQuestions["recuperation"][tableauNbAleatoire[0]]
-    const ideasForEntrainement = ideasQuestions["entrainement"][tableauNbAleatoire[1]]
-    const ideasForConseils = ideasQuestions["conseils"][tableauNbAleatoire[2]]
+    // quand ya pas de données de recup ni de workout alors on génère 3 raccourcis "conseils"
+    if (dataRecup.length <= 0 && dataWorkout.length <= 0) {
+        tableauNbAleatoire = generateNbAleatoire("conseils", 3)
 
-    // création d'un tableau pour ensuite pouvoir chercher avec un compteur ses phrases dans la boucle for
-    const tableauIdeas = [ideasForRecup, ideasForEntrainement, ideasForConseils]
+        tableauIdeas.push(ideasQuestions["conseils"][tableauNbAleatoire[0]])
+        tableauIdeas.push(ideasQuestions["conseils"][tableauNbAleatoire[1]])
+        tableauIdeas.push(ideasQuestions["conseils"][tableauNbAleatoire[2]])
+
+    } else if (dataRecup.length <= 0) { // quand ya pas de données de récup on généré 2 raccourcis en conseils et 1 en entrainement
+        tableauIdeas.push(ideasQuestions["entrainement"][generateNbAleatoire("entrainement", 1)[0]])
+
+        tableauNbAleatoire = generateNbAleatoire("conseils", 2)
+        for (const elt of tableauNbAleatoire) {
+            tableauIdeas.push(ideasQuestions["conseils"][elt])
+        }
+
+    } else if (dataWorkout.length <= 0) { // quand ya pas de données d'entrainement alors on genere un raccourci de recup et 2 conseils
+        tableauIdeas.push(ideasQuestions["recuperation"][generateNbAleatoire("recuperation", 1)[0]])
+
+        tableauNbAleatoire = generateNbAleatoire("conseils", 2)
+        for (const elt of tableauNbAleatoire) {
+            tableauIdeas.push(ideasQuestions["conseils"][elt])
+        }
+
+    } else {
+        tableauIdeas.push(ideasQuestions["entrainement"][generateNbAleatoire("entrainement", 1)[0]])
+        tableauIdeas.push(ideasQuestions["recuperation"][generateNbAleatoire("recuperation", 1)[0]])
+        tableauIdeas.push(ideasQuestions["conseils"][generateNbAleatoire("conseils", 1)][0])
+    }
+
+    return tableauIdeas
+}
+async function raccourciPrompt() {
+    const dataWorkout = await db.entrainement.toArray()
+    const dataRecup = await db.recuperation.toArray()
+
+    const tableauIdeas = choiceRaccourci(dataWorkout, dataRecup)
 
     const allIdeePrompt = document.querySelectorAll(".idee-prompt")
     if (allIdeePrompt) {
@@ -537,7 +580,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     if (buttonOpenIa) {buttonOpenIa.addEventListener("click", () => {openIA()})}
 
     await affichageStyleCoach()
-    raccourciPrompt()
+    await raccourciPrompt()
     init()
     paramURL()
 })

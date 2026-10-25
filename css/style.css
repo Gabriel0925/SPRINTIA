@@ -1,25 +1,25 @@
 :root {
     /* ACCENT */
-    --COLOR_ACCENT: #5A97F2;
-    --COLOR_ACCENT_HOVER: #75a7f0;
-    --COLOR_ACCENT_ACTIVE: #8fb3e9;
-    --COLOR_ACCENT_TEXT: #8eccff;
+    --COLOR_ACCENT: #f28f5a;
+    --COLOR_ACCENT_HOVER: #bc75f0;
+    --COLOR_ACCENT_ACTIVE: #e9b88f;
+    --COLOR_ACCENT_TEXT: #ffc08e;
 
 
     /* BASE */
-    --COLOR_BACKGROUND: #000000;
-    --COLOR_BACKGROUND_CARD: #20252e;
-    --COLOR_BACKGROUND_CARD_HOVER: #363c48;
-    --COLOR_BACKGROUND_CARD_ACTIVE: #4d5461;
+    --COLOR_BACKGROUND: #0f001a;
+    --COLOR_BACKGROUND_CARD: #2d2147;
+    --COLOR_BACKGROUND_CARD_HOVER: #413067;
+    --COLOR_BACKGROUND_CARD_ACTIVE: #5f4597;
 
     --COLOR_TEXT_PRIMARY: #F0F4F8;
     --COLOR_TEXT_SECONDARY: #BDBDBD;
 
 
     /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(32, 37, 46, 0.5);
-    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.16);
-    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.26);
+    --COLOR_GLASSMORPHISM: rgb(48 29 79 / 50%);
+    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.25);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.45);
 
     --BLUR_GLASSMORPHISM_BARS: 22px; /* tab-bars, nav-bar */
     --SATURATE_GLASSMORPHISM_BARS: 180%;
@@ -36,8 +36,8 @@
 
 
     /* BRIEFING */
-    --COLOR_BRIEFING_START: #4689ef;
-    --COLOR_BRIEFING_END: #94b8ef;
+    --COLOR_BRIEFING_START: #ef7946;
+    --COLOR_BRIEFING_END: #efae94;
 
 
     /* 3D */
@@ -1991,7 +1991,7 @@ section.background-SPRINTIA-briefing {
     z-index: 20000;
 }
 section.background-SPRINTIA-briefing div.windows-SPRINTIA-briefing {
-    background-color: rgba(32, 37, 46, 0.75);
+    background-color: rgb(45 37 57 / 60%);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
 

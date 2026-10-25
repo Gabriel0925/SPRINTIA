@@ -2,9 +2,6 @@
 SPRINTIA c'est une PWA d'algrithmes de sport conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
 Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
-Vous ne savez pas comment installer l'application ? 
- Ou encore vous ne savez pas comment configurer SPRINTIA ? Pas de panique, j'ai réalisé une vidéo YouTube pour vous aider : [Guide de démarrage - Installation & Configuration](https://youtu.be/S3B5Tm9ssRQ?si=fC1sXdjjDnKKtwbz)
-
 ## Compatibilité
 SPRINTIA est une PWA, par conséquent elle est disponible sur tous vos appareils (smartphone, tablette, ordinateur portable).
 
@@ -72,7 +69,7 @@ Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponib
         * "Compare ma séance de course d'aujourd'hui avec celle de la semaine dernière. Est-ce que mon endurance s'améliore ?"
         * "Donne-moi 3 exercices de récupération active à faire aujourd'hui, adaptés à ma récupération."
 
-    Pour en savoir plus sur cette fonctionnalité, vous pouvez visionner le tuto YouTube que j'ai réalisé : [Comment utiliser SPRINTIA Briefing ?](https://youtu.be/6dx8cqwIkbk?si=roJGDWf_lrA27re_)
+    Pour en savoir plus sur cette fonctionnalité, vous pouvez regarder le post insta que j'ai réalisé : [Découvrez SPRINTIA Briefing ?](https://www.instagram.com/p/DdvVIseiGtL/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
 
     (Attention : en utilisant cette fonctionnalité, vous acceptez le transfert de vos données à l'IA que vous aurez choisie dans les paramètre de SPRINTIA Briefing (IA par défaut : Vibe))
 
@@ -82,7 +79,7 @@ Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponib
     * Le sport que vous souhaitez pratiquer (Course à pied, Vélo, Natation)
     * De plus, si vous avez une montre de la marque COROS, vous pouvez envoyer cet entraînement sur votre compte COROS en un seul clic ! Par la suite, vous n'avez plus qu'à l'envoyer sur votre montre et à le suivre.
 
-    Pour apprendre à utiliser cette fonctionnalité, vous pouvez visionner ma vidéo Youtube : [Comment utiliser l'outil Entraînement du Jour ?](https://youtu.be/eu8c4BxBBlU?si=xMtSDKkeHsbAvQTv)
+    Pour apprendre à utiliser cette fonctionnalité, vous pouvez visionner mon post insta qui explique le fonctionnement de [l'outil Entraînement du Jour ?](https://www.instagram.com/p/Dds19s5jr5R/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
 
 ### Autres fonctionnalités
 * **Statistiques** : visualisez vos données d'entraînement sur une période sélectionnée (7J, 30J, 90J, 365J), vous pouvez consulter les statistiques suivantes sur cette période :
@@ -111,13 +108,13 @@ Si vous allez courir avec un ami et que vous utilisez tous les deux SPRINTIA, vo
 Vous pouvez importer vos données d'un entraînement, grâce à un fichier **TCX** ou **GPX**. De plus, vous pouvez importer votre historique d'entraînement grâce à un fichier **CSV** de Garmin ou de TrainingPeaks.
 
 Si vous avez besoin d'aide pour importer votre entraînement dans SPRINTIA, vous pouvez visionner mes tutos : 
-* [Importer un entraînement de Strava à SPRINTIA](https://youtu.be/q9cG8EUAMwE?si=GNQzX39XpZQvfL-2)
+* [Importer un entraînement de Strava à SPRINTIA (Partie 1)](https://www.instagram.com/reel/Dc_klswuJVv/?utm_source=ig_web_copy_link&obrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
+* [Importer un entraînement de Strava à SPRINTIA (Partie 2)](https://www.instagram.com/reel/Dc_km8YuwL9/?utm_source=ig_web_copy_link&mdxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
 * [Importer un entraînement de COROS à SPRINTIA](https://youtu.be/OTOc0AO8TD8?si=CZBkTGLxH8IQzhvL)
 * [Importer un entraînement de n'importe quelle plateforme à SPRINTIA](https://youtu.be/IvygdF1oLqQ?si=hREvlepVsqZEoyJk)
 
 ## Réseaux
-* [La chaîne YouTube](https://www.youtube.com/@SPRINTIA-09)
-* [Le instagram](https://www.instagram.com/sprintia09?igsh=MXV5N2NiaHRvdTF1bQ%3D%3D)
+* Suivez l'[instagram de SPRINTIA](https://www.instagram.com/sprintia09?igsh=MXV5N2NiaHRvdTF1bQ%3D%3D) pour être informer des nouvelles mises à jour et pour découvrir l'ensemble des fonctionnalités.
 
 ## La sécurité, un principe à ne pas négliger
 

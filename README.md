@@ -11,7 +11,7 @@ SPRINTIA est une PWA, par conséquent elle est disponible sur tous vos appareils
 ## Aide
 Vous ne savez pas comment installer l'application ? Pas de panique j'ai réalisé des tutos pour vous aider :
 * [Installer SPRINTIA sur Android](https://www.instagram.com/reel/DcshP0YORNo/?utm_source=ig_web_copy_link&exln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
-*[Installer SPRINTIA sur iOS](https://www.instagram.com/reel/DcshRmMupee/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
+* [Installer SPRINTIA sur iOS](https://www.instagram.com/reel/DcshRmMupee/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
 
 ## Aperçu visuel
 | **Historique d'entraînement** | **Carte GPS** |

@@ -2,10 +2,16 @@
 SPRINTIA c'est une PWA d'algrithmes de sport conçu pour vous aider avant et après vos entraînements grâce à des algorithmes 100% gratuits. 
 Vous pouvez y accéder depuis ce lien : [Tester SPRINTIA](https://sprintia.vercel.app)
 
-Vous ne savez pas comment installer l'application ? Ou encore vous ne savez pas comment configurer SPRINTIA ? Pas de panique, j'ai réalisé une vidéo YouTube pour vous aider : [Guide de démarrage - Installation & Configuration](https://youtu.be/S3B5Tm9ssRQ?si=fC1sXdjjDnKKtwbz)
+Vous ne savez pas comment installer l'application ? 
+ Ou encore vous ne savez pas comment configurer SPRINTIA ? Pas de panique, j'ai réalisé une vidéo YouTube pour vous aider : [Guide de démarrage - Installation & Configuration](https://youtu.be/S3B5Tm9ssRQ?si=fC1sXdjjDnKKtwbz)
 
 ## Compatibilité
 SPRINTIA est une PWA, par conséquent elle est disponible sur tous vos appareils (smartphone, tablette, ordinateur portable).
+
+## Aide
+Vous ne savez pas comment installer l'application ? Pas de panique j'ai réalisé des tutos pour vous aider :
+* [Installer SPRINTIA sur Android](https://www.instagram.com/reel/DcshP0YORNo/?utm_source=ig_web_copy_link&exln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
+*[Installer SPRINTIA sur iOS](https://www.instagram.com/reel/DcshRmMupee/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
 
 ## Aperçu visuel
 | **Historique d'entraînement** | **Carte GPS** |

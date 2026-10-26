@@ -4238,7 +4238,7 @@ div.container-idee-prompt {
 
     gap: var(--SPACE_M);
     margin: var(--SPACE_M) auto;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 div.container-idee-prompt div.idee-prompt{
     width: fit-content;
@@ -4249,10 +4249,6 @@ div.container-idee-prompt div.idee-prompt{
     color: var(--COLOR_TEXT_SECONDARY);
     text-align: center;
     border: 2px solid var(--COLOR_BACKGROUND);
-
-    /*les min-width et min-height sont importants!*/
-    min-width: none;
-    min-height: none;
     cursor: pointer;
 
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
@@ -4486,6 +4482,19 @@ section.container-question-prompt div.part-name-data div.name i{
 section.container-question-prompt div.part-name-data div.name i:active{
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(var(--SCALE_MAX));
+}
+section.container-question-prompt div.part-name-data div.name i.icon_fleche_droite{
+    transform: rotate(315deg);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-question-prompt div.part-name-data div.name i:hover{
+        background-color: var(--COLOR_GLASSMORPHISM_HOVER);
+        transform: rotate(315deg) scale(var(--SCALE_MAX));
+    }
+}
+section.container-question-prompt div.part-name-data div.name i:active{
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: rotate(315deg) scale(var(--SCALE_MAX));
 }
 section.container-question-prompt div.part-name-data span.data{
     font-size: var(--P);

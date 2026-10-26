@@ -67,6 +67,13 @@ async function init(id) {
             })
         })
     }
+
+    const buttonSend = document.querySelector("i.icon_fleche_droite")
+    if (buttonSend) {
+        buttonSend.addEventListener("click", () => {
+            window.location.href = `discussion.html?question=${document.getElementById("question").textContent}`
+        })
+    }
 }
 
 window.addEventListener("DOMContentLoaded", async () => {

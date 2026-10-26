@@ -32,7 +32,10 @@ const ideasQuestions = {
         "Suis-je assez reposé·e pour m'entraîner?",
         "Comment accélérer ma récupération aujourd'hui?",
         "Donne-moi des conseils pour mieux dormir ce soir.",
-        "Douche chaude ou froide après mon entraînement?"
+        "Douche chaude ou froide après mon entraînement?",
+        "Quels étirements ou auto-massages faire pour soulager mes muscles?",
+        "Est-ce que j'ai besoin de faire une sieste?",
+        "Faut-il manger des protéines pour accélérer ma récupération?"
     ],
     "entrainement": [
         "Donne-moi une idée d'entraînement pour aujourd'hui.",
@@ -43,10 +46,10 @@ const ideasQuestions = {
         "Donne-moi des idées d'objectifs à réaliser ce mois-ci.",
         "Comment courir plus vite?",
         "Comment améliorer mon endurance?",
-        "Donne-moi 3 conseils pour améliorer ma VMA.",
         "C'est quoi la VMA et à quoi ça sert?",
         "Crée un entraînement basé sur ma récupération.",
-        "Suggère-moi des exercices de renforcement pour devenir plus rapide."
+        "Suggère-moi des exercices de renforcement pour devenir plus rapide.",
+        "Dois-je privilégier le volume ou l'intensité?"
     ],
     "conseils": [
         "Donne-moi 3 exercices de récupération active.",
@@ -54,7 +57,16 @@ const ideasQuestions = {
         "Quelles sont les erreurs à ne pas faire le jour d'une course?",
         "Quels aliments manger avant un entraînement?",
         "Puis-je m'entraîner en étant malade?",
-        "Motive-moi à aller m'entraîner aujourd'hui!"
+        "Motive-moi à aller m'entraîner aujourd'hui!",
+        "Comment améliorer ma foulée?",
+        "Comment éviter les points de côté pendant mes efforts?",
+        "Quel chaussre choisir selon mon profil et mon budget?",
+        "Donne-moi 3 conseils pour améliorer ma VMA.",
+        "En quoi la régularité est essentielle en sport?",
+        "Comment améliorer mon mental?",
+        "En quoi la patience et la régularité sont-elles la clé de la victoire?",
+        "À quoi servent les protéines dans notre corps?",
+        "Quels livres acheter pour mieux comprendre la course à pied?"
     ]
 }
 function generateNbAleatoire(categorie, nbGeneration) {

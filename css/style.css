@@ -4720,16 +4720,24 @@ section.container-phrase::before {
     height: 100%;
     background: linear-gradient(225deg, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
     filter: blur(30px) brightness(0.7) saturate(120%);
-    transform: scale(1.05, 0.98);
+    transform: scale(1, 0.98);
     z-index: -1;
 }
 section.container-phrase div.track-phrase{
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
     height: 100%;
     width: 100%;
     padding-top: 3rem;
+}
+section.container-phrase div.track-phrase div.phrases{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 2.5rem;
+    margin: var(--SPACE_XL) auto;
+    width: 100%;
+    max-width: 630px;
 }
 section.container-phrase div.track-phrase p{
     filter: blur(3px);
@@ -4739,6 +4747,9 @@ section.container-phrase div.track-phrase p{
 }
 section.container-phrase div.track-phrase p.currently{
     filter: blur(0px);
+}
+section.container-phrase div.track-phrase p.more{
+    transform: scale(0.75) translateX(-35px);
 }
 section.container-phrase div.track-phrase div.button{
     display: flex;
@@ -4768,7 +4779,17 @@ section.container-phrase div.track-phrase div.button i{
                 background-color ease-out var(--TIME_TRANSITION_FAST);
 }
 section.container-phrase div.track-phrase div.button i#precedent{transform: scale(1) rotate(270deg);}
+section.container-phrase div.track-phrase div.button i.desactiver#precedent{
+    transform: scale(1) rotate(270deg);
+    opacity: 0.5;
+    pointer-events: none;
+}
 section.container-phrase div.track-phrase div.button i#suivant{transform: scale(1) rotate(90deg);}
+section.container-phrase div.track-phrase div.button i.desactiver#suivant{
+    transform: scale(1) rotate(270deg);
+    opacity: 0.5;
+    pointer-events: none;
+}
 @media (hover: hover) and (pointer: fine) {
     section.container-phrase div.track-phrase div.button i#precedent:hover {
         transform: scale(var(--SCALE_MAX)) rotate(270deg);

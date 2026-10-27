@@ -4720,6 +4720,11 @@ section.container-phrase {
     height: 100vh;
     margin: var(--SPACE_XL) 0;
 }
+@keyframes fondu_phrase {
+    0% {opacity: 1;}
+    50% {opacity: 0.8;}
+    100% {opacity: 1;}
+}
 section.container-phrase.mental::before {
     content: "";
     position: absolute;
@@ -4730,6 +4735,7 @@ section.container-phrase.mental::before {
     background: linear-gradient(225deg, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
     filter: blur(50px) brightness(0.7) saturate(140%);
     z-index: -1;
+    animation: fondu_phrase ease-in-out 3s infinite;
 }
 section.container-phrase.confiance::before {
     content: "";
@@ -4741,6 +4747,7 @@ section.container-phrase.confiance::before {
     background: linear-gradient(225deg, #8b5af2, #d28eff);
     filter: blur(50px) brightness(0.7) saturate(140%);
     z-index: -1;
+    animation: fondu_phrase ease-in-out 3s infinite;
 }
 section.container-phrase.remotivation::before {
     content: "";
@@ -4752,6 +4759,7 @@ section.container-phrase.remotivation::before {
     background: linear-gradient(225deg, #f25a5a, #e27f7f);
     filter: blur(50px) brightness(0.7) saturate(140%);
     z-index: -1;
+    animation: fondu_phrase ease-in-out 3s infinite;
 }
 section.container-phrase div.track-phrase{
     display: flex;

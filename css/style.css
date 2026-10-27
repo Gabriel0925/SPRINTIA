@@ -4854,6 +4854,7 @@ section.container-phrase div.track-phrase div.button i{
                 inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
     
     transition: transform ease-out var(--TIME_TRANSITION_FAST),
+                opacity ease-out var(--TIME_TRANSITION),
                 background-color ease-out var(--TIME_TRANSITION_FAST);
 }
 section.container-phrase div.track-phrase div.button i#precedent{

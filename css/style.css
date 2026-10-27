@@ -4674,6 +4674,7 @@ section.container-tabs-onglets div.tabs-onglets{
     gap: var(--SPACE_XXS);
     padding-bottom: 0.37rem;
     color: var(--COLOR_TEXT_PRIMARY);
+    border-bottom: 2px solid transparent;
 }
 section.container-tabs-onglets div.tabs-onglets.selected{
     color: var(--COLOR_ACCENT_TEXT);

@@ -4796,6 +4796,7 @@ section.container-phrase div.track-phrase div.button{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: var(--SPACE_M);
 }
 section.container-phrase div.track-phrase div.button i{
     display: flex;

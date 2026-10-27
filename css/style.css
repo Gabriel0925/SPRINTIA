@@ -4492,12 +4492,12 @@ section.container-question-prompt div.part-name-data div.name i.icon_fleche_droi
     transform: rotate(315deg);
 }
 @media (hover: hover) and (pointer: fine) {
-    section.container-question-prompt div.part-name-data div.name i:hover{
+    section.container-question-prompt div.part-name-data div.name i.icon_fleche_droite:hover{
         background-color: var(--COLOR_GLASSMORPHISM_HOVER);
         transform: rotate(315deg) scale(var(--SCALE_MAX));
     }
 }
-section.container-question-prompt div.part-name-data div.name i:active{
+section.container-question-prompt div.part-name-data div.name i.icon_fleche_droite:active{
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: rotate(315deg) scale(var(--SCALE_MAX));
 }

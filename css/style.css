@@ -4741,7 +4741,7 @@ section.container-phrase {
     }
     50% {
         opacity: 1;
-        transform: scale(0.91, 0.95);
+        transform: scale(0.89, 0.95);
     }
     100% {
         opacity: 1;
@@ -4755,8 +4755,8 @@ section.container-phrase.mental::before {
     top: 0%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(225deg, #3c95f5, #91c3fd);
-    filter: blur(50px) brightness(0.7) saturate(140%);
+    background: linear-gradient(225deg, #4197f4, #91c3fd);
+    filter: blur(50px) brightness(0.65) saturate(130%);
     z-index: -1;
     animation: fondu_phrase_large_display 3.5s ease-in-out infinite;
 }
@@ -4767,8 +4767,8 @@ section.container-phrase.confiance::before {
     top: 0%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(225deg, #8b3aee, #cc98fc);
-    filter: blur(50px) brightness(0.7) saturate(140%);
+    background: linear-gradient(225deg, #8f41ee, #cc98fc);
+    filter: blur(50px) brightness(0.65) saturate(130%);
     z-index: -1;
     animation: fondu_phrase_large_display 3.5s ease-in-out infinite;
 }
@@ -4779,8 +4779,8 @@ section.container-phrase.remotivation::before {
     top: 0%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(225deg, #f34747, #ff8e8e);
-    filter: blur(50px) brightness(0.7) saturate(140%);
+    background: linear-gradient(225deg, #f25050, #ff8e8e);
+    filter: blur(50px) brightness(0.65) saturate(130%);
     z-index: -1;
     animation: fondu_phrase_large_display 3.5s ease-in-out infinite;
 }

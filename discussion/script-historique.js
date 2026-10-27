@@ -101,9 +101,23 @@ window.addEventListener("DOMContentLoaded", async() =>{
             let rechercheUser = inputSearch.value.toLowerCase()
 
             if (rechercheUser.trim() == "") {
-                await init()
+                await init() // on revient au départ lors du chargement de la page si ya rien dans la recherche
             } else {
-                let filteredHistoriqueComplet = historiqueComplet.filter(discussion => discussion.question.toLowerCase().includes(rechercheUser))
+                let tableauMotRechercheUser = rechercheUser.split(" ")
+
+                let filteredHistoriqueComplet = historiqueComplet.filter(discussion => {
+                    let questionLower = discussion.question.toLowerCase() // on met lla discussion de l'historique en minuscule
+
+                    let correspondance = true
+                    for (const elt of tableauMotRechercheUser) {
+                        // si le mot n'est pas présent dans l'historique de discussion enfin dans la discussion alors on arrete la boucle
+                        if (!questionLower.includes(elt)) {
+                            correspondance = false
+                            break
+                        }
+                    }
+                    return correspondance // on return si ya une correspondance ou non
+                })
 
                 document.getElementById("liste-question").textContent = ""
                 document.getElementById("button_afficher_plus").style.display = "none"

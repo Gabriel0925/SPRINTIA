@@ -193,7 +193,20 @@ inputSearch.addEventListener("input", () => { // on recup en temps réel ce que 
         document.getElementById("liste-workouts").textContent = ""
         initialisationAffichage()
     } else {
-        let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => workout.nom.toLowerCase().includes(rechercheUser))
+        let tableauMotRechercheUser = rechercheUser.split(" ")
+        let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => {
+            let nameWorkoutLower = workout.nom.toLowerCase() // on met lla discussion de l'historique en minuscule
+
+            let correspondance = true
+            for (const elt of tableauMotRechercheUser) {
+                // si le mot n'est pas présent dans l'historique de discussion enfin dans la discussion alors on arrete la boucle
+                if (!nameWorkoutLower.includes(elt)) {
+                    correspondance = false
+                    break
+                }
+            }
+            return correspondance // on return si ya une correspondance ou non
+        })
 
         document.getElementById("liste-workouts").textContent = ""
         document.getElementById("button_afficher_plus").style.display = "none"

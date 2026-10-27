@@ -1084,11 +1084,20 @@ div.carousel div.card-tool p{
 
 
 section.container-workout-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--SPACE_L);
     margin: var(--SPACE_L) 0;
+}
+@media (max-width:1050px) {
+    section.container-workout-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width:700px) {
+    section.container-workout-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 section.container-workout-cards.skeleton {
     display: inline-block;
@@ -1110,8 +1119,6 @@ section.container-workout-cards div.cards-history-workout {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 340px;
-    flex-grow: 1;
     padding: var(--SPACE_XS);
 
     cursor: pointer;

@@ -228,15 +228,10 @@ async function displayOnScreenCE() {
         document.getElementById(idHtmlStatut[statutUser]).querySelector(".score").textContent = chargeTotale7j;
         document.getElementById(idHtmlStatut[statutUser]).querySelector(".unit").textContent = "CE";
 
-        document.getElementById("container-block-data-charge-7j").style.display = "none" // on enleve le bloc de la charge des 7J car on l'affiche dans la jauge
     } else {
         for (const tranche of trancheJauge) {
             tranche.classList.add("disabled")
         }
-        
-        // on affiche la charge des 7j dans un bloc différent qu'il n'y a pas de statut
-        document.getElementById("charge-7j").textContent = Math.floor(chargeTotale7j)
-        document.getElementById("charge-7j").classList.remove("skeleton")
 
         // on cache la cible car ya pas de statut
         document.getElementById("block-data-cible").style.display = "none"
@@ -251,6 +246,10 @@ async function displayOnScreenCE() {
     // on affiche la cible
     document.getElementById("cible").textContent = Math.floor(cibleUserMin) + " - " + Math.floor(cibleUserMax)
     document.getElementById("cible").classList.remove("skeleton")
+
+    // on affiche la charge des 7j dans un bloc différent qu'il n'y a pas de statut
+    document.getElementById("charge-7j").textContent = Math.floor(chargeTotale7j)
+    document.getElementById("charge-7j").classList.remove("skeleton")
 
     // on affiche la charge des 28j
     document.getElementById("charge-28j").textContent = Math.floor(chargeTotale28j)

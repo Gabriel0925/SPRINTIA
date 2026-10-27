@@ -4695,6 +4695,14 @@ section.container-tabs-onglets div.tabs-onglets.selected{
     color: var(--COLOR_ACCENT_TEXT);
     border-bottom: 2px solid var(--COLOR_ACCENT_TEXT);
 }
+section.container-tabs-onglets div.tabs-onglets.selected#tabs-onglets-remotivation{
+    color: #e27f7f;
+    border-bottom: 2px solid #e27f7f;
+}
+section.container-tabs-onglets div.tabs-onglets.selected#tabs-onglets-confiance{
+    color: #d28eff;
+    border-bottom: 2px solid #d28eff;
+}
 section.container-tabs-onglets div.tabs-onglets i{
     font-size: 2rem;
 }
@@ -4710,8 +4718,9 @@ section.container-phrase {
     position: relative;
     width: 100%;
     height: 100vh;
+    margin-top: 3rem;
 }
-section.container-phrase::before {
+section.container-phrase.mental::before {
     content: "";
     position: absolute;
     left: 0%;
@@ -4719,8 +4728,29 @@ section.container-phrase::before {
     width: 100%;
     height: 100%;
     background: linear-gradient(225deg, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
-    filter: blur(30px) brightness(0.7) saturate(120%);
-    transform: scale(1, 0.98);
+    filter: blur(50px) brightness(0.7) saturate(140%);
+    z-index: -1;
+}
+section.container-phrase.confiance::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg, #8b5af2, #d28eff);
+    filter: blur(50px) brightness(0.7) saturate(140%);
+    z-index: -1;
+}
+section.container-phrase.remotivation::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg, #f25a5a, #e27f7f);
+    filter: blur(50px) brightness(0.7) saturate(140%);
     z-index: -1;
 }
 section.container-phrase div.track-phrase{
@@ -4745,11 +4775,23 @@ section.container-phrase div.track-phrase p{
     z-index: 3;
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
+
+    transition: filter ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION);
 }
 section.container-phrase div.track-phrase p.currently{
     filter: blur(0px);
 }
+@keyframes transition_p_future {
+    0%{transform: translateY(0px);}
+    75%{transform: translateY(-83px);}
+    100%{transform: translateY(-80px);}
+}
+section.container-phrase div.track-phrase p.check{
+    animation: transition_p_future 0.3s ease-out forwards;
+}
 section.container-phrase div.track-phrase p.more{
+    filter: blur(5px);
     transform: scale(0.75) translateX(-35px);
 }
 section.container-phrase div.track-phrase div.button{

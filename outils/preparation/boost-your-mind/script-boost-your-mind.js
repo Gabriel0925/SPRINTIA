@@ -92,7 +92,7 @@ function parolesSuivantePrecedente(fleche) {
         if (pCurrently!=undefined) {pCurrently.textContent = bddPhrases[ongletActuel][newCurrentIndex]}
         if (pFuture!=undefined) {pFuture.textContent = bddPhrases[ongletActuel][indexSuivant] || ""}
         if (pMore!=undefined) {pMore.textContent = bddPhrases[ongletActuel][indexSuivantSuivant] || ""}
-
+        
         // désactivation/activation de la fleche haut ou bas quand on arrive à la fin ou au début du carrousel des paroles
         const flecheHaut = document.getElementById("precedent")
         if (flecheHaut) {
@@ -118,6 +118,18 @@ function parolesSuivantePrecedente(fleche) {
 }
 
 function init() {
+    // on met la bonne classe au container
+    const containerPhrase = document.querySelector("section.container-phrase")
+    if (containerPhrase) {
+        // on supprime l'ancienne classe
+        containerPhrase.classList.remove("remotivation")
+        containerPhrase.classList.remove("confiance")
+        containerPhrase.classList.remove("mental")
+
+        containerPhrase.classList.add(ongletActuel) // on ajoute la bonne classe
+    }
+
+    // on remplit les p
     const allP = document.querySelectorAll("div.track-phrase div.phrases p")
 
     if (allP.length>0) {

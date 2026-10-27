@@ -4757,7 +4757,7 @@ section.container-phrase div.track-phrase div.button i{
     height: 55px;
     cursor: pointer;
     
-    background: var(--COLOR_GLASSMORPHISM);
+    background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
@@ -4777,9 +4777,13 @@ section.container-phrase div.track-phrase div.button i#suivant{transform: scale(
         transform: scale(var(--SCALE_MAX)) rotate(90deg);
     }
 }
-section.container-phrase div.track-phrase div.button i:active {
-    background: rgba(32, 37, 46, 0.2);
-    transform: scale(var(--SCALE_MAX));
+section.container-phrase div.track-phrase div.button i#precedent:active {
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: scale(var(--SCALE_MAX)) rotate(270deg);
+}
+section.container-phrase div.track-phrase div.button i#suivant:active {
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: scale(var(--SCALE_MAX)) rotate(90deg);
 }
 
 

@@ -4772,7 +4772,7 @@ section.container-phrase div.track-phrase div.phrases{
 section.container-phrase div.track-phrase p{
     filter: blur(2px);
     z-index: 3;
-    font-size: var(--H1);
+    font-size: var(--H2);
     opacity: 0.65;
     font-weight: var(--FW_BOLD_SMALL);
 

@@ -4738,6 +4738,7 @@ section.container-phrase div.track-phrase div.phrases{
     margin: var(--SPACE_XL) auto;
     width: 100%;
     max-width: 630px;
+    min-height: 300px;
 }
 section.container-phrase div.track-phrase p{
     filter: blur(3px);
@@ -4786,7 +4787,7 @@ section.container-phrase div.track-phrase div.button i.desactiver#precedent{
 }
 section.container-phrase div.track-phrase div.button i#suivant{transform: scale(1) rotate(90deg);}
 section.container-phrase div.track-phrase div.button i.desactiver#suivant{
-    transform: scale(1) rotate(270deg);
+    transform: scale(1) rotate(90deg);
     opacity: 0.5;
     pointer-events: none;
 }

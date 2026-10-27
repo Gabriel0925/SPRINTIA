@@ -102,8 +102,6 @@ function parolesSuivantePrecedente(fleche) {
         if (pCurrently!=undefined) {pCurrently.textContent = bddPhrases[ongletActuel][newCurrentIndex]}
         if (pFuture!=undefined) {pFuture.textContent = bddPhrases[ongletActuel][indexSuivant] || ""}
         if (pMore!=undefined) {pMore.textContent = bddPhrases[ongletActuel][indexSuivantSuivant] || ""}
-        
-        console.log(bddPhrases[ongletActuel][indexSuivant])
 
         // désactivation/activation de la fleche haut ou bas quand on arrive à la fin ou au début du carrousel des paroles
         const flecheHaut = document.getElementById("precedent")

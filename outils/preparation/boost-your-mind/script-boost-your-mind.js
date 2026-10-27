@@ -1,27 +1,37 @@
 const bddPhrases = {
     "remotivation": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
+        "Tu ne peux pas apprendre à voler sans t'écraser au sol au moins une fois.",
+        "C'est dur mais quelque fois il y a certaines choses qu'on ne peut pas éviter, tout ce qu'on peut faire c'est essayer de vivre avec.",
+        "Le travail finira toujours par surpasser le talent.",
+        "Si tu le fais pas maintenant, tu ne le feras sans doute pas plus tard.",
+        "Rappelle-toi pourquoi tu as commencé et tu ne repenseras plus jamais à arrêter.",
+        "Si c'était facile tout le monde l'aurait fait.",
+        "Ta seule concurrence c'est la personne que tu étais hier.",
+        "Parfois on perd, parfois on gagne et c'est comme ça!",
+        "Si tu rêves aussi grand, c'est parce que cette version de toi existe déjà dans le futur.",
+        "Personne ne viendra le faire à ta place alors écris ton histoire.",
+        "Dans 6 mois, tu te diras 'Heureusement que j'ai continué!' alors avance."
     ],
     "mental": [
-        "11",
-        "22",
-        "33",
-        "44",
-        "55",
-        "66",
+        "Quelques minutes de sport c'est quoi dans ta vie?",
+        "C'est quand tu es dans le dur que tu progresses vraiment!",
+        "Ne laisse pas ta peur te contrôler.",
+        "C'est dur ? Pense à cette personne, ferme les yeux et avance.",
+        "Pense toujours à la sensation que tu obtient après le sport.",
+        "Tu as la chance d'avoir un corps qui puisse faire du sport, alors honore le.",
+        "Quand ton cerveau te dit d'arrêter, continue, pousse encore un peu, tu serais étonné de là où tu peux aller."
     ],
     "confiance": [
-        "111",
-        "222",
-        "333",
-        "444",
-        "555",
-        "666",
+        "La clé de la victoire c'est la patience et la régularité.",
+        "Parfois, le mieux que tu puisses faire, c'est d'arrêter de stresser pour le futur et simplement profiter de là où tu es.",
+        "C'est la peur qui t'empêche de faire tous ce que tu devrais faire.",
+        "La grandeur demande du temps.",
+        "La seule façon d'échouer, c'est d'abandonner!",
+        "Je suis sûr que tu te fais du mal, arrête de penser au négatif et pense plutôt au positif.",
+        "Un esprit négatif ne t'offrira jamais des résultats positifs.",
+        "Regarde tout le chemin que tu as parcouru : tu as déjà fait le plus dur en décidant de t'y mettre.",
+        "Pendant que tu doutes de toi, certaines personnes aimeraient être à ta place, alors avance et profite.",
+        "N'attends pas d'être parfait pour être fier de ce que tu accomplis aujourd'hui."
     ]
 }
 let ongletActuel = "remotivation"
@@ -93,6 +103,8 @@ function parolesSuivantePrecedente(fleche) {
         if (pFuture!=undefined) {pFuture.textContent = bddPhrases[ongletActuel][indexSuivant] || ""}
         if (pMore!=undefined) {pMore.textContent = bddPhrases[ongletActuel][indexSuivantSuivant] || ""}
         
+        console.log(bddPhrases[ongletActuel][indexSuivant])
+
         // désactivation/activation de la fleche haut ou bas quand on arrive à la fin ou au début du carrousel des paroles
         const flecheHaut = document.getElementById("precedent")
         if (flecheHaut) {
@@ -134,11 +146,11 @@ function init() {
 
     if (allP.length>0) {
         // on desactive la fleche du haut car on peut pas remonter lors de l'init
-        const flecheHaut = document.getElementById("precedent")
-        if (flecheHaut) {flecheHaut.classList.add("desactiver")}
+        const buttonFlecheHaut = document.getElementById("precedent")
+        if (buttonFlecheHaut) {buttonFlecheHaut.classList.add("desactiver")}
 
-        const flecheBas = document.getElementById("suivant")
-        if (flecheBas) {flecheBas.classList.remove("desactiver")}
+        const buttonFlecheBas = document.getElementById("suivant")
+        if (buttonFlecheBas) {buttonFlecheBas.classList.remove("desactiver")}
 
         for (const elt of allP) {
             if (elt.classList == "past") {

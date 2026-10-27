@@ -4,7 +4,8 @@ function reinitialiseUI() {
     document.getElementById("taille-place").textContent = "--"
     document.getElementById("poids-place").textContent = "--"
     document.getElementById("fc-repos-place").textContent = "--"
-    document.getElementById("modifier-profil").textContent = "Configurer" 
+    document.getElementById("modifier-profil").textContent = "Configurer"
+    document.getElementById("supprimer-profil").style.display = "none"
 }
 
 async function remplirPlaceProfil() {

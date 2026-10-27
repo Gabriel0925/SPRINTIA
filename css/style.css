@@ -4717,7 +4717,8 @@ section.container-phrase {
     z-index: 1;
     position: relative;
     width: 100%;
-    margin: 3rem 0;
+    height: 100vh;
+    margin: var(--SPACE_XL) 0;
 }
 section.container-phrase.mental::before {
     content: "";
@@ -4755,7 +4756,7 @@ section.container-phrase.remotivation::before {
 section.container-phrase div.track-phrase{
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
+    height: 100%;
     width: 100%;
     padding: 3rem 0;
 }

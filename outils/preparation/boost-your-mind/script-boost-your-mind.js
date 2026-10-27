@@ -1,9 +1,9 @@
 const bddPhrases = {
     "remotivation": [
         "Tu ne peux pas apprendre à voler sans t'écraser au sol au moins une fois.",
-        "C'est dur mais quelque fois il y a certaines choses qu'on ne peut pas éviter, tout ce qu'on peut faire c'est essayer de vivre avec.",
+        "C'est dur mais parfois il y a certaines choses qu'on ne peut pas éviter, tout ce qu'on peut faire c'est essayer de vivre avec.",
         "Le travail finira toujours par surpasser le talent.",
-        "Si tu le fais pas maintenant, tu ne le feras sans doute pas plus tard.",
+        "Si tu ne le fais pas maintenant, tu ne le feras sans doute pas plus tard.",
         "Rappelle-toi pourquoi tu as commencé et tu ne repenseras plus jamais à arrêter.",
         "Si c'était facile tout le monde l'aurait fait.",
         "Ta seule concurrence c'est la personne que tu étais hier.",
@@ -17,14 +17,14 @@ const bddPhrases = {
         "C'est quand tu es dans le dur que tu progresses vraiment!",
         "Ne laisse pas ta peur te contrôler.",
         "C'est dur ? Pense à cette personne, ferme les yeux et avance.",
-        "Pense toujours à la sensation que tu obtient après le sport.",
-        "Tu as la chance d'avoir un corps qui puisse faire du sport, alors honore le.",
+        "Pense toujours à la sensation que tu obtiens après le sport.",
+        "Tu as la chance d'avoir un corps qui puisse faire du sport, alors honore-le.",
         "Quand ton cerveau te dit d'arrêter, continue, pousse encore un peu, tu serais étonné de là où tu peux aller."
     ],
     "confiance": [
         "La clé de la victoire c'est la patience et la régularité.",
         "Parfois, le mieux que tu puisses faire, c'est d'arrêter de stresser pour le futur et simplement profiter de là où tu es.",
-        "C'est la peur qui t'empêche de faire tous ce que tu devrais faire.",
+        "C'est la peur qui t'empêche de faire tout ce que tu devrais faire.",
         "La grandeur demande du temps.",
         "La seule façon d'échouer, c'est d'abandonner!",
         "Je suis sûr que tu te fais du mal, arrête de penser au négatif et pense plutôt au positif.",

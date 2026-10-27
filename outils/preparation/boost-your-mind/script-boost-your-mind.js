@@ -36,6 +36,14 @@ const bddPhrases = {
 }
 let ongletActuel = "remotivation"
 
+// voir "https://fr.javascript.info/task/shuffle"
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+Object.keys(bddPhrases).forEach(cle => {
+    shuffle(bddPhrases[cle]) // on mélange chaque tableau du dico alétoirement
+});
+
 function gererTabsOnglets(idElement) {
     const tabsOngletsSelectionner = document.querySelector("div.tabs-onglets.selected")
     if (tabsOngletsSelectionner) {

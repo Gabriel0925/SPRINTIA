@@ -160,64 +160,69 @@ i {
 .icon_add:before {content: "\e900";}
 .icon_archiver:before {content: "\e901";}
 .icon_autorenew:before {content: "\e902";}
-.icon_carte_plan:before {content: "\e903";}
-.icon_carte_satellite:before {content: "\e904";}
-.icon_charge_entrainement:before {content: "\e905";}
-.icon_coach:before {content: "\e906";}
-.icon_confidentialite:before {content: "\e907";}
-.icon_conversion:before {content: "\e908";}
-.icon_copy:before {content: "\e909";}
-.icon_discussion:before {content: "\e90a";}
-.icon_entrainement:before {content: "\e90b";}
-.icon_entrainement_du_jour:before {content: "\e90c";}
-.icon_envoyer:before {content: "\e90d";}
-.icon_fermer:before {content: "\e90e";}
-.icon_file:before {content: "\e90f";}
-.icon_file_csv:before {content: "\e910";}
-.icon_file_json:before {content: "\e911";}
-.icon_fleche_droite:before {content: "\e912";}
-.icon_fleche_gauche:before {content: "\e913";}
-.icon_flight:before {content: "\e914";}
-.icon_flow:before {content: "\e915";}
-.icon_folder_open:before {content: "\e916";}
-.icon_fullscreen:before {content: "\e917";}
-.icon_fullscreen_exit:before {content: "\e918";}
-.icon_goutte_eau:before {content: "\e919";}
-.icon_gpx:before {content: "\e91a";}
-.icon_historique:before {content: "\e91b";}
-.icon_hydratation:before {content: "\e91c";}
-.icon_IMC:before {content: "\e91d";}
-.icon_indulgence_course:before {content: "\e91e";}
-.icon_info:before {content: "\e91f";}
-.icon_licence:before {content: "\e920";}
-.icon_mail:before {content: "\e921";}
-.icon_metabolisme_base:before {content: "\e922";}
-.icon_modifier:before {content: "\e923";}
-.icon_natation:before {content: "\e924";}
-.icon_niveau_course:before {content: "\e925";}
-.icon_outils:before {content: "\e926";}
-.icon_parametres:before {content: "\e927";}
-.icon_partage:before {content: "\e928";}
-.icon_pause:before {content: "\e929";}
-.icon_plus:before {content: "\e92a";}
-.icon_position:before {content: "\e92b";}
-.icon_profil:before {content: "\e92c";}
-.icon_progression:before {content: "\e92d";}
-.icon_proteines:before {content: "\e92e";}
-.icon_recuperation:before {content: "\e92f";}
-.icon_refresh:before {content: "\e930";}
-.icon_RM:before {content: "\e931";}
-.icon_search:before {content: "\e932";}
-.icon_search_off:before {content: "\e933";}
-.icon_SPRINTIA_analyse:before {content: "\e934";}
-.icon_statistiques:before {content: "\e935";}
-.icon_supprimer:before {content: "\e936";}
-.icon_telephone:before {content: "\e937";}
-.icon_temps_recup:before {content: "\e938";}
-.icon_velo:before {content: "\e939";}
-.icon_verre_eau:before {content: "\e93a";}
-.icon_video:before {content: "\e93b";}
-.icon_zones_cardiaques:before {content: "\e93c";}
+.icon_boost_your_mind:before {content: "\e903";}
+.icon_carte_plan:before {content: "\e904";}
+.icon_carte_satellite:before {content: "\e905";}
+.icon_charge_entrainement:before {content: "\e906";}
+.icon_coach:before {content: "\e907";}
+.icon_confiance:before {content: "\e908";}
+.icon_confidentialite:before {content: "\e909";}
+.icon_conversion:before {content: "\e90a";}
+.icon_copy:before {content: "\e90b";}
+.icon_discussion:before {content: "\e90c";}
+.icon_entrainement:before {content: "\e90d";}
+.icon_entrainement_du_jour:before {content: "\e90e";}
+.icon_envoyer:before {content: "\e90f";}
+.icon_fermer:before {content: "\e910";}
+.icon_file:before {content: "\e911";}
+.icon_file_csv:before {content: "\e912";}
+.icon_file_json:before {content: "\e913";}
+.icon_fleche_bas:before {content: "\e914";}
+.icon_fleche_droite:before {content: "\e915";}
+.icon_fleche_gauche:before {content: "\e916";}
+.icon_flight:before {content: "\e917";}
+.icon_flow:before {content: "\e918";}
+.icon_folder_open:before {content: "\e919";}
+.icon_fullscreen:before {content: "\e91a";}
+.icon_fullscreen_exit:before {content: "\e91b";}
+.icon_goutte_eau:before {content: "\e91c";}
+.icon_gpx:before {content: "\e91d";}
+.icon_historique:before {content: "\e91e";}
+.icon_hydratation:before {content: "\e91f";}
+.icon_IMC:before {content: "\e920";}
+.icon_indulgence_course:before {content: "\e921";}
+.icon_info:before {content: "\e922";}
+.icon_licence:before {content: "\e923";}
+.icon_mail:before {content: "\e924";}
+.icon_mental:before {content: "\e925";}
+.icon_metabolisme_base:before {content: "\e926";}
+.icon_modifier:before {content: "\e927";}
+.icon_natation:before {content: "\e928";}
+.icon_niveau_course:before {content: "\e929";}
+.icon_outils:before {content: "\e92a";}
+.icon_parametres:before {content: "\e92b";}
+.icon_partage:before {content: "\e92c";}
+.icon_pause:before {content: "\e92d";}
+.icon_plus:before {content: "\e92e";}
+.icon_position:before {content: "\e92f";}
+.icon_profil:before {content: "\e930";}
+.icon_progression:before {content: "\e931";}
+.icon_proteines:before {content: "\e932";}
+.icon_recuperation:before {content: "\e933";}
+.icon_refresh:before {content: "\e934";}
+.icon_remotivation:before {content: "\e935";}
+.icon_RM:before {content: "\e936";}
+.icon_search:before {content: "\e937";}
+.icon_search_off:before {content: "\e938";}
+.icon_SPRINTIA_analyse:before {content: "\e939";}
+.icon_statistiques:before {content: "\e93a";}
+.icon_supprimer:before {content: "\e93b";}
+.icon_telephone:before {content: "\e93c";}
+.icon_temps_recup:before {content: "\e93d";}
+.icon_velo:before {content: "\e93e";}
+.icon_verre_eau:before {content: "\e93f";}
+.icon_video:before {content: "\e940";}
+.icon_zones_cardiaques:before {content: "\e941";}
 
 * {
     margin: 0;
@@ -4648,6 +4653,37 @@ div.container-compteur-caractere span.nb-carac-restant{
     color: var(--COLOR_ACCENT_TEXT);
     font-weight: var(--FW_BOLD_SMALL);
     width: 75px;
+    text-align: center;
+}
+
+
+
+section.container-tabs-onglets {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--SPACE_M);
+    margin: var(--SPACE_M) 0;
+}
+section.container-tabs-onglets div.tabs-onglets{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 120px;
+    gap: var(--SPACE_XXS);
+    padding-bottom: 0.37rem;
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+section.container-tabs-onglets div.tabs-onglets.selected{
+    color: var(--COLOR_ACCENT_TEXT);
+    border-bottom: 2px solid var(--COLOR_ACCENT_TEXT);
+}
+section.container-tabs-onglets div.tabs-onglets i{
+    font-size: 2rem;
+}
+section.container-tabs-onglets div.tabs-onglets p.label{
+    font-size: var(--P);
     text-align: center;
 }
 

@@ -4732,7 +4732,7 @@ section.container-phrase div.track-phrase{
     padding-top: 3rem;
 }
 section.container-phrase div.track-phrase p{
-    filter: blur(4px);
+    filter: blur(3px);
     z-index: 3;
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
@@ -4740,6 +4740,31 @@ section.container-phrase div.track-phrase p{
 section.container-phrase div.track-phrase p.currently{
     filter: blur(0px);
 }
+section.container-phrase div.track-phrase div.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--SPACE_M) 0;
+}
+section.container-phrase div.track-phrase div.button i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: var(--H1);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    
+    background: var(--COLOR_GLASSMORPHISM);
+    -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
+    backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
+                inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
+                inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+}
+section.container-phrase div.track-phrase div.button i#precedent{transform: rotate(270deg);}
+section.container-phrase div.track-phrase div.button i#suivant{transform: rotate(90deg);}
 
 
 

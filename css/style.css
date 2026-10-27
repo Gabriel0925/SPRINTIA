@@ -4755,6 +4755,7 @@ section.container-phrase div.track-phrase div.button i{
     border-radius: 50%;
     width: 55px;
     height: 55px;
+    cursor: pointer;
     
     background: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: saturate(var(--SATURATE_GLASSMORPHISM_BUTTON)) blur(var(--BLUR_GLASSMORPHISM_BUTTON));
@@ -4762,9 +4763,24 @@ section.container-phrase div.track-phrase div.button i{
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.4),
                 inset 0px 1px 3px var(--COLOR_BORDER_FLOATING_COMPONENT),
                 inset 0px -1px 6px var(--COLOR_BORDER_FLOATING_COMPONENT_DARK);
+    
+    transition: transform ease-out var(--TIME_TRANSITION_FAST),
+                background-color ease-out var(--TIME_TRANSITION_FAST);
 }
-section.container-phrase div.track-phrase div.button i#precedent{transform: rotate(270deg);}
-section.container-phrase div.track-phrase div.button i#suivant{transform: rotate(90deg);}
+section.container-phrase div.track-phrase div.button i#precedent{transform: scale(1) rotate(270deg);}
+section.container-phrase div.track-phrase div.button i#suivant{transform: scale(1) rotate(90deg);}
+@media (hover: hover) and (pointer: fine) {
+    section.container-phrase div.track-phrase div.button i#precedent:hover {
+        transform: scale(var(--SCALE_MAX)) rotate(270deg);
+    }
+    section.container-phrase div.track-phrase div.button i#suivant:hover {
+        transform: scale(var(--SCALE_MAX)) rotate(90deg);
+    }
+}
+section.container-phrase div.track-phrase div.button i:active {
+    background: rgba(32, 37, 46, 0.2);
+    transform: scale(var(--SCALE_MAX));
+}
 
 
 

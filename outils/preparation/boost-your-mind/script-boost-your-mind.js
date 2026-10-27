@@ -135,9 +135,10 @@ function init() {
     if (allP.length>0) {
         // on desactive la fleche du haut car on peut pas remonter lors de l'init
         const flecheHaut = document.getElementById("precedent")
-        if (flecheHaut) {
-            flecheHaut.classList.add("desactiver")
-        }
+        if (flecheHaut) {flecheHaut.classList.add("desactiver")}
+
+        const flecheBas = document.getElementById("suivant")
+        if (flecheBas) {flecheBas.classList.remove("desactiver")}
 
         for (const elt of allP) {
             if (elt.classList == "past") {
@@ -153,11 +154,6 @@ function init() {
 
     }
 
-    const flecheHaut = document.getElementById("precedent")
-    if (flecheHaut) {flecheHaut.classList.add("desactiver")}
-
-    const flecheBas = document.getElementById("suivant")
-    if (flecheBas) {flecheBas.classList.remove("desactiver")}
 }
 
 window.addEventListener("DOMContentLoaded", () => {

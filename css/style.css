@@ -4717,13 +4717,36 @@ section.container-phrase {
     z-index: 1;
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     margin: var(--SPACE_XL) 0;
 }
-@keyframes fondu_phrase {
-    0% {opacity: 1;}
-    50% {opacity: 0.8;}
-    100% {opacity: 1;}
+@keyframes fondu_phrase_large_display {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(0.94, 0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes fondu_phrase_small_display {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(0.91, 0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 section.container-phrase.mental::before {
     content: "";
@@ -4735,7 +4758,7 @@ section.container-phrase.mental::before {
     background: linear-gradient(225deg, var(--COLOR_ACCENT), var(--COLOR_ACCENT_TEXT));
     filter: blur(50px) brightness(0.7) saturate(140%);
     z-index: -1;
-    animation: fondu_phrase ease-in-out 3s infinite;
+    animation: fondu_phrase_large_display 3.5s ease-in-out infinite;
 }
 section.container-phrase.confiance::before {
     content: "";
@@ -4747,7 +4770,7 @@ section.container-phrase.confiance::before {
     background: linear-gradient(225deg, #8b5af2, #d28eff);
     filter: blur(50px) brightness(0.7) saturate(140%);
     z-index: -1;
-    animation: fondu_phrase ease-in-out 3s infinite;
+    animation: fondu_phrase_large_display 3.5s ease-in-out infinite;
 }
 section.container-phrase.remotivation::before {
     content: "";
@@ -4759,7 +4782,12 @@ section.container-phrase.remotivation::before {
     background: linear-gradient(225deg, #f25a5a, #e27f7f);
     filter: blur(50px) brightness(0.7) saturate(140%);
     z-index: -1;
-    animation: fondu_phrase ease-in-out 3s infinite;
+    animation: fondu_phrase_large_display 3.5s ease-in-out infinite;
+}
+@media (max-width: 900px) {
+    section.container-phrase.remotivation::before {animation: fondu_phrase_small_display 3.5s ease-in-out infinite;}
+    section.container-phrase.confiance::before {animation: fondu_phrase_small_display 3.5s ease-in-out infinite;}
+    section.container-phrase.mental::before {animation: fondu_phrase_small_display 3.5s ease-in-out infinite;}
 }
 section.container-phrase div.track-phrase{
     display: flex;

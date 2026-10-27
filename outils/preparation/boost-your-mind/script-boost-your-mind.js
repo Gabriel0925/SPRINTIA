@@ -152,6 +152,12 @@ function init() {
         }
 
     }
+
+    const flecheHaut = document.getElementById("precedent")
+    if (flecheHaut) {flecheHaut.classList.add("desactiver")}
+
+    const flecheBas = document.getElementById("suivant")
+    if (flecheBas) {flecheBas.classList.remove("desactiver")}
 }
 
 window.addEventListener("DOMContentLoaded", () => {

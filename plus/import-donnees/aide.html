@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SPRINTIA - Aide</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
+    <link rel="manifest" href="../../manifest.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
+
+</head>
+
+<body>
+    <div class="container-logo-dynamique">
+        <div class="logo-dynamique"></div>
+    </div>
+    
+    <section class="header">
+
+        <div class="logo">SPRINTIA</div>
+            
+        <ul class="header-container-items">
+
+            <li class="header-items" data-onglet="Entraînement">
+                <i class="icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items" data-onglet="Progression">
+                <i class="icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" data-onglet="Discussion">
+                <i class="icon_discussion"></i>
+                Discussion
+            </li>
+            <li class="header-items" data-onglet="Outils">
+                <i class="icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items selected" data-onglet="Plus">
+                <i class="icon_plus"></i>
+                Plus
+            </li>
+
+        </ul>
+
+    </section>
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items" data-onglet="Entraînement">
+                <i class="icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items" data-onglet="Progression">
+                <i class="icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" data-onglet="Discussion">
+                <i class="icon_discussion"></i>
+                <p class="tab-bars-items-name">Discussion</p>
+            </li>
+            <li class="tab-bars-items" data-onglet="Outils">
+                <i class="icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items selected" data-onglet="Plus">
+                <i class="icon_plus"></i>
+                <p class="tab-bars-items-name">Plus</p>
+            </li>
+
+        </ul>
+
+    </section>
+    
+    <div class="toolbar">
+        <h1>Aide</h1>
+    </div>
+
+    <h2>À quoi ça sert d'importer un fichier TCX/GPX ?</h2>
+    <p class="text">
+        Ce type de fichier permet à SPRINTIA de sauvegarder (en local sur votre appareil) les coordonnées GPS de votre entraînement. Dans
+        le détail de votre entraînement, vous bénéficierez d'une carte avec votre tracé GPS, ce qui n'est pas disponible lors de la saisie
+        manuelle de votre entraînement.
+    </p>
+
+    <h2>Comment choisir entre l'import TCX et l'import GPX ?</h2>
+    <p class="text">
+        Si vous ne connaissez pas ce type de fichier, ça peut être compliqué de comprendre les différences et surtout de savoir quand est-ce
+        qu'on utilise l'import TCX ou l'import GPX, c'est pour cela que je vais essayer de vous guider 
+        le plus simplement possible.
+        <br><br>
+        En réalité c'est relativement simple ! Cela dépend du sport que vous voulez importer car le fichier TCX prend en compte 3 sports
+        alors que le fichier GPX prend en compte plus de 12 sports. Donc, si votre sport n'est compatible qu'avec le fichier GPX, alors
+        utilisez ce dernier, en revanche si votre sport est compatible avec les 2 types de fichiers, alors choisissez le fichier TCX qui
+        reste plus fiable et qui permet de récupérer davantage de données.
+    </p>
+
+    <h2>Liste complète des sports pris en compte par le TCX</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sport d'origine</th>
+                <th>Dans SPRINTIA</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Course à pied</td>
+                <td>Course</td>
+            </tr>
+            <tr>
+                <td>Vélo</td>
+                <td>Vélo</td>
+            </tr>
+            <tr>
+                <td>Autre</td>
+                <td>Libre</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <h2>Liste complète des sports pris en compte par le GPX</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sport d'origine</th>
+                <th>Dans SPRINTIA</th>
+            </tr>
+                    
+                        
+            <tr>
+                <td>Course à pied</td>
+                <td>Course</td>
+            </tr>
+            <tr>
+                <td>Trail</td>
+                <td>Course</td>
+            </tr>
+            <tr>
+                <td>Tapis de course</td>
+                <td>Course</td>
+            </tr>
+            <tr>
+                <td>Vélo</td>
+                <td>Vélo</td>
+            </tr>
+            <tr>
+                <td>VTT</td>
+                <td>Vélo</td>
+            </tr>
+            <tr>
+                <td>VTT électrique</td>
+                <td>Vélo</td>
+            </tr>
+            <tr>
+                <td>Vélo d'intérieur</td>
+                <td>Vélo</td>
+            </tr>
+            <tr>
+                <td>Hometrainer</td>
+                <td>Vélo</td>
+            </tr>
+            <tr>
+                <td>Vélo électrique</td>
+                <td>Vélo</td>
+            </tr>
+            <tr>
+                <td>Marche</td>
+                <td>Marche</td>
+            </tr>
+            <tr>
+                <td>Randonnée</td>
+                <td>Randonnée</td>
+            </tr>
+            <tr>
+                <td>Ski</td>
+                <td>Ski</td>
+            </tr>
+            <tr>
+                <td>Ski alpin</td>
+                <td>Ski</td>
+            </tr>
+            <tr>
+                <td>Ski nordique</td>
+                <td>Ski de fond</td>
+            </tr>
+            <tr>
+                <td>Snowboard</td>
+                <td>Snowboard</td>
+            </tr>
+            <tr>
+                <td>Natation</td>
+                <td>Natation</td>
+            </tr>
+            <tr>
+                <td>Natation en eau libre</td>
+                <td>Natation</td>
+            </tr>
+            <tr>
+                <td>Natation en piscine</td>
+                <td>Natation</td>
+            </tr>
+            <tr>
+                <td>Kayak</td>
+                <td>Kayak</td>
+            </tr>
+            <tr>
+                <td>Aviron</td>
+                <td>Aviron</td>
+            </tr>
+            <tr>
+                <td>Autre</td>
+                <td>Libre</td>
+            </tr>
+
+        </thead>
+
+    </table>
+    
+    <script src="../../assets/base-js/base.js"></script>
+
+</body>
+</html>

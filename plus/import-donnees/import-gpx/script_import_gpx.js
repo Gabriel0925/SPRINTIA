@@ -61,7 +61,9 @@ async function uploadFileGPX(event) {
         "natation":"Natation",
         "open_water_swimming":"Natation", // en eau libre
         "pool_swimming":"Natation", // en piscine
-        "kayaking":"Kayak", // en piscine
+        "kayaking":"Kayak",
+        "aviron": "Aviron",
+        "rowing": "Aviron",
 
         "other": "Libre"
     }

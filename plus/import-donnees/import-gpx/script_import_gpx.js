@@ -7,6 +7,7 @@ async function uploadFileGPX(event) {
         "course à pied":"Course",
         "course a pied":"Course",
         "trail":"Course",
+        "trail_running":"Course",
         "treadmill":"Course", // Tapis de course
 
         // VELO
@@ -17,8 +18,21 @@ async function uploadFileGPX(event) {
         "vélo":"Vélo",
         "mountain_biking":"Vélo",
         "vtt":"Vélo",
+        "vtt_eletrique":"Vélo",
+        "vtt eletrique":"Vélo",
+        "vtt életrique":"Vélo",
+        "vtt_életrique":"Vélo",
         "indoor_cycling":"Vélo", // home-trainer
         "gravel":"Vélo",
+        "ebike": "Vélo",
+        "e-bike": "Vélo",
+        "emountainbike": "Vélo",
+        "e-mountainbike": "Vélo",
+        "vélo électrique": "Vélo",
+        "vélo_électrique": "Vélo",
+        "velo electrique": "Vélo",
+        "velo_electrique": "Vélo",
+        "ride": "Vélo",
 
         // MARCHE
         "walking":"Marche",
@@ -33,8 +47,10 @@ async function uploadFileGPX(event) {
 
         // SPORT HIVER
         "skiing": "Ski",
+        "resort_skiing": "Ski",
         "ski": "Ski",
         "alpine_skiing": "Ski",
+        "alpineski": "Ski",
         "nordic_skiing": "Ski de fond",
         "snowboarding": "Snowboard",
         "snowboard": "Snowboard",
@@ -45,6 +61,9 @@ async function uploadFileGPX(event) {
         "natation":"Natation",
         "open_water_swimming":"Natation", // en eau libre
         "pool_swimming":"Natation", // en piscine
+        "kayaking":"Kayak", // en piscine
+
+        "other": "Libre"
     }
 
     const fileGPX = event.target.files[0]

@@ -25,8 +25,9 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
     "Rameur d'intérieur": ["distance-entrainement-user", "coups-rame-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user"],
 
     "Aviron": ["distance-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
+    "Kayak": ["distance-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user", "coups-pagaie-entrainement-user"],
     "Natation": ["distance-entrainement-user", "allure-moy-entrainement-user", "nb-longueurs-entrainement-user", "longueur-bassin-entrainement-user"],
-    "Paddle": ["distance-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user", "coups-rame-entrainement-user"],
+    "Paddle": ["distance-entrainement-user", "allure-moy-entrainement-user", "cadence-moy-entrainement-user", "coups-pagaie-entrainement-user"],
 
     "Ski": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "nb-descentes-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
     "Ski de fond": ["distance-entrainement-user", "denivele-entrainement-user", "altitude-max-entrainement-user", "vitesse-moy-entrainement-user", "vitesse-max-entrainement-user"],
@@ -110,7 +111,7 @@ async function VerificationParam() {
                         
                         let input = document.getElementById(idData)
                         if (input && valeur != null && valeur != undefined) {
-                            if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Paddle") {
+                            if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Kayak" || WorkoutDB.sport == "Paddle") {
                                 if (cle == "distance") {
                                     valeur = valeur*1000
                                 }
@@ -124,7 +125,7 @@ async function VerificationParam() {
  
                 // partie pour gérer la distance entre m et km
                 let inputDistance = document.getElementById("distance-entrainement-user")
-                if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Paddle") { 
+                if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Kayak" || WorkoutDB.sport == "Paddle") { 
                     if (inputDistance) {
                         inputDistance.placeholder = "Distance (m)"
                         inputDistance.nextElementSibling.textContent = "Distance (m)"
@@ -146,7 +147,7 @@ async function VerificationParam() {
                         inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
                     }
 
-                } else if (WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Paddle") {
+                } else if (WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Kayak" || WorkoutDB.sport == "Paddle") {
                     if (inputAllureMoy) {
                         inputAllureMoy.placeholder = "Allure moy. (/500m)"
                         inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"
@@ -351,7 +352,7 @@ async function saveWorkout() {
                 }
 
                 // si le sport est natation, la distance est en metre donc on la convertit en km
-                if (SportWorkoutUser == "Natation" || SportWorkoutUser == "Rameur d'intérieur" || SportWorkoutUser == "Aviron" || SportWorkoutUser == "Paddle") {
+                if (SportWorkoutUser == "Natation" || SportWorkoutUser == "Rameur d'intérieur" || SportWorkoutUser == "Aviron" || SportWorkoutUser == "Kayak" || SportWorkoutUser == "Paddle") {
                     if (cleData == "distance") {
                         if (!isNaN(Number(data))) { // on regarde si il y a du contenu dans le input, la data
                             data = data/1000 // on remet en kilomètres
@@ -561,7 +562,7 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
 
     // partie pour gérer la distance entre m et km
     let inputDistance = document.getElementById("distance-entrainement-user")
-    if (value == "Natation" || value == "Rameur d'intérieur" || value == "Aviron" || value == "Paddle") { // value c'est le sport du combobox
+    if (value == "Natation" || value == "Rameur d'intérieur" || value == "Aviron" || value == "Kayak" || value == "Paddle") { // value c'est le sport du combobox
         if (inputDistance) {
             inputDistance.placeholder = "Distance (m)"
             inputDistance.nextElementSibling.textContent = "Distance (m)"
@@ -583,7 +584,7 @@ function cacherInput(value) { // pour cacher tout les champs de datas spécifiqu
             inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
         }
 
-    } else if (value == "Rameur d'intérieur" || value == "Aviron" || value == "Paddle") { // value c'est le sport du combobox
+    } else if (value == "Rameur d'intérieur" || value == "Aviron" || value == "Kayak" || value == "Paddle") { // value c'est le sport du combobox
         if (inputAllureMoy) {
             inputAllureMoy.placeholder = "Allure moy. (/500m)"
             inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"

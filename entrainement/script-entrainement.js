@@ -30,6 +30,7 @@ const BddNomData = { // sport avec les id correspondant aux champs de datas spé
     "nb_series": ["Nombre de séries", ""],
     "poids_total": ["Poids total", "kg"],
     "coups_rame": ["Coups de rame", ""],
+    "coups_pagaie": ["Coups de pagaie", ""],
     "nb_longueurs": ["Nombre de longueurs", ""],
     "nb_positions": ["Nombre de positions", ""],
     "longueur_bassin": ["Longueur du bassin", "m"],
@@ -314,7 +315,7 @@ function afficherData(dataWorkout) {
                 }
 
             } else if (cle == "distance") {
-                if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Paddle") {
+                if (dataWorkout.sport == "Natation" || dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Kayak" || dataWorkout.sport == "Paddle") {
                     uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => m
                     if (valeur != null) { // on passe des kilomètres en metres
                         valeur = Number(valeur) // on convertit en nombre pour etre sur
@@ -332,7 +333,7 @@ function afficherData(dataWorkout) {
             } else if (cle == "allure_moy") {
                 if (dataWorkout.sport == "Natation") {
                     uniteData = nomUniteData[1][2] // on récupère l'unité de la data  => /100m 
-                } else if (dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Paddle") {
+                } else if (dataWorkout.sport == "Rameur d'intérieur" || dataWorkout.sport == "Aviron" || dataWorkout.sport == "Kayak" || dataWorkout.sport == "Paddle") {
                     uniteData = nomUniteData[1][1] // on récupère l'unité de la data  => /500m 
                 } else {
                     uniteData = nomUniteData[1][0] // on récupère l'unité de la data  => /km 

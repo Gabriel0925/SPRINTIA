@@ -1349,20 +1349,33 @@ img.img-banniere-SPRINTIA {
 
 
 section.container-widget-progression {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--SPACE_L);
-    margin-top: var(--SPACE_L);
 }
+@media (max-width: 1250px) {
+    section.container-widget-progression {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+section.container-widget-progression section.container-large-widget{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--SPACE_L);
+}
+@media (max-width: 640px) {
+    section.container-widget-progression section.container-large-widget {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
 section.container-widget-progression a {
     display: block;
-    max-width: 450px;
-    width: 295px;
-    flex-grow: 1;
+    width: 100%;
 }
-section.container-widget-progression section.widget-charge-entrainement {
+section.container-widget-progression div.widget-charge-entrainement {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
     padding: var(--SPACE_S);
@@ -1378,45 +1391,38 @@ section.container-widget-progression section.widget-charge-entrainement {
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
-    section.container-widget-progression section.widget-charge-entrainement:hover {
+    section.container-widget-progression div.widget-charge-entrainement:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-section.container-widget-progression section.widget-charge-entrainement:active {
+section.container-widget-progression div.widget-charge-entrainement:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
-@media (max-width: 643px) {
-    section.container-widget-progression a {
-        max-width: none;
-    }
-}
-
-section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header{
+section.container-widget-progression div.widget-charge-entrainement div.widget-charge-entrainement-header{
     display: flex;
     align-items: center;
     gap: var(--SPACE_XS);
 }
-section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header p.widget-charge-entrainement-header-title{
+section.container-widget-progression div.widget-charge-entrainement div.widget-charge-entrainement-header p.widget-charge-entrainement-header-title{
     font-size: var(--P);
     color: var(--COLOR_TEXT_SECONDARY);
     font-weight: var(--FW_BUTTON);
 }
-section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header i{
+section.container-widget-progression div.widget-charge-entrainement div.widget-charge-entrainement-header i{
     font-size: var(--H1);
     margin-left: auto;
 }
-section.container-widget-progression section.widget-charge-entrainement div.widget-charge-entrainement-header i#icon-card{
+section.container-widget-progression div.widget-charge-entrainement div.widget-charge-entrainement-header i#icon-card{
     color: var(--COLOR_TEXT_SECONDARY);
     margin-left: 0;
 }
-
-section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score{
+section.container-widget-progression div.widget-charge-entrainement p.widget-charge-entrainement-score{
     margin: var(--SPACE_S) 0;
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
 }
-section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score span.skeleton{
+section.container-widget-progression div.widget-charge-entrainement p.widget-charge-entrainement-score span.skeleton{
     display: inline-block;
     width: 60px;
     height: 30px;
@@ -1426,20 +1432,19 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     color: transparent !important; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
     animation: skeleton_animation 1s ease-out infinite;
 }
-section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-score small{
+section.container-widget-progression div.widget-charge-entrainement p.widget-charge-entrainement-score small{
     font-weight: var(--FW_REGULAR);
     font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
 }
-
-section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut{
+section.container-widget-progression div.widget-charge-entrainement p.widget-charge-entrainement-statut{
     font-size: var(--H3);
     font-weight: var(--FW_BOLD);
     color: var(--COLOR_ACCENT_TEXT);
     margin-top: var(--SPACE_S);
 }
-section.container-widget-progression section.widget-charge-entrainement p.widget-charge-entrainement-statut.skeleton{
+section.container-widget-progression div.widget-charge-entrainement p.widget-charge-entrainement-statut.skeleton{
     display: inline-block;
     width: 160px;
     height: 26px;
@@ -1457,17 +1462,17 @@ section.container-widget-progression section.widget-charge-entrainement p.widget
     100% {opacity: 0.4;}
 }
 
-section.container-small-widget-progression {
+
+section.container-widget-progression section.container-small-widget {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--SPACE_L);
-    margin-top: var(--SPACE_L);
-    max-width: 923px;
 }
-section.container-small-widget-progression section.small-widget {
+section.container-widget-progression div.small-widget {
     background-color: var(--COLOR_BACKGROUND_CARD);
     border-radius: var(--BORDER_BIG);
     cursor: pointer;
+    height: 100%;
 
     overflow: hidden;
     padding: var(--SPACE_S);
@@ -1480,19 +1485,19 @@ section.container-small-widget-progression section.small-widget {
                 background-color ease-out var(--TIME_TRANSITION);
 }
 @media (hover: hover) and (pointer: fine) {
-    section.container-small-widget-progression section.small-widget:hover {
+    section.container-widget-progression div.small-widget:hover {
         background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     }
 }
-section.container-small-widget-progression section.small-widget:active {
+section.container-widget-progression div.small-widget:active {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     transform: scale(var(--SCALE_NORMAL));
 }
-section.container-small-widget-progression section.small-widget i {
+section.container-widget-progression div.small-widget i {
     color: var(--COLOR_TEXT_SECONDARY);
     font-size: var(--H1);
 }
-section.container-small-widget-progression section.small-widget p.small-widget-title{
+section.container-widget-progression div.small-widget p.small-widget-title{
     display: -webkit-box;
     -webkit-box-orient: vertical; 
     -webkit-line-clamp: 2;
@@ -1503,7 +1508,7 @@ section.container-small-widget-progression section.small-widget p.small-widget-t
     font-weight: var(--FW_BUTTON);
     margin-top: var(--SPACE_XS);
 }
-section.container-small-widget-progression section.small-widget p.small-widget-data{
+section.container-widget-progression div.small-widget p.small-widget-data{
     display: flex;
     align-items: center;
     gap: var(--SPACE_XS);
@@ -1511,26 +1516,7 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
 }
-/* section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur{
-    display: block;
-    width: 12px;
-    height: 12px;
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
-    border-radius: 50%;
-}
-section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.reposer{
-    background-color: #3dbaf9;
-    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
-}
-section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.optimale{
-    background-color: var(--COLOR_VERT);
-    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
-}
-section.container-small-widget-progression section.small-widget p.small-widget-data span.indicateur.fatiguer{
-    background-color: var(--COLOR_RED);
-    animation: selected_jauge var(--TIME_TRANSITION) ease-out;
-} */
-section.container-small-widget-progression section.small-widget p.small-widget-data span.skeleton{
+section.container-widget-progression div.small-widget p.small-widget-data span.skeleton{
     display: inline-block;
     width: 60px;
     height: 30px;
@@ -1541,17 +1527,18 @@ section.container-small-widget-progression section.small-widget p.small-widget-d
     color: transparent !important; /*pour qu'il n'y est aucun texte à l'intérieur des surbrilllances*/
     animation: skeleton_animation 1s ease-out infinite;
 }
-section.container-small-widget-progression section.small-widget p.small-widget-data small{
+section.container-widget-progression div.small-widget p.small-widget-data small{
     font-weight: var(--FW_REGULAR);
     font-size: var(--P_SMALL);
     color: var(--COLOR_TEXT_SECONDARY);
     align-items: baseline;
 }
 @media (max-width: 454px) {
-    section.container-small-widget-progression section.small-widget p.small-widget-title{
+    section.container-widget-progression div.small-widget p.small-widget-title{
         min-height: 44px;
     }
 }
+
 
 
 div.container-avatar {

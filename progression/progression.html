@@ -97,57 +97,62 @@
         <h2>Analyse</h2>
         <section class="container-widget-progression">
 
-            <a href="charge-entrainement/charge-entrainement.html">
-                <section class="widget-charge-entrainement">
+            <section class="container-large-widget">
+                
+                <a href="charge-entrainement/charge-entrainement.html">
+                    <div class="widget-charge-entrainement">
 
-                    <div class="widget-charge-entrainement-header">
-                        <i class="icon_charge_entrainement" id="icon-card"></i>
-                        <p class="widget-charge-entrainement-header-title">Charge d'entraînement</p>
-                        <i class="icon_fleche_droite"></i>
+                        <div class="widget-charge-entrainement-header">
+                            <i class="icon_charge_entrainement" id="icon-card"></i>
+                            <p class="widget-charge-entrainement-header-title">Charge d'entraînement</p>
+                            <i class="icon_fleche_droite"></i>
+                        </div>
+
+                        <p class="widget-charge-entrainement-score"><span id="charge-7j" class="skeleton"></span> <small>CE</small></p>
+                        <p class="widget-charge-entrainement-statut skeleton" id="statut-charge-entrainement"></p>
+
                     </div>
+                </a>
+                <a href="niveau-course/niveau-course-analyse.html">
+                    <div class="widget-charge-entrainement">
 
-                    <p class="widget-charge-entrainement-score"><span id="charge-7j" class="skeleton"></span> <small>CE</small></p>
-                    <p class="widget-charge-entrainement-statut skeleton" id="statut-charge-entrainement"></p>
+                        <div class="widget-charge-entrainement-header">
+                            <i class="icon_niveau_course" id="icon-card"></i>
+                            <p class="widget-charge-entrainement-header-title">Niveau de course</p>
+                            <i class="icon_fleche_droite"></i>
+                        </div>
 
-                </section>
-            </a>
-            <a href="niveau-course/niveau-course-analyse.html">
-                <section class="widget-charge-entrainement">
+                        <p class="widget-charge-entrainement-score"><span id="dernier-niveau-course" class="skeleton"></span> <small>/100</small></p>
+                        <p class="widget-charge-entrainement-statut skeleton" id="zone-dernier-niveau-course"></p>
 
-                    <div class="widget-charge-entrainement-header">
-                        <i class="icon_niveau_course" id="icon-card"></i>
-                        <p class="widget-charge-entrainement-header-title">Niveau de course</p>
-                        <i class="icon_fleche_droite"></i>
                     </div>
+                </a>
 
-                    <p class="widget-charge-entrainement-score"><span id="dernier-niveau-course" class="skeleton"></span> <small>/100</small></p>
-                    <p class="widget-charge-entrainement-statut skeleton" id="zone-dernier-niveau-course"></p>
+            </section>
 
-                </section>
-            </a>
+            <section class="container-small-widget">
+                
+                <a href="indulgence-course/indulgence-course.html">
+                    <div class="small-widget">
+                        <i class="icon_indulgence_course"></i>
+                        <p class="small-widget-title">Indulgence de course</p>
+
+                        <p class="small-widget-data"><span id="data-dist-7j" class="skeleton"></span> <small>km</small></p>
+                    </div>
+                </a>
+                <a href="recuperation/recuperation.html">
+                    <div class="small-widget">
+                        <i class="icon_recuperation"></i>
+                        <p class="small-widget-title">Récupération</p>
+
+                        <p class="small-widget-data"><span id="data-recuperation" class="skeleton"></span> <small>bpm</small></p>
+                    </div>
+                </a>
+
+            </section>
 
         </section>
 
-        <section class="container-small-widget-progression">
-            
-            <a href="indulgence-course/indulgence-course.html">
-                <section class="small-widget">
-                    <i class="icon_indulgence_course"></i>
-                    <p class="small-widget-title">Indulgence de course</p>
-
-                    <p class="small-widget-data"><span id="data-dist-7j" class="skeleton"></span> <small>km</small></p>
-                </section>
-            </a>
-            <a href="recuperation/recuperation.html">
-                <section class="small-widget">
-                    <i class="icon_recuperation"></i>
-                    <p class="small-widget-title">Récupération</p>
-
-                    <p class="small-widget-data"><span id="data-recuperation" class="skeleton"></span> <small>bpm</small></p>
-                </section>
-            </a>
-
-        </section>
     </main>
 
     <script src="../assets/base-js/base.js"></script>

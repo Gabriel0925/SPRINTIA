@@ -243,6 +243,11 @@ function interfaceWorkout(selectedWorkout) {
         paragrapheValueData.classList.add("value-data")
         paragrapheValueData.textContent = tableauDatas[i]["data"]
 
+        // si la data c'est la durée on rajoute l'id durée pour avoir une police bleu et un peu grace
+        if (tableauDatas[i]["title"] == "Durée") {
+            paragrapheValueData.id = "duree"
+        }
+
         const smallUnite = document.createElement("small")
         smallUnite.textContent = tableauDatas[i]["unite"]
         paragrapheValueData.appendChild(smallUnite)

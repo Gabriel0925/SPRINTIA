@@ -182,21 +182,11 @@ async function uploadFileGPX(event) {
                 workoutFcMoy = Math.round(workoutFcMoy/compteur)
             }
 
-// !!! à revoir !!!
             // calcul du RPE
-            // formule ci dessous à améliorer parce qu'elle n'est pas prouvé scientifiquement
-            let rpeWorkout = 1
-            if (workoutFcMoy > 0 && workoutFcMax > 0) {// si ya des datas on calcule sinon on laisse à 1
-                rpeWorkout = Math.round((workoutFcMoy/workoutFcMax)*10) || 1 // formule pour calculer le RPE : (FC moy / FC max) * 10
-                if (rpeWorkout < 1) { // si inférieur à 1 on le met sur la valeur minimum (=1)
-                    rpeWorkout = 1
-                } else if (rpeWorkout > 10) { // si supérieur à 10 on le met sur la valeur max (=10)
-                    rpeWorkout = 10
-                }
-            }
+            let rpeWorkout = 1 // on met le RPE à un car on ne connait pas le RPE du user
+            
             let coefRpe = {1:0.2, 2:0.4, 3:0.7, 4:1.1, 5:1.6, 6:2.3, 7:3.2, 8:4.5, 9:6.2, 10:8.5}
             let chargeEntrainementWorkout = Math.floor(coefRpe[rpeWorkout]*workoutTime)
-// !!! fin de à revoir !!!
 
             // on clean les datas fcMoy/max
             if (workoutFcMoy == 0) {workoutFcMoy=undefined}

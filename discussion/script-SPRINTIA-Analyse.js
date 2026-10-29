@@ -41,7 +41,7 @@ const ideasQuestions = {
         "Donne-moi une idée d'entraînement pour aujourd'hui.",
         "Analyse le dernier entraînement que j'ai effectué.",
         "Planifie ma semaine d'entraînement en fonction de mes derniers entraînements.",
-        "Quelle allure je devrais viser pour ma prochaine course?",
+        "Quelle allure devrais-je viser pour ma prochaine course?",
         "Y a-t-il des courses prochainement autour de chez moi?",
         "Donne-moi des idées d'objectifs à réaliser ce mois-ci.",
         "Comment courir plus vite?",
@@ -60,11 +60,11 @@ const ideasQuestions = {
         "Motive-moi à aller m'entraîner aujourd'hui!",
         "Comment améliorer ma foulée?",
         "Comment éviter les points de côté pendant mes efforts?",
-        "Quel chaussre choisir selon mon profil et mon budget?",
+        "Quelle chaussure choisir selon mon profil et mon budget?",
         "Donne-moi 3 conseils pour améliorer ma VMA.",
-        "En quoi la régularité est essentielle en sport?",
+        "Pourquoi la régularité est essentielle en sport?",
         "Comment améliorer mon mental?",
-        "En quoi la patience et la régularité sont-elles la clé de la victoire?",
+        "Pourquoi la patience et la régularité sont-elles la clé de la victoire?",
         "À quoi servent les protéines dans notre corps?",
         "Quels livres acheter pour mieux comprendre la course à pied?"
     ]

@@ -1,24 +1,25 @@
 const bddPhrases = {
     "remotivation": [
         "Tu ne peux pas apprendre à voler sans t'écraser au sol au moins une fois.",
-        "C'est dur mais parfois il y a certaines choses qu'on ne peut pas éviter, tout ce qu'on peut faire c'est essayer de vivre avec.",
         "Le travail finira toujours par surpasser le talent.",
         "Si tu ne le fais pas maintenant, tu ne le feras sans doute pas plus tard.",
         "Rappelle-toi pourquoi tu as commencé et tu ne repenseras plus jamais à arrêter.",
-        "Si c'était facile tout le monde l'aurait fait.",
-        "Ta seule concurrence c'est la personne que tu étais hier.",
+        "Si c'était facile, tout le monde l'aurait fait.",
+        "Ta seule concurrence, c'est la personne que tu étais hier.",
         "Parfois on perd, parfois on gagne et c'est comme ça!",
         "Si tu rêves aussi grand, c'est parce que cette version de toi existe déjà dans le futur.",
         "Personne ne viendra le faire à ta place alors écris ton histoire.",
         "Dans 6 mois, tu te diras 'Heureusement que j'ai continué!' alors avance."
     ],
     "mental": [
-        "Quelques minutes de sport c'est quoi dans ta vie?",
+        "Quelques minutes de sport, c'est quoi dans ta vie?",
         "C'est quand tu es dans le dur que tu progresses vraiment!",
         "Ne laisse pas ta peur te contrôler.",
         "C'est dur ? Pense à cette personne, ferme les yeux et avance.",
         "Pense toujours à la sensation que tu obtiens après le sport.",
         "Tu as la chance d'avoir un corps qui puisse faire du sport, alors honore-le.",
+        "Accepte l'inconfort, c'est le prix à payer pour progresser",
+        "Le corps fait ce que l'esprit lui ordonne de faire.",
         "Quand ton cerveau te dit d'arrêter, continue, pousse encore un peu, tu serais étonné de là où tu peux aller."
     ],
     "confiance": [
@@ -27,14 +28,14 @@ const bddPhrases = {
         "C'est la peur qui t'empêche de faire tout ce que tu devrais faire.",
         "La grandeur demande du temps.",
         "La seule façon d'échouer, c'est d'abandonner!",
-        "Je suis sûr que tu te fais du mal, arrête de penser au négatif et pense plutôt au positif.",
+        "Arrête de te faire du mal, concentre-toi sur le positif.",
         "Un esprit négatif ne t'offrira jamais des résultats positifs.",
         "Regarde tout le chemin que tu as parcouru : tu as déjà fait le plus dur en décidant de t'y mettre.",
         "Pendant que tu doutes de toi, certaines personnes aimeraient être à ta place, alors avance et profite.",
         "N'attends pas d'être parfait pour être fier de ce que tu accomplis aujourd'hui."
     ]
 }
-let ongletActuel = "remotivation"
+let ongletActuel = localStorage.getItem("last_onglet_Boost_your_Mind") || "remotivation"
 
 // voir "https://fr.javascript.info/task/shuffle"
 function shuffle(array) {
@@ -54,6 +55,7 @@ function gererTabsOnglets(idElement) {
     if (newSelected) {
         newSelected.classList.add("selected")
         ongletActuel = newSelected.id.split("-")[2] // "tabs-onglets-mental" -> "['tabs', 'onglets', 'mental']" -> "mental"
+        localStorage.setItem("last_onglet_Boost_your_Mind", ongletActuel)
         init()
     }
 }
@@ -145,6 +147,22 @@ function init() {
         containerPhrase.classList.remove("mental")
 
         containerPhrase.classList.add(ongletActuel) // on ajoute la bonne classe
+    }
+    // puis on selectionne le bon onglet
+    if (ongletActuel != "remotivation") {
+        const dicoIdNameOnglet = {
+            "remotivation": "tabs-onglets-remotivation",
+            "mental": "tabs-onglets-mental",
+            "confiance": "tabs-onglets-confiance",
+        }
+        const newSelectedOnglet = document.getElementById(dicoIdNameOnglet[ongletActuel])
+        if (newSelectedOnglet) {
+            // on déséléctionne le selected actuellement
+            document.querySelector("div.tabs-onglets.selected").classList.remove("selected")
+
+            // on met le nouveau seleted
+            newSelectedOnglet.classList.add("selected")
+        }
     }
 
     // on remplit les p

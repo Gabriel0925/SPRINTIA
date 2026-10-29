@@ -3273,6 +3273,7 @@ div.form-different-button {
     font-weight: var(--FW_BUTTON);
 
     display: flex;
+    justify-content: center;
     align-items: center;
     -webkit-user-select: none;
     -moz-user-select: none;

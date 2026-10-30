@@ -2748,16 +2748,9 @@ div.container-chargement.finish {
     pointer-events: none;
 }
 @keyframes animation_chargement {
-    0% {
+    from {
         transform: rotate(0deg);
-    }
-    35% {
-        transform: rotate(180deg);
-    }
-    70% {
-        transform: rotate(320deg);
-    }
-    100% {
+    } to {
         transform: rotate(360deg);
     }
 }
@@ -2766,7 +2759,6 @@ div.container-chargement div.chargement {
     height: 60px;
     border: 6px solid var(--COLOR_TEXT_SECONDARY);
     border-top: 6px solid var(--COLOR_ACCENT);
-    background-color: transparent;
     border-radius: var(--BORDER_NORMAL);
     animation: animation_chargement 1.2s ease-out infinite;
 }
@@ -4066,63 +4058,9 @@ section.container-button-start button.start-echauffement{
 }
 section.container-button-start button.start-echauffement:active{
     background-color: var(--COLOR_ACCENT_ACTIVE);
+    border-radius: var(--BORDER_NORMAL);
     transform: scale(var(--SCALE_MAX));
 }
-@keyframes animation_button_pret {
-    0% {
-        transform: rotate(0deg) scale(1); 
-        border-radius: 50%;
-        background-color: var(--COLOR_ACCENT);
-    }
-    35% {
-        transform: rotate(180deg) scale(1); 
-        border-radius: 30% 75%;
-        background-color: var(--COLOR_ACCENT_ACTIVE);
-    }
-    70% {
-        transform: rotate(320deg) scale(1); 
-        border-radius: 15%;
-        background-color: var(--COLOR_ACCENT_HOVER);
-    }
-    100% {
-        transform: rotate(360deg) scale(1); 
-        border-radius: 50%;
-        background-color: var(--COLOR_ACCENT);
-    }
-}
-/* section.container-button-start button.start-echauffement.animation-button-pret{
-    border-radius: var(--BORDER_BIG);
-    animation: animation_button_pret 1.5s ease-out infinite;
-}
-@keyframes animation_button_pret_finish {
-    0% {
-        transform: rotate(0deg) scale(1); 
-        border-radius: 50%;
-        background-color: var(--COLOR_ACCENT);
-        opacity: 1;
-    }
-    35% {
-        transform: rotate(180deg) scale(1.33); 
-        border-radius: 30% 75%;
-        background-color: var(--COLOR_ACCENT_ACTIVE);
-        opacity: 0.66;
-    }
-    70% {
-        transform: rotate(320deg) scale(1.66); 
-        border-radius: 15%;
-        background-color: var(--COLOR_ACCENT_HOVER);
-        opacity: 0.33;
-    }
-    100% {
-        transform: rotate(360deg) scale(2); 
-        opacity: 0;
-        border-radius: 50%;
-        background-color: var(--COLOR_ACCENT);
-    }
-}
-section.container-button-start button.start-echauffement.animation-button-pret.finish{
-    animation: animation_button_pret_finish 1.5s ease-out forwards;
-} */
 
 
 section.container-coach {

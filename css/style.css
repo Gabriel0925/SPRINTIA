@@ -2749,19 +2749,19 @@ div.container-chargement.finish {
 }
 @keyframes animation_chargement {
     0% {
-        transform: rotate(0deg) scale(1); 
+        transform: rotate(0deg); 
         border-radius: 50%;
     }
     35% {
-        transform: rotate(180deg) scale(1); 
+        transform: rotate(180deg); 
         border-radius: 30% 75%;
     }
     70% {
-        transform: rotate(320deg) scale(1); 
+        transform: rotate(320deg); 
         border-radius: var(--BORDER_SMALL);
     }
     100% {
-        transform: rotate(360deg) scale(1); 
+        transform: rotate(360deg); 
         border-radius: 50%;
     }
 }
@@ -2771,6 +2771,7 @@ div.container-chargement div.chargement {
     background-color: var(--COLOR_ACCENT);
     border-radius: 50%;
     animation: animation_chargement 1.5s ease-out infinite;
+    will-change: transform;
 }
 @keyframes finish_tourner_en_rond {
     0% {transform: scale(1);}

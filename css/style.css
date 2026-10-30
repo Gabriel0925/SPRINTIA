@@ -181,7 +181,7 @@ i {
 .icon_fleche_droite:before {content: "\e915";}
 .icon_fleche_gauche:before {content: "\e916";}
 .icon_flight:before {content: "\e917";}
-.icon_flow:before {content: "\e918";}
+.icon_warm_up:before {content: "\e918";}
 .icon_folder_open:before {content: "\e919";}
 .icon_fullscreen:before {content: "\e91a";}
 .icon_fullscreen_exit:before {content: "\e91b";}
@@ -2747,16 +2747,34 @@ div.container-chargement.finish {
     opacity: 0;
     pointer-events: none;
 }
-@keyframes tourner_en_rond {
-    to {transform: rotate(360deg);}
+@keyframes animation_chargement {
+    0% {
+        transform: rotate(0deg) scale(1); 
+        border-radius: 50%;
+        background-color: var(--COLOR_ACCENT);
+    }
+    35% {
+        transform: rotate(180deg) scale(1); 
+        border-radius: 30% 75%;
+        background-color: var(--COLOR_ACCENT_ACTIVE);
+    }
+    70% {
+        transform: rotate(320deg) scale(1); 
+        border-radius: var(--BORDER_SMALL);
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
+    100% {
+        transform: rotate(360deg) scale(1); 
+        border-radius: 50%;
+        background-color: var(--COLOR_ACCENT);
+    }
 }
 div.container-chargement div.chargement {
-    width: 45px;
-    height: 45px;
-    border: 5px solid rgba(255, 255, 255, 0.35);
-    border-top-color: var(--COLOR_ACCENT);
+    width: 65px;
+    height: 65px;
+    background-color: var(--COLOR_ACCENT);
     border-radius: 50%;
-    animation: tourner_en_rond 0.8s infinite;
+    animation: animation_chargement 1.5s ease-out infinite;
 }
 @keyframes finish_tourner_en_rond {
     0% {transform: scale(1);}
@@ -4078,7 +4096,7 @@ section.container-button-start button.start-echauffement:active{
         background-color: var(--COLOR_ACCENT);
     }
 }
-section.container-button-start button.start-echauffement.animation-button-pret{
+/* section.container-button-start button.start-echauffement.animation-button-pret{
     border-radius: var(--BORDER_BIG);
     animation: animation_button_pret 1.5s ease-out infinite;
 }
@@ -4110,7 +4128,7 @@ section.container-button-start button.start-echauffement.animation-button-pret{
 }
 section.container-button-start button.start-echauffement.animation-button-pret.finish{
     animation: animation_button_pret_finish 1.5s ease-out forwards;
-}
+} */
 
 
 section.container-coach {

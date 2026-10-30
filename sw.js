@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.93"
+const VERSION_CACHE = "V1.1.94"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
@@ -51,7 +51,7 @@ const fileInCache = [
     "/outils/estimation-1rm/a-propos.html", "/outils/estimation-1rm/estimation-1RM.html", "/outils/estimation-1rm/script-outil.js",
 
     "/outils/preparation/entrainement-du-jour/bdd-entrainement.js", "/outils/preparation/entrainement-du-jour/entrainement-du-jour.html", "/outils/preparation/entrainement-du-jour/script-entrainement-du-jour.js",
-    "/outils/preparation/flow/flow.html", "/outils/preparation/flow/script-flow.js",
+    "/outils/preparation/warm-up/warm-up.html", "/outils/preparation/warm-up/script-warm-up.js",
     "/outils/preparation/boost-your-mind/boost-your-mind.html","/outils/preparation/boost-your-mind/script-boost-your-mind.js",
     
     "/outils/hydratation/a-propos.html", "/outils/hydratation/hydratation.html", "/outils/hydratation/script-outil.js",

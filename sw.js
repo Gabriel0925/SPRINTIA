@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.92"
+const VERSION_CACHE = "V1.1.93"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
@@ -96,6 +96,7 @@ const fileInCache = [
     "/plus/historique-versions/generation-5/images-gen-5/v5-page-niveau-course.png", "/plus/historique-versions/generation-5/images-gen-5/v5-page-progression.png",
     // gen 26
     "/plus/historique-versions/generation-26/v26.09.html", "/plus/historique-versions/generation-26/v26.10.html", "/plus/historique-versions/generation-26/v26.11.html",
+    "/plus/historique-versions/generation-26/v26.12.html",
 
     "/plus/import-donnees/import-donnees.html", "/plus/import-donnees/aide.html", "/plus/import-donnees/script-import-generale.js",
     "/plus/import-donnees/import-garmin/import-garmin.html", "/plus/import-donnees/import-garmin/script_import.js",

@@ -1,69 +1,43 @@
 async function uploadFileGPX(event) {
     const dicoNameSport = { // init dico pr les sports
         // COURSE A PIED
-        "running":"Course",
-        "run":"Course",
-        "course":"Course",
-        "course à pied":"Course",
-        "course a pied":"Course",
-        "trail":"Course",
-        "trail_running":"Course",
-        "treadmill":"Course", // Tapis de course
+        "running":"Course", "run":"Course", "course":"Course", 
+        "course à pied":"Course", "course a pied":"Course", "trail":"Course", 
+        "trail_running":"Course", "treadmill":"Course", // Tapis de course
 
         // VELO
-        "cycling":"Vélo",
-        "biking":"Vélo",
-        "bike":"Vélo",
-        "velo":"Vélo",
-        "vélo":"Vélo",
-        "mountain_biking":"Vélo",
-        "vtt":"Vélo",
-        "vtt_eletrique":"Vélo",
-        "vtt eletrique":"Vélo",
-        "vtt életrique":"Vélo",
-        "vtt_életrique":"Vélo",
-        "indoor_cycling":"Vélo", // home-trainer
-        "gravel":"Vélo",
-        "ebike": "Vélo",
-        "e-bike": "Vélo",
-        "emountainbike": "Vélo",
-        "e-mountainbike": "Vélo",
-        "vélo électrique": "Vélo",
-        "vélo_électrique": "Vélo",
-        "velo electrique": "Vélo",
-        "velo_electrique": "Vélo",
+        "cycling":"Vélo", "biking":"Vélo", "bike":"Vélo",
+        "velo":"Vélo", "vélo":"Vélo", "mountain_biking":"Vélo",
+        "vtt":"Vélo", "vtt_eletrique":"Vélo", "vtt eletrique":"Vélo",
+        "vtt életrique":"Vélo", "vtt_életrique":"Vélo", "indoor_cycling":"Vélo", // home-trainer
+        "gravel":"Vélo", "ebike": "Vélo", "e-bike": "Vélo",
+        "emountainbike": "Vélo", "e-mountainbike": "Vélo", "vélo électrique": "Vélo",
+        "vélo_électrique": "Vélo", "velo electrique": "Vélo", "velo_electrique": "Vélo",
         "ride": "Vélo",
 
         // MARCHE
-        "walking":"Marche",
-        "walk":"Marche",
-        "marche":"Marche",
+        "walking":"Marche", "walk":"Marche", "marche":"Marche",
 
         // RANDONNEE
-        "hiking":"Randonnée",
-        "hike":"Randonnée",
-        "randonnée":"Randonnée",
-        "randonnee":"Randonnée",
+        "hiking":"Randonnée", "hike":"Randonnée", "randonnée":"Randonnée", "randonnee":"Randonnée",
 
         // SPORT HIVER
-        "skiing": "Ski",
-        "resort_skiing": "Ski",
-        "ski": "Ski",
-        "alpine_skiing": "Ski",
-        "alpineski": "Ski",
-        "nordic_skiing": "Ski de fond",
-        "snowboarding": "Snowboard",
-        "snowboard": "Snowboard",
+        "skiing": "Ski", "resort_skiing": "Ski", "ski": "Ski", 
+        "alpine_skiing": "Ski", "alpineski": "Ski", 
+        "nordic_skiing": "Ski de fond", "nordic_ski":" Ski de fond", "xc_skiing":" Ski de fond",
+        "cross_country_skiing":" Ski de fond",
+        "snowboarding": "Snowboard", "snowboard": "Snowboard",
 
         // SPORT EAU
-        "swimming":"Natation",
-        "swim":"Natation",
-        "natation":"Natation",
-        "open_water_swimming":"Natation", // en eau libre
-        "pool_swimming":"Natation", // en piscine
-        "kayaking":"Kayak",
-        "aviron": "Aviron",
-        "rowing": "Aviron",
+        "swimming":"Natation", "swim":"Natation", "natation":"Natation",
+        "open_water_swimming":"Natation", "pool_swimming":"Natation", 
+        "kayaking":"Kayak", "aviron": "Aviron", "rowing": "Aviron",
+        "paddle":"Paddle", "stand_up_paddling":"Paddle", "standuppaddling":"Paddle",
+        "paddling":"Paddle",
+
+        // Escalade en montagne
+        "climbing": "Escalade", "rock_climbing": "Escalade", "boulder": "Escalade",
+        "bouldering": "Escalade", "escalade": "Escalade",
 
         "other": "Libre"
     }

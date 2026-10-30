@@ -2751,22 +2751,18 @@ div.container-chargement.finish {
     0% {
         transform: rotate(0deg) scale(1); 
         border-radius: 50%;
-        background-color: var(--COLOR_ACCENT);
     }
     35% {
         transform: rotate(180deg) scale(1); 
         border-radius: 30% 75%;
-        background-color: var(--COLOR_ACCENT_ACTIVE);
     }
     70% {
         transform: rotate(320deg) scale(1); 
         border-radius: var(--BORDER_SMALL);
-        background-color: var(--COLOR_ACCENT_HOVER);
     }
     100% {
         transform: rotate(360deg) scale(1); 
         border-radius: 50%;
-        background-color: var(--COLOR_ACCENT);
     }
 }
 div.container-chargement div.chargement {

@@ -2755,12 +2755,12 @@ div.container-chargement.finish {
     }
 }
 div.container-chargement div.chargement {
-    width: 60px;
-    height: 60px;
-    border: 6px solid var(--COLOR_TEXT_SECONDARY);
-    border-top: 6px solid var(--COLOR_ACCENT);
-    border-radius: var(--BORDER_NORMAL);
-    animation: animation_chargement 1.2s ease-out infinite;
+    width:45px;
+    height:45px;
+    border: 5px solid var(--COLOR_TEXT_SECONDARY);
+    border-top: 5px solid var(--COLOR_ACCENT);
+    border-radius: 50%;
+    animation: animation_chargement 0.8s ease-out infinite;
 }
 @keyframes finish_tourner_en_rond {
     0% {transform: scale(1);}
@@ -4039,6 +4039,28 @@ section.container-button-start {
     justify-content: center;
     align-items: center;
 }
+@keyframes animation_button_echauffement {
+    0% {
+        background-color: var(--COLOR_ACCENT);
+        border-radius: 50%;
+        transform: scale(1);
+    }
+    20% {
+        background-color: var(--COLOR_ACCENT_ACTIVE);
+        border-radius: var(--BORDER_NORMAL);
+        transform: scale(var(--SCALE_MAX));
+    }
+    40% {
+        background-color: var(--COLOR_ACCENT_ACTIVE);
+        border-radius: 50%;
+        transform: scale(1);
+    }
+    100%{
+        background-color: var(--COLOR_ACCENT);
+        border-radius: 50%;
+        transform: scale(0);
+    }
+}
 section.container-button-start button.start-echauffement{
     background-color: var(--COLOR_ACCENT);
     width: 200px;
@@ -4056,10 +4078,8 @@ section.container-button-start button.start-echauffement{
         transform: scale(var(--SCALE_SUP));
     }
 }
-section.container-button-start button.start-echauffement:active{
-    background-color: var(--COLOR_ACCENT_ACTIVE);
-    border-radius: var(--BORDER_NORMAL);
-    transform: scale(var(--SCALE_MAX));
+section.container-button-start button.start-echauffement.pret{
+    animation: animation_button_echauffement 0.8s ease-in-out forwards;
 }
 
 

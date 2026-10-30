@@ -2762,8 +2762,8 @@ div.container-chargement.finish {
     }
 }
 div.container-chargement div.chargement {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     border: 6px solid var(--COLOR_TEXT_SECONDARY);
     border-top: 6px solid var(--COLOR_ACCENT);
     background-color: transparent;

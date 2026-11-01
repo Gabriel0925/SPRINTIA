@@ -93,8 +93,8 @@
     
     /* OTHER */
     --MAX_WIDTH: 1500px;
-    --TIME_TRANSITION: 0.3s;
-    --TIME_TRANSITION_FAST: 0.15s;
+    --TIME_TRANSITION: 0.35s;
+    --TIME_TRANSITION_FAST: 0.2s;
 
 
     /* URL flèche vers le bas pour les combobox */
@@ -2770,6 +2770,11 @@ div.container-chargement.finish div.chargement {
     animation: finish_tourner_en_rond 0.5s forwards;
 }
 
+iframe {
+    width: 100%;
+    height: 230px;
+    border-radius: var(--BORDER_BIG);
+}
 div.container-videos-yt {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -3380,7 +3385,7 @@ div.visuel-version {
     position: relative;
 
     margin-top: var(--SPACE_L);
-    margin-bottom: var(--SPACE_XL);
+    margin-bottom: var(--SPACE_M);
 }
 div.visuel-version p.visuel-version-title{
     font-size: var(--H1);
@@ -4648,9 +4653,7 @@ section.container-tabs-onglets div.tabs-onglets{
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
-    section.container-tabs-onglets div.tabs-onglets:hover{
-        color: var(--COLOR_ACCENT_TEXT);
-    }
+    section.container-tabs-onglets div.tabs-onglets:hover{color: var(--COLOR_ACCENT_TEXT);}
 }
 section.container-tabs-onglets div.tabs-onglets:active{
     color: var(--COLOR_ACCENT_TEXT);
@@ -4668,6 +4671,14 @@ section.container-tabs-onglets div.tabs-onglets.selected#tabs-onglets-confiance{
     color: #cc98fc;
     border-bottom: 2px solid #cc98fc;
 }
+@media (hover: hover) and (pointer: fine) {
+    section.container-tabs-onglets div.tabs-onglets#tabs-onglets-mental:hover{color: #91c3fd;}
+    section.container-tabs-onglets div.tabs-onglets#tabs-onglets-remotivation:hover{color: #ff8e8e;}
+    section.container-tabs-onglets div.tabs-onglets#tabs-onglets-confiance:hover{color: #cc98fc;}
+}
+section.container-tabs-onglets div.tabs-onglets#tabs-onglets-mental:active{color: #91c3fd;}
+section.container-tabs-onglets div.tabs-onglets#tabs-onglets-remotivation:active{color: #ff8e8e;}
+section.container-tabs-onglets div.tabs-onglets#tabs-onglets-confiance:active{color: #cc98fc;}
 section.container-tabs-onglets div.tabs-onglets i{
     font-size: 2rem;
 }

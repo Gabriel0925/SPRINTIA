@@ -54,32 +54,22 @@ Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponib
 
 (Attention : ces algorithmes sont un guide, ils sont là pour vous aider à progresser mais vos sensations et votre instinct restent les plus importants !)
 
-### Fonctionnalité d'analyse en profondeur (IA) & Génération
-* **SPRINTIA Analyse** : C'est la fonctionnalité qui gère toutes les analyses du coach de l'application. Grâce à SPRINTIA Analyse, vous pouvez choisir le style
-        des analyses de ce coach (Bienveillant, Strict & Motivant, Copain). De plus, SPRINTIA Analyse c'est le coeur même de la fonctionnalité de discussion, car c'est elle
-        qui génère un prompt pour analyser en profondeur vos données d'entraînement via votre IA préférée.
-    * Analyser vos tendances d'entraînement
-    * Analyser votre entraînement
-    * Analyser votre récupération
-    * Analyser votre charge d'entraînement
-    * Posez une question sur vos données d'entraînement, par exemple :
-        * "Créer un programme d'entraînement pour faire le 10 km à Dijon dans 8 semaines"
-        * "Pourquoi je n'arrive pas à améliorer mon temps sur 10 km ?"
-        * "Pourquoi je me sens fatigué aujourd'hui alors que j'ai bien dormi et que ma fréquence cardiaque de repos est bonne ?"
-        * "Compare ma séance de course d'aujourd'hui avec celle de la semaine dernière. Est-ce que mon endurance s'améliore ?"
-        * "Donne-moi 3 exercices de récupération active à faire aujourd'hui, adaptés à ma récupération."
+### SPRINTIA Analyse
+C'est la fonctionnalité qui permet à SPRINTIA d'analyser votre charge d'entraînement,... Grâce à SPRINTIA Analyse, vous pouvez :
+* choisir le style des analyses du coach de l'application (Bienveillant, Strict & Motivant, Copain). 
+* poser une question (dans l'onglet discussion) et SPRINTIA Analyse générera un prompt contenant vos données d'entraînement pour que l'IA de votre choix (Vibe, Gemini, Claude,...) puisse répondre à votre question. Voici quelques exemples d'usages :
+    * "Analyse mes tendances d'entraînement."
+    * "Analyse mon dernier entraînement."
+    * "Pourquoi suis-je fatigué aujourd'hui ?"
+    * "Créer un programme d'entraînement pour faire le 10 km à Dijon dans 8 semaines."
+    * "Pourquoi je n'arrive pas à améliorer mon temps sur 10 km ?"
+    * "Pourquoi je me sens fatigué aujourd'hui alors que j'ai bien dormi et que ma fréquence cardiaque de repos est bonne ?"
+    * "Compare ma séance de course d'aujourd'hui avec celle de la semaine dernière. Est-ce que mon endurance s'améliore ?"
+    * "Donne-moi 3 exercices de récupération active à faire aujourd'hui, adaptés à ma récupération."
 
     Pour en savoir plus sur cette fonctionnalité, vous pouvez regarder le post insta que j'ai réalisé : [Découvrez SPRINTIA Briefing ?](https://www.instagram.com/p/DdvVIseiGtL/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
 
-    (Attention : en utilisant cette fonctionnalité, vous acceptez le transfert de vos données à l'IA que vous aurez choisie dans les paramètre de SPRINTIA Briefing (IA par défaut : Vibe))
-
-* **Entraînement du jour** : vous n'avez pas d'idée d'entraînement pour aujourd'hui ? Ou alors vous n'avez pas eu le temps d'en préparer un ? La fonctionnalité "Entraînement du jour" est faite pour vous ! Vous pouvez générer un entraînement en fonction de :
-    * L'intensité que vous souhaitez (Facile, Modéré, Difficile)
-    * La durée que vous souhaitez (25min, 50min)
-    * Le sport que vous souhaitez pratiquer (Course à pied, Vélo, Natation)
-    * De plus, si vous avez une montre de la marque COROS, vous pouvez envoyer cet entraînement sur votre compte COROS en un seul clic ! Par la suite, vous n'avez plus qu'à l'envoyer sur votre montre et à le suivre.
-
-    Pour apprendre à utiliser cette fonctionnalité, vous pouvez visionner mon post insta qui explique le fonctionnement de [l'outil Entraînement du Jour ?](https://www.instagram.com/p/Dds19s5jr5R/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
+    (Attention : en utilisant cette fonctionnalité, vous acceptez le transfert de vos données à l'IA que vous aurez choisie dans les paramètres de SPRINTIA Briefing (IA par défaut : Vibe))
 
 ### Autres fonctionnalités
 * **Statistiques** : visualisez vos données d'entraînement sur une période sélectionnée (7J, 30J, 90J, 365J), vous pouvez consulter les statistiques suivantes sur cette période :
@@ -92,14 +82,30 @@ Pour finir, j'ai conçu SPRINTIA pour rendre accessible des algorithmes disponib
 * **Mode hors ligne** : vous êtes au sommet d'une montagne et vous n'avez pas de connexion ? Aucun problème, SPRINTIA fonctionne hors-connexion !
 
 ### Outils rapides
-* **Zones Cardiaques** : Découvrez vos zones de fréquence cardiaque pour adapter l'intensité de vos entraînements.
-* **Métabolisme de base** : Calculez l'énergie de base nécessaire à votre corps pour construire un plan d'entraînement.
-* **Calculateur IMC** : Calculez votre IMC et obtenez une interprétation de votre résultat.
-* **Estimation 1RM (One Repetition Maximum)** : Estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.
-* **Protéines Quotidiennes** : Découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.
-* **Temps de Récupération** : Estimez le temps de récupération optimal pour récupérer de votre dernier entraînement.
-* **Hydratation** : Calculez la quantité d'eau dont votre corps a besoin au quotidien.
-* **Convertisseur km/miles** : Convertissez une distance des kilomètres en miles ou inversement.
+
+#### Préparation
+* **Entraînement du jour** : vous n'avez pas d'idée d'entraînement pour aujourd'hui ? Ou alors vous n'avez pas eu le temps d'en préparer un ? La fonctionnalité "Entraînement du jour" est faite pour vous ! Vous pouvez générer un entraînement en fonction de :
+    * L'intensité que vous souhaitez (Facile, Modéré, Difficile)
+    * La durée que vous souhaitez (25min, 50min)
+    * Le sport que vous souhaitez pratiquer (Course à pied, Vélo, Natation)
+    * De plus, si vous avez une montre de la marque COROS, vous pouvez envoyer cet entraînement sur votre compte COROS en un seul clic ! Par la suite, vous n'avez plus qu'à l'envoyer sur votre montre et à le suivre.
+
+    Pour apprendre à utiliser cette fonctionnalité, vous pouvez visionner mon post insta qui explique le fonctionnement de [l'outil Entraînement du Jour ?](https://www.instagram.com/p/Dds19s5jr5R/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==)
+* **Boost your Mind** : retrouvez la motivation, développez votre mental et/ou reprenez confiance en vous.
+
+#### Santé
+* **Zones Cardiaques** : découvrez vos zones de fréquence cardiaque pour adapter l'intensité de vos entraînements.
+* **Métabolisme de base** : calculez l'énergie de base nécessaire à votre corps pour construire un plan d'entraînement.
+* **Calculateur IMC** : calculez votre IMC et obtenez une interprétation de votre résultat.
+
+#### Musculation & Alimentation
+* **Estimation 1RM (One Repetition Maximum)** : estimez la charge maximale que vous pouvez soulever en une seule répétition sur un exercice de musculation.
+* **Protéines Quotidiennes** : découvrez la quantité de protéines à consommer par jour en fonction de votre objectif.
+
+#### Autres
+* **Temps de Récupération** : estimez le temps de récupération optimal pour récupérer de votre dernier entraînement.
+* **Hydratation** : calculez la quantité d'eau dont votre corps a besoin au quotidien.
+* **Convertisseur km/miles** : convertissez une distance des kilomètres en miles ou inversement.
 
 ## Partage d'entraînement
 Si vous allez courir avec un ami et que vous utilisez tous les deux SPRINTIA, vous pouvez vous simplifier la vie. Au lieu de saisir chacun de votre côté votre entraînement, vous pouvez simplement le partager à votre ami. C'est relativement simple, une fois l'entraînement bouclé, l'un de vous importe le fichier TCX ou GPX dans SPRINTIA et ensuite en cliquant sur le détail de l'entraînement, puis "Plus" et enfin "Partager", vous pouvez partager le fichier de l'entraînement via Airdrop, Quick Share, WhatsApp,... et votre ami n'a plus qu'à l'importer dans SPRINTIA pour avoir le même entraînement que vous.

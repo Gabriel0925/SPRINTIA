@@ -879,14 +879,11 @@ div.visuel-information p{
 
 
 section.segmented-button {
-    background-color: var(--COLOR_BACKGROUND_CARD);
     display: flex;
     justify-content: center;
     align-items: center;
     margin: var(--SPACE_L) auto;
-    width: fit-content;
-    padding: var(--SPACE_XXS);
-    border-radius: var(--BORDER_BIG);
+    max-width: 480px;
     gap: var(--SPACE_XXS);
     transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
@@ -898,10 +895,12 @@ section.segmented-button#segmented-button-niveau-course {
     margin-top: var(--SPACE_L);
 }
 section.segmented-button div.segmented-button-button {
+    background-color: var(--COLOR_BACKGROUND_CARD);
     padding: var(--SPACE_S);
-    border-radius: var(--BORDER_BIG);
+    border-radius: var(--BORDER_SMALL);
     cursor: pointer;
-    width: 70px;
+    width: 20px;
+    flex-grow: 1;
     text-align: center;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -909,19 +908,6 @@ section.segmented-button div.segmented-button-button {
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 font-weight ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
-}
-section.segmented-button div.segmented-button-button#segmented-button-analyse,
-section.segmented-button div.segmented-button-button#segmented-button-evolution {
-    width: 110px;
-}
-section.segmented-button div.segmented-button-button#sport-course,
-section.segmented-button div.segmented-button-button#sport-velo,
-section.segmented-button div.segmented-button-button#sport-natation {
-    width: 100px;
-}
-section.segmented-button div.segmented-button-button#segmented-button-allure,
-section.segmented-button div.segmented-button-button#segmented-button-watts {
-    width: 120px;
 }
 @media (hover: hover) and (pointer: fine) {
     section.segmented-button div.segmented-button-button:hover {
@@ -933,10 +919,17 @@ section.segmented-button div.segmented-button-button:active {
     background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
 }
 section.segmented-button div.segmented-button-button.actif {
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_ACCENT);
+    color: var(--COLOR_BACKGROUND);
+    border-radius: var(--BORDER_BIG);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.segmented-button div.segmented-button-button.actif:hover {
+        background-color: var(--COLOR_ACCENT_HOVER);
+    }
 }
 section.segmented-button div.segmented-button-button.actif:active {
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    background-color: var(--COLOR_ACCENT_ACTIVE);
 }
 
 
@@ -945,6 +938,8 @@ section.container-change-periode {
     justify-content: center;
     align-items: center;
     gap: var(--SPACE_M);
+    max-width: 480px;
+    margin: 0 auto;
     margin-bottom: var(--SPACE_L);
 }
 section.container-change-periode i{
@@ -980,6 +975,7 @@ section.container-change-periode i:active{
 section.container-change-periode p.date-periode{
     font-size: var(--P_SMALL);
     width: 182px;
+    flex-grow: 1;
     min-height: 20px;
     text-align: center;
 }

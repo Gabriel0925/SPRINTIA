@@ -923,25 +923,18 @@ section.segmented-button div.segmented-button-button.actif {
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
 }
-section.segmented-button div.segmented-button-button.red.actif {
-    background-color: var(--COLOR_RED);
-}
+section.segmented-button div.segmented-button-button.red.actif {background-color: var(--COLOR_RED);}
 @media (hover: hover) and (pointer: fine) {
     section.segmented-button div.segmented-button-button.actif:hover {
         background-color: var(--COLOR_ACCENT);
     }
-    section.segmented-button div.segmented-button-button.red.actif:hover {
-        background-color: var(--COLOR_RED);
-    }
+    section.segmented-button div.segmented-button-button.red.actif:hover {background-color: var(--COLOR_RED);}
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_ACCENT);
     transform: scale(1);
 }
-section.segmented-button div.segmented-button-button.red.actif:active {
-    background-color: var(--COLOR_RED);
-    transform: scale(1);
-}
+section.segmented-button div.segmented-button-button.red.actif:active{background-color: var(--COLOR_RED);}
 
 
 section.container-change-periode {
@@ -1981,6 +1974,9 @@ div.zone-coach::before {
     filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
 }
+div.zone-coach.red::before {
+    background: radial-gradient(circle, var(--COLOR_RED), var(--COLOR_BACKGROUND));
+}
 div.zone-coach p.title {
     display: flex;
     align-items: center;
@@ -2040,15 +2036,11 @@ div.zone-coach button {
 
     width: 100%;
 }
-@media (hover: hover) and (pointer: fine) {
-    div.zone-coach button:hover {
-        background-color: var(--COLOR_ACCENT_HOVER);
-        box-shadow: 0 0 10px var(--COLOR_ACCENT_HOVER);
-    }
+div.zone-coach button.red {
+    box-shadow: 0 0 10px var(--COLOR_RED);
+    background-color: var(--COLOR_RED);
 }
 div.zone-coach button:active {
-    background-color: var(--COLOR_ACCENT_ACTIVE);
-    box-shadow: 0 0 10px var(--COLOR_ACCENT_ACTIVE);
     transform: scale(var(--SCALE_NORMAL));
 }
 

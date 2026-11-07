@@ -137,7 +137,7 @@ const fileInCache = [
 
     "/progression/recuperation/ajouter-recuperation.html", "/progression/recuperation/historique-recuperation.html", "/progression/recuperation/a-propos.html",
     "/progression/recuperation/recuperation-analyse.html", "/progression/recuperation/script-ajouter-recuperation.js", "/progression/recuperation/script-historique.js",
-    "/progression/recuperation/script-analyse.js", "/progression/recuperation/recuperation-historique.html",
+    "/progression/recuperation/script-analyse.js", "/progression/recuperation/recuperation-historique.html", "/progression/recuperation/script-global.js",
 
     "/index.html", "/index.js","/manifest.json"
 ]

@@ -54,7 +54,7 @@ function fcToday() {
 }
 async function statutInterpretation(fcReposToday, moyenne28j) {
     // recup des elt html interressant pour le statut
-    let pStatut = document.querySelector(".zone-coach.red p.title")
+    let pStatut = document.querySelector(".zone-coach p.title")
     let spanStatut = document.getElementById("statut")
     if (spanStatut) {
         // init de la phrase de base
@@ -94,7 +94,6 @@ async function statutInterpretation(fcReposToday, moyenne28j) {
             zoneReponseCoach.textContent = interpretation
             zoneReponseCoach.classList.remove("skeleton")
         }
-
 
     } else {
         if (zoneReponseCoach) {zoneReponseCoach.classList.remove("skeleton")}

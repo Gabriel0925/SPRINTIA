@@ -16,6 +16,8 @@
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
     <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
 
+    <script src="script-global.js" defer></script>
+
 </head>
 
 <body>
@@ -96,8 +98,8 @@
 
     <section class="segmented-button">
 
-        <div class="segmented-button-button red actif" id="segmented-button-analyse">Analyse</div>
-        <div class="segmented-button-button red" id="segmented-button-evolution">Historique</div>
+        <div class="segmented-button-button actif" id="segmented-button-analyse">Analyse</div>
+        <div class="segmented-button-button" id="segmented-button-evolution">Historique</div>
 
     </section>
 
@@ -113,10 +115,10 @@
 
     <section class="container-zone">
 
-        <div class="zone-coach red">
+        <div class="zone-coach">
             <p class="title skeleton"><span id="statut"></span></p>
             <p class="zone-coach-interpretation skeleton" id="reponse-coach"></p>
-            <button class="red" id="button-SPRINTIA-analyse">Analyser ma récupération</button>
+            <button id="button-SPRINTIA-analyse">Analyser ma récupération</button>
         </div>
 
     </section>

@@ -36,7 +36,6 @@
 
 
     /* SPRINTIA Analyse */
-    --COLOR_GLOW: var(--COLOR_ACCENT);
     --COLOR_ANALYSE_START: var(--COLOR_ACCENT);
     --COLOR_ANALYSE_END: #94b8ef;
 
@@ -47,7 +46,10 @@
 
 
     /* Autre couleur */ 
-    --COLOR_RED: #ff4b4c;
+    --COLOR_RED: #f25a5a;
+    --COLOR_RED_HOVER: #f07575;
+    --COLOR_RED_ACTIVE: #e98f8f;
+    --COLOR_RED_TEXT: #ff8e8e;
     
     --COLOR_VERT: #1fff80;
     --COLOR_JAUNE: #e7e625;
@@ -924,18 +926,15 @@ section.segmented-button div.segmented-button-button.actif {
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
 }
-section.segmented-button div.segmented-button-button.red.actif {background-color: var(--COLOR_RED);}
 @media (hover: hover) and (pointer: fine) {
     section.segmented-button div.segmented-button-button.actif:hover {
         background-color: var(--COLOR_ACCENT);
     }
-    section.segmented-button div.segmented-button-button.red.actif:hover {background-color: var(--COLOR_RED);}
 }
 section.segmented-button div.segmented-button-button.actif:active {
     background-color: var(--COLOR_ACCENT);
     transform: scale(1);
 }
-section.segmented-button div.segmented-button-button.red.actif:active{background-color: var(--COLOR_RED);}
 
 
 section.container-change-periode {
@@ -1963,12 +1962,9 @@ div.zone-coach::before {
     top: 0%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, var(--COLOR_GLOW), var(--COLOR_BACKGROUND));
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
     filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
-}
-div.zone-coach.red::before {
-    background: radial-gradient(circle, var(--COLOR_RED), var(--COLOR_BACKGROUND));
 }
 div.zone-coach p.title {
     display: flex;
@@ -2028,10 +2024,6 @@ div.zone-coach button {
     position: relative;
 
     width: 100%;
-}
-div.zone-coach button.red {
-    box-shadow: 0 0 10px var(--COLOR_RED);
-    background-color: var(--COLOR_RED);
 }
 div.zone-coach button:active {
     transform: scale(var(--SCALE_NORMAL));
@@ -3864,7 +3856,7 @@ section.container-content-algorithme div.widget-analyse::before {
     top: 0%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, var(--COLOR_GLOW), var(--COLOR_BACKGROUND));
+    background: radial-gradient(circle, var(--COLOR_ACCENT), var(--COLOR_BACKGROUND));
     filter: blur(30px) brightness(0.7) saturate(120%);
     z-index: -1;
 }

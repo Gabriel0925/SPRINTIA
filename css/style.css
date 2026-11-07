@@ -906,7 +906,7 @@ section.segmented-button div.segmented-button-button {
     -moz-user-select: none;
     user-select: none;
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
-                font-weight ease-out var(--TIME_TRANSITION),
+                color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -4715,7 +4715,7 @@ section.container-phrase {
     }
     50% {
         opacity: 1;
-        transform: scale(0.88, 0.95);
+        transform: scale(0.86, 0.92);
     }
     100% {
         opacity: 1;
@@ -4802,6 +4802,7 @@ section.container-phrase div.track-phrase p.more{
 section.container-phrase div.track-phrase p.past{
     filter: blur(4px);
     opacity: 0.4;
+    min-height: 60px;
 }
 section.container-phrase div.track-phrase div.button{
     display: flex;

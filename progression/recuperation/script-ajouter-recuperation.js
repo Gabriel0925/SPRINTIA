@@ -94,7 +94,7 @@ async function saveRecuperation() {
 
         button.textContent = "Sauvegardé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        window.location.href = `recuperation.html` 
+        window.location.href = `recuperation-analyse.html` 
     } catch(error) {
         console.log(error)
         button.textContent = "Une erreur s'est produite"
@@ -122,7 +122,7 @@ async function editRecuperation() {
                 document.getElementById("date-recuperation").value = dataRecuperation.date
                 document.getElementById("fc-repos-recuperation").value = dataRecuperation.fc_repos
             } else {
-                window.location.href = `recuperation.html` // si jamais il n'y a pas de data avec l'id dans l'URL on retourne à la page de liste des récupérations
+                window.location.href = `recuperation-analyse.html` // si jamais il n'y a pas de data avec l'id dans l'URL on retourne à la page de liste des récupérations
             }
 
             // maj des textes de la page

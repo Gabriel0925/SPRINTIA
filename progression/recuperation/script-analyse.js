@@ -198,5 +198,8 @@ document.addEventListener("DOMContentLoaded", async() => {
         })
     }
 
+    const segmentedButtonHistorique = document.getElementById("segmented-button-historique")
+    if (segmentedButtonHistorique) {segmentedButtonHistorique.addEventListener("click", () =>{window.location.href = 'recuperation-historique.html'})}
+
     await init()
 })

@@ -95,8 +95,8 @@
 
     <section class="segmented-button">
 
-        <div class="segmented-button-button red actif" id="segmented-button-analyse">Analyse</div>
-        <div class="segmented-button-button red" id="segmented-button-evolution">Historique</div>
+        <div class="segmented-button-button" id="segmented-button-analyse">Analyse</div>
+        <div class="segmented-button-button actif" id="segmented-button-historique">Historique</div>
 
     </section>
 
@@ -109,16 +109,6 @@
         </div>
 
     </div>
-
-    <section class="container-zone">
-
-        <div class="zone-coach">
-            <p class="title skeleton"><span class="indicateur" id="indicateur"></span><span id="statut"></span></p>
-            <p class="zone-coach-interpretation skeleton" id="reponse-coach"></p>
-            <button id="button-SPRINTIA-analyse">Analyser ma récupération</button>
-        </div>
-
-    </section>
 
     <h2>Historique (7J)</h2>    
     <div class="visuel-information" id="aucune-data">
@@ -164,7 +154,7 @@
     <!-- Import bibliothèque pour simplifier le code de indexed db -->
     <script src="../../assets/bibliotheques/dexie.js"></script>
     <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
-    <script src="script-recuperation.js"></script>
+    <script src="script-historique.js"></script>
 
 </body>
 </html>

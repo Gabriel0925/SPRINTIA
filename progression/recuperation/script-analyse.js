@@ -1,18 +1,18 @@
 const dicoInterpretation = {
     "Bienveillant": [
-        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 28 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
         "Ta FC repos du jour est inférieure à ta moyenne habituelle, c'est un très bon signe ! Ça signifie que tu es en forme et que tu es prêt·e à affronter un entraînement intense aujourd'hui si tu le souhaites.",
         "Ta FC repos du jour est dans la moyenne habituelle. Ça signifie que tu peux faire une séance aujourd'hui (si tu le souhaites) et que ton corps a bien récupéré de tes dernières séances d'entraînement. Garde cette régularité et tu verras que les résultats seront au rendez-vous !",
         "Ta FC repos du jour indique que ton corps n'a pas encore récupéré de tes dernières séances d'entraînement. Je te conseille donc de ne pas t'entraîner aujourd'hui pour que ton corps récupère et que tu puisses retourner au plus tôt t'entraîner."
     ],
     "Strict-Motivant": [
-        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 28 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
         "Ta FC repos du jour est plus basse que d'habitude. C'est parfait, tu es en pleine forme ! Profite de ce pic de forme pour te dépasser et mettre un max d'intensité dans ta séance du jour.",
         "Ta FC repos du jour est stable. Ton corps a fait le job pour récupérer, c'est bien. Tu peux t'entraîner normalement, mais ne t'endors pas sur tes acquis, reste bien concentré·e sur tes objectifs.",
         "Ta FC repos est trop élevée. Ton corps est fatigué·e et tu n'es pas au top. Ne joue pas avec le feu, aujourd'hui c'est repos obligatoire pour ne pas risquer la blessure, ça serait bête."
     ],
     "Copain": [
-        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 28 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
         "Ta FC repos du jour est bien basse, franchement c'est top ! Tu pètes la forme, c'est le moment idéal pour aller te donner à fond, rien ne peut t'arrêter aujourd'hui.",
         "Ta FC repos est dans la normale. C'est cool, ça veut dire que tu as bien récupéré de tes efforts passés. Tu peux aller t'entraîner sans problème si tu avez prévu une séance aujourd'hui.",
         "Ta FC repos du jour est un peu haute. Je pense que ton corps a besoin de repos. Prends une journée de repos, pour aider ton corps à se régénérer, c'est plus prudent et ça te permettra de revenir plus fort·e !"
@@ -27,7 +27,7 @@ async function recupHistorique() {
         historiqueData28J.reverse()
 
         // on met en undefined si ya pas de datas
-        if (historiqueData28J.lenght <=0) {
+        if (historiqueData28J.length <=0) {
             historiqueData28J=undefined
         }
     } catch(error) {
@@ -64,7 +64,7 @@ async function statutInterpretation(fcReposToday, moyenne28j) {
 
     let zoneReponseCoach = document.getElementById("reponse-coach")
 
-    if (historiqueData28J!=undefined) {
+    if (historiqueData28J!=undefined && historiqueData28J.length >= 7) {
         // on recup le style de coach du user
         let styleCoach = await db.JRM_Coach.toArray()
         if (styleCoach.length <= 0) {
@@ -96,7 +96,10 @@ async function statutInterpretation(fcReposToday, moyenne28j) {
         }
 
     } else {
-        if (zoneReponseCoach) {zoneReponseCoach.classList.remove("skeleton")}
+        if (zoneReponseCoach) {
+            zoneReponseCoach.textContent = dicoInterpretation["Bienveillant"][0]
+            zoneReponseCoach.classList.remove("skeleton")
+        }
         return undefined
     }
 }
@@ -129,12 +132,12 @@ function statistiqueEndessousGraph() {
         // calcul de la moyenne
         let moyenne28J = undefined
         if (compteur!=0) {
-            moyenne28J = sommeFcRepos/compteur
+            moyenne28J = Math.round(sommeFcRepos/compteur)
         }
 
         return [moyenne28J, valueMin, valueMax]
     } else {
-        return undefined
+        return [undefined, undefined, undefined]
     }
     
 }
@@ -171,9 +174,7 @@ async function init() {
     }
 
     // STATUT & INTERPRETATION
-    if (fcReposAujourdhui!=undefined && tableauStats[0]!=undefined) {
-        statutInterpretation(fcReposAujourdhui, tableauStats[0])
-    }
+    statutInterpretation(fcReposAujourdhui, tableauStats[0])
 }
 
 document.addEventListener("DOMContentLoaded", async() => {

@@ -4870,6 +4870,72 @@ section.container-phrase div.track-phrase div.button i#suivant:active {
 }
 
 
+div.container-coeur {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+@keyframes animation_coeur {
+    0%{transform: scale(1) rotate(45deg);}
+    50%{transform: scale(1.05) rotate(45deg);}
+    100%{transform: scale(1) rotate(45deg);}
+}
+div.container-coeur div.coeur {
+    width: 140px;
+    height: 140px;
+    background-color: var(--COLOR_RED);
+    margin: 5rem var(--SPACE_S);
+    border-radius: 15px;
+    box-shadow: 0 0 40px var(--COLOR_RED);
+    position: relative;
+    animation: animation_coeur 0.8s ease-in-out infinite;
+}
+div.container-coeur div.coeur::before {
+    content: "";
+    background-color: var(--COLOR_RED);
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px var(--COLOR_RED);
+}
+div.container-coeur div.coeur::after {
+    content: "";
+    background-color: var(--COLOR_RED);
+    position: absolute;
+    top: 0;
+    left: -70px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px var(--COLOR_RED);
+}
+div.container-coeur div.texte-coeur {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+div.container-coeur div.texte-coeur p{
+    color: var(--COLOR_BACKGROUND);
+    text-align: center;
+}
+div.container-coeur div.texte-coeur p.resultat{
+    font-size: 4rem;
+    font-weight: var(--FW_BOLD_SMALL);
+    margin-top: -50px;
+}
+div.container-coeur div.texte-coeur p.unit{
+    font-size: var(--P);
+    font-weight: normal;
+}
+
+
 
 /* ----- RESPONSIVE ----- */
 @media (max-width: 490px) {

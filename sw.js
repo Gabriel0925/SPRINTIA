@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.1.94"
+const VERSION_CACHE = "V1.1.95"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
@@ -122,7 +122,7 @@ const fileInCache = [
 
     "/plus/profil/modification-profil.html", "/plus/profil/profil.html", "/plus/profil/script-modification-profil.js", "/plus/profil/script-profil.js",
 
-    "/plus/tutoriels/tutoriels.html", "/plus/tutoriels/script-tutoriels.js",
+    "/plus/records-personnels/records-personnels.html", "/plus/records-personnels/script-records-personnels.js",
 
 
     // PROGRESSION

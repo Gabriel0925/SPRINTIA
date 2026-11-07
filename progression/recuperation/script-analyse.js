@@ -1,3 +1,24 @@
+const dicoInterpretation = {
+    "Bienveillant": [
+        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Ta FC repos du jour est inférieure à ta moyenne habituelle, c'est un très bon signe ! Ça signifie que tu es en forme et que tu es prêt·e à affronter un entraînement intense aujourd'hui si tu le souhaites.",
+        "Ta FC repos du jour est dans la moyenne habituelle. Ça signifie que tu peux faire une séance aujourd'hui (si tu le souhaites) et que ton corps a bien récupéré de tes dernières séances d'entraînement. Garde cette régularité et tu verras que les résultats seront au rendez-vous !",
+        "Ta FC repos du jour indique que ton corps n'a pas encore récupéré de tes dernières séances d'entraînement. Je te conseille donc de ne pas t'entraîner aujourd'hui pour que ton corps récupère et que tu puisses retourner au plus tôt t'entraîner."
+    ],
+    "Strict-Motivant": [
+        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Ta FC repos du jour est plus basse que d'habitude. C'est parfait, tu es en pleine forme ! Profite de ce pic de forme pour te dépasser et mettre un max d'intensité dans ta séance du jour.",
+        "Ta FC repos du jour est stable. Ton corps a fait le job pour récupérer, c'est bien. Tu peux t'entraîner normalement, mais ne t'endors pas sur tes acquis, reste bien concentré·e sur tes objectifs.",
+        "Ta FC repos est trop élevée. Ton corps est fatigué·e et tu n'es pas au top. Ne joue pas avec le feu, aujourd'hui c'est repos obligatoire pour ne pas risquer la blessure, ça serait bête."
+    ],
+    "Copain": [
+        "Pour analyser ta récupération du jour, j'ai besoin de 7 données de récupération sur les 30 derniers jours pour pouvoir comparer ta FC repos du jour à ta moyenne habituelle des 30 derniers jours.",
+        "Ta FC repos du jour est bien basse, franchement c'est top ! Tu pètes la forme, c'est le moment idéal pour aller te donner à fond, rien ne peut t'arrêter aujourd'hui.",
+        "Ta FC repos est dans la normale. C'est cool, ça veut dire que tu as bien récupéré de tes efforts passés. Tu peux aller t'entraîner sans problème si tu avez prévu une séance aujourd'hui.",
+        "Ta FC repos du jour est un peu haute. Je pense que ton corps a besoin de repos. Prends une journée de repos, pour aider ton corps à se régénérer, c'est plus prudent et ça te permettra de revenir plus fort·e !"
+    ]
+}
+
 let historiqueData28J = undefined
 
 async function recupHistorique() {
@@ -14,7 +35,7 @@ async function recupHistorique() {
     }
 }
 
-async function fcToday() {
+function fcToday() {
     if (historiqueData28J!=undefined) {
         let dateToday = createObjetDate(0)
         let fcFind = undefined
@@ -31,18 +52,59 @@ async function fcToday() {
         return undefined
     }
 }
-async function statut() {
-    
-}
-async function interpretation() {
-    
+async function statutInterpretation(fcReposToday, moyenne28j) {
+    if (historiqueData28J!=undefined) {
+        // recup des elt html interressant pour le statut
+        let pStatut = document.querySelector(".zone-coach.red p.title")
+        let spanStatut = document.getElementById("statut")
+        if (spanStatut) {
+            // init de la phrase de base
+            spanStatut.textContent = "Pas de statut"
+            pStatut.classList.remove("skeleton")
+        }
+
+        // on recup le style de coach du user
+        let styleCoach = await db.JRM_Coach.toArray()
+        if (styleCoach.length <= 0) {
+            styleCoach = "Bienveillant"
+        } else {
+            styleCoach = styleCoach[0].style
+        }
+
+        // calcul de l'écart
+        let ecartToday = parseInt(fcReposToday-moyenne28j)
+        let interpretation = dicoInterpretation["Bienveillant"][0]
+
+        if (ecartToday <= -3) {
+            interpretation = dicoInterpretation[styleCoach][1]
+            document.getElementById("statut").textContent = "Totalement reposé"
+
+        } else if (ecartToday >= 4) {
+            interpretation = dicoInterpretation[styleCoach][3]
+            document.getElementById("statut").textContent = "Ton corps a besoin de repos"
+
+        } else {
+            interpretation = dicoInterpretation[styleCoach][2]
+            document.getElementById("statut").textContent = "Récupération optimale"
+        }
+
+        let zoneReponseCoach = document.getElementById("reponse-coach")
+        if (zoneReponseCoach) {
+            zoneReponseCoach.textContent = interpretation
+            zoneReponseCoach.classList.remove("skeleton")
+        }
+
+
+    } else {
+        return undefined
+    }
 }
 
 async function graphique() {
 
 }
 
-async function statistiqueEndessousGraph() {
+function statistiqueEndessousGraph() {
     if (historiqueData28J!=undefined) {
         let valueMin = historiqueData28J[0]["fc_repos"] || undefined
         let valueMax = historiqueData28J[0]["fc_repos"] || undefined
@@ -80,7 +142,7 @@ async function init() {
     await recupHistorique() // on met à jour la var globale de l'historique des 30 derniers jours
 
     // FC TODAY
-    let fcReposAujourdhui = await fcToday()
+    let fcReposAujourdhui = fcToday()
     if (fcReposAujourdhui !=undefined) {
         let pResultat = document.getElementById("fc-repos-today")
         if (pResultat) {
@@ -89,7 +151,7 @@ async function init() {
     }
 
     // STATS SOUS LE GRAPHIQUE
-    let tableauStats = await statistiqueEndessousGraph() // [moyenne28J, valueMin, valueMax]
+    let tableauStats = statistiqueEndessousGraph() // [moyenne28J, valueMin, valueMax]
     if (tableauStats!=undefined) {
         let spanMoyenne = document.getElementById("fc-repos-moyenne-28j")
         if (spanMoyenne && tableauStats[0] != undefined) { // on check si ya des datas de moyenne
@@ -105,7 +167,11 @@ async function init() {
         if (spanEleve && tableauStats[2] != undefined) {
             spanEleve.textContent = tableauStats[2]
         }
+    }
 
+    // STATUT & INTERPRETATION
+    if (fcReposAujourdhui!=undefined && tableauStats[0]!=undefined) {
+        statutInterpretation(fcReposAujourdhui, tableauStats[0])
     }
 }
 

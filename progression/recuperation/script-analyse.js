@@ -53,16 +53,18 @@ function fcToday() {
     }
 }
 async function statutInterpretation(fcReposToday, moyenne28j) {
-    if (historiqueData28J!=undefined) {
-        // recup des elt html interressant pour le statut
-        let pStatut = document.querySelector(".zone-coach.red p.title")
-        let spanStatut = document.getElementById("statut")
-        if (spanStatut) {
-            // init de la phrase de base
-            spanStatut.textContent = "Pas de statut"
-            pStatut.classList.remove("skeleton")
-        }
+    // recup des elt html interressant pour le statut
+    let pStatut = document.querySelector(".zone-coach.red p.title")
+    let spanStatut = document.getElementById("statut")
+    if (spanStatut) {
+        // init de la phrase de base
+        spanStatut.textContent = "Pas de statut"
+        pStatut.classList.remove("skeleton")
+    }
 
+    let zoneReponseCoach = document.getElementById("reponse-coach")
+
+    if (historiqueData28J!=undefined) {
         // on recup le style de coach du user
         let styleCoach = await db.JRM_Coach.toArray()
         if (styleCoach.length <= 0) {
@@ -88,7 +90,6 @@ async function statutInterpretation(fcReposToday, moyenne28j) {
             document.getElementById("statut").textContent = "Récupération optimale"
         }
 
-        let zoneReponseCoach = document.getElementById("reponse-coach")
         if (zoneReponseCoach) {
             zoneReponseCoach.textContent = interpretation
             zoneReponseCoach.classList.remove("skeleton")
@@ -96,6 +97,7 @@ async function statutInterpretation(fcReposToday, moyenne28j) {
 
 
     } else {
+        if (zoneReponseCoach) {zoneReponseCoach.classList.remove("skeleton")}
         return undefined
     }
 }

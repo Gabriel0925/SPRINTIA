@@ -923,13 +923,24 @@ section.segmented-button div.segmented-button-button.actif {
     color: var(--COLOR_BACKGROUND);
     border-radius: var(--BORDER_BIG);
 }
+section.segmented-button div.segmented-button-button.red.actif {
+    background-color: var(--COLOR_RED);
+}
 @media (hover: hover) and (pointer: fine) {
     section.segmented-button div.segmented-button-button.actif:hover {
-        background-color: var(--COLOR_ACCENT_HOVER);
+        background-color: var(--COLOR_ACCENT);
+    }
+    section.segmented-button div.segmented-button-button.red.actif:hover {
+        background-color: var(--COLOR_RED);
     }
 }
 section.segmented-button div.segmented-button-button.actif:active {
-    background-color: var(--COLOR_ACCENT_ACTIVE);
+    background-color: var(--COLOR_ACCENT);
+    transform: scale(1);
+}
+section.segmented-button div.segmented-button-button.red.actif:active {
+    background-color: var(--COLOR_RED);
+    transform: scale(1);
 }
 
 
@@ -2264,14 +2275,6 @@ section.container-round-input div.round-input-item.selected{
     color: var(--COLOR_BACKGROUND);
     border-radius: 50%;
     font-weight: var(--FW_BUTTON);
-}
-@media (hover: hover) and (pointer: fine) {
-    section.container-round-input div.round-input-item.selected:hover{
-        background-color: var(--COLOR_ACCENT_HOVER);
-    }
-}
-section.container-round-input div.round-input-item.selected:active{
-    background-color: var(--COLOR_ACCENT_ACTIVE);
 }
 @media (max-width: 732px) {
     section.item-workout-day {

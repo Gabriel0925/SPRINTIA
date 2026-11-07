@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SPRINTIA - Récupération (Analyse)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
+    <link rel="manifest" href="../../manifest.json">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SPRINTIA">
+    <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
+
+</head>
+
+<body>
+    <div class="container-logo-dynamique">
+        <div class="logo-dynamique"></div>
+    </div>
+        
+    <section class="header">
+
+        <div class="logo">SPRINTIA</div>
+            
+        <ul class="header-container-items">
+
+            <li class="header-items" data-onglet="Entraînement">
+                <i class="icon_entrainement"></i>
+                Entraînement
+            </li>
+            <li class="header-items selected" data-onglet="Progression">
+                <i class="icon_progression"></i>
+                Progression
+            </li>
+            <li class="header-items" data-onglet="Discussion">
+                <i class="icon_discussion"></i>
+                Discussion
+            </li>
+            <li class="header-items" data-onglet="Outils">
+                <i class="icon_outils"></i>
+                Outils
+            </li>
+            <li class="header-items" data-onglet="Plus">
+                <i class="icon_plus"></i>
+                Plus
+            </li>
+
+        </ul>
+
+    </section>
+    <section class="tab-bars">
+
+        <ul class="tab-bars-container-items">
+
+            <li class="tab-bars-items" data-onglet="Entraînement">
+                <i class="icon_entrainement"></i>
+                <p class="tab-bars-items-name">Entraînement</p>
+            </li>
+            <li class="tab-bars-items selected" data-onglet="Progression">
+                <i class="icon_progression"></i>
+                <p class="tab-bars-items-name">Progression</p>
+            </li>
+            <li class="tab-bars-items" data-onglet="Discussion">
+                <i class="icon_discussion"></i>
+                <p class="tab-bars-items-name">Discussion</p>
+            </li>
+            <li class="tab-bars-items" data-onglet="Outils">
+                <i class="icon_outils"></i>
+                <p class="tab-bars-items-name">Outils</p>
+            </li>
+            <li class="tab-bars-items" data-onglet="Plus">
+                <i class="icon_plus"></i>
+                <p class="tab-bars-items-name">Plus</p>
+            </li>
+
+        </ul>
+
+    </section>
+
+    <div class="toolbar">
+        <h1>Récupération</h1>
+        <div class="container-command">
+            <a href="ajouter-recuperation.html">
+                <i class="icon_add"></i>
+            </a>
+            <a href="a-propos.html">
+                <i class="icon_info"></i>
+            </a>
+        </div>
+    </div>
+
+    <section class="segmented-button">
+
+        <div class="segmented-button-button red actif" id="segmented-button-analyse">Analyse</div>
+        <div class="segmented-button-button red" id="segmented-button-evolution">Historique</div>
+
+    </section>
+
+    <div class="container-coeur">
+
+        <div class="coeur"></div>
+        <div class="texte-coeur">
+            <p class="resultat" id="fc-repos-today">--</p>
+            <p class="unit">bpm</p>
+        </div>
+
+    </div>
+
+    <section class="container-zone">
+
+        <div class="zone-coach">
+            <p class="title skeleton"><span class="indicateur" id="indicateur"></span><span id="statut"></span></p>
+            <p class="zone-coach-interpretation skeleton" id="reponse-coach"></p>
+            <button id="button-SPRINTIA-analyse">Analyser ma récupération</button>
+        </div>
+
+    </section>
+
+    <h2>Moyenne FC repos par semaine</h2>
+    <div class="chart-container skeleton" id="conteneur-graphique">
+        <!--"aria-label" pr l'accesssibilité pr decrire a ceux qui ne voit pas-->
+        <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+    </div>
+    <section class="container-block"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Moyenne 30J</p>
+            <p class="container-block-data-data"><span id="fc-repos-moyenne-30j">--</span><small>bpm</small></p>
+        </div>
+
+    </section>
+    <section class="container-block"> 
+
+        <div class="container-block-data">
+            <p class="container-block-data-header">Plus faible</p>
+            <p class="container-block-data-data"><span id="fc-repos-faible-30j">--</span><small>bpm</small></p>
+        </div>            
+        <div class="container-block-data">
+            <p class="container-block-data-header">Plus élevé</p>
+            <p class="container-block-data-data"><span id="fc-repos-eleve-30j">--</span><small>bpm</small></p>
+        </div>
+
+    </section>
+
+    <script src="../../assets/base-js/base.js"></script>
+
+    <!-- Import de la bibliothèque pr le graphique -->
+    <script src="../../assets/bibliotheques/chart.min.js"></script> 
+    <!-- Import bibliothèque pour simplifier le code de indexed db -->
+    <script src="../../assets/bibliotheques/dexie.js"></script>
+    <script src="../../assets/base-js/db-config.js"></script> <!-- Connexion bdd -->
+    <script src="script-recuperation.js"></script>
+
+</body>
+</html>

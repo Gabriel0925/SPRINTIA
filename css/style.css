@@ -4894,6 +4894,7 @@ div.container-coeur div.coeur {
     box-shadow: 0 0 40px var(--COLOR_RED);
     position: relative;
     animation: animation_coeur 0.8s ease-in-out infinite;
+    transition: all var(--TIME_TRANSITION) ease-out;/*cibler les spés*/
 }
 div.container-coeur div.coeur::before {
     content: "";

@@ -4,7 +4,9 @@
     <title>SPRINTIA - Ajouter une récupération</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; 
+        style-src 'self' 'unsafe-inline';">
+    <!-- self, unsafe-inline pour autoriser les styles inline dans les balises du fichier html qui provient de mon site (self) -->
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" type="image/png" href="../../assets/icons-SPRINTIA/icon-navigateur.png">
@@ -16,7 +18,14 @@
     <meta name="apple-mobile-web-app-title" content="SPRINTIA">
     <link rel="apple-touch-icon" href="../../assets/icons-SPRINTIA/icon-192.png">
     
-    <script src="script-global.js" defer></script>
+    <style>
+        :root{
+            --COLOR_ACCENT: var(--COLOR_RED) !important;
+            --COLOR_ACCENT_HOVER: var(--COLOR_RED_HOVER) !important;
+            --COLOR_ACCENT_ACTIVE: var(--COLOR_RED_ACTIVE) !important;
+            --COLOR_ACCENT_TEXT: var(--COLOR_RED_TEXT) !important;
+        }
+    </style>
 
 </head>
 

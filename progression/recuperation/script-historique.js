@@ -8,7 +8,7 @@ function createCard(data) {
         let spanDate = document.createElement("span")
         spanDate.classList.add("data")
         spanDate.id = "date"
-        spanDate.textContent = data.date
+        spanDate.textContent = formatEuropeenDate(data.date)
 
         let divContainerData = document.createElement("div")
         divContainerData.classList.add("container-data")

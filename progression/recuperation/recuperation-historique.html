@@ -112,17 +112,12 @@
 
     </section>
 
-    <div class="container-coeur">
-
-        <div class="coeur"></div>
-        <div class="texte-coeur">
-            <p class="resultat" id="fc-repos-today">--</p>
-            <p class="unit">bpm</p>
-        </div>
-
+    <div class="input-search">
+        <!-- pour un input on use pas "click()" on use "focus()" -->
+        <i class="icon_search"></i>
+        <input type="search" id="input-search" placeholder="Rechercher une date" autocomplete="off">
     </div>
-
-    <h2>Historique (7J)</h2>    
+    
     <div class="visuel-information" id="aucune-data">
         <i class="icon_folder_open"></i>
         <h3>Aucune donnée de récupération (7J)</h3>
@@ -131,33 +126,7 @@
         </p>
     </div>
 
-    <div class="carousel table">
-        <div class="carousel-content table">
-            <table id="tableau-historique">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>FC repos</th>
-                        <th>Actions</th>
-                    </tr>
-
-                    <tr id="first-line-table">
-                        <td><span class="skeleton"></span></td>
-                        <td><span class="skeleton"></span></td>
-                        <td><span class="skeleton"></span></td>
-                        <td><span class="skeleton"></span></td>
-                    </tr>
-                </thead>
-
-                <tbody><!-- Remplis en js --></tbody>
-            </table>
-        </div>
-    </div>
-    <div class="container-center-marge">
-        <button id="button_plus">
-            Voir l'historique complet
-        </button>
-    </div>
+    <section class="container-historique-line"></section>
 
     <script src="../../assets/base-js/base.js"></script>
 

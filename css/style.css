@@ -4885,6 +4885,7 @@ div.container-coeur {
     100%{transform: scale(1) rotate(45deg);}
 }
 div.container-coeur div.coeur {
+    color: var(--COLOR_BACKGROUND);
     width: 140px;
     height: 140px;
     background-color: var(--COLOR_RED);
@@ -4916,6 +4917,39 @@ div.container-coeur div.coeur::after {
     border-radius: 50%;
     box-shadow: 0 0 40px var(--COLOR_RED);
 }
+@keyframes animation_coeur_desactive {
+    0%{transform: scale(1) rotate(45deg);}
+    50%{transform: scale(0.84) rotate(45deg);}
+    100%{transform: scale(0.88) rotate(45deg);}
+}
+div.container-coeur div.coeur.desactive {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    box-shadow: 0 0 40px var(--COLOR_BACKGROUND_CARD);
+    animation: none;
+    animation: animation_coeur_desactive 0.8s ease-in-out forwards;
+}
+div.container-coeur div.coeur.desactive::before {
+    content: "";
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px var(--COLOR_BACKGROUND_CARD);
+}
+div.container-coeur div.coeur.desactive::after {
+    content: "";
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    position: absolute;
+    top: 0;
+    left: -70px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px var(--COLOR_BACKGROUND_CARD);
+}
 div.container-coeur div.texte-coeur {
     position: absolute;
     z-index: 1;
@@ -4925,7 +4959,6 @@ div.container-coeur div.texte-coeur {
     flex-direction: column;
 }
 div.container-coeur div.texte-coeur p{
-    color: var(--COLOR_BACKGROUND);
     text-align: center;
 }
 div.container-coeur div.texte-coeur p.resultat{
@@ -4944,6 +4977,19 @@ section.container-historique-line {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--SPACE_L);
     margin: var(--SPACE_L) 0;
+}
+section.container-historique-line.skeleton {
+    display: inline-block;
+    width: 100%;
+    height: 280px;
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_BIG);
+    overflow: hidden;
+    margin: 0;
+    margin-top: var(--SPACE_XS);
+    margin-bottom: calc(var(--SPACE_S) * -1);
+    color: transparent !important;
+    animation: skeleton_animation 1s ease-out infinite;
 }
 section.container-historique-line div.card-historique-line{
     display: flex;

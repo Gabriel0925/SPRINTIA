@@ -208,6 +208,14 @@ async function init() {
 
     // STATUT & INTERPRETATION
     statutInterpretation(fcReposAujourdhui, tableauStats[0])
+
+    // on désactive le coeur si ya pas de datas
+    if (historiqueData28J ==undefined) {
+        let divCoeur = document.getElementById("coeur")
+        if (divCoeur) {
+            divCoeur.classList.add("desactive")
+        }
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async() => {

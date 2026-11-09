@@ -18,12 +18,15 @@ const dicoInterpretation = {
         "Ta FC repos du jour est un peu haute. Je pense que ton corps a besoin de repos. Prends une journée de repos, pour aider ton corps à se régénérer, c'est plus prudent et ça te permettra de revenir plus fort·e !"
     ]
 }
-
 let historiqueData28J = undefined
+const dateMoins7J = createObjetDate(7)
+const dateMoins14J = createObjetDate(14)
+const dateMoins21J = createObjetDate(21)
+const dateMoins28J = createObjetDate(28)
 
 async function recupHistorique() {
     try {
-        historiqueData28J = await db.recuperation.where("date").aboveOrEqual(createObjetDate(28)).toArray()
+        historiqueData28J = await db.recuperation.where("date").aboveOrEqual(dateMoins28J).toArray()
         historiqueData28J.reverse()
 
         // on met en undefined si ya pas de datas
@@ -105,7 +108,37 @@ async function statutInterpretation(fcReposToday, moyenne28j) {
 }
 
 async function graphique() {
+    if (historiqueData28J!=undefined) {
+        let timeWorkoutWeek1 = {"somme":0, "nbElement":0}
+        let timeWorkoutWeek2 = {"somme":0, "nbElement":0}
+        let timeWorkoutWeek3 = {"somme":0, "nbElement":0}
+        let timeWorkoutWeek4 = {"somme":0, "nbElement":0}
 
+        historiqueData28J.forEach(element => {
+            if (element.date >= dateMoins7J) {
+                timeWorkoutWeek1["somme"]+=element.fc_repos
+                timeWorkoutWeek1["nbElement"]+=1
+            } else if (element >= dateMoins14J) {
+                timeWorkoutWeek2["somme"]+=element.fc_repos
+                timeWorkoutWeek2["nbElement"]+=1
+            } else if (element >= dateMoins21J) {
+                timeWorkoutWeek3["somme"]+=element.fc_repos
+                timeWorkoutWeek3["nbElement"]+=1
+            } else if (element >= dateMoins28J) {
+                timeWorkoutWeek4["somme"]+=element.fc_repos
+                timeWorkoutWeek4["nbElement"]+=1
+            }
+        });
+
+        timeWorkoutWeek1 = timeWorkoutWeek1["somme"]/timeWorkoutWeek1["nbElement"]  || 0
+        timeWorkoutWeek2 = timeWorkoutWeek2["somme"]/timeWorkoutWeek2["nbElement"]  || 0
+        timeWorkoutWeek3 = timeWorkoutWeek3["somme"]/timeWorkoutWeek3["nbElement"]  || 0
+        timeWorkoutWeek4 = timeWorkoutWeek4["somme"]/timeWorkoutWeek4["nbElement"]  || 0
+
+        await genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [timeWorkoutWeek4, timeWorkoutWeek3, timeWorkoutWeek2, timeWorkoutWeek1])
+    } else {
+        await genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [0,0,0,0])
+    }
 }
 
 function statistiqueEndessousGraph() {
@@ -202,4 +235,5 @@ document.addEventListener("DOMContentLoaded", async() => {
     if (segmentedButtonHistorique) {segmentedButtonHistorique.addEventListener("click", () =>{window.location.href = 'recuperation-historique.html'})}
 
     await init()
+    graphique()
 })

@@ -35,13 +35,13 @@ async function RecupData() {
 
     DateDataSemaine.forEach(element => { // Parcours des dates
         if (element >= dateMoins7J) {
-    TableauDureeSemaine.push(DureeDataSemaine[compteur]) // tableau pour la durée des 7 derniers jours
+            TableauDureeSemaine.push(DureeDataSemaine[compteur]) // tableau pour la durée des 7 derniers jours
         } else if (element >= dateMoins14J) {
-    TableauDureeSemaine2.push(DureeDataSemaine[compteur]) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
+            TableauDureeSemaine2.push(DureeDataSemaine[compteur]) // tableau pour la durée des 14 derniers jours (on ne compte pas les séances des 7 premiers jours) 
         } else if (element >= dateMoins21J) {
-    TableauDureeSemaine3.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
+            TableauDureeSemaine3.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
         } else if (element >= dateMoins28J) {
-    TableauDureeSemaine4.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
+            TableauDureeSemaine4.push(DureeDataSemaine[compteur]) // tableau pour la durée des 28 derniers jours (on ne compte pas les séances des 14 premiers jours)
         }
 
         compteur += 1
@@ -128,9 +128,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // --- Indulgence de course ---
     const data7jCourse = await db.entrainement
-    .where("date")
-    .aboveOrEqual(dateMoins7j) // la var "dateMoins7j" est créer dans le script-charge-entrainement.js
-    .toArray()
+                                .where("date")
+                                .aboveOrEqual(dateMoins7j) // la var "dateMoins7j" est créer dans le script-charge-entrainement.js
+                                .toArray()
     let sommeDist7j = 0
     for (const elt of data7jCourse) {
         if (elt.sport == "Course") {

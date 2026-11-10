@@ -35,7 +35,9 @@ function createButtonCard(card, data) {
         buttonSupprimer.textContent = "Supprimer"
 
         //  on leur donne un role
-
+        buttonModifier.addEventListener("click", () => {
+            window.location.href = `ajouter-recuperation.html?edit=${data.id}`
+        })
         buttonSupprimer.addEventListener("click", async() => {
             if (confirm("Supprimer votre récupération du " + formatEuropeenDate(data.date) + " ?")) {
                 await db.recuperation.delete(data.id)

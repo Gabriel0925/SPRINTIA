@@ -4,6 +4,7 @@
     --COLOR_ACCENT_HOVER: #75a7f0;
     --COLOR_ACCENT_ACTIVE: #8fb3e9;
     --COLOR_ACCENT_TEXT: #8eccff;
+    --COLOR_ACCENT_MEMORY: #5A97F2; /*pr le ambient mode*/
 
 
     /* BASE */
@@ -4885,7 +4886,6 @@ div.container-coeur {
     100%{transform: scale(1) rotate(45deg);}
 }
 div.container-coeur div.coeur {
-    color: var(--COLOR_BACKGROUND);
     width: 140px;
     height: 140px;
     background-color: var(--COLOR_RED);
@@ -4894,7 +4894,6 @@ div.container-coeur div.coeur {
     box-shadow: 0 0 40px var(--COLOR_RED);
     position: relative;
     animation: animation_coeur 0.8s ease-in-out infinite;
-    transition: all var(--TIME_TRANSITION) ease-out;/*cibler les spés*/
 }
 div.container-coeur div.coeur::before {
     content: "";
@@ -4959,8 +4958,12 @@ div.container-coeur div.texte-coeur {
     align-items: center;
     flex-direction: column;
 }
-div.container-coeur div.texte-coeur p{
+div.container-coeur div.texte-coeur{
+    color: var(--COLOR_BACKGROUND);
     text-align: center;
+}
+div.container-coeur div.texte-coeur.desactive{
+    color: var(--COLOR_TEXT_PRIMARY);
 }
 div.container-coeur div.texte-coeur p.resultat{
     font-size: 4rem;
@@ -4996,20 +4999,41 @@ section.container-historique-line div.card-historique-line{
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    height: 58px;
     background-color: var(--COLOR_BACKGROUND_CARD);
     padding: 0.82rem;
     border-radius: var(--BORDER_BIG);
+    cursor: pointer;
+    transition: all ease-out var(--TIME_TRANSITION_FAST);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-historique-line div.card-historique-line:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }  
+}
+section.container-historique-line div.card-historique-line:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+}
+section.container-historique-line div.card-historique-line.open{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    gap: var(--SPACE_S);
+    height: 103px;
+    padding: var(--SPACE_XS);
 }
 section.container-historique-line div.card-historique-line span.data{
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H3);
     font-weight: var(--FW_BUTTON);
+    transition: all ease-out 10s;
 }
 section.container-historique-line div.card-historique-line div.container-data{
     display: flex;
+    justify-content: center;
     align-items: baseline;
     gap: var(--SPACE_XS);
+    transition: all ease-out 10s;
 }
 section.container-historique-line div.card-historique-line span.data#fc-repos{
     font-size: var(--H2);
@@ -5018,6 +5042,29 @@ section.container-historique-line div.card-historique-line span.data#fc-repos{
 }
 section.container-historique-line div.card-historique-line small{
     color: var(--COLOR_TEXT_SECONDARY);
+}
+section.container-historique-line button.button-card-open {
+    margin: 0;
+    padding: var(--SPACE_S);
+}
+@keyframes animationButtonSupprInRecup {
+    0%{transform: translate(0, -25px) scale(0.5);}
+    50%{transform: translate(0, 12px) scale(0.9);}
+    100%{transform: translate(0, 0) scale(1);}
+}
+@keyframes animationButtonModifierInRecup {
+    0%{transform: translate(0, -25px) scale(0.5);}
+    50%{transform: translate(0, 12px) scale(0.9);}
+    100%{transform: translate(0, 0) scale(1);}
+}
+section.container-historique-line button.button-card-open#supprimer {
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_ACCENT_TEXT);
+    animation: animationButtonSupprInRecup 0.25s ease-in-out forwards;
+}
+section.container-historique-line button.button-card-open#modifier {
+    background-color: var(--COLOR_ACCENT_MEMORY);
+    animation: animationButtonModifierInRecup 0.25s ease-in-out forwards;
 }
 @media (max-width: 1300px) {
     section.container-historique-line {

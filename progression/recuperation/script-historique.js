@@ -1,6 +1,47 @@
 const containerLineHistorique = document.querySelector("section.container-historique-line")
 let dataRecuperation = undefined
 
+function deleteButtonCard() {
+    let buttonSupprimerClose = document.getElementById("supprimer")
+    if (buttonSupprimerClose) {
+        buttonSupprimerClose.remove()
+    }
+    let buttonModifierClose = document.getElementById("modifier")
+    if (buttonModifierClose) {
+        buttonModifierClose.remove()
+    }
+}
+function createButtonCard(card) {
+    // si la card n'est pas open on l'ouvre
+    if (!card.classList.contains("open")) {
+        // si ya une card qui est open on la referme et on supprime les boutons
+        let carOpen = document.querySelector("section.container-historique-line div.card-historique-line.open")
+        if (carOpen) {
+            carOpen.classList.remove("open")
+        }
+        deleteButtonCard()
+
+        // on ouvre la card et on créer les boutons
+        card.classList.add("open")
+
+        let buttonModifier = document.createElement("button")
+        buttonModifier.classList.add("button-card-open")
+        buttonModifier.id = "modifier"
+        buttonModifier.textContent = "Modifier"
+
+        let buttonSupprimer = document.createElement("button")
+        buttonSupprimer.classList.add("button-card-open")
+        buttonSupprimer.id = "supprimer"
+        buttonSupprimer.textContent = "Supprimer"
+
+        card.appendChild(buttonModifier)
+        card.appendChild(buttonSupprimer)
+    } else { // si la card est open on la referme et on supprime les boutons
+        card.classList.remove("open")
+
+        deleteButtonCard()
+    }
+}
 function createCard(data) {
     if (containerLineHistorique) {
         let divCard = document.createElement("div")
@@ -27,6 +68,13 @@ function createCard(data) {
         divCard.appendChild(spanDate)
         divCard.appendChild(divContainerData)
 
+        // on lui donne un role
+        divCard.addEventListener("click", () => {
+            createButtonCard(divCard)
+            console.log("helo")
+        })
+        
+        // on l'ajoute au container-principale
         containerLineHistorique.appendChild(divCard)
 
     } else {

@@ -212,8 +212,10 @@ async function init() {
     // on désactive le coeur si ya pas de datas
     if (historiqueData28J ==undefined) {
         let divCoeur = document.getElementById("coeur")
-        if (divCoeur) {
+        let divTextCoeur = document.querySelector("div.texte-coeur")
+        if (divCoeur && divTextCoeur) {
             divCoeur.classList.add("desactive")
+            divTextCoeur.classList.add("desactive")
         }
     }
 }

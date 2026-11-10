@@ -11,7 +11,7 @@ function deleteButtonCard() {
         buttonModifierClose.remove()
     }
 }
-function createButtonCard(card) {
+function createButtonCard(card, data) {
     // si la card n'est pas open on l'ouvre
     if (!card.classList.contains("open")) {
         // si ya une card qui est open on la referme et on supprime les boutons
@@ -34,6 +34,16 @@ function createButtonCard(card) {
         buttonSupprimer.id = "supprimer"
         buttonSupprimer.textContent = "Supprimer"
 
+        //  on leur donne un role
+
+        buttonSupprimer.addEventListener("click", async() => {
+            if (confirm("Supprimer votre récupération du " + formatEuropeenDate(data.date) + " ?")) {
+                await db.recuperation.delete(data.id)
+                card.remove()
+            }
+        })
+
+        // ajout dans la card
         card.appendChild(buttonModifier)
         card.appendChild(buttonSupprimer)
     } else { // si la card est open on la referme et on supprime les boutons
@@ -69,9 +79,11 @@ function createCard(data) {
         divCard.appendChild(divContainerData)
 
         // on lui donne un role
-        divCard.addEventListener("click", () => {
-            createButtonCard(divCard)
-            console.log("helo")
+        divCard.addEventListener("click", (e) => {
+            // si le click n'est pas sur un bouton on ouvre/ferme la card
+            if (e.target.tagName !== "BUTTON") {
+                createButtonCard(divCard, data)
+            }
         })
         
         // on l'ajoute au container-principale
@@ -88,8 +100,12 @@ function findDataRecuperation(inputSearch) {
 }
 
 async function init() {
-    dataRecuperation = await db.recuperation.orderBy("date").toArray()
-    if (dataRecuperation.length <= 0) {dataRecuperation = undefined}
+    dataRecuperation = await db.recuperation.toArray()
+    if (dataRecuperation.length <= 0) {dataRecuperation = undefined} 
+    else {
+        // si ya des datas on le reverse car quand on créer la première card ça doit être la plus ancienne et la deuxieme card doit être plus récent que la premiere card
+        dataRecuperation.reverse()
+    }
 
     if (dataRecuperation != undefined) {
         dataRecuperation.forEach(element => {

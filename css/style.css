@@ -5027,7 +5027,7 @@ section.container-historique-line div.card-historique-line.open{
     }  
 }
 section.container-historique-line div.card-historique-line.open:active{
-    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    background-color: var(--COLOR_BACKGROUND_CARD);
 }
 section.container-historique-line div.card-historique-line span.data{
     color: var(--COLOR_TEXT_PRIMARY);

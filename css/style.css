@@ -17,22 +17,22 @@
 
 
     /* GLASSMORPHISM */
-    --COLOR_GLASSMORPHISM: rgba(43, 46, 46, 0.5);
-    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.16);
-    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.26);
+    --COLOR_GLASSMORPHISM: rgba(43, 45, 46, 0.43);
+    --COLOR_GLASSMORPHISM_HOVER: rgba(255, 255, 255, 0.24);
+    --COLOR_GLASSMORPHISM_ACTIVE: rgba(255, 255, 255, 0.34);
 
-    --BLUR_GLASSMORPHISM_BARS: 22px; /* tab-bars, nav-bar */
-    --SATURATE_GLASSMORPHISM_BARS: 180%;
+    --BLUR_GLASSMORPHISM_BARS: 14px; /* tab-bars, nav-bar */
+    --SATURATE_GLASSMORPHISM_BARS: 220%;
 
-    --BLUR_GLASSMORPHISM_PANELS: 18px; /* menu flottant */
-    --SATURATE_GLASSMORPHISM_PANELS: 160%;
+    --BLUR_GLASSMORPHISM_PANELS: 11px; /* menu flottant */
+    --SATURATE_GLASSMORPHISM_PANELS: 100%;
 
-    --BLUR_GLASSMORPHISM_BUTTON: 16px; /* petit boutons flottants */
-    --SATURATE_GLASSMORPHISM_BUTTON: 130%;
+    --BLUR_GLASSMORPHISM_BUTTON: 8px; /* petit boutons flottants */
+    --SATURATE_GLASSMORPHISM_BUTTON: 150%;
 
-    --BLUR_GLASSMORPHISM_LAYOUT: 8px; /* layouts */
-    --COLOR_LAYOUT: rgba(0, 0, 0, 0.3);
-    --SATURATE_GLASSMORPHISM_LAYOUT: 110%;
+    --BLUR_GLASSMORPHISM_LAYOUT: 6px; /* layouts */
+    --COLOR_LAYOUT: rgba(0, 0, 0, 0.33);
+    --SATURATE_GLASSMORPHISM_LAYOUT: 120%;
 
 
     /* SPRINTIA Analyse */
@@ -1592,8 +1592,8 @@ div.toolbar {
         margin-right: calc(var(--SPACE_M) * -1);
         padding: 0 var(--SPACE_M);
         
-        -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
-        backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_BUTTON)) saturate(var(--SATURATE_GLASSMORPHISM_BUTTON));
+        -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
+        backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     }
     div.toolbar.not-fixed {
         position: static;
@@ -2073,7 +2073,7 @@ section.background-SPRINTIA-analyse {
     z-index: 20000;
 }
 section.background-SPRINTIA-analyse div.windows-SPRINTIA-analyse {
-    background-color: rgba(32, 37, 46, 0.75);
+    background-color: var(--COLOR_GLASSMORPHISM);
     -webkit-backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
     backdrop-filter: blur(var(--BLUR_GLASSMORPHISM_PANELS)) saturate(var(--SATURATE_GLASSMORPHISM_PANELS));
 

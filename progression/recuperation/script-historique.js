@@ -100,7 +100,7 @@ function findDataRecuperation(inputSearch) {
 }
 
 async function init() {
-    dataRecuperation = await db.recuperation.toArray()
+    dataRecuperation = await db.recuperation.orderBy("date").toArray()
     if (dataRecuperation.length <= 0) {dataRecuperation = undefined} 
     else {
         // si ya des datas on le reverse car quand on créer la première card ça doit être la plus ancienne et la deuxieme card doit être plus récent que la premiere card

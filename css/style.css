@@ -4,7 +4,6 @@
     --COLOR_ACCENT_HOVER: #75a7f0;
     --COLOR_ACCENT_ACTIVE: #8fb3e9;
     --COLOR_ACCENT_TEXT: #8eccff;
-    --COLOR_ACCENT_MEMORY: #5A97F2; /*pr le ambient mode*/
 
 
     /* BASE */
@@ -5022,22 +5021,28 @@ section.container-historique-line div.card-historique-line.open{
     height: 103px;
     padding: var(--SPACE_XS);
 }
+@media (hover: hover) and (pointer: fine) {
+    section.container-historique-line div.card-historique-line.open:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD);
+    }  
+}
+section.container-historique-line div.card-historique-line.open:active{
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+}
 section.container-historique-line div.card-historique-line span.data{
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--H3);
     font-weight: var(--FW_BUTTON);
-    transition: all ease-out 10s;
 }
 section.container-historique-line div.card-historique-line div.container-data{
     display: flex;
     justify-content: center;
     align-items: baseline;
     gap: var(--SPACE_XS);
-    transition: all ease-out 10s;
 }
 section.container-historique-line div.card-historique-line span.data#fc-repos{
     font-size: var(--H2);
-    color: var(--COLOR_ACCENT);
+    color: var(--COLOR_ACCENT_TEXT);
     font-weight: var(--FW_BOLD);
 }
 section.container-historique-line div.card-historique-line small{
@@ -5060,12 +5065,19 @@ section.container-historique-line button.button-card-open {
 section.container-historique-line button.button-card-open#supprimer {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
-    animation: animationButtonSupprInRecup 0.25s ease-in-out forwards;
+    animation: animationButtonSupprInRecup 0.23s ease-in-out forwards;
 }
 section.container-historique-line button.button-card-open#modifier {
-    background-color: var(--COLOR_ACCENT_MEMORY);
-    animation: animationButtonModifierInRecup 0.25s ease-in-out forwards;
+    background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    color: var(--COLOR_TEXT_PRIMARY);
+    animation: animationButtonModifierInRecup 0.23s ease-in-out forwards;
 }
+@media (hover: hover) and (pointer: fine) {
+    section.container-historique-line button.button-card-open#supprimer:hover {background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);}
+    section.container-historique-line button.button-card-open#modifier:hover {background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);}
+}
+section.container-historique-line button.button-card-open#supprimer:active {background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);}
+section.container-historique-line button.button-card-open#modifier:active {background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);}
 @media (max-width: 1300px) {
     section.container-historique-line {
         grid-template-columns: repeat(3, 1fr);

@@ -102,6 +102,31 @@ function determinerIndexCurrentPhrase() {
     }
 }
 
+function createParaPast(phrase, divPhrases) {
+    let pPast = document.createElement("p")
+    pPast.classList.add("past")
+    pPast.textContent = phrase
+    divPhrases.appendChild(pPast)
+}
+function createParaCurrently(phrase, divPhrases) {
+    let pCurrently = document.createElement("p")
+    pCurrently.classList.add("currently")
+    pCurrently.textContent = phrase
+    divPhrases.appendChild(pCurrently)
+}
+function createParaFuture(phrase, divPhrases) {
+    let pFuture = document.createElement("p")
+    pFuture.classList.add("future")
+    pFuture.textContent = phrase
+    divPhrases.appendChild(pFuture)
+}
+function createParaMore(phrase, divPhrases) {
+    let pMore = document.createElement("p")
+    pMore.classList.add("more")
+    pMore.textContent = phrase
+    divPhrases.appendChild(pMore)
+}
+
 function parolesSuivantePrecedente(fleche) {
     const currentIndex = determinerIndexCurrentPhrase()
     // si on clique sur la fleche precedente alors on reprend les paroles de l'index avant -1
@@ -112,22 +137,25 @@ function parolesSuivantePrecedente(fleche) {
     }
 
     if (bddPhrases[ongletActuel][newCurrentIndex]) {
-        // on recup toutes les balises p pour les paroles
-        const pPast = document.querySelector("div.phrases p.past") || undefined
-        const pCurrently = document.querySelector("div.phrases p.currently") || undefined
-        const pFuture = document.querySelector("div.phrases p.future") || undefined
-        const pMore = document.querySelector("div.phrases p.more") || undefined
-
+        // on revoie toutes la méthodes en gros on supprime les p et on en créer des nouveaux avec les nouvelles phrases
+        let allP = document.querySelectorAll("div.track-phrase div.phrases p")
+        for (const elt of allP) {
+            elt.remove()
+        }
+        
         // calcul des index
         const indexPast = newCurrentIndex-1
         const indexSuivant = newCurrentIndex+1
         const indexSuivantSuivant = newCurrentIndex+2
+        const divPhrases = document.querySelector("div.track-phrase div.phrases")
 
-        // on remplit les p
-        if (pPast!=undefined) {pPast.textContent = bddPhrases[ongletActuel][indexPast]}
-        if (pCurrently!=undefined) {pCurrently.textContent = bddPhrases[ongletActuel][newCurrentIndex]}
-        if (pFuture!=undefined) {pFuture.textContent = bddPhrases[ongletActuel][indexSuivant] || ""}
-        if (pMore!=undefined) {pMore.textContent = bddPhrases[ongletActuel][indexSuivantSuivant] || ""}
+        if (divPhrases) {
+            // on crée les p avec les nouvelles phrases
+            createParaPast(bddPhrases[ongletActuel][indexPast] || "", divPhrases)
+            createParaCurrently(bddPhrases[ongletActuel][newCurrentIndex], divPhrases)
+            createParaFuture(bddPhrases[ongletActuel][indexSuivant] || "", divPhrases)
+            createParaMore(bddPhrases[ongletActuel][indexSuivantSuivant] || "", divPhrases)
+        }
 
         // désactivation/activation de la fleche haut ou bas quand on arrive à la fin ou au début du carrousel des paroles
         const flecheHaut = document.getElementById("precedent")
@@ -243,5 +271,6 @@ window.addEventListener("DOMContentLoaded", () => {
         flecheSuivant.addEventListener("click", () => {parolesSuivantePrecedente("suivant")})
     }
 
+    shuffleAllPhrases()
     init()
 })

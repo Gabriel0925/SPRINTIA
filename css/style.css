@@ -164,70 +164,71 @@ i {
 .icon_aide:before {content: "\e901";}
 .icon_archiver:before {content: "\e902";}
 .icon_autorenew:before {content: "\e903";}
-.icon_boost_your_mind:before {content: "\e904";}
-.icon_carte_plan:before {content: "\e905";}
-.icon_carte_satellite:before {content: "\e906";}
-.icon_charge_entrainement:before {content: "\e907";}
-.icon_coach:before {content: "\e908";}
-.icon_confiance:before {content: "\e909";}
-.icon_confidentialite:before {content: "\e90a";}
-.icon_conversion:before {content: "\e90b";}
-.icon_copy:before {content: "\e90c";}
-.icon_discussion:before {content: "\e90d";}
-.icon_entrainement:before {content: "\e90e";}
-.icon_entrainement_du_jour:before {content: "\e90f";}
-.icon_envoyer:before {content: "\e910";}
-.icon_fermer:before {content: "\e911";}
-.icon_file:before {content: "\e912";}
-.icon_file_csv:before {content: "\e913";}
-.icon_file_json:before {content: "\e914";}
-.icon_fleche_droite:before {content: "\e915";}
-.icon_fleche_gauche:before {content: "\e916";}
-.icon_flight:before {content: "\e917";}
-.icon_folder_open:before {content: "\e918";}
-.icon_fullscreen:before {content: "\e919";}
-.icon_fullscreen_exit:before {content: "\e91a";}
-.icon_goutte_eau:before {content: "\e91b";}
-.icon_gpx:before {content: "\e91c";}
-.icon_historique:before {content: "\e91d";}
-.icon_hydratation:before {content: "\e91e";}
-.icon_IMC:before {content: "\e91f";}
-.icon_indulgence_course:before {content: "\e920";}
-.icon_info:before {content: "\e921";}
-.icon_licence:before {content: "\e922";}
-.icon_mail:before {content: "\e923";}
-.icon_mental:before {content: "\e924";}
-.icon_metabolisme_base:before {content: "\e925";}
-.icon_modifier:before {content: "\e926";}
-.icon_natation:before {content: "\e927";}
-.icon_niveau_course:before {content: "\e928";}
-.icon_open_link:before {content: "\e929";}
-.icon_outils:before {content: "\e92a";}
-.icon_parametres:before {content: "\e92b";}
-.icon_partage:before {content: "\e92c";}
-.icon_pause:before {content: "\e92d";}
-.icon_plus:before {content: "\e92e";}
-.icon_position:before {content: "\e92f";}
-.icon_profil:before {content: "\e930";}
-.icon_progression:before {content: "\e931";}
-.icon_proteines:before {content: "\e932";}
-.icon_record:before {content: "\e933";}
-.icon_recuperation:before {content: "\e934";}
-.icon_refresh:before {content: "\e935";}
-.icon_remotivation:before {content: "\e936";}
-.icon_RM:before {content: "\e937";}
-.icon_search:before {content: "\e938";}
-.icon_search_off:before {content: "\e939";}
-.icon_SPRINTIA_analyse:before {content: "\e93a";}
-.icon_statistiques:before {content: "\e93b";}
-.icon_supprimer:before {content: "\e93c";}
-.icon_telephone:before {content: "\e93d";}
-.icon_temps_recup:before {content: "\e93e";}
-.icon_velo:before {content: "\e93f";}
-.icon_verre_eau:before {content: "\e940";}
-.icon_video:before {content: "\e941";}
-.icon_warm_up:before {content: "\e942";}
-.icon_zones_cardiaques:before {content: "\e943";}
+.icon_bookmark:before {content: "\e904";}
+.icon_boost_your_mind:before {content: "\e905";}
+.icon_carte_plan:before {content: "\e906";}
+.icon_carte_satellite:before {content: "\e907";}
+.icon_charge_entrainement:before {content: "\e908";}
+.icon_coach:before {content: "\e909";}
+.icon_confiance:before {content: "\e90a";}
+.icon_confidentialite:before {content: "\e90b";}
+.icon_conversion:before {content: "\e90c";}
+.icon_copy:before {content: "\e90d";}
+.icon_discussion:before {content: "\e90e";}
+.icon_entrainement:before {content: "\e90f";}
+.icon_entrainement_du_jour:before {content: "\e910";}
+.icon_envoyer:before {content: "\e911";}
+.icon_fermer:before {content: "\e912";}
+.icon_file:before {content: "\e913";}
+.icon_file_csv:before {content: "\e914";}
+.icon_file_json:before {content: "\e915";}
+.icon_fleche_droite:before {content: "\e916";}
+.icon_fleche_gauche:before {content: "\e917";}
+.icon_flight:before {content: "\e918";}
+.icon_folder_open:before {content: "\e919";}
+.icon_fullscreen:before {content: "\e91a";}
+.icon_fullscreen_exit:before {content: "\e91b";}
+.icon_goutte_eau:before {content: "\e91c";}
+.icon_gpx:before {content: "\e91d";}
+.icon_historique:before {content: "\e91e";}
+.icon_hydratation:before {content: "\e91f";}
+.icon_IMC:before {content: "\e920";}
+.icon_indulgence_course:before {content: "\e921";}
+.icon_info:before {content: "\e922";}
+.icon_licence:before {content: "\e923";}
+.icon_mail:before {content: "\e924";}
+.icon_mental:before {content: "\e925";}
+.icon_metabolisme_base:before {content: "\e926";}
+.icon_modifier:before {content: "\e927";}
+.icon_natation:before {content: "\e928";}
+.icon_niveau_course:before {content: "\e929";}
+.icon_open_link:before {content: "\e92a";}
+.icon_outils:before {content: "\e92b";}
+.icon_parametres:before {content: "\e92c";}
+.icon_partage:before {content: "\e92d";}
+.icon_pause:before {content: "\e92e";}
+.icon_plus:before {content: "\e92f";}
+.icon_position:before {content: "\e930";}
+.icon_profil:before {content: "\e931";}
+.icon_progression:before {content: "\e932";}
+.icon_proteines:before {content: "\e933";}
+.icon_record:before {content: "\e934";}
+.icon_recuperation:before {content: "\e935";}
+.icon_refresh:before {content: "\e936";}
+.icon_remotivation:before {content: "\e937";}
+.icon_RM:before {content: "\e938";}
+.icon_search:before {content: "\e939";}
+.icon_search_off:before {content: "\e93a";}
+.icon_SPRINTIA_analyse:before {content: "\e93b";}
+.icon_statistiques:before {content: "\e93c";}
+.icon_supprimer:before {content: "\e93d";}
+.icon_telephone:before {content: "\e93e";}
+.icon_temps_recup:before {content: "\e93f";}
+.icon_velo:before {content: "\e940";}
+.icon_verre_eau:before {content: "\e941";}
+.icon_video:before {content: "\e942";}
+.icon_warm_up:before {content: "\e943";}
+.icon_zones_cardiaques:before {content: "\e944";}
 
 * {
     margin: 0;
@@ -4794,19 +4795,45 @@ section.container-phrase div.track-phrase p{
     transition: filter ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
 }
-section.container-phrase div.track-phrase p.currently{
-    filter: blur(0px);
-    opacity: 1;
+@keyframes animation_lyrics_more {
+    0% {transform: scale(0.65) translate(25px, 120px);}
+    50% {transform: scale(0.8) translate(-35px, -14px);}
+    100% {transform: scale(0.75) translate(-35px, 0);}
 }
 section.container-phrase div.track-phrase p.more{
     filter: blur(4px);
-    transform: scale(0.75) translateX(-35px);
     opacity: 0.4;
+    animation: animation_lyrics_more 0.55s ease-in-out forwards;
+}
+@keyframes animation_lyrics_currently {
+    0% {transform: translateY(60px);}
+    50% {transform: translateY(-8px);}
+    100% {transform: translateY(0px);}
+}
+section.container-phrase div.track-phrase p.currently{
+    filter: blur(0px);
+    opacity: 1;
+    animation: animation_lyrics_currently 0.55s ease-in-out forwards;
+}
+@keyframes animation_lyrics_future {
+    0% {transform: translate(-25px, 107px) scale(0.75);}
+    50% {transform: translate(0px, -12px) scale(1);}
+    100% {transform: translate(0,0) scale(1);}
+}
+section.container-phrase div.track-phrase p.future{
+    animation: animation_lyrics_future 0.55s ease-in-out forwards;
+}
+@keyframes animation_lyrics_past {
+    0% {transform: translateY(100px) scale(1);}
+    50% {transform: translateY(-11px) scale(0.76);}
+    100% {transform: translate(0) scale(0.80);}
 }
 section.container-phrase div.track-phrase p.past{
     filter: blur(4px);
     opacity: 0.4;
     min-height: 60px;
+    overflow: hidden;
+    animation: animation_lyrics_past 0.55s ease-in-out forwards;
 }
 section.container-phrase div.track-phrase div.button{
     display: flex;
@@ -5025,6 +5052,7 @@ section.container-historique-line div.card-historique-line{
     padding: 0.82rem;
     border-radius: var(--BORDER_BIG);
     cursor: pointer;
+    overflow: hidden;
     transition: all ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -5087,12 +5115,12 @@ section.container-historique-line button.button-card-open {
 section.container-historique-line button.button-card-open#supprimer {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_ACCENT_TEXT);
-    animation: animationButtonSupprInRecup 0.23s ease-in-out forwards;
+    animation: animationButtonSupprInRecup 0.25s ease-in-out forwards;
 }
 section.container-historique-line button.button-card-open#modifier {
     background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
     color: var(--COLOR_TEXT_PRIMARY);
-    animation: animationButtonModifierInRecup 0.23s ease-in-out forwards;
+    animation: animationButtonModifierInRecup 0.25s ease-in-out forwards;
 }
 @media (hover: hover) and (pointer: fine) {
     section.container-historique-line button.button-card-open#supprimer:hover {background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);}

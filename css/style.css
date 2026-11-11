@@ -4857,12 +4857,19 @@ section.container-phrase div.track-phrase div.button i.desactiver#suivant{
     pointer-events: none;
 }
 @media (hover: hover) and (pointer: fine) {
+    section.container-phrase div.track-phrase div.button i:hover{
+        transform: scale(var(--SCALE_MAX));
+    }
     section.container-phrase div.track-phrase div.button i#precedent:hover {
         transform: scale(var(--SCALE_MAX)) rotate(270deg);
     }
     section.container-phrase div.track-phrase div.button i#suivant:hover {
         transform: scale(var(--SCALE_MAX)) rotate(90deg);
     }
+}
+section.container-phrase div.track-phrase div.button i:active{
+    background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);
+    transform: scale(var(--SCALE_MAX));
 }
 section.container-phrase div.track-phrase div.button i#precedent:active {
     background-color: var(--COLOR_GLASSMORPHISM_ACTIVE);

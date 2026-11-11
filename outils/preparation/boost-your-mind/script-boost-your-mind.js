@@ -41,9 +41,25 @@ let ongletActuel = localStorage.getItem("last_onglet_Boost_your_Mind") || "remot
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
-Object.keys(bddPhrases).forEach(cle => {
-    shuffle(bddPhrases[cle]) // on mélange chaque tableau du dico alétoirement
-});
+function shuffleAllPhrases() {
+    Object.keys(bddPhrases).forEach(cle => {
+        shuffle(bddPhrases[cle]) // on mélange chaque tableau du dico alétoirement
+    });
+}
+
+function refresh() {
+    let firstPhraseBeforeRefresh = bddPhrases[ongletActuel][0]
+    shuffleAllPhrases();
+    let firstPhraseAfterRefresh = bddPhrases[ongletActuel][0]
+
+    while (firstPhraseBeforeRefresh == firstPhraseAfterRefresh) {
+        // si la première phrase est la même après le refresh alors on refait un shuffle
+        shuffleAllPhrases();
+        firstPhraseAfterRefresh = bddPhrases[ongletActuel][0]
+    }
+
+    init();
+}
 
 function gererTabsOnglets(idElement) {
     const tabsOngletsSelectionner = document.querySelector("div.tabs-onglets.selected")
@@ -217,6 +233,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const flechePrecedent = document.getElementById("precedent")
     if (flechePrecedent) {
         flechePrecedent.addEventListener("click", () => {parolesSuivantePrecedente("precedent")})
+    }
+    const autorenew = document.getElementById("refresh")
+    if (autorenew) {
+        autorenew.addEventListener("click", () => {refresh()})
     }
     const flecheSuivant = document.getElementById("suivant")
     if (flecheSuivant) {

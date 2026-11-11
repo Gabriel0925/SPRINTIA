@@ -149,6 +149,7 @@ async function findDataRecuperation(inputSearch) {
 
         let compteur = 0
         tableauMotRechercheUser.forEach(element => {
+            // si le mot correspond à un mois on le remplace par son numéro
             if (dicoMois[element]) {
                 tableauMotRechercheUser[compteur] = dicoMois[element]
             }
@@ -158,11 +159,11 @@ async function findDataRecuperation(inputSearch) {
 
         
         let filteredHistoriqueComplet = historiqueComplet.filter(recuperation => {
-            let dateRecup = recuperation.date.toLowerCase() // on met lla discussion de l'historique en minuscule
+            let dateRecup = recuperation.date.toLowerCase() // on met lla recup de l'historique en minuscule
 
             let correspondance = true
             for (const elt of tableauMotRechercheUser) {
-                // si le mot n'est pas présent dans l'historique de discussion enfin dans la discussion alors on arrete la boucle
+                // si le mot n'est pas présent dans l'historique de recup enfin dans la recup alors on arrete la boucle
                 if (!dateRecup.includes(elt)) {
                     correspondance = false
                     break

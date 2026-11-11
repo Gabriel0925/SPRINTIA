@@ -215,6 +215,11 @@ async function init() {
         if (divInputSearch) {divInputSearch.style.display="none"}
 
         if (containerLineHistorique) {containerLineHistorique.style.display = "none"}
+        
+        let buttonAfficherPlus = document.getElementById("button_afficher_plus")
+        if (buttonAfficherPlus) {
+            buttonAfficherPlus.style.display = "none"
+        }   
     }
 }
 
@@ -228,7 +233,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     let iconRecherche = document.querySelector("i.icon_search")
     if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}
 
-    const buttonAfficherPlus = document.getElementById("button_afficher_plus")
+    let buttonAfficherPlus = document.getElementById("button_afficher_plus")
     if (buttonAfficherPlus) {
         buttonAfficherPlus.addEventListener("click", () => {
             affichageCard(nbCardsAfficher, nbCardsAfficher+12)

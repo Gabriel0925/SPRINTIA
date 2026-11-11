@@ -230,28 +230,26 @@ function init() {
 
     // on remplit les p
     const allP = document.querySelectorAll("div.track-phrase div.phrases p")
-
-    if (allP.length>0) {
-        // on desactive la fleche du haut car on peut pas remonter lors de l'init
-        const buttonFlecheHaut = document.getElementById("precedent")
-        if (buttonFlecheHaut) {buttonFlecheHaut.classList.add("desactiver")}
-
-        const buttonFlecheBas = document.getElementById("suivant")
-        if (buttonFlecheBas) {buttonFlecheBas.classList.remove("desactiver")}
-
-        for (const elt of allP) {
-            if (elt.classList == "past") {
-                elt.textContent = "" // on met rien car ya aucune phrase avant le début
-            } else if (elt.classList == "currently") {
-                elt.textContent = bddPhrases[ongletActuel][0]
-            } else if (elt.classList == "future") {
-                elt.textContent = bddPhrases[ongletActuel][1]
-            } else if (elt.classList == "more") {
-                elt.textContent = bddPhrases[ongletActuel][2]
-            }
-        }
-
+    // on supprime les p existants
+    for (const elt of allP) {
+        elt.remove()
     }
+
+    const divPhrases = document.querySelector("div.track-phrase div.phrases")
+    if (divPhrases) {
+        // on créer les nouveaux p avec les phrases d'init
+        createParaPast("", divPhrases, "suivant")
+        createParaCurrently(bddPhrases[ongletActuel][0], divPhrases, "suivant")
+        createParaFuture(bddPhrases[ongletActuel][1], divPhrases, "suivant")
+        createParaMore(bddPhrases[ongletActuel][2], divPhrases, "suivant")
+    }
+    
+    // on desactive la fleche du haut car on peut pas remonter lors de l'init
+    const buttonFlecheHaut = document.getElementById("precedent")
+    if (buttonFlecheHaut) {buttonFlecheHaut.classList.add("desactiver")}
+
+    const buttonFlecheBas = document.getElementById("suivant")
+    if (buttonFlecheBas) {buttonFlecheBas.classList.remove("desactiver")}
 
 }
 

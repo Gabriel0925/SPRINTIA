@@ -4874,6 +4874,20 @@ section.container-phrase div.track-phrase div.button i#suivant:active {
 }
 
 
+section.container-grid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--SPACE_M);
+}
+@media (max-width: 800px) {
+    section.container-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0;
+    }
+}
+
 div.container-coeur {
     display: flex;
     justify-content: center;

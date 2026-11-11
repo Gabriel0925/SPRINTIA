@@ -94,7 +94,12 @@ async function saveRecuperation() {
 
         button.textContent = "Sauvegardé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        window.location.href = `recuperation-analyse.html` 
+        if (modificationData==true) {
+            window.location.href = `recuperation-historique.html` 
+        } else {
+            window.location.href = `recuperation-analyse.html` 
+        }
+
     } catch(error) {
         console.log(error)
         button.textContent = "Une erreur s'est produite"

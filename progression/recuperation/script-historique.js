@@ -124,9 +124,67 @@ function affichageCard(debutSlice, finSlice) {
     }
 }
 
-function findDataRecuperation(inputSearch) {
+async function findDataRecuperation(inputSearch) {
     let rechercheUser = inputSearch.value.toLowerCase()
-    console.log(rechercheUser)
+
+    if (rechercheUser.trim() == "") {
+        await init()
+    } else {
+        let rechercheUserClean = rechercheUser.replaceAll(" ", "-").replaceAll("/", "-")
+        let tableauMotRechercheUser = rechercheUserClean.split("-")
+        const dicoMois = {
+            "janvier": "01", "janv.": "01",
+            "février": "02", "fevrier": "02", "fév.": "02",
+            "mars": "03",
+            "avril": "04", "avr.": "04",
+            "mai": "05",
+            "juin": "06", "juillet": "07", "juil.": "07",
+            "août": "08", "aout": "08",
+            "septembre": "09", "sept.": "09",
+            "octobre": "10", "oct.": "10",
+            "novembre": "11", "nov.": "11",
+            "décembre": "12", "dec.": "12"
+        }
+        console.log(tableauMotRechercheUser)
+
+        let compteur = 0
+        tableauMotRechercheUser.forEach(element => {
+            if (dicoMois[element]) {
+                tableauMotRechercheUser[compteur] = dicoMois[element]
+            }
+
+            compteur+=1
+        });
+
+        
+        let filteredHistoriqueComplet = historiqueComplet.filter(recuperation => {
+            let dateRecup = recuperation.date.toLowerCase() // on met lla discussion de l'historique en minuscule
+
+            let correspondance = true
+            for (const elt of tableauMotRechercheUser) {
+                // si le mot n'est pas présent dans l'historique de discussion enfin dans la discussion alors on arrete la boucle
+                if (!dateRecup.includes(elt)) {
+                    correspondance = false
+                    break
+                }
+            }
+            return correspondance // on return si ya une correspondance ou non
+        })
+
+        document.getElementById("list-recup").textContent = ""
+        document.getElementById("button_afficher_plus").style.display = "none"
+        
+        if (filteredHistoriqueComplet.length <= 0) {
+            document.getElementById("aucun-resultat").style.display = "flex"
+        } else {
+            document.getElementById("aucun-resultat").style.display = "none"
+
+            filteredHistoriqueComplet.forEach(element => {
+                createCard(element)
+            });
+        }
+
+    }
 }
 
 async function init() {
@@ -164,7 +222,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     if (segmentedButtonAnalyse) {segmentedButtonAnalyse.addEventListener("click", () =>{window.location.href = 'recuperation-analyse.html'})}
 
     let inputSearch = document.getElementById("input-search")
-    if (inputSearch) {inputSearch.addEventListener("input", () => {findDataRecuperation(inputSearch)})}
+    if (inputSearch) {inputSearch.addEventListener("input", async() => {await findDataRecuperation(inputSearch)})}
 
     let iconRecherche = document.querySelector("i.icon_search")
     if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}

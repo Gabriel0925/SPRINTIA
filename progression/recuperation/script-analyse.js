@@ -67,7 +67,7 @@ async function statutInterpretation(fcReposToday, moyenne28j) {
 
     let zoneReponseCoach = document.getElementById("reponse-coach")
 
-    if (historiqueData28J!=undefined && historiqueData28J.length >= 7) {
+    if (historiqueData28J!=undefined && historiqueData28J.length >= 7 && fcReposToday!=undefined) {
         // on recup le style de coach du user
         let styleCoach = await db.JRM_Coach.toArray()
         if (styleCoach.length <= 0) {
@@ -176,6 +176,9 @@ function statistiqueEndessousGraph() {
 }
 
 async function init() {
+    let divCoeur = document.getElementById("coeur")
+    let divTextCoeur = document.querySelector("div.texte-coeur")
+
     await recupHistorique() // on met à jour la var globale de l'historique des 30 derniers jours
 
     // FC TODAY
@@ -184,6 +187,11 @@ async function init() {
         let pResultat = document.getElementById("fc-repos-today")
         if (pResultat) {
             pResultat.textContent = fcReposAujourdhui
+        }
+    } else {
+        if (divCoeur && divTextCoeur) {
+            divCoeur.classList.add("desactive")
+            divTextCoeur.classList.add("desactive")
         }
     }
 
@@ -211,8 +219,6 @@ async function init() {
 
     // on désactive le coeur si ya pas de datas
     if (historiqueData28J ==undefined) {
-        let divCoeur = document.getElementById("coeur")
-        let divTextCoeur = document.querySelector("div.texte-coeur")
         if (divCoeur && divTextCoeur) {
             divCoeur.classList.add("desactive")
             divTextCoeur.classList.add("desactive")

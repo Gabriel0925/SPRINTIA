@@ -33,7 +33,7 @@ function createCard(date, question, id) {
     }
 }
 
-function affichageCard(debutSlice, finSlice) {
+function affichageCard(debutSlice, finSlice) { 
     // si ya moins de 12 discussions on affiche pas le button plus
     if (historiqueComplet.length <= 12) {
         document.getElementById("button_afficher_plus").style.display = "none"
@@ -50,8 +50,8 @@ function affichageCard(debutSlice, finSlice) {
         createCard(formatEuropeenDate(dataDiscussion.date), dataDiscussion.question, dataDiscussion.id)
     })
  
-    if (nbCardsAfficher > 12) {
-        sessionStorage.setItem("nbCardDiscussionSave", nbCardsAfficher)
+    if (nbCardsAfficher+12 > 12) {
+        sessionStorage.setItem("nbCardDiscussionSave", nbCardsAfficher+12)
     }
 }
 

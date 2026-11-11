@@ -1,5 +1,7 @@
 const containerLineHistorique = document.querySelector("section.container-historique-line")
 let dataRecuperation = undefined
+let historiqueComplet = []
+let nbCardsAfficher = 0
 
 function deleteButtonCard() {
     let buttonSupprimerClose = document.getElementById("supprimer")
@@ -96,27 +98,56 @@ function createCard(data) {
     }
 }
 
+function affichageCard(debutSlice, finSlice) {
+    // si ya moins de 12 discussions on affiche pas le button plus
+    if (historiqueComplet.length <= 12) {
+        document.getElementById("button_afficher_plus").style.display = "none"
+    }
+    // si il n'y a plus de cartes a ajouter on fais disparaitre le bouton voir plus
+    if (historiqueComplet.length <= finSlice) {
+        document.getElementById("button_afficher_plus").style.display = "none"
+    } else {
+        document.getElementById("button_afficher_plus").style.display = "block"
+    }
+
+    let historiqueSaveForAfficher = historiqueComplet.slice(debutSlice, finSlice)
+    historiqueSaveForAfficher.forEach(element => {
+        createCard(element)
+        
+        if (containerLineHistorique.classList.contains("skeleton")) {
+            containerLineHistorique.classList.remove("skeleton")
+        }
+    })
+
+    if (nbCardsAfficher+12 > 12) {
+        sessionStorage.setItem("nbCardRecuperation", nbCardsAfficher+12)
+    }
+}
+
 function findDataRecuperation(inputSearch) {
     let rechercheUser = inputSearch.value.toLowerCase()
     console.log(rechercheUser)
 }
 
 async function init() {
-    dataRecuperation = await db.recuperation.orderBy("date").toArray()
-    if (dataRecuperation.length <= 0) {dataRecuperation = undefined} 
-    else {
-        // si ya des datas on le reverse car quand on créer la première card ça doit être la plus ancienne et la deuxieme card doit être plus récent que la premiere card
-        dataRecuperation.reverse()
-    }
+    // réinitialisation des variables
+    historiqueComplet = []
+    nbCardsAfficher = 0
+    document.getElementById("list-recup").textContent = ""
 
-    if (dataRecuperation != undefined) {
-        dataRecuperation.forEach(element => {
-            createCard(element)
+    const historiqueRecuperation = await db.recuperation.orderBy("date").toArray()
 
-            if (containerLineHistorique.classList.contains("skeleton")) {
-                containerLineHistorique.classList.remove("skeleton")
-            }
+    if (historiqueRecuperation.length > 0) { // si ya des datas
+        historiqueRecuperation.reverse() // on met du plus récent au plus ancien
+
+        historiqueRecuperation.forEach(elt => {
+            historiqueComplet.push(elt) // on ajoute tout dans un tableau pour éviter de faire trop de requete à la bdd
         });
+
+        let nbCardAuDebut = parseInt(sessionStorage.getItem("nbCardRecuperation")) || 12
+        affichageCard(0, nbCardAuDebut)
+        nbCardsAfficher+=nbCardAuDebut
+        
     } else {
         let visuelInformation = document.getElementById("aucune-data")
         if (visuelInformation) {visuelInformation.style.display = "flex"}
@@ -137,6 +168,14 @@ document.addEventListener("DOMContentLoaded", async() => {
 
     let iconRecherche = document.querySelector("i.icon_search")
     if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}
+
+    const buttonAfficherPlus = document.getElementById("button_afficher_plus")
+    if (buttonAfficherPlus) {
+        buttonAfficherPlus.addEventListener("click", () => {
+            affichageCard(nbCardsAfficher, nbCardsAfficher+12)
+            nbCardsAfficher += 12
+        })
+    }
 
     await init()
 })

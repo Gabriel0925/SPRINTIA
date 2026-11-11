@@ -102,28 +102,47 @@ function determinerIndexCurrentPhrase() {
     }
 }
 
-function createParaPast(phrase, divPhrases) {
+function createParaPast(phrase, divPhrases, fleche) {
     let pPast = document.createElement("p")
     pPast.classList.add("past")
     pPast.textContent = phrase
+
+    if (fleche == "precedent") {
+        pPast.classList.add("precedent")
+    }
+
     divPhrases.appendChild(pPast)
 }
-function createParaCurrently(phrase, divPhrases) {
+function createParaCurrently(phrase, divPhrases, fleche) {
     let pCurrently = document.createElement("p")
     pCurrently.classList.add("currently")
     pCurrently.textContent = phrase
+
+    if (fleche == "precedent") {
+        pCurrently.classList.add("precedent")
+    }
     divPhrases.appendChild(pCurrently)
 }
-function createParaFuture(phrase, divPhrases) {
+function createParaFuture(phrase, divPhrases, fleche) {
     let pFuture = document.createElement("p")
     pFuture.classList.add("future")
     pFuture.textContent = phrase
+
+    if (fleche == "precedent") {
+        pFuture.classList.add("precedent")
+    }
+
     divPhrases.appendChild(pFuture)
 }
-function createParaMore(phrase, divPhrases) {
+function createParaMore(phrase, divPhrases, fleche) {
     let pMore = document.createElement("p")
     pMore.classList.add("more")
     pMore.textContent = phrase
+
+    if (fleche == "precedent") {
+        pMore.classList.add("precedent")
+    }
+
     divPhrases.appendChild(pMore)
 }
 
@@ -137,7 +156,7 @@ function parolesSuivantePrecedente(fleche) {
     }
 
     if (bddPhrases[ongletActuel][newCurrentIndex]) {
-        // on revoie toutes la méthodes en gros on supprime les p et on en créer des nouveaux avec les nouvelles phrases
+        // on supprime les p existants
         let allP = document.querySelectorAll("div.track-phrase div.phrases p")
         for (const elt of allP) {
             elt.remove()
@@ -151,10 +170,10 @@ function parolesSuivantePrecedente(fleche) {
 
         if (divPhrases) {
             // on crée les p avec les nouvelles phrases
-            createParaPast(bddPhrases[ongletActuel][indexPast] || "", divPhrases)
-            createParaCurrently(bddPhrases[ongletActuel][newCurrentIndex], divPhrases)
-            createParaFuture(bddPhrases[ongletActuel][indexSuivant] || "", divPhrases)
-            createParaMore(bddPhrases[ongletActuel][indexSuivantSuivant] || "", divPhrases)
+            createParaPast(bddPhrases[ongletActuel][indexPast] || "", divPhrases, fleche)
+            createParaCurrently(bddPhrases[ongletActuel][newCurrentIndex], divPhrases, fleche)
+            createParaFuture(bddPhrases[ongletActuel][indexSuivant] || "", divPhrases, fleche)
+            createParaMore(bddPhrases[ongletActuel][indexSuivantSuivant] || "", divPhrases, fleche)
         }
 
         // désactivation/activation de la fleche haut ou bas quand on arrive à la fin ou au début du carrousel des paroles

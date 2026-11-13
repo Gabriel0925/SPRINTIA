@@ -4853,8 +4853,8 @@ section.container-phrase div.track-phrase p.future.precedent{animation: animatio
 
 @keyframes animation_lyrics_more {
     0% {transform: scale(0.65) translate(25px, 120px);}
-    50% {transform: scale(0.8) translate(-35px, -14px);}
-    100% {transform: scale(0.75) translate(-35px, 0);}
+    50% {transform: scale(0.8) translate(-12px, -14px);}
+    100% {transform: scale(0.75) translate(0, 0);}
 }
 @keyframes animation_lyrics_more_reverse {
     0% {transform: scale(1) translateY(-115px);}

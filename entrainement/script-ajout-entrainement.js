@@ -170,7 +170,7 @@ async function checkParamInUrl() {
         }
 
         // on affiche tous les inputs des datas spécifique du sport
-        dataSpecifique(dataWorkout.sport, false)
+        dataSpecifique(dataWorkout.sport)
 
         // on remplit les inputs basiques
         remplissageInput(dataWorkout)
@@ -178,7 +178,7 @@ async function checkParamInUrl() {
     }
 }
 
-function dataSpecifique(sportChoisi, firstChargement) {
+function dataSpecifique(sportChoisi) {
     // recup du texte de la div : 'Plus de données'
     let textButtonDataSpe = document.querySelector(".form-different-button-text")
     let typeDisplay = "block"
@@ -187,7 +187,7 @@ function dataSpecifique(sportChoisi, firstChargement) {
     // recupération du tableau (tableau présent dans un dico) des id des input en fonction du sport
     const tableauIdChampsSpecifique = sportIdChamps[sportChoisi]
     
-    if (textButtonDataSpe && firstChargement != true) {
+    if (textButtonDataSpe) {
         // si le text de la div est "plus de données" alors on met "moins de données" et inversement
         if (textButtonDataSpe.textContent == "Plus de données") {
             textButtonDataSpe.textContent = "Moins de données"
@@ -207,326 +207,298 @@ function dataSpecifique(sportChoisi, firstChargement) {
     } 
 }
 
-async function saveWorkout() {
-    // Recup du bouton
-    let BoutonSauvegarde = document.getElementById("button-sauvegarder")
-
-    // Recup valeur des champs de base d'un entraînement
-    let SportWorkoutUser = document.getElementById("profil-sport").value.trim()
-    let DateWorkoutUser = document.getElementById("date-entrainement-user").value
-    let NameWorkoutUser = document.getElementById("nom-entrainement-user").value.trim()
-    let DureeWorkoutUser = document.getElementById("duree-entrainement-user").value.trim()
-    let ValueRpeUser = parseInt(document.querySelector(".slider progress").value)
-    let FcMoyUser = parseInt(document.getElementById("fc-moy-entrainement-user").value.trim())
-    let FcMaxUser = parseInt(document.getElementById("fc-max-entrainement-user").value.trim())
-
+function recupDataBasique() {
+    let sportWorkout = document.getElementById("profil-sport").value
+    let dateWorkout = document.getElementById("date-entrainement-user").value
+    let nomWorkout = document.getElementById("nom-entrainement-user").value.trim()
+    let dureeWorkout = document.getElementById("duree-entrainement-user").value.trim()
+    let rpeWorkout = parseInt(document.querySelector(".slider progress").value)
+    let fcMoy = parseInt(document.getElementById("fc-moy-entrainement-user").value.trim())
+    let fcMax = parseInt(document.getElementById("fc-max-entrainement-user").value.trim())
+    let noteWorkout = document.getElementById("note-entrainement").value.trim()
 
     // Vérification des champs de base
-    if (!DateWorkoutUser || !DureeWorkoutUser || !NameWorkoutUser) {
-        alert("Les champs avec '*' sont obligatoire, vous devez les remplir.")
+    if (!dateWorkout || dureeWorkout == "" || nomWorkout == "") {
+        alert("Les champs avec '*' sont obligatoire, vous devez les remplir pour pouvoir sauvegarder votre entraînement.")
         return
     }
 
     // Prépa date pour les comparer ensuite
-    const DateUserFormatee = new Date(DateWorkoutUser)
-    const DateActuelle = new Date()
-    if (DateUserFormatee > DateActuelle) { // Comparaison de 2 dates
+    const dateUserFormatee = new Date(dateWorkout)
+    const dateActuelle = new Date()
+    if (dateUserFormatee > dateActuelle) { // Comparaison de 2 dates
         alert("La date ne peut pas être dans le future.")
         return
     }
 
-    DureeWorkoutUser = conversionMinutes(DureeWorkoutUser)
+    dureeWorkout = conversionMinutes(dureeWorkout)
     // la fonction conversionMinutes met des alertes et renvoies null et donc pour que la fonction s'arrete ici on met la condition ci dessous
-    if (DureeWorkoutUser == null) {return}
-    if (DureeWorkoutUser <= 0) {
+    if (dureeWorkout == null) {return}
+    if (dureeWorkout <= 0) {
         alert("Valeur non valide, la durée doit être un nombre supérieur à 0.")
         return
     }
-    if (DureeWorkoutUser >= 1440) {
-        alert("La durée de votre entraînement doit être inférieur à 24h00m.")
+    if (dureeWorkout >= 1440) {
+        alert("La durée de votre entraînement doit être inférieur à 24h.")
         return
     }
 
     // si pas de datas alors on met sur undefined
-    if (isNaN(FcMoyUser)) {FcMoyUser = undefined} else {
-        if (FcMoyUser >= 220) {
+    if (isNaN(fcMoy)) {fcMoy = undefined} else {
+        if (fcMoy >= 220) {
             alert("Votre fréquence cardiaque moyenne doit être inférieur à 220 bpm.")
             return
-        } else if (FcMoyUser <= 50) {
+        } else if (fcMoy <= 50) {
             alert("Votre fréquence cardiaque moyenne doit être supérieur à 50 bpm.")
             return
         }
     }
-    if (isNaN(FcMaxUser)) {FcMaxUser = undefined} else {
-        if (FcMaxUser >= 220) {
+    if (isNaN(fcMax)) {fcMax = undefined} else {
+        if (fcMax >= 220) {
             alert("Votre fréquence cardiaque maximum doit être inférieur à 220 bpm.")
             return
-        } else if (FcMaxUser <= 50) {
+        } else if (fcMax <= 50) {
             alert("Votre fréquence cardiaque maximum doit être supérieur à 50 bpm.")
             return
         }
     }
-
-    // Calcul de la transpiration
-    let profilDB = await db.profil.get(1)
-    let TranspirationEstimee = undefined
-    let HydratationEstimee = undefined
-
-    if (profilDB != undefined) {
-        let poidsUser = Number(profilDB.poids)
-        let DureeHeure = DureeWorkoutUser/60 // Conversion de la durée en heure
-        let CoefficientRpe = [0.4, 0.8, 1.2, 1.6]
-
-        // Attribution de la valeur du RPE
-        if (ValueRpeUser <= 3) {
-            CoefficientRpe = CoefficientRpe[0]
-        } else if (ValueRpeUser <= 6) {
-            CoefficientRpe = CoefficientRpe[1]
-        } else if (ValueRpeUser <= 8) {
-            CoefficientRpe = CoefficientRpe[2]
-        } else {
-            CoefficientRpe = CoefficientRpe[3]
-        }
-
-        // Calcul
-        TranspirationEstimee = Math.round((DureeHeure*CoefficientRpe*(poidsUser/70))*1000)
-        HydratationEstimee = Math.round(TranspirationEstimee*1.2)
+    if (fcMoy>fcMax) {
+        alert("Votre fréquence cardiaque moyenne doit être inférieure à votre fréquence cardiaque maximum.")
+        return
     }
 
-    // init
+    return [sportWorkout, dateWorkout, nomWorkout, dureeWorkout, rpeWorkout, fcMoy, fcMax, noteWorkout]
+}
+function verifyInputSpe(tableauIdChampsSpe, sport) {
+    const dicoData = {}
+
+    for (const element of tableauIdChampsSpe) {
+        const input = document.getElementById(element) // on recup l'input
+
+        if (input) { // si il y en a un alors
+            // on enleve -entrainement-user et on remplace '-' en "_" pour avoir le nom de la clé dans la BDD
+            const cleData = element.replace("-entrainement-user", "").replace("-", "_")
+
+            let data = input.value.trim() // on recup ce que le user a saisi
+            if (data == "") {continue} // continue permet de passer directement au tour suivant de la boucle for
+            if (input.type == "number") { // si c'est un input number on convertit en nombre floatant
+                data = parseFloat(data)
+                if (isNaN(data)) {continue} // continue permet de passer directement au tour suivant de la boucle for
+            }
+
+            // si le sport est natation, la distance est en metre donc on la convertit en km
+            if (sport == "Natation" || sport == "Rameur d'intérieur" || sport == "Aviron" || sport == "Kayak" || sport == "Paddle") {
+                if (cleData == "distance") {
+                    if (!isNaN(Number(data))) { // on regarde si il y a du contenu dans le input, la data
+                        data = data/1000 // on remet en kilomètres
+                    }
+                }
+            }
+
+            // --- Vérification des champs spécifique ---   
+            if (cleData == "distance") { // vérification pour le champs distance
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert("Valeur non valide, la distance doit être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 1000) {
+                        alert("La distance de votre entraînement ne doit pas dépasser 1000 kilomètres.")
+                        return undefined
+                    }
+                    data = Number(data.toFixed(2))
+                }
+            } else if (cleData == "denivele") { // vérification pour le champs denivele
+                if (data) { // si il y a des datas dans le input
+                    data = Math.floor(data)
+                    
+                    if (data <= 0) {
+                        alert("Valeur non valide, le denivele doit être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 10000) {
+                        alert("Le denivele de votre entraînement ne doit pas dépasser 10 000 m.")
+                        return undefined
+                    }
+                }
+            } else if (cleData == "vitesse_max" || cleData == "vitesse_smash") { // vérification pour le champs vitesse_max
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert("Valeur non valide, la vitesse doit être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 200) {
+                        alert("La vitesse de votre entraînement ne doit pas dépasser 200 km/h.")
+                        return undefined
+                    }
+                    
+                    data = parseFloat(data)
+                }
+            } else if (cleData == "cadence_moy") { // vérification pour le champs cadence_moy
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert("Valeur non valide, la cadence moyenne doit être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 600) {
+                        alert("La cadence moyenne de votre entraînement doit être un nombre inférieur à 600.")
+                        return undefined
+                    }
+
+                    data = parseInt(data)
+                }
+            } else if (cleData == "nb_pas") { // vérification pour le champs nb_pas
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert("Valeur non valide, le nombre de pas doit être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 800000) {
+                        alert("Le nombre de pas de votre entraînement doit être un nombre inférieur à 800000.")
+                        return undefined
+                    }
+                     
+                    data = parseInt(data)
+                }
+            } else if (cleData == "altitude_max") { // vérification pour le champs altitude_max
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert("Valeur non valide, l'altitude maximum doit être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 10000) {
+                        alert("L'altitude maximum de votre entraînement doit être un nombre inférieur à 10000.")
+                        return undefined
+                    }
+
+                    data = parseInt(data)
+                }
+            } else if (cleData == "vitesse_moy") { // vérification pour le champs vitesse_moy
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert("Valeur non valide, la vitesse moyenne doit être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 200) {
+                        alert("La vitesse moyenne de votre entraînement doit être un nombre inférieur à 200.")
+                        return undefined
+                    }
+
+                    data = parseFloat(data)
+                }
+            } else if (cleData == "nb_coups" || cleData == "nb_sets" || cleData == "nb_defaites" || cleData == "nb_chutes" || cleData == "nb_victoires" || cleData == "nb_combats" || cleData == "nb_points" || cleData == "nb_services" || cleData == "nb_smash" || cleData == "nb_reps" || cleData == "nb_series" || cleData == "nb_longueurs" || cleData == "nb_descentes" || cleData == "serie_max" || cleData == "nb_tours" || cleData == "nb_positions") { 
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert(`Valeur non valide, le champs nommé : '${cleData}' doit être un nombre supérieur à 0.`)
+                        return undefined
+                    }
+                    if (data >= 1000000) {
+                        alert(`Le champs nommé : '${cleData}' doit être un nombre inférieur à 1000000.`)
+                        return undefined
+                    }
+
+                    data = parseInt(data)
+                }
+            } else if (cleData == "coups_rame") { // vérification pour le champs coups_rame
+                if (data) { // si il y a des datas dans le input
+                    if (data <= 0) {
+                        alert("Valeur non valide, les coups de rame doivent être un nombre supérieur à 0.")
+                        return undefined
+                    }
+                    if (data >= 10000) {
+                        alert("Les coups de rame de votre entraînement doit être un nombre inférieur à 10000.")
+                        return undefined
+                    }
+
+                    data = parseInt(data)
+                }
+            }
+
+            // on ajoute au dico la nouvelle valeur si elle n'est pas vide
+            dicoData[cleData] = data
+        }
+                
+    }
+
+    return dicoData
+}
+async function saveWorkout(button) {
+    // dans la fonction ci-dessous je recupere les inputs et je vérifie si le user les a correctement remplis
+    const [sportWorkout, dateWorkout, nomWorkout, dureeWorkout, rpeWorkout, fcMoy, fcMax, noteWorkout] = recupDataBasique()
+
+    // charge entrainement
     let chargeWorkout = 0
     let coefRpe = {1:0.2, 2:0.4, 3:0.7, 4:1.1, 5:1.6, 6:2.3, 7:3.2, 8:4.5, 9:6.2, 10:8.5}
     // Calcul Charge
-    chargeWorkout = Math.floor(DureeWorkoutUser*coefRpe[ValueRpeUser])
+    chargeWorkout = Math.floor(dureeWorkout*coefRpe[rpeWorkout])
     // si la charge est inférieur à 1 alors on la met a 1
     if (chargeWorkout < 1) {chargeWorkout = 1}
     
-    // base du dico qu'on enregistrera
+    // base du dico qu'on enregistrera dans dexies
     let workoutData = {
-        sport: SportWorkoutUser,
-        date: DateWorkoutUser,
-        nom: NameWorkoutUser,
-        duree: DureeWorkoutUser,
-        rpe: ValueRpeUser,
-        fc_moy: FcMoyUser,
-        fc_max: FcMaxUser,
+        sport: sportWorkout, date: dateWorkout, nom: nomWorkout, duree: dureeWorkout, rpe: rpeWorkout,
+        fc_moy: fcMoy, fc_max: fcMax,
         charge_entrainement: chargeWorkout
     }
 
+    // calcule des données spécifiques aux users qui ont config leurs profil
+    // la fonction est dispo dans assets/base.js/data-spe-profil
+    const dicoDataSpeProfil = await dataProfil(dureeWorkout, rpeWorkout) // {"transpiration": transpiration, "hydratation": hydratation}
+    // ajout des 2 stats moins importante mais présente
+    workoutData["transpiration_estimee"] = dicoDataSpeProfil["transpiration"]
+    workoutData["hydratation_estimee"] = dicoDataSpeProfil["hydratation"]
+
+
     // on regarde qu'elle champs on doit sauvegarde en stockant dans un tableau
-    const tableauIdChampsSpe = sportIdChamps[SportWorkoutUser]
-
-    // si il y a un tableau
-    if (tableauIdChampsSpe.length > 0) {
-        for (const element of tableauIdChampsSpe) {
-            const input = document.getElementById(element) // on recup l'input
-
-            if (input) { // si il y en a un alors
-                // on enleve -entrainement-user et on remplace '-' en "_" pour avoir le nom de la clé dans la BDD
-                const cleData = element.replace("-entrainement-user", "").replace("-", "_")
-
-                let data = input.value.trim() // on recup ce que le user a saisi
-                if (data == "") {continue} // continue permet de passer directement au tour suivant de la boucle for
-                if (input.type == "number") { // si c'est un input number on convertit en nombre floatant
-                    data = parseFloat(data)
-                    if (isNaN(data)) {continue} // continue permet de passer directement au tour suivant de la boucle for
-                }
-
-                // si le sport est natation, la distance est en metre donc on la convertit en km
-                if (SportWorkoutUser == "Natation" || SportWorkoutUser == "Rameur d'intérieur" || SportWorkoutUser == "Aviron" || SportWorkoutUser == "Kayak" || SportWorkoutUser == "Paddle") {
-                    if (cleData == "distance") {
-                        if (!isNaN(Number(data))) { // on regarde si il y a du contenu dans le input, la data
-                            data = data/1000 // on remet en kilomètres
-                        }
-                    }
-                }
-
-                // --- Vérification des champs spécifique ---   
-                if (cleData == "distance") { // vérification pour le champs distance
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, la distance doit être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 1000) {
-                            alert("La distance de votre entraînement ne doit pas dépasser 1000 kilomètres.")
-                            return
-                        }
-                        data = Number(data.toFixed(2))
-                    }
-                } else if (cleData == "denivele") { // vérification pour le champs denivele
-                    if (data) { // si il y a des datas dans le input
-                        data = Math.floor(data)
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, le denivele doit être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 10000) {
-                            alert("Le denivele de votre entraînement ne doit pas dépasser 10 000 m.")
-                            return
-                        }
-                    }
-                } else if (cleData == "vitesse_max" || cleData == "vitesse_smash") { // vérification pour le champs vitesse_max
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, la vitesse doit être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 200) {
-                            alert("La vitesse de votre entraînement ne doit pas dépasser 200 km/h.")
-                            return
-                        }
-
-                        data = parseFloat(data)
-                    }
-                } else if (cleData == "cadence_moy") { // vérification pour le champs cadence_moy
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, la cadence moyenne doit être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 600) {
-                            alert("La cadence moyenne de votre entraînement doit être un nombre inférieur à 600.")
-                            return
-                        }
-
-                        data = parseInt(data)
-                    }
-                } else if (cleData == "nb_pas") { // vérification pour le champs nb_pas
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, le nombre de pas doit être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 800000) {
-                            alert("Le nombre de pas de votre entraînement doit être un nombre inférieur à 800000.")
-                            return
-                        }
-
-                        data = parseInt(data)
-                    }
-                } else if (cleData == "altitude_max") { // vérification pour le champs altitude_max
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, l'altitude maximum doit être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 10000) {
-                            alert("L'altitude maximum de votre entraînement doit être un nombre inférieur à 10000.")
-                            return
-                        }
-
-                        data = parseInt(data)
-                    }
-                } else if (cleData == "vitesse_moy") { // vérification pour le champs vitesse_moy
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, la vitesse moyenne doit être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 200) {
-                            alert("La vitesse moyenne de votre entraînement doit être un nombre inférieur à 200.")
-                            return
-                        }
-
-                        data = parseFloat(data)
-                    }
-                } else if (cleData == "nb_coups" || cleData == "nb_sets" || cleData == "nb_defaites" || cleData == "nb_chutes" || cleData == "nb_victoires" || cleData == "nb_combats" || cleData == "nb_points" || cleData == "nb_services" || cleData == "nb_smash" || cleData == "nb_reps" || cleData == "nb_series" || cleData == "nb_longueurs" || cleData == "nb_descentes" || cleData == "serie_max" || cleData == "nb_tours" || cleData == "nb_positions") { 
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert(`Valeur non valide, le champs nommé : '${cleData}' doit être un nombre supérieur à 0.`)
-                            return
-                        }
-                        if (data >= 1000000) {
-                            alert(`Le champs nommé : '${cleData}' doit être un nombre inférieur à 1000000.`)
-                            return
-                        }
-
-                        data = parseInt(data)
-                    }
-                } else if (cleData == "coups_rame") { // vérification pour le champs coups_rame
-                    if (data) { // si il y a des datas dans le input
-
-                        // vérification
-                        if (data <= 0) {
-                            alert("Valeur non valide, les coups de rame doivent être un nombre supérieur à 0.")
-                            return
-                        }
-                        if (data >= 10000) {
-                            alert("Les coups de rame de votre entraînement doit être un nombre inférieur à 10000.")
-                            return
-                        }
-
-                        data = parseInt(data)
-                    }
-                }
-
-                // on ajoute au dico la nouvelle valeur si elle n'est pas vide
-                workoutData[cleData] = data
-            }
-                
-        }
+    const tableauIdChampsSpe = sportIdChamps[sportWorkout]
+    if (tableauIdChampsSpe.length <= 0) { // si ya pas de données dans le tableau ont met une erreur
+        alert("Une erreur s'est produite lors de l'acquisition des inputs spécifiques.")
+        return
     }
+    let dicoDataSpe = verifyInputSpe(tableauIdChampsSpe, sportWorkout) // vérification des inputs spécifiques aux sports
+    if (dicoDataSpe == undefined) {return} // si c'est true ça veut dire qu'une alert s'est déclenchée dans la fonction donc on arrete la fonction saveworkout
+    // on ajoute les datas spécifiques dans le dico global
+    Object.entries(dicoDataSpe).forEach(([cle, valeur]) => {
+        workoutData[cle] = valeur
+    })
 
     // on récup la note de l'entraînement si il y en a une
-    let noteWorkout = document.getElementById("note-entrainement").value.trim()
-    if (!noteWorkout || noteWorkout == "") {
-        workoutData["note"] = undefined
-    } else {
-        workoutData["note"] = noteWorkout
-    }
+    if (noteWorkout || noteWorkout != "") {workoutData["note"] = noteWorkout}
 
     // desactivation du bouton
-    BoutonSauvegarde.disabled = true 
-    BoutonSauvegarde.textContent = "Sauvegarde..."
+    button.disabled = true
+    button.textContent = "Sauvegarde..."
 
-    // ajout des 2 stats moins importante mais présente
-    workoutData["transpiration_estimee"] = TranspirationEstimee
-    workoutData["hydratation_estimee"] = HydratationEstimee
+    try {
+        // enregistrement ou modification
+        let idWorkout = undefined
+        if (IdEditWorkout && IdEditWorkout != null) {
+            const dataWorkoutEdit = await db.entrainement.get(IdEditWorkout)
+            idWorkout = IdEditWorkout
 
-    // enregistrement ou modification
-    let idWorkout = undefined
-    if (IdEditWorkout && IdEditWorkout != null) {
-        const dataWorkoutEdit = await db.entrainement.get(IdEditWorkout)
-        idWorkout = IdEditWorkout
+            workoutData["id"] = idWorkout
 
-        workoutData["id"] = IdEditWorkout
-
-        if (dataWorkoutEdit) { // si ya des datas
-            let pointGPS = dataWorkoutEdit["points_gps"]
-            if (pointGPS != undefined) { // si ya des datas de points gps
-                workoutData["points_gps"] = pointGPS // on l'ajoute au dico
+            if (dataWorkoutEdit) { // si ya des datas
+                let pointGPS = dataWorkoutEdit["points_gps"]
+                if (pointGPS != undefined) { // si ya des datas de points gps
+                    workoutData["points_gps"] = pointGPS // on l'ajoute au dico
+                }
             }
+            await db.entrainement.put(workoutData)
+        } else {
+            idWorkout = await db.entrainement.add(workoutData)
         }
-        await db.entrainement.put(workoutData)
-    } else {
-        idWorkout = await db.entrainement.add(workoutData)
-    }
-    
-    BoutonSauvegarde.textContent = "Sauvegardé"
-    await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-    
-    BoutonSauvegarde.textContent = "Sauvegarder"
-    BoutonSauvegarde.disabled = false
 
-    if (idWorkout != undefined) {
-        window.location.href = `entrainement.html?workout=${idWorkout}` // on met un param dans l'URL
+        button.textContent = "Sauvegardé"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
+        if (idWorkout != undefined) {window.location.href = `entrainement.html?workout=${idWorkout}`}
+    } catch(error) {
+        console.log(error)
+        button.textContent = "Une erreur s'est produite"
+        await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
+    } finally {
+        button.textContent = "Sauvegarder"
+        button.disabled = false
     }
 }
 
@@ -618,7 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (buttonPlusDatas) {buttonPlusDatas.addEventListener("click", () => {dataSpecifique(document.getElementById('profil-sport').value)})}
 
     const buttonSaveWorkout = document.getElementById("button-sauvegarder")
-    if (buttonSaveWorkout) {buttonSaveWorkout.addEventListener("click", saveWorkout)}
+    if (buttonSaveWorkout) {buttonSaveWorkout.addEventListener("click", () => {saveWorkout(buttonSaveWorkout)})}
 
     cacherInput("") // pour cacher tout les champs de datas spécifique
     checkParamInUrl()

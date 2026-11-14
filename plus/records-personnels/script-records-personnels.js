@@ -21,12 +21,12 @@ function gererDataOfSport(sport) {
 }
 
 function gererSegmentedButton(newElt) {
-    const lastEltSelected = document.querySelector("div.segmented-button-button.actif")
+    const lastEltSelected = document.querySelector("div.tabs-onglets.selected")
     if (lastEltSelected) {
-        lastEltSelected.classList.remove("actif")
+        lastEltSelected.classList.remove("selected")
     }
 
-    newElt.classList.add("actif")
+    newElt.classList.add("selected")
 
     let sportNewElt = newElt.id.split("-")[2]
     if (dicoSportId[sportNewElt]) {
@@ -35,12 +35,12 @@ function gererSegmentedButton(newElt) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const segmentedButtonCourse = document.getElementById("segmented-button-course")
-    if (segmentedButtonCourse) {segmentedButtonCourse.addEventListener("click", () => {gererSegmentedButton(segmentedButtonCourse)})}
+    const tabsOngletCourse = document.getElementById("tabs-onglets-course")
+    if (tabsOngletCourse) {tabsOngletCourse.addEventListener("click", () => {gererSegmentedButton(tabsOngletCourse)})}
     
-    const segmentedButtonVelo = document.getElementById("segmented-button-velo")
-    if (segmentedButtonVelo) {segmentedButtonVelo.addEventListener("click", () => {gererSegmentedButton(segmentedButtonVelo)})}
+    const tabsOngletVelo = document.getElementById("tabs-onglets-velo")
+    if (tabsOngletVelo) {tabsOngletVelo.addEventListener("click", () => {gererSegmentedButton(tabsOngletVelo)})}
 
-    const segmentedButtonNatation = document.getElementById("segmented-button-natation")
-    if (segmentedButtonNatation) {segmentedButtonNatation.addEventListener("click", () => {gererSegmentedButton(segmentedButtonNatation)})}
+    const tabsOngletNatation = document.getElementById("tabs-onglets-natation")
+    if (tabsOngletNatation) {tabsOngletNatation.addEventListener("click", () => {gererSegmentedButton(tabsOngletNatation)})}
 })

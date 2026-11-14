@@ -1,10 +1,10 @@
-const VERSION_CACHE = "V1.2.0"
+const VERSION_CACHE = "V1.2.01"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
 
     // BASE DE L'APP
-    "/assets/base-js/base.js", "/assets/base-js/db-config.js",
+    "/assets/base-js/base.js", "/assets/base-js/db-config.js", "/assets/base-js/global-record.js",
 
     // BIBLIOTHEQUES
     "/assets/bibliotheques/chart.min.js", "/assets/bibliotheques/dexie.js", "/assets/bibliotheques/email.min.js",  "/assets/bibliotheques/GPXParser.min.js",

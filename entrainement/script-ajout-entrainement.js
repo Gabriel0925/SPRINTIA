@@ -1,4 +1,5 @@
-const SportIdChamps = { // sport avec les id correspondant aux champs de datas spécifique aux sports
+// sport avec les id correspondant aux champs de datas spécifique des sports
+const sportIdChamps = {
     "Libre": ["distance-entrainement-user"],
 
     "Course": ["distance-entrainement-user", "denivele-entrainement-user", "allure-moy-entrainement-user", "vitesse-max-entrainement-user", "cadence-moy-entrainement-user", "nb-pas-entrainement-user"],
@@ -39,162 +40,142 @@ const SportIdChamps = { // sport avec les id correspondant aux champs de datas s
 
 let IdEditWorkout = null // init variable globale
 
-async function VerificationParam() {
-    const ParametreURL = window.location.search // on recherche si il y a un param dans l'URL (ex : ?edit=7)
-    let TableauSeparation = ParametreURL.split("=") // exemple ['?edit', '7']
-
-    if (TableauSeparation.length == 2) { // vérification si il y a bien 2 partie
-        // conversion de l'id en int
-        const ID = parseInt(TableauSeparation[1])
-
-        // Recup des datas du workout
-        if (ID) {
-            // on change la variable globale
-            IdEditWorkout = ID
-            const WorkoutDB = await db.entrainement.get(ID) // la méthode .get permet de recup direct les datas de l'id coresspondant
-
-            if (WorkoutDB) { // on vérifie si il y a des données au cas ou le user a supprimer son workout
-                // on commence par changer le H1 de la page
-                document.getElementById("title-page").textContent = "Modification de l'entraînement"
-
-                document.querySelector(".container-command").style.display = "none"
-
-                // Remettre les champs adaptée au sport
-                dataSpecifique(WorkoutDB.sport, false)  
-                const dicoRPE = {
-                    1:"Facile",
-                    2:"Facile",
-                    3:"Facile",
-
-                    4:"Modéré",
-                    5:"Modéré",
-                    6:"Modéré",
-
-                    7:"Difficile",
-                    8:"Difficile",
-
-                    9:"Effort maximal",
-                    10:"Effort maximal"
-                }
-                const dicoDescriptionRPE = {
-                    1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
-                    4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
-                    7:["Difficile", "#ff4b4c"], 8:["Difficile", "#ff4b4c"],
-                    9:["Effort maximal", "#9386f1"], 10:["Effort maximal", "#9386f1"]
-                }
-
-                // remplissage des champs qu'on ne peut pas remplir dans la boucle foreach
-                document.getElementById("profil-sport").value = WorkoutDB.sport
-                document.getElementById("duree-entrainement-user").value = dureeFormatee(WorkoutDB.duree, "hh:mm:ss") // on exige le format "hh:mm:ss"
-                // remettre le RPE sur bonne position
-                document.querySelector(".slider input").value = WorkoutDB.rpe
-                document.querySelector(".slider progress").value = WorkoutDB.rpe 
-                document.querySelector(".slider-name span.RPE").textContent = WorkoutDB.rpe
-                document.getElementById("description-rpe").textContent = dicoDescriptionRPE[WorkoutDB.rpe][0]
-                document.querySelector(".slider-name span.RPE").style.background = dicoDescriptionRPE[WorkoutDB.rpe][1]
-                document.querySelector(".slider-name strong").style.color = dicoDescriptionRPE[WorkoutDB.rpe][1]
-
-                // ajout d'une data a la variable globale
-                if (WorkoutDB.note != undefined && WorkoutDB.note != "") {
-                    document.getElementById("note-entrainement").value = WorkoutDB.note
-                }
-
-                // tableau des datas à ne pas rentrer dans un input
-                const tableauDataNotInInput = ["sport", "duree", "rpe", "charge_entrainement", "id"]
-
-                // .entries c'est pour récupérer la clé et valeur d'un dico/object
-                Object.entries(WorkoutDB).forEach(([cle, valeur]) => {
-                    if (tableauDataNotInInput.includes(cle)) {
-                        // pass
-                    } else {
-                        const idData = cle.replace("_", "-") + "-entrainement-user"
-                        
-                        let input = document.getElementById(idData)
-                        if (input && valeur != null && valeur != undefined) {
-                            if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Kayak" || WorkoutDB.sport == "Paddle") {
-                                if (cle == "distance") {
-                                    valeur = valeur*1000
-                                }
-                            }
-                            input.value = valeur // on affiche la valeur de la bdd dans le input correspondant à l'id de la donnée
-                        }
-                    }
-                });
-
-                // --- Pour mettre à jour les champs en fonction de l'unité du sport
- 
-                // partie pour gérer la distance entre m et km
-                let inputDistance = document.getElementById("distance-entrainement-user")
-                if (WorkoutDB.sport == "Natation" || WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Kayak" || WorkoutDB.sport == "Paddle") { 
-                    if (inputDistance) {
-                        inputDistance.placeholder = "Distance (m)"
-                        inputDistance.nextElementSibling.textContent = "Distance (m)"
-                    }
-
-                } else { // si le sport n'est pas la natation ou le rameur alors, on affiche la distance en km
-                    if (inputDistance) {
-                        inputDistance.placeholder = "Distance (km)"
-                        inputDistance.nextElementSibling.textContent = "Distance (km)"
-                    }
-
-                }
-
-                // partie pour gérer l'allure entre /km, /500m, /100m
-                let inputAllureMoy = document.getElementById("allure-moy-entrainement-user")
-                if (WorkoutDB.sport == "Natation") { 
-                    if (inputAllureMoy) {
-                        inputAllureMoy.placeholder = "Allure moy. (/100m)"
-                        inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
-                    }
-
-                } else if (WorkoutDB.sport == "Rameur d'intérieur" || WorkoutDB.sport == "Aviron" || WorkoutDB.sport == "Kayak" || WorkoutDB.sport == "Paddle") {
-                    if (inputAllureMoy) {
-                        inputAllureMoy.placeholder = "Allure moy. (/500m)"
-                        inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"
-                    }
-
-                } else { // si le sport n'est pas la natation ou le rameur alors, on affiche la distance en km
-                    if (inputAllureMoy) {
-                        inputAllureMoy.placeholder = "Allure moy. (/km)"
-                        inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/km)"
-                    }
-
-                }
-
-                // partie pour gérer la cadence moy entre ppm, tpm, cpm
-                let inputCadenceMoy = document.getElementById("cadence-moy-entrainement-user")
-                if (WorkoutDB.sport == "Vélo" || WorkoutDB.sport == "Corde à sauter") { 
-                    if (inputCadenceMoy) {
-                        inputCadenceMoy.placeholder = "Cadence moy (tpm)"
-                        inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (tpm)"
-                    }
-
-                } else if (WorkoutDB.sport == "Course") {
-                    if (inputCadenceMoy) {
-                        inputCadenceMoy.placeholder = "Cadence moy (ppm)"
-                        inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (ppm)"
-                    }
-
-                } else { // pr tout les autres sports
-                    if (inputCadenceMoy) {
-                        inputCadenceMoy.placeholder = "Cadence moy (cpm)"
-                        inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (cpm)"
-                    }
-
-                }
-
-            } else {  // si il y a rien dans la bdd par rapport à l'id correspond alors on demarre le mode normal 
-                dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
-            }
-
-        } else {
-            dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
-        }
-    } else {        
-        dataSpecifique("Libre", true) // pour éviter que la fonction mettent une alert comme quoi il n'y a pas plus de données à afficher
+function manageRPE(valueRPE) {
+    const dicoDescriptionRPE = {
+        1:["Facile", "#1fff80"], 2:["Facile", "#1fff80"], 3:["Facile", "#1fff80"],
+        4:["Modéré", "#e7e625"], 5:["Modéré", "#e7e625"], 6:["Modéré", "#e7e625"],
+        7:["Difficile", "#ff4b4c"], 8:["Difficile", "#ff4b4c"],
+        9:["Effort maximal", "#9386f1"], 10:["Effort maximal", "#9386f1"]
     }
 
-    return
+    const sliderInput = document.querySelector(".slider input")
+    if (sliderInput) {sliderInput.value = valueRPE}
+
+    const sliderProgress = document.querySelector(".slider progress")
+    if (sliderProgress) {sliderProgress.value = valueRPE}
+
+    const spanRpe = document.querySelector(".slider-name span.RPE")
+    if (spanRpe) {
+        spanRpe.textContent = valueRPE
+        spanRpe.style.background = dicoDescriptionRPE[valueRPE][1]
+    }
+
+    const descriptionRpe =document.getElementById("description-rpe")
+    if (descriptionRpe) {
+        descriptionRpe.textContent = dicoDescriptionRPE[valueRPE][0]
+        descriptionRpe.style.color = dicoDescriptionRPE[valueRPE][1]
+    }
+
+}
+function remplissageInput(workoutData) {
+    const selectSport = document.getElementById("profil-sport")
+    if (selectSport) {
+        selectSport.value = workoutData.sport || "Libre"
+    }
+
+    const inputDuree = document.getElementById("duree-entrainement-user")
+    if (inputDuree) {
+        inputDuree.value = dureeFormatee(workoutData.duree, "hh:mm:ss") // on exige le format "hh:mm:ss"
+    }
+
+    manageRPE(workoutData.rpe || 1)
+
+    if (workoutData.note != undefined && workoutData.note != "") {
+        const textAreaNote = document.getElementById("note-entrainement")
+        if (textAreaNote) {textAreaNote.value = workoutData.note}
+    }
+
+    // tableau des datas à ne pas rentrer dans un input
+    const tableauDataNotInInput = ["sport", "duree", "rpe", "charge_entrainement", "id"]
+
+    // .entries c'est pour récupérer la clé et valeur d'un dico/object
+    Object.entries(workoutData).forEach(([cle, valeur]) => {
+        if (tableauDataNotInInput.includes(cle)) {
+            // pass
+        } else {
+            const idData = cle.replace("_", "-") + "-entrainement-user"
+
+            let input = document.getElementById(idData)
+            if (input && valeur != null && valeur != undefined) {
+                if (workoutData.sport == "Natation" || workoutData.sport == "Rameur d'intérieur" || workoutData.sport == "Aviron"
+                    || workoutData.sport == "Kayak" || workoutData.sport == "Paddle") {
+                    if (cle == "distance") {
+                        valeur = valeur*1000
+                    }
+                }
+                input.value = valeur // on affiche la valeur de la bdd dans le input correspondant à l'id de la donnée
+            }
+        }
+    });
+}
+function manageUnitOfInput(sportWorkout) {
+    // distance : m, km
+    let inputDistance = document.getElementById("distance-entrainement-user")
+    if (inputDistance) {
+        if (sportWorkout == "Natation" || sportWorkout == "Rameur d'intérieur" || sportWorkout == "Aviron" || sportWorkout == "Kayak" 
+            || sportWorkout == "Paddle") {
+            inputDistance.placeholder = "Distance (m)"
+            inputDistance.nextElementSibling.textContent = "Distance (m)"
+        }
+    }
+
+    // allure moyenne : /km, /500m, /100m
+    let inputAllureMoy = document.getElementById("allure-moy-entrainement-user")
+    if (inputAllureMoy) {
+        if (sportWorkout == "Natation") {
+            inputAllureMoy.placeholder = "Allure moy. (/100m)"
+            inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/100m)"
+        } else if (sportWorkout == "Rameur d'intérieur" || sportWorkout == "Aviron" || sportWorkout == "Kayak" || 
+            sportWorkout == "Paddle") {
+            inputAllureMoy.placeholder = "Allure moy. (/500m)"
+            inputAllureMoy.nextElementSibling.textContent = "Allure moy. (/500m)"
+        }
+    }
+    
+    // cadence : ppm, tpm, cpm
+    let inputCadenceMoy = document.getElementById("cadence-moy-entrainement-user")
+    if (inputCadenceMoy) {
+        if (sportWorkout == "Vélo" || sportWorkout == "Corde à sauter") {
+            inputCadenceMoy.placeholder = "Cadence moy. (tpm)"
+            inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (tpm)"
+        } else if (sportWorkout == "Course") {
+            inputCadenceMoy.placeholder = "Cadence moy. (ppm)"
+            inputCadenceMoy.nextElementSibling.textContent = "Cadence moy (ppm)"
+        }
+    }
+}
+async function checkParamInUrl() {
+    const parametreURL = window.location.search // on recherche si il y a un param dans l'URL (ex : ?edit=7)
+
+    // si ya pas de parametre dans l'url alors on arrete la fonction
+    if (parametreURL == "") {return}
+    let tableauSeparation = parametreURL.split("=") // exemple ['?edit', '7']
+
+    // si le tableau ne fait pas 2 c'est qu'il y a un probleme c'est pas ce qu'on veut donc on stop
+    if (tableauSeparation.length != 2) {return} 
+    
+    const ID = parseInt(tableauSeparation[1]) // conversion de l'id en int
+    if (ID) {
+        IdEditWorkout = ID // on modifie la variable globale
+
+        const dataWorkout = await db.entrainement.get(ID)
+        if (dataWorkout == undefined) {return}
+
+        // mise à jour des elt de la page pour passer de l'ajout d'un entrainement à la modification
+        const titlePage = document.getElementById("title-page")
+        const commandInToolbars = document.querySelector("div.toolbar div.container-command")
+        if (titlePage && commandInToolbars) {
+            titlePage.textContent = "Modification de l'entraînement"
+            commandInToolbars.style.display = "none" // on cache l'icone file car on modifie l'entrainement on en ajoute pas
+        }
+
+        // on affiche tous les inputs des datas spécifique du sport
+        dataSpecifique(dataWorkout.sport, false)
+
+        // on remplit les inputs basiques
+        remplissageInput(dataWorkout)
+        manageUnitOfInput(dataWorkout.sport)
+    }
 }
 
 function dataSpecifique(sportChoisi, firstChargement) {
@@ -204,7 +185,7 @@ function dataSpecifique(sportChoisi, firstChargement) {
     // variable qui changerai en fonction de si les champs spécifique sont dépliés ou non
 
     // recupération du tableau (tableau présent dans un dico) des id des input en fonction du sport
-    const tableauIdChampsSpecifique = SportIdChamps[sportChoisi]
+    const tableauIdChampsSpecifique = sportIdChamps[sportChoisi]
     
     if (textButtonDataSpe && firstChargement != true) {
         // si le text de la div est "plus de données" alors on met "moins de données" et inversement
@@ -333,7 +314,7 @@ async function saveWorkout() {
     }
 
     // on regarde qu'elle champs on doit sauvegarde en stockant dans un tableau
-    const tableauIdChampsSpe = SportIdChamps[SportWorkoutUser]
+    const tableauIdChampsSpe = sportIdChamps[SportWorkoutUser]
 
     // si il y a un tableau
     if (tableauIdChampsSpe.length > 0) {
@@ -639,7 +620,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonSaveWorkout = document.getElementById("button-sauvegarder")
     if (buttonSaveWorkout) {buttonSaveWorkout.addEventListener("click", saveWorkout)}
 
-
     cacherInput("") // pour cacher tout les champs de datas spécifique
-    VerificationParam()
+    checkParamInUrl()
 })

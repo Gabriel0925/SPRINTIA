@@ -1215,6 +1215,8 @@ section.container-block{
     gap: var(--SPACE_L);
     margin-top: var(--SPACE_L);
 }
+section.container-block#record-velo{display: none;}
+section.container-block#record-natation{display: none;}
 section.container-block.profil{
     margin: var(--SPACE_M) 0;
 }

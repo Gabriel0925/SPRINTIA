@@ -55,7 +55,6 @@ async function uploadFileTP(event) {
             let indexDistanceWorkout = enteteFile.indexOf("DistanceInMeters")
 
             let nbWorkoutImporter = 0 // compteur pour compter le nombre d'entraînement importé
-            let profilDB = await db.profil.get(1) // pour des calculs de transpiration,... par la suite
             for (const elt of dataHistoriqueEntrainement) {
                 // recup des datas
                 let sportWorkout = elt?.[indexSportWorkout] ?? undefined
@@ -126,33 +125,9 @@ async function uploadFileTP(event) {
                     let chargeEntrainementWorkout = Math.floor(coefRpe[rpeWorkout]*dureeWorkout)
                     if (chargeEntrainementWorkout < 1) {chargeEntrainementWorkout = 1} // petite sécurité
 
-                    // Calcul de la transpiration
-                    let transpirationEstimee = 0
-                    let hydratationEstimee = 0
-
-                    if (profilDB != undefined) {
-                        let poidsUser = Number(profilDB.poids)
-                        let dureeHeure = dureeWorkout/60 // Conversion de la durée en heure
-                        let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
-
-                        // Attribution de la valeur du RPE
-                        if (rpeWorkout <= 3) {
-                            coefficientRpe = coefficientRpe[0]
-                        } else if (rpeWorkout <= 6) {
-                            coefficientRpe = coefficientRpe[1]
-                        } else if (rpeWorkout <= 8) {
-                            coefficientRpe = coefficientRpe[2]
-                        } else {
-                            coefficientRpe = coefficientRpe[3]
-                        }
-
-                        // Calcul
-                        transpirationEstimee = Math.round((dureeHeure*coefficientRpe*(poidsUser/70))*1000)
-                        hydratationEstimee = Math.round(transpirationEstimee*1.2)
-                    } else {
-                        transpirationEstimee = undefined
-                        hydratationEstimee = undefined
-                    }
+                    // calcule des données spécifiques aux users qui ont config leurs profil
+                    // la fonction est dispo dans assets/base.js/data-spe-profil
+                    const dicoDataSpeProfil = await dataProfil(dureeWorkout, rpeWorkout) // {"transpiration": transpiration, "hydratation": hydratation}
 
                     // dico de base
                     let dicoBase = {
@@ -161,12 +136,15 @@ async function uploadFileTP(event) {
                         nom: nomWorkout,
                         duree: dureeWorkout,
                         rpe: rpeWorkout,
+                        
                         fc_moy: fcMoyWorkout,
                         fc_max: fcMaxWorkout,
+
                         distance: distanceWorkout,
-                        transpiration_estimee: transpirationEstimee,
-                        hydratation_estimee:hydratationEstimee,
-                        charge_entrainement: chargeEntrainementWorkout
+
+                        charge_entrainement: chargeEntrainementWorkout,
+                        transpiration_estimee: dicoDataSpeProfil["transpiration"],
+                        hydratation_estimee: dicoDataSpeProfil["hydratation"],
                     }
 
                     // on ajoute les données de sport spécifique

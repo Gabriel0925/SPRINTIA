@@ -1189,7 +1189,7 @@ div.container-data-resume-workout p{
 }
 div.container-data-resume-workout p.duree-workout{
     font-weight: var(--FW_BOLD);
-    color: var(--COLOR_ACCENT);
+    color: var(--COLOR_ACCENT_TEXT);
     border-right: 2px solid var(--COLOR_BACKGROUND_CARD_HOVER);
 }
 div.container-data-resume-workout p.charge-workout{
@@ -1807,7 +1807,7 @@ section.resume-stats-workout div.container-data div.data p.value-data span.skele
 }
 section.resume-stats-workout div.container-data div.data p.value-data#duree{
     font-weight: var(--FW_BOLD);
-    color: var(--COLOR_ACCENT);
+    color: var(--COLOR_ACCENT_TEXT);
 }
 section.resume-stats-workout div.container-data div.data p.value-data small{
     font-size: var(--P_SMALL);

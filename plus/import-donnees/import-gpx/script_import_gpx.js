@@ -166,29 +166,9 @@ async function uploadFileGPX(event) {
             if (workoutFcMoy == 0) {workoutFcMoy=undefined}
             if (workoutFcMax == 0) {workoutFcMax=undefined}
             
-            // Calcul de la transpiration
-            let profilDB = await db.profil.get(1)
-            let transpirationEstimee = 0
-            let hydratationEstimee = 0
-
-            if (profilDB != undefined) {
-                let poidsUser = Number(profilDB.poids)
-                let dureeHeure = workoutTime/60 // Conversion de la durée en heure
-                let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
-
-                // Attribution de la valeur du RPE
-                if (rpeWorkout <= 3) {coefficientRpe = coefficientRpe[0]} 
-                else if (rpeWorkout <= 6) {coefficientRpe = coefficientRpe[1]}
-                else if (rpeWorkout <= 8) {coefficientRpe = coefficientRpe[2]}
-                else {coefficientRpe = coefficientRpe[3]}
-
-                // Calcul
-                transpirationEstimee = Math.round((dureeHeure*coefficientRpe*(poidsUser/70))*1000)
-                hydratationEstimee = Math.round(transpirationEstimee*1.2)
-            } else {
-                transpirationEstimee = undefined
-                hydratationEstimee = undefined
-            }
+            // calcule des données spécifiques aux users qui ont config leurs profil
+            // la fonction est dispo dans assets/base.js/data-spe-profil
+            const dicoDataSpeProfil = await dataProfil(workoutTime, rpeWorkout) // {"transpiration": transpiration, "hydratation": hydratation}
 
             // si la durée ou la date de l'entrainement n'est pas définie ou égale à 0 on enregistre rien
             if (workoutTime == 0 || new Date(workoutDate) == "Invalid Date") {
@@ -217,8 +197,8 @@ async function uploadFileGPX(event) {
                 distance:workoutDistance,
 
                 charge_entrainement: chargeEntrainementWorkout,
-                transpiration_estimee: transpirationEstimee,
-                hydratation_estimee: hydratationEstimee,
+                transpiration_estimee: dicoDataSpeProfil["transpiration"],
+                hydratation_estimee: dicoDataSpeProfil["hydratation"],
 
                 points_gps:pointsGPS
             }

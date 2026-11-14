@@ -45,34 +45,11 @@ async function uploadFileSPRINTIA(event) {
                     button.textContent = "Fichier corrompu"
                     await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 650))
                 } else {
-                    // on regarde si on a la possibilité d'ajouter les datas de hydratation_estimee et transpiration_estimee
-                    let profilDB = await db.profil.get(1)
-                    let transpirationEstimee = undefined
-                    let hydratationEstimee = undefined
-
-                    if (profilDB != undefined) {
-                        let poidsUser = Number(profilDB.poids)
-                        let coefficientRpe = [0.4, 0.8, 1.2, 1.6]
-
-                        // Attribution de la valeur du RPE
-                        if (workoutRpe <= 3) {
-                            coefficientRpe = coefficientRpe[0]
-                        } else if (workoutRpe <= 6) {
-                            coefficientRpe = coefficientRpe[1]
-                        } else if (workoutRpe <= 8) {
-                            coefficientRpe = coefficientRpe[2]
-                        } else {
-                            coefficientRpe = coefficientRpe[3]
-                        }
-
-                        // Calcul
-                        let dureeHeure = workoutTime/60
-                        transpirationEstimee = Math.round((dureeHeure*coefficientRpe*(poidsUser/70))*1000)
-                        hydratationEstimee = Math.round(transpirationEstimee*1.2)
-
-                        dicoDataUser["transpiration_estimee"] = transpirationEstimee 
-                        dicoDataUser["hydratation_estimee"] = hydratationEstimee 
-                    }
+                    // calcule des données spécifiques aux users qui ont config leurs profil
+                    // la fonction est dispo dans assets/base.js/data-spe-profil
+                    const dicoDataSpeProfil = await dataProfil(workoutTime, workoutRpe) // {"transpiration": transpiration, "hydratation": hydratation}
+                    dicoDataUser["transpiration_estimee"] = dicoDataSpeProfil["transpiration"] 
+                    dicoDataUser["hydratation_estimee"] = dicoDataSpeProfil["hydratation"]
 
                     // on recalcule la charge d'entraînement pour éviter aux users de tricher en modifiant le fichier
                     let chargeWorkout = 0

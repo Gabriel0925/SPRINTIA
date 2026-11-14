@@ -27,7 +27,9 @@ async function dataProfil(duree, rpe) {
     const dataProfil = await getProfil()
     
     // si ya pas de données
-    if (dataProfil == undefined) {return}
+    if (dataProfil == undefined) {
+        return {"transpiration": undefined, "hydratation": undefined}
+    }
 
     // data que nous avons besoin pour lancer le calcul de l'hydratation et de la transpiration
     const poidsUser = Number(dataProfil.poids)

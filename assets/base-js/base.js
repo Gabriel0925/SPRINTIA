@@ -650,9 +650,9 @@ function verificationURL() {
     const parametreInURL = window.location.search
     const separation = parametreInURL.split("?")
     const dicoParamUrlMessage = {
-        "workoutimport":"Bien reçu 😋",
-        "levelrunregister": "Impressionnant ⚡",
-        "accountrestore": "Vous revoilà 😇"
+        "workoutimport":"Bien reçu",
+        "levelrunregister": "Impressionnant",
+        "accountrestore": "Vous revoilà"
     }
     
     if (separation.length > 1) {

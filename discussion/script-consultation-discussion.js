@@ -59,7 +59,7 @@ async function init(id) {
         buttonCopy.addEventListener("click",async () => {
             navigator.clipboard.writeText(dataOfThisDiscussion.prompt)
             .then(async() => {
-                logoDynamique("📋 Copié !")
+                logoDynamique("Copié !")
             }).catch(error => {
                 console.log(error)
                 alert("Une erreur s'est produite lors de la copie du prompt dans votre papier presse.")

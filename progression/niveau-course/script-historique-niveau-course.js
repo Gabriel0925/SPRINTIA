@@ -140,9 +140,7 @@ async function remplirTableau() {
                         tableau.style.display = "none"
                         // on fais apparaitre le message comme quoi SPRINTIA n'a pas encore assez de données
                         document.getElementById("aucune-data").style.display = "flex"
-                    } 
-                    
-                    logoDynamique("Supprimé 🗑️")
+                    }
                 }
             })
             btnModifier.addEventListener("click", async () => {

@@ -39,7 +39,7 @@ async function sendEmail(descriptionUser) {
             
             setTimeout(() => {
                 buttonEnvoie.textContent = "Envoyé"
-                logoDynamique("✉️  Merci beaucoup !")
+                logoDynamique("Merci beaucoup !")
             }, 650);
             setTimeout(() => {
                 buttonEnvoie.textContent = "Envoyer"

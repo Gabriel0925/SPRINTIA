@@ -3788,7 +3788,7 @@ div.banner-toggle input[type="checkbox"].toggle:checked:after{
 
 section.container-content-algorithme {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--SPACE_M);
 }
 
@@ -4369,7 +4369,7 @@ div.container-card-prompt div.card-prompt p.date{
     display: flex;
     justify-content: center;
 
-    color: var(--COLOR_ACCENT);
+    color: var(--COLOR_ACCENT_TEXT);
     padding: var(--SPACE_XXS);
     font-size: var(--H3);
     font-weight: var(--FW_BOLD);
@@ -4513,20 +4513,6 @@ div.container-bar-chat textarea{
     height: 50px;
     max-height: 190px;
 }
-@keyframes button_SPRINTIA_Analyse {
-    0% {
-        background-color: var(--COLOR_ANALYSE_START);
-        box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
-    }
-    50% {
-        background-color: var(--COLOR_ANALYSE_END);
-        box-shadow: 0 0 20px var(--COLOR_ANALYSE_END);
-    }
-    100% {
-        background-color: var(--COLOR_ANALYSE_START);
-        box-shadow: 0 0 10px var(--COLOR_ANALYSE_START);
-    }
-}
 div.container-bar-chat i{
     display: flex;
     align-items: center;
@@ -4544,7 +4530,10 @@ div.container-bar-chat i{
     transform: rotate(315deg);
     cursor: pointer;
 
-    animation: button_SPRINTIA_Analyse 4s infinite ease-in-out;
+    /*pr centrer l'icone car elle a plus de point visuel en haut*/
+    padding-top: 11px;
+    padding-right: 12px;
+
     transition: background-color ease-out var(--TIME_TRANSITION_FAST),
                 box-shadow ease-out var(--TIME_TRANSITION)
                 transform ease-out var(--TIME_TRANSITION_FAST);

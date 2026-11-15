@@ -68,9 +68,7 @@ async function uploadFileGPX(event) {
             const workoutDate = objetDate.toISOString().split("T")[0] // 2026-07-03
 
             // recup du sport
-            const workoutSport = dicoNameSport[gpx.tracks[0]?.type?.toLowerCase().trim()] || "Libre" // renvoie running ou cycling
-            console.log(gpx.tracks[0]?.type?.toLowerCase().trim())
-            return
+            const workoutSport = dicoNameSport[gpx.tracks[0]?.type?.toLowerCase().trim()] || "Libre"
 
             // recup de la durée de l'entrainement
             const tracks=gpx.tracks[0]

@@ -489,9 +489,14 @@ async function saveWorkout(button) {
             idWorkout = await db.entrainement.add(workoutData)
         }
 
+        // on check si c'est un record et si c'est le cas alors on save dans la bdd que c'est un record
+        if (idWorkout != undefined) {
+            await checkRecord(workoutData, idWorkout)
+        }
+
         button.textContent = "Sauvegardé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        if (idWorkout != undefined) {window.location.href = `entrainement.html?workout=${idWorkout}`}
+        //if (idWorkout != undefined) {window.location.href = `entrainement.html?workout=${idWorkout}`}
     } catch(error) {
         console.log(error)
         button.textContent = "Une erreur s'est produite"

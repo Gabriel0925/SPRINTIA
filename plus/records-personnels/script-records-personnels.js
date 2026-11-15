@@ -20,7 +20,7 @@ function gererDataOfSport(sport) {
     if (eltASelected) {eltASelected.style.display = "flex"}
 }
 
-function gererSegmentedButton(newElt) {
+async function gererSegmentedButton(newElt) {
     const lastEltSelected = document.querySelector("div.tabs-onglets.selected")
     if (lastEltSelected) {
         lastEltSelected.classList.remove("selected")
@@ -32,15 +32,37 @@ function gererSegmentedButton(newElt) {
     if (dicoSportId[sportNewElt]) {
         gererDataOfSport(sportNewElt) // on met les bonnes distances en fonction du sport select
     }
+
+    // on reformate le sport pour bien chercher dans la bdd
+    if (sportNewElt == "course") {sportNewElt="Course"} else if (sportNewElt == "velo") {sportNewElt = "Vélo"} else {sportNewElt = "Natation"}
+    await affichageRecord(sportNewElt)
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+
+async function affichageRecord(sport) {
+    const recordData = await db.records.where("sport").equals(sport).toArray()
+
+    recordData.forEach(element => {
+        if (element.type_record) {
+            const eltHtml = document.getElementById(element.type_record)
+            if (eltHtml) {
+                eltHtml.textContent = dureeFormatee(element.duree, "null")
+                eltHtml.classList.remove("skeleton")
+            }
+        }
+        console.log(element)
+    });
+}
+
+document.addEventListener("DOMContentLoaded", async() => {
     const tabsOngletCourse = document.getElementById("tabs-onglets-course")
-    if (tabsOngletCourse) {tabsOngletCourse.addEventListener("click", () => {gererSegmentedButton(tabsOngletCourse)})}
+    if (tabsOngletCourse) {tabsOngletCourse.addEventListener("click", async() => {await gererSegmentedButton(tabsOngletCourse)})}
     
     const tabsOngletVelo = document.getElementById("tabs-onglets-velo")
-    if (tabsOngletVelo) {tabsOngletVelo.addEventListener("click", () => {gererSegmentedButton(tabsOngletVelo)})}
+    if (tabsOngletVelo) {tabsOngletVelo.addEventListener("click", async() => {await gererSegmentedButton(tabsOngletVelo)})}
 
     const tabsOngletNatation = document.getElementById("tabs-onglets-natation")
-    if (tabsOngletNatation) {tabsOngletNatation.addEventListener("click", () => {gererSegmentedButton(tabsOngletNatation)})}
+    if (tabsOngletNatation) {tabsOngletNatation.addEventListener("click", async() => {await gererSegmentedButton(tabsOngletNatation)})}
+
+    await affichageRecord("Course")
 })

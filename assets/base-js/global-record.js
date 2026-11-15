@@ -82,7 +82,7 @@ async function checkRecord(workout, idWorkout) {
             // temps estimé pr la distance cible
             let timeForADistance = calculTempsForADistance(allureMoyDecimaleWorkout, elt.distance)
             // on check si c'est un nouveau record
-            isRecord = await compareWithRecord(timeForADistance, workout.sport, elt.typeRecord)
+            let isRecord = await compareWithRecord(timeForADistance, workout.sport, elt.typeRecord)
 
             if (isRecord==true) { // si c'est un nouveau record alors on save
                 await saveRecord(workout, idWorkout, elt.typeRecord)

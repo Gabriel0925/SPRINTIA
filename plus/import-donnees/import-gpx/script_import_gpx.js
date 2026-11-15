@@ -1,14 +1,18 @@
 async function uploadFileGPX(event) {
     const dicoNameSport = { // init dico pr les sports
         // COURSE A PIED
-        "running":"Course", "run":"Course", "course":"Course", 
+        "running":"Course", "run":"Course", "course":"Course", "jogging": "Course",
         "course à pied":"Course", "course a pied":"Course", "trail":"Course", 
         "trail_running":"Course", "treadmill":"Course", // Tapis de course
 
         // VELO
-        "cycling":"Vélo", "biking":"Vélo", "bike":"Vélo",
+        "cycling":"Vélo", "biking":"Vélo", "bike":"Vélo", "touring_bicycle": "Vélo",
         "velo":"Vélo", "vélo":"Vélo", "mountain_biking":"Vélo",
-        "vtt":"Vélo", "vtt_eletrique":"Vélo", "vtt eletrique":"Vélo",
+        "vtt":"Vélo", "vtt_eletrique":"Vélo", "vtt eletrique":"Vélo", 
+        "mtb": "Vélo", // VTT sur Komoot
+        "racebike": "Vélo", // cyclisme sur route sur komoot
+        "mtb_easy": "Vélo", // vélo gravel sur komoot
+        "mtb_advanced":"Vélo", // vtt enduro sur komoot
         "vtt életrique":"Vélo", "vtt_életrique":"Vélo", "indoor_cycling":"Vélo", // home-trainer
         "gravel":"Vélo", "ebike": "Vélo", "e-bike": "Vélo",
         "emountainbike": "Vélo", "e-mountainbike": "Vélo", "vélo électrique": "Vélo",
@@ -17,14 +21,18 @@ async function uploadFileGPX(event) {
 
         // MARCHE
         "walking":"Marche", "walk":"Marche", "marche":"Marche",
+        "nordic_walking":"Marche", // marche nordique sur komoot
 
         // RANDONNEE
         "hiking":"Randonnée", "hike":"Randonnée", "randonnée":"Randonnée", "randonnee":"Randonnée",
+        "mountaineering":"Randonnée", // Alpinisme sur komoot
 
         // SPORT HIVER
+        "skialpin": "Ski", // ski sur komoot
         "skiing": "Ski", "resort_skiing": "Ski", "ski": "Ski", 
         "alpine_skiing": "Ski", "alpineski": "Ski", 
         "nordic_skiing": "Ski de fond", "nordic_ski":" Ski de fond", "xc_skiing":" Ski de fond",
+        "nordic": "Ski de fond", // ski de fond sur komoot
         "cross_country_skiing":" Ski de fond",
         "snowboarding": "Snowboard", "snowboard": "Snowboard",
 
@@ -61,6 +69,8 @@ async function uploadFileGPX(event) {
 
             // recup du sport
             const workoutSport = dicoNameSport[gpx.tracks[0]?.type?.toLowerCase().trim()] || "Libre" // renvoie running ou cycling
+            console.log(gpx.tracks[0]?.type?.toLowerCase().trim())
+            return
 
             // recup de la durée de l'entrainement
             const tracks=gpx.tracks[0]

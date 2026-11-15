@@ -496,7 +496,7 @@ async function saveWorkout(button) {
 
         button.textContent = "Sauvegardé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        //if (idWorkout != undefined) {window.location.href = `entrainement.html?workout=${idWorkout}`}
+        if (idWorkout != undefined) {window.location.href = `entrainement.html?workout=${idWorkout}`}
     } catch(error) {
         console.log(error)
         button.textContent = "Une erreur s'est produite"

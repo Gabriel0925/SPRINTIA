@@ -2,6 +2,7 @@ async function uploadFileGPX(event) {
     const dicoNameSport = { // init dico pr les sports
         // COURSE A PIED
         "running":"Course", "run":"Course", "course":"Course", "jogging": "Course",
+        "trackrunning": "Course", "tracktrailrunning": "Course",
         "course à pied":"Course", "course a pied":"Course", "trail":"Course", 
         "trail_running":"Course", "treadmill":"Course", // Tapis de course
 
@@ -13,6 +14,10 @@ async function uploadFileGPX(event) {
         "racebike": "Vélo", // cyclisme sur route sur komoot
         "mtb_easy": "Vélo", // vélo gravel sur komoot
         "mtb_advanced":"Vélo", // vtt enduro sur komoot
+        "trackcycling": "Vélo", // balade à vélo sur outdooractive
+        "trackmountainbiking": "Vélo", // VTT sur outdooractive
+        "trackracingbike": "Vélo", // vélo de route sur outdooractive
+        "trackgravelbiketour": "Vélo", // gravel sur outdooractive
         "vtt életrique":"Vélo", "vtt_életrique":"Vélo", "indoor_cycling":"Vélo", // home-trainer
         "gravel":"Vélo", "ebike": "Vélo", "e-bike": "Vélo",
         "emountainbike": "Vélo", "e-mountainbike": "Vélo", "vélo électrique": "Vélo",
@@ -22,17 +27,26 @@ async function uploadFileGPX(event) {
         // MARCHE
         "walking":"Marche", "walk":"Marche", "marche":"Marche",
         "nordic_walking":"Marche", // marche nordique sur komoot
+        "trackcitytrail": "Marche", // balade urbaine sur outdooractive
 
         // RANDONNEE
         "hiking":"Randonnée", "hike":"Randonnée", "randonnée":"Randonnée", "randonnee":"Randonnée",
         "mountaineering":"Randonnée", // Alpinisme sur komoot
+        "trackhikingtourtrail": "Randonnée", // Randonnée sur outdooractive
+        "tracklongdistancehikingtrail": "Randonnée", // Grande randonnée et trekking sur outdooractive
+        "trackpilgrimtrack": "Randonnée", // chemins de pèlerinage sur outdooractive
+        "trackmountaineering": "Randonnée", // randonnée en montagne sur outdooractive
+        "trackalpinetour": "Randonnée", // alpinisme sur outdooractive
+        "trackwinterhiking": "Randonnée", // randonnée sur la neige sur outdooractive
 
         // SPORT HIVER
         "skialpin": "Ski", // ski sur komoot
-        "skiing": "Ski", "resort_skiing": "Ski", "ski": "Ski", 
+        "skiing": "Ski", "resort_skiing": "Ski", "ski": "Ski", "trackskicircuit": "Ski",
         "alpine_skiing": "Ski", "alpineski": "Ski", 
+        "trackskifreeride": "Ski", // Ski hors piste sur outdooractive
         "nordic_skiing": "Ski de fond", "nordic_ski":" Ski de fond", "xc_skiing":" Ski de fond",
         "nordic": "Ski de fond", // ski de fond sur komoot
+        "trackskitrailcrosscountry": "Ski de fond", // ski de fond sur outdooractive
         "cross_country_skiing":" Ski de fond",
         "snowboarding": "Snowboard", "snowboard": "Snowboard",
 
@@ -41,11 +55,13 @@ async function uploadFileGPX(event) {
         "open_water_swimming":"Natation", "pool_swimming":"Natation", 
         "kayaking":"Kayak", "aviron": "Aviron", "rowing": "Aviron",
         "paddle":"Paddle", "stand_up_paddling":"Paddle", "standuppaddling":"Paddle",
-        "paddling":"Paddle",
+        "paddling":"Paddle", "tracksuptour": "Paddle",
+        "trackkayak":"Kayak", // kayak sur outdooractive
 
         // Escalade en montagne
         "climbing": "Escalade", "rock_climbing": "Escalade", "boulder": "Escalade",
-        "bouldering": "Escalade", "escalade": "Escalade",
+        "bouldering": "Escalade", "escalade": "Escalade", "trackalpineclimbing": "Escalade",
+        "trackiceclimbing": "Escalade",// escalade sur glace sur outdooractive
 
         "other": "Libre"
     }
@@ -69,6 +85,7 @@ async function uploadFileGPX(event) {
 
             // recup du sport
             const workoutSport = dicoNameSport[gpx.tracks[0]?.type?.toLowerCase().trim()] || "Libre"
+            //console.log(gpx.tracks[0]?.type?.toLowerCase().trim())
 
             // recup de la durée de l'entrainement
             const tracks=gpx.tracks[0]

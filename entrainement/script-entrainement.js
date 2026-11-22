@@ -575,7 +575,11 @@ async function initialisation() {
                 buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
                     // Demande de confirmation avant
                     if (confirm(`Supprimer l'entraînement "${dataWorkout.nom}" ?`)) {
+                        //si cette entrainement fait partie des records du users on le supprime
+                        await db.records.where("id_entrainement").equals(dataWorkout.id).delete()
+                        
                         await db.entrainement.delete(dataWorkout.id) // supprimer la data de la bdd
+
                         // retour à l'historique d'entraînement
                         window.location.href = `../index.html`       
                     }

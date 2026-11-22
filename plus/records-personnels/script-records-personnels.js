@@ -40,18 +40,37 @@ async function gererSegmentedButton(newElt) {
 
 
 async function affichageRecord(sport) {
-    const recordData = await db.records.where("sport").equals(sport).toArray()
-
-    recordData.forEach(element => {
-        if (element.type_record) {
-            const eltHtml = document.getElementById(element.type_record)
-            if (eltHtml) {
-                eltHtml.textContent = dureeFormatee(element.duree, "null")
-                eltHtml.classList.remove("skeleton")
+    try {
+        const recordData = await db.records.where("sport").equals(sport).toArray()
+        if (recordData.length <=0) {
+            const containerBlockData = document.querySelectorAll("p.container-block-data-data.skeleton")
+            if (containerBlockData.length > 0) {
+                containerBlockData.forEach(element => {
+                    if (element) {
+                        element.textContent = "--"
+                        element.classList.remove("skeleton")
+                    }
+                });
             }
+
+        } else {
+            recordData.forEach(element => {
+                if (element.type_record) {
+                    const eltHtml = document.getElementById(element.type_record)
+                    if (eltHtml) {
+                        eltHtml.textContent = dureeFormatee(element.duree, "null")
+                        eltHtml.classList.remove("skeleton")
+                    }
+                }
+            });
+
         }
-        console.log(element)
-    });
+
+    } catch(error) {
+        console.log(error)
+        alert("Une erreur s'est produite lors la requête à la base de donnée.")
+        return
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async() => {

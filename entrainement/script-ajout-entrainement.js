@@ -220,7 +220,7 @@ function recupDataBasique() {
     // Vérification des champs de base
     if (!dateWorkout || dureeWorkout == "" || nomWorkout == "") {
         alert("Les champs avec '*' sont obligatoire, vous devez les remplir pour pouvoir sauvegarder votre entraînement.")
-        return
+        return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
     }
 
     // Prépa date pour les comparer ensuite
@@ -228,43 +228,43 @@ function recupDataBasique() {
     const dateActuelle = new Date()
     if (dateUserFormatee > dateActuelle) { // Comparaison de 2 dates
         alert("La date ne peut pas être dans le future.")
-        return
+        return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
     }
 
     dureeWorkout = conversionMinutes(dureeWorkout)
     // la fonction conversionMinutes met des alertes et renvoies null et donc pour que la fonction s'arrete ici on met la condition ci dessous
-    if (dureeWorkout == null) {return}
+    if (dureeWorkout == null) {return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]}
     if (dureeWorkout <= 0) {
         alert("Valeur non valide, la durée doit être un nombre supérieur à 0.")
-        return
+        return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
     }
     if (dureeWorkout >= 1440) {
         alert("La durée de votre entraînement doit être inférieur à 24h.")
-        return
+        return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
     }
 
     // si pas de datas alors on met sur undefined
     if (isNaN(fcMoy)) {fcMoy = undefined} else {
         if (fcMoy >= 220) {
             alert("Votre fréquence cardiaque moyenne doit être inférieur à 220 bpm.")
-            return
+            return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
         } else if (fcMoy <= 50) {
             alert("Votre fréquence cardiaque moyenne doit être supérieur à 50 bpm.")
-            return
+            return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
         }
     }
     if (isNaN(fcMax)) {fcMax = undefined} else {
         if (fcMax >= 220) {
             alert("Votre fréquence cardiaque maximum doit être inférieur à 220 bpm.")
-            return
+            return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
         } else if (fcMax <= 50) {
             alert("Votre fréquence cardiaque maximum doit être supérieur à 50 bpm.")
-            return
+            return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
         }
     }
     if (fcMoy>fcMax) {
         alert("Votre fréquence cardiaque moyenne doit être inférieure à votre fréquence cardiaque maximum.")
-        return
+        return [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
     }
 
     return [sportWorkout, dateWorkout, nomWorkout, dureeWorkout, rpeWorkout, fcMoy, fcMax, noteWorkout]
@@ -425,6 +425,9 @@ function verifyInputSpe(tableauIdChampsSpe, sport) {
 async function saveWorkout(button) {
     // dans la fonction ci-dessous je recupere les inputs et je vérifie si le user les a correctement remplis
     const [sportWorkout, dateWorkout, nomWorkout, dureeWorkout, rpeWorkout, fcMoy, fcMax, noteWorkout] = recupDataBasique()
+    // si le sport et la date et la durée son en undefined ça veut dire qu'une erreur de champs s'est produite et donc
+    // que la fonction "recupDataBasique" a renvoyé [undefined, undefined, undefined,undefined,undefined,undefined,undefined,undefined]
+    if (sportWorkout == undefined && dateWorkout == undefined) {return}
 
     // charge entrainement
     let chargeWorkout = 0
@@ -496,7 +499,7 @@ async function saveWorkout(button) {
 
         button.textContent = "Sauvegardé"
         await new Promise(transmissionInfoUser => setTimeout(transmissionInfoUser, 500))
-        if (idWorkout != undefined) {window.location.href = `entrainement.html?workout=${idWorkout}`}
+        //if (idWorkout != undefined) {window.location.href = `entrainement.html?workout=${idWorkout}`}
     } catch(error) {
         console.log(error)
         button.textContent = "Une erreur s'est produite"

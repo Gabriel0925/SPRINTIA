@@ -43,22 +43,44 @@ function allureMoyenneDecimal(duree, distance) {
     return duree/distance // attention c'est l'allure décimal, exemple -> 5,62 min/km
 }
 
-async function saveRecord(workout, idWorkout, typeRecord) {
+async function saveRecord(workout, idWorkout, typeRecord, timeForADistance) {
+    const dataRecord = await db.records
+                        .where("sport").equals(workout.sport)
+                        .filter(elt => elt.type_record == typeRecord)
+                        .first()
+    if (dataRecord==undefined) {alert("Une erreur s'est produite lors de l'enregistrement de votre record !")}
+
     if (typeRecord == undefined) {alert("Une erreur s'est produite lors de l'enregistrement de votre record !")}
 
-    console.log({
-        "id_entrainement": idWorkout,
-        "sport": workout.sport,
-        "type_record": typeRecord,
-        "duree": workout.duree
-    })
+    try {
+        // on vérifie si l'entraînement existe belle et bien
+        const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
+        if (dataEntrainement == undefined) {alert("Une erreur s'est produite : l'entraînement n'existe pas !")}
 
-    await db.records.add({
-        "id_entrainement": idWorkout,
-        "sport": workout.sport,
-        "type_record": typeRecord,
-        "duree": workout.duree
-    })
+        let idRecord = dataRecord.id || undefined
+
+        if (idRecord != undefined) {
+            await db.records.put({
+                "id": idRecord,
+                "id_entrainement": idWorkout,
+                "sport": workout.sport,
+                "type_record": typeRecord,
+                "duree": timeForADistance
+            })
+        } else {
+            await db.records.add({
+                "id_entrainement": idWorkout,
+                "sport": workout.sport,
+                "type_record": typeRecord,
+                "duree": timeForADistance
+            })
+        }
+
+    } catch(error) {
+        console.log(error)
+        alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
+    }
+
 }
 
 async function checkRecord(workout, idWorkout) {
@@ -74,9 +96,11 @@ async function checkRecord(workout, idWorkout) {
     if (distanceWorkout<=0 || isNaN(distanceWorkout) ||distanceWorkout == undefined) {return undefined}
 
     const allureMoyDecimaleWorkout = allureMoyenneDecimal(dureeWorkout, distanceWorkout)
+    const dicoSeuilRecord = seuilRecord[workout.sport] ||undefined
 
+    if (dicoSeuilRecord == undefined) {return undefined}
     // on parcourt chaque elt du dico seuilRecord en fonction du sport
-    for (const elt of seuilRecord[workout.sport]) {
+    for (const elt of dicoSeuilRecord) {
         // si la distance de l'entrainement du user est plus grande que elt.distance 
         if (distanceWorkout >= elt.distance) {
             // temps estimé pr la distance cible
@@ -85,7 +109,7 @@ async function checkRecord(workout, idWorkout) {
             let isRecord = await compareWithRecord(timeForADistance, workout.sport, elt.typeRecord)
 
             if (isRecord==true) { // si c'est un nouveau record alors on save
-                await saveRecord(workout, idWorkout, elt.typeRecord)
+                await saveRecord(workout, idWorkout, elt.typeRecord, timeForADistance)
             }
         }
     }

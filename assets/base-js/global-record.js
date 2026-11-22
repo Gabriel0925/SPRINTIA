@@ -22,7 +22,7 @@ const seuilRecord = {
     ]
 }
 
-async function compareWithRecord(timeForADistance, sport, typeRecord) {
+async function compareWithRecord(dureeWorkout, sport, typeRecord) {
     // on recup le record actuelle du user en fonction du sport (ex-> course) et du type de record (ex-> 10km)
     const dataRecord = await db.records
                         .where("sport").equals(sport)
@@ -32,53 +32,51 @@ async function compareWithRecord(timeForADistance, sport, typeRecord) {
     // si ya pas de données de record alors on return true car c'est un nouveau record
     if (dataRecord == undefined) {return true}
 
+    const dureeRecord = dataRecord.duree ||undefined
+    if (dureeRecord== undefined) {return false}
+
     // si c'est un nouveau record, si la durée est plus petite que l'ancien record alors on return true
-    if (timeForADistance < dataRecord.duree) {return true} else {return false}
+    if (dureeWorkout < dureeRecord) {return true} else {return false}
 }
 
-function calculTempsForADistance(allureDecimalMoy, distanceCible) {
-    return allureDecimalMoy*distanceCible
-}
-function allureMoyenneDecimal(duree, distance) {
-    return duree/distance // attention c'est l'allure décimal, exemple -> 5,62 min/km
-}
-
-async function saveRecord(workout, idWorkout, typeRecord, timeForADistance) {
+async function saveRecord(workout, idWorkout, typeRecord) {
     const dataRecord = await db.records
                         .where("sport").equals(workout.sport)
                         .filter(elt => elt.type_record == typeRecord)
                         .first()
-    if (dataRecord==undefined) {alert("Une erreur s'est produite lors de l'enregistrement de votre record !")}
 
-    if (typeRecord == undefined) {alert("Une erreur s'est produite lors de l'enregistrement de votre record !")}
+    if (typeRecord == undefined) {
+        alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
+        return
+    }
 
     try {
         // on vérifie si l'entraînement existe belle et bien
         const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
         if (dataEntrainement == undefined) {alert("Une erreur s'est produite : l'entraînement n'existe pas !")}
 
-        let idRecord = dataRecord.id || undefined
-
-        if (idRecord != undefined) {
-            await db.records.put({
-                "id": idRecord,
-                "id_entrainement": idWorkout,
-                "sport": workout.sport,
-                "type_record": typeRecord,
-                "duree": timeForADistance
-            })
-        } else {
+        if (dataRecord == undefined) {
             await db.records.add({
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,
                 "type_record": typeRecord,
-                "duree": timeForADistance
+                "duree": workout.duree
+            })
+
+        } else {
+            await db.records.put({
+                "id": dataRecord.id,
+                "id_entrainement": idWorkout,
+                "sport": workout.sport,
+                "type_record": typeRecord,
+                "duree": workout.duree
             })
         }
 
     } catch(error) {
         console.log(error)
         alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
+        return 
     }
 
 }
@@ -95,7 +93,6 @@ async function checkRecord(workout, idWorkout) {
     if (dureeWorkout<=0 || isNaN(dureeWorkout) ||dureeWorkout == undefined) {return undefined}
     if (distanceWorkout<=0 || isNaN(distanceWorkout) ||distanceWorkout == undefined) {return undefined}
 
-    const allureMoyDecimaleWorkout = allureMoyenneDecimal(dureeWorkout, distanceWorkout)
     const dicoSeuilRecord = seuilRecord[workout.sport] ||undefined
 
     if (dicoSeuilRecord == undefined) {return undefined}
@@ -103,13 +100,11 @@ async function checkRecord(workout, idWorkout) {
     for (const elt of dicoSeuilRecord) {
         // si la distance de l'entrainement du user est plus grande que elt.distance 
         if (distanceWorkout >= elt.distance) {
-            // temps estimé pr la distance cible
-            let timeForADistance = calculTempsForADistance(allureMoyDecimaleWorkout, elt.distance)
             // on check si c'est un nouveau record
-            let isRecord = await compareWithRecord(timeForADistance, workout.sport, elt.typeRecord)
+            let isRecord = await compareWithRecord(workout.duree, workout.sport, elt.typeRecord)
 
             if (isRecord==true) { // si c'est un nouveau record alors on save
-                await saveRecord(workout, idWorkout, elt.typeRecord, timeForADistance)
+                await saveRecord(workout, idWorkout, elt.typeRecord)
             }
         }
     }

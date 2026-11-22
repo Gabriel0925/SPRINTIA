@@ -130,10 +130,10 @@ async function graphique() {
             }
         });
 
-        timeWorkoutWeek1 = timeWorkoutWeek1["somme"]/timeWorkoutWeek1["nbElement"]  || 0
-        timeWorkoutWeek2 = timeWorkoutWeek2["somme"]/timeWorkoutWeek2["nbElement"]  || 0
-        timeWorkoutWeek3 = timeWorkoutWeek3["somme"]/timeWorkoutWeek3["nbElement"]  || 0
-        timeWorkoutWeek4 = timeWorkoutWeek4["somme"]/timeWorkoutWeek4["nbElement"]  || 0
+        timeWorkoutWeek1 = Math.round(timeWorkoutWeek1["somme"]/timeWorkoutWeek1["nbElement"])  || 0
+        timeWorkoutWeek2 = Math.round(timeWorkoutWeek2["somme"]/timeWorkoutWeek2["nbElement"])  || 0
+        timeWorkoutWeek3 = Math.round(timeWorkoutWeek3["somme"]/timeWorkoutWeek3["nbElement"])  || 0
+        timeWorkoutWeek4 = Math.round(timeWorkoutWeek4["somme"]/timeWorkoutWeek4["nbElement"])  || 0
 
         await genererGraphiqueLine(["S-4", "S-3", "S-2", "S-1"], [timeWorkoutWeek4, timeWorkoutWeek3, timeWorkoutWeek2, timeWorkoutWeek1])
     } else {

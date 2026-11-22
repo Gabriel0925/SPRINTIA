@@ -39,7 +39,21 @@ async function gererSegmentedButton(newElt) {
 }
 
 
+function resetParagraphe() {
+    const paragrapheData = document.querySelectorAll("p.container-block-data-data")
+    if (paragrapheData.length > 0) {
+        paragrapheData.forEach(element => {
+            // si ils n'ont pas la class skeleton on remet tout avec des skeletons avant de charger des new data
+            if (!element.classList.contains("skeleton")) {
+                element.textContent = ""
+                element.classList.add("skeleton")
+            }
+        });
+    }
+}
 async function affichageRecord(sport) {
+    resetParagraphe()
+
     try {
         const recordData = await db.records.where("sport").equals(sport).toArray()
 

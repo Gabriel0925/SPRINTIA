@@ -48,6 +48,19 @@ async function affichageRecord(sport) {
                 containerBlockData.forEach(element => {
                     if (element) {
                         element.textContent = "--"
+
+                        if (element.id == "distance-plus-longue") {
+                            const smallUnit = document.createElement("small")
+                            smallUnit.id = "unit-plus-longue-distance"
+
+                            if (sport == "Natation") {
+                                smallUnit.textContent = "m"
+                            } else {
+                                smallUnit.textContent = "km"
+                            }
+                            element.appendChild(smallUnit)
+                        }
+                            
                         element.classList.remove("skeleton")
                     }
                 });
@@ -78,8 +91,8 @@ async function affichageRecord(sport) {
                             } else {
                                 smallUnit.textContent = "km"
                             }
-
                             eltHtml.appendChild(smallUnit)
+
                         } else {
                             eltHtml.textContent = dureeFormatee(element.duree, "null")
                         }

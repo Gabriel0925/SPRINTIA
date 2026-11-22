@@ -49,7 +49,7 @@ async function affichageRecord(sport) {
                 if (eltHtml) {
                     // on recreer une balise small avec l'unité du sport mais uniquement pour l'elt html avec l'id "distance-plus-longue"
                     if (element.type_record == "distance-plus-longue") {
-                        eltHtml.textContent = element.distance
+                        eltHtml.textContent = toString(element.distance).replace(".", ",")
 
                         const smallUnit = document.createElement("small")
                         smallUnit.id = "unit-plus-longue-distance"

@@ -42,65 +42,57 @@ async function gererSegmentedButton(newElt) {
 async function affichageRecord(sport) {
     try {
         const recordData = await db.records.where("sport").equals(sport).toArray()
-        if (recordData.length <=0) {
-            const containerBlockData = document.querySelectorAll("p.container-block-data-data.skeleton")
-            if (containerBlockData.length > 0) {
-                containerBlockData.forEach(element => {
-                    if (element) {
-                        element.textContent = "--"
 
-                        if (element.id == "distance-plus-longue") {
-                            const smallUnit = document.createElement("small")
-                            smallUnit.id = "unit-plus-longue-distance"
+        recordData.forEach(element => {
+            if (element.type_record) {
+                const eltHtml = document.getElementById(element.type_record)
+                if (eltHtml) {
+                    // on recreer une balise small avec l'unité du sport mais uniquement pour l'elt html avec l'id "distance-plus-longue"
+                    if (element.type_record == "distance-plus-longue") {
+                        eltHtml.textContent = element.distance
 
-                            if (sport == "Natation") {
-                                smallUnit.textContent = "m"
-                            } else {
-                                smallUnit.textContent = "km"
-                            }
-                            element.appendChild(smallUnit)
+                        const smallUnit = document.createElement("small")
+                        smallUnit.id = "unit-plus-longue-distance"
+
+                        if (sport == "Natation") {
+                            smallUnit.textContent = "m"
+                        } else {
+                            smallUnit.textContent = "km"
                         }
-                            
-                        element.classList.remove("skeleton")
-                    }
-                });
-            }
+                        eltHtml.appendChild(smallUnit)
 
-            const smallUnitElt = document.getElementById("unit-plus-longue-distance")
-            if (smallUnitElt) {
-                if (sport == "Natation") {
-                    smallUnitElt.textContent = "m"
-                } else {
-                    smallUnitElt.textContent = "km"
+                    } else {
+                        eltHtml.textContent = dureeFormatee(element.duree, "null")
+                    }
+
+                    eltHtml.classList.remove("skeleton")
                 }
             }
+        });
 
-        } else {
-            recordData.forEach(element => {
-                if (element.type_record) {
-                    const eltHtml = document.getElementById(element.type_record)
-                    if (eltHtml) {
+        // si il reste des P avec des skeleton on ne met rien dans leurs champs
+        const containerBlockData = document.querySelectorAll("p.container-block-data-data.skeleton")
+        if (containerBlockData.length > 0) {
+            containerBlockData.forEach(element => {
+                if (element) {
+                    element.textContent = "--"
+                            
+                    // on recreer une balise small avec l'unité du sport mais uniquement pour l'elt html avec l'id "distance-plus-longue"
+                    if (element.id == "distance-plus-longue") {
+                        const smallUnit = document.createElement("small")
+                        smallUnit.id = "unit-plus-longue-distance"
 
-                        if (element.type_record == "distance-plus-longue") {
-                            eltHtml.textContent = element.distance
-                            const smallUnit = document.createElement("small")
-                            smallUnit.id = "unit-plus-longue-distance"
-
-                            if (sport == "Natation") {
-                                smallUnit.textContent = "m"
-                            } else {
-                                smallUnit.textContent = "km"
-                            }
-                            eltHtml.appendChild(smallUnit)
-
+                        if (sport == "Natation") {
+                            smallUnit.textContent = "m"
                         } else {
-                            eltHtml.textContent = dureeFormatee(element.duree, "null")
+                            smallUnit.textContent = "km"
                         }
-                        eltHtml.classList.remove("skeleton")
+                        element.appendChild(smallUnit)
                     }
+                            
+                    element.classList.remove("skeleton")
                 }
             });
-
         }
 
     } catch(error) {

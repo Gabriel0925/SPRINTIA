@@ -22,6 +22,51 @@ const seuilRecord = {
     ]
 }
 
+async function recordDistancePluslongue(workout, idWorkout) {
+    const tableauSportCompatible = ["Course", "Vélo", "Natation"]
+    const sportWorkout = tableauSportCompatible.includes(workout.sport) ||undefined
+    if (sportWorkout == undefined) {return}
+
+    const dataRecordDistance = await db.records
+                                    .where("sport").equals(workout.sport)
+                                    .filter(elt => elt.type_record == "distance-plus-longue")
+                                    .first()
+
+    if (dataRecordDistance==undefined || Number(workout.distance) > Number(dataRecordDistance.distance)) {
+        try {
+            // on vérifie si l'entraînement existe belle et bien
+            const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
+            if (dataEntrainement == undefined) {
+                alert("Une erreur s'est produite : l'entraînement n'existe pas !")
+                return
+            }
+
+            if (dataRecordDistance == undefined) {
+                await db.records.add({
+                    "id_entrainement": idWorkout,
+                    "sport": workout.sport,
+                    "type_record": "distance-plus-longue",
+                    "distance": workout.distance
+                })
+
+            } else {
+                await db.records.put({
+                    "id": dataRecordDistance.id,
+                    "id_entrainement": idWorkout,
+                    "sport": workout.sport,
+                    "type_record": "distance-plus-longue",
+                    "distance": workout.distance
+                })
+            }
+
+        } catch(error) {
+            console.log(error)
+            alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
+            return 
+        }
+    }
+}
+
 async function compareWithRecord(dureeWorkout, sport, typeRecord) {
     // on recup le record actuelle du user en fonction du sport (ex-> course) et du type de record (ex-> 10km)
     const dataRecord = await db.records
@@ -53,7 +98,10 @@ async function saveRecord(workout, idWorkout, typeRecord) {
     try {
         // on vérifie si l'entraînement existe belle et bien
         const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
-        if (dataEntrainement == undefined) {alert("Une erreur s'est produite : l'entraînement n'existe pas !")}
+        if (dataEntrainement == undefined) {
+            alert("Une erreur s'est produite : l'entraînement n'existe pas !")
+            return
+        }
 
         if (dataRecord == undefined) {
             await db.records.add({
@@ -108,4 +156,6 @@ async function checkRecord(workout, idWorkout) {
             }
         }
     }
+
+    await recordDistancePluslongue(workout ,idWorkout)
 }

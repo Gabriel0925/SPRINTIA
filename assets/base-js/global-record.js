@@ -32,38 +32,53 @@ async function recordDistancePluslongue(workout, idWorkout) {
                                     .filter(elt => elt.type_record == "distance-plus-longue")
                                     .first()
 
-    if (dataRecordDistance==undefined || Number(workout.distance) > Number(dataRecordDistance.distance)) {
-        try {
-            // on vérifie si l'entraînement existe belle et bien
-            const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
-            if (dataEntrainement == undefined) {
-                alert("Une erreur s'est produite : l'entraînement n'existe pas !")
-                return
-            }
-
-            if (dataRecordDistance == undefined) {
-                await db.records.add({
-                    "id_entrainement": idWorkout,
-                    "sport": workout.sport,
-                    "type_record": "distance-plus-longue",
-                    "distance": workout.distance
-                })
-
-            } else {
-                await db.records.put({
-                    "id": dataRecordDistance.id,
-                    "id_entrainement": idWorkout,
-                    "sport": workout.sport,
-                    "type_record": "distance-plus-longue",
-                    "distance": workout.distance
-                })
-            }
-
-        } catch(error) {
-            console.log(error)
-            alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
-            return 
+    try {
+        // on vérifie si l'entraînement existe belle et bien
+        const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
+        if (dataEntrainement == undefined) {
+            alert("Une erreur s'est produite : l'entraînement n'existe pas !")
+            return
         }
+
+        // en gros, si le user a un record mais qu'il modifie son activité on corrige la distance
+        // imaginons qu'il avait saisie 50km il quil modifie cette entrainement pour le passer à 30km
+        if (dataRecordDistance.id_entrainement == idWorkout) {
+            await db.records.put({
+                "id": dataRecordDistance.id,
+                "id_entrainement": idWorkout,
+                "sport": workout.sport,
+                "type_record": "distance-plus-longue",
+                "distance": workout.distance
+            })
+
+        } else {            
+            // est-ce que le user a battu son record de plus longue distance? si oui on le save
+            if (dataRecordDistance==undefined || Number(workout.distance) > Number(dataRecordDistance.distance)) {
+                if (dataRecordDistance == undefined) {
+                    await db.records.add({
+                        "id_entrainement": idWorkout,
+                        "sport": workout.sport,
+                        "type_record": "distance-plus-longue",
+                        "distance": workout.distance
+                    })
+
+                } else {
+                    await db.records.put({
+                        "id": dataRecordDistance.id,
+                        "id_entrainement": idWorkout,
+                        "sport": workout.sport,
+                        "type_record": "distance-plus-longue",
+                        "distance": workout.distance
+                    })
+                }
+
+            }
+        }
+
+    } catch(error) {
+        console.log(error)
+        alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
+        return 
     }
 }
 

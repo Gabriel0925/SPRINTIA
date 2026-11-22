@@ -53,12 +53,36 @@ async function affichageRecord(sport) {
                 });
             }
 
+            const smallUnitElt = document.getElementById("unit-plus-longue-distance")
+            if (smallUnitElt) {
+                if (sport == "Natation") {
+                    smallUnitElt.textContent = "m"
+                } else {
+                    smallUnitElt.textContent = "km"
+                }
+            }
+
         } else {
             recordData.forEach(element => {
                 if (element.type_record) {
                     const eltHtml = document.getElementById(element.type_record)
                     if (eltHtml) {
-                        eltHtml.textContent = dureeFormatee(element.duree, "null")
+
+                        if (element.type_record == "distance-plus-longue") {
+                            eltHtml.textContent = element.distance
+                            const smallUnit = document.createElement("small")
+                            smallUnit.id = "unit-plus-longue-distance"
+
+                            if (sport == "Natation") {
+                                smallUnit.textContent = "m"
+                            } else {
+                                smallUnit.textContent = "km"
+                            }
+
+                            eltHtml.appendChild(smallUnit)
+                        } else {
+                            eltHtml.textContent = dureeFormatee(element.duree, "null")
+                        }
                         eltHtml.classList.remove("skeleton")
                     }
                 }

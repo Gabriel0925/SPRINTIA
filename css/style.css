@@ -620,7 +620,7 @@ section.tab-bars {
 }
 section.tab-bars ul.tab-bars-container-items{
     display: flex;
-    max-width: 525px;
+    max-width: fit-content;
     height: 64px;
     flex-grow: 1;
 
@@ -654,7 +654,6 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     color: var(--COLOR_TEXT_PRIMARY);
     overflow: hidden;
     width: 60px;
-    flex-grow: 1;
     gap: var(--SPACE_XXS);
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -709,11 +708,6 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-ba
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
     font-size: 2rem;
-}
-@media (max-width: 455px) {
-    section.tab-bars ul.tab-bars-container-items {
-        gap: 0;
-    }
 }
 
 

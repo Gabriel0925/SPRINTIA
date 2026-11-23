@@ -542,12 +542,11 @@ section.header ul.header-container-items li.header-items{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--SPACE_XS);
     background-color: transparent;
     color: var(--COLOR_TEXT_PRIMARY);
     font-size: var(--P);
     border-radius: var(--BORDER_NORMAL);
-    width: 150px;
+    width: 130px;
     padding: var(--SPACE_S);
     cursor: pointer;
     -webkit-user-select: none;
@@ -556,9 +555,6 @@ section.header ul.header-container-items li.header-items{
     transition: background-color ease-out var(--TIME_TRANSITION),
                 color ease-out var(--TIME_TRANSITION),
                 transform ease-out var(--TIME_TRANSITION);
-}
-section.header ul.header-container-items li.header-items i{
-    font-size: var(--H3);
 }
 section.header ul.header-container-items li.header-items.selected{
     background: var(--COLOR_GLASSMORPHISM_HOVER);
@@ -582,6 +578,12 @@ section.header ul.header-container-items:has(li.header-items:not(.selected):acti
 section.header ul.header-container-items li.header-items:active{
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
     transform: scale(1.015);
+}
+@media (max-width: 1070px) {
+    section.header ul.header-container-items li.header-items{
+        min-width: 90px;
+        width: auto;
+    }
 }
 section.header ul.header-container-items li.header-items.point-bleu-header{
     position: relative;
@@ -653,8 +655,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
     border-radius: var(--BORDER_BIG);
     color: var(--COLOR_TEXT_PRIMARY);
     overflow: hidden;
-    width: 60px;
-    gap: var(--SPACE_XXS);
+    width: 75px;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -707,7 +708,15 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-ba
     border-radius: 50%;
 }
 section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
-    font-size: 2rem;
+    font-size: 2.15rem;
+}
+@media (max-width: 600px) {
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
+        width: 60px;
+    }
+    section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
+        font-size: 2rem;
+    }
 }
 
 
@@ -756,7 +765,7 @@ div.container-logo-dynamique div.logo-dynamique {
 div.container-logo-dynamique div.logo-dynamique:active {
     background: var(--COLOR_GLASSMORPHISM_ACTIVE);
 }
-@media (max-width: 1140px) {
+@media (max-width: 970px) {
     div.container-logo-dynamique {
         justify-content: center;
     }
@@ -1567,7 +1576,7 @@ div.toolbar {
     align-items: center;
     margin-bottom: var(--SPACE_M);
 }
-@media (max-width: 1140px) {
+@media (max-width: 970px) {
     div.toolbar {
         position: sticky;
         top: 0;
@@ -5188,7 +5197,7 @@ section.container-historique-line button.button-card-open#modifier:active {backg
 
 
 /* --- Gérer l'affichage du header/tab-bars en fonction de l'appareil --- */
-@media (max-width: 1140px) {
+@media (max-width: 970px) {
     section.header {
         display: none;
     }

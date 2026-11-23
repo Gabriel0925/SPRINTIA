@@ -49,7 +49,7 @@ function selectedBFCache(ongletName) {
     // idem mais pour le header
     const headerItems = document.querySelectorAll(".header-items")
     for (const elt of headerItems) {
-        if (elt.textContent.includes(ongletName)) {elt.classList.add("selected")}
+        if (elt.getAttribute("data-onglet") == ongletName) {elt.classList.add("selected")}
     }
 }
 document.addEventListener("DOMContentLoaded", () =>{

@@ -6,7 +6,7 @@
     "lang": "fr",
 
     "start_url": "/",
-    "scope": "/",
+    "scope": "/", 
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#000000",

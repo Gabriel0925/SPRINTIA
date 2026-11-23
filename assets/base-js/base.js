@@ -43,7 +43,7 @@ function selectedBFCache(ongletName) {
         //        
         //        Entraînement
         //    "
-        if (elt.textContent.includes(ongletName)) {elt.classList.add("selected")}
+        if (elt.getAttribute("data-onglet") == ongletName) {elt.classList.add("selected")}
     }
 
     // idem mais pour le header

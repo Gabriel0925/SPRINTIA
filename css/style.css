@@ -700,8 +700,8 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items.point-bleu-tab-ba
     right: 0;
     width: 6px;
     height: 6px;
-    margin-top: var(--SPACE_XS);
-    margin-right: 1.25rem;
+    margin-top: var(--SPACE_S);
+    margin-right: 0.9rem;
 
     background-color: var(--COLOR_ACCENT);
     border-radius: 50%;

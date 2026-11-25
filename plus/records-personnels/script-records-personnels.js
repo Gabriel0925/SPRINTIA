@@ -65,9 +65,9 @@ async function affichageRecord(sport) {
                     if (element.type_record == "distance-plus-longue") {
                         // si c'est en natation on convertit la distance des km ->m
                         if (sport == "Natation") {
-                            eltHtml.textContent = Number(element.distance*1000).toString().replace(".", ",")
+                            eltHtml.textContent = Number(element.distance*1000).toFixed(2).toString().replace(".", ",")
                         } else {
-                            eltHtml.textContent = element.distance.toString().replace(".", ",")
+                            eltHtml.textContent = element.distance.toFixed(2).toString().replace(".", ",")
                         }
 
                         const smallUnit = document.createElement("small")

@@ -137,7 +137,45 @@ async function saveRecord(workout, idWorkout, typeRecord) {
         alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
         return 
     }
+}
 
+async function verifyEditWorkout(workout, idWorkout, typeRecord) {
+    if (typeRecord == undefined) {
+        alert("Une erreur s'est produite !")
+        return
+    }
+
+    try {
+        // on vérifie si l'entraînement existe belle et bien
+        const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
+        if (dataEntrainement == undefined) {
+            alert("Une erreur s'est produite !")
+            return
+        }
+
+        const entrainementDansRecord = await db.records.where({
+                                                "id_entrainement":idWorkout,
+                                                "type_record": typeRecord
+                                            }).toArray()
+
+        // si le user modifie un de ses anciens records alors on met à jour la durée
+        if (entrainementDansRecord.length > 0) {
+            // !!! ATTENTION "entrainementDansRecord" c'est un tableau
+            await db.records.put({
+                "id": entrainementDansRecord[0].id,
+                "id_entrainement": idWorkout,
+                "sport": workout.sport,
+                "type_record": typeRecord,
+                "duree": workout.duree
+            })
+
+        }
+
+    } catch(error) {
+        console.log(error)
+        alert("Une erreur s'est produite !")
+        return 
+    }
 }
 
 async function checkRecord(workout, idWorkout) {
@@ -164,6 +202,8 @@ async function checkRecord(workout, idWorkout) {
 
             if (isRecord==true) { // si c'est un nouveau record alors on save
                 await saveRecord(workout, idWorkout, elt.typeRecord)
+            } else {
+                await verifyEditWorkout(workout, idWorkout, elt.typeRecord)
             }
         }
     }

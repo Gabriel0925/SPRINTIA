@@ -669,7 +669,7 @@ section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
 }
 @media (max-width: 600px) {
     section.tab-bars ul.tab-bars-container-items li.tab-bars-items{
-        width: 65px;
+        width: 62px;
     }
     section.tab-bars ul.tab-bars-container-items li.tab-bars-items i{
         font-size: 2rem;

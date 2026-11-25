@@ -14,11 +14,12 @@ const seuilRecord = {
         {"distance": 10, "type": "10km", "typeRecord": "10-kilometres-velo"}
     ],
     "Natation": [
-        {"distance": 100, "type": "100m", "typeRecord": "100-metres-natation"},
-        {"distance": 400, "type": "400m", "typeRecord": "400-metres-natation"},
-        {"distance": 1000, "type": "1000m", "typeRecord": "1000-metres-natation"},
-        {"distance": 1500, "type": "1500m", "typeRecord": "1500-metres-natation"},
-        {"distance": 3800, "type": "3800m", "typeRecord": "3800-metres-natation"}
+        // la distance de l'entraînement est en km donc on met en km au lieu de metres
+        {"distance": 0.100, "type": "100m", "typeRecord": "100-metres-natation"},
+        {"distance": 0.400, "type": "400m", "typeRecord": "400-metres-natation"},
+        {"distance": 1.000, "type": "1000m", "typeRecord": "1000-metres-natation"},
+        {"distance": 1.500, "type": "1500m", "typeRecord": "1500-metres-natation"},
+        {"distance": 3.800, "type": "3800m", "typeRecord": "3800-metres-natation"}
     ]
 }
 

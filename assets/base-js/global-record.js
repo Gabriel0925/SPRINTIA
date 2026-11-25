@@ -27,12 +27,12 @@ async function recordDistancePluslongue(workout, idWorkout) {
     const sportWorkout = tableauSportCompatible.includes(workout.sport) ||undefined
     if (sportWorkout == undefined) {return}
 
-    const dataRecordDistance = await db.records
-                                    .where("sport").equals(workout.sport)
-                                    .filter(elt => elt.type_record == "distance-plus-longue")
-                                    .first()
-
     try {
+        const dataRecordDistance = await db.records
+                                        .where("sport").equals(workout.sport)
+                                        .filter(elt => elt.type_record == "distance-plus-longue")
+                                        .first()
+
         // on vérifie si l'entraînement existe belle et bien
         const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
         if (dataEntrainement == undefined) {
@@ -66,7 +66,7 @@ async function compareWithRecord(dureeWorkout, sport, typeRecord) {
     const dataRecord = await db.records
                         .where("sport").equals(sport)
                         .filter(elt => elt.type_record == typeRecord)
-                        .first()
+                        .last()
 
     // si ya pas de données de record alors on return true car c'est un nouveau record
     if (dataRecord == undefined) {return true}
@@ -127,10 +127,10 @@ async function checkRecord(workout, idWorkout) {
         // si la distance de l'entrainement du user est plus grande que elt.distance 
         if (distanceWorkout >= elt.distance) {
             // on check si c'est un nouveau record
-            let isRecord = await compareWithRecord(workout.duree, workout.sport, elt.typeRecord || undefined)
+            let isRecord = await compareWithRecord(workout.duree, workout.sport, elt.typeRecord)
 
             if (isRecord==true) { // si c'est un nouveau record alors on save
-                await saveRecord(workout, idWorkout, elt.typeRecord || undefined)
+                await saveRecord(workout, idWorkout, elt.typeRecord)
             }
         }
     }

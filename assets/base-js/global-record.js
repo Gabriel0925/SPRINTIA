@@ -40,39 +40,13 @@ async function recordDistancePluslongue(workout, idWorkout) {
             return
         }
 
-        // en gros, si le user a un record mais qu'il modifie son activité on corrige la distance
-        // imaginons qu'il avait saisie 50km il quil modifie cette entrainement pour le passer à 30km
-        if (dataEntrainement && dataRecordDistance && dataRecordDistance.id_entrainement == idWorkout) {
-            await db.records.put({
-                "id": dataRecordDistance.id,
+        if (dataRecordDistance != undefined && Number(workout.distance) > Number(dataRecordDistance.distance)) {
+            await db.records.add({
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,
                 "type_record": "distance-plus-longue",
                 "distance": workout.distance
             })
-
-        } else {            
-            // est-ce que le user a battu son record de plus longue distance? si oui on le save
-            if (dataRecordDistance==undefined || Number(workout.distance) > Number(dataRecordDistance.distance)) {
-                if (dataRecordDistance == undefined) {
-                    await db.records.add({
-                        "id_entrainement": idWorkout,
-                        "sport": workout.sport,
-                        "type_record": "distance-plus-longue",
-                        "distance": workout.distance
-                    })
-
-                } else {
-                    await db.records.put({
-                        "id": dataRecordDistance.id,
-                        "id_entrainement": idWorkout,
-                        "sport": workout.sport,
-                        "type_record": "distance-plus-longue",
-                        "distance": workout.distance
-                    })
-                }
-
-            }
         }
 
     } catch(error) {
@@ -83,6 +57,11 @@ async function recordDistancePluslongue(workout, idWorkout) {
 }
 
 async function compareWithRecord(dureeWorkout, sport, typeRecord) {
+    if (typeRecord == undefined) {
+        alert("Une erreur s'est produite !")
+        return
+    }
+
     // on recup le record actuelle du user en fonction du sport (ex-> course) et du type de record (ex-> 10km)
     const dataRecord = await db.records
                         .where("sport").equals(sport)
@@ -100,11 +79,6 @@ async function compareWithRecord(dureeWorkout, sport, typeRecord) {
 }
 
 async function saveRecord(workout, idWorkout, typeRecord) {
-    const dataRecord = await db.records
-                        .where("sport").equals(workout.sport)
-                        .filter(elt => elt.type_record == typeRecord)
-                        .first()
-
     if (typeRecord == undefined) {
         alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
         return
@@ -118,23 +92,12 @@ async function saveRecord(workout, idWorkout, typeRecord) {
             return
         }
 
-        if (dataRecord == undefined) {
-            await db.records.add({
-                "id_entrainement": idWorkout,
-                "sport": workout.sport,
-                "type_record": typeRecord,
-                "duree": workout.duree
-            })
-
-        } else {
-            await db.records.put({
-                "id": dataRecord.id,
-                "id_entrainement": idWorkout,
-                "sport": workout.sport,
-                "type_record": typeRecord,
-                "duree": workout.duree
-            })
-        }
+        await db.records.add({
+            "id_entrainement": idWorkout,
+            "sport": workout.sport,
+            "type_record": typeRecord,
+            "duree": workout.duree
+        })
 
     } catch(error) {
         console.log(error)
@@ -164,10 +127,10 @@ async function checkRecord(workout, idWorkout) {
         // si la distance de l'entrainement du user est plus grande que elt.distance 
         if (distanceWorkout >= elt.distance) {
             // on check si c'est un nouveau record
-            let isRecord = await compareWithRecord(workout.duree, workout.sport, elt.typeRecord)
+            let isRecord = await compareWithRecord(workout.duree, workout.sport, elt.typeRecord || undefined)
 
             if (isRecord==true) { // si c'est un nouveau record alors on save
-                await saveRecord(workout, idWorkout, elt.typeRecord)
+                await saveRecord(workout, idWorkout, elt.typeRecord || undefined)
             }
         }
     }

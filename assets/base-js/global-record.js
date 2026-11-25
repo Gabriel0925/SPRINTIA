@@ -42,7 +42,7 @@ async function recordDistancePluslongue(workout, idWorkout) {
 
         // en gros, si le user a un record mais qu'il modifie son activité on corrige la distance
         // imaginons qu'il avait saisie 50km il quil modifie cette entrainement pour le passer à 30km
-        if (dataRecordDistance.id_entrainement == idWorkout) {
+        if (dataEntrainement && dataRecordDistance && dataRecordDistance.id_entrainement == idWorkout) {
             await db.records.put({
                 "id": dataRecordDistance.id,
                 "id_entrainement": idWorkout,

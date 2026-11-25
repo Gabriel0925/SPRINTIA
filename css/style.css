@@ -1465,7 +1465,7 @@ section.container-widget-progression div.small-widget p.small-widget-data{
     display: flex;
     align-items: center;
     gap: var(--SPACE_XS);
-    margin-top: var(--SPACE_XS);
+    margin-top: var(--SPACE_M);
     font-size: var(--H1);
     font-weight: var(--FW_BOLD_SMALL);
 }

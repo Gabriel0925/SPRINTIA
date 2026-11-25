@@ -52,7 +52,7 @@ async function recordDistancePluslongue(workout, idWorkout) {
     } catch(error) {
         console.log(error)
         alert("Une erreur s'est produite lors de l'enregistrement de votre record !")
-        return 
+        return
     }
 }
 

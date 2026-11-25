@@ -33,6 +33,18 @@ async function recordDistancePluslongue(workout, idWorkout) {
                                         .filter(elt => elt.type_record == "distance-plus-longue")
                                         .first()
 
+        // si ya pas de données de record alors c'est un record
+        if (dataRecordDistance == undefined) {
+            await db.records.add({
+                "id_entrainement": idWorkout,
+                "sport": workout.sport,
+                "type_record": "distance-plus-longue",
+                "distance": workout.distance
+            })
+            
+            return
+        }
+
         // on vérifie si l'entraînement existe belle et bien
         const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
         if (dataEntrainement == undefined) {
@@ -40,7 +52,7 @@ async function recordDistancePluslongue(workout, idWorkout) {
             return
         }
 
-        if (dataRecordDistance != undefined && Number(workout.distance) > Number(dataRecordDistance.distance)) {
+        if (Number(workout.distance) > Number(dataRecordDistance.distance)) {
             await db.records.add({
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,

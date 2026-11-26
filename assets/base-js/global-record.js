@@ -52,18 +52,20 @@ async function recordDistancePluslongue(workout, idWorkout) {
             return
         }
 
-        const entrainementDansRecord = await db.records.where({
-                                                "id_entrainement":idWorkout,
-                                                "sport": workout.sport,
-                                                "type_record": "distance-plus-longue"
-                                            }).toArray()
+        const entrainementDansRecord = await db.records
+                                            .where("id_entrainement").equals(idWorkout)
+                                            .filter(elt => elt.sport == workout.sport && elt.type_record == "distance-plus-longue")
+                                            .toArray()
+
+        const dataWorkout = await db.entrainement.get(dataRecordDistance.id_entrainement)
+        if (dataWorkout== undefined) {return false}
 
         // si l'id de l'entraînement est dans les records alors on modifie la durée
         // en gros, quand l'utilisateur modifie son entrainement (son entrainement est un record) au lieu de ré-enregistrer une nouvelle ligne de record, on écrase l'ancienne durée
         // pour mettre la nouvelle durée de l'entrainement
         if (entrainementDansRecord.length > 0) {
             // !!! ATTENTION "entrainementDansRecord" c'est un tableau
-            if (Number(workout.distance) > Number(dataRecordDistance.distance)) {
+            if (Number(workout.distance) > Number(dataWorkout.distance)) {
                 await db.records.put({
                     "id_entrainement": entrainementDansRecord[0].id,
                     "sport": workout.sport,
@@ -74,7 +76,7 @@ async function recordDistancePluslongue(workout, idWorkout) {
 
         } else {
             // sinon on enregistre le record normalement
-            if (Number(workout.distance) > Number(dataRecordDistance.distance)) {
+            if (Number(workout.distance) > Number(dataWorkout.distance)) {
                 await db.records.add({
                     "id_entrainement": idWorkout,
                     "sport": workout.sport,
@@ -105,7 +107,12 @@ async function compareWithRecord(dureeWorkout, sport, typeRecord) {
     // si ya pas de données de record alors on return true car c'est un nouveau record
     if (dataRecord == undefined) {return true}
 
-    const dureeRecord = dataRecord.duree ||undefined
+    // on recup l'entrainement
+    const dataWorkout = await db.entrainement.get(dataRecord.id_entrainement)
+    if (dataWorkout== undefined) {return false}
+
+    // si il n'y a pas de durée dans l'entrainement on return false
+    const dureeRecord = dataWorkout.duree ||undefined
     if (dureeRecord== undefined) {return false}
 
     // si c'est un nouveau record, si la durée est plus petite que l'ancien record alors on return true
@@ -126,10 +133,10 @@ async function saveRecord(workout, idWorkout, typeRecord) {
             return
         }
 
-        const entrainementDansRecord = await db.records.where({
-                                                "id_entrainement":idWorkout,
-                                                "type_record": typeRecord
-                                            }).toArray()
+        const entrainementDansRecord = await db.records
+                                            .where("id_entrainement").equals(idWorkout)
+                                            .filter(elt => elt.type_record == "distance-plus-longue")
+                                            .toArray()
 
         // si l'id de l'entraînement est dans les records alors on modifie la durée
         // en gros, quand l'utilisateur modifie son entrainement (son entrainement est un record) au lieu de ré-enregistrer une nouvelle ligne de record, on écrase l'ancienne durée
@@ -159,48 +166,10 @@ async function saveRecord(workout, idWorkout, typeRecord) {
     }
 }
 
-async function verifyEditWorkout(workout, idWorkout, typeRecord) {
-    if (typeRecord == undefined) {
-        alert("Une erreur s'est produite !")
-        return
-    }
-
-    try {
-        // on vérifie si l'entraînement existe belle et bien
-        const dataEntrainement = await db.entrainement.get(idWorkout) || undefined
-        if (dataEntrainement == undefined) {
-            alert("Une erreur s'est produite !")
-            return
-        }
-
-        const entrainementDansRecord = await db.records.where({
-                                                "id_entrainement":idWorkout,
-                                                "type_record": typeRecord
-                                            }).toArray()
-
-        // si le user modifie un de ses anciens records alors on met à jour la durée
-        if (entrainementDansRecord.length > 0) {
-            // !!! ATTENTION "entrainementDansRecord" c'est un tableau
-            await db.records.put({
-                "id": entrainementDansRecord[0].id,
-                "id_entrainement": idWorkout,
-                "sport": workout.sport,
-                "type_record": typeRecord
-            })
-
-        }
-
-    } catch(error) {
-        console.log(error)
-        alert("Une erreur s'est produite !")
-        return 
-    }
-}
-
 async function checkRecord(workout, idWorkout) {
     // vérification
     if (workout == undefined) {return undefined}
-    
+
     const dureeWorkout = Number(workout.duree)
     const distanceWorkout = Number(workout.distance)
 
@@ -221,8 +190,6 @@ async function checkRecord(workout, idWorkout) {
 
             if (isRecord==true) { // si c'est un nouveau record alors on save
                 await saveRecord(workout, idWorkout, elt.typeRecord)
-            } else {
-                await verifyEditWorkout(workout, idWorkout, elt.typeRecord)
             }
         }
     }

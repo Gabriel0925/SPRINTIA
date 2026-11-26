@@ -57,37 +57,35 @@ async function affichageRecord(sport) {
     try {
         const recordData = await db.records.where("sport").equals(sport).toArray()
 
-        recordData.forEach(element => {
-            if (element.type_record) {
-                const eltHtml = document.getElementById(element.type_record)
-                if (eltHtml) {
+        for (const elt of recordData) {
+            if (elt.type_record) {
+                const eltHtml = document.getElementById(elt.type_record)
+                const dataWorkout = await db.entrainement.get(elt.id_entrainement)
+
+                if (eltHtml && dataWorkout != undefined) {
                     // on recreer une balise small avec l'unité du sport mais uniquement pour l'elt html avec l'id "distance-plus-longue"
-                    if (element.type_record == "distance-plus-longue") {
+                    if (elt.type_record == "distance-plus-longue") {
                         // si c'est en natation on convertit la distance des km ->m
                         if (sport == "Natation") {
-                            eltHtml.textContent = Number(element.distance*1000).toFixed(2).toString().replace(".", ",")
+                            eltHtml.textContent = Number(dataWorkout.distance*1000).toFixed(2).toString().replace(".", ",")
                         } else {
-                            eltHtml.textContent = element.distance.toFixed(2).toString().replace(".", ",")
+                            eltHtml.textContent = dataWorkout.distance.toFixed(2).toString().replace(".", ",")
                         }
 
                         const smallUnit = document.createElement("small")
                         smallUnit.id = "unit-plus-longue-distance"
 
-                        if (sport == "Natation") {
-                            smallUnit.textContent = "m"
-                        } else {
-                            smallUnit.textContent = "km"
-                        }
+                        if (sport == "Natation") {smallUnit.textContent = "m"} else {smallUnit.textContent = "km"}
                         eltHtml.appendChild(smallUnit)
 
                     } else {
-                        eltHtml.textContent = dureeFormatee(element.duree, "null")
+                        eltHtml.textContent = dureeFormatee(dataWorkout.duree, "null")
                     }
 
                     eltHtml.classList.remove("skeleton")
                 }
             }
-        });
+        }
 
         // si il reste des P avec des skeleton on ne met rien dans leurs champs
         const containerBlockData = document.querySelectorAll("p.container-block-data-data.skeleton")

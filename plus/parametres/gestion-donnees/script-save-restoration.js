@@ -194,11 +194,35 @@ async function nettoyerDatas(conserverDatas) { // conserverDatas vaut soit 30J/9
 
             let nbOperation = 0
             for (const tableElt of db.tables) { // on parcourt chaque table de la bdd et on supprime
-                if (tableElt.name != "JRM_Coach" && tableElt.name != "profil") {
+                if (tableElt.name != "JRM_Coach" && tableElt.name != "profil" && tableElt.name != "entrainement"
+                    && tableElt.name != "records"
+                ) {
                     // .delete() renvoie le nombre d'opération
                     const nbSupprimer = await tableElt.where('date').below(dateMoinsJours).delete()
                     nbOperation+=nbSupprimer
                 }
+            }
+
+            // on parcoure chaque entrainement et on regarde si l'entrainement est un record ou non
+            // si c'est un record alors on suppr le record puis l'entrainement
+            // sinon on suppr direct l'entrainement
+            const dataTableEntrainement = await db.entrainement.where("date").below(dateMoinsJours).toArray()
+            if (dataTableEntrainement != undefined) {
+                for (const elt of dataTableEntrainement) {
+                    const entrainementRecord = await db.records.where("id_entrainement").equals(elt.id).toArray()
+
+                    // si ya un record associer à un entrainement alors on suppri le record
+                    if (entrainementRecord && entrainementRecord.length > 0) {
+                        for (const elt2 of entrainementRecord) {
+                            await db.records.delete(elt2.id)
+                            nbOperation+=1
+                        }
+                    }
+
+                    await db.entrainement.delete(elt.id)
+                    nbOperation+=1
+                }
+
             }
             
             if (nbOperation < 1) {

@@ -9,7 +9,10 @@ const bddPhrases = {
         "Parfois on perd, parfois on gagne et c'est comme ça!",
         "Si tu rêves aussi grand, c'est parce que cette version de toi existe déjà dans le futur.",
         "Personne ne viendra le faire à ta place alors écris ton histoire.",
-        "Dans 6 mois, tu te diras 'Heureusement que j'ai continué!' alors avance."
+        "Dans 6 mois, tu te diras 'Heureusement que j'ai continué!' alors avance.",
+        "Arrête de voir le négatif, un esprit négatif n'ira nul part!",
+        "Même un échec est positif car il t'apprend quelque chose!",
+        "Tu as fait une erreur ? Ça arrive ! Le plus important c'est ce que tu fais après cette erreur."
     ],
     "mental": [
         "Quelques minutes de sport, c'est quoi dans ta vie?",
@@ -20,7 +23,9 @@ const bddPhrases = {
         "Tu as la chance d'avoir un corps qui puisse faire du sport, alors honore-le.",
         "Accepte l'inconfort, c'est le prix à payer pour progresser",
         "Le corps fait ce que l'esprit lui ordonne de faire.",
-        "Quand ton cerveau te dit d'arrêter, continue, pousse encore un peu, tu serais étonné de là où tu peux aller."
+        "Quand ton cerveau te dit d'arrêter, continue, pousse encore un peu, tu serais étonné de là où tu peux aller.",
+        "C'est quand tu es dans le dur que tu vois qui tu es vraiment!",
+        "Tu sais où tu es et tu sais où tu veux aller alors continue de travailler !"
     ],
     "confiance": [
         "La clé de la victoire c'est la patience et la régularité.",

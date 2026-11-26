@@ -118,13 +118,13 @@ async function graphique() {
             if (element.date >= dateMoins7J) {
                 timeWorkoutWeek1["somme"]+=element.fc_repos
                 timeWorkoutWeek1["nbElement"]+=1
-            } else if (element >= dateMoins14J) {
+            } else if (element.date >= dateMoins14J) {
                 timeWorkoutWeek2["somme"]+=element.fc_repos
                 timeWorkoutWeek2["nbElement"]+=1
-            } else if (element >= dateMoins21J) {
+            } else if (element.date >= dateMoins21J) {
                 timeWorkoutWeek3["somme"]+=element.fc_repos
                 timeWorkoutWeek3["nbElement"]+=1
-            } else if (element >= dateMoins28J) {
+            } else if (element.date >= dateMoins28J) {
                 timeWorkoutWeek4["somme"]+=element.fc_repos
                 timeWorkoutWeek4["nbElement"]+=1
             }

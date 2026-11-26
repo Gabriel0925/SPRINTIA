@@ -39,8 +39,7 @@ async function recordDistancePluslongue(workout, idWorkout) {
             await db.records.add({
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,
-                "type_record": "distance-plus-longue",
-                "distance": workout.distance
+                "type_record": "distance-plus-longue"
             })
 
             return
@@ -53,13 +52,35 @@ async function recordDistancePluslongue(workout, idWorkout) {
             return
         }
 
-        if (Number(workout.distance) > Number(dataRecordDistance.distance)) {
-            await db.records.add({
-                "id_entrainement": idWorkout,
-                "sport": workout.sport,
-                "type_record": "distance-plus-longue",
-                "distance": workout.distance
-            })
+        const entrainementDansRecord = await db.records.where({
+                                                "id_entrainement":idWorkout,
+                                                "sport": workout.sport,
+                                                "type_record": "distance-plus-longue"
+                                            }).toArray()
+
+        // si l'id de l'entraînement est dans les records alors on modifie la durée
+        // en gros, quand l'utilisateur modifie son entrainement (son entrainement est un record) au lieu de ré-enregistrer une nouvelle ligne de record, on écrase l'ancienne durée
+        // pour mettre la nouvelle durée de l'entrainement
+        if (entrainementDansRecord.length > 0) {
+            // !!! ATTENTION "entrainementDansRecord" c'est un tableau
+            if (Number(workout.distance) > Number(dataRecordDistance.distance)) {
+                await db.records.put({
+                    "id_entrainement": entrainementDansRecord[0].id,
+                    "sport": workout.sport,
+                    "type_record": "distance-plus-longue",
+                    "distance": workout.distance
+                })
+            }
+
+        } else {
+            // sinon on enregistre le record normalement
+            if (Number(workout.distance) > Number(dataRecordDistance.distance)) {
+                await db.records.add({
+                    "id_entrainement": idWorkout,
+                    "sport": workout.sport,
+                    "type_record": "distance-plus-longue",
+                })
+            }
         }
 
     } catch(error) {
@@ -119,8 +140,7 @@ async function saveRecord(workout, idWorkout, typeRecord) {
                 "id": entrainementDansRecord[0].id,
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,
-                "type_record": typeRecord,
-                "duree": workout.duree
+                "type_record": typeRecord
             })
 
         } else {
@@ -128,8 +148,7 @@ async function saveRecord(workout, idWorkout, typeRecord) {
             await db.records.add({
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,
-                "type_record": typeRecord,
-                "duree": workout.duree
+                "type_record": typeRecord
             })
         }
 
@@ -166,8 +185,7 @@ async function verifyEditWorkout(workout, idWorkout, typeRecord) {
                 "id": entrainementDansRecord[0].id,
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,
-                "type_record": typeRecord,
-                "duree": workout.duree
+                "type_record": typeRecord
             })
 
         }

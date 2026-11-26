@@ -9,7 +9,7 @@ db.version(16).stores({ // ++ pour autoincrement
     discussion: "++id, date, question, prompt",
     profil: "id, sexe, age, taille, poids, fc_repos",
     recuperation: "++id, date, fc_repos",
-    records: "++id, id_entrainement, sport, type_record, duree, distance"
+    records: "++id, id_entrainement, sport, type_record"
 })
 
 async function majIndexedDB(versionDbStockee) {

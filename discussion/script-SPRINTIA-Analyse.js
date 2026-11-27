@@ -448,11 +448,41 @@ async function generatePrompt() {
     // Consigne de base
     promptGenerate = `Tu es le coach sportif expert de l'application SPRINTIA. L'utilisateur va te poser une question, ton but ? Répondre à ses questions de manière fluide et précise en te basant sur les données qu'il a enregistré dans l'application. Information temporelle : aujourd'hui nous sommes le ${createObjetDate(0)}.`
 
-    if (dataWorkout != undefined) {
+    let tableauConsigneFinPrompt = {"text_fin_prompt": undefined, "data_ephemere_detail_entrainement": undefined}
+    // si on a mis des données ephemeres dans local storage
+    let dataAlgorithme = localStorage.getItem("dataAlgorithmeEphemere")
+    if (dataInLocalStorage == true && dataAlgorithme!=null){
+
+        // si les données ephemeres proviennent de l'appronfondissement de l'analyse d'un entraînement
+        if (dataAlgorithme.split("===").length ==2) {
+            const idOfWorkout = dataAlgorithme.split("===")[1] // on récup l'id
+            let dataOfWorkout = [await db.entrainement.get(Number(idOfWorkout))]
+
+            if (dataOfWorkout != undefined) {
+                let newDataOfWorkout = dataOfWorkout.map((workout) =>{
+                    // on sépare les points gps du reste des données de l'entrainement car on n'envoie pas les points GPS à l'IA! on enleve aussi l'id
+                    const {points_gps, id, ...autreStats} = workout;
+                    return autreStats;
+                });
+                promptGenerate+= "\n\n"+convertToCSV(newDataOfWorkout)// on envoie les datas du workout en tableau
+                tableauConsigneFinPrompt["data_ephemere_detail_entrainement"] = true
+            }
+        } else {
+            // si ça ne provient pas du détail d'un entraînement on regarde si on a pas passé des datas dans le localStorage depuis la CE ou l'indulgence de course
+            tableauConsigneFinPrompt["text_fin_prompt"] = "\n\n" + dataAlgorithme
+            tableauConsigneFinPrompt["data_ephemere_detail_entrainement"] = true
+        }
+
+        dataInLocalStorage = false
+        localStorage.removeItem("dataAlgorithmeEphemere")
+    }
+
+    // ATTENTION on n'ajoute pas les datas des entraînements et des récupération si le user veut analyser en profondeur un entraînement en particulier
+    if (dataWorkout != undefined && tableauConsigneFinPrompt["data_ephemere_detail_entrainement"] != true) {
         promptGenerate += "\n\nL'historique d'entrainement :\n" + convertToCSV(dataWorkout)
     }
 
-    if (dataRecup != undefined) {
+    if (dataRecup != undefined && tableauConsigneFinPrompt["data_ephemere_detail_entrainement"] != true) {
         promptGenerate += "\n\nL'historique de récupération :\n" + convertToCSV(dataRecup)
 
         const moyenneRecuperation = calculMoyenneRecuperation(dataRecup)
@@ -463,15 +493,9 @@ async function generatePrompt() {
     // on remplace les \n par des espaces pr économiser des tokens
     promptGenerate += `\n\nVoici la question que l'utilisateur a posé à SPRINTIA : "${document.getElementById("promt-user").value.replace(/\n/g, " ")}"`
 
-    // on regarde si on a pas passé des datas dans le localStorage depuis la CE ou l'indulgence de course
-    if (dataInLocalStorage == true) {
-        const dataAlgorithme = localStorage.getItem("dataAlgorithmeEphemere")
-        if (dataAlgorithme != null) {
-            promptGenerate += "\n\n" + dataAlgorithme
-        }
-
-        dataInLocalStorage = false
-        localStorage.removeItem("dataAlgorithmeEphemere")
+    // si on a trouvé des datas plus haut alors on ajoute ces datas à la fin du prompt
+    if (tableauConsigneFinPrompt["text_fin_prompt"] != undefined && tableauConsigneFinPrompt["data_ephemere_detail_entrainement"] != true) {
+        promptGenerate += tableauConsigneFinPrompt["text_fin_prompt"]
     }
 
     let styleCoachUser = await styleCoach()

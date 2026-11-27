@@ -598,14 +598,20 @@ async function initialisation() {
     else { // si il y a pas de parametres dans l'URL on renvoie vers l'historique pour éviter d'afficher une page vide
         location.href = "../index.html"
     }
-    
-    return
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const buttonAnalyse = document.getElementById("analyse_entrainement")
     if (buttonAnalyse) {buttonAnalyse.addEventListener("click", () => {
-        window.location.href = "../../discussion/discussion.html?question=Analyse en profondeur le dernier entraînement que j'ai réalisé. Donne-moi une phrase de motivation, une insight clé de mon entraînement et compare cet entraînement à mes précédents."
+        window.location.href = "../../discussion/discussion.html?question=Analyse en profondeur l'entraînement que j'ai réalisé. Donne-moi une phrase de motivation, une insight clé de mon entraînement et compare cet entraînement à mes précédents.?data=true"
+    
+        const tableauIdWorkout = window.location.search.split("=") // ?workout=8259 -> ["?workout", 8259]
+
+        if (tableauIdWorkout.length ==2) {
+            let dataEphemere = "id_workout==="+tableauIdWorkout[1]
+            // on cache un signe spéciale pour que l'onglet de discussion capte qu'il faut récup les datas d'un entraînement
+            localStorage.setItem("dataAlgorithmeEphemere", dataEphemere)
+        }
     })}
     const buttonCopy = document.getElementById("copy")
     if (buttonCopy) {buttonCopy.addEventListener("click", () => {copyPrompt()})}

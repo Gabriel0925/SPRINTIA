@@ -245,11 +245,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     await Init()
 })
 
-// pr gérer le BFC cache qui fait n'imp sur iOS
+// pr gérer un bug iOS quand je recherche un entrainement (ex:ski) que je clique dessus et que je fais retour je ne sais pas pourquoi
+// mais l'input search passe de "ski" -> ""
 window.addEventListener("pageshow", (event) => {
-    if (event.persisted) { // event.persisted = quand la page est dans le cache
-        if (sessionStorage.getItem("workoutSearchValue") != null) {
-            inputSearch.value = sessionStorage.getItem("workoutSearchValue")
-        }
+    if (sessionStorage.getItem("workoutSearchValue") != null) {
+        inputSearch.value = sessionStorage.getItem("workoutSearchValue")
+        sessionStorage.removeItem("workoutSearchValue")
     }
 })

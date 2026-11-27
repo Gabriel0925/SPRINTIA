@@ -67,10 +67,10 @@ async function recordDistancePluslongue(workout, idWorkout) {
             // !!! ATTENTION "entrainementDansRecord" c'est un tableau
             if (Number(workout.distance) > Number(dataWorkout.distance)) {
                 await db.records.put({
-                    "id_entrainement": entrainementDansRecord[0].id,
+                    "id": entrainementDansRecord[0].id,
+                    "id_entrainement": entrainementDansRecord[0].id_entrainement,
                     "sport": workout.sport,
-                    "type_record": "distance-plus-longue",
-                    "distance": workout.distance
+                    "type_record": "distance-plus-longue"
                 })
             }
 

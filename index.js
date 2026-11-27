@@ -178,16 +178,23 @@ async function AfficherData() { // lors d'un clic sur le bouton afficher plus
 }
 
 // Recherche d'entraînement
+function remiseZero(iconFermerSearch) {
+    document.getElementById("aucun-resultat").style.display = "none"
+    document.getElementById("liste-workouts").textContent = ""
+    if (iconFermerSearch) {iconFermerSearch.classList.remove("display")}
+    initialisationAffichage()
+}
+
+let iconFermerSearch = document.getElementById("icon_fermer_search")
 let inputSearch = document.getElementById("input-search")
 inputSearch.addEventListener("input", () => { // on recup en temps réel ce que le user tape
     let rechercheUser = inputSearch.value.toLowerCase()
 
     if (rechercheUser.trim() == "") {
-        document.getElementById("aucun-resultat").style.display = "none"
-        document.getElementById("liste-workouts").textContent = ""
-        initialisationAffichage()
+        remiseZero(iconFermerSearch)
     } else {
-        sessionStorage.setItem("workoutSearchValue", rechercheUser.trim())
+        // on affiche la croix dans le search
+        if (iconFermerSearch) {iconFermerSearch.classList.add("display")}
 
         let tableauMotRechercheUser = rechercheUser.split(" ")
         let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => {
@@ -226,6 +233,13 @@ inputSearch.addEventListener("input", () => { // on recup en temps réel ce que 
         }
     }
 })
+iconFermerSearch.addEventListener("click", () => {
+    if (iconFermerSearch.classList.contains("display")) {
+        inputSearch.value = ""
+
+        remiseZero(iconFermerSearch)
+    }
+})
 
 document.addEventListener("DOMContentLoaded", async () => {
     // LES BOUTONS
@@ -243,13 +257,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}
 
     await Init()
-})
-
-// pr gérer un bug iOS quand je recherche un entrainement (ex:ski) que je clique dessus et que je fais retour je ne sais pas pourquoi
-// mais l'input search passe de "ski" -> ""
-window.addEventListener("pageshow", (event) => {
-    if (sessionStorage.getItem("workoutSearchValue") != null) {
-        inputSearch.value = sessionStorage.getItem("workoutSearchValue")
-        sessionStorage.removeItem("workoutSearchValue")
-    }
 })

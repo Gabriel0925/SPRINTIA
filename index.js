@@ -248,8 +248,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 // pr gérer le BFC cache qui fait n'imp sur iOS
 window.addEventListener("pageshow", (event) => {
     if (event.persisted) { // event.persisted = quand la page est dans le cache
-        if (sessionStorage.setItem("workoutSearchValue") != null) {
-            inputSearch.value = sessionStorage.setItem("workoutSearchValue")
+        if (sessionStorage.getItem("workoutSearchValue") != null) {
+            inputSearch.value = sessionStorage.getItem("workoutSearchValue")
         }
     }
 })

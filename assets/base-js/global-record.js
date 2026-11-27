@@ -23,6 +23,26 @@ const seuilRecord = {
     ]
 }
 
+async function saveRecordDistPlusLongue(workout, idRecord) {
+    // quand idRecord == undefined ça veut dire que on fait un add, on n'écrase pas une autre ligne
+    // en revanche si il y a un idRecord on modifie la ligne existante au lieu dans créer une autre
+    if (idRecord == undefined) {
+        await db.records.add({
+            "id_entrainement": workout.id,
+            "sport": workout.sport,
+            "type_record": "distance-plus-longue"
+        })
+
+    } else {
+        await db.records.put({
+            "id": idRecord,
+            "id_entrainement": workout.id,
+            "sport": workout.sport,
+            "type_record": "distance-plus-longue"
+        })
+    }
+    
+}
 async function recordDistancePluslongue(workout, idWorkout) {
     const tableauSportCompatible = ["Course", "Vélo", "Natation"]
     const sportWorkout = tableauSportCompatible.includes(workout.sport) ||undefined
@@ -36,12 +56,7 @@ async function recordDistancePluslongue(workout, idWorkout) {
 
         // si ya pas de données de record alors c'est un record
         if (dataRecordDistance == undefined) {
-            await db.records.add({
-                "id_entrainement": idWorkout,
-                "sport": workout.sport,
-                "type_record": "distance-plus-longue"
-            })
-
+            await saveRecordDistPlusLongue(workout, undefined)
             return
         }
 
@@ -51,37 +66,23 @@ async function recordDistancePluslongue(workout, idWorkout) {
             alert("Une erreur s'est produite : l'entraînement n'existe pas !")
             return
         }
-
-        const entrainementDansRecord = await db.records
-                                            .where("id_entrainement").equals(idWorkout)
-                                            .filter(elt => elt.sport == workout.sport && elt.type_record == "distance-plus-longue")
-                                            .toArray()
-
+                
         const dataWorkout = await db.entrainement.get(dataRecordDistance.id_entrainement)
         if (dataWorkout== undefined) {return false}
 
-        // si l'id de l'entraînement est dans les records alors on modifie la durée
-        // en gros, quand l'utilisateur modifie son entrainement (son entrainement est un record) au lieu de ré-enregistrer une nouvelle ligne de record, on écrase l'ancienne durée
-        // pour mettre la nouvelle durée de l'entrainement
-        if (entrainementDansRecord.length > 0) {
-            // !!! ATTENTION "entrainementDansRecord" c'est un tableau
+        // on recup les datas des records et si il y a déjà une valeur save pour ce type de record alors on l'écrase au lieu d'ajouter une ligne
+        const entrainementDansRecord = await db.records.filter(elt => elt.sport == workout.sport && elt.type_record == "distance-plus-longue")
+                                                .first() ||undefined
+
+        if (entrainementDansRecord != undefined) {
             if (Number(workout.distance) > Number(dataWorkout.distance)) {
-                await db.records.put({
-                    "id": entrainementDansRecord[0].id,
-                    "id_entrainement": entrainementDansRecord[0].id_entrainement,
-                    "sport": workout.sport,
-                    "type_record": "distance-plus-longue"
-                })
+                await saveRecordDistPlusLongue(workout, entrainementDansRecord.id)
             }
 
         } else {
             // sinon on enregistre le record normalement
             if (Number(workout.distance) > Number(dataWorkout.distance)) {
-                await db.records.add({
-                    "id_entrainement": idWorkout,
-                    "sport": workout.sport,
-                    "type_record": "distance-plus-longue",
-                })
+                await saveRecordDistPlusLongue(workout, undefined)
             }
         }
 
@@ -133,18 +134,14 @@ async function saveRecord(workout, idWorkout, typeRecord) {
             return
         }
 
+        // on recup les datas des records et si il y a déjà une valeur save pour ce type de record alors on l'écrase au lieu d'ajouter une ligne
         const entrainementDansRecord = await db.records
-                                            .where("id_entrainement").equals(idWorkout)
-                                            .filter(elt => elt.type_record == "distance-plus-longue")
-                                            .toArray()
+                                                .filter(elt => elt.sport == workout.sport && elt.type_record == typeRecord)
+                                                .first() ||undefined
 
-        // si l'id de l'entraînement est dans les records alors on modifie la durée
-        // en gros, quand l'utilisateur modifie son entrainement (son entrainement est un record) au lieu de ré-enregistrer une nouvelle ligne de record, on écrase l'ancienne durée
-        // pour mettre la nouvelle durée de l'entrainement
-        if (entrainementDansRecord.length > 0) {
-            // !!! ATTENTION "entrainementDansRecord" c'est un tableau
+        if (entrainementDansRecord != undefined) {
             await db.records.put({
-                "id": entrainementDansRecord[0].id,
+                "id": entrainementDansRecord.id,
                 "id_entrainement": idWorkout,
                 "sport": workout.sport,
                 "type_record": typeRecord
@@ -170,8 +167,8 @@ async function checkRecord(workout, idWorkout) {
     // vérification
     if (workout == undefined) {return undefined}
 
-    const dureeWorkout = Number(workout.duree)
-    const distanceWorkout = Number(workout.distance)
+    const dureeWorkout = Number(workout.duree) ||undefined
+    const distanceWorkout = Number(workout.distance)||undefined
 
     // vérification
     if (!dureeWorkout ||!distanceWorkout) {return undefined}
@@ -195,4 +192,59 @@ async function checkRecord(workout, idWorkout) {
     }
 
     await recordDistancePluslongue(workout ,idWorkout)
+}
+
+async function refreshRecord() {
+    try{
+        const dataAllWorkout = await db.entrainement.toArray()
+
+        // on clear la bdd record pr repartir sur de bonnes bases
+        await db.records.clear()
+
+        for (const [sport, dicoSeuilRecord] of Object.entries(seuilRecord)) {
+            // on créer un tableau uniquement avec le sport compatible, donc le sport qu'on parcourt dans le dico "seuilRecord"
+            const workoutCompatible = dataAllWorkout.filter(workout => workout.sport == sport 
+                && workout.duree != undefined && Number(workout.duree) > 0
+                && workout.distance != undefined && Number(workout.distance) > 0)
+
+            // si ya pas de sport compatible alors on passe au prochain elt de seuilRecord
+            if (workoutCompatible.length <=0) {continue}
+
+            // Recherche du record de la distance la plus longue
+            // on met dans une var le tout premier entrainement compatible avec le seuilrecord actuelle
+            let dataWorkoutWithDistPlusLongue = workoutCompatible[0]
+            for (const workout of workoutCompatible) {
+                if (Number(workout.distance)> Number(dataWorkoutWithDistPlusLongue.distance)) {
+                    dataWorkoutWithDistPlusLongue = workout
+                }
+            }
+            await saveRecord(dataWorkoutWithDistPlusLongue, dataWorkoutWithDistPlusLongue.id, "distance-plus-longue")
+
+            // recherche des records de temps par seuil : 5k, 10k,...
+            for (const seuil of dicoSeuilRecord) {
+                let dataWorkoutWithBestTime = undefined
+
+                // on recherche par palier, donc là seuil en fonction du sport qui est entrain d'être parcouru dans la grande boucle for
+                // par exemple notre seuil peut être : "{"distance": 42.195, "type": "Marathon", "typeRecord": "42-kilometres-course"}"
+                // au prochain tour ça sera : {"distance": 21.0975, "type": "Semi-marathon", "typeRecord": "21-kilometres-course"}
+                // et une fois le tour complet fait, la grande boucle qui parcoure "seuilRecord" passera de course à vélo,...
+                for (const workout2 of workoutCompatible) {
+                    if (Number(workout2.distance) >= Number(seuil.distance)) {
+                        if (dataWorkoutWithBestTime==undefined || Number(workout2.duree) < Number(dataWorkoutWithBestTime.duree)) {
+                            dataWorkoutWithBestTime=workout2
+                        }
+                    }
+                }
+                // si on a trouvé un record alors on le save dans record
+                if (dataWorkoutWithBestTime!=undefined) {
+                    await saveRecord(dataWorkoutWithBestTime, dataWorkoutWithBestTime.id, seuil.typeRecord)
+                }
+
+            }
+        } 
+    } catch(error) {
+        console.log(error)
+        alert("Une erreur s'est produite lors d'une opération sur vos records !")
+        return 
+    }
 }

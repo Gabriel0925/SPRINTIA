@@ -124,12 +124,15 @@ function affichageCard(debutSlice, finSlice) {
     }
 }
 
-async function findDataRecuperation(inputSearch) {
+async function findDataRecuperation(inputSearch, iconFermerSearch) {
     let rechercheUser = inputSearch.value.toLowerCase()
 
     if (rechercheUser.trim() == "") {
-        await init()
+        await init(iconFermerSearch)
     } else {
+        // on affiche la croix dans le search
+        if (iconFermerSearch) {iconFermerSearch.classList.add("display")}
+
         let rechercheUserClean = rechercheUser.replaceAll(" ", "-").replaceAll("/", "-")
         let tableauMotRechercheUser = rechercheUserClean.split("-")
         const dicoMois = {
@@ -145,7 +148,6 @@ async function findDataRecuperation(inputSearch) {
             "novembre": "11", "nov.": "11",
             "décembre": "12", "dec.": "12"
         }
-        console.log(tableauMotRechercheUser)
 
         let compteur = 0
         tableauMotRechercheUser.forEach(element => {
@@ -188,7 +190,7 @@ async function findDataRecuperation(inputSearch) {
     }
 }
 
-async function init() {
+async function init(iconFermerSearch) {
     // réinitialisation des variables
     historiqueComplet = []
     nbCardsAfficher = 0
@@ -221,14 +223,29 @@ async function init() {
             buttonAfficherPlus.style.display = "none"
         }   
     }
+
+    // on cache la croix
+    if (iconFermerSearch && iconFermerSearch.classList.contains("display")) {iconFermerSearch.classList.remove("display")}
+
+    // on enleve le visuel aucun result
+    let visuelInfoAucunResult = document.getElementById("aucun-resultat")
+    if (visuelInfoAucunResult) {visuelInfoAucunResult.style.display = "none"}
 }
 
 document.addEventListener("DOMContentLoaded", async() => {
     const segmentedButtonAnalyse = document.getElementById("segmented-button-analyse")
     if (segmentedButtonAnalyse) {segmentedButtonAnalyse.addEventListener("click", () =>{window.location.href = 'recuperation-analyse.html'})}
 
+    let iconFermerSearch = document.getElementById("icon_fermer_search")
     let inputSearch = document.getElementById("input-search")
-    if (inputSearch) {inputSearch.addEventListener("input", async() => {await findDataRecuperation(inputSearch)})}
+    if (inputSearch) {inputSearch.addEventListener("input", async() => {await findDataRecuperation(inputSearch, iconFermerSearch)})}
+    iconFermerSearch.addEventListener("click", async () => {
+        if (iconFermerSearch.classList.contains("display")) {
+            inputSearch.value = ""
+
+            await init(iconFermerSearch)
+        }
+    })
 
     let iconRecherche = document.querySelector("i.icon_search")
     if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}
@@ -241,5 +258,5 @@ document.addEventListener("DOMContentLoaded", async() => {
         })
     }
 
-    await init()
+    await init(iconFermerSearch)
 })

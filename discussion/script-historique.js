@@ -55,7 +55,7 @@ function affichageCard(debutSlice, finSlice) {
     }
 }
 
-async function init() {
+async function init(iconFermerSearch) {
     // réinitialisation des variables
     historiqueComplet = []
     nbCardsAfficher = 0
@@ -80,6 +80,13 @@ async function init() {
         document.querySelector("div.container-card-prompt.skeleton").style.display = "none" // on cache le conteneur de card
         document.getElementById("button_afficher_plus").style.display = "none" // on cache le bouton afficher plus
     }
+
+    // on enleve la croix du search si elle y est
+    if (iconFermerSearch && iconFermerSearch.classList.contains("display")) {iconFermerSearch.classList.remove("display")}
+
+    // on enleve le visuel aucun result
+    let visuelInfoAucunResult = document.getElementById("aucun-resultat")
+    if (visuelInfoAucunResult) {visuelInfoAucunResult.style.display = "none"}
 }
 
 window.addEventListener("DOMContentLoaded", async() =>{
@@ -95,14 +102,18 @@ window.addEventListener("DOMContentLoaded", async() =>{
     let iconRecherche = document.querySelector("i.icon_search")
     if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}
 
+    let iconFermerSearch = document.getElementById("icon_fermer_search")
     let inputSearch = document.getElementById("input-search")
     if (inputSearch) {
         inputSearch.addEventListener("input", async() => {
             let rechercheUser = inputSearch.value.toLowerCase()
 
             if (rechercheUser.trim() == "") {
-                await init() // on revient au départ lors du chargement de la page si ya rien dans la recherche
+                await init(iconFermerSearch) // on revient au départ lors du chargement de la page si ya rien dans la recherche
             } else {
+                // on affiche la croix dans le search
+                if (iconFermerSearch) {iconFermerSearch.classList.add("display")}
+
                 let tableauMotRechercheUser = rechercheUser.split(" ")
 
                 let filteredHistoriqueComplet = historiqueComplet.filter(discussion => {
@@ -136,6 +147,13 @@ window.addEventListener("DOMContentLoaded", async() =>{
 
         })
     }
+    iconFermerSearch.addEventListener("click", async() => {
+        if (iconFermerSearch.classList.contains("display")) {
+            inputSearch.value = ""
 
-    await init()
+            await init(iconFermerSearch)
+        }
+    })
+
+    await init(iconFermerSearch)
 })

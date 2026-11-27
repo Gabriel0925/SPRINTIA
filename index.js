@@ -175,13 +175,7 @@ async function AfficherData() { // lors d'un clic sur le bouton afficher plus
     if (HistoriqueComplet.length <= NbCardsWorkoutAfficher) {
         document.getElementById("button_afficher_plus").style.display = "none"
     }
-
-    return
 }
-
-window.addEventListener("DOMContentLoaded", async () => {
-    await Init()
-})
 
 // Recherche d'entraînement
 let inputSearch = document.getElementById("input-search")
@@ -193,6 +187,8 @@ inputSearch.addEventListener("input", () => { // on recup en temps réel ce que 
         document.getElementById("liste-workouts").textContent = ""
         initialisationAffichage()
     } else {
+        sessionStorage.setItem("workoutSearchValue", rechercheUser.trim())
+
         let tableauMotRechercheUser = rechercheUser.split(" ")
         let filteredHistoriqueComplet = HistoriqueComplet.filter(workout => {
             let nameWorkoutLower = workout.nom.toLowerCase() // on met lla discussion de l'historique en minuscule
@@ -231,7 +227,7 @@ inputSearch.addEventListener("input", () => { // on recup en temps réel ce que 
     }
 })
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     // LES BOUTONS
     let buttonIgnorer = document.getElementById("ignorer")
     if (buttonIgnorer) {buttonIgnorer.addEventListener("click", ignoreConfigurationProfil)}
@@ -245,4 +241,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // RECHERCHE ENTRAINEMENT
     let iconRecherche = document.querySelector("i.icon_search")
     if (iconRecherche) {iconRecherche.addEventListener("click", () => {document.getElementById('input-search').focus()})}
+
+    await Init()
+})
+
+// pr gérer le BFC cache qui fait n'imp sur iOS
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) { // event.persisted = quand la page est dans le cache
+        if (sessionStorage.setItem("workoutSearchValue") != null) {
+            inputSearch.value = sessionStorage.setItem("workoutSearchValue")
+        }
+    }
 })

@@ -82,6 +82,13 @@ async function affichageRecord(sport) {
                         eltHtml.textContent = dureeFormatee(dataWorkout.duree, "null")
                     }
 
+                    // on attribue un click à cet eltHtml pour ouvrir l'entraînement direct
+                    eltHtml.addEventListener("click", () => {
+                        if (dataWorkout.id){
+                            window.location.href = `../../entrainement/entrainement.html?workout=${dataWorkout.id}`
+                        }
+                    })
+
                     eltHtml.classList.remove("skeleton")
                 }
             }

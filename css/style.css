@@ -1179,6 +1179,25 @@ section.container-block div.container-block-data {
     min-width: 150px;
     flex: 1;
 }
+section.container-block div.container-block-data.cliquable {
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    border-radius: var(--BORDER_BIG);
+    border: none;
+    padding: var(--SPACE_S);
+
+    cursor: pointer;
+    transition: background-color var(--TIME_TRANSITION) ease-out,
+                transform var(--TIME_TRANSITION_FAST) ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+   section.container-block div.container-block-data.cliquable:hover {
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+section.container-block div.container-block-data.cliquable:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    transform: scale(var(--SCALE_NORMAL));
+}
 section.container-block div.container-block-data.blue-outline {
     border: 2px solid var(--COLOR_ACCENT);
     border-radius: var(--BORDER_BIG);

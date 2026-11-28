@@ -1,4 +1,37 @@
 :root {
+    /* les "_ON_" c'est la couleur de l'écriture sur la couleur non "_ON_" */
+
+    /*les PRIMARY/SECONDARY/... servent à guider l'oeil vers ce qui compte*/
+    --COLOR_PRIMARY: #a9c7ff; /*bouton valider*/
+    --COLOR_ON_PRIMARY: #003063;
+    --COLOR_PRIMARY_CONTAINER: #5a97f2; /*une version de ma primary mais pour un bloc*/
+    --COLOR_ON_PRIMARY_CONTAINER: #002e60;
+
+    --COLOR_SECONDARY: #b2c7ef; /*filtre, tag, bouton secondaire, icone de navigation*/
+    --COLOR_ON_SECONDARY: #1b3151;
+    --COLOR_SECONDARY_CONTAINER: #334769;
+    --COLOR_ON_SECONDARY_CONTAINER: #a1b6dd;
+
+    --COLOR_TERTIARY: #f6adff; /* pour des elt distinctif */
+    --COLOR_ON_TERTIARY: #540865;
+    --COLOR_TERTIARY_CONTAINER: #c779d4;
+    --COLOR_ON_TERTIARY_CONTAINER: #520563;
+
+    --COLOR_SURFACE: #111319; /*fond de l'app*/
+    --COLOR_ON_SURFACE: #e1e2ea;
+    --COLOR_ON_SURFACE_VARIENT: #c2c6d4;
+
+    --COLOR_SURFACE_CONTAINER: #1d2025; /*pour les cards*/
+    --COLOR_SURFACE_CONTAINER_HIGH: #272a30;
+    --COLOR_SURFACE_CONTAINER_HIGHEST: #32353b;
+
+    --COLOR_OUTLINE: #8c919d;
+
+    --COLOR_ERROR: #ffb4ab; /* pour les bannières d'erreur */
+    --COLOR_ON_ERROR: #690005;
+
+    --COLOR_SHADOW: #000000;
+
     /* ACCENT */
     --COLOR_ACCENT: #5A97F2;
     --COLOR_ACCENT_HOVER: #75a7f0;
@@ -240,7 +273,7 @@ i {
     text-decoration: none;
     color: inherit;
     /* Pour les barres de slide (pr Firefox) */
-    scrollbar-color: var(--COLOR_TEXT_SECONDARY) transparent;
+    scrollbar-color: var(--COLOR_ON_SURFACE_VARIENT) transparent;
     scrollbar-width: thin;
     user-select: none;
     -webkit-user-select: none;
@@ -251,15 +284,15 @@ i {
 /* --- Reset du style pour les sliders */
 *::-webkit-scrollbar {width: 6px;}
 *::-webkit-scrollbar-track {background: transparent;}
-*::-webkit-scrollbar-thumb {background: var(--COLOR_TEXT_SECONDARY);}
+*::-webkit-scrollbar-thumb {background: var(--COLOR_ON_SURFACE_VARIENT);}
 
 
 body {
     font-family: var(--FONT_FAMILY); 
     position: relative; /* Pour que les éléments en position 'absolute' respecte les contraintes du body comme le max-width */
     line-height: var(--LINE_HEIGHT_TEXT);
-    background-color: var(--COLOR_BACKGROUND); 
-    color: var(--COLOR_TEXT_PRIMARY);
+    background-color: var(--COLOR_SURFACE); 
+    color: var(--COLOR_ON_SURFACE);
     margin: 0 auto;
     max-width: var(--MAX_WIDTH);
     padding: var(--SPACE_M);
@@ -283,7 +316,7 @@ h1{
     font-size: var(--H1);
     font-weight: var(--FW_BOLD);
     line-height: var(--LINE_HEIGHT_TITLE);
-    color: var(--COLOR_TEXT_PRIMARY);
+    color: var(--COLOR_ON_SURFACE);
     margin-bottom: var(--SPACE_L);
 }
 h1.patch-note {
@@ -293,7 +326,7 @@ h1.skeleton {
     display: inline-block;
     width: 300px;
     height: 29px;
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    background-color: var(--COLOR_SURFACE_CONTAINER_HIGHEST);
     border-radius: var(--BORDER_SMALL);
     overflow: hidden;
     color: transparent !important;
@@ -303,7 +336,7 @@ h2{
     font-size: var(--H2);
     font-weight: var(--FW_BOLD_SMALL);
     line-height: var(--LINE_HEIGHT_TITLE);
-    color: var(--COLOR_TEXT_PRIMARY);
+    color: var(--COLOR_ON_SURFACE);
     margin: var(--SPACE_M) 0;
 }
 h2#conserver-data {
@@ -313,7 +346,7 @@ h3{
     font-size: var(--H3);
     font-weight: var(--FW_BOLD_SMALL);
     line-height: var(--LINE_HEIGHT_TITLE);
-    color: var(--COLOR_TEXT_PRIMARY);
+    color: var(--COLOR_ON_SURFACE);
     margin: var(--SPACE_M) 0;
 }
 
@@ -324,7 +357,7 @@ p {
 p.text {
     font-weight: normal;
     line-height: var(--LINE_HEIGHT_TEXT);
-    color: var(--COLOR_TEXT_SECONDARY);
+    color: var(--COLOR_ON_SURFACE_VARIENT);
     margin: var(--SPACE_M) 0;
 }
 p.text.small {
@@ -339,27 +372,24 @@ strong {font-weight: var(--FW_BOLD);}
 
 
 a.lien {
-    color: var(--COLOR_ACCENT);
+    color: var(--COLOR_TERTIARY);
     cursor: pointer;
     font-weight: var(--FW_BUTTON);
     text-decoration: underline;
-    transition: letter-spacing ease-out var(--TIME_TRANSITION_FAST);
 }
 a.lien.SPRINTIA-analyse {
     color: var(--COLOR_ANALYSE_START);
 }
 @media (hover: hover) and (pointer: fine) {
     a.lien:hover{
-        color: var(--COLOR_ACCENT_HOVER);
-        letter-spacing: 1px;
+        color: color-mix(in srgb, var(--COLOR_TERTIARY) 92%, var(--COLOR_ON_TERTIARY) 8%);
     }
     a.lien.SPRINTIA-analyse:hover {
         color: var(--COLOR_ANALYSE_START);
     }
 }
 a.lien:active{
-    color: var(--COLOR_ACCENT_ACTIVE);
-    letter-spacing: 1px;
+    color: color-mix(in srgb, var(--COLOR_TERTIARY) 88%, var(--COLOR_ON_TERTIARY) 12%);
 }
 a.lien.SPRINTIA-analyse:active {
     color: var(--COLOR_ANALYSE_START);
@@ -369,15 +399,15 @@ a.lien.SPRINTIA-analyse:active {
 div.separation-line {
     width: 100%; 
     height: 2px; 
-    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE); 
+    background-color: var(--COLOR_OUTLINE); 
     border-radius: var(--BORDER_BIG);
 }
 
 
 button{
-    background-color: var(--COLOR_ACCENT);
+    background-color: var(--COLOR_PRIMARY);
     border: none;
-    color: var(--COLOR_BACKGROUND);
+    color: var(--COLOR_ON_PRIMARY);
     margin: var(--SPACE_XS);
     padding: var(--SPACE_M);
     border-radius: var(--BORDER_NORMAL);
@@ -398,17 +428,15 @@ button{
     -moz-user-select: none;
     user-select: none;
 
-    transition: background-color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
+    transition: transform ease-out var(--TIME_TRANSITION_FAST);
 }
 @media (hover: hover) and (pointer: fine) {
     button:hover{
-        background-color: var(--COLOR_ACCENT_HOVER);
+        background-color: color-mix(in srgb, var(--COLOR_PRIMARY) 92%, var(--COLOR_ON_PRIMARY) 8%);
     }
 }
 button:active{
-    background-color: var(--COLOR_ACCENT_ACTIVE);
-    transform: scale(var(--SCALE_NORMAL));
+    background-color: color-mix(in srgb, var(--COLOR_PRIMARY) 88%, var(--COLOR_ON_PRIMARY) 12%);
 }
 button.table { /* Pour les boutons dans un tableau */
     background-color: transparent;
@@ -418,7 +446,8 @@ button.table { /* Pour les boutons dans un tableau */
     border-radius: var(--BORDER_NORMAL);
     cursor: pointer;
     align-items: center;
-    color: var(--COLOR_ACCENT);
+    background-color: var(--COLOR_PRIMARY);
+    color: var(--COLOR_ON_PRIMARY);
     
     font-family: var(--FONT_FAMILY);
     font-weight: var(--FW_BUTTON);
@@ -431,21 +460,24 @@ button.table { /* Pour les boutons dans un tableau */
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-
-    transition: color ease-out var(--TIME_TRANSITION),
-                transform ease-out var(--TIME_TRANSITION_FAST);
 }
 button.table.table-supprimer { /* Pour les boutons dans un tableau */
-    color: var(--COLOR_RED);
+    background-color: var(--COLOR_ERROR);
+    color: var(--COLOR_ON_ERROR);
 }
 @media (hover: hover) and (pointer: fine) {
     button.table:hover{
-        color: var(--COLOR_ACCENT_HOVER);
+        background-color: color-mix(in srgb, var(--COLOR_PRIMARY) 92%, var(--COLOR_ON_PRIMARY) 8%);
+    }
+    button.table.table-supprimer:hover{
+        background-color: color-mix(in srgb, var(--COLOR_ERROR) 92%, var(--COLOR_ON_ERROR) 8%);
     }
 }
 button.table:active{
-    color: var(--COLOR_ACCENT_ACTIVE);
-    transform: scale(var(--SCALE_NORMAL));
+    background-color: color-mix(in srgb, var(--COLOR_PRIMARY) 88%, var(--COLOR_ON_PRIMARY) 12%);
+}
+button.table.table-supprimer:active{
+    background-color: color-mix(in srgb, var(--COLOR_ERROR) 88%, var(--COLOR_ON_ERROR) 12%);
 }
 button.size-block { /* Pour les boutons dynamique */
     width: 270px;
@@ -458,15 +490,16 @@ button.size-block.left {
     margin: 0;
 }
 button.supprimer {
-    background-color: var(--COLOR_RED);
+    background-color: var(--COLOR_ERROR);
+    color: var(--COLOR_ON_ERROR);
 }
 @media (hover: hover) and (pointer: fine) {
     button.supprimer:hover {
-        background-color: #fe6d6d;
+        background-color: color-mix(in srgb, var(--COLOR_ERROR) 92%, var(--COLOR_ON_ERROR) 8%);
     }
 }
 button.supprimer:active {
-    background-color: #ff8585;
+    background-color: color-mix(in srgb, var(--COLOR_ERROR) 88%, var(--COLOR_ON_ERROR) 12%);
 }
 
 
@@ -506,7 +539,7 @@ section.header ul.header-container-items li.header-items{
     justify-content: center;
     background-color: transparent;
 
-    color: var(--COLOR_TEXT_PRIMARY);
+    color: var(--COLOR_ON_SURFACE);
     font-size: var(--P);
     border-radius: var(--BORDER_NORMAL);
     width: 145px;
@@ -527,7 +560,7 @@ section.header ul.header-container-items li.header-items.selected{
 section.header ul.header-container-items:has(li.header-items:not(.selected):active) li.header-items.selected{
     background-color: transparent;
     box-shadow: none;
-    color: var(--COLOR_TEXT_PRIMARY);
+    color: var(--COLOR_ON_SURFACE);
 }
 @media (hover: hover) and (pointer: fine) {
     section.header ul.header-container-items li.header-items:hover{
@@ -5053,6 +5086,52 @@ div.container-coeur div.texte-coeur p.unit{
 }
 
 
+section.container-option-list div.option-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--COLOR_BACKGROUND_CARD);
+    padding: var(--SPACE_S);
+
+    cursor: pointer;
+    transition: background-color ease-out var(--TIME_TRANSITION),
+                border-radius ease-out var(--TIME_TRANSITION),
+                transform ease-out var(--TIME_TRANSITION_FAST);
+}
+section.container-option-list div.option-list:nth-child(1){
+    border-top-left-radius: var(--BORDER_BIG);
+    border-top-right-radius: var(--BORDER_BIG);
+}
+section.container-option-list div.option-list:last-child{
+    border-bottom-left-radius: var(--BORDER_BIG);
+    border-bottom-right-radius: var(--BORDER_BIG);
+}
+@media (hover: hover) and (pointer: fine) {
+    section.container-option-list div.option-list:hover{
+        background-color: var(--COLOR_BACKGROUND_CARD_HOVER);
+    }
+}
+section.container-option-list div.option-list:active {
+    background-color: var(--COLOR_BACKGROUND_CARD_ACTIVE);
+    border-radius: var(--BORDER_BIG);
+    transform: scale(var(--SCALE_SMALL));
+}
+section.container-option-list div.option-list p{
+    font-size: var(--H3);
+    color: var(--COLOR_TEXT_PRIMARY);
+}
+section.container-option-list div.option-list i{
+    display: none;
+
+    font-size: 1.85rem;
+    color: var(--COLOR_ACCENT_TEXT);
+}
+section.container-option-list div.option-list.selected i{
+    display: block;
+}
+
+
 section.container-historique-line {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -5203,9 +5282,6 @@ section.container-historique-line button.button-card-open#modifier:active {backg
         padding: var(--SPACE_S);
     }
 }
-
-
-
 /* --- Gérer l'affichage du header/tab-bars en fonction de l'appareil --- */
 @media (max-width: 850px) {
     section.header {

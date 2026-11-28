@@ -25,6 +25,7 @@ async function majIndexedDB(versionDbStockee) {
         }
 
         localStorage.setItem("versionDB", "26.09") // maj de la version
+
     } else if (versionDbStockee == "26.09") {
         // on supprime l'avatar et le nom du coach de la bdd car je m'en sert plus en revanche on garde le style du coach
         await db.JRM_Coach.update(1, {nom: undefined, avatar: undefined})
@@ -40,11 +41,23 @@ async function majIndexedDB(versionDbStockee) {
         }
 
         localStorage.setItem("versionDB", "26.11") // maj de la version
+
+    } else if (versionDbStockee == "26.11") {
+        // on fait ça uniquement sur la page index.html
+        if (window.location.pathname == "/index.html" || window.location.pathname == "/") {
+            // on recherche si le user a des records
+            let thereIsError = await refreshRecord()
+            if (thereIsError == "error") {
+                alert("Une erreur s'est produite lors du recalcule de vos records personnels ! Allez dans 'Plus->Records Personnels->Refresh'.")
+            }
+
+            localStorage.setItem("versionDB", "26.12") // maj de la version
+        }
     }
 
 }
 
-const versioDbActuelle = "26.11"
+const versioDbActuelle = "26.12"
 let versionDbStockee = localStorage.getItem("versionDB") || "5.2"
 if (versionDbStockee != versioDbActuelle) {
     majIndexedDB(versionDbStockee)

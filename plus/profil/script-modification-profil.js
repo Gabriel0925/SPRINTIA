@@ -36,7 +36,7 @@ async function saveProfil() {
     }
 
     // conversion
-    poidsUser = Number(poidsUser).toFixed(1)
+    poidsUser = Number(Number(poidsUser).toFixed(1))
 
     button.disabled = true
     button.textContent = "Sauvegarde..."

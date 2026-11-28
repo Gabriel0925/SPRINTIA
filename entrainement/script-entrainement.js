@@ -575,10 +575,16 @@ async function initialisation() {
                 buttonSupprimer.addEventListener("click", async () => { // Ajout d'une "action" au bouton
                     // Demande de confirmation avant
                     if (confirm(`Supprimer l'entraînement "${dataWorkout.nom}" ?`)) {
-                        //si cette entrainement fait partie des records du users on le supprime
-                        await db.records.where("id_entrainement").equals(dataWorkout.id).delete()
-                        
                         await db.entrainement.delete(dataWorkout.id) // supprimer la data de la bdd
+
+                        //si cette entrainement fait partie des records alors on recalcule les records
+                        let recordDetected = await db.records.where("id_entrainement").equals(dataWorkout.id).first() || false
+                        if (recordDetected!=false) {
+                            let thereIsError = await refreshRecord()
+                            if (thereIsError == "error") {
+                                alert("Une erreur s'est produite lors du recalcule de vos records personnels !")
+                            }
+                        }
 
                         // retour à l'historique d'entraînement
                         window.location.href = `../index.html`       

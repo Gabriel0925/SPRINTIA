@@ -488,12 +488,17 @@ async function saveWorkout(button) {
                 }
             }
             await db.entrainement.put(workoutData)
+
+            // on recherche de nouveaux records vu que le user a modifié son entraînement
+            let thereIsError = await refreshRecord()
+            if (thereIsError == "error") {
+                alert("Une erreur s'est produite lors du recalcule de vos records personnels !")
+            }
+            
         } else {
             idWorkout = await db.entrainement.add(workoutData)
-        }
 
-        // on check si c'est un record et si c'est le cas alors on save dans la bdd que c'est un record
-        if (idWorkout != undefined) {
+            // on check si c'est un record et si c'est le cas alors on save dans la bdd que c'est un record
             await checkRecord(workoutData, idWorkout)
         }
 

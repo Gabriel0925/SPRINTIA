@@ -1,4 +1,4 @@
-const VERSION_CACHE = "V1.2.17"
+const VERSION_CACHE = "V1.2.20"
 // tous les fichiers qu'on glisse dans le cache pour le mode hors ligne
 const fileInCache = [ 
     "/",
@@ -118,6 +118,8 @@ const fileInCache = [
     "/plus/parametres/licence/licence.html",
 
     "/plus/parametres/SPRINTIA-analyse/SPRINTIA-analyse.html", "/plus/parametres/SPRINTIA-analyse/a-propos.html", "/plus/parametres/SPRINTIA-analyse/config-SPRINTIA-analyse.js",
+
+    "/plus/parametres/theme/theme.html",
 
     "/plus/profil/modification-profil.html", "/plus/profil/profil.html", "/plus/profil/script-modification-profil.js", "/plus/profil/script-profil.js",
 

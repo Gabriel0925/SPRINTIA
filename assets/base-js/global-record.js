@@ -245,6 +245,6 @@ async function refreshRecord() {
     } catch(error) {
         console.log(error)
         alert("Une erreur s'est produite lors d'une opération sur vos records !")
-        return 
+        return "error"
     }
 }

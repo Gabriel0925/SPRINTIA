@@ -129,5 +129,17 @@ document.addEventListener("DOMContentLoaded", async() => {
     const tabsOngletNatation = document.getElementById("tabs-onglets-natation")
     if (tabsOngletNatation) {tabsOngletNatation.addEventListener("click", async() => {await gererSegmentedButton(tabsOngletNatation)})}
 
+    const buttonRefreshRecord = document.getElementById("button-refresh-records")
+    if (buttonRefreshRecord) {
+        buttonRefreshRecord.addEventListener("click", async() => {
+            if (confirm("Êtes-vous sûr de vouloir recalculer tous vos records personnels ?")) {
+                let thereIsError = await refreshRecord()
+                if (thereIsError == "error") {
+                    alert("Une erreur s'est produite lors du recalcule de vos records personnels !")
+                }
+            }
+        })
+    }
+
     await affichageRecord("Course")
 })

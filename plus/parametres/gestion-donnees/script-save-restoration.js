@@ -5,8 +5,11 @@ async function createFileJSON() {
     let dicoDataLocalStorage = {} // ex structure dico : 'personnaliteCoachBriefing': 'true',...
     // boucle qui parcout tous ce qu'il y a d'enregistrer dans le local storage
     for (let i=0; i < localStorage.length; i++) {
-        // on récup la clé de l'element du local storage et on l'ajoute au dico en recherchant la valeur de cette clé
-        dicoDataLocalStorage[localStorage.key(i)] = localStorage.getItem(localStorage.key(i))
+        if (localStorage.key(i)!= "pusherTransportTLS" && localStorage.key(i)!= "vercel-toolbar-position" 
+                && localStorage.key(i)!= "__vercel_toolbar_injector" && localStorage.key(i)!= "vercel-toolbar-position") {
+            // on récup la clé de l'element du local storage et on l'ajoute au dico en recherchant la valeur de cette clé
+            dicoDataLocalStorage[localStorage.key(i)] = localStorage.getItem(localStorage.key(i))
+        }
     }
 
     // (!!!--- Modifier si ajout de table ---!!!)

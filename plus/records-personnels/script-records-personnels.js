@@ -65,29 +65,34 @@ async function affichageRecord(sport) {
                 if (eltHtml && dataWorkout != undefined) {
                     // on recreer une balise small avec l'unité du sport mais uniquement pour l'elt html avec l'id "distance-plus-longue"
                     if (elt.type_record == "distance-plus-longue") {
-                        // si c'est en natation on convertit la distance des km ->m
-                        if (sport == "Natation") {
-                            eltHtml.textContent = Number(dataWorkout.distance*1000).toFixed(2).toString().replace(".", ",")
-                        } else {
-                            eltHtml.textContent = dataWorkout.distance.toFixed(2).toString().replace(".", ",")
+                        if (dataWorkout.distance) {
+                            // si c'est en natation on convertit la distance des km ->m
+                            if (sport == "Natation") {
+                                eltHtml.textContent = Number(dataWorkout.distance*1000).toFixed(2).toString().replace(".", ",")
+                            } else {
+                                eltHtml.textContent = dataWorkout.distance.toFixed(2).toString().replace(".", ",")
+                            }
+
+                            const smallUnit = document.createElement("small")
+                            smallUnit.id = "unit-plus-longue-distance"
+
+                            if (sport == "Natation") {smallUnit.textContent = "m"} else {smallUnit.textContent = "km"}
+                            eltHtml.appendChild(smallUnit)
                         }
 
-                        const smallUnit = document.createElement("small")
-                        smallUnit.id = "unit-plus-longue-distance"
-
-                        if (sport == "Natation") {smallUnit.textContent = "m"} else {smallUnit.textContent = "km"}
-                        eltHtml.appendChild(smallUnit)
-
                     } else {
-                        eltHtml.textContent = dureeFormatee(dataWorkout.duree, "null")
+                        if (dataWorkout.duree) {
+                            eltHtml.textContent = dureeFormatee(dataWorkout.duree, "null")
+                        }
                     }
 
                     // on attribue un click à cet eltHtml pour ouvrir l'entraînement direct
-                    eltHtml.addEventListener("click", () => {
-                        if (dataWorkout.id){
-                            window.location.href = `../../entrainement/entrainement.html?workout=${dataWorkout.id}`
-                        }
-                    })
+                    if (dataWorkout.id && eltHtml.parentElement) {
+                        // on réinitialise l'ancien eltHtml onclick
+                        eltHtml.parentElement.onclick = null
+                        // on prend la card et pas le p grâce à parentElement
+                        eltHtml.parentElement.onclick = () => {window.location.href = `../../entrainement/entrainement.html?workout=${dataWorkout.id}`}
+                    }
 
                     eltHtml.classList.remove("skeleton")
                 }
@@ -113,7 +118,15 @@ async function affichageRecord(sport) {
                         }
                         element.appendChild(smallUnit)
                     }
-                            
+
+                    // on attribue un click à cet eltHtml pour ouvrir l'entraînement direct
+                    if (element.parentElement) {
+                        // on réinitialise l'ancien eltHtml onclick
+                        element.parentElement.onclick = null
+                        // on prend la card et pas le p grâce à parentElement
+                        element.parentElement.onclick = () => {alert("Il n'y a pas de record pour ce type de record particulier.")}
+                    }
+
                     element.classList.remove("skeleton")
                 }
             });
@@ -141,6 +154,11 @@ document.addEventListener("DOMContentLoaded", async() => {
         buttonRefreshRecord.addEventListener("click", async() => {
             if (confirm("Êtes-vous sûr de vouloir recalculer tous vos records personnels ?")) {
                 let thereIsError = await refreshRecord()
+
+                // on reformate le sport pour bien chercher dans la bdd
+                let sportSelect = document.querySelector(".tabs-onglets.selected").id.split("-")[2]
+                if (sportSelect == "course") {sportSelect="Course"} else if (sportSelect == "velo") {sportSelect = "Vélo"} else {sportSelect = "Natation"}
+                await affichageRecord(sportSelect)
                 if (thereIsError == "error") {
                     alert("Une erreur s'est produite lors du recalcule de vos records personnels !")
                 }
